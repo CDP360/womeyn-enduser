@@ -1,0 +1,76 @@
+@use "typography" as *;
+@use "../abstract" as *;
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+.theme--light,
+.theme--dark {
+  overflow-x: hidden !important;
+  scroll-behavior: smooth;
+  width: 100vw;
+  overflow-y: auto;
+}
+
+.transistion *,
+.transistion *:before,
+.transistion *:after {
+  transition: all 300ms !important;
+  transition-delay: 0 !important;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent !important;
+  height: 7px;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  height: 7px;
+  width: 7px;
+  border-radius: 30px;
+
+  @include themed() {
+    background: t($primary) !important;
+  }
+}
+
+.profile-picture {
+  border-radius: 70px;
+  overflow: hidden;
+  width: 130px;
+  height: 130px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.mint {
+  @include themed() {
+    color: t($primary) !important;
+  }
+}
+
+.btn-close {
+  @include themed() {
+    filter: invert(t($inverter)) !important;
+  }
+}
+
+#fullscreenblocker {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: 80;
+  opacity: 0.2;
+  pointer-events: all;
+}

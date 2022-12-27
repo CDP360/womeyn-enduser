@@ -1,0 +1,73 @@
+@use "theme" as *;
+
+//sass theming
+@mixin themed() {
+  @each $theme, $map in $themes {
+    .theme--#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@mixin xsBreakPoint {
+  @media (max-width: 575.98px) {
+    @content;
+  }
+}
+
+@mixin smBreakPoint {
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    @content;
+  }
+}
+
+@mixin mdBreakPoint {
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    @content;
+  }
+}
+
+@mixin lgBreakPoint {
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    @content;
+  }
+}
+@mixin xlBreakPoint {
+  @media (min-width: 1200px) and (max-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin xxlBreakPoint {
+  @media (min-width: 1440.01px) and (max-width: 1680px) {
+    @content;
+  }
+}
+
+@mixin xxxlBreakPoint {
+  @media (min-width: 1680.01px) {
+    @content;
+  }
+}
+
+//quality of life mixins
+@mixin noSelectionAllowed {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}

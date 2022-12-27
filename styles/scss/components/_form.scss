@@ -1,0 +1,14 @@
+@use "../abstract" as *;
+
+.inputserach {
+    border: none;
+    outline: none;
+    background: #f1f1f1;
+    // backdrop-filter: blur(2px);
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+.serachicon {
+    width: 20px;
+    height: 20px;
+}
