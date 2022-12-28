@@ -1,7 +1,17 @@
-@use "../../../../styles//scss/abstract/" as *;
+@use "../../../../scss/abstract/" as *;
 .headermainsection {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.8);
+    .menuicons {
+        width: 17px;
+        height: 17px;
+        cursor: pointer;
+    }
+    .carticons {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+    }
     .headerinsidesection {
         box-shadow: 0px -27px 120px rgba(0, 0, 0, 0.08);
         padding: 18px 0px;
@@ -17,26 +27,34 @@
                 border-radius: 8px;
                 align-items: center;
                 justify-content: center;
+                @include lgBreakPoint {
+                    width: 40%;
+                    padding: 4px 10px;
+                }
+                @include xlBreakPoint {
+                    width: 40%;
+                    padding: 4px 10px;
+                }
             }
             .womeynlogo {
                 width: 100%;
                 height: 26px;
-            }
-            .falight
-            {
-                font-size: 1.5rem;
-            }
+                cursor: pointer;
+            }   
         }
     }
     .middleheadersection {
         width: 100%;
         box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+        align-items: center;
+        display: flex;
         .insidemiddlesectionheader {
             display: flex;
             justify-content: space-around;
             width: 75%;
             margin: 0 auto;
             padding: 18px 0px;
+            align-items: center;
         }
     }
 }

@@ -2,10 +2,11 @@ import React from 'react'
 import Home from '../../src/components/home/Home'
 
 
-function index({ setthemes, womeyntheme }) {
+function index({ womeyntheme, setWomeynTheme }) {
+    console.log("kalai", womeyntheme);
     return (
         <div>
-            <Home setthemes={setthemes} womeyntheme={womeyntheme} />
+            <Home womeyntheme={womeyntheme} setWomeynTheme={setWomeynTheme} />
         </div>
     )
 }

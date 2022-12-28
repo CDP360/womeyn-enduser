@@ -2,6 +2,7 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import styles from './styles/Login.module.scss';
+import { withPublic } from './../../../routingcheck/RoutingCheck';
 function Login() {
     const history = useRouter();
     const [datas, setDatas] = useState({
@@ -19,11 +20,11 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (name && email && password) {
-            Cookies.set("nextauth", true);
+            Cookies.set("womeynauth", true);
             setTimeout(() => {
                 history.push("/");
             }, 1000);
-            console.log(datas, "kalai");
+
         }
     }
     useEffect(() => {
@@ -36,8 +37,9 @@ function Login() {
                 <input type="text" placeholder='password' value={password} onChange={handlesubmit} name="password" />
                 <button onClick={handleSubmit}>submit</button>
             </div>
+
         </div>
     )
 }
 
-export default Login
+export default withPublic(Login);

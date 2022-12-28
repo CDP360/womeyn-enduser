@@ -1,4 +1,4 @@
-@use "../../../../../styles/scss/abstract/" as *;
+@use "../../../../../scss/abstract/" as *;
 @import "https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css";
 
 .slidepre::before {
@@ -15,9 +15,6 @@
     font-weight: 500 !important;
     font-size: 1.2rem !important;
     content: "\f060" !important;
-    padding: 0px 1px 3px 4px !important;
-    // border: 2px solid red !important;
-    // color: $orange_text !important;
     left: -2%;
     z-index: 2 !important;
     position: absolute !important;
@@ -30,9 +27,33 @@
     color: white;
     justify-content: center;
     @include xsBreakPoint {
-        display: none;
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50%;
+        left: -4%;
+        font-size: 1.2rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     @include smBreakPoint {
-        display: none;
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50%;
+        left: -4%;
+        font-size: 1.2rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    @include mdBreakPoint {
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50%;
+        left: -4%;
+        font-size: 1.2rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }

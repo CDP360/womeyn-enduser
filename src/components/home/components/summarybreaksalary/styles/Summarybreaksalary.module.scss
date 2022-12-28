@@ -1,0 +1,61 @@
+@use "../../../../../../scss/abstract/" as *;
+.summarymainsection {
+    width: 100%;
+    // border: 2px solid red;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 12px 116px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(66px);
+    padding-top: 4%;
+    padding-bottom: 4%;
+    @include xsBreakPoint
+    {
+        width: 100% !important;
+    }
+    .insidesummarysection {
+        width: 72%;
+        margin: 0 auto;
+        @include xsBreakPoint
+        {
+            width: 73%;
+        }
+        @include smBreakPoint
+        {
+            width: 77%;
+        }
+        @include mdBreakPoint
+        {
+            width: 78.78%;
+        }
+        @include lgBreakPoint
+        {
+            width: 84%;
+        }
+        @include xlBreakPoint
+        {
+            width:82%;
+        }
+        .insideslidess {
+            display: flex !important;
+            // border: 2px solid blue;
+            flex-direction: row !important;
+            padding-left: 25%;
+            gap: 10px !important ;
+            align-items: center !important;
+            padding-top: 5%;
+            @include smBreakPoint
+            {
+                padding-left: 18%;
+            }
+            .slidesummaryimages1 {
+                width: 40px;
+                height: 40px;
+                object-fit: contain;
+            }
+            .slidesummaryimages2 {
+                width: 100px;
+                height: 50px;
+                object-fit: contain;
+            }
+        }
+    }
+}

@@ -1,0 +1,57 @@
+@use "../../../../../../../scss/abstract/" as *;
+@import "https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css";
+
+.summarynext::before {
+    content: none !important;
+    width: 35px !important;
+    height: 35px !important;
+    border-radius: 50% !important;
+    background-color: #121e49 !important;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 6 Pro" !important;
+    font-size: 1.2rem !important;
+    content: "\f105" !important;
+    color: white;
+    position: absolute;
+    right: -2%;
+    top: 40%;
+    display: flex;
+    align-items: center;
+    opacity: 0.6;
+    font-weight: 700;
+    cursor: pointer;
+    justify-content: center;
+    @include xsBreakPoint {
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50%;
+        right: -4%;
+        font-size: 1.2rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    @include smBreakPoint {
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50%;
+        right: -4%;
+        font-size: 1.2rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    @include mdBreakPoint {
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50%;
+        right: -4%;
+        font-size: 1.2rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

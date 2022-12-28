@@ -1,0 +1,35 @@
+@use "../abstract" as *;
+
+.active {
+    color: red !important;
+    text-decoration: none !important;
+}
+.nav-link {
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selleractive {
+    background-color: #e95a5a;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    padding: 7px 0px;
+    font-weight: 700;
+}
+.sellerinactive {
+    background-color: white;
+    color: #383838;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    border: 1px solid #383838;
+    font-weight: 500;
+}

@@ -1,4 +1,4 @@
-@use "../../../../../styles/scss/abstract/" as *;
+@use "../../../../../scss/abstract/" as *;
 @import "https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css";
 
 .slidenext::before {
@@ -14,7 +14,6 @@
     font-family: "Font Awesome 6 Pro" !important;
     font-size: 1.2rem !important;
     content: "\f061" !important;
-    padding: 0px 1px 3px 4px !important;
     color: white;
     position: absolute;
     right: -2%;
@@ -25,9 +24,34 @@
     cursor: pointer;
     justify-content: center;
     @include xsBreakPoint {
-        display: none;
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50%;
+        right: -4%;
+        font-size: 1.2rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     @include smBreakPoint {
-        display: none;
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50%;
+        right: -4%;
+        font-size: 1.2rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+    @include mdBreakPoint {
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50%;
+        right: -4%;
+        font-size: 1.2rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
 }

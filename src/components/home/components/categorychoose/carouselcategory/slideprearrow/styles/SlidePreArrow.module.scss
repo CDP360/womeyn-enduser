@@ -1,0 +1,59 @@
+@use "../../../../../../../../scss/abstract/" as *;
+@import "https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css";
+
+.slideprecarousel::before {
+    content: none !important;
+    width: 35px !important;
+    height: 35px !important;
+    border-radius: 50% !important;
+    background-color: #121e49 !important;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 6 Pro" !important;
+    font-size: 1.2rem !important;
+    content: "\f104" !important;
+    font-weight: 700;
+    left: -2%;
+    z-index: 2 !important;
+    position: absolute !important;
+    // display: none;
+    top: 40%;
+    display: flex;
+    align-items: center;
+    opacity: 0.6;
+    cursor: pointer;
+    color: white;
+    justify-content: center;
+    @include xsBreakPoint {
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50%;
+        left: -4%;
+        font-size: 1.2rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    @include smBreakPoint {
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50%;
+        left: -4%;
+        font-size: 1.2rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    @include mdBreakPoint {
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50%;
+        left: -4%;
+        font-size: 1.2rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -1,16 +1,21 @@
-@use "../../../../styles/scss/abstract/" as *;
+@use "../../../../scss/abstract/" as *;
 
 .homesectionmain {
     width: 100%;
     height: 100vh;
     overflow: hidden;
     // border: 2px solid red;
+    // background-color: orange;
+    @include xsBreakPoint {
+        height: auto;
+    }
     .insidehomesection {
         width: 100%;
         height: 100%;
         overflow: hidden;
         position: relative;
         overflow-y: auto;
+        // background:orange;
         .headersectionhome {
             // border: 4px solid orange;
             height: 18%;
@@ -45,39 +50,98 @@
 
         .bodysectionhome {
             height: 84%;
-            width: 75%;
+            width: 100%;
             margin: 0 auto;
             padding-top: 1%;
-
+            // @include xsBreakPoint {
+            //     padding-top: 15%;
+            //     width: 90%;
+            // }
+            // @include smBreakPoint {
+            //     padding-top: 10%;
+            //     width: 90%;
+            // }
+            // @include mdBreakPoint {
+            //     padding-top: 7%;
+            //     width: 90%;
+            // }
+            // @include lgBreakPoint {
+            //     padding-top: 7%;
+            //     width: 90%;
+            // }
+            // @include xlBreakPoint {
+            //     padding-top: 7%;
+            //     width: 90%;
+            // }
             .insidehomesectionbody {
                 width: 100%;
                 height: 100%;
-
-                .imagesectionhome {
-                    width: 100%;
-                    // position: relative;
-                    .sliderimage {
-                        width: 100%;
-                        height: 330px;
+                .widthsectionhome {
+                    width: 75%;
+                    margin: 0 auto;
+                    @include xsBreakPoint {
+                        width: 85%;
+                        padding-top: 6%;
                     }
-                }
-                .womeyntextsection {
-                    position: absolute;
-                    top: 0;
-                    display: flex;
-                    left: 5%;
-                    flex-direction: column;
-                    .insidetextstylestudio {
+                    @include smBreakPoint {
+                        width: 85%;
+                        padding-top: 6%;
+                    }
+                    @include mdBreakPoint {
+                        width: 85%;
+                    }
+                    @include lgBreakPoint {
+                        width: 89%;
+                    }
+                    @include xlBreakPoint {
+                        width: 85%;
+                    }
+                    .imagesectionhome {
+                        width: 100%;
+                        // position: relative;
+                        .sliderimage {
+                            width: 100%;
+                            height: 330px;
+                            @include xsBreakPoint {
+                                height: auto;
+                            }
+                            @include smBreakPoint {
+                                height: auto;
+                            }
+                            @include mdBreakPoint {
+                                height: auto;
+                            }
+                            @include lgBreakPoint {
+                                height: auto;
+                            }
+                        }
+                    }
+                    .womeyntextsection {
+                        position: absolute;
+                        top: 0;
                         display: flex;
+                        left: 5%;
                         flex-direction: column;
-                        gap: 50px;
+                        .insidetextstylestudio {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 50px;
+                        }
                     }
-                }
-                .addimagetagss {
-                    display: flex;
-                    gap: 20px;
-                    .add1 {
-                        width: 100%;
+                    .addimagetagss {
+                        display: flex;
+                        gap: 20px;
+                        @include xsBreakPoint {
+                            display: none;
+                        }
+                        @include smBreakPoint {
+                            flex-direction: column;
+                            gap: 0px;
+                        }
+
+                        .add1 {
+                            width: 100%;
+                        }
                     }
                 }
             }

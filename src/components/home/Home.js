@@ -6,11 +6,13 @@ import Image from 'next/image';
 import Slider from "react-slick";
 import Womeynbanner from '../../../src/assests/homepage-logos/woymenbanner.png';
 import ad1 from '../../../src/assests/homepage-logos/ad1.svg';
-import ad2 from '../../../src/assests/homepage-logos/ad2.svg';
-import Header from '../header/Header';
 import SlideNextArrow from './slidenextarrow/SlideNextArrow';
 import SlidePreArrow from './slideprearrow/SlidePreArrow';
-function Home() {
+import Categorychoose from './components/categorychoose/Categorychoose';
+import Summarybreaksalary from './components/summarybreaksalary/Summarybreaksalary';
+import Bestseller from './components/bestseller/Bestseller';
+function Home({ womeyntheme, setWomeynTheme }) {
+    console.log(womeyntheme, setWomeynTheme, "kalai");
     const history = useRouter();
     const settings = {
         dots: false,
@@ -75,45 +77,55 @@ function Home() {
                     </div>
                     <div className={styles.emptysectionboxorange}>
                     </div>
-                    <div className={styles.headersectionhome}>
-                        <Header />
-                    </div>
                     <div className={styles.bodysectionhome}>
                         <div className={styles.insidehomesectionbody}>
-                            <div className={styles.imagesectionhome}>
-                                <Slider {...settings}>
-                                    <div>
-                                        <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
-                                    </div>
-                                    <div>
-                                        <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
-                                    </div>
-                                    <div>
-                                        <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
-                                    </div>
-                                    <div>
-                                        <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
-                                    </div> <div>
-                                        <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
-                                    </div>
-                                </Slider>
-                            </div>
-
-                            <div className={styles.addimagetagss}>
-                                <div className={styles.addimagessectionleft}>
-                                    <Image src={ad1} alt="no image" className={styles.add1} />
+                            <div className={styles.widthsectionhome}>
+                                <div className={styles.imagesectionhome}>
+                                    <Slider {...settings}>
+                                        <div>
+                                            <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
+                                        </div>
+                                        <div>
+                                            <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
+                                        </div>
+                                        <div>
+                                            <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
+                                        </div>
+                                        <div>
+                                            <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
+                                        </div>
+                                        <div>
+                                            <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
+                                        </div>
+                                    </Slider>
                                 </div>
-                                <div className={styles.addimagessectionright}>
-                                    {/* <Image src={ad1} alt="no image" className={styles.add1} /> */}
-                                    <Image src={ad1} alt="no image" className={styles.add1} />
-                                </div>
-                            </div>
 
+                                <div className={styles.addimagetagss}>
+                                    <div className={styles.addimagessectionleft}>
+                                        <Image src={ad1} alt="no image" className={styles.add1} />
+                                    </div>
+                                    <div className={styles.addimagessectionright}>
+                                        <Image src={ad1} alt="no image" className={styles.add1} />
+                                    </div>
+                                </div>
+                                <div>
+                                    <Categorychoose />
+                                </div>
+
+                            </div>
+                            <div>
+                                <Summarybreaksalary />
+                            </div>
+                            <div>
+                                <Bestseller/>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </Fragment >
+
     )
 }
 

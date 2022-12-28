@@ -1,0 +1,40 @@
+@use "../../../../../../../scss/abstract/" as *;
+
+.mainslidesection {
+    width: 96%;
+    margin: 0 auto !important;
+    padding-top: 7%;
+    z-index: 988888888;
+    @include xsBreakPoint {
+        width: 83%;
+    }
+    @include smBreakPoint {
+        width: 90%;
+        padding-top: 5%;
+
+    }
+    @include mdBreakPoint {
+        width: 92%;
+        padding-top: 15%;
+    }
+    .insideslides {
+        width: 100% !important;
+        // border: 3px solid blue;
+        margin: 0 auto;
+        padding-left: 13%;
+
+        .slideimagesize {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            @include smBreakPoint {
+                width: 170px;
+                height: 170px;
+            }
+            @include mdBreakPoint {
+                width: 170px;
+                height: 170px;
+            }
+        }
+    }
+}

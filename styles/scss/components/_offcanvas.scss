@@ -1,7 +1,0 @@
-@use "../abstract/" as *;
-
-.offcanvas {
-    @include xsBreakPoint {
-        width: 70% !important;
-    }
-}

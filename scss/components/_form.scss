@@ -1,0 +1,34 @@
+@use "../abstract" as *;
+
+.inputserach {
+    border: none;
+    outline: none;
+    background: #f1f1f1;
+    // backdrop-filter: blur(2px);
+    padding: 6px 10px;
+    border-radius: 8px;
+    @include xsBreakPoint {
+        width: 100% !important;
+        padding: 2px 5px;
+    }
+    @include smBreakPoint {
+        width: 100% !important;
+        padding: 2px 5px;
+    }
+    @include mdBreakPoint {
+        width: 100% !important;
+        padding: 2px 5px;
+    }
+    @include lgBreakPoint {
+        width: 100% !important;
+        padding: 2px 5px;
+    }
+    @include xlBreakPoint {
+        width: 100% !important;
+        padding: 2px 5px;
+    }
+}
+.serachicon {
+    width: 20px;
+    height: 20px;
+}

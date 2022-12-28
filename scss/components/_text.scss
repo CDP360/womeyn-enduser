@@ -1,0 +1,12 @@
+@use "../abstract/" as *;
+
+.commontext {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    @include xsBreakPoint
+    {
+        font-size: 1.2rem !important;
+        font-weight: 600;
+    }
+}
