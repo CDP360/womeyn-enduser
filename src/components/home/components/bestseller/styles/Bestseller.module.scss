@@ -2,24 +2,84 @@
 .mainsellersection {
     width: 100%;
     padding-top: 3%;
+    @include xsBreakPoint {
+        padding-top: 0;
+    }
     .insidesellerimagesection {
         width: 75%;
         margin: 0 auto;
+        @include xsBreakPoint {
+            width: 90%;
+        }
+        @include smBreakPoint {
+            width: 90%;
+        }
+        @include lgBreakPoint {
+            width: 90%;
+        }
+        @include xlBreakPoint {
+            width: 90%;
+        }
         .imageadd {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto;
+            object-fit: contain;
+            @include xsBreakPoint {
+                width: 100%;
+                // height: 340px;
+                object-fit: contain;
+            }
+            @include smBreakPoint {
+                width: 100%;
+                // height: 340px;
+                object-fit: contain;
+            }
+            @include mdBreakPoint {
+                width: 100%;
+                // height: 340px;
+                object-fit: contain;
+            }
+            @include lgBreakPoint {
+                width: 100%;
+                // height: 340px;
+                object-fit: contain;
+            }
+            @include xlBreakPoint {
+                width: 100%;
+                // height: 340px;
+                object-fit: contain;
+            }
         }
-        .buttonsellersection
-        {
-           
+        .buttonsellersection {
             width: 80%;
             margin: 0 auto;
             display: flex;
             justify-content: space-around;
-            gap:5%;
+            gap: 5%;
+            @include xsBreakPoint {
+                width: 100%;
+                gap: 2%;
+            }
+            @include smBreakPoint {
+                width: 100%;
+                gap: 2%;
+            }
+            @include mdBreakPoint {
+                width: 100%;
+                gap: 2%;
+            }
+        }
+        .borderseller {
+            // border: 2px solid red;
+            width: 100%;
+            padding-top: 3%;
+            .insideborderseller {
+                width: 100%;
+                border-top: 2px dashed grey;
+            }
         }
     }
 }

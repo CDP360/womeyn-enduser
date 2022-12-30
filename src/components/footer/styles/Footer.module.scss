@@ -1,0 +1,192 @@
+@use "../../../../scss/abstract/" as *;
+
+.mainfootersection {
+    width: 100%;
+    padding-top: 1%;
+    cursor: pointer;
+    position: relative;
+    @include xsBreakPoint {
+        padding-bottom: 5%;
+    }
+    @include smBreakPoint {
+        padding-bottom: 5%;
+    }
+    @include mdBreakPoint {
+        padding-bottom: 5%;
+    }
+    .footerrightemptybox {
+        background: #e75b5e;
+        opacity: 0.13;
+        filter: blur(199.225px);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        right: 0;
+        @include xsBreakPoint {
+            top: 5%;
+        }
+    }
+    .insidefootersection {
+        width: 100%;
+        .splitinsidefootersection {
+            width: 75%;
+            margin: 0 auto;
+            padding-bottom: 2%;
+            padding-top: 2%;
+            @include xsBreakPoint {
+                width: 85%;
+                padding-top: 6%;
+            }
+            @include smBreakPoint {
+                width: 85%;
+                padding-top: 6%;
+            }
+            @include mdBreakPoint {
+                width: 85%;
+            }
+            @include lgBreakPoint {
+                width: 89%;
+            }
+            @include xlBreakPoint {
+                width: 85%;
+            }
+            .splitfootersection {
+                width: 100%;
+                display: flex;
+                gap: 20px;
+                @include xsBreakPoint {
+                    flex-direction: column;
+                }
+                @include smBreakPoint {
+                    flex-direction: column;
+                }
+                @include mdBreakPoint {
+                    flex-direction: column;
+                }
+                .footersectionone {
+                    width: 30%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    @include xsBreakPoint {
+                        width: 100%;
+                    }
+                    @include smBreakPoint {
+                        width: 100%;
+                    }
+                    @include mdBreakPoint {
+                        width: 100%;
+                    }
+                    @include lgBreakPoint {
+                        width: 34%;
+                    }
+                    .socailfootersection {
+                        display: flex;
+                        padding-top: 4%;
+                        gap: 20px;
+
+                        .footeremptysocialsection {
+                            background: rgba(203, 203, 203, 0.23);
+                            padding: 7px 11px;
+                            border-radius: 7px;
+                            cursor: pointer;
+                            .footersocialicons {
+                                width: 100%;
+                                height: 20px;
+                                object-fit: contain;
+                                @include xsBreakPoint {
+                                    height: auto;
+                                }
+                                @include smBreakPoint {
+                                    height: auto;
+                                }
+                                @include mdBreakPoint {
+                                    height: auto;
+                                }
+                                @include lgBreakPoint {
+                                    height: auto;
+                                }
+                                @include xlBreakPoint {
+                                    height: auto;
+                                }
+                            }
+                        }
+                    }
+                }
+                .footersectiontwo {
+                    width: 20%;
+                    @include xsBreakPoint {
+                        width: 100%;
+                    }
+                    @include smBreakPoint {
+                        width: 100%;
+                    }
+                    @include mdBreakPoint {
+                        width: 100%;
+                    }
+                    @include lgBreakPoint {
+                        padding-left: 4%;
+                    }
+                    @include xlBreakPoint {
+                        padding-left: 4%;
+                    }
+                }
+                .footersectionthree {
+                    width: 20%;
+                    @include xsBreakPoint {
+                        width: 100%;
+                    }
+                    @include smBreakPoint {
+                        width: 100%;
+                    }
+                    @include mdBreakPoint {
+                        width: 100%;
+                    }
+                    cursor: pointer;
+
+                    li {
+                        list-style: none;
+                        cursor: pointer !important;
+                    }
+                }
+                .footersectionfour {
+                    width: 30%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 25px;
+                    @include xsBreakPoint {
+                        width: 100%;
+                    }
+                    @include smBreakPoint {
+                        width: 100%;
+                    }
+                    @include mdBreakPoint {
+                        width: 100%;
+                    }
+                    .headphonesectionfooter {
+                        display: flex;
+                        gap: 20px;
+                        align-items: center;
+                        .headephoneimage {
+                            width: 100%;
+                            height: 30px;
+                            object-fit: contain;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+                    .livechat {
+                        border: 1px solid #000000;
+                        border-radius: 8px;
+                        color: #e95a5a;
+                        padding: 9px 25px;
+                        background-color: white;
+                        font-size: 0.789rem;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+}

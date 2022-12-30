@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment } from 'react'
 import styles from './styles/Categorychoose.module.scss';
 import tropy from '../../../../assests/homepage-logos/trophy.png';
 import shipping from '../../../../assests/homepage-logos/shipping.png';
@@ -6,16 +6,8 @@ import secure from '../../../../assests/homepage-logos/secure.png';
 import chat from '../../../../assests/homepage-logos/chat1.png';
 import Image from 'next/image';
 import { Col, Row } from 'react-bootstrap';
-import Slider from "react-slick";
-import axios from 'axios';
-import SlideNextArrow from '../../slidenextarrow/SlideNextArrow';
-import SlidePreArrow from '../../slideprearrow/SlidePreArrow';
-import Womeynbanner from '../../../../../src/assests/homepage-logos/woymenbanner.png';
 import CarouselCategory from './carouselcategory/CarouselCategory';
-    
-
 function Categorychoose() {
-
     return (
         <Fragment>
             <div className={styles.categoryhomesection}>
@@ -96,7 +88,7 @@ function Categorychoose() {
                             A lot of categories to choose from
                         </div>
                         <div>
-                           <CarouselCategory/>
+                            <CarouselCategory />    
                         </div>
                     </div>
                 </div>

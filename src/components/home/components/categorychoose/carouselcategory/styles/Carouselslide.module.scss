@@ -4,7 +4,6 @@
     width: 96%;
     margin: 0 auto !important;
     padding-top: 7%;
-    z-index: 988888888;
     @include xsBreakPoint {
         width: 83%;
     }
@@ -22,6 +21,7 @@
         // border: 3px solid blue;
         margin: 0 auto;
         padding-left: 13%;
+        // overflow: hidden;
 
         .slideimagesize {
             width: 200px;

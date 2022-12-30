@@ -11,6 +11,10 @@ import SlidePreArrow from './slideprearrow/SlidePreArrow';
 import Categorychoose from './components/categorychoose/Categorychoose';
 import Summarybreaksalary from './components/summarybreaksalary/Summarybreaksalary';
 import Bestseller from './components/bestseller/Bestseller';
+import Ourwomenpreneurs from './components/ourwomenpreneurs/Ourwomenpreneurs';
+import Eventlatestupdate from './components/eventslatestupdates/Eventlatestupdate';
+import Signupnewsletter from './components/signupfornewsletter/Signupnewsletter';
+import Footer from '../footer/Footer';
 function Home({ womeyntheme, setWomeynTheme }) {
     console.log(womeyntheme, setWomeynTheme, "kalai");
     const history = useRouter();
@@ -99,7 +103,6 @@ function Home({ womeyntheme, setWomeynTheme }) {
                                         </div>
                                     </Slider>
                                 </div>
-
                                 <div className={styles.addimagetagss}>
                                     <div className={styles.addimagessectionleft}>
                                         <Image src={ad1} alt="no image" className={styles.add1} />
@@ -111,16 +114,24 @@ function Home({ womeyntheme, setWomeynTheme }) {
                                 <div>
                                     <Categorychoose />
                                 </div>
-
                             </div>
                             <div>
                                 <Summarybreaksalary />
                             </div>
                             <div>
-                                <Bestseller/>
+                                <Bestseller />
                             </div>
+                            <div>
+                                <Ourwomenpreneurs />
+                            </div>
+                            <div>
+                                <Eventlatestupdate />
+                            </div>
+                            <div>
+                                <Signupnewsletter />
+                            </div>
+                            <Footer />
                         </div>
-
                     </div>
                 </div>
             </div>

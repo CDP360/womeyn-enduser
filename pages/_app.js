@@ -3,17 +3,14 @@ import { useEffect, useState } from 'react';
 import '../styles/index.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 import { StrictMode } from "react";
-import Cookies from 'js-cookie';
-import Login from '../src/components/login/Login';
-import Header from '../src/components/header/Header';
-import MobileHeader from '../src/components/header/Mobileheader/MobileHeader';
-
+import Layout from './layout/index';
+import { Provider } from "react-redux";
+import store from '../src/Redux/store/Store';
+import Footer from '../src/components/footer/Footer';
+import Scrollbutton from '../src/components/scrollbutton/Scrollbutton';
 export default function App({ Component, pageProps }) {
-  const getcookies = Cookies.get("womeynauth");
   const [womeyntheme, setWomeynTheme] = useState(false);
-
   useEffect(() => {
-    // Cookies.set("womeyntheme", womeyntheme);
     import("bootstrap/dist/js/bootstrap");
     import("slick-carousel/slick/slick.css");
     import("slick-carousel/slick/slick-theme.css");
@@ -22,21 +19,15 @@ export default function App({ Component, pageProps }) {
   return (
     <div className={womeyntheme ? "theme--dark" : "theme--light"}>
       <div className='womeyn-enduser'>
-        {getcookies ? <>
-          <StrictMode>
-            <div className='d-none d-lg-block'>
-              <Header />
-            </div>
-            <div className='d-block d-lg-none'>
-              <MobileHeader />
-            </div>
+        <StrictMode>
+          <Provider store={store}>
+            <Scrollbutton />
+            <Layout />
             <Component {...pageProps} womeyntheme={womeyntheme} setWomeynTheme={setWomeynTheme} />
-          </StrictMode>
-        </> : <>
-          <Login />
-        </>}
-
-      </div>
-    </div>
+            {/* <Footer /> */}
+          </Provider>
+        </StrictMode>
+      </div >
+    </div >
   )
 }

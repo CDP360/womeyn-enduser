@@ -77,7 +77,6 @@ function CarouselCategory() {
             </div>
           )
         })}
-
       </Slider>
     </div>
   )

@@ -4,9 +4,83 @@
     font-size: 2rem;
     font-weight: 600;
     text-align: center;
-    @include xsBreakPoint
-    {
+    @include xsBreakPoint {
         font-size: 1.2rem !important;
         font-weight: 600;
     }
+}
+.textseller {
+    font-size: 2rem;
+    font-weight: 600;
+    @include xsBreakPoint {
+        font-size: 1.2rem !important;
+        font-weight: 600;
+    }
+    @include mdBreakPoint {
+        font-size: 1.2rem !important;
+        font-weight: 600;
+    }
+}
+// grey text color
+
+.textgrey {
+    color: #8d8d8d;
+    font-weight: 600;
+}
+.textgreysmall {
+    color: #8d8d8d;
+    font-weight: 500;
+    font-size: 0.893rem;
+}
+// price text
+.textprice {
+    color: #000000;
+    font-weight: 600;
+}
+.textpricedashed {
+    color: #8d8d8d;
+}
+
+// textlight grey
+.textlightgrey {
+    color: #563f3f;
+    font-size: 1rem;
+}
+
+// event workshop text color
+
+.commontextsmall {
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    @include xsBreakPoint {
+        font-size: 1.2rem !important;
+        font-weight: 600;
+    }
+}
+
+
+// footer section text
+
+.footertext
+{
+    color: #000000;
+    font-weight: 600;
+    font-size: 1rem;
+}
+.footergreytext
+{
+    color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    font-weight: 500;
+    line-height: 1.5;
+   
+}
+.gapsectionfooter
+{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+    padding-top: 10%;
+    cursor: pointer;
 }

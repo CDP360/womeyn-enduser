@@ -1,0 +1,54 @@
+@use "../abstract/" as *;
+
+.cardsection {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    .card {
+        width: 23.67% !important;
+        display: flex !important;
+        gap: 20px !important;
+        height: auto;
+        border: none !important;
+        background: #ffffff;
+        box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
+        border-radius: 8px;
+        @include xsBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include smBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include mdBreakPoint {
+            width: 40% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include lgBreakPoint {
+            width: 22% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include xlBreakPoint {
+            width: 20% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

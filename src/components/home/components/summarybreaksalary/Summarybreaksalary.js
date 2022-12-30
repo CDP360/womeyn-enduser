@@ -57,8 +57,8 @@ function Summarybreaksalary() {
         autoplay: true,
         autoplaySpeed: 3500,
         pauseOnHover: true,
-        nextArrow: <SlideNextArrow/>,
-        prevArrow: <SlidePreArrow/>,
+        nextArrow: <SlideNextArrow />,
+        prevArrow: <SlidePreArrow />,
         responsive: [
             {
                 breakpoint: 1024,

@@ -1,0 +1,152 @@
+@use "../../../../../../scss/abstract/" as *;
+
+.eventupdatemainsection {
+    width: 100%;
+    position: relative;
+    @include xsBreakPoint {
+        padding-bottom: 5%;
+        padding-top: 6%;
+    }
+    .emptyboxcolorsection {
+        position: absolute;
+        background: #ffe7cd;
+        height: 100%;
+        width: 11%;
+        opacity: 0.6;
+        filter: blur(347px);
+        border-radius: 50%;
+        right: 10px;
+        z-index: 0;
+    }
+    .insideventupdatesection {
+        width: 75%;
+        margin: 0 auto;
+        z-index: 90;
+        @include xsBreakPoint {
+            width: 82%;
+        }
+        @include smBreakPoint {
+            width: 82%;
+        }
+        @include mdBreakPoint {
+            width: 82%;
+        }
+        @include lgBreakPoint {
+            width: 89%;
+        }
+        @include xlBreakPoint {
+            width: 85%;
+        }
+        .bordertopsectionevents {
+            padding-top: 5%;
+            padding-bottom: 4.45%;
+        }
+        .eventfruitsection {
+            display: flex;
+            gap: 30px;
+            @include xsBreakPoint {
+                flex-direction: column;
+            }
+            .lefteventfruit {
+                width: 50%;
+                padding-top: 3%;
+                @include xsBreakPoint {
+                    width: 100%;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                }
+                @include mdBreakPoint {
+                    width: 100%;
+                }
+                @include lgBreakPoint {
+                    width: 100%;
+                }
+                @include xlBreakPoint {
+                    width: 100%;
+                }
+                .imageeventsection {
+                    padding-top: 4%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    .fruitimage {
+                        width: 100%;
+                        height: 200px;
+                        // object-fit: contain;
+                        @include xsBreakPoint {
+                            width: 100%;
+                            height: auto;
+                        }
+                        @include smBreakPoint {
+                            width: 100%;
+                            height: auto;
+                        }
+                        @include mdBreakPoint {
+                            width: 100%;
+                            height: auto;
+                        }
+                        @include lgBreakPoint {
+                            width: 100%;
+                            height: auto;
+                        }
+                        @include xlBreakPoint {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+            .righteventfruit {
+                width: 50%;
+                padding-top: 3%;
+                @include xsBreakPoint {
+                    width: 100%;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                }
+                @include mdBreakPoint {
+                    width: 100%;
+                }
+                @include lgBreakPoint {
+                    width: 100%;
+                }
+                @include xlBreakPoint {
+                    width: 100%;
+                }
+                .imageeventsection {
+                    padding-top: 4%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    .fruitimage {
+                        width: 100%;
+                        height: 200px;
+                        // object-fit: contain;
+                        @include xsBreakPoint {
+                            width: 100%;
+                            height: auto;
+                        }
+                        @include smBreakPoint {
+                            width: 100%;
+                            height: auto;
+                        }
+                        @include mdBreakPoint {
+                            width: 100%;
+                            height: auto;
+                        }
+                        @include lgBreakPoint {
+                            width: 100%;
+                            height: auto;
+                        }
+                        @include xlBreakPoint {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

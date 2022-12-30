@@ -2,22 +2,9 @@
 
 .categoryhomesection {
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
     padding-top: 6%;
-    @include xsBreakPoint {
-        height: auto;
-    }
-    @include smBreakPoint {
-        height: auto;
-    }
-    @include mdBreakPoint {
-        height: auto;
-    }
     .insidecategorysection {
         width: 100%;
-        height: 100%;
-        position: relative;
         .supportcategorysection {
             border-top: 2px dashed grey;
             border-bottom: 2px dashed grey;

@@ -1,0 +1,5 @@
+@use "../abstract/" as *;
+
+.textdashed {
+    border-top: 2px dashed grey;
+}

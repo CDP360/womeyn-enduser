@@ -1,0 +1,18 @@
+@use "../../../../scss/abstract/" as *;
+
+.mainscrollbutton {
+    // border: 2px solid blue;
+    .iconsection {
+        position: fixed;
+        bottom: 20px;
+        right: 10px;
+        font-size: 100px;
+        background: orange;
+        color: blue;
+        cursor: pointer;
+        border-radius: 100px;
+        border: none;
+        box-shadow: 0 5px 10px #ccc;
+        z-index: 9898997869759998989898989898898989989898989898989898989898989898989898989898989898989899898989898989898989898989898989898;
+    }
+}

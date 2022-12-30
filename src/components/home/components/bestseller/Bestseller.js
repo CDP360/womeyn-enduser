@@ -15,7 +15,7 @@ function Bestseller() {
                     <div className={styles.insidesellerbreaksalary}>
                         <Image src={imageadd} alt="no image" className={styles.imageadd} />
                     </div>
-                    <div className='commontext mt-4 mb-5'>
+                    <div className='commontext mb-5 mt-3'>
                         Bestsellers to cheer you up!
                     </div>
                     <div className={styles.buttonsellersection}>
@@ -23,6 +23,11 @@ function Bestseller() {
                         <button className={index === 1 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(1)}>Electronics</button>
                         <button className={index === 2 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(2)}>Health & Care</button>
                         <button className={index === 3 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(3)}>Health & fitness</button>
+                    </div>
+                    <div className={styles.borderseller}>
+                        <div className={styles.insideborderseller}>
+
+                        </div>
                     </div>
                     <div className='mt-5'>
                         <div hidden={index != 0}>
