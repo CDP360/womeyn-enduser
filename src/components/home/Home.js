@@ -16,8 +16,10 @@ import Eventlatestupdate from './components/eventslatestupdates/Eventlatestupdat
 import Signupnewsletter from './components/signupfornewsletter/Signupnewsletter';
 import Footer from '../footer/Footer';
 import Layout from '../../../pages/layout/index'
-function Home({ womeyntheme, setWomeynTheme }) {
+import LayoutHeader from '../Layoutheader/LayoutHeader';
+function Home({dark,setdark}) {
     const history = useRouter();
+    
     const settings = {
         dots: false,
         infinite: true,
@@ -77,8 +79,8 @@ function Home({ womeyntheme, setWomeynTheme }) {
         <Fragment>
             <div className={styles.homesectionmain}>
                 <div className={styles.insidehomesection}>
-                    <div className={styles.headersectionhome}>
-                        <Layout />
+                    <div className="headersectionhome">
+                       <LayoutHeader dark={dark} setdark={setdark}/>
                     </div>
                     <div className={styles.emptysectionbox}>
                     </div>

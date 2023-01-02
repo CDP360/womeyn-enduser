@@ -15,6 +15,7 @@
     .headerinsidesection {
         box-shadow: 0px -27px 120px rgba(0, 0, 0, 0.08);
         padding: 18px 0px;
+        background-color: white;
         .logoheadersection {
             display: flex;
             justify-content: space-around;
@@ -45,9 +46,11 @@
     }
     .middleheadersection {
         width: 100%;
-        box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+        // box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+        box-shadow: rgba(60, 4, 7, 0) 0px 1px 2px 0px, rgba(0, 4, 7, 0.15) 0px 2px 7px 0px;
         align-items: center;
         display: flex;
+        background: white;
         .insidemiddlesectionheader {
             display: flex;
             justify-content: space-around;

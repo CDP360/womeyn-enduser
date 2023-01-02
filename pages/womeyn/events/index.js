@@ -3,10 +3,10 @@ import Eventsupdate from './../../../src/components/middleheaderchilderns/events
 
 
 
-function index() {
+function index({dark,setdark}) {
     return (
         <div>
-           <Eventsupdate/>
+           <Eventsupdate setdark={setdark} dark={dark}/>
         </div>
     )
 }

@@ -4,10 +4,10 @@ import Explore from './../../../src/components/middleheaderchilderns/explore/Exp
 
 
 
-function index() {
+function index({dark,setdark}) {
     return (
         <div>
-            <Explore />
+            <Explore setdark={setdark} dark={dark} />
         </div>
     )
 }

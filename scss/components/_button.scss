@@ -1,9 +1,5 @@
 @use "../abstract" as *;
 
-.active {
-    color: red !important;
-    text-decoration: none !important;
-}
 .nav-link {
     text-decoration: none !important;
     display: flex;
@@ -58,7 +54,8 @@
 // login button
 
 .loginbutton {
-    background-color: #e95a5a;
+    background-color: #e95a5a !important;
+    border: none !important;
     color: white;
     cursor: pointer;
     width: 100%;
@@ -69,10 +66,22 @@
     font-weight: 700;
     @include xsBreakPoint {
         width: 100%;
- 
     }
     @include smBreakPoint {
         width: 100%;
-      
     }
+}
+
+.button {
+    background-color: red !important;
+    border: none !important;
+    width: 100%;
+}
+
+.form-control {
+    border: 1px solid grey !important;
+}
+.form-control:focus {
+    border-color: none !important;
+    box-shadow: none !important;
 }

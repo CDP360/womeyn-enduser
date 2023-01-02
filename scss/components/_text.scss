@@ -84,3 +84,22 @@
     padding-top: 10%;
     cursor: pointer;
 }
+
+
+.active {
+    color: red !important;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+
+// stricky function in header section start
+
+.headersectionhome {
+    position: sticky;
+    top: 0;
+    z-index: 9;
+}
+
+
+// end strick section

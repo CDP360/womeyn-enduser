@@ -2,12 +2,10 @@ import React from 'react'
 import Home from '../../src/components/home/Home'
 
 
-function index({ womeyntheme, setWomeynTheme }) {
-
+function index({ dark, setdark }) {
     return (
         <div>
-
-            <Home womeyntheme={womeyntheme} setWomeynTheme={setWomeynTheme} />
+            <Home dark={dark} setdark={setdark} />
         </div>
     )
 }

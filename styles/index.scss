@@ -8,9 +8,10 @@
 .womeyn-enduser {
     width: 100vw;
     height: 100vh;
-    // overflow-y: auto;
+    overflow-y: auto;
     overflow: hidden;
     // z-index: 200000000;
+ 
     @include themed() {
         background: t($background);
         color: t($textwhite);

@@ -1,19 +1,14 @@
 import React from 'react'
 import Header from '../../src/components/header/Header'
 import MobileHeader from '../../src/components/header/Mobileheader/MobileHeader'
+import LayoutHeader from '../../src/components/Layoutheader/LayoutHeader'
 
 
-function Layout() {
+function Layout({ dark, setdark }) {
     return (
         <>
-            <div className='headertopsection'>
-                <div className={`d-none d-lg-block`}>
-                    <Header />
-                </div>
-                <div className={`d-block d-lg-none`}>
-                    <MobileHeader />
-                </div>
-            </div>
+       
+            <LayoutHeader setdark={setdark} dark={dark} />
 
         </>
     )

@@ -1,22 +1,24 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import styles from './styles/Header.module.scss';
 import serachicon from '../../assests/homepage-logos/serachicon.png';
 import Image from 'next/image';
 import womeynlogo from '../../assests/homepage-logos/womeyn_logo.png';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { withProtected } from '../../../routingcheck/RoutingCheck';
 import cart from '../../assests/homepage-logos/cart.png';
 import profile from '../../assests/homepage-logos/profile.png';
-import iconmenu from '../../assests/homepage-logos/iconMenu.png';
-function Header({ womeyntheme, setWomeynTheme }) {
+import { useDispatch } from 'react-redux';
+import ThemeAction from '../../Redux/actions/darktheme/Darktheme';
+import { Button } from 'react-bootstrap';
+
+function Header({ setdark, dark }) {
     const router = useRouter();
     return (
         <Fragment>
             <div className={styles.headermainsection}>
                 <div className={styles.headerinsidesection}>
                     <div className={styles.logoheadersection}>
-                        <div onClick={()=>router.push("/")}>
+                        <div onClick={() => router.push("/")}>
                             <Image src={womeynlogo} alt="no image" className={styles.womeynlogo} />
                         </div>
                         <div className={styles.inputsearchsection}>
@@ -31,11 +33,12 @@ function Header({ womeyntheme, setWomeynTheme }) {
                             </div>
                             <div className={styles.falight}>
                                 <Image src={profile} alt="no image" className={styles.carticons} />
+                            </div>
+                            <div>
+                                <Button onClick={() => setdark(!dark)}>{dark ? "dark" : "light"}</Button>
 
                             </div>
-                            <div onClick={() => setWomeynTheme(!womeyntheme)} className={styles.falight}>
 
-                            </div>
                         </div>
                     </div>
                 </div>

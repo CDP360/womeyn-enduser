@@ -3,10 +3,10 @@ import Aboutus from './../../../src/components/middleheaderchilderns/abouts/Abou
 
 
 
-function index() {
+function index({dark,setdark}) {
     return (
         <div>
-           <Aboutus/>
+           <Aboutus setdark={setdark} dark={dark}/>
         </div>
     )
 }

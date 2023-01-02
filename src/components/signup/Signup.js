@@ -5,12 +5,16 @@ import google from '../../assests/homepage-logos/google.png';
 import facebook from '../../assests/homepage-logos/loginfacebook.png';
 import Image from 'next/image';
 import Layout from '../../../pages/layout';
+import { useRouter } from 'next/router';
+import LayoutHeader from '../Layoutheader/LayoutHeader';
 function Signup() {
+    const router=useRouter();
     return (
         <Fragment>
             <div className={styles.mainloginsection}>
                 <div>
-                    <Layout />
+                    
+                    <LayoutHeader/>
 
                 </div>
                 <div className={styles.insidesectionlogin}>
@@ -23,7 +27,7 @@ function Signup() {
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Control type="text" placeholder="Email / Phone Number" className={styles.forms} />
                                 </Form.Group>
-                                <button variant="primary" type="submit" className="loginbutton">
+                                <button variant="primary" type="submit" className="loginbutton mt-4 mb-3">
                                     Sign up
                                 </button>
                             </Form>
@@ -47,7 +51,7 @@ function Signup() {
                                 </div>
                             </div>
                             <div className='text-center'>
-                                Already have an account?  <span className='active'>Log in</span>
+                                Already have an account?  <span className='active' onClick={()=>router.push("/login")}>Log in</span>
                             </div>
                         </div>
                     </div>

@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Layout from '../../../../pages/layout'
-
-function Explore() {
+import LayoutHeader from '../../Layoutheader/LayoutHeader';
+import styles from './styles/Explore.module.scss';
+function Explore({dark,setdark}) {
     return (
-        <div>
-            <div>
-                <Layout />
-                explore
+        <Fragment>
+            <div className={styles.mainexploresection}>
+               <LayoutHeader setdark={setdark} dark={dark}/>
             </div>
-        </div>
+        </Fragment>
     )
 }
 
-export default Explore
+export default Explore  

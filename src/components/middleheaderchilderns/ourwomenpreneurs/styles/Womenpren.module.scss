@@ -1,0 +1,99 @@
+@use "../../../../../scss/abstract/" as *;
+
+.mainwomenpre {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    .insidemainwomenpre {
+        width: 100%;
+        height: 100%;
+        // border: 2px solid blue;
+        overflow-y: auto;
+        .bodysectionwomeynexplore {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            .emptyboxcolorright {
+                position: absolute;
+                width: 15%;
+                height: 80%;
+                background: #e95a5a;
+                opacity: 0.34;
+                right: 0;
+                filter: blur(329px);
+            }
+            .emptyboxcolorleft {
+                position: absolute;
+                width: 15%;
+                height: 80%;
+                background: #fecf9d;
+                opacity: 0.36;
+                filter: blur(239.825px);
+                left: 0;
+                top: 50%;
+            }
+            .insidebodysection {
+                width: 75%;
+                margin: 0 auto;
+                padding-top: 2%;
+                .imagesectionwomeyn {
+                    .womeynbannerpre {
+                        width: 100%;
+                        height: 350px;
+                        @include xsBreakPoint {
+                            width: 100%;
+                            height: auto;
+                        }
+                        @include smBreakPoint {
+                            width: 100%;
+                            height: auto;
+                        }
+                        @include mdBreakPoint {
+                            width: 100%;
+                            height: auto;
+                        }
+                        @include lgBreakPoint {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                }
+                .ourwomenpreneurs {
+                    padding-top: 3%;
+                    .loreamtextwomen {
+                        width: 65%;
+                        color: rgba(0, 0, 0, 0.7);
+                        padding-top: 1%;
+                    }
+                }
+                .serachsectionwomen {
+                    display: flex;
+                    justify-content: space-between;
+                    padding-top: 2%;
+                    .serachwomenpresection {
+                        border: 2px solid #e0e0e0;
+                        border-radius: 8px;
+                        display: flex;
+                        padding: 0;
+                        background: linear-gradient(0deg, rgba(241, 241, 241, 0.32), rgba(241, 241, 241, 0.32)), #ffffff;
+                        align-items: center;
+                        padding: 5px 20px;
+                        gap: 20px;
+                        .inputtypesection {
+                            border: none !important;
+                            background: linear-gradient(0deg, rgba(241, 241, 241, 0.32), rgba(241, 241, 241, 0.32)),
+                                #ffffff;
+                            padding: 0 !important;
+                            outline: none !important;
+                        }
+                        .serachiconwomen {
+                            width: 100%;
+                            height: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
