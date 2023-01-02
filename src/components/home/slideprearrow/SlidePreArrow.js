@@ -4,7 +4,7 @@ function SlidePreArrow(props) {
   const { onClick } = props;
   return (
     <div
-      className={styles.slidepre}
+      className={styles.slidepre} 
       onClick={onClick}
     />
   );

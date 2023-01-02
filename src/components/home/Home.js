@@ -15,8 +15,8 @@ import Ourwomenpreneurs from './components/ourwomenpreneurs/Ourwomenpreneurs';
 import Eventlatestupdate from './components/eventslatestupdates/Eventlatestupdate';
 import Signupnewsletter from './components/signupfornewsletter/Signupnewsletter';
 import Footer from '../footer/Footer';
+import Layout from '../../../pages/layout/index'
 function Home({ womeyntheme, setWomeynTheme }) {
-    console.log(womeyntheme, setWomeynTheme, "kalai");
     const history = useRouter();
     const settings = {
         dots: false,
@@ -77,10 +77,14 @@ function Home({ womeyntheme, setWomeynTheme }) {
         <Fragment>
             <div className={styles.homesectionmain}>
                 <div className={styles.insidehomesection}>
+                    <div className={styles.headersectionhome}>
+                        <Layout />
+                    </div>
                     <div className={styles.emptysectionbox}>
                     </div>
                     <div className={styles.emptysectionboxorange}>
                     </div>
+
                     <div className={styles.bodysectionhome}>
                         <div className={styles.insidehomesectionbody}>
                             <div className={styles.widthsectionhome}>

@@ -1,8 +1,14 @@
 import React from 'react'
+import Layout from '../../../../pages/layout'
 
 function Explore() {
     return (
-        <div>Explore</div>
+        <div>
+            <div>
+                <Layout />
+                explore
+            </div>
+        </div>
     )
 }
 

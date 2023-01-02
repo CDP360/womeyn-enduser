@@ -3,12 +3,19 @@ import { useEffect, useState } from 'react';
 import '../styles/index.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 import { StrictMode } from "react";
-import Layout from './layout/index';
 import { Provider } from "react-redux";
 import store from '../src/Redux/store/Store';
 import Footer from '../src/components/footer/Footer';
 import Scrollbutton from '../src/components/scrollbutton/Scrollbutton';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+import Login from '../src/components/login/Login';
+import { useRouter } from 'next/router';
 export default function App({ Component, pageProps }) {
+  const history = useRouter();
   const [womeyntheme, setWomeynTheme] = useState(false);
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap");
@@ -20,14 +27,16 @@ export default function App({ Component, pageProps }) {
     <div className={womeyntheme ? "theme--dark" : "theme--light"}>
       <div className='womeyn-enduser'>
         <StrictMode>
+          <ToastContainer />
           <Provider store={store}>
             <Scrollbutton />
-            <Layout />
             <Component {...pageProps} womeyntheme={womeyntheme} setWomeynTheme={setWomeynTheme} />
-            {/* <Footer /> */}
           </Provider>
         </StrictMode>
       </div >
     </div >
   )
 }
+
+
+

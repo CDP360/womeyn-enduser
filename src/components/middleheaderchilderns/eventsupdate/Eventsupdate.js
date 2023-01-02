@@ -1,8 +1,14 @@
 import React from 'react'
+import Layout from '../../../../pages/layout'
 
 function Eventsupdate() {
     return (
-        <div>Eventsupdate</div>
+        <div>
+            <div>
+                <Layout/>
+                Eventsupdate
+            </div>
+        </div>
     )
 }
 

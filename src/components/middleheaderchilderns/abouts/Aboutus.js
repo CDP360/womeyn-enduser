@@ -1,8 +1,14 @@
 import React from 'react'
+import Layout from '../../../../pages/layout'
 
 function Aboutus() {
     return (
-        <div>Aboutus</div>
+        <div>
+            <div>
+                <Layout/>
+                Aboutus 
+            </div>
+        </div>
     )
 }
 

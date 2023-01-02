@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Getwomencount from '../../../../../Redux/actions/WomenslidecountAction';
+import Getwomencount from '../../../../../Redux/actions/slideraction/WomenslidecountAction';
 import styles from './styles/SlideNextArrow.module.scss'
 
 function SlideNextArrow(props) {
     const { onClick } = props;
-    const testcount = props?.currentSlide + 1;
-    console.log(props.currentSlide, "thala");
+    const womencount = props?.currentSlide + 1;
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(Getwomencount(testcount))
-    }, [testcount])
+        dispatch(Getwomencount(womencount))
+    }, [womencount])
     return (
         <>
             <div

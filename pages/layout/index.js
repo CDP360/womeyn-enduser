@@ -3,7 +3,7 @@ import Header from '../../src/components/header/Header'
 import MobileHeader from '../../src/components/header/Mobileheader/MobileHeader'
 
 
-function index({ children }) {
+function Layout() {
     return (
         <>
             <div className='headertopsection'>
@@ -14,11 +14,9 @@ function index({ children }) {
                     <MobileHeader />
                 </div>
             </div>
-            <main>
-                {children}
-            </main>
+
         </>
     )
 }
 
-export default index
+export default Layout

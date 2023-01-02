@@ -1,14 +1,10 @@
 import Head from 'next/head'
-import Login from './../src/components/login/Login';
 import Home from '../src/components/home/Home'
-
-
 export default function index({ womeyntheme, setWomeynTheme }) {
   return (
     <>
       <Head>
         <title>Womeyn end-user</title>
-
         <meta charSet="utf-8" />
         <meta
           name="viewport"
