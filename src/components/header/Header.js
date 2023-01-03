@@ -10,7 +10,7 @@ import profile from '../../assests/homepage-logos/profile.png';
 import { useDispatch } from 'react-redux';
 import ThemeAction from '../../Redux/actions/darktheme/Darktheme';
 import { Button } from 'react-bootstrap';
-
+import iconmenu from '../../assests/homepage-logos/iconMenu.png';
 function Header({ setdark, dark }) {
     const router = useRouter();
     return (
@@ -46,29 +46,37 @@ function Header({ setdark, dark }) {
                     <div className={styles.insidemiddlesectionheader}>
                         <div className={router.pathname == "/womeyn/explore" ? "active" : "nav-link"}>
                             <Link href="/womeyn/explore" className='nav-link'>
-                                {/* <Image src={iconmenu} alt="no image" className={styles.menuicons} /> */}
-                                <span className='ms-1'>Explore</span>
+                                <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                <span className='ms-2'>Explore</span>
                             </Link>
                         </div>
                         <div className={router.pathname == "/womeyn/womenpreneurs" ? "active" : ""}>
 
                             <Link href="/womeyn/womenpreneurs" className='nav-link'>
-                                Our womenpreneurs
+                                <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+
+                                <span className='ms-2'>Our womenpreneurs</span>
                             </Link>
                         </div>
                         <div className={router.pathname == "/womeyn/events" ? "active" : ""}>
                             <Link href="/womeyn/events" className='nav-link'>
-                                Events & updates
+                                <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+
+                                <span className='ms-2'>Events & updates</span>
                             </Link>
                         </div>
                         <div className={router.pathname == "/womeyn/abouts" ? "active" : ""}>
                             <Link href="/womeyn/abouts" className='nav-link'>
-                                About us
+                                <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+
+                                <span className='ms-2'></span> About us
                             </Link>
                         </div>
                         <div className={router.pathname == "/womeyn/getintouch" ? "active" : ""}>
                             <Link href="/womeyn/getintouch" className='nav-link'>
-                                Get in touch
+                                <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+
+                                <span className='ms-2'>Get in touch</span>
                             </Link>
                         </div>
                     </div>

@@ -1,0 +1,165 @@
+@use "../../../../../scss/abstract/" as *;
+
+.eventupdatemainsection {
+    width: 100%;
+  
+    .insideeventupdatesection {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        
+        .emptyboxeventsection {
+            position: absolute;
+            width: 50%;
+            height: 10%;
+            background: #e95a5a;
+            opacity: 0.145;
+            right: 0;
+            filter: blur(329px);
+        }
+        .emptyboxeventsectionleft {
+            position: absolute;
+            width: 30%;
+            height: 30%;
+            background: #fecf9d;
+            opacity: 0.2;
+            left: 0;
+            top:20%;
+            filter: blur(329px);
+        }
+        .emptyboxeventsectionbottom
+        {
+            position: absolute;
+            width: 30%;
+            height: 15%;
+            background: #1F4590;
+            opacity: 0.2;
+            right: 0;
+            bottom:10%;
+            filter: blur(329px);
+        }
+        .insidecontentsectionevent {
+            width: 75%;
+            margin: 0 auto;
+            padding-top: 3%;
+            @include xsBreakPoint {
+                width: 85%;
+                padding-top: 6%;
+            }
+            @include smBreakPoint {
+                width: 85%;
+                padding-top: 6%;
+            }
+            @include mdBreakPoint {
+                width: 85%;
+            }
+            @include lgBreakPoint {
+                width: 89%;
+            }
+            @include xlBreakPoint {
+                width: 85%;
+            }
+            .eventbannerimage {
+                width: 100%;
+                height: auto;
+            }
+            .bordertopeventsection {
+                padding-top: 4%;
+                .borderinsidesection {
+                    border-top: 2px solid #e0e0e0;
+                }
+            }
+            .spliteventcommonbox {
+                width: 100%;
+                display: flex;
+                padding-top: 2%;
+                @include xsBreakPoint {
+                    flex-direction: column;
+                }
+                .spliteventcommonletf {
+                    width: 70%;
+                }
+                .spliteventcommonright {
+                    width: 30%;
+                }
+            }
+            .splitboxeventsection {
+                width: 100%;
+                display: flex;
+                padding-top: 2%;
+                @include xsBreakPoint {
+                    flex-direction: column;
+                }
+                @include smBreakPoint {
+                    flex-direction: column;
+                }
+                .lefteventsection {
+                    width: 70%;
+                    border-right: 1px solid #e0e0e0;
+                    @include xsBreakPoint {
+                        border-right: 0;
+                        border-bottom: 1px solid #e0e0e0;
+                        width: 100%;
+                        padding-top: 2%;
+                    }
+                    @include smBreakPoint {
+                        border-right: 0;
+                        border-bottom: 1px solid #e0e0e0;
+                        width: 100%;
+                        padding-bottom: 2%;
+                    }
+                    .imageeventcard {
+                        width: 100%;
+                        object-fit: contain;
+                        height: 200px;
+                    }
+                    .sportslistsection {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+                        padding-top: 5%;
+                        .activesports {
+                            color: #e75b5e;
+                            font-weight: 600;
+                        }
+                        .categoryevents {
+                            color: #34312d;
+                            font-weight: 700;
+                        }
+                        .loramsevents {
+                            font-size: 0.879rem;
+                            width: 80%;
+                        }
+                    }
+                }
+                .righteventsection {
+                    width: 30%;
+                    margin: 0 auto;
+                    display: flex;
+                    flex-direction: column;
+                    // align-items: center;
+                    @include xsBreakPoint {
+                        width: 100%;
+                        padding-top: 5%;
+                    }
+                    .imageeventcard {
+                        width: 90%;
+                        object-fit: contain;
+                        height: 200px;
+                        // border:2px solid red;
+                        margin: 0 auto;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    .categoryevents {
+                        color: #34312d;
+                        font-weight: 700;
+                        padding-left: 5%;
+                        padding-top: 2%;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -5,12 +5,17 @@
     .menuicons {
         width: 17px;
         height: 17px;
+        // object-fit: c;
         cursor: pointer;
     }
     .carticons {
         width: 25px;
         height: 25px;
         cursor: pointer;
+    }
+    .arrowflex {
+        display: flex;
+        width: 100%;
     }
     .headerinsidesection {
         box-shadow: 0px -27px 120px rgba(0, 0, 0, 0.08);

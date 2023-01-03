@@ -29,9 +29,6 @@ function Login() {
             history("/");
             Cookies.set("womeyntoken", "token");
         }, 1000);
-
-        // disptach(LoginActions(logindata));
-
     }
 
     return (

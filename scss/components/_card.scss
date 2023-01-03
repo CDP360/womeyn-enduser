@@ -129,3 +129,80 @@
         }
     }
 }
+
+
+// card section
+
+
+.cardsections-events {
+    display: flex;
+    gap: 50px;
+    // align-items: center;
+    // justify-content: center;
+
+    .cardevents {
+        width: 45.67% !important;
+        display: flex !important;
+        // gap: 20px;
+        height: auto;
+        
+        // border:2px solid red;
+        border-radius: 8px;
+        // align-items: center;
+        // justify-content: center;
+        padding: 20px 0px;
+        
+        border-radius: 4px;
+        flex-direction: column;
+        position: relative;
+        cursor: pointer;
+        @include xsBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include smBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include mdBreakPoint {
+            width: 40% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include lgBreakPoint {
+            width: 22% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include xlBreakPoint {
+            width: 20% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .womentitle {
+            position: absolute;
+            left: 3%;
+            bottom: 8%;
+            color: white;
+        }
+        .womendescription {
+            position: absolute;
+            bottom: 1.2%;
+            left: 3%;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.786rem;
+        }
+    }
+}

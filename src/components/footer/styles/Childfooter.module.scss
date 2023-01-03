@@ -1,0 +1,51 @@
+@use "../../../../scss/abstract/" as *;
+
+.childfootermainsection {
+    width: 100%;
+    background: #ffffff;
+    border-top: 1px solid #c4c4c4;
+    .insidechildfooter {
+        width: 75%;
+        margin: 0 auto;
+        padding: 1% 0px;
+        display: flex;
+        justify-content: space-between;
+        @include xsBreakPoint {
+            width: 85%;
+            padding: 5% 0px;
+            flex-direction: column;
+            gap: 20px;
+        }
+        @include smBreakPoint {
+            width: 85%;
+            text-align: center;
+            flex-direction: column;
+            gap: 20px;
+            padding: 5% 0px;
+        }
+        @include mdBreakPoint {
+            width: 85%;
+            padding: 3% 0px;
+        }
+        @include lgBreakPoint {
+            width: 89%;
+            padding: 2% 0px;
+        }
+        @include xlBreakPoint {
+            width: 85%;
+            padding: 1.4% 0px;
+        }
+        .childfootertext {
+            display: flex;
+            gap: 30px;
+            @include xsBreakPoint {
+                gap: 10px;
+            }
+            @include smBreakPoint {
+                gap: 60px;
+                // text-align: center;
+                margin: 0 auto;
+            }
+        }
+    }
+}

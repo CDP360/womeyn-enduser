@@ -9,6 +9,8 @@ import serachicon from '../../../assests/homepage-logos/serachicon.png';
 import axios from 'axios';
 import Footer from '../../footer/Footer';
 import Signupnewsletter from '../../home/components/signupfornewsletter/Signupnewsletter';
+import Skeleton from 'react-loading-skeleton';
+import Childfooter from '../../footer/Childfooter';
 
 function Womenpreneurs({ dark, setdark }) {
 
@@ -58,19 +60,19 @@ function Womenpreneurs({ dark, setdark }) {
                                     </div>
                                 </div>
                                 <div>
-                                    <Form.Select aria-label="Default select example" value={search} onChange={(e)=>setSearch(e.target.value)}>
+                                    <Form.Select aria-label="Default select example" value={search} onChange={(e) => setSearch(e.target.value)}>
                                         <option>Sort by Latest </option>
                                         <option value="men's clothing">men's clothing</option>
                                         <option value="jewelery">jewelery</option>
                                         <option value="electronics">electronics</option>
                                     </Form.Select>
                                 </div>
-                            </  div>
+                            </div>
 
                             <div className='row'>
                                 {data?.length === 0 && <div>No Data Found</div>}
                             </div>
-                            <div className='cardsections row justify-content-center  w-100 mt-2 mb-3 ms-1'>
+                            <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
                                 {data?.filter((itemsed) => {
                                     if (itemsed.title.toLowerCase().includes(search) || itemsed.category.includes(search)) {
                                         return itemsed
@@ -78,19 +80,15 @@ function Womenpreneurs({ dark, setdark }) {
                                 }).map((item, index) => {
                                     return (
                                         <div className='cards mt-1 mb-2' key={index}>
-
                                             <div>
-                                                <img src={item?.image} alt="no image" width="200px" height="200px" style={{ borderRadius: "10px" }} />
+                                                {item?.image ? <img src={item?.image} alt="no image" className={styles.sellerimagesize} /> : <Skeleton />}
                                             </div>
-
                                             <div className='womentitle'>
                                                 {item?.title.slice(0, 10)}
                                             </div>
-
                                             <div className='womendescription'>
                                                 {item?.description.slice(0, 5)}
                                             </div>
-
                                         </div>
                                     )
                                 })}
@@ -102,6 +100,9 @@ function Womenpreneurs({ dark, setdark }) {
                         </div>
                         <div>
                             <Footer />
+                        </div>
+                        <div>
+                            <Childfooter/>
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,7 @@ function Footer() {
         <Fragment>
             <div className={styles.mainfootersection}>
                 <div className={styles.footerrightemptybox}>
-                    kalai
+
                 </div>
                 <div className={styles.insidefootersection}>
                     <div className={styles.splitinsidefootersection}>
