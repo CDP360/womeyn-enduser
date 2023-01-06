@@ -2,12 +2,9 @@
 
 .homesectionmain {
     width: 100%;
-    // padding-bottom: 2%;
     height: 100vh;
-    overflow: hidden;
-
     @include xsBreakPoint {
-        padding-top: 4%;
+        // padding-top: 4%;
     }
     @include smBreakPoint {
         padding-top: 1%;
@@ -15,11 +12,12 @@
     @include mdBreakPoint {
         padding-top: 4%;
     }
+  
     .insidehomesection {
         width: 100%;
         position: relative;
         height: 100%;
-        overflow-y: auto;
+        // overflow-y: auto;
        
         .emptysectionbox {
             width: 20%;
@@ -59,7 +57,8 @@
                     margin: 0 auto;
                     @include xsBreakPoint {
                         width: 85%;
-                        padding-top: 6%;
+                        // padding-top: 6%;
+                       
                     }
                     @include smBreakPoint {
                         width: 85%;

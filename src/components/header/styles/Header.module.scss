@@ -1,13 +1,15 @@
 @use "../../../../scss/abstract/" as *;
 .headermainsection {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
+    // background-color: rgba(255, 255, 255, 0.8);
+
     .menuicons {
         width: 17px;
         height: 17px;
         // object-fit: c;
         cursor: pointer;
     }
+  
     .carticons {
         width: 25px;
         height: 25px;
@@ -19,8 +21,7 @@
     }
     .headerinsidesection {
         box-shadow: 0px -27px 120px rgba(0, 0, 0, 0.08);
-        padding: 18px 0px;
-        background-color: white;
+        // padding: 18px 0px;
         .logoheadersection {
             display: flex;
             justify-content: space-around;
@@ -48,6 +49,7 @@
                 cursor: pointer;
             }
         }
+       
     }
     .middleheadersection {
         width: 100%;
@@ -61,7 +63,6 @@
             justify-content: space-around;
             width: 75%;
             margin: 0 auto;
-            padding: 18px 0px;
             align-items: center;
         }
     }

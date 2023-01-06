@@ -1,0 +1,14 @@
+@use "../abstract/" as *;
+
+// header section start
+
+.header {
+    background-color: white;
+    padding: 18px 0px;
+    width:100%;
+    @include themed() {
+        background: t($header);
+    }
+}
+
+// header section end

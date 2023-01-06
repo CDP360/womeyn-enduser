@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import Layout from '../../../../pages/layout'
+
 import styles from './styles/Womenpren.module.scss';
 import Womeynbanner from '../../../../src/assests/homepage-logos/woymenbanner.png';
 import Image from 'next/image';
@@ -30,9 +30,9 @@ function Womenpreneurs({ dark, setdark }) {
         <Fragment>
             <div className={styles.mainwomenpre}>
                 <div className={styles.insidemainwomenpre}>
-                    <div className='headersectionhome'>
+                    {/* <div className='headersectionhome'>
                         <LayoutHeader setdark={setdark} dark={dark} />
-                    </div>
+                    </div> */}
                     <div className={styles.bodysectionwomeynexplore}>
                         <div className={styles.emptyboxcolorright}>
                         </div>

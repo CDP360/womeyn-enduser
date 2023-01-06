@@ -3,14 +3,54 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    // border: 2px solid blue;
 }
 .womeyn-enduser {
     width: 100vw;
     height: 100vh;
-    overflow-y: auto;
+    overflow: hidden;
     @include themed() {
-        background: t($background);
-        color: t($textwhite);
+        background: t($background); 
+        color:t($text);
     }
+    .inside-main-apphome
+    {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        .header-appsection
+        {
+            width: 100%;
+            height: 20%;
+            position:sticky;
+            top:0px;
+            z-index:98;
+            @include xsBreakPoint
+            {
+                height: 10%;
+            }
+        }
+        .body-section-app
+        {
+            width: 100%;
+            height: 80%;
+        }
+    }
+    .mainscrollbutton {
+        .iconsection {
+            position: fixed;
+            bottom: 20px;
+            right: 10px;
+            font-size: 100px;
+            background: orange;
+            color: blue;
+            cursor: pointer;
+            border-radius: 100px;
+            border: none;
+            box-shadow: 0 5px 10px #ccc;
+          
+        }
+    }
+    
 }
+
+

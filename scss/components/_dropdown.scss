@@ -1,0 +1,46 @@
+@use "../abstract/" as *;
+
+.dropbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdowncontent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    left: -50px;
+    padding: 10px 30px;
+    cursor: pointer;
+    border-radius: 20px;
+    @include themed() {
+        background: t($header);
+    }
+}
+.dropdowncontent a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background: red;
+}
+.dropdowncontent a:hover {
+    background-color: #f1f1f1;
+}
+.dropdown:hover .dropdowncontent {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}

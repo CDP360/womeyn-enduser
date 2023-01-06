@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react'
-import Layout from '../../../../pages/layout'
+import Home from '../../home/Home';
 import LayoutHeader from '../../Layoutheader/LayoutHeader';
 import styles from './styles/Explore.module.scss';
-function Explore({dark,setdark}) {
+function Explore() {
     return (
         <Fragment>
-            <div className={styles.mainexploresection}>
-               <LayoutHeader setdark={setdark} dark={dark}/>
+          <div>
+            kalai
             </div>
         </Fragment>
     )

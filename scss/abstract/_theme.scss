@@ -1,27 +1,34 @@
 @use "variables" as *;
-
 $primary: "primary";
 $secondary: "secondary";
 $background: "background";
-$background-alt: "background-alt";
 $inverter: "inverter";
-$textwhite: "textwhite";
+$header: "headerlight";
+$text: "text";
+$card: "card";
+$emptyboxright: "emptyboxright";
+$emptyboxleft: "emptyboxleft";
+$textgrey: "textgrey";
 
 $themes: (
     light: (
-        primary: $primary--light,
-        secondary: $secondary--light,
         background: $background--light,
-        background-alt: $background-alt--light,
         inverter: $inverter--light,
-        textwhite: $text--dark,
+        headerlight: $header--light,
+        text: $text--light,
+        card: $card--light,
+        emptyboxright: $emptybox-right--light,
+        emptyboxleft: $emptybox-left--light,
+        textgrey: $text-grey--light,
     ),
     dark: (
-        primary: $primary--dark,
-        secondary: $secondary--dark,
         background: $background--dark,
-        background-alt: $background-alt--dark,
         inverter: $inverter--dark,
-        textwhite: $text--light,
+        headerlight: $header--dark,
+        text: $text--dark,
+        card: $card--dark,
+        emptyboxright: $emptybox-right--dark,
+        emptyboxleft: $emptybox-left--dark,
+        textgrey: $text-grey--dark,
     ),
 );

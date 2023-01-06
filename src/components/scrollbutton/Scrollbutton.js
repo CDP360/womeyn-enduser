@@ -28,7 +28,7 @@ function Scrollbutton() {
                         className={styles.iconsection}
                         onClick={goToTop}
                     >
-                        kalaisurya
+                        kalaitopscroll
                     </div>
                 )}
             </div>

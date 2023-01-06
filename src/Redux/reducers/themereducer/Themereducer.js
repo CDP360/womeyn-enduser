@@ -3,7 +3,7 @@ import { THEME_ERROR } from './../../types';
 
 
 const initialState = {
-    theme: true,
+    theme: false,
     error: "",
     loading: false
 }

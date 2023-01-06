@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import Layout from '../../../../pages/layout'
+
 import LayoutHeader from '../../Layoutheader/LayoutHeader'
 import eventbaner from '../../../assests/homepage-logos/event banner.png';
 import styles from './styles/EventUpdate.module.scss';
@@ -8,7 +8,7 @@ import axios from 'axios';
 import Signupnewsletter from '../../home/components/signupfornewsletter/Signupnewsletter';
 import Footer from '../../footer/Footer';
 import Childfooter from './../../footer/Childfooter';
-function Eventsupdate({ dark, setdark }) {
+function Eventsupdate() {
     const [data, setData] = useState([]);
     useEffect(() => {
         axios.get("https://fakestoreapi.com/products").then((res) => {
@@ -20,9 +20,6 @@ function Eventsupdate({ dark, setdark }) {
     return (
         <Fragment>
             <div className={styles.eventupdatemainsection}>
-                <div className="headersectionhome">
-                    <LayoutHeader setdark={setdark} dark={dark} />
-                </div>
                 <div className={styles.insideeventupdatesection}>
                     <div className={styles.emptyboxeventsection}>
                     </div>

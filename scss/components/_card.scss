@@ -1,20 +1,20 @@
 @use "../abstract/" as *;
-
 .cardsection {
     display: flex;
     gap: 20px;
     align-items: center;
     justify-content: center;
-
     .card {
         width: 23.67% !important;
         display: flex !important;
         gap: 20px !important;
         height: auto;
         border: none !important;
-        background: #ffffff;
         box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
         border-radius: 8px;
+        @include themed() {
+            background: t($card);
+        }
         @include xsBreakPoint {
             width: 100% !important;
             margin: 0 auto;
@@ -52,8 +52,6 @@
         }
     }
 }
-
-
 
 .cardsections {
     display: flex;
@@ -70,88 +68,14 @@
         // border:2px solid red;
         border-radius: 8px;
         align-items: center;
-        justify-content:center;
-        padding:50px 0px;
-        background: linear-gradient(180deg, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 0.3) 76.56%, rgba(18, 18, 18, 0.8) 100%);
-        border-radius: 4px;
-        flex-direction: column;
-        position: relative;
-        cursor: pointer;
-        @include xsBreakPoint {
-            width: 100% !important;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        @include smBreakPoint {
-            width: 100% !important;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        @include mdBreakPoint {
-            width: 40% !important;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        @include lgBreakPoint {
-            width: 22% !important;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        @include xlBreakPoint {
-            width: 20% !important;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .womentitle
-        {
-            position:absolute;
-            left:3%;
-            bottom:8%;
-            color:white;
-        }
-        .womendescription
-        {
-            position: absolute;
-            bottom:1.2%;
-            left:3%;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.786rem;
-        }
-    }
-}
-
-
-// card section
-
-
-.cardsections-events {
-    display: flex;
-    gap: 50px;
-    // align-items: center;
-    // justify-content: center;
-
-    .cardevents {
-        width: 45.67% !important;
-        display: flex !important;
-        // gap: 20px;
-        height: auto;
-        
-        // border:2px solid red;
-        border-radius: 8px;
-        // align-items: center;
-        // justify-content: center;
-        padding: 20px 0px;
-        
+        justify-content: center;
+        padding: 50px 0px;
+        background: linear-gradient(
+            180deg,
+            rgba(18, 18, 18, 0) 0%,
+            rgba(18, 18, 18, 0.3) 76.56%,
+            rgba(18, 18, 18, 0.8) 100%
+        );
         border-radius: 4px;
         flex-direction: column;
         position: relative;
@@ -203,6 +127,153 @@
             left: 3%;
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.786rem;
+        }
+    }
+}
+
+// card section events
+
+.cardsections-events {
+    display: flex;
+    gap: 50px;
+    .cardevents {
+        width: 45.67% !important;
+        display: flex !important;
+        // gap: 20px;
+        height: auto;
+
+        // border:2px solid red;
+        border-radius: 8px;
+        // align-items: center;
+        // justify-content: center;
+        padding: 20px 0px;
+
+        border-radius: 4px;
+        flex-direction: column;
+        position: relative;
+        cursor: pointer;
+        @include xsBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include smBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include mdBreakPoint {
+            width: 40% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include lgBreakPoint {
+            width: 22% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include xlBreakPoint {
+            width: 20% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .womentitle {
+            position: absolute;
+            left: 3%;
+            bottom: 8%;
+            color: white;
+        }
+        .womendescription {
+            position: absolute;
+            bottom: 1.2%;
+            left: 3%;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.786rem;
+        }
+    }
+}
+
+// blog section
+.blogloream {
+    text-align: center;
+    width: 30%;
+    margin: 0 auto;
+    @include xsBreakPoint {
+        width: 100%;
+    }
+    @include smBreakPoint {
+        width: 90%;
+    }
+    @include themed() {
+        color: t($textgrey);
+    }
+}
+.blog-cards {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+
+    .cards-blog {
+        width: 31% !important;
+        height: auto;
+        // border: 2px solid red;
+        border-radius: 8px;
+        padding-bottom: 1.2%;
+        border-radius: 4px;
+        background: red;
+        cursor: pointer;
+        padding-top: 1.2%;
+        @include themed() {
+            background: t($card);
+        }
+
+        @include xsBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+        }
+        @include smBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+          
+        }
+        @include mdBreakPoint {
+            width: 40% !important;
+            margin: 0 auto;
+            
+        }
+        @include lgBreakPoint {
+            width: 40% !important;
+            margin: 0 auto;
+           
+        }
+        @include xlBreakPoint {
+            width: 30% !important;
+            margin: 0 auto;
+           
+        }
+        .blog-section-split {
+            display: flex;
+            justify-content: space-between;
+            .smalltextgrey {
+                text-transform: uppercase;
+                font-size: 0.728rem;
+                @include themed() {
+                    color: t($textgrey);
+                }
+            }
         }
     }
 }

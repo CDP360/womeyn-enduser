@@ -24,8 +24,10 @@
 // grey text color
 
 .textgrey {
-    color: #8d8d8d;
     font-weight: 600;
+    @include themed() {
+        color: t($textgrey);
+    }
 }
 .textgreysmall {
     color: #8d8d8d;
@@ -59,40 +61,35 @@
     }
 }
 
-
 // footer section text
 
-.footertext
-{
+.footertext {
     color: #000000;
     font-weight: 600;
     font-size: 1rem;
 }
-.footergreytext
-{
-    color: rgba(0, 0, 0, 0.5);
+.footergreytext {
+    // color: rgba(0, 0, 0, 0.5);
     width: 100%;
     font-weight: 500;
     line-height: 1.5;
-   
+    @include themed() {
+        color: t($textgrey);
+    }
 }
-.gapsectionfooter
-{
+.gapsectionfooter {
     display: flex;
     flex-direction: column;
-    gap:8px;
+    gap: 8px;
     padding-top: 10%;
     cursor: pointer;
 }
-
 
 .active {
     color: red !important;
     text-decoration: none !important;
     cursor: pointer;
-   
 }
-
 
 // stricky function in header section start
 
@@ -102,10 +99,8 @@
     z-index: 9;
 }
 
-
 // end strick section
 
-.textgap
-{
-    padding-top:30px !important;
+.textgap {
+    padding-top: 30px !important;
 }

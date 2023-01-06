@@ -4,19 +4,13 @@ import styles from '../../components/login/styles/Login.module.scss';
 import google from '../../assests/homepage-logos/google.png';
 import facebook from '../../assests/homepage-logos/loginfacebook.png';
 import Image from 'next/image';
-import Layout from '../../../pages/layout';
 import { useRouter } from 'next/router';
-import LayoutHeader from '../Layoutheader/LayoutHeader';
 function Signup() {
     const router=useRouter();
     return (
         <Fragment>
             <div className={styles.mainloginsection}>
-                <div>
-                    
-                    <LayoutHeader/>
-
-                </div>
+                
                 <div className={styles.insidesectionlogin}>
                     <div className={styles.insideloginsplit}>
                         <div className={styles.logintext}>

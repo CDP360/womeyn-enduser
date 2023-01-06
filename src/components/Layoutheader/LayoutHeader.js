@@ -9,7 +9,7 @@ function LayoutHeader({ setdark, dark }) {
                     <Header setdark={setdark} dark={dark} />
                 </div>
                 <div className={`d-block d-lg-none`}>
-                    <MobileHeader />
+                    <MobileHeader setdark={setdark} dark={dark}/>
                 </div>
             </div>
 

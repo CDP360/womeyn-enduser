@@ -7,77 +7,93 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import cart from '../../assests/homepage-logos/cart.png';
 import profile from '../../assests/homepage-logos/profile.png';
-import { useDispatch } from 'react-redux';
-import ThemeAction from '../../Redux/actions/darktheme/Darktheme';
 import { Button } from 'react-bootstrap';
 import iconmenu from '../../assests/homepage-logos/iconMenu.png';
+import sun from '../../assests/homepage-logos/sun.png';
+import moon from '../../assests/homepage-logos/moon.png';
 function Header({ setdark, dark }) {
     const router = useRouter();
     return (
         <Fragment>
             <div className={styles.headermainsection}>
                 <div className={styles.headerinsidesection}>
-                    <div className={styles.logoheadersection}>
-                        <div onClick={() => router.push("/")}>
-                            <Image src={womeynlogo} alt="no image" className={styles.womeynlogo} />
-                        </div>
-                        <div className={styles.inputsearchsection}>
-                            <input type="text" placeholder='Search here...' className="inputserach" />
-                            <div>
-                                <Image src={serachicon} alt="no image" className='serachicon' />
+                    <div className="header">
+                        <div className={styles.logoheadersection}>
+                            <div onClick={() => router.push("/")}>
+                                <Image src={womeynlogo} alt="no image" className={styles.womeynlogo} />
                             </div>
-                        </div>
-                        <div className={"d-flex gap-4"}>
-                            <div className={styles.falight}>
-                                <Image src={cart} alt="no image" className={styles.carticons} />
+                            <div className={styles.inputsearchsection}>
+                                <input type="text" placeholder='Search here...' className="inputserach" />
+                                <div>
+                                    <Image src={serachicon} alt="no image" className='serachicon' />
+                                </div>
                             </div>
-                            <div className={styles.falight}>
-                                <Image src={profile} alt="no image" className={styles.carticons} />
-                            </div>
-                            <div>
-                                <Button onClick={() => setdark(!dark)}>{dark ? "dark" : "light"}</Button>
+                            <div className={"d-flex gap-4"}>
+                                <div className={styles.falight}>
+                                    <Image src={cart} alt="no image" className={styles.carticons} />
+                                </div>
+                                <div className="dropdown">
+                                    <div>
+                                        <Image src={profile} alt="no image" className={styles.carticons} />
+                                    </div>
+                                    <div className="dropdowncontent">
+                                        <div>
+                                            Profile
+                                        </div>
+                                        <div>
+                                            Privacy Setting
+                                        </div>
+                                        <div>
+                                            Logout
+                                        </div>
+                                        <div onClick={() => setdark(!dark)}>
+                                            {dark ? <Image src={moon} alt="no image sun" className="themebutton" /> : <Image src={sun} alt="no image" className="themebutton" />}
+                                        </div>
+
+                                    </div>
+                                </div>
 
                             </div>
-
                         </div>
                     </div>
                 </div>
                 <div className={styles.middleheadersection}>
-                    <div className={styles.insidemiddlesectionheader}>
-                        <div className={router.pathname == "/womeyn/explore" ? "active" : "nav-link"}>
-                            <Link href="/womeyn/explore" className='nav-link'>
-                                <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
-                                <span className='ms-2'>Explore</span>
-                            </Link>
-                        </div>
-                        <div className={router.pathname == "/womeyn/womenpreneurs" ? "active" : ""}>
+                    <div className='header'>
+                        <div className={styles.insidemiddlesectionheader}>
+                            <div className={router.pathname == "/womeyn/explore" ? "active" : "nav-link"}>
+                                <Link href="/womeyn/explore" className='nav-link'>
+                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                    <span className='ms-2'>Explore</span>
+                                </Link>
+                            </div>
+                            <div className={router.pathname == "/womeyn/womenpreneurs" ? "active" : ""}>
 
-                            <Link href="/womeyn/womenpreneurs" className='nav-link'>
-                                <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                <Link href="/womeyn/womenpreneurs" className='nav-link'>
+                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
 
-                                <span className='ms-2'>Our womenpreneurs</span>
-                            </Link>
-                        </div>
-                        <div className={router.pathname == "/womeyn/events" ? "active" : ""}>
-                            <Link href="/womeyn/events" className='nav-link'>
-                                <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                    <span className='ms-2'>Our womenpreneurs</span>
+                                </Link>
+                            </div>
+                            <div className={router.pathname == "/womeyn/events" ? "active" : ""}>
+                                <Link href="/womeyn/events" className='nav-link'>
+                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
 
-                                <span className='ms-2'>Events & updates</span>
-                            </Link>
-                        </div>
-                        <div className={router.pathname == "/womeyn/abouts" ? "active" : ""}>
-                            <Link href="/womeyn/abouts" className='nav-link'>
-                                <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                    <span className='ms-2'>Events & updates</span>
+                                </Link>
+                            </div>
+                            <div className={router.pathname == "/womeyn/abouts" ? "active" : ""}>
+                                <Link href="/womeyn/abouts" className='nav-link'>
+                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
 
-                                <span className='ms-2'></span> About us
-                            </Link>
-                        </div>
-                        <div className={router.pathname == "/womeyn/getintouch" ? "active" : ""}>
-                            <Link href="/womeyn/getintouch" className='nav-link'>
-                                <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
-
-                                <span className='ms-2'>Get in touch</span>
-                            </Link>
+                                    <span className='ms-2'></span> About us
+                                </Link>
+                            </div>
+                            <div className={router.pathname == "/womeyn/getintouch" ? "active" : ""}>
+                                <Link href="/womeyn/getintouch" className='nav-link'>
+                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                    <span className='ms-2'>Get in touch</span>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

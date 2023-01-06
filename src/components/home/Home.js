@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect, Fragment, useState } from 'react'
 import Cookies from 'js-cookie';
 import styles from './styles/Home.module.scss';
 import Image from 'next/image';
@@ -15,11 +15,13 @@ import Ourwomenpreneurs from './components/ourwomenpreneurs/Ourwomenpreneurs';
 import Eventlatestupdate from './components/eventslatestupdates/Eventlatestupdate';
 import Signupnewsletter from './components/signupfornewsletter/Signupnewsletter';
 import Footer from '../footer/Footer';
-import Layout from '../../../pages/layout/index'
 import LayoutHeader from '../Layoutheader/LayoutHeader';
-function Home({dark,setdark}) {
+import Scrollbutton from '../scrollbutton/Scrollbutton';
+import Blogs from './components/blogs/Blogs';
+function Home() {
     const history = useRouter();
-    
+    const [showTopBtn, setShowTopBtn] = useState(false);
+
     const settings = {
         dots: false,
         infinite: true,
@@ -68,25 +70,30 @@ function Home({dark,setdark}) {
             }
         ]
     };
-
-    const handleRemoves = () => {
-        Cookies.remove("nextauth");
-        setTimeout(() => {
-            history.push("/");
-        }, 1000);
-    }
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 40) {
+                setShowTopBtn(true);
+            } else {
+                setShowTopBtn(false);
+            }
+        });
+    }, []);
+    const goToTop = () => {
+        window.scrollTo({
+            top: 20,
+            behavior: "smooth",
+        });
+    };
     return (
         <Fragment>
+            <Scrollbutton />
             <div className={styles.homesectionmain}>
                 <div className={styles.insidehomesection}>
-                    <div className="headersectionhome">
-                       <LayoutHeader dark={dark} setdark={setdark}/>
+                    <div className="emptyboxrightcolor">
                     </div>
-                    <div className={styles.emptysectionbox}>
+                    <div className="emptyboxleftcolor">
                     </div>
-                    <div className={styles.emptysectionboxorange}>
-                    </div>
-
                     <div className={styles.bodysectionhome}>
                         <div className={styles.insidehomesectionbody}>
                             <div className={styles.widthsectionhome}>
@@ -132,6 +139,9 @@ function Home({dark,setdark}) {
                             </div>
                             <div>
                                 <Eventlatestupdate />
+                            </div>
+                            <div>
+                                <Blogs/>
                             </div>
                             <div>
                                 <Signupnewsletter />
