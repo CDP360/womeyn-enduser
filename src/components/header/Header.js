@@ -11,8 +11,12 @@ import { Button } from 'react-bootstrap';
 import iconmenu from '../../assests/homepage-logos/iconMenu.png';
 import sun from '../../assests/homepage-logos/sun.png';
 import moon from '../../assests/homepage-logos/moon.png';
+import { signOut } from "next-auth/react"
 function Header({ setdark, dark }) {
     const router = useRouter();
+    const logoutHandler = async () => {
+        await signOut({ callbackUrl: "/" });
+    };
     return (
         <Fragment>
             <div className={styles.headermainsection}>
@@ -43,8 +47,12 @@ function Header({ setdark, dark }) {
                                         <div>
                                             Privacy Setting
                                         </div>
-                                        <div>
+                                        <div onClick={logoutHandler}>
                                             Logout
+                                        </div>
+                                        <div>
+                                           
+
                                         </div>
                                         <div onClick={() => setdark(!dark)}>
                                             {dark ? <Image src={moon} alt="no image sun" className="themebutton" /> : <Image src={sun} alt="no image" className="themebutton" />}

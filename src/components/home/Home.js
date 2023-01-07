@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import React, { useEffect, Fragment, useState } from 'react'
-import Cookies from 'js-cookie';
 import styles from './styles/Home.module.scss';
 import Image from 'next/image';
 import Slider from "react-slick";
@@ -15,9 +14,9 @@ import Ourwomenpreneurs from './components/ourwomenpreneurs/Ourwomenpreneurs';
 import Eventlatestupdate from './components/eventslatestupdates/Eventlatestupdate';
 import Signupnewsletter from './components/signupfornewsletter/Signupnewsletter';
 import Footer from '../footer/Footer';
-import LayoutHeader from '../Layoutheader/LayoutHeader';
 import Scrollbutton from '../scrollbutton/Scrollbutton';
 import Blogs from './components/blogs/Blogs';
+import { useSelector } from 'react-redux';
 function Home() {
     const history = useRouter();
     const [showTopBtn, setShowTopBtn] = useState(false);
@@ -70,21 +69,12 @@ function Home() {
             }
         ]
     };
+
+    const state = useSelector(state => state);
+    console.log(state, "logindata");
     useEffect(() => {
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 40) {
-                setShowTopBtn(true);
-            } else {
-                setShowTopBtn(false);
-            }
-        });
-    }, []);
-    const goToTop = () => {
-        window.scrollTo({
-            top: 20,
-            behavior: "smooth",
-        });
-    };
+
+    }, [state])
     return (
         <Fragment>
             <Scrollbutton />
@@ -141,7 +131,7 @@ function Home() {
                                 <Eventlatestupdate />
                             </div>
                             <div>
-                                <Blogs/>
+                                <Blogs />
                             </div>
                             <div>
                                 <Signupnewsletter />

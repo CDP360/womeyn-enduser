@@ -19,7 +19,7 @@ function Scrollbutton() {
             behavior: "smooth",
         });
     };
-    console.log(showTopBtn, "kalai scroll");
+
     return (
         <Fragment>
             <div className={styles.mainscrollbutton}>
@@ -32,7 +32,7 @@ function Scrollbutton() {
                     </div>
                 )}
             </div>
-          
+
         </Fragment>
     )
 }

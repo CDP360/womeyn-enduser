@@ -12,10 +12,12 @@ import twitter from '../../../../assests/homepage-logos/twitter.png';
 import instagram from '../../../../assests/homepage-logos/instagram.png';
 
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 function Ourwomenpreneurs() {
     const [count, setCount] = useState("");
     const [datas, setDatas] = useState([]);
 
+    const router = useRouter();
     const state = useSelector((state) => state);
     const counts = state?.slidercount?.counts;
     const settings = {

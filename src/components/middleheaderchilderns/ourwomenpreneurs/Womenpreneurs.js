@@ -11,8 +11,11 @@ import Footer from '../../footer/Footer';
 import Signupnewsletter from '../../home/components/signupfornewsletter/Signupnewsletter';
 import Skeleton from 'react-loading-skeleton';
 import Childfooter from '../../footer/Childfooter';
+import { useRouter } from 'next/router';
 
 function Womenpreneurs({ dark, setdark }) {
+
+    const router=useRouter();
 
     const [data, setData] = useState([]);
 
@@ -79,7 +82,7 @@ function Womenpreneurs({ dark, setdark }) {
                                     }
                                 }).map((item, index) => {
                                     return (
-                                        <div className='cards mt-1 mb-2' key={index}>
+                                        <div className='cards mt-1 mb-2' key={index} onClick={()=>router.push('/womeyn/womenpreneurs/users')}>
                                             <div>
                                                 {item?.image ? <img src={item?.image} alt="no image" className={styles.sellerimagesize} /> : <Skeleton />}
                                             </div>

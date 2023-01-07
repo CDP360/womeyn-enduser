@@ -58,7 +58,6 @@ function CarouselCategory() {
 
   useEffect(() => {
     axios.get("https://dummyjson.com/products").then((res) => {
-      console.log(res?.data?.products, "kalai");
       setDatas(res?.data?.products)
     }).catch((err) => {
       console.log(err);
