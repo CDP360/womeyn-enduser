@@ -36,11 +36,19 @@
 }
 // price text
 .textprice {
-    color: #000000;
     font-weight: 600;
+    @include themed() {
+        color: t($text);
+    }
 }
 .textpricedashed {
     color: #8d8d8d;
+}
+.textpricedashedgreen {
+    @include themed()
+    {
+        color:t($textgreen)
+    }
 }
 
 // textlight grey
@@ -103,4 +111,31 @@
 
 .textgap {
     padding-top: 30px !important;
+}
+
+// medium text size
+
+.medium-text {
+    font-size: 1.2rem;
+    @include mdBreakPoint {
+        font-size: 1rem !important;
+    }
+}
+.small-text {
+    font-size: 1rem;
+    @include mdBreakPoint {
+        font-size: 1rem !important;
+    }
+}
+.large-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+    @include mdBreakPoint {
+        font-size: 1rem !important;
+    }
+}
+
+.small-light-text-grey {
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 400;
 }

@@ -1,9 +1,8 @@
-import { useSession } from 'next-auth/react'
+
 import Head from 'next/head'
 import Home from '../src/components/home/Home'
 
 export default function index() {
-  const {data:session}=useSession();
   return (
     <>
       <Head>

@@ -85,3 +85,18 @@
     border-color: none !important;
     box-shadow: none !important;
 }
+
+.goTopHidden {
+    display: none;
+}
+
+.goTop {
+    position: fixed;
+    left: 90%;
+    border: 2px solid red;
+    width: 30px;
+    height: 30px;
+    bottom: 5%;
+    background: red;
+    border-radius: 50%;
+}

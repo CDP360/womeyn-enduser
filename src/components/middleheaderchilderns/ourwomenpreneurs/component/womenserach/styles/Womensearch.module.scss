@@ -1,0 +1,61 @@
+@use "../../../../../../../scss/abstract/" as *;
+.mainsearchwomen {
+    width: 100%;
+    .insidesearchwomen {
+        width: 75%;
+        margin: 0 auto;
+        padding-top: 4%;
+        .splitwomensearch {
+            width: 100%;
+            display: flex;
+            .leftwomensearchsection {
+                width: 50%;
+                .searchimagesectiondottos
+                {
+                   
+                    display:flex;
+                    gap:20px;
+                    position:absolute;
+                    flex-direction:column;
+                    left:-5%;
+                    .searchimagesectiondottoss
+                    {
+                        width:10px;
+                        height:10px;
+                        border-radius:50%;
+                        background:red;
+                    }
+                }
+
+                .activewomen {
+                    border: 2px solid #e95a5a;
+                }
+                .serachlargeimage {
+                    width: 80%;
+                    height: 80%;
+                    object-fit: cover;
+                    // overflow: hidden;
+                    margin:0 auto;
+           
+                    
+                }
+                .searchimagesection {
+                    display: flex;
+                    gap: 30px;
+                    padding-top: 2%;
+                }
+                .imagesearch {
+                    width: 100px;
+                    height: 100px;
+                    cursor: pointer;
+                    // border: 2px solid red;
+                    padding: 5px;
+                    border-radius: 5px;
+                }
+            }
+            .rightwomensearchsection {
+                width: 50%;
+            }
+        }
+    }
+}

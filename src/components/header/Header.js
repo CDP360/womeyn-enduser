@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment } from 'react'
 import styles from './styles/Header.module.scss';
 import serachicon from '../../assests/homepage-logos/serachicon.png';
 import Image from 'next/image';
@@ -11,9 +11,12 @@ import { Button } from 'react-bootstrap';
 import iconmenu from '../../assests/homepage-logos/iconMenu.png';
 import sun from '../../assests/homepage-logos/sun.png';
 import moon from '../../assests/homepage-logos/moon.png';
-import { signOut } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
+import { useSelector } from 'react-redux';
 function Header({ setdark, dark }) {
     const router = useRouter();
+    const state = useSelector(state => state);
+    const { status, data: session } = useSession();
     const logoutHandler = async () => {
         await signOut({ callbackUrl: "/" });
     };
@@ -40,6 +43,9 @@ function Header({ setdark, dark }) {
                                     <div>
                                         <Image src={profile} alt="no image" className={styles.carticons} />
                                     </div>
+                                    <div>
+                                        {status === "loading" && "Loading....."}
+                                    </div>
                                     <div className="dropdowncontent">
                                         <div>
                                             Profile
@@ -51,7 +57,11 @@ function Header({ setdark, dark }) {
                                             Logout
                                         </div>
                                         <div>
-                                           
+
+                                            <div>
+                                                {status === "loading" && "loading"}
+                                                {session?.user?.name}
+                                            </div>
 
                                         </div>
                                         <div onClick={() => setdark(!dark)}>

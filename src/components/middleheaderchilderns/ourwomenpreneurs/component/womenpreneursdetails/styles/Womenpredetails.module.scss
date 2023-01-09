@@ -1,0 +1,114 @@
+@use "../../../../../../../scss/abstract/" as *;
+
+.maindetailpage {
+    width: 100%;
+    .insidedetailpage {
+        width: 75%;
+        margin: 0 auto;
+        padding-top: 2%;
+        @include xsBreakPoint {
+            width: 85%;
+            padding-top:7%;
+        }
+        @include smBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include mdBreakPoint {
+            width: 85%;
+        }
+        @include lgBreakPoint {
+            width: 89%;
+        }
+        @include xlBreakPoint {
+            width: 85%;
+        }
+        @include xxlBreakPoint {
+            width: 77%;
+        }
+        .splitsectiondetails {
+            width: 100%;
+            display: flex;
+            @include xsBreakPoint
+            {
+                flex-direction: column;
+            }
+            .leftdetailpage {
+                width: 60%;
+                @include xsBreakPoint
+                {
+                    width:100%;
+                }
+                .splitleftdetails {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    .detailimage {
+                        width: 100%;
+                        height: 100px;
+                        object-fit: cover;
+                    }
+                }
+                .earthtext {
+                    width: 90%;
+                    line-height: 1.8;
+                }
+            }
+            .rightdetailpage {
+                width: 40%;
+                @include xsBreakPoint
+                {
+                    width:100%;
+                }
+                .womenlogo {
+                    width: 100%;
+                    height: 300px;
+                    object-fit: contain;
+                }
+            }
+        }
+        .middleheaderpage {
+            padding-top: 3%;
+            .insidemiddleheader {
+                background: #ffffff;
+                opacity: 0.8;
+                border: 1px solid #e0e0e0;
+                backdrop-filter: blur(30px);
+                border-radius: 3px;
+                padding: 12px 40px;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                display: flex;
+                gap: 50px;
+                @include xsBreakPoint
+                {
+                    flex-direction: column;
+                }
+                @include smBreakPoint
+                {
+                    gap:20px;
+                }
+            }
+            .detailpage {
+                cursor: pointer;
+            }
+            .actives {
+                color: #e75b5e !important;
+                font-weight: 700;
+                padding-bottom: 0.389rem;
+                border-bottom: 3px solid #e75b5e;
+                cursor: pointer;
+                @include xsBreakPoint
+                {
+                    width: 35%;
+                }
+                @include smBreakPoint
+                {
+                    width: 35%;
+                }
+            }
+        }
+        .contentsetiondetails {
+            padding-top: 2.5%;
+        }
+    }
+}

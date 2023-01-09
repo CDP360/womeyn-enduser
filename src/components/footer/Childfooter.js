@@ -4,6 +4,7 @@ function Childfooter() {
     return (
         <Fragment>
             <div className={styles.childfootermainsection}>
+                <div className='footercommon'>
                 <div className={styles.insidechildfooter}>
                     <div>
                         WOMEYN  -   © 2020 All Rights Reserved
@@ -15,6 +16,8 @@ function Childfooter() {
                         <div>BITKOIN</div>
                     </div>
                 </div>
+                </div>
+               
             </div>
         </Fragment>
     )

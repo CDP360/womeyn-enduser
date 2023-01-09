@@ -43,10 +43,10 @@ function Blogs() {
                             and wellbeign with our blogs
                         </div>
                     </div>
-                    <div className=" blog-cards row d-flex justify-content-center gap-3 ms-1">
+                    <div className="blog-cards row d-flex justify-content-center gap-3  ">
                         {datas?.map((item, index) => {
                             return (
-                                <div className='cards-blog col-lg-4 col-sm-12 col-xs-12 col-md-12 col-xl-4 mt-3 mb-3'>
+                                <div className='cards-blog  col-sm-12 col-xs-12 col-md-12 col-xl-4 mt-3 mb-3'>
                                     <div>
                                         <Image src={item?.image} alt="no image" className={styles.blogimages} />
                                     </div>

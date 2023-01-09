@@ -1,0 +1,34 @@
+@use "../../../../../../scss/abstract/" as *;
+
+.makehomesection {
+    width: 100%;
+    .insidemakesection {
+        width: 75%;
+        margin: 0 auto;
+        padding-top: 3%;
+        @include xsBreakPoint {
+            width: 85%;
+            // padding-top: 6%;
+        }
+        @include smBreakPoint {
+            width: 85%;
+            padding-left: 1%;
+
+            padding-top: 6%;
+        }
+        @include mdBreakPoint {
+            width: 85%;
+        }
+        @include lgBreakPoint {
+            width: 89%;
+        }
+        @include xlBreakPoint {
+            width: 85%;
+        }
+        .whatmakeimage {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+        }
+    }
+}

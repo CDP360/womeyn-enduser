@@ -4,14 +4,21 @@
     gap: 20px;
     align-items: center;
     justify-content: center;
+    position: relative;
+    @include xlBreakPoint {
+        gap: 30px;
+    }
     .card {
         width: 23.67% !important;
         display: flex !important;
-        gap: 20px !important;
+        // gap: 10px !important;
         height: auto;
         border: none !important;
         box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
         border-radius: 8px;
+        z-index: 0;
+        padding: 15px 0px;
+        cursor: pointer;
         @include themed() {
             background: t($card);
         }
@@ -23,14 +30,14 @@
             justify-content: center;
         }
         @include smBreakPoint {
-            width: 100% !important;
+            width: 43% !important;
             margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         @include mdBreakPoint {
-            width: 40% !important;
+            width: 45% !important;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -42,10 +49,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            height: 310px;
         }
         @include xlBreakPoint {
-            width: 20% !important;
+            width: 22.3% !important;
             margin: 0 auto;
+            height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -53,6 +62,7 @@
     }
 }
 
+// womenpreneurs card section start
 .cardsections {
     display: flex;
     gap: 20px;
@@ -64,18 +74,18 @@
         display: flex !important;
         gap: 20px;
         height: auto;
-        background: #ffffff;
+        // background: #ffffff;
         // border:2px solid red;
         border-radius: 8px;
-        align-items: center;
-        justify-content: center;
-        padding: 50px 0px;
-        background: linear-gradient(
-            180deg,
-            rgba(18, 18, 18, 0) 0%,
-            rgba(18, 18, 18, 0.3) 76.56%,
-            rgba(18, 18, 18, 0.8) 100%
-        );
+        // align-items: center;
+        // justify-content: center;
+        // padding: 50px 0px;
+        // background: linear-gradient(
+        //     180deg,
+        //     rgba(18, 18, 18, 0) 0%,
+        //     rgba(18, 18, 18, 0.3) 76.56%,
+        //     rgba(18, 18, 18, 0.8) 100%
+        // );
         border-radius: 4px;
         flex-direction: column;
         position: relative;
@@ -131,7 +141,9 @@
     }
 }
 
-// card section events
+// womenpreneurs card section start
+
+// card section events start
 
 .cardsections-events {
     display: flex;
@@ -203,7 +215,9 @@
     }
 }
 
-// blog section
+// card section events end
+
+// blog section  card start
 .blogloream {
     text-align: center;
     width: 30%;
@@ -214,20 +228,25 @@
     @include smBreakPoint {
         width: 90%;
     }
+    @include mdBreakPoint {
+        width: 60%;
+    }
+    @include lgBreakPoint {
+        width: 40% !important;
+    }
+    @include xlBreakPoint {
+        width: 40% !important;
+    }
+
     @include themed() {
         color: t($textgrey);
     }
 }
 .blog-cards {
     display: flex;
-    gap: 24px;
-    width: 100%;
-    margin: 0 auto;
-    align-items: center;
-    justify-content: center;
-
+    // border: 2px solid green;
     .cards-blog {
-        width: 31% !important;
+        width: 32% !important;
         height: auto;
         // border: 2px solid red;
         border-radius: 8px;
@@ -247,22 +266,18 @@
         @include smBreakPoint {
             width: 100% !important;
             margin: 0 auto;
-          
         }
         @include mdBreakPoint {
-            width: 40% !important;
+            width: 30% !important;
             margin: 0 auto;
-            
         }
         @include lgBreakPoint {
-            width: 40% !important;
+            width: 30% !important;
             margin: 0 auto;
-           
         }
         @include xlBreakPoint {
             width: 30% !important;
             margin: 0 auto;
-           
         }
         .blog-section-split {
             display: flex;
@@ -277,3 +292,168 @@
         }
     }
 }
+
+// blog section  card end
+
+// what make card section start
+
+.blogloream {
+    text-align: center;
+    width: 30%;
+    margin: 0 auto;
+    @include xsBreakPoint {
+        width: 100%;
+    }
+    @include smBreakPoint {
+        width: 90%;
+    }
+    @include mdBreakPoint {
+        width: 60%;
+    }
+
+    @include themed() {
+        color: t($textgrey);
+    }
+}
+.whatmake-cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // border: 2px solid green;
+    gap: 40px;
+    width: 100%;
+    margin: 0 auto;
+    .smalltextgrey {
+        font-size: 0.728rem;
+        @include themed() {
+            color: t($textgrey);
+        }
+    }
+    @include xsBreakPoint {
+        padding-left: 2%;
+        gap: 10px;
+    }
+    @include mdBreakPoint {
+        padding-left: 2%;
+        gap: 10px;
+    }
+    .cards-whatmake {
+        width: 30% !important;
+        height: 270px;
+        // border: 2px solid red;
+        border-radius: 8px;
+        padding: 20px 0px;
+        border-radius: 5px;
+        // background: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        cursor: pointer;
+        padding-top: 1.2%;
+        @include themed() {
+            background: t($card);
+        }
+
+        @include xsBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+        }
+        @include smBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+        }
+        @include mdBreakPoint {
+            width: 30% !important;
+            margin: 0 auto;
+        }
+        @include lgBreakPoint {
+            width: 30% !important;
+            margin: 0 auto;
+        }
+        @include xlBreakPoint {
+            width: 30% !important;
+            margin: 0 auto;
+        }
+        .blog-section-split {
+            display: flex;
+            justify-content: space-between;
+            .smalltextgrey {
+                text-transform: uppercase;
+                font-size: 0.728rem;
+                @include themed() {
+                    color: t($textgrey);
+                }
+            }
+        }
+    }
+}
+
+// what make card section end
+
+// detail card section womeyn start
+
+.womendetail-cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // border: 2px solid green;
+    gap: 30px;
+    width: 100%;
+    margin: 0 auto;
+    .smalltextgrey {
+        font-size: 0.728rem;
+        @include themed() {
+            color: t($textgrey);
+        }
+    }
+    @include xsBreakPoint {
+        padding-left: 2%;
+        gap: 10px;
+    }
+    @include mdBreakPoint {
+        padding-left: 2%;
+        gap: 10px;
+    }
+    .cards-detailsection {
+        width: 23% !important;
+        border-radius: 8px;
+        cursor: pointer;
+        @include themed() {
+            background: t($card);
+        }
+
+        @include xsBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+        }
+        @include smBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+        }
+        @include mdBreakPoint {
+            width: 30% !important;
+            margin: 0 auto;
+        }
+        @include lgBreakPoint {
+            width: 30% !important;
+            margin: 0 auto;
+        }
+        @include xlBreakPoint {
+            width: 30% !important;
+            margin: 0 auto;
+        }
+        .blog-section-split {
+            display: flex;
+            justify-content: space-between;
+            .smalltextgrey {
+                text-transform: uppercase;
+                font-size: 0.728rem;
+                @include themed() {
+                    color: t($textgrey);
+                }
+            }
+        }
+    }
+}
+// detail card section womeyn end

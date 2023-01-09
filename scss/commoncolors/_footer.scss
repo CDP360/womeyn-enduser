@@ -1,0 +1,21 @@
+@use "../abstract" as *;
+
+.footercommon {
+    width: 100%;
+    @include themed() {
+        background: t($header);
+        border: 1px solid t($header) !important;
+    }
+}
+
+.signupheader {
+    width: 100%;
+    box-shadow: 0px 36px 164px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(32px);
+    padding: 3% 0px;
+    @include themed()
+    {
+        background:t($footersignup);
+    }
+    
+}

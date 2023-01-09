@@ -17,6 +17,7 @@ import Footer from '../footer/Footer';
 import Scrollbutton from '../scrollbutton/Scrollbutton';
 import Blogs from './components/blogs/Blogs';
 import { useSelector } from 'react-redux';
+import Whatmake from './components/whatmake/Whatmake';
 function Home() {
     const history = useRouter();
     const [showTopBtn, setShowTopBtn] = useState(false);
@@ -132,6 +133,9 @@ function Home() {
                             </div>
                             <div>
                                 <Blogs />
+                            </div>
+                            <div>
+                                <Whatmake/>
                             </div>
                             <div>
                                 <Signupnewsletter />

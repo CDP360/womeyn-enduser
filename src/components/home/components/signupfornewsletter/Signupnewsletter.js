@@ -5,7 +5,7 @@ function Signupnewsletter() {
     return (
         <Fragment>
             <div className={styles.signupnewmainsection}>
-                <div className={styles.newseltersection}>
+                <div className="signupheader">
                     <div className={styles.insidesignupnewsection}>
                         <div className={styles.mainsplitsignupnew}>
                             <div className={styles.leftmainsplitsignup}>

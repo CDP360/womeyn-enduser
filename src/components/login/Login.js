@@ -66,7 +66,7 @@ function Login() {
                                                 message: "invalid email address"
                                             },
                                         })}
-                                        autoFocus
+                                      
                                     />
                                     {errors.email && <span className="active">{errors.email.message}</span>}
                                 </Form.Group>

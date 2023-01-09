@@ -20,7 +20,7 @@ function MobileHeader() {
     return (
         <Fragment>
             <div className={styles.mainmobilesection}>
-                <div className={styles.mobileleftsection}>
+                <div className={styles.mobileleftsection} onClick={()=>router.push("/")}>
                     <Image src={womeynlogo} alt="no image" className={styles.logomobilewomwyn} />
                 </div>
                 <div className={styles.mobilemiddlesection}>

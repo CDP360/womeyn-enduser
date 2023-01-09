@@ -12,15 +12,11 @@ import Signupnewsletter from '../../home/components/signupfornewsletter/Signupne
 import Skeleton from 'react-loading-skeleton';
 import Childfooter from '../../footer/Childfooter';
 import { useRouter } from 'next/router';
-
-function Womenpreneurs({ dark, setdark }) {
-
-    const router=useRouter();
-
+import girl from '../../../assests/womeynlogos/girl4.png';
+function Womenpreneurs() {
+    const router = useRouter();
     const [data, setData] = useState([]);
-
     const [search, setSearch] = useState("");
-
     useEffect(() => {
         axios.get(`https://fakestoreapi.com/products`).then((res) => {
             console.log(res?.data);
@@ -82,15 +78,15 @@ function Womenpreneurs({ dark, setdark }) {
                                     }
                                 }).map((item, index) => {
                                     return (
-                                        <div className='cards mt-1 mb-2' key={index} onClick={()=>router.push('/womeyn/womenpreneurs/users')}>
+                                        <div className='cards mt-1 mb-2' key={index} onClick={() => router.push(`/womeyn/womenpreneurs/detailpage/${item.id}`)}>
                                             <div>
-                                                {item?.image ? <img src={item?.image} alt="no image" className={styles.sellerimagesize} /> : <Skeleton />}
+                                                <Image src={girl} alt="no image" className={styles.sellerimagesize} />
                                             </div>
                                             <div className='womentitle'>
-                                                {item?.title.slice(0, 10)}
+                                                {/* {item?.title.slice(0, 10)} */}
                                             </div>
                                             <div className='womendescription'>
-                                                {item?.description.slice(0, 5)}
+                                                {/* {item?.description.slice(0, 5)} */}
                                             </div>
                                         </div>
                                     )
@@ -105,7 +101,7 @@ function Womenpreneurs({ dark, setdark }) {
                             <Footer />
                         </div>
                         <div>
-                            <Childfooter/>
+                            <Childfooter />
                         </div>
                     </div>
                 </div>
@@ -117,4 +113,4 @@ function Womenpreneurs({ dark, setdark }) {
     )
 }
 
-export default Womenpreneurs
+export default Womenpreneurs;
