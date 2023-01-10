@@ -1,14 +1,38 @@
 @use "../abstract/" as *;
 
-.commontext {
-    font-size: 2rem;
-    font-weight: 600;
+.large-text {
+    font-size: 2rem !important;
+    font-weight: 650;
     text-align: center;
     @include xsBreakPoint {
         font-size: 1.2rem !important;
-        font-weight: 600;
     }
 }
+
+.medium-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    @include mdBreakPoint {
+        font-size: 1rem !important;
+    }
+    @include themed() {
+        color: t($textblack);
+    }
+}
+.small-text {
+    font-size: 1rem;
+    @include mdBreakPoint {
+        font-size: 1rem !important;
+    }
+}
+
+.small-light-text-grey {
+    font-weight: 400;
+    @include themed() {
+        color: t($textgreylight);
+    }
+}
+
 .textseller {
     font-size: 2rem;
     font-weight: 600;
@@ -22,7 +46,6 @@
     }
 }
 // grey text color
-
 .textgrey {
     font-weight: 600;
     @include themed() {
@@ -45,9 +68,8 @@
     color: #8d8d8d;
 }
 .textpricedashedgreen {
-    @include themed()
-    {
-        color:t($textgreen)
+    @include themed() {
+        color: t($textgreen);
     }
 }
 
@@ -59,7 +81,7 @@
 
 // event workshop text color
 
-.commontextsmall {
+.large-textsmall {
     font-size: 1.2rem;
     font-weight: 600;
 
@@ -77,7 +99,6 @@
     font-size: 1rem;
 }
 .footergreytext {
-    // color: rgba(0, 0, 0, 0.5);
     width: 100%;
     font-weight: 500;
     line-height: 1.5;
@@ -93,49 +114,16 @@
     cursor: pointer;
 }
 
-.active {
-    color: red !important;
-    text-decoration: none !important;
-    cursor: pointer;
-}
-
-// stricky function in header section start
-
-.headersectionhome {
-    position: sticky;
-    top: 0;
-    z-index: 9;
-}
-
-// end strick section
-
 .textgap {
     padding-top: 30px !important;
 }
 
+// footer end section
+
 // medium text size
 
-.medium-text {
-    font-size: 1.2rem;
-    @include mdBreakPoint {
-        font-size: 1rem !important;
-    }
-}
-.small-text {
-    font-size: 1rem;
-    @include mdBreakPoint {
-        font-size: 1rem !important;
-    }
-}
-.large-text {
-    font-size: 1.3rem;
-    font-weight: 700;
-    @include mdBreakPoint {
-        font-size: 1rem !important;
-    }
-}
 
-.small-light-text-grey {
-    color: rgba(0, 0, 0, 0.7);
-    font-weight: 400;
+.nav-link
+{
+    font-size:1rem !important;
 }

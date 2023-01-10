@@ -4,7 +4,7 @@ import styles from './styles/Home.module.scss';
 import Image from 'next/image';
 import Slider from "react-slick";
 import Womeynbanner from '../../../src/assests/homepage-logos/woymenbanner.png';
-import ad1 from '../../../src/assests/homepage-logos/ad1.svg';
+import ad1 from '../../../src/assests/homepage-logos/add2.png';
 import SlideNextArrow from './slidenextarrow/SlideNextArrow';
 import SlidePreArrow from './slideprearrow/SlidePreArrow';
 import Categorychoose from './components/categorychoose/Categorychoose';
@@ -18,6 +18,7 @@ import Scrollbutton from '../scrollbutton/Scrollbutton';
 import Blogs from './components/blogs/Blogs';
 import { useSelector } from 'react-redux';
 import Whatmake from './components/whatmake/Whatmake';
+import LayoutHeader from '../Layoutheader/LayoutHeader';
 function Home() {
     const history = useRouter();
     const [showTopBtn, setShowTopBtn] = useState(false);
@@ -70,7 +71,9 @@ function Home() {
             }
         ]
     };
-
+    const gototop = () => {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+    }
     const state = useSelector(state => state);
     console.log(state, "logindata");
     useEffect(() => {
@@ -78,8 +81,85 @@ function Home() {
     }, [state])
     return (
         <Fragment>
-            <Scrollbutton />
+
             <div className={styles.homesectionmain}>
+                <div className="emptyboxrightcolor">
+                    </div>
+                    <div className="emptyboxleftcolor">
+                    </div>
+                <div>
+
+                </div>
+                <div className={styles.insidesectionhome}>
+                    <div className={styles.imagesectionhome}>
+                        <Slider {...settings}>
+                            <div>
+                                <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
+                            </div>
+                            <div>
+                                <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
+                            </div>
+                            <div>
+                                <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
+                            </div>
+                            <div>
+                                <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
+                            </div>
+                            <div>
+                                <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
+                            </div>
+                        </Slider>
+                    </div>
+                    <div className={styles.addimagetagss}>
+                        <div className={styles.addimagessectionleft}>
+                            <Image src={ad1} alt="no image" className={styles.add1} />
+                        </div>
+                        <div className={styles.addimagessectionright}>
+                            <Image src={ad1} alt="no image" className={styles.add1} />
+                        </div>
+                    </div>
+                    <div>
+                        <Categorychoose />
+                    </div>
+
+                </div>
+                <div>
+                    <Summarybreaksalary />
+                </div>
+                <div>
+                    <Bestseller />
+                </div>
+                <div>
+                    <Ourwomenpreneurs />
+                </div>
+                <div>
+                    <Eventlatestupdate />
+                </div>
+                <div>
+                    <Blogs />
+                </div>
+                <div>
+                    <Whatmake />
+                </div>
+                <div>
+                    <Signupnewsletter />
+                </div>
+                <Footer />
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            {/* <div className={styles.homesectionmain}>
                 <div className={styles.insidehomesection}>
                     <div className="emptyboxrightcolor">
                     </div>
@@ -135,7 +215,7 @@ function Home() {
                                 <Blogs />
                             </div>
                             <div>
-                                <Whatmake/>
+                                <Whatmake />
                             </div>
                             <div>
                                 <Signupnewsletter />
@@ -144,7 +224,9 @@ function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
+                
+            </div> */}
+
         </Fragment >
 
     )

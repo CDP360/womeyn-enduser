@@ -26,20 +26,20 @@ function Womensearch({ id }) {
                 <div className={styles.insidesearchwomen}>
                     <div className={styles.splitwomensearch}>
                         <div className={styles.leftwomensearchsection}>
-                           <div>
-                           <div >
-                                <Image src={data?.images[indexs]} alt="no image" className={styles.serachlargeimage} />
+                            <div>
+                                <div >
+                                    <Image src={data?.images[indexs]} alt="no image" className={styles.serachlargeimage} />
+                                </div>
+                                <div className={styles.searchimagesection}>
+                                    {data?.images?.map((items, index) => {
+                                        return (
+                                            <div className={` ${styles.searchimagesection}`} onClick={() => setIndex(index)}>
+                                                <Image src={items} alt="no image" className={`${indexs === index ? styles.activewomen : ""} ${styles.imagesearch}`} />
+                                            </div>
+                                        )
+                                    })}
+                                </div>
                             </div>
-                            <div className={styles.searchimagesection}>
-                                {data?.images?.map((items, index) => {
-                                    return (
-                                        <div className={` ${styles.searchimagesection}`} onClick={() => setIndex(index)}>
-                                            <Image src={items} alt="no image" className={`${indexs === index ? styles.activewomen : ""} ${styles.imagesearch}`} />
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                           </div>
                         </div>
                         <div className={styles.rightwomensearchsection}>
                             right section

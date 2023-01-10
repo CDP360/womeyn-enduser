@@ -87,28 +87,28 @@ function Header({ setdark, dark }) {
                             <div className={router.pathname == "/womeyn/womenpreneurs" ? "active" : ""}>
 
                                 <Link href="/womeyn/womenpreneurs" className='nav-link'>
-                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                    {/* <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} /> */}
 
                                     <span className='ms-2'>Our womenpreneurs</span>
                                 </Link>
                             </div>
                             <div className={router.pathname == "/womeyn/events" ? "active" : ""}>
                                 <Link href="/womeyn/events" className='nav-link'>
-                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                    {/* <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} /> */}
 
                                     <span className='ms-2'>Events & updates</span>
                                 </Link>
                             </div>
                             <div className={router.pathname == "/womeyn/abouts" ? "active" : ""}>
                                 <Link href="/womeyn/abouts" className='nav-link'>
-                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                    {/* <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} /> */}
 
                                     <span className='ms-2'></span> About us
                                 </Link>
                             </div>
                             <div className={router.pathname == "/womeyn/getintouch" ? "active" : ""}>
                                 <Link href="/womeyn/getintouch" className='nav-link'>
-                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                    {/* <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} /> */}
                                     <span className='ms-2'>Get in touch</span>
                                 </Link>
                             </div>

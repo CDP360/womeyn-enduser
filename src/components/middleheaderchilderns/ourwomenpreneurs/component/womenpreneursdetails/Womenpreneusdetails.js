@@ -22,6 +22,7 @@ function Womenpreneusdetails({ id }) {
         }).catch((err) => {
             console.log(err);
         })
+
     }, [indexs])
 
     const handlechnagedata = (id) => {
@@ -60,11 +61,12 @@ function Womenpreneusdetails({ id }) {
         }
     ]
     return (
-        <Fragment>
+        <Fragment >
             {/* <button onClick={() => router.push("/login?redirect=/shipping")}>
                 Check out
             </button>
             {id} */}
+
 
             <div className={styles.maindetailpage}>
                 <div className="emptyboxrightcolor">
@@ -147,7 +149,7 @@ function Womenpreneusdetails({ id }) {
 
 
             </div>
-
+     
         </Fragment>
     )
 }

@@ -25,6 +25,10 @@ function Womenpreneurs() {
             console.log(err);
         })
     }, [])
+
+    const handlepush = (id) => {
+        router.push(`/womeyn/womenpreneurs/detailpage/${id}`);
+    }
     return (
         <Fragment>
             <div className={styles.mainwomenpre}>
@@ -78,7 +82,7 @@ function Womenpreneurs() {
                                     }
                                 }).map((item, index) => {
                                     return (
-                                        <div className='cards mt-1 mb-2' key={index} onClick={() => router.push(`/womeyn/womenpreneurs/detailpage/${item.id}`)}>
+                                        <div className='cards mt-1 mb-2' key={index} onClick={() => handlepush(item?.id)}>
                                             <div>
                                                 <Image src={girl} alt="no image" className={styles.sellerimagesize} />
                                             </div>

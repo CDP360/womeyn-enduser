@@ -9,8 +9,10 @@ $card: "card";
 $emptyboxright: "emptyboxright";
 $emptyboxleft: "emptyboxleft";
 $textgrey: "textgrey";
-$footersignup:"footersignup";
-$textgreen:"textgreen";
+$footersignup: "footersignup";
+$textgreen: "textgreen";
+$textgreylight: "textgreylight";
+$textblack: "textblack";
 $themes: (
     light: (
         background: $background--light,
@@ -22,7 +24,9 @@ $themes: (
         emptyboxleft: $emptybox-left--light,
         textgrey: $text-grey--light,
         footersignup: $footer-signup--light,
-        textgreen:$text--light--green,
+        textgreen: $text--light--green,
+        textgreylight: $text--light--grey,
+        textblack: $text--light-black,
     ),
     dark: (
         background: $background--dark,
@@ -34,7 +38,8 @@ $themes: (
         emptyboxleft: $emptybox-left--dark,
         textgrey: $text-grey--dark,
         footersignup: $footer-signup--dark,
-        textgreen:$text--dark--orange,
-
+        textgreen: $text--dark--orange,
+        textgreylight: $text--dark--grey,
+        textblack: $text--dark-black,
     ),
 );

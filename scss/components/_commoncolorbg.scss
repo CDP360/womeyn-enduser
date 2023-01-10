@@ -4,9 +4,9 @@
     opacity: 0.12;
     filter: blur(329px);
     position: absolute;
-    top: 5%;
+    top: 0%;
     width: 30%;
-    height: 40%;
+    height: 10%;
     right: 0;
     @include themed() {
         background: t($emptyboxright);
@@ -15,10 +15,10 @@
 .emptyboxleftcolor {
     position: absolute;
     left: 0;
-    top: 65%;
+    top: 25%;
     opacity: 0.256;
-    width: 20%;
-    height: 40%;
+    width: 15%;
+    height: 10%;
     filter: blur(239.825px);
     @include themed() {
         background: t($emptyboxleft);

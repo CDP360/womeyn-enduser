@@ -4,9 +4,9 @@
     border: none;
     outline: none;
     background: #f1f1f1;
-    // backdrop-filter: blur(2px);
-    padding: 6px 10px;
+    padding: 05px 10px;
     border-radius: 8px;
+    cursor: pointer;
     @include xsBreakPoint {
         width: 100% !important;
         padding: 2px 5px;
@@ -29,6 +29,9 @@
     }
 }
 .serachicon {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
+}
+::placeholder {
+    font-size: 16px !important;
 }

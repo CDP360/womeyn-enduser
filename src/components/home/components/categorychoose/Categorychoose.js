@@ -84,7 +84,7 @@ function Categorychoose() {
                         </Row>
                     </div>
                     <div className={styles.categorybodysection}>
-                        <div className='commontext mt-5'>
+                        <div className='large-text mt-5'>
                             A lot of categories to choose from
                         </div>
                         <div>

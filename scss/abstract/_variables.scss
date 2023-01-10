@@ -1,29 +1,26 @@
 //Light colors
 $background--light: white;
 $inverter--light: 0;
-$header--light:white;
-$text--light:black;
-$card--light:white;
-$emptybox-right--light:#E95A5A;
-$emptybox-left--light:#FECF9D;
-$text-grey--light:#898989;
-$footer-signup--light:rgba(255, 255, 255, 0.6);
-$text--light--green:#59AF59;
+$header--light: white;
+$text--light: #373737;
+$card--light: white;
+$emptybox-right--light: #e95a5a;
+$emptybox-left--light: #fecf9d;
+$text-grey--light: #898989;
+$footer-signup--light: rgba(255, 255, 255, 0.6);
+$text--light--green: #59af59;
+$text--light--grey: rgba(0, 0, 0, 0.7);
+$text--light-black: black;
 //Dark colors
 $background--dark: black;
 $inverter--dark: 1;
-$text--dark:white;
-$header--dark:#1F4590;
-$card--dark:#323232;
-$emptybox-right--dark:black;
-$emptybox-left--dark:black;
-$text-grey--dark:#898989;
-$footer-signup--dark:#323232;
-$text--dark--orange:orangered;
-
-
-
-
-
-
-
+$text--dark: white;
+$header--dark: #1f4590;
+$card--dark: #323232;
+$emptybox-right--dark: black;
+$emptybox-left--dark: black;
+$text-grey--dark: #898989;
+$footer-signup--dark: #323232;
+$text--dark--orange: orangered;
+$text--dark--grey: rgba(255, 255, 255, 0.6);
+$text--dark-black: black;

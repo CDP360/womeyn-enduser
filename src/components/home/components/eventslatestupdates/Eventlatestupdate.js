@@ -21,7 +21,7 @@ function Eventlatestupdate() {
 
                     <div className={styles.eventfruitsection}>
                         <div className={styles.lefteventfruit}>
-                            <div className='commontextsmall'>
+                            <div className='large-textsmall'>
                                 Events & Workshops
                             </div>
                             <div className={styles.imageeventsection}>
@@ -36,7 +36,7 @@ function Eventlatestupdate() {
                             </div>
                         </div>
                         <div className={styles.righteventfruit}>
-                            <div className='commontextsmall'>
+                            <div className='large-textsmall'>
                                 Events & Workshops
                             </div>
                             <div className={styles.imageeventsection}>

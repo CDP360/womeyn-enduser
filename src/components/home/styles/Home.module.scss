@@ -2,126 +2,191 @@
 
 .homesectionmain {
     width: 100%;
-    height: 100vh;
-    @include xsBreakPoint {
-        // padding-top: 4%;
-    }
-    @include smBreakPoint {
-        padding-top: 1%;
-    }
-    @include mdBreakPoint {
-        padding-top: 4%;
-    }
-  
-    .insidehomesection {
-        width: 100%;
-        position: relative;
-        height: 100%;
-        // overflow-y: auto;
-       
-        .emptysectionbox {
-            width: 20%;
-            border: 2px solid orangered;
-            height: 10%;
-            position: absolute;
-            top: 1%;
-            right: 0;
-            background-color: #e95a5a;
-            opacity: 0.3;
-            filter: blur(329px);
-            border-radius: 10%;
-        }
-        .emptysectionboxorange {
-            width: 14%;
-            border: 2px solid #fecf9d;
-            height: 20%;
-            position: absolute;
-            left: 0;
-            background-color: #fecf9d;
-            opacity: 0.4;
-            top: 15%;
-            filter: blur(329px);
-            border-radius: 10%;
-        }
+    height: 100%;
 
-        .bodysectionhome {
-            // height: 84%;
+    .insidesectionhome {
+        width: 75%;
+        margin: 0 auto;
+        padding-top: 2.5%;
+        position:relative;
+        @include xsBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include smBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include mdBreakPoint {
+            width: 85%;
+        }
+        @include lgBreakPoint {
+            width: 89%;
+        }
+        @include xlBreakPoint {
+            width: 85%;
+        }
+        .imagesectionhome {
             width: 100%;
-            margin: 0 auto;
-            padding-top: 1%;
-            .insidehomesectionbody {
+            // position: relative;
+            .sliderimage {
                 width: 100%;
-                height: 100%;
-                .widthsectionhome {
-                    width: 75%;
-                    margin: 0 auto;
-                    @include xsBreakPoint {
-                        width: 85%;
-                        // padding-top: 6%;
-                       
-                    }
-                    @include smBreakPoint {
-                        width: 85%;
-                        padding-top: 6%;
-                    }
-                    @include mdBreakPoint {
-                        width: 85%;
-                    }
-                    @include lgBreakPoint {
-                        width: 89%;
-                    }
-                    @include xlBreakPoint {
-                        width: 85%;
-                    }
-                    .imagesectionhome {
-                        width: 100%;
-                        // position: relative;
-                        .sliderimage {
-                            width: 100%;
-                            height: 330px;
-                            @include xsBreakPoint {
-                                height: auto;
-                            }
-                            @include smBreakPoint {
-                                height: auto;
-                            }
-                            @include mdBreakPoint {
-                                height: auto;
-                            }
-                            @include lgBreakPoint {
-                                height: auto;
-                            }
-                        }
-                    }
-                    .womeyntextsection {
-                        position: absolute;
-                        top: 0;
-                        display: flex;
-                        left: 5%;
-                        flex-direction: column;
-                        .insidetextstylestudio {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 50px;
-                        }
-                    }
-                    .addimagetagss {
-                        display: flex;
-                        gap: 20px;
-                        @include xsBreakPoint {
-                            display: none;
-                        }
-                        @include smBreakPoint {
-                            flex-direction: column;
-                            gap: 0px;
-                        }
-
-                        .add1 {
-                            width: 100%;
-                        }
-                    }
+                height: 330px;
+                @include xsBreakPoint {
+                    height: auto;
                 }
+                @include smBreakPoint {
+                    height: auto;
+                }
+                @include mdBreakPoint {
+                    height: auto;
+                }
+                @include lgBreakPoint {
+                    height: auto;
+                }
+            }
+        }
+        .addimagetagss {
+            display: flex;
+            gap: 20px;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            @include xsBreakPoint {
+                display: none;
+            }
+            @include smBreakPoint {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .add1 {
+                width: 100%;
+                height: auto;
             }
         }
     }
 }
+
+// .homesectionmain {
+//     width: 100%;
+//     // height: 100vh;
+//     background: red;
+//     // overflow:hidden;
+//     @include smBreakPoint {
+//         padding-top: 1%;
+//     }
+//     @include mdBreakPoint {
+//         padding-top: 4%;
+//     }
+
+//     .insidehomesection {
+//         width: 100%;
+//         position: relative;
+//         height: 100%;
+//         border: 2px solid red;
+//         .emptysectionbox {
+//             width: 20%;
+//             border: 2px solid orangered;
+//             height: 10%;
+//             position: absolute;
+//             top: 1%;
+//             right: 0;
+//             background-color: #e95a5a;
+//             opacity: 0.3;
+//             filter: blur(329px);
+//             border-radius: 10%;
+//         }
+//         .emptysectionboxorange {
+//             width: 14%;
+//             border: 2px solid #fecf9d;
+//             height: 20%;
+//             position: absolute;
+//             left: 0;
+//             background-color: #fecf9d;
+//             opacity: 0.4;
+//             top: 15%;
+//             filter: blur(329px);
+//             border-radius: 10%;
+//         }
+
+//         .bodysectionhome {
+//             margin: 0 auto;
+//             height: 100%;
+//             padding-top: 1%;
+//             width: 75%;
+
+//             // .insidehomesectionbody {
+//             //     width: 100%;
+//             //     height: 100%;
+//             //     .widthsectionhome {
+//             //         width: 75%;
+//             //         margin: 0 auto;
+// @include xsBreakPoint {
+//     width: 85%;
+// }
+// @include smBreakPoint {
+//     width: 85%;
+//     padding-top: 6%;
+// }
+// @include mdBreakPoint {
+//     width: 85%;
+// }
+// @include lgBreakPoint {
+//     width: 89%;
+// }
+// @include xlBreakPoint {
+//     width: 85%;
+// }
+// .imagesectionhome {
+//     width: 100%;
+//     // position: relative;
+//     .sliderimage {
+//         width: 100%;
+//         height: 330px;
+//         @include xsBreakPoint {
+//             height: auto;
+//         }
+//         @include smBreakPoint {
+//             height: auto;
+//         }
+//         @include mdBreakPoint {
+//             height: auto;
+//         }
+//         @include lgBreakPoint {
+//             height: auto;
+//         }
+//     }
+// }
+//             //         .womeyntextsection {
+//             //             position: absolute;
+//             //             top: 0;
+//             //             display: flex;
+//             //             left: 5%;
+//             //             flex-direction: column;
+//             //             .insidetextstylestudio {
+//             //                 display: flex;
+//             //                 flex-direction: column;
+//             //                 gap: 50px;
+//             //             }
+//             //         }
+// .addimagetagss {
+//     display: flex;
+//     gap: 20px;
+//     padding-top: 2%;
+//     @include xsBreakPoint {
+//         display: none;
+//     }
+//     @include smBreakPoint {
+//         flex-direction: column;
+//         gap: 0px;
+//     }
+
+//     .add1 {
+//         width: 100%;
+//         height: auto;
+//     }
+// }
+//             // }
+//             // }
+//         }
+//     }
+// }

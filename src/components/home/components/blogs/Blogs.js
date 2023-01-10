@@ -35,7 +35,7 @@ function Blogs() {
             <div className={styles.blogmainsection}>
                 <div className={styles.insideblogsection}>
                     <div className={styles.blogsectiontexts}>
-                        <div className='commontext'>
+                        <div className='large-text'>
                             Blogs
                         </div>
                         <div className='blogloream mt-2'>

@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import Header from '../header/Header'
 import MobileHeader from '../header/Mobileheader/MobileHeader'
 function LayoutHeader({ setdark, dark }) {
-
     return (
         <>
             <div className='headertopsection'>
@@ -13,6 +12,7 @@ function LayoutHeader({ setdark, dark }) {
                 <div className={`d-block d-lg-none`}>
                     <MobileHeader setdark={setdark} dark={dark} />
                 </div>
+              
             </div>
 
         </>

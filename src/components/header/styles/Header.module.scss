@@ -1,15 +1,12 @@
 @use "../../../../scss/abstract/" as *;
 .headermainsection {
     width: 100%;
-    // background-color: rgba(255, 255, 255, 0.8);
-
     .menuicons {
         width: 17px;
         height: 17px;
-        // object-fit: c;
         cursor: pointer;
     }
-  
+
     .carticons {
         width: 25px;
         height: 25px;
@@ -21,15 +18,15 @@
     }
     .headerinsidesection {
         box-shadow: 0px -27px 120px rgba(0, 0, 0, 0.08);
-        // padding: 18px 0px;
+        margin:0 auto;
         .logoheadersection {
             display: flex;
             justify-content: space-around;
             align-items: center;
             .inputsearchsection {
                 display: flex;
-                width: 18%;
-                padding: 2px 0px;
+                width: auto;
+                padding: 0px 10px;
                 background: #f1f1f1;
                 border-radius: 8px;
                 align-items: center;
@@ -49,11 +46,9 @@
                 cursor: pointer;
             }
         }
-       
     }
     .middleheadersection {
         width: 100%;
-        // box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
         box-shadow: rgba(60, 4, 7, 0) 0px 1px 2px 0px, rgba(0, 4, 7, 0.15) 0px 2px 7px 0px;
         align-items: center;
         display: flex;
@@ -61,7 +56,7 @@
         .insidemiddlesectionheader {
             display: flex;
             justify-content: space-around;
-            width: 75%;
+            width: 60%;
             margin: 0 auto;
             align-items: center;
         }

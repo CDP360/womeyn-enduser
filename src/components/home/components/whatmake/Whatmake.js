@@ -35,7 +35,7 @@ function Whatmake() {
             <div className={styles.makehomesection}>
                 <div className={styles.insidemakesection}>
                     <div className={styles.blogsectiontexts}>
-                        <div className='commontext'>
+                        <div className='large-text'>
                             What makes us unique
                         </div>
                         <div className='blogloream mt-2'>
