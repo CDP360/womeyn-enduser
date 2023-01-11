@@ -1,0 +1,61 @@
+@use "../../../../scss/abstract/" as *;
+
+.mainuserprofilesection {
+    width: 100%;
+    //   border:2px solid red;
+    padding-bottom: 5%;
+    .insideprofilesection {
+        width: 75%;
+        margin: 0 auto;
+        display: flex;
+        gap: 30px;
+        @include xsBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include smBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include mdBreakPoint {
+            width: 85%;
+        }
+        @include lgBreakPoint {
+            width: 89%;
+        }
+        @include xlBreakPoint {
+            width: 85%;
+        }
+        .leftsidebarprofile {
+            width: 27%;
+            height: 100%;
+        }
+        .rightbodyprofilesection {
+            width: 73%;
+            height: 100%;
+            .profileheadersection {
+                width: 100%;
+                border-bottom: 1px solid #9f9f9f;
+                display: flex;
+                gap: 40px;
+                padding-left: 4%;
+                cursor: pointer;
+                .profiletext {
+                    color: grey;
+                    font-weight: 500;
+                    font-size: 1.3rem;
+                }
+            }
+            .activecode {
+                border-bottom: 5px solid red;
+                width: auto;
+                padding-bottom: 1.2%;
+                font-size: 1.3rem;
+                font-weight: 600;
+                @include themed() {
+                    background: t($card);
+                }
+            }
+        }
+    }
+}

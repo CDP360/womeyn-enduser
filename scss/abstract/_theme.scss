@@ -13,6 +13,7 @@ $footersignup: "footersignup";
 $textgreen: "textgreen";
 $textgreylight: "textgreylight";
 $textblack: "textblack";
+$textgreyblack:"textgreyblack";
 $themes: (
     light: (
         background: $background--light,
@@ -27,6 +28,7 @@ $themes: (
         textgreen: $text--light--green,
         textgreylight: $text--light--grey,
         textblack: $text--light-black,
+        textgreyblack:$text--light-grey-black,
     ),
     dark: (
         background: $background--dark,
@@ -41,5 +43,7 @@ $themes: (
         textgreen: $text--dark--orange,
         textgreylight: $text--dark--grey,
         textblack: $text--dark-black,
+        textgreyblack:$text--dark-grey-black,
+
     ),
 );

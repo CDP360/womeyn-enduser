@@ -20,6 +20,9 @@ function Header({ setdark, dark }) {
     const logoutHandler = async () => {
         await signOut({ callbackUrl: "/" });
     };
+    const userProfile=()=>{
+        router.push("/women/profile")
+    }
     return (
         <Fragment>
             <div className={styles.headermainsection}>
@@ -47,7 +50,7 @@ function Header({ setdark, dark }) {
                                         {status === "loading" && "Loading....."}
                                     </div>
                                     <div className="dropdowncontent">
-                                        <div>
+                                        <div onClick={userProfile}>
                                             Profile
                                         </div>
                                         <div>
@@ -57,7 +60,6 @@ function Header({ setdark, dark }) {
                                             Logout
                                         </div>
                                         <div>
-
                                             <div>
                                                 {status === "loading" && "loading"}
                                                 {session?.user?.name}

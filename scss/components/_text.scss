@@ -3,7 +3,6 @@
 .large-text {
     font-size: 2rem !important;
     font-weight: 650;
-    text-align: center;
     @include xsBreakPoint {
         font-size: 1.2rem !important;
     }
@@ -27,9 +26,20 @@
 }
 
 .small-light-text-grey {
-    font-weight: 400;
+    font-weight: 600;
+    font-size: 1.2rem;
     @include themed() {
         color: t($textgreylight);
+    }
+}
+
+.profile-text-sizes {
+    font-size: 1.6rem;
+    font-weight: 600;
+    display:flex;
+
+    @include themed() {
+        color: t($textgreyblack);
     }
 }
 
@@ -122,8 +132,11 @@
 
 // medium text size
 
-
-.nav-link
-{
-    font-size:1rem !important;
+// theme change
+.text-change-grey {
+    @include themed() {
+        color: t($textgreyblack);
+    }
 }
+
+

@@ -1,14 +1,11 @@
 import React from 'react'
+import LayoutHeader from '../../../src/components/Layoutheader/LayoutHeader';
 import Explore from './../../../src/components/middleheaderchilderns/explore/Explore';
-
-
-
-
-function index({dark,setdark}) {
+function index({ dark, setdark }) {
     return (
-        <div>
-            <Explore setdark={setdark} dark={dark} />
-        </div>
+        <LayoutHeader setdark={setdark} dark={dark} title="Explore">
+            <Explore  />
+        </LayoutHeader>
     )
 }
 

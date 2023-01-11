@@ -4,7 +4,7 @@ import Shippingcart from '../../src/components/shippingcart/Shippingcart'
 function index() {
   return (
     <div>
-        <Shippingcart/>
+      <Shippingcart />
     </div>
   )
 }

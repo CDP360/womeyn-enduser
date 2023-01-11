@@ -97,7 +97,7 @@ function Beverage() {
                 <div className='cardsection row justify-content-center  w-100  mb-3 ms-1'>
                     {data?.map((item, index) => {
                         return (
-                            <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 col-xl-12 ' key={index} onClick={() => router.push(`/womeyn/womenpreneurs/search/${item?.name}`)}>
+                            <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 col-xl-12 ' key={index} onClick={() => router.push(`/womeyn/womenpreneurs/product/view/${item?.name?.slice(0,10)}`)}>
                                 <div className={styles.plussection}>
                                     <Image src={plus} alt="no image" className={styles.plus} />
                                 </div>

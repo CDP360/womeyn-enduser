@@ -1,11 +1,12 @@
 import React from 'react'
+import LayoutHeader from '../../../src/components/Layoutheader/LayoutHeader'
 import Womenpreneurs from '../../../src/components/middleheaderchilderns/ourwomenpreneurs/Womenpreneurs'
 
-function index() {
+function index({ dark, setdark }) {
     return (
-        <div>
+        <LayoutHeader dark={dark} setdark={setdark} title="womeynpreneurs">
             <Womenpreneurs />
-        </div>
+        </LayoutHeader>
     )
 }
 

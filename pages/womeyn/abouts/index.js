@@ -1,13 +1,14 @@
 import React from 'react'
+import LayoutHeader from '../../../src/components/Layoutheader/LayoutHeader';
 import Aboutus from './../../../src/components/middleheaderchilderns/abouts/Aboutus';
 
 
 
-function index({dark,setdark}) {
+function index({ dark, setdark }) {
     return (
-        <div>
-           <Aboutus setdark={setdark} dark={dark}/>
-        </div>
+        <LayoutHeader setdark={setdark} dark={dark} title="Aboutus">
+            <Aboutus />
+        </LayoutHeader>
     )
 }
 

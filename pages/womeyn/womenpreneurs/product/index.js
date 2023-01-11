@@ -1,13 +1,14 @@
 import React from 'react'
+import LayoutHeader from '../../../../src/components/Layoutheader/LayoutHeader'
 import Womenpreneusdetails from '../../../../src/components/middleheaderchilderns/ourwomenpreneurs/component/womenpreneursdetails/Womenpreneusdetails'
 
 
 
-function index() {
+function index({ dark, setdark }) {
     return (
-        <div>
+        <LayoutHeader title="product" dark={dark} setdark={setdark}>
             <Womenpreneusdetails />
-        </div>
+        </LayoutHeader>
     )
 }
 

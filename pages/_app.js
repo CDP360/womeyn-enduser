@@ -8,9 +8,7 @@ import { ToastContainer, } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-loading-skeleton/dist/skeleton.css'
 import Cookies from 'js-cookie';
-import LayoutHeader from '../src/components/Layoutheader/LayoutHeader';
 import { SessionProvider } from "next-auth/react";
-import Scrollbutton from '../src/components/scrollbutton/Scrollbutton';
 function App({ Component, pageProps }) {
   const [dark, setDark] = useState(false);
   useEffect(() => {
@@ -27,14 +25,7 @@ function App({ Component, pageProps }) {
           <SessionProvider session={pageProps.session}>
             <Provider store={store}>
               <ToastContainer />
-              <div className='inside-main-apphome'>
-                <div className='header-appsection'>
-                  <LayoutHeader setdark={setDark} dark={dark}></LayoutHeader>
-                </div>
-                <div className='body-section-app'>
-                  <Component {...pageProps} />
-                </div>
-              </div>
+              <Component {...pageProps} setdark={setDark} dark={dark} />
             </Provider>
           </SessionProvider>
         </StrictMode>

@@ -1,12 +1,12 @@
 import React, { Fragment, useState } from 'react'
-import styles from './styles/Womensearch.module.scss';
+import styles from './styles/Womenview.module.scss';
 import product1 from '../../../../../assests/womeynlogos/i1.png';
 import product2 from '../../../../../assests/womeynlogos/i2.png';
 import product3 from '../../../../../assests/womeynlogos/i3.png';
 import product4 from '../../../../../assests/womeynlogos/i4.png';
 import Image from 'next/image';
 
-function Womensearch({ id }) {
+function Viewproduct({ id }) {
     const [indexs, setIndex] = useState(0);
     const data =
     {
@@ -51,4 +51,4 @@ function Womensearch({ id }) {
     )
 }
 
-export default Womensearch
+export default Viewproduct

@@ -62,6 +62,8 @@ function Womenpreneusdetails({ id }) {
     ]
     return (
         <Fragment >
+
+
             {/* <button onClick={() => router.push("/login?redirect=/shipping")}>
                 Check out
             </button>
@@ -124,13 +126,11 @@ function Womenpreneusdetails({ id }) {
                                 <Healthbars />
                             </div>}
                         </div>
-
                         <div>
                             {indexs === 3 && <div>
                                 <Baking />
                             </div>}
                         </div>
-
                         <div>
                             {indexs === 4 && <div>
                                 <Sweets />
@@ -140,12 +140,7 @@ function Womenpreneusdetails({ id }) {
                     </div>
                 </div>
 
-                <div>
-                    <Signupnewsletter />
-                </div>
-                <div>
-                    <Footer />
-                </div>
+               
 
 
             </div>

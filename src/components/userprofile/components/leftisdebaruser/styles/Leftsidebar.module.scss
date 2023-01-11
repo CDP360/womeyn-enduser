@@ -1,0 +1,72 @@
+@use "../../../../../../scss/abstract/" as *;
+
+.leftsidebarsection {
+    width: 100%;
+    .balancesection {
+        width: 100%;
+        .imageshowsection {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            .smallimageuser {
+                width: 70px;
+                height: 70px;
+                background-color: #c4c4c4;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    .imageshowsection1 {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        // align-items: center;
+        height: 100%;
+        padding-top: 10%;
+        .leftbalance {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .rightsection {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding-top: 2%;
+        }
+    }
+
+    .bordertopsectionleftsidebar {
+        padding-top: 7%;
+        .bordertopinbalance {
+            border: 0.78px solid #9f9f9f;
+        }
+    }
+    .dropdownsection {
+        width: 100%;
+        padding-top: 4%;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        cursor: pointer;
+        .transactionsize
+        {
+            font-size:1.2rem;
+            font-weight:590;
+        }
+        
+    }
+    .gapsectiondropdown
+    {
+        display:flex;
+        flex-direction: column;
+        gap:12px;
+        padding-top:4%;
+        cursor: pointer;
+        
+    }
+}

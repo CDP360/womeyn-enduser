@@ -1,0 +1,61 @@
+@use "../../../../../../scss/abstract/" as *;
+
+.mainprofileeditsection {
+    width: 100%;
+    .splitprofilesection {
+        width: 100%;
+        display: flex;
+        padding-top: 4%;
+        .leftprofilesection {
+            width: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+            .imageround {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                background-color: #c4c4c4;
+            }
+            .editbutton {
+                width: 120px;
+            }
+        }
+        .rightprofilesection {
+            width: 70%;
+            height: 100%;
+
+            .gapsectiontext {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                .userdetailssection {
+                    display: flex;
+                    .lefttextuser {
+                        width: 40%;
+                    }
+                    .righttextuser {
+                        width: 60%;
+                        display: flex;
+                        align-items: center;
+                        word-break: keep-all;
+                        gap:10px;
+                        .addactive {
+                            color: $emptybox-right--light;
+                            font-weight: 600;
+                            font-size: 1.2rem;
+                            cursor: pointer;
+                        }
+                        .textsizeuser {
+                            font-size: 1.3rem;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

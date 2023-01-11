@@ -100,3 +100,52 @@
     background: red;
     border-radius: 50%;
 }
+
+.edit-btn {
+    width: 100%;
+    color: #e95a5a !important;
+    background-color: white !important;
+    border: 1px solid #e95a5a !important;
+    background: transparent !important;
+    cursor: pointer;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    font-size: 1.3rem !important;
+    @include xsBreakPoint {
+        width: 100% !important;
+    }
+    @include smBreakPoint {
+        width: 100% !important;
+    }
+    @include mdBreakPoint {
+        width: 100% !important;
+    }
+    @include lgBreakPoint {
+        width: 100% !important;
+    }
+    @include xlBreakPoint {
+        width: 100% !important;
+    }
+}
+.edit-btn:hover {
+    background-color: #e95a5a !important;
+    cursor: pointer;
+    color: white !important;
+}
+
+// verified button section start
+
+.verify {
+    background: rgba(69, 110, 214, 0.1);
+    border-radius: 7px;
+    color: #e95a5a;
+    padding: 3px 0px;
+    border-radius: 10px;
+    width: 60% !important;
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+// verified button section end

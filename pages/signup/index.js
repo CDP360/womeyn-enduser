@@ -1,11 +1,12 @@
 import React from 'react'
+import LayoutHeader from '../../src/components/Layoutheader/LayoutHeader'
 import Signup from '../../src/components/signup/Signup'
 
-function index() {
+function index({dark,setdark}) {
     return (
-        <div>
+        <LayoutHeader title="women-signup" setdark={setdark} dark={dark}>
             <Signup />
-        </div>
+        </LayoutHeader>
     )
 }
 

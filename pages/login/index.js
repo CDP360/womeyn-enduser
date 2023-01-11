@@ -1,13 +1,13 @@
 
 import React from 'react'
 import Login from '../../src/components/login/Login'
+import LayoutHeader from './../../src/components/Layoutheader/LayoutHeader';
 
-function index() {
-
+function index({ dark, setdark }) {
     return (
-        <div>
-            <Login  />
-        </div>
+        <LayoutHeader title="women-login" setdark={setdark} dark={dark}>
+            <Login />
+        </LayoutHeader>
     )
 }
 
