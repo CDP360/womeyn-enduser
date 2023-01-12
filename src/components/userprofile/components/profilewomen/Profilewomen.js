@@ -26,7 +26,6 @@ function Profilewomen({ edits }) {
                                         kalai
                                     </div>
                                 </div>
-
                             </div>
                             <div className={styles.userdetailssection}>
                                 <div className={styles.lefttextuser}>
@@ -62,7 +61,6 @@ function Profilewomen({ edits }) {
                                 <div className={styles.righttextuser}>
                                     <div className={styles.textsizeuser}>
                                         kalaimca685@gmail.com
-
                                     </div>
                                     <div className='verify'>
                                         Verified

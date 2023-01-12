@@ -27,19 +27,26 @@
 
 .small-light-text-grey {
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1.1234rem;
     @include themed() {
         color: t($textgreylight);
+    }
+    @include xsBreakPoint
+    {
+        font-size:0.868rem;
     }
 }
 
 .profile-text-sizes {
     font-size: 1.6rem;
     font-weight: 600;
-    display:flex;
+    display: flex;
 
     @include themed() {
         color: t($textgreyblack);
+    }
+    @include lgBreakPoint {
+        font-size: 1.2rem;
     }
 }
 
@@ -138,5 +145,3 @@
         color: t($textgreyblack);
     }
 }
-
-

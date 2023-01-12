@@ -1,23 +1,25 @@
 import React, { Fragment, useState } from 'react'
 import styles from './styles/Leftsidebar.module.scss';
 import bank from '../../../../assests/womeynlogos/bankcase.png';
-
 import Image from 'next/image';
-function Leftsidebaruser() {
-
+function Leftsidebaruser({ indexsidebar,setShow }) {
     const [dropdown1, setDropdown1] = useState(false);
     const [dropdown2, setDropdown2] = useState(false);
     const [dropdown3, setDropdown3] = useState(false);
-
-
     return (
         <Fragment>
             <div className={styles.leftsidebarsection}>
                 <div className={styles.balancesection}>
                     <div className={styles.imageshowsection}>
-                        <div className={styles.smallimageuser}>
+                        <div className={styles.smallimageuser} onClick={() => {
+                            indexsidebar(0)
+                            setShow(false)
+                            }}>
                         </div>
-                        <div>
+                        <div onClick={() => {
+                            indexsidebar(0)
+                            setShow(false)
+                            }}>
                             <div className='profile-text-sizes'>
                                 kalaiNazriya
                             </div>
@@ -27,11 +29,10 @@ function Leftsidebaruser() {
                         </div>
                     </div>
                 </div>
-
                 <div className={styles.imageshowsection1}>
                     <div className={styles.leftbalance}>
                         <div className='profile-text-sizes'>
-                            <Image src={bank} alt="no image" width={35} height={35} />
+                            <Image src={bank} alt="no image" className={styles.balanceimage} />
                             &nbsp; Balance
                         </div>
                     </div>
@@ -57,8 +58,8 @@ function Leftsidebaruser() {
                     {dropdown1 ? <ion-icon name="chevron-up-outline" className="ion-icon" onClick={() => setDropdown1(!dropdown1)}></ion-icon> : <ion-icon name="chevron-down-outline" className="ion-icon" onClick={() => setDropdown1(!dropdown1)}></ion-icon>}
                 </div>
                 {dropdown1 && <div className={styles.gapsectiondropdown}>
-                    <div>Pending transactions</div>
-                    <div>All transaction</div>
+                    <div onClick={() => indexsidebar(1)}>Pending transactions</div>
+                    <div onClick={() => indexsidebar(2)}>All transaction</div>
                 </div>}
 
                 <div className={styles.bordertopsectionleftsidebar}>
@@ -66,7 +67,6 @@ function Leftsidebaruser() {
                     </div>
                 </div>
                 <div className={styles.dropdownsection} onClick={() => {
-
                     setDropdown2(!dropdown2)
                     setDropdown1(false)
                     setDropdown3(false)
@@ -75,13 +75,11 @@ function Leftsidebaruser() {
                     {dropdown2 ? <ion-icon name="chevron-up-outline" className="ion-icon" onClick={() => setDropdown2(!dropdown2)}></ion-icon> : <ion-icon name="chevron-down-outline" className="ion-icon" onClick={() => setDropdown2(!dropdown2)}></ion-icon>}
                 </div>
                 {dropdown2 && <div className={styles.gapsectiondropdown}>
-                    <div>Ongoing Orders</div>
-                    <div>All Orders</div>
-                    <div>Reviews</div>
-                    <div>Customer help</div>
-
+                    <div onClick={() => indexsidebar(3)}>Ongoing Orders</div>
+                    <div onClick={() => indexsidebar(4)}>All Orders</div>
+                    <div onClick={() => indexsidebar(5)}>Reviews</div>
+                    <div onClick={() => indexsidebar(6)}>Customer help</div>
                 </div>}
-
                 <div className={styles.bordertopsectionleftsidebar}>
                     <div className={styles.bordertopinbalance}>
                     </div>
@@ -95,9 +93,9 @@ function Leftsidebaruser() {
                     {dropdown3 ? <ion-icon name="chevron-up-outline" className="ion-icon" onClick={() => setDropdown3(!dropdown3)}></ion-icon> : <ion-icon name="chevron-down-outline" className="ion-icon" onClick={() => setDropdown3(!dropdown3)}></ion-icon>}
                 </div>
                 {dropdown3 && <div className={styles.gapsectiondropdown}>
-                    <div>Wishlist</div>
-                    <div>Recently viewed</div>
-                    <div>Review</div>
+                    <div onClick={() => indexsidebar(7)}>Wishlist</div>
+                    <div onClick={() => indexsidebar(8)}>Recently viewed</div>
+                    <div onClick={() => indexsidebar(9)}>Review</div>
                 </div>}
             </div>
         </Fragment>

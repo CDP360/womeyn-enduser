@@ -6,6 +6,9 @@
         width: 100%;
         display: flex;
         padding-top: 4%;
+        @include xsBreakPoint {
+            flex-direction: column;
+        }
         .leftprofilesection {
             width: 30%;
             display: flex;
@@ -14,20 +17,38 @@
             flex-direction: column;
             gap: 20px;
             height: 100%;
+            @include xsBreakPoint {
+                width: 100%;
+            }
             .imageround {
                 width: 150px;
                 height: 150px;
                 border-radius: 50%;
                 background-color: #c4c4c4;
+                @include lgBreakPoint {
+                    width: 100px;
+                    height: 100px;
+                }
             }
             .editbutton {
                 width: 120px;
+                @include xsBreakPoint {
+                    width: 140px !important;
+                    padding: 3px 0px !important;
+                }
+                @include lgBreakPoint {
+                    width: 100px !important;
+                    padding: 4px 0px !important;
+                }
             }
         }
         .rightprofilesection {
             width: 70%;
             height: 100%;
-
+            @include xsBreakPoint {
+                width: 100%;
+                padding-top: 6%;
+            }
             .gapsectiontext {
                 display: flex;
                 flex-direction: column;
@@ -36,13 +57,20 @@
                     display: flex;
                     .lefttextuser {
                         width: 40%;
+                        @include xsBreakPoint {
+                            width: 100%;
+                        }
                     }
                     .righttextuser {
                         width: 60%;
                         display: flex;
-                        align-items: center;
+                        // align-items: center;
                         word-break: keep-all;
-                        gap:10px;
+                        gap: 10px;
+                        @include xsBreakPoint {
+                            width: 100%;
+                            flex-direction: column;
+                        }
                         .addactive {
                             color: $emptybox-right--light;
                             font-weight: 600;
@@ -50,8 +78,11 @@
                             cursor: pointer;
                         }
                         .textsizeuser {
-                            font-size: 1.3rem;
+                            font-size: 1.1rem;
                             font-weight: 500;
+                            @include xsBreakPoint {
+                                font-size: 0.765rem;
+                            }
                         }
                     }
                 }

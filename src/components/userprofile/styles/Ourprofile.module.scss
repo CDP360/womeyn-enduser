@@ -2,23 +2,25 @@
 
 .mainuserprofilesection {
     width: 100%;
-    //   border:2px solid red;
     padding-bottom: 5%;
     .insideprofilesection {
-        width: 75%;
+        width: 76%;
         margin: 0 auto;
         display: flex;
         gap: 30px;
         @include xsBreakPoint {
             width: 85%;
             padding-top: 6%;
+            flex-direction: column;
         }
         @include smBreakPoint {
             width: 85%;
             padding-top: 6%;
+            flex-direction: column;
         }
         @include mdBreakPoint {
             width: 85%;
+            flex-direction: column;
         }
         @include lgBreakPoint {
             width: 89%;
@@ -29,10 +31,30 @@
         .leftsidebarprofile {
             width: 27%;
             height: 100%;
+            @include xsBreakPoint {
+                width: 100%;
+            }
+            @include smBreakPoint {
+                width: 100%;
+            }
+            @include mdBreakPoint {
+                width: 70%;
+                margin:0 auto;
+            }
         }
         .rightbodyprofilesection {
             width: 73%;
             height: 100%;
+            @include xsBreakPoint {
+                width: 100%;
+            }
+            @include smBreakPoint {
+                width: 100%;
+            }
+           @include mdBreakPoint {
+                width: 100%;
+                margin:0 auto;
+            }
             .profileheadersection {
                 width: 100%;
                 border-bottom: 1px solid #9f9f9f;
@@ -43,14 +65,14 @@
                 .profiletext {
                     color: grey;
                     font-weight: 500;
-                    font-size: 1.3rem;
+                    font-size: 1.2rem;
                 }
             }
             .activecode {
                 border-bottom: 5px solid red;
                 width: auto;
                 padding-bottom: 1.2%;
-                font-size: 1.3rem;
+                font-size: 1.2rem;
                 font-weight: 600;
                 @include themed() {
                     background: t($card);

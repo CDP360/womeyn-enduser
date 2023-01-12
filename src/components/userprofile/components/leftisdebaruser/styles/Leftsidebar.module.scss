@@ -29,6 +29,33 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            @include lgBreakPoint
+            {
+                width:100%;
+            }
+            @include xlBreakPoint
+            {
+                width:100%;
+            }
+            @include xxlBreakPoint
+            {
+                width:100%;
+            }
+            .balanceimage
+            {
+                width:30px;
+                height:30px;
+                @include lgBreakPoint
+                {
+                    width:38px;
+                    height:auto;
+                }
+                @include xlBreakPoint
+                {
+                    width:38px;
+                    height:auto;
+                }
+            }
         }
         .rightsection {
             width: 50%;
