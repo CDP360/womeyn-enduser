@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import styles from './styles/Leftsidebar.module.scss';
 import bank from '../../../../assests/womeynlogos/bankcase.png';
 import Image from 'next/image';
-function Leftsidebaruser({ indexsidebar,setShow }) {
+function Leftsidebaruser({ indexsidebar,setShow ,indexcheck}) {
     const [dropdown1, setDropdown1] = useState(false);
     const [dropdown2, setDropdown2] = useState(false);
     const [dropdown3, setDropdown3] = useState(false);
@@ -58,8 +58,8 @@ function Leftsidebaruser({ indexsidebar,setShow }) {
                     {dropdown1 ? <ion-icon name="chevron-up-outline" className="ion-icon" onClick={() => setDropdown1(!dropdown1)}></ion-icon> : <ion-icon name="chevron-down-outline" className="ion-icon" onClick={() => setDropdown1(!dropdown1)}></ion-icon>}
                 </div>
                 {dropdown1 && <div className={styles.gapsectiondropdown}>
-                    <div onClick={() => indexsidebar(1)}>Pending transactions</div>
-                    <div onClick={() => indexsidebar(2)}>All transaction</div>
+                    <div onClick={() => indexsidebar(1)} className={`${indexcheck===1 ?"active":""}`}>Pending transactions</div>
+                    <div onClick={() => indexsidebar(2)} className={`${indexcheck===2 ?"active":""}`}>All transaction</div>
                 </div>}
 
                 <div className={styles.bordertopsectionleftsidebar}>
@@ -75,10 +75,10 @@ function Leftsidebaruser({ indexsidebar,setShow }) {
                     {dropdown2 ? <ion-icon name="chevron-up-outline" className="ion-icon" onClick={() => setDropdown2(!dropdown2)}></ion-icon> : <ion-icon name="chevron-down-outline" className="ion-icon" onClick={() => setDropdown2(!dropdown2)}></ion-icon>}
                 </div>
                 {dropdown2 && <div className={styles.gapsectiondropdown}>
-                    <div onClick={() => indexsidebar(3)}>Ongoing Orders</div>
-                    <div onClick={() => indexsidebar(4)}>All Orders</div>
-                    <div onClick={() => indexsidebar(5)}>Reviews</div>
-                    <div onClick={() => indexsidebar(6)}>Customer help</div>
+                    <div onClick={() => indexsidebar(3)} className={`${indexcheck===3 ?"active":""}`}>Ongoing Orders</div>
+                    <div onClick={() => indexsidebar(4)} className={`${indexcheck===4 ?"active":""}`}>All Orders</div>
+                    <div onClick={() => indexsidebar(5)} className={`${indexcheck===5 ?"active":""}`}>Reviews</div>
+                    <div onClick={() => indexsidebar(6)} className={`${indexcheck===6 ?"active":""}`}>Customer help</div>
                 </div>}
                 <div className={styles.bordertopsectionleftsidebar}>
                     <div className={styles.bordertopinbalance}>
@@ -93,9 +93,9 @@ function Leftsidebaruser({ indexsidebar,setShow }) {
                     {dropdown3 ? <ion-icon name="chevron-up-outline" className="ion-icon" onClick={() => setDropdown3(!dropdown3)}></ion-icon> : <ion-icon name="chevron-down-outline" className="ion-icon" onClick={() => setDropdown3(!dropdown3)}></ion-icon>}
                 </div>
                 {dropdown3 && <div className={styles.gapsectiondropdown}>
-                    <div onClick={() => indexsidebar(7)}>Wishlist</div>
-                    <div onClick={() => indexsidebar(8)}>Recently viewed</div>
-                    <div onClick={() => indexsidebar(9)}>Review</div>
+                    <div onClick={() => indexsidebar(7)} className={`${indexcheck===7 ?"active":""}`}>Wishlist</div>
+                    <div onClick={() => indexsidebar(8)} className={`${indexcheck===8 ?"active":""}`}>Recently viewed</div>
+                    <div onClick={() => indexsidebar(9)} className={`${indexcheck===9 ?"active":""}`}>Review</div>
                 </div>}
             </div>
         </Fragment>

@@ -13,7 +13,9 @@ import Skeleton from 'react-loading-skeleton';
 import Childfooter from '../../footer/Childfooter';
 import { useRouter } from 'next/router';
 import girl from '../../../assests/womeynlogos/girl4.png';
-function Womenpreneurs() {
+
+
+function Womenpreneurs() {    
     const router = useRouter();
     const [data, setData] = useState([]);
     const [search, setSearch] = useState("");
@@ -29,6 +31,8 @@ function Womenpreneurs() {
     const handlepush = (id) => {
         router.push(`/womeyn/womenpreneurs/product/${id}`);
     }
+
+
     return (
         <Fragment>
             {/* <div className={styles.mainwomenpre}>
@@ -143,26 +147,26 @@ function Womenpreneurs() {
                         </div>
                     </div>
                     <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
-                            {data?.filter((itemsed) => {
-                                if (itemsed.title.toLowerCase().includes(search) || itemsed.category.includes(search)) {
-                                    return itemsed
-                                }
-                            }).map((item, index) => {
-                                return (
-                                    <div className='cards mt-1 mb-2' key={index} onClick={() => handlepush(item?.title.slice(0,5))}>
-                                        <div>
-                                            <Image src={girl} alt="no image" className={styles.sellerimagesize} />
-                                        </div>
-                                        <div className='womentitle'>
-                                            {item?.title.slice(0, 10)}
-                                        </div>
-                                        <div className='womendescription'>
-                                            {item?.description.slice(0, 5)}
-                                        </div>
+                        {data?.filter((itemsed) => {
+                            if (itemsed.title.toLowerCase().includes(search) || itemsed.category.includes(search)) {
+                                return itemsed
+                            }
+                        }).map((item, index) => {
+                            return (
+                                <div className='cards mt-1 mb-2' key={index} onClick={() => handlepush(item?.title.slice(0, 5))}>
+                                    <div>
+                                        <Image src={girl} alt="no image" className={styles.sellerimagesize} />
                                     </div>
-                                )
-                            })}
-                        </div>
+                                    <div className='womentitle'>
+                                        {item?.title.slice(0, 10)}
+                                    </div>
+                                    <div className='womendescription'>
+                                        {item?.description.slice(0, 5)}
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
 

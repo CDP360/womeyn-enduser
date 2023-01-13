@@ -12,8 +12,10 @@ import Baking from '../baking/Baking';
 import Sweets from '../sweets/Sweets';
 import Footer from '../../../../footer/Footer';
 import Signupnewsletter from '../../../../home/components/signupfornewsletter/Signupnewsletter';
+
 function Womenpreneusdetails({ id }) {
     const router = useRouter();
+
     const [productlist, setProductList] = useState([]);
     const [indexs, setIndexs] = useState(0);
     useEffect(() => {
@@ -24,6 +26,8 @@ function Womenpreneusdetails({ id }) {
         })
 
     }, [indexs])
+
+
 
     const handlechnagedata = (id) => {
         setIndexs(id);

@@ -9,10 +9,25 @@ import star from '../../../../../assests/homepage-logos/stars.png';
 import Image from 'next/image';
 import plus from '../../../../../assests/womeynlogos/plus.png';
 import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from 'react-redux';
+import { Cartactions } from '../../../../../Redux/actions/cart/Cartdata';
 
 function Beverage() {
 
+
+    const dispatch=useDispatch();
+    
     const router = useRouter();
+
+    const Carthandleproduct = (data) => {
+        dispatch(Cartactions(data));
+    }
+
+    const state=useSelector(state=>state);
+
+    console.log('====================================');
+    console.log("kalai",state);
+    console.log('====================================');
     const data = [
         {
             id: 1,
@@ -97,14 +112,14 @@ function Beverage() {
                 <div className='cardsection row justify-content-center  w-100  mb-3 ms-1'>
                     {data?.map((item, index) => {
                         return (
-                            <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 col-xl-12 ' key={index} onClick={() => router.push(`/womeyn/womenpreneurs/product/view/${item?.name?.slice(0,10)}`)}>
+                            <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 col-xl-12 ' key={index} >
                                 <div className={styles.plussection}>
-                                    <Image src={plus} alt="no image" className={styles.plus} />
+                                    <Image src={plus} alt="no image" className={styles.plus} onClick={()=>Carthandleproduct(item)}/>
                                 </div>
-                                <div>
+                                <div onClick={() => router.push(`/womeyn/womenpreneurs/product/view/${item?.name?.slice(0, 10)}`)}>
                                     <Image src={item?.image} alt="no image" className={styles.sellerimagesize} />
                                 </div>
-                                <div className={styles.cardinsidesection}>
+                                <div className={styles.cardinsidesection} onClick={() => router.push(`/womeyn/womenpreneurs/product/view/${item?.name?.slice(0, 10)}`)}>
                                     <Image src={item?.star} alt="no image" className={styles.stars} />
                                     <div className={styles.brandname}>
                                         <span>{item?.name}</span>

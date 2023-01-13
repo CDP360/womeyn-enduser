@@ -25,7 +25,7 @@ function Ourprofile() {
       <div className={styles.mainuserprofilesection}>
         <div className={styles.insideprofilesection}>
           <div className={styles.leftsidebarprofile}>
-            <Leftsidebaruser indexsidebar={setIndexsidebar} setShow={setShow}/>
+            <Leftsidebaruser indexsidebar={setIndexsidebar} setShow={setShow} indexcheck={indexsidebar}/>
           </div>
           <div className={styles.rightbodyprofilesection}>
             {indexsidebar === 0 && (

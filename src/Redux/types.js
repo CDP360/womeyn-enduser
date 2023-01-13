@@ -22,3 +22,12 @@ export const THEME_SUCCESS = "THEME_SUCCESS";
 export const THEME_ERROR = "THEME_ERROR";
 
 // LOGIN TYPES END
+
+
+// LOGIN TYPES START
+
+export const CART_LOADING = "CART_LOADING";
+export const CART_SUCCESS = "CART_SUCCESS";
+export const CART_ERROR = "CART_ERROR";
+
+// LOGIN TYPES END

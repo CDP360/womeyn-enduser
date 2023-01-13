@@ -1,0 +1,72 @@
+@use "../../../../scss/abstract/" as *;
+
+.maintermsandconditions {
+    width: 100%;
+    position: relative;
+    .emptyrightsectionbox {
+        position: absolute;
+        top: -10%;
+        right: 0;
+        width: 23%;
+        height: 23%;
+        background: #e95a5a;
+        opacity: 0.178;
+        filter: blur(329px);
+    }
+    .emptyleftsectionbox {
+        position: absolute;
+        top: 45%;
+        left: 0;
+        width: 15%;
+        height: 45%;
+        background: #fecf9d;
+        opacity: 0.2;
+        filter: blur(239.825px);
+    }
+    .emptybottomsectionbox {
+        position: absolute;
+        bottom: -20%;
+        right: 0;
+        width: 16%;
+        height: 25%;
+        background: #415b91;
+        opacity: 0.178;
+        filter: blur(329px);
+    }
+    .insidetermsandconditions {
+        width: 75%;
+        margin: 0 auto;
+        @include xsBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include smBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include mdBreakPoint {
+            width: 85%;
+        }
+        @include lgBreakPoint {
+            width: 89%;
+        }
+        @include xlBreakPoint {
+            width: 85%;
+        }
+        .letterspaceterms {
+            line-height: 2;
+            @include xsBreakPoint {
+                font-size: 0.897rem;
+            }
+            @include smBreakPoint {
+                font-size: 0.897rem;
+            }
+            @include mdBreakPoint {
+                font-size: 0.9rem;
+            }
+            @include lgBreakPoint {
+                font-size: 0.901rem;
+            }
+        }
+    }
+}

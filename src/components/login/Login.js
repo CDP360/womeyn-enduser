@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { useSession, signIn, signOut } from "next-auth/react"
 import { toast } from 'react-toastify';
+import { LoginText } from "./const/Consttext";
 function Login() {
 
     const { data: session } = useSession();
@@ -51,7 +52,7 @@ function Login() {
                 <div>{/* <LayoutHeader/> */}</div>
                 <div className={styles.insidesectionlogin}>
                     <div className={styles.insideloginsplit}>
-                        <div className={styles.logintext}>Login</div>
+                        <div className={styles.logintext}>{LoginText?.Login}</div>
                         <div>
                             <Form onSubmit={handleSubmit(onSubmit)}>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -66,7 +67,7 @@ function Login() {
                                                 message: "invalid email address"
                                             },
                                         })}
-                                      
+
                                     />
                                     {errors.email && <span className="active">{errors.email.message}</span>}
                                 </Form.Group>
@@ -87,13 +88,13 @@ function Login() {
                                     {errors.password && <span className="active">{errors.password.message}</span>}
                                 </Form.Group>
 
-                                <div className={styles.forgetpassword}>Forgot password?</div>
+                                <div className={styles.forgetpassword}>{LoginText?.Forgotpassword}</div>
                                 <Button className="loginbutton" type="submit">
                                     {" "}
-                                    Login
+                                    {LoginText?.Login}
                                 </Button>
                             </Form>
-                            <div className="text-center mt-3 mb-4">or login with</div>
+                            <div className="text-center mt-3 mb-4">orloginwith</div>
                             <div className={styles.socialloginbutton}>
                                 <div>
                                     <Image
@@ -102,7 +103,7 @@ function Login() {
                                         className={styles.googleiconsectionlogin}
                                     />
                                 </div>
-                                <div>Google</div>
+                                <div>{LoginText?.Google}</div>
                             </div>
                             <div className={styles.socialloginbutton}>
                                 <div>
@@ -112,15 +113,15 @@ function Login() {
                                         className={styles.googleiconsectionlogin}
                                     />
                                 </div>
-                                <div>Facebook</div>
+                                <div>{LoginText?.Facebook}</div>
                             </div>
                             <div className="text-center">
-                                Don’t have an account?{" "}
+                                {LoginText?.Donthaveanaccount}
                                 <span
                                     className="active"
                                     onClick={() => history.push("/signup")}
                                 >
-                                    Sign up
+                                    {LoginText?.Signup}
                                 </span>
                             </div>
                         </div>
