@@ -1,5 +1,5 @@
 
-import { CART_ERROR, CART_LOADING, CART_SUCCESS } from '../../types';
+import { CART_SUCCESS,CART_DELETE } from '../../types';
 
 
 const initialState = {
@@ -7,23 +7,24 @@ const initialState = {
     error: "",
     loading: false,
 }
+
 const Cart_Reducer = (state = initialState, action) => {
     switch (action.type) {
-        case CART_LOADING:
-            return {
-                error: "",
-                loading: true
-            }
+
         case CART_SUCCESS:
 
             return {
                 ...state,
-                cartitems: window.localStorage.setItem("Cart", JSON.stringify([...state.cartitems, action.payload])) ? [...state.cartitems, action.payload] : [...state.cartitems, action.payload]
+                cartitems: window.localStorage.getItem("Cart") ? JSON.parse(window.localStorage.getItem("Cart")) : []
             }
-        case CART_ERROR:
+        case CART_DELETE:
+            const filter = state.cartitems.filter((item) => item.id !== action.payload);
+            console.log('====================================');
+            console.log("kalai123",filter);
+            console.log('====================================');
             return {
-
-                error: action.payload
+                ...state,
+                cartitems: filter,
             }
         default:
             return state;

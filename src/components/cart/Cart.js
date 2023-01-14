@@ -1,15 +1,28 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { CartActionDelete } from '../../Redux/actions/cart/Cartdata';
 import styles from './styles/Cart.module.scss';
 function Cart() {
+
+  const dispatch=useDispatch();
   const [price, setPrice] = useState(0);
   const [showlocal,setLocalData]=useState([]);
 
   const state = useSelector((state) => state.cart.cartitems);
   useEffect(() => {
     TotalPrice();
-    const CartShowData=window.localStorage.getItem("Cart");
-    setLocalData(JSON.parse(CartShowData))
+  const sample=JSON.parse(localStorage.getItem("Cart")); 
+
+  if(localStorage.getItem("Cart"))
+  {
+  const sample=JSON.parse(localStorage.getItem("Cart")); 
+  setLocalData(sample);
+  }
+  else
+  {
+    return [];
+  }
+
   }, [price])
 
   const TotalPrice = () => {
@@ -20,7 +33,10 @@ function Cart() {
     setPrice(price);
   }
 
-  
+
+  const handleDelete=(id)=>{
+    dispatch(CartActionDelete(id));
+  }
 
   return (
     <Fragment>
@@ -31,11 +47,11 @@ function Cart() {
               Cart
             </div>
             <div>
-              {state.map((item, index) => {
+              {showlocal.map((item, index) => {
                 return (
                   <div>
                     {item.name}
-
+                    <button onClick={()=>handleDelete(item.id)}>delete</button>
                   </div>
                 )
               })}
