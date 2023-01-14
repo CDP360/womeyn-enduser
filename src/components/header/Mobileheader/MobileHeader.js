@@ -16,7 +16,7 @@ function MobileHeader({ dark, setdark }) {
     const router = useRouter();
     const state = useSelector(state => state.cart.cartitems);
 
-    const {status,data:session}=useSession();
+    const { status, data: session } = useSession();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -26,10 +26,10 @@ function MobileHeader({ dark, setdark }) {
     const Login = () => {
         router.push("/login");
     }
-    const carts=()=>{
+    const carts = () => {
         router.push("/cart")
     }
-    const profilerouter=()=>{
+    const profilerouter = () => {
         router.push("/women/profile")
     }
     return (
@@ -90,25 +90,25 @@ function MobileHeader({ dark, setdark }) {
                             </div>
                             <div className="profilesettings">
                                 <div onClick={carts}>
-                                <Image src={cart} alt="no image" className={"carticons"} />
+                                    <Image src={cart} alt="no image" className={"carticons"} />
                                     {state?.length}
                                 </div>
                                 <div onClick={profilerouter}>
-Profile
+                                    Profile
                                 </div>
                                 <div>
 
-                                <div>
-                                    {session?.user?.name ? <div onClick={logoutHandler} className={styles.cursorpointor}>
-                                        Logout
-                                    </div> : <div onClick={Login} className={styles.cursorpointor}>
-                                        Login
-                                    </div>}
-                                </div>
+                                    <div>
+                                        {session?.user?.name ? <div onClick={logoutHandler} className={styles.cursorpointor}>
+                                            Logout
+                                        </div> : <div onClick={Login} className={styles.cursorpointor}>
+                                            Login
+                                        </div>}
+                                    </div>
                                 </div>
 
                                 <div onClick={() => setdark(!dark)}>
-                                    kalai
+                                    {dark ? "Dark" : "Light"}
                                 </div>
                             </div>
 

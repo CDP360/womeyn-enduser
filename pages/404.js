@@ -19,6 +19,7 @@ function ErrorPage() {
 
                     <div className="large-text mt-4">
                         Oops!
+
                     </div>
                     <div className="small-light-text-grey mt-2 mb-5">
                         We can’t seem to find the page you are looking for
