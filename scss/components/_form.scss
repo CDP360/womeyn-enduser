@@ -4,7 +4,7 @@
     border: none;
     outline: none;
     background: #f1f1f1;
-    padding: 05px 10px;
+    padding: 10px 20px;
     border-radius: 8px;
     cursor: pointer;
     @include xsBreakPoint {
@@ -45,5 +45,5 @@
 .form-control-profile {
     border: none !important;
     background: rgba(151, 151, 151, 0.13) !important;
-    padding:10px 15px !important;
+    padding: 10px 15px !important;
 }

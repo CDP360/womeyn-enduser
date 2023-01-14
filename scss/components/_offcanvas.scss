@@ -6,7 +6,7 @@
     }
 }
 .offcanvebodysection {
-    z-index: 989898;
+    z-index: 9898989898989;
     height: auto;
     .arrowend {
         display: flex;
@@ -40,5 +40,21 @@
     .menuicons {
         width: 25px;
         height: 25px;
+    }
+    .profilesettings
+    {
+        border-top:2px solid #9F9F9F;
+        width:80%;
+        margin-left:10px;
+    }
+    .carticons {
+        width: 45px;
+        height: 45px;
+        cursor: pointer;
+    }
+    .cursorpointor
+    {
+        cursor: pointer;
+    
     }
 }

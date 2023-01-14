@@ -10,8 +10,7 @@ import Superfoods from '../superfoods/Superfoods';
 import Healthbars from '../healthbars/Healthbars';
 import Baking from '../baking/Baking';
 import Sweets from '../sweets/Sweets';
-import Footer from '../../../../footer/Footer';
-import Signupnewsletter from '../../../../home/components/signupfornewsletter/Signupnewsletter';
+
 
 function Womenpreneusdetails({ id }) {
     const router = useRouter();

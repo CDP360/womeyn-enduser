@@ -15,13 +15,19 @@ import { signOut, useSession } from "next-auth/react"
 import { useSelector } from 'react-redux';
 function Header({ setdark, dark }) {
     const router = useRouter();
-    const state = useSelector(state => state);
+    const state = useSelector(state => state.cart.cartitems);
     const { status, data: session } = useSession();
     const logoutHandler = async () => {
         await signOut({ callbackUrl: "/" });
     };
-    const userProfile=()=>{
+    const userProfile = () => {
         router.push("/women/profile")
+    }
+    const Login = () => {
+        router.push("/login");
+    }
+    const carts=()=>{
+        router.push("/cart")
     }
     return (
         <Fragment>
@@ -39,8 +45,16 @@ function Header({ setdark, dark }) {
                                 </div>
                             </div>
                             <div className={"d-flex gap-4"}>
-                                <div className={styles.falight}>
+                                <div>
+                                    {session?.user?.name ? <div onClick={logoutHandler} className={styles.cursorpointor}>
+                                        Logout
+                                    </div> : <div onClick={Login} className={styles.cursorpointor}>
+                                        Login
+                                    </div>}
+                                </div>
+                                <div className={styles.falight} onClick={carts}>
                                     <Image src={cart} alt="no image" className={styles.carticons} />
+                                    {state?.length}
                                 </div>
                                 <div className="dropdown">
                                     <div>

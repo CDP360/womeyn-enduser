@@ -37,6 +37,13 @@
     }
 }
 
+.text-grey{
+    opacity:0.5;
+    @include themed() {
+        color: t($textgreylight);
+    }
+}
+
 .profile-text-sizes {
     font-size: 1.6rem;
     font-weight: 600;

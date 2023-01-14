@@ -7,7 +7,6 @@ const initialState = {
     error: "",
     loading: false,
 }
-
 const Cart_Reducer = (state = initialState, action) => {
     switch (action.type) {
         case CART_LOADING:
@@ -16,9 +15,10 @@ const Cart_Reducer = (state = initialState, action) => {
                 loading: true
             }
         case CART_SUCCESS:
+
             return {
                 ...state,
-                cartitems: [...state.cartitems, action.payload]
+                cartitems: window.localStorage.setItem("Cart", JSON.stringify([...state.cartitems, action.payload])) ? [...state.cartitems, action.payload] : [...state.cartitems, action.payload]
             }
         case CART_ERROR:
             return {

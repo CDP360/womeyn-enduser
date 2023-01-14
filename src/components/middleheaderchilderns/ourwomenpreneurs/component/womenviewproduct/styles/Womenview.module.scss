@@ -4,57 +4,242 @@
     .insidesearchwomen {
         width: 75%;
         margin: 0 auto;
-        padding-top: 4%;
+        padding-top: 2%;
+        @include xsBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include smBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include mdBreakPoint {
+            width: 85%;
+        }
+        @include lgBreakPoint {
+            width: 89%;
+        }
+        @include xlBreakPoint {
+            width: 85%;
+        }
         .splitwomensearch {
             width: 100%;
             display: flex;
+            @include xsBreakPoint {
+                flex-direction: column;
+            }
+            @include smBreakPoint {
+                flex-direction: column;
+            }
             .leftwomensearchsection {
                 width: 50%;
-                .searchimagesectiondottos
-                {
-                   
-                    display:flex;
-                    gap:20px;
-                    position:absolute;
-                    flex-direction:column;
-                    left:-5%;
-                    .searchimagesectiondottoss
-                    {
-                        width:10px;
-                        height:10px;
-                        border-radius:50%;
-                        background:red;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                @include xsBreakPoint {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                }
+
+                .heartimagesection {
+                    position: absolute;
+                    top: 3%;
+                    cursor: pointer;
+                    left: 3%;
+                    .btn {
+                        border: none;
+                        background: transparent;
+                        color: black;
+                        font-size: 22px;
+                    }
+                }
+                .ratingsection {
+                    display: flex;
+                    align-items: center;
+
+                    gap: 30px;
+                    .star {
+                        width: 15px;
+                        height: 15px;
+                    }
+                }
+                .ratingsections {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    .star {
+                        width: 15px;
+                        height: 15px;
                     }
                 }
 
-                .activewomen {
-                    border: 2px solid #e95a5a;
-                }
                 .serachlargeimage {
                     width: 80%;
-                    height: 80%;
+                    height: 300px;
                     object-fit: cover;
-                    // overflow: hidden;
-                    margin:0 auto;
-           
-                    
-                }
-                .searchimagesection {
-                    display: flex;
-                    gap: 30px;
-                    padding-top: 2%;
-                }
-                .imagesearch {
-                    width: 100px;
-                    height: 100px;
-                    cursor: pointer;
-                    // border: 2px solid red;
-                    padding: 5px;
-                    border-radius: 5px;
+                    margin: 0 auto;
+                    border-radius: 10px;
+                    @include xsBreakPoint {
+                        width: 100%;
+                        height: auto;
+                    }
+                    @include smBreakPoint {
+                        width: 100%;
+                        height: 150px;
+                    }
+                    @include mdBreakPoint {
+                        width: 100%;
+                        height: 200px;
+                    }
                 }
             }
             .rightwomensearchsection {
                 width: 50%;
+                @include xsBreakPoint {
+                    width: 100%;
+                    padding-top: 6%;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                    padding-top: 6%;
+                }
+                .imagesearch {
+                    width: 100%;
+                    height: 100%;
+                    cursor: pointer;
+                    border-radius: 5px;
+                }
+                .activewomen {
+                    border: 2px solid #e95a5a;
+                }
+                .searchimagesections {
+                    width: 28%;
+                    padding: 10px;
+                    border-radius: 10px;
+                    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+                }
+            }
+        }
+        .insidesplitanothecart {
+            display: flex;
+            @include xsBreakPoint {
+                flex-direction: column;
+            }
+            @include smBreakPoint {
+                flex-direction: column;
+            }
+            @include mdBreakPoint {
+                flex-direction: column;
+            }
+            .leftinsideanothersection {
+                width: 50%;
+                @include xsBreakPoint {
+                    width: 100%;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                }
+                @include mdBreakPoint {
+                    width: 100%;
+                }
+                .ratingsection {
+                    display: flex;
+                    align-items: center;
+
+                    gap: 30px;
+                    .star {
+                        width: 15px;
+                        height: 15px;
+                    }
+                }
+                .ratingsections {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    .star {
+                        width: 15px;
+                        height: 15px;
+                    }
+                }
+
+                .loreamsectionproduct {
+                    width: 100%;
+                    display: flex;
+                    // border:2px solid red;
+                    flex-direction: column;
+                    gap: 10px;
+                    padding-top: 2%;
+                    .loremtextwidth {
+                        width: 70%;
+                        @include xsBreakPoint {
+                            width: 100%;
+                        }
+                        @include smBreakPoint {
+                            width: 100%;
+                        }
+                        @include mdBreakPoint {
+                            width: 100%;
+                        }
+                        @include lgBreakPoint {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            .rightinsideanothersection {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                @include xsBreakPoint {
+                    width: 100%;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                }
+                @include mdBreakPoint {
+                    width: 100%;
+                }
+                .cartaddsection {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    // border:2px solid red;
+                    gap: 20px;
+                    padding-top: 3%;
+                    .cartpricesection {
+                        display: flex;
+                        align-items: center;
+                        gap: 30px;
+                    }
+                    .addcartbutton {
+                        border: 1px solid #e95a5a;
+                        color: #e95a5a;
+                        font-weight: 700;
+                        filter: drop-shadow(0px 11px 27px rgba(192, 48, 51, 0.25));
+                        border-radius: 12px;
+                        width: 150px;
+                    }
+                    .bynowcartbutton {
+                        background: #e95a5a;
+                        box-shadow: 0px 11px 27px rgba(192, 48, 51, 0.25);
+                        width: 150px;
+                        border-radius: 12px;
+                        color: white;
+                    }
+                }
             }
         }
     }

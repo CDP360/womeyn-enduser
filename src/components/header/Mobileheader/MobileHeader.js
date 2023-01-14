@@ -1,26 +1,41 @@
 import Image from 'next/image';
 import React, { useState, Fragment } from 'react';
-import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import bar from '../../../assests/homepage-logos/bar.png';
 import styles from './styles/MobileHeader.module.scss';
 import serachicon from '../../../assests/homepage-logos/serachicon.png'
 import womeynlogo from '../../../assests/homepage-logos/Mobileviewlogoshort.png';
 import profile from '../../../assests/homepage-logos/profile.png';
 import closearrow from '../../../assests/homepage-logos/closearrow.png';
-import iconmenu from '../../../assests/homepage-logos/iconMenu.png';
+import { signOut, useSession } from "next-auth/react"
+import { useSelector } from 'react-redux';
+import cart from '../../../assests/homepage-logos/cart.png';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-function MobileHeader() {
+function MobileHeader({ dark, setdark }) {
     const router = useRouter();
+    const state = useSelector(state => state.cart.cartitems);
+
+    const {status,data:session}=useSession();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const logoutHandler = async () => {
+        await signOut({ callbackUrl: "/" });
+    };
+    const Login = () => {
+        router.push("/login");
+    }
+    const carts=()=>{
+        router.push("/cart")
+    }
+    const profilerouter=()=>{
+        router.push("/women/profile")
+    }
     return (
         <Fragment>
             <div className={styles.mainmobilesection}>
-                <div className={styles.mobileleftsection} onClick={()=>router.push("/")}>
+                <div className={styles.mobileleftsection} onClick={() => router.push("/")}>
                     <Image src={womeynlogo} alt="no image" className={styles.logomobilewomwyn} />
                 </div>
                 <div className={styles.mobilemiddlesection}>
@@ -34,12 +49,12 @@ function MobileHeader() {
                 </div>
 
                 <div className={styles.mobilerightsection}>
-                    <div onClick={handleShow}>
+                    <div onClick={handleShow} >
                         <Image src={profile} alt="no image" className={styles.barsection} />
                     </div>
                     <Offcanvas show={show} onHide={handleClose}>
                         <div className="offcanvebodysection">
-                            <div className='arrowend' onClick={handleClose}>
+                            <div className='arrowend mt-2 p-2' onClick={handleClose}>
                                 <Image src={closearrow} alt="no image" className='closearrow' />
                             </div>
                             <div className='profile-section'>
@@ -73,6 +88,31 @@ function MobileHeader() {
                                     </Link>
                                 </div>
                             </div>
+                            <div className="profilesettings">
+                                <div onClick={carts}>
+                                <Image src={cart} alt="no image" className={"carticons"} />
+                                    {state?.length}
+                                </div>
+                                <div onClick={profilerouter}>
+Profile
+                                </div>
+                                <div>
+
+                                <div>
+                                    {session?.user?.name ? <div onClick={logoutHandler} className={styles.cursorpointor}>
+                                        Logout
+                                    </div> : <div onClick={Login} className={styles.cursorpointor}>
+                                        Login
+                                    </div>}
+                                </div>
+                                </div>
+
+                                <div onClick={() => setdark(!dark)}>
+                                    kalai
+                                </div>
+                            </div>
+
+
                         </div>
                     </Offcanvas>
                 </div>
