@@ -1,31 +1,48 @@
 
-import { CART_SUCCESS,CART_DELETE } from '../../types';
+
+
+import { CART_SUCCESS, CART_DELETE,CART_ALL_DELETE } from '../../types';
+
+
+
 
 
 const initialState = {
     cartitems: [],
-    error: "",
-    loading: false,
+
 }
 
 const Cart_Reducer = (state = initialState, action) => {
+
+
     switch (action.type) {
 
         case CART_SUCCESS:
-
-            return {
-                ...state,
-                cartitems: window.localStorage.getItem("Cart") ? JSON.parse(window.localStorage.getItem("Cart")) : []
+            const existingproduct = state.cartitems.find((item) => item.id === action.payload.id);
+            if (existingproduct) {
+                console.log(existingproduct, "89");
+               
             }
+            else {
+                return {
+                    ...state,
+                    cartitems: [...state.cartitems, action.payload]
+
+                }
+            }
+
         case CART_DELETE:
             const filter = state.cartitems.filter((item) => item.id !== action.payload);
-            console.log('====================================');
-            console.log("kalai123",filter);
-            console.log('====================================');
             return {
                 ...state,
                 cartitems: filter,
             }
+        case CART_ALL_DELETE:{
+            return {
+                ...state,
+                cartitems:action.payload
+            }
+        }
         default:
             return state;
     }

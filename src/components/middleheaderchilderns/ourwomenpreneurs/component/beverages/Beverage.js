@@ -68,8 +68,8 @@ function Beverage() {
             star: star
         },
         {
-            id: 1,
-            name: "Women Wellness Herbal I...",
+            id: 5,
+            name: "Women Wellness Herbal I kalai...",
             title: "Beverages",
             price: 110,
             offer: "25% off",
@@ -77,8 +77,8 @@ function Beverage() {
             star: star
         },
         {
-            id: 2,
-            name: "Date Palm Jaggery",
+            id: 6,
+            name: "Date Palm Jaggeryjgdkfjgkdfjg",
             title: "Beverages",
             price: 110,
             offer: "25% off",
@@ -87,8 +87,8 @@ function Beverage() {
 
         },
         {
-            id: 3,
-            name: "Moringa Herbal Infusion",
+            id: 7,
+            name: "Moringa Herbal Infusionjgfdkjgkdfjd",
             title: "Beverages",
             price: 75,
             offer: "25% off",
@@ -97,8 +97,8 @@ function Beverage() {
 
         },
         {
-            id: 4,
-            name: "Turmeric Spiced Superfood",
+            id: 8,
+            name: "Turmeric Spiced Superfooduyjirtjyhjfkhf",
             title: "Beverages",
             price: 200,
             offer: "25% off",

@@ -1,17 +1,17 @@
-import { CART_SUCCESS,CART_DELETE } from "../../types"
+import { CART_SUCCESS,CART_DELETE,CART_ALL_DELETE } from "../../types"
 
 
 export const Cartactions = (data) => async (dispatch) => {
-   const cart = localStorage.getItem("Cart") ? JSON.parse(localStorage.getItem("Cart")) : [];
-   const duplicate = cart.filter(item => item.id == data.id);
-   if (duplicate.length === 0) {
-      const productAdd = {
-         ...data,
-         count: 1
-      }
-      cart.push(productAdd);
-      localStorage.setItem("Cart", JSON.stringify(cart));
-   }
+   // const cart = localStorage.getItem("Cart") ? JSON.parse(localStorage.getItem("Cart")) : [];
+   // const duplicate = cart.filter(item => item.id == data.id);
+   // if (duplicate.length === 0) {
+   //    const productAdd = {
+   //       ...data,
+   //       count: 1
+   //    }
+   //    cart.push(productAdd);
+   //    localStorage.setItem("Cart", JSON.stringify(cart));
+   // }
 
    dispatch({
       type: CART_SUCCESS,
@@ -33,6 +33,26 @@ export const CartActionDelete = (data) => async (dispatch) => {
 
    dispatch({
       type: CART_DELETE,
+      payload: data
+   })
+}
+
+
+
+export const CartActionClearDataAll = (data) => async (dispatch) => {
+   // const cart = localStorage.getItem("Cart") ? JSON.parse(localStorage.getItem("Cart")) : [];
+   // const duplicate = cart.filter(item => item.id == data.id);
+   // if (duplicate.length === 0) {
+   //    const productAdd = {
+   //       ...data,
+   //       count: 1
+   //    }
+   //    cart.push(productAdd);
+   //    localStorage.setItem("Cart", JSON.stringify(cart));
+   // }
+
+   dispatch({
+      type: CART_ALL_DELETE,
       payload: data
    })
 }

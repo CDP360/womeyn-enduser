@@ -86,6 +86,7 @@
                     @include xsBreakPoint {
                         width: 100%;
                         gap: 10px;
+                        flex-direction:column;
                     }
                     @include smBreakPoint {
                         width: 100%;
@@ -99,8 +100,11 @@
                         align-items: center;
                         justify-content: center;
                         border: 2px solid white !important;
+                        @include xsBreakPoint {
+                            width: 100% !important;
+                        }
                         @include smBreakPoint {
-                            width: 280px !important;
+                            width: 100% !important;
                         }
                         @include mdBreakPoint {
                             width: 280px !important;

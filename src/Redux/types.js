@@ -29,5 +29,6 @@ export const THEME_ERROR = "THEME_ERROR";
 export const CART_LOADING = "CART_LOADING";
 export const CART_SUCCESS = "CART_SUCCESS";
 export const CART_DELETE = "CART_DELETE";
+export const CART_ALL_DELETE="CART_ALL_DELETE";
 
 // LOGIN TYPES END
