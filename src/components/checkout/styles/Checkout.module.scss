@@ -1,1 +1,157 @@
-@use '../../../../scss/abstract/' as *;
+@use "../../../../scss/abstract/" as *;
+
+.maincheckoutsection {
+    width: 100%;
+    .insidesectioncheckout {
+        width: 75%;
+        margin: 0 auto;
+        display: flex;
+       
+        .orderstepsection
+        {
+            display:flex;
+            padding-top:2%;
+            align-items:center;
+            gap:15px;
+            .numbercountorderstep
+            {
+                width:27px;
+                height:27px;
+                background-color:#E95A5A;
+                color:white;
+                border-radius:50%;
+                cursor:pointer;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-weight:600;
+                font-size:1.1rem;
+                
+            }
+            .setordertext
+            {
+                font-size:1.1rem;
+                font-weight:600;
+                color:#121212;
+                opacity:0.7;
+            }
+            .numbercountdisabled
+            {
+                width:27px;
+                height:27px;
+                border:1px solid #E95A5A;
+                color:#E95A5A;
+                border-radius:50%;
+                cursor:pointer;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-weight:600;
+                font-size:1.1rem;
+            }
+        }
+        .leftcheckoutsection {
+            width: 50%;
+            .progressbarcheck
+            {
+                width:100%;
+                // border:2px solid red;
+                display:flex;
+                gap:20px;
+            .leftbarprogress
+            {
+                width:50%;
+            }
+            .rightbarprogress
+            {
+                width:50%;
+            }
+
+            }
+        }
+        .rightcheckoutsection {
+            width: 50%;
+            padding-top: 2%;
+            @include xsBreakPoint {
+                width: 100%;
+            }
+            @include smBreakPoint {
+                width: 100%;
+            }
+            @include mdBreakPoint {
+                width: 100%;
+            }
+            @include lgBreakPoint {
+                width: 100%;
+            }
+            @include xlBreakPoint {
+                width: 100%;
+            }
+            .cartpricesectionright {
+                width: 70%;
+                border: 1px solid #c4c4c4;
+                margin: 0 auto;
+                border-radius: 15px;
+                padding: 20px 30px;
+                @include xsBreakPoint {
+                    width: 100%;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                }
+                @include mdBreakPoint {
+                    width: 100%;
+                }
+                @include lgBreakPoint {
+                    width: 80%;
+                }
+                .usepromocart {
+                    border: 1px solid #c4c4c4;
+                    border-radius: 15px;
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    padding: 10px 20px;
+                    .promo {
+                        width: 40px;
+                        height: 40px;
+                        object-fit: cover;
+                    }
+                    .codepromo {
+                        font-size: 1.4rem;
+                        font-weight: 600;
+                        @include xsBreakPoint {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+                .totalpricesection {
+                    display: flex;
+                    justify-content: space-between;
+                    padding-top: 3%;
+                    color: #121212;
+                    font-weight: 500;
+                }
+                .bordersection {
+                    border: 1px solid #c4c4c4;
+                    margin-top: 6%;
+                    margin-bottom: 2.5%;
+                }
+                .shoppingsummary {
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                }
+                .checkoutbutton {
+                    background-color: #e95a5a;
+                    color: white;
+                    padding: 10px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    width: 100%;
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

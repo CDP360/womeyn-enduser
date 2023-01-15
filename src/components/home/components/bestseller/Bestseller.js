@@ -15,7 +15,7 @@ function Bestseller() {
                     <div className={styles.insidesellerbreaksalary}>
                         <Image src={imageadd} alt="no image" className={styles.imageadd} />
                     </div>
-                    <div className='large-text mb-5 mt-3'>
+                    <div className='large-text mb-5 mt-3 text-center'>
                         Bestsellers to cheer you up!
                     </div>
                     <div className={styles.buttonsellersection}>
