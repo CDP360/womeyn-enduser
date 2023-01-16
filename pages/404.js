@@ -5,17 +5,17 @@ import { Button } from 'react-bootstrap';
 import image from '../src/assests/homepage-logos/404notfound.png';
 import LayoutHeader from '../src/components/Layoutheader/LayoutHeader';
 import styles from './styles/Pagenotfound.module.scss';
-function ErrorPage() {
+function ErrorPage({dark,setdark}) {
 
     const router = useRouter();
     return (
-        <LayoutHeader title={"404 NotFound"}>
+        <LayoutHeader title={"404 NotFound"} dark={dark} setdark={setdark}>
             <div className={styles.mainpagenot}>
                 <div className={styles.emptyboxrightsectioncolor}></div>
                 <div className={styles.emptyboxleftsectioncolor}></div>
 
                 <div className={styles.insidenotpage}>
-                    <Image src={image} alt="no image" width="100%" height="200" />
+                    <Image src={image} alt="no image" className={styles.notfoundimage} />
 
                     <div className="large-text mt-4">
                         Oops!

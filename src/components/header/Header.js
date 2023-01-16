@@ -100,6 +100,9 @@ function Header({ setdark, dark }) {
                                     <span className='ms-2'>Explore</span>
                                 </Link>
                             </div>
+                            <div className={styles.bordercolors}>
+|
+                            </div>
                             <div className={router.pathname == "/womeyn/womenpreneurs" ? "active" : ""}>
 
                                 <Link href="/womeyn/womenpreneurs" className='nav-link'>

@@ -6,71 +6,97 @@
         width: 75%;
         margin: 0 auto;
         display: flex;
-       
-        .orderstepsection
-        {
-            display:flex;
-            padding-top:2%;
-            align-items:center;
-            gap:15px;
-            .numbercountorderstep
-            {
-                width:27px;
-                height:27px;
-                background-color:#E95A5A;
-                color:white;
-                border-radius:50%;
-                cursor:pointer;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                font-weight:600;
-                font-size:1.1rem;
-                
+        gap: 30px;
+        @include xsBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+            flex-direction:column;
+        }
+        @include smBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+            flex-direction:column;
+
+        }
+        @include mdBreakPoint {
+            width: 85%;
+        }
+        @include lgBreakPoint {
+            width: 89%;
+            gap:0px;
+        }
+        @include xlBreakPoint {
+            width: 85%;
+        }
+        .orderstepsection {
+            display: flex;
+            padding-top: 2%;
+            align-items: center;
+            gap: 15px;
+            .numbercountorderstep {
+                width: 27px;
+                height: 27px;
+                background-color: #e95a5a;
+                color: white;
+                border-radius: 50%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 600;
+                font-size: 1.1rem;
             }
-            .setordertext
-            {
-                font-size:1.1rem;
-                font-weight:600;
-                color:#121212;
-                opacity:0.7;
+            .setordertext {
+                font-size: 1rem;
+                font-weight: 600;
+                color: #121212;
+                opacity: 0.7;
             }
-            .numbercountdisabled
-            {
-                width:27px;
-                height:27px;
-                border:1px solid #E95A5A;
-                color:#E95A5A;
-                border-radius:50%;
-                cursor:pointer;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                font-weight:600;
-                font-size:1.1rem;
+            .numbercountdisabled {
+                width: 27px;
+                height: 27px;
+                border: 1px solid #e95a5a;
+                color: #e95a5a;
+                border-radius: 50%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 600;
+                font-size: 1.1rem;
             }
         }
         .leftcheckoutsection {
-            width: 50%;
-            .progressbarcheck
-            {
-                width:100%;
+            width: 65%;
+            @include xsBreakPoint {
+                width: 100%;
+            }
+            @include smBreakPoint {
+                width: 100%;
+            }@include mdBreakPoint {
+                width: 100%;
+            }
+            @include lgBreakPoint {
+                width: 100%;
+            }
+            @include xlBreakPoint {
+                width: 100%;
+            }
+            .progressbarcheck {
+                width: 100%;
                 // border:2px solid red;
-                display:flex;
-                gap:20px;
-            .leftbarprogress
-            {
-                width:50%;
-            }
-            .rightbarprogress
-            {
-                width:50%;
-            }
-
+                display: flex;
+                gap: 20px;
+                .leftbarprogress {
+                    width: 50%;
+                }
+                .rightbarprogress {
+                    width: 50%;
+                }
             }
         }
         .rightcheckoutsection {
-            width: 50%;
+            width: 35%;
             padding-top: 2%;
             @include xsBreakPoint {
                 width: 100%;
@@ -88,7 +114,7 @@
                 width: 100%;
             }
             .cartpricesectionright {
-                width: 70%;
+                width: 90%;
                 border: 1px solid #c4c4c4;
                 margin: 0 auto;
                 border-radius: 15px;

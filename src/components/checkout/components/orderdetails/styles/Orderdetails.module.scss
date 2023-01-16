@@ -1,1 +1,130 @@
 @use "../../../../../../scss/abstract/" as *;
+
+.mainorderpage {
+    width: 100%;
+
+    .addresspageorder {
+        border: 1px solid #9f9f9f;
+        border-radius: 20px;
+        display: flex;
+        padding: 3% 0%;
+        margin: 4% auto;
+        @include xsBreakPoint {
+            width: 100%;
+        }
+        .leftorders {
+            width: 12%;
+            // border:2px solid red;
+            display: flex;
+            justify-content: center;
+            .map {
+                width: 40%;
+                height: 50px;
+                object-fit: contain;
+                @include lgBreakPoint
+                {
+                    width:60%;
+                }
+            }
+            .maps {
+                width: 60%;
+                height: 50px;
+                object-fit: contain;
+                @include lgBreakPoint
+                {
+                    width:70%;
+                }
+            }
+        }
+        .rightorders {
+            width: 88%;
+            // border:2px solid blue;
+            padding-top: 1%;
+            padding-right:2%;
+            
+            @include lgBreakPoint
+            {
+                width:100%;
+                padding-top:1%;
+            }
+            @include xlBreakPoint
+            {
+                width:100%;
+                padding-top:1%;
+            }
+            .addressorders {
+                width: 100%;
+                line-height: 1.6;
+            }
+            .shippingtext {
+                font-size: 1.3rem;
+                font-weight: 650;
+                @include lgBreakPoint
+                {
+                    font-size:1rem;
+                }
+            }
+            .nameaddress {
+                font-size: 1.1rem;
+                font-weight: 600;
+                @include lgBreakPoint
+                {
+                    font-size:1rem;
+                }
+            }
+            .editaddress {
+                border: 1px solid #e95a5a;
+                color: #e95a5a;
+                border-radius: 10px;
+                font-weight: 550;
+                padding: 7px 15px;
+            }
+            .ordersectiondetailsorder {
+                display: flex;
+                // border: 2px solid red;
+                width: 100%;
+                justify-content: space-between;
+                .splitorderitems {
+                    display: flex;
+                    gap: 20px;
+                    .orderimagebox {
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 5px;
+                        background-color: #9f9f9f;
+                    }
+                    .gapsectiontext {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+                        .ordertitlename {
+                            font-size: 1.1rem;
+                            font-weight: 600;
+                        }
+                    }
+                }
+                .oneitems {
+                    font-weight: 600;
+                }
+            }
+            .couries {
+                border: 1px solid #9f9f9f !important;
+                border-radius: 20px !important;
+                padding: 3% 5%;
+                .insidesectionsplitorder {
+                    display: flex;
+                    justify-content: space-between;
+                    .leftcouries {
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                    }
+                }
+            }
+            .fire {
+                width: 100%;
+                height: 40px;
+                object-fit: contain;
+            }
+        }
+    }
+}

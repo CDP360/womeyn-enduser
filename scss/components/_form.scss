@@ -48,9 +48,27 @@
     padding: 10px 15px !important;
 }
 
-
-.progress-bar
+.progress-bar {
+    background-color: #e95a5a !important;
+}
+.progress {
+    height: 8px !important;
+}
+.orders-form-select {
+    border: 1px solid #9f9f9f !important;
+    padding: 20px !important;
+    border-radius: 20px !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+}
+.orders-form-selectnew
 {
-    background-color:#E95A5A !important;
-    z-index:989898;
+    border: none!important;
+    // padding: 20px !important;
+    border-radius: 20px !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    outline:none !important;
+    cursor: pointer;
 }

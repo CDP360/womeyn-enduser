@@ -33,6 +33,10 @@ function Cart() {
 
 
 
+  const shopping=()=>{
+    router.push("//womeyn/womenpreneurs/product/")
+  }
+
 
 
   const handleDelete = (name) => {
@@ -101,7 +105,14 @@ function Cart() {
                                 </div>
                               </div>
                               <div>
-                                thala
+                                <div className={styles.usepromocartmap}>
+                                  <div>
+                                    <Image src={usepromo} alt="no image" className={styles.promoimage} />
+                                  </div>
+                                  <div className={styles.codepromo}>
+                                    Use Promo Code
+                                  </div>
+                                </div>
                               </div>
                             </div>
                             <div className={styles.cartimageaddsection}>
@@ -115,11 +126,19 @@ function Cart() {
                                   <div>
                                     {item.price}
                                   </div>
-
                                 </div>
                               </div>
-                              <div className={styles.cartaddanddelete}>
-                                add to cart section
+                              <div className={styles.cartaddandaddqunatity}>
+                              <div className={styles.addcounts}>
+                                  -
+                                </div>
+                                <div>
+                                  1
+                                </div>
+                                
+                                <div className={styles.addcount}>
+                                  +
+                                </div>
                               </div>
                             </div>
 
@@ -127,7 +146,11 @@ function Cart() {
                           </>
                         )
                       })}
-                    </> : <div>No Data Found....</div>
+                    </> : <div>
+                      <div className={styles.cartemptysection}>
+                        Cart Is Empty. <span className={styles.shoppingcartempty} onClick={shopping}>Go Shopping</span>
+                      </div>
+                    </div>
                   }
 
                 </div>

@@ -30,9 +30,25 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        .notfoundimage {
+            width: 45%;
+            height: auto;
+            @include xsBreakPoint {
+                width: 100%;
+            }
+            @include smBreakPoint {
+                width: 100%;
+            } @include mdBreakPoint {
+                width: 100%;
+            }
+        }
         .splitpagenotfound {
             display: flex;
             gap: 30px;
+           @include xsBreakPoint
+           {
+            flex-direction:column;              
+           }
             .backtohomenone {
                 color: #e95a5a !important;
                 cursor: pointer !important;
@@ -41,6 +57,17 @@
                 border-radius: 3px;
                 font-weight: 600;
                 font-size: 1.2rem;
+                @include xsBreakPoint {
+                    width: 100%;
+                    padding: 3px !important;
+                    font-size: 0.879rem!important;
+                
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                    padding: 3px !important;
+                    font-size: 0.857rem !important;
+                }
             }
             .backtohome {
                 background-color: #e95a5a !important;
@@ -52,22 +79,13 @@
                 border-radius: 3px;
                 @include xsBreakPoint {
                     width: 100%;
-                    padding: 3px !important;
-                    font-size: 0.657rem !important;
+                    // padding: 3px !important;
+                    font-size: 0.678rem!important;
                 }
                 @include smBreakPoint {
                     width: 100%;
                     padding: 3px !important;
                     font-size: 0.857rem !important;
-                }
-                @include mdBreakPoint {
-                    width: 100% !important;
-                }
-                @include lgBreakPoint {
-                    width: 100% !important;
-                }
-                @include xlBreakPoint {
-                    width: 100% !important;
                 }
             }
         }

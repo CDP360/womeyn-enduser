@@ -17,8 +17,9 @@ function Viewproduct({ id }) {
     const datas = {
         id: 1,
         image: "image.jpb",
-        name: "kli",
-        title: "thala"
+        name: "NEW NEW NEW NEW NEW",
+        title: "thala",
+        price:100,
     }
     const dispatch = useDispatch();
 

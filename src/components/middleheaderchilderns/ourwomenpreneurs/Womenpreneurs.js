@@ -153,15 +153,15 @@ function Womenpreneurs() {
                             }
                         }).map((item, index) => {
                             return (
-                                <div className='cards mt-1 mb-2' key={index} onClick={() => handlepush(item?.title.slice(0, 5))}>
+                                <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.title.slice(0, 5))}>
                                     <div>
                                         <Image src={girl} alt="no image" className={styles.sellerimagesize} />
                                     </div>
                                     <div className='womentitle'>
-                                        {item?.title.slice(0, 10)}
+                                        {/* {item?.title.slice(0, 10)} */}
                                     </div>
                                     <div className='womendescription'>
-                                        {item?.description.slice(0, 5)}
+                                        {/* {item?.description.slice(0, 5)} */}
                                     </div>
                                 </div>
                             )

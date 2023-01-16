@@ -8,12 +8,12 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import Orderdetails from './components/orderdetails/Orderdetails';
 import Payment from './components/payment/Payment';
 function Checkout() {
-  const [step,setStep]=useState(0);
+  const [step, setStep] = useState(0);
   const state = useSelector(state => state.cart.cartitems)
   const [price, setPrice] = useState(0);
 
-  const [width,setWidth]=useState(0);
-  const [width1,setWidth1]=useState(0);
+  const [width, setWidth] = useState(0);
+  const [width1, setWidth1] = useState(0);
 
   useEffect(() => {
     TotalPrice();
@@ -21,7 +21,7 @@ function Checkout() {
     handleprogress();
 
 
-  }, [price,width])
+  }, [price, width])
   const TotalPrice = () => {
     let price = 0;
     state.map((item) => {
@@ -30,11 +30,10 @@ function Checkout() {
     setPrice(price);
   }
 
-  const handleprogress=(id)=>{
-    let width=0;
-    if(step===0)
-    {
-width=width+100
+  const handleprogress = (id) => {
+    let width = 0;
+    if (step === 0) {
+      width = width + 100
     }
     setWidth(width)
   }
@@ -45,34 +44,34 @@ width=width+100
           <div className={styles.leftcheckoutsection}>
             <div className="large-text mb-2">Checkout</div>
             <div className="mb-2">
-              1 of 2 Step 
+              {step + 1} of 2 Step
             </div>
             <div className={styles.progressbarcheck}>
 
               <div className={styles.leftbarprogress}>
                 <ProgressBar now={width} />
-                <div className={styles.orderstepsection}>
+                <div className={styles.orderstepsection} onClick={()=> setStep(0)}>
                   <div className={styles.numbercountorderstep}>1</div>
                   <div className={styles.setordertext}>Set the order</div>
                 </div>
               </div>
               <div className={styles.rightbarprogress}>
-                <ProgressBar  now={step===1 && width} />
-                <div className={styles.orderstepsection}>
-                  <div className={`${step===1 ?styles.numbercountorderstep:styles.numbercountdisabled}`}>2</div>
+                <ProgressBar now={step === 1 && width} />
+                <div className={styles.orderstepsection} onClick={()=> setStep(1)}>
+                  <div className={`${step === 1 ? styles.numbercountorderstep : styles.numbercountdisabled}`}>2</div>
                   <div className={styles.setordertext}>Set the payment</div>
                 </div>
 
               </div>
             </div>
 
-            {step===0 && <div>
-              <Orderdetails/>
-              </div>}
+            {step === 0 && <div>
+              <Orderdetails state={state}/>
+            </div>}
 
-            {step===1 && <div>
-              <Payment/>
-              </div>}
+            {step === 1 && <div>
+              <Payment />
+            </div>}
           </div>
           <div className={styles.rightcheckoutsection}>
             <div className={styles.cartpricesectionright}>
@@ -102,14 +101,14 @@ width=width+100
                   <div className={styles.shoppingsummary}>Rs.{price}</div>
                 </div>
                 <div className="mt-4">
-                  {step==0 ?<div>
-                  <Button className={styles.checkoutbutton} onClick={()=>{
-                    setStep(1)
-                    handleprogress(1)
+                  {step == 0 ? <div>
+                    <Button className={styles.checkoutbutton} onClick={() => {
+                      setStep(1)
+                      handleprogress(1)
                     }}>Checkout</Button>
-                    </div>:<div>
-                  <Button className={styles.checkoutbutton}>Checkout</Button>
-                      </div>}
+                  </div> : <div>
+                    <Button className={styles.checkoutbutton}>Checkout</Button>
+                  </div>}
                 </div>
               </div>
             </div>

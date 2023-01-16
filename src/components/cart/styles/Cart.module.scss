@@ -6,17 +6,15 @@
         width: 75%;
         margin: 0 auto;
         display: flex;
-        @include xsBreakPoint
-        {
-            flex-direction:column;
+        gap: 30px;
+        @include xsBreakPoint {
+            flex-direction: column;
         }
-        @include smBreakPoint
-        {
-            flex-direction:column;
+        @include smBreakPoint {
+            flex-direction: column;
         }
-        @include mdBreakPoint
-        {
-            flex-direction:column;
+        @include mdBreakPoint {
+            flex-direction: column;
         }
         @include xsBreakPoint {
             width: 85%;
@@ -36,26 +34,50 @@
             width: 85%;
         }
         .leftcartsection {
-            width: 50%;
-            @include xsBreakPoint
-            {
-                width:100%;
+            width: 60%;
+            @include xsBreakPoint {
+                width: 100%;
             }
-            @include smBreakPoint
-            {
-                width:100%;
+            @include smBreakPoint {
+                width: 100%;
             }
-            @include mdBreakPoint
-            {
-                width:100%;
+            @include mdBreakPoint {
+                width: 100%;
             }
-            @include lgBreakPoint
-            {
-                width:100%;
+            @include lgBreakPoint {
+                width: 100%;
             }
-            @include xlBreakPoint
+            @include xlBreakPoint {
+                width: 100%;
+            }
+            .shoppingcartempty
             {
-                width:100%;
+                color:#E75B5E;
+                font-weight:600;
+                font-size:1.2rem;
+                cursor:pointer;
+            }
+            .usepromocartmap {
+                width: 100%;
+                border: 1px solid #c4c4c4;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 5px 22px;
+                cursor: pointer;
+                .promoimage {
+                    width: 16px;
+                    height: 16px;
+                    object-fit: cover;
+                }
+                .codepromo {
+                    font-size: 0.879rem;
+                    font-weight: 600;
+                    @include xsBreakPoint {
+                        font-size: 1rem;
+                    }
+                }
             }
             .sellectallsection {
                 display: flex;
@@ -65,7 +87,7 @@
                 color: #e95a5a;
                 border-bottom: 2px solid #e95a5a;
                 font-weight: 600;
-                cursor:pointer;
+                cursor: pointer;
             }
             .removesectioncart {
                 border: 1px solid #c4c4c4;
@@ -79,6 +101,7 @@
                 width: 100%;
                 border: 1px solid #c4c4c4;
                 border-radius: 10px;
+                padding: 15px 0px;
                 .checkboxsectioncart {
                     display: flex;
                     // border: 2px solid red;
@@ -99,123 +122,136 @@
                         display: flex;
                         gap: 20px;
                         .cartimagedummy {
-                            width: 80px;
-                            height: 80px;
+                            width: 100px;
+                            height: 100px;
                             border-radius: 10px;
                             background-color: grey;
-                            @include xsBreakPoint
-                            {
-                                width:60px;
-                                height:60px;
+                            @include xsBreakPoint {
+                                width: 60px;
+                                height: 60px;
                             }
                         }
                         .controlcontentcart {
                             width: 55%;
                         }
                     }
+                    .cartaddandaddqunatity {
+                        display: flex;
+                        align-items:center;
+                        justify-content:center;
+                        gap:20px;
+                        .addcounts
+                        {
+                            width:30px;
+                            height:30px;
+                            border:2px solid #E95A5A;
+                            border-radius:50%;
+                            display:flex;
+                            align-items:center;
+                            justify-content:center;
+                            cursor:pointer;
+                            
+                        }
+                        .addcount
+                        {
+                            height:30px;
+                           width:30px;
+                            padding:3px;
+                            border:2px solid #E95A5A;
+                            border-radius:50%;
+                            display:flex;
+                            align-items:center;
+                            justify-content:center;
+                            font-size:1.2rem;
+                            color:white;
+                            background-color:#E95A5A;
+                            cursor:pointer;
+                        }
+                    }
                 }
             }
         }
         .rightcartsection {
-            width: 50%;
-            padding-top:2%;
-            @include xsBreakPoint
-            {
-                width:100%;
+            width: 40%;
+            padding-top: 2%;
+            @include xsBreakPoint {
+                width: 100%;
             }
-            @include smBreakPoint
-            {
-                width:100%;
+            @include smBreakPoint {
+                width: 100%;
             }
-            @include mdBreakPoint
-            {
-                width:100%;
+            @include mdBreakPoint {
+                width: 100%;
             }
-            @include lgBreakPoint
-            {
-                width:100%;
+            @include lgBreakPoint {
+                width: 100%;
             }
-            @include xlBreakPoint
-            {
-                width:100%;
+            @include xlBreakPoint {
+                width: 100%;
             }
             .cartpricesectionright {
-                width: 70%;
+                width: 80%;
                 border: 2px solid #c4c4c4;
                 margin: 0 auto;
-                border-radius: 10px;
+                border-radius: 20px;
                 padding: 20px 30px;
-                @include xsBreakPoint
-                {
-                    width:100%;
+                @include xsBreakPoint {
+                    width: 100%;
                 }
-                @include smBreakPoint
-                {
-                    width:100%;
+                @include smBreakPoint {
+                    width: 100%;
                 }
-                @include mdBreakPoint
-                {
-                    width:100%;
+                @include mdBreakPoint {
+                    width: 100%;
                 }
-                @include lgBreakPoint
-                {
-                    width:80%;
+                @include lgBreakPoint {
+                    width: 80%;
                 }
                 .usepromocart {
                     border: 2px solid #c4c4c4;
-                    border-radius: 10px;
-                    display:flex;
-                    align-items:center;
-                    gap:20px;
-                    padding:10px 20px;
-                    .promo
-                    {
-                        width:40px;
-                        height:40px;
-                        object-fit:cover;
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    padding: 10px 20px;
+                    .promo {
+                        width: 40px;
+                        height: 40px;
+                        object-fit: cover;
                     }
-                    .codepromo
-                    {
-                        font-size:1.4rem;
-                        font-weight:600;
-                        @include xsBreakPoint
-                        {
-                            font-size:1rem;
+                    .codepromo {
+                        font-size: 1.4rem;
+                        font-weight: 600;
+                        @include xsBreakPoint {
+                            font-size: 1rem;
                         }
                     }
-                   
                 }
-                .totalpricesection
-                {
-                    display:flex;
-                    justify-content:space-between;
-                    padding-top:3%;
-                    color:#121212;
-                    font-weight:500;
+                .totalpricesection {
+                    display: flex;
+                    justify-content: space-between;
+                    padding-top: 3%;
+                    color: #121212;
+                    font-weight: 500;
                 }
-                .bordersection
-                {
-                    
-                border: 1px solid #c4c4c4;
-             margin-top:6%;
-             margin-bottom:2.5%;
-
+                .bordersection {
+                    border: 1px solid #c4c4c4;
+                    margin-top: 6%;
+                    margin-bottom: 2.5%;
                 }
-                .shoppingsummary
-                {
-                    font-size:1.2rem;
-                    font-weight:600;
+                .shoppingsummary {
+                    font-size: 1.2rem;
+                    font-weight: 600;
                 }
-                .checkoutbutton
-                {
-                    background-color:#E95A5A;
-                    color:white;
-                    padding:10px;
+                .checkoutbutton {
+                    background-color: #e95a5a;
+                    color: white;
+                    padding: 10px;
                     border-radius: 10px;
-                    cursor:pointer;
-                    width:100%;
-                    font-size:1.3rem;
-                    font-weight:600;
+                    cursor: pointer;
+                    width: 100%;
+                    font-size: 1.3rem;
+                    font-weight: 600;
                 }
             }
         }
