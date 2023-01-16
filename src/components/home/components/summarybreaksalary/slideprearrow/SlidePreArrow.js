@@ -6,7 +6,9 @@ function SlidePreArrow(props) {
     <div
       className={styles.summartpre}
       onClick={onClick}
-    />
+    >
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </div>
   );
 }
 

@@ -7,7 +7,10 @@ function SlideNextArrow(props) {
         <div
             className={styles.slidenextcarousel}
             onClick={onClick}
-        />
+        >
+            {/* <ion-icon name="chevron-forward-outline"></ion-icon> */}
+         kalaisurya
+         </div>
     );
 }
 

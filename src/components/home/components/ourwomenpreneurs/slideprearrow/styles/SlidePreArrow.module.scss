@@ -1,7 +1,68 @@
 @use "../../../../../../../scss/abstract/" as *;
 @import "https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css";
 
-.slideprecarouselwomen::before {
+// .slideprecarouselwomen::before {
+//     content: none !important;
+//     width: 35px !important;
+//     height: 35px !important;
+//     border-radius: 50% !important;
+//     // background-color: #121e49 !important;
+//     border: 2px solid #000000;
+//     font-style: normal;
+//     font-variant: normal;
+//     text-rendering: auto;
+//     -webkit-font-smoothing: antialiased;
+//     font-family: "Font Awesome 6 Pro" !important;
+//     font-size: 1.2rem !important;
+//     content: "\f104" !important;
+//     font-weight: 700;
+//     right: -203%;
+//     z-index: 2 !important;
+//     position: absolute !important;
+//     // display: none;
+//     bottom: 0%;
+//     display: flex;
+//     align-items: center;
+//     opacity: 0.6;
+//     cursor: pointer;
+//     color: black;
+//     justify-content: center;
+//     @include xsBreakPoint {
+//         width: 30px !important;
+//         height: 30px !important;
+//         right: 10%;
+//         bottom: -142%;
+//     }
+//     @include smBreakPoint {
+//         width: 30px !important;
+//         height: 30px !important;
+//         right: 10%;
+//         bottom: -129%;
+//     }
+//     @include mdBreakPoint {
+//         width: 30px !important;
+//         height: 30px !important;
+//         right: 6%;
+//         bottom: -137%;
+//     }
+//     @include lgBreakPoint {
+//         right: -200%;
+//         bottom: -4%;
+//     }
+//     @include xlBreakPoint {
+//         right: -200%;
+//         bottom: -4%;
+//     }
+// }
+
+.slideprecarouselwomen:hover {
+    background-color: #e95a5a;
+    color: white;
+    border: 2px solid #e95a5a;
+}
+
+
+.slideprecarouselwomen{
     content: none !important;
     width: 35px !important;
     height: 35px !important;
@@ -55,8 +116,3 @@
     }
 }
 
-.slideprecarouselwomen:hover::before {
-    background-color: #e95a5a;
-    color: white;
-    border: 2px solid #e95a5a;
-}

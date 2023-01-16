@@ -7,7 +7,9 @@ function SlideNextArrow(props) {
         <div
             className={styles.summarynext}
             onClick={onClick}
-        />
+        >
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+        </div>
     );
 }
 

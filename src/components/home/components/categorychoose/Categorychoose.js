@@ -85,7 +85,7 @@ function Categorychoose() {
                     </div>
                     <div className={styles.categorybodysection}>
                         <div className='large-text mt-5 text-center'>
-                            A lot of categories to choose from
+                            A lot of categories to choose from 
                         </div>
                         <div>
                             <CarouselCategory />    

@@ -119,7 +119,7 @@ function Home() {
                         </div>
                     </div>
                     <div>
-                        <Categorychoose />
+                        <Categorychoose /> 
                     </div>
 
                 </div>

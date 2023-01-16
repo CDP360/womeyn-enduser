@@ -5,6 +5,7 @@ import MobileHeader from '../header/Mobileheader/MobileHeader';
 import styles from './styles/Layoutheader.module.scss';
 import Footer from './../footer/Footer';
 import Signupnewsletter from '../home/components/signupfornewsletter/Signupnewsletter';
+
 function LayoutHeader({ setdark, dark, title, children }) {
     return (
         <>
@@ -16,7 +17,9 @@ function LayoutHeader({ setdark, dark, title, children }) {
                     content="width=device-width, initial-scale=1, shrink-to-fit=no"
                 />
                 <meta name="theme-color" content="#000000" />
-                <link rel="icon" href="/favicon.ico" />
+                {/* <link rel="icon" href="/favicon.ico" /> */}
+                <link rel="icon" type="image/png" sizes="16x16" href="/Mobileviewlogoshort.png"></link>
+                {/* <link rel="icon" type="images/png" href="/Mobileviewlogoshort.png" sizes='100x100' /> */}
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/brands.min.css" integrity="sha512-G/T7HQJXSeNV7mKMXeJKlYNJ0jrs8RsWzYG7rVACye+qrcUhEAYKYzaa+VFy6eFzM2+/JT1Q+eqBbZFSHmJQew==" crossorigin="anonymous" referrerpolicy="no-referrer" />
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css" integrity="sha512-giQeaPns4lQTBMRpOOHsYnGw1tGVzbAIHUyHRgn7+6FmiEgGGjaG0T2LZJmAPMzRCl+Cug0ItQ2xDZpTmEc+CQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
                 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

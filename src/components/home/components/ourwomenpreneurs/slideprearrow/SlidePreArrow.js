@@ -6,7 +6,9 @@ function SlidePreArrow(props) {
     <div
       className={styles.slideprecarouselwomen}
       onClick={onClick}
-    />
+    >
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </div>
   );
 }
 
