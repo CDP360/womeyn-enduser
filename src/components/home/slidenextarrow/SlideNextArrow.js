@@ -7,7 +7,9 @@ function SlideNextArrow(props) {
         <div
             className={styles.slidenext}
             onClick={onClick}
-        />
+        >
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+        </div>
     );
 }
 

@@ -6,7 +6,9 @@ function SlidePreArrow(props) {
     <div
       className={styles.slidepre} 
       onClick={onClick}
-    />
+    >
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </div>
   );
 }
 

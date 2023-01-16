@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState } from 'react'
-
 import styles from './styles/Womenpren.module.scss';
 import Womeynbanner from '../../../../src/assests/homepage-logos/woymenbanner.png';
 import Image from 'next/image';
@@ -13,8 +12,6 @@ import Skeleton from 'react-loading-skeleton';
 import Childfooter from '../../footer/Childfooter';
 import { useRouter } from 'next/router';
 import girl from '../../../assests/womeynlogos/girl4.png';
-
-
 function Womenpreneurs() {    
     const router = useRouter();
     const [data, setData] = useState([]);
