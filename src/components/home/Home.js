@@ -84,9 +84,9 @@ function Home() {
 
             <div className={styles.homesectionmain}>
                 <div className="emptyboxrightcolor">
-                    </div>
-                    <div className="emptyboxleftcolor">
-                    </div>
+                </div>
+                <div className="emptyboxleftcolor">
+                </div>
                 <div>
 
                 </div>
@@ -119,7 +119,7 @@ function Home() {
                         </div>
                     </div>
                     <div>
-                        <Categorychoose /> 
+                        <Categorychoose />
                     </div>
 
                 </div>
@@ -141,7 +141,7 @@ function Home() {
                 <div>
                     <Whatmake />
                 </div>
-            
+
             </div>
         </Fragment >
 

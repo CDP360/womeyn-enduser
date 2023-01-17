@@ -1,0 +1,98 @@
+@use "../../../../../../../../scss/abstract/" as *;
+
+.mainreviewinsidesection {
+    width: 75%;
+    margin: 0 auto;
+    // padding: 0px 2%;
+    @include xsBreakPoint {
+        width: 85%;
+        padding-top: 6%;
+    }
+    @include smBreakPoint {
+        width: 85%;
+        padding-top: 6%;
+    }
+    @include mdBreakPoint {
+        width: 85%;
+    }
+    @include lgBreakPoint {
+        width: 89%;
+    }
+    @include xlBreakPoint {
+        width: 85%;
+    }
+    .redstartreview {
+        width: 15px;
+        height: 15px;
+        object-fit: cover;
+    }
+    .dategrey {
+        color: #0d0c22;
+        opacity: 0.5;
+        font-weight: 500;
+    }
+    .reviewtexts {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+    .seeallsectionreviews {
+        display: flex;
+        justify-content: space-between;
+        padding: 0% 1.2%;
+        .reviwesectionrating {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            .redstartreview {
+                width: 15px;
+                height: 15px;
+                object-fit: cover;
+            }
+            .ratingsection {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+        }
+    }
+    .maincardsection {
+        display: flex;
+        gap: 15px;
+        // border: 3px solid blue;
+        .cards {
+            // border: 2px solid red;
+            width: 49% !important;
+            @include xsBreakPoint {
+                width: 100% !important;
+            }
+            @include smBreakPoint {
+                width: 100% !important;
+            }
+            @include mdBreakPoint {
+                width: 48% !important;
+            }
+            @include lgBreakPoint {
+                width: 48% !important;
+            }
+            .splitprofilesection {
+                display: flex;
+                gap: 15px;
+            }
+            .redstarsection {
+                display: flex;
+                // border:1px solid red;
+                align-items: center;
+            }
+            .profileuser {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+            .imagecardsplit {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+}
+

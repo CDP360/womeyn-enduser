@@ -10,6 +10,8 @@ import { Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { Cartactions } from '../../../../../Redux/actions/cart/Cartdata';
+import Reviewsproduct from './Reviews/Reviewsproduct';
+import Caroselproducts from './carouselproducts/Caroselproducts';
 
 
 function Viewproduct({ id }) {
@@ -19,7 +21,7 @@ function Viewproduct({ id }) {
         image: "image.jpb",
         name: "NEW NEW NEW NEW NEW",
         title: "thala",
-        price:100,
+        price: 100,
     }
     const dispatch = useDispatch();
 
@@ -139,6 +141,15 @@ function Viewproduct({ id }) {
                             </div>
                         </div>
                     </div>
+
+                </div>
+                <div className={styles.reviewsection}>
+                    <div>
+                        <Reviewsproduct />
+                    </div>
+                </div>
+                <div>
+                    <Caroselproducts/>
                 </div>
             </div>
         </Fragment>

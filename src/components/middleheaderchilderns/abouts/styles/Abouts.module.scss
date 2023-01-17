@@ -1,0 +1,112 @@
+@use "../../../../../scss/abstract/" as *;
+
+.mainaboutsection {
+    width: 75%;
+    margin: 0 auto;
+    @include xsBreakPoint {
+        width: 85%;
+        padding-top: 6%;
+    }
+    @include smBreakPoint {
+        width: 85%;
+        padding-top: 6%;
+    }
+    @include mdBreakPoint {
+        width: 85%;
+    }
+    @include lgBreakPoint {
+        width: 89%;
+    }
+    @include xlBreakPoint {
+        width: 85%;
+    }
+    .bannersectionabout {
+        width: 100%;
+        height: 450px;
+        // border: 5px solid blue;
+        background-image: url("../../../../assests/womeynlogos/Mask group.png");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        position: relative;
+        @include xsBreakPoint {
+            height: 200px;
+        }
+
+        .bannercontentsectionimage {
+            width: 70%;
+            margin: 0 auto;
+            .bannerinsidesection {
+                position: absolute;
+                top: 70%;
+                width: 70%;
+                margin: 0 auto;
+                display: flex;
+                // align-items:center;
+                // justify-content:center;
+                padding: 2% 0px;
+                background-color: #fff8f1;
+                @include xsBreakPoint {
+                    // bottom: 30%;
+                    top: 0;
+                    padding:0;
+                }
+                @include lgBreakPoint {
+                    bottom: 0;
+                }
+                @include xlBreakPoint {
+                    bottom: -10%;
+                }
+                .ceotext
+                {
+                    font-size:1.2rem;
+                    @include xsBreakPoint
+                    {
+                        font-size:0.564rem;
+                        padding-top:2%;
+                    }
+                }
+                .isidelogoproduct {
+                    // border:3px solid green;
+                    width: 90%;
+                    margin: 0 auto;
+                    .we {
+                        width: 60%;
+                        font-size: 1.3rem;
+                        font-weight: 600;
+                        text-align: center;
+                        margin: 0 auto;
+                        @include xsBreakPoint {
+                            font-size: 0.468rem;
+                            width: 80%;
+                        }
+                        @include lgBreakPoint {
+                            font-size: 1rem;
+                        }
+                        @include xlBreakPoint {
+                            font-size: 1rem;
+                        }
+                    }
+                    .qua1 {
+                        width: 30px;
+                        height: 30px;
+                        object-fit: contain;
+                        @include xsBreakPoint {
+                            width: 14px;
+                            height: 14px;
+                        }
+                    }
+                    .qua2 {
+                        width: 30px;
+                        height: 30px;
+                        object-fit: contain;
+                        float: right;
+                        @include xsBreakPoint {
+                            width: 14px;
+                            height: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -8,8 +8,8 @@ function SlideNextArrow(props) {
             className={styles.slidenextcarousel}
             onClick={onClick}
         >
-            {/* <ion-icon name="chevron-forward-outline"></ion-icon> */}
-         kalaisurya
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+     
          </div>
     );
 }
