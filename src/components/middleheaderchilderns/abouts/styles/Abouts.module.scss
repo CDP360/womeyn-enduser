@@ -1,112 +1,336 @@
 @use "../../../../../scss/abstract/" as *;
 
-.mainaboutsection {
-    width: 75%;
-    margin: 0 auto;
-    @include xsBreakPoint {
-        width: 85%;
-        padding-top: 6%;
-    }
-    @include smBreakPoint {
-        width: 85%;
-        padding-top: 6%;
-    }
-    @include mdBreakPoint {
-        width: 85%;
-    }
-    @include lgBreakPoint {
-        width: 89%;
-    }
-    @include xlBreakPoint {
-        width: 85%;
-    }
-    .bannersectionabout {
-        width: 100%;
-        height: 450px;
-        // border: 5px solid blue;
-        background-image: url("../../../../assests/womeynlogos/Mask group.png");
-        background-size: 100%;
-        background-repeat: no-repeat;
-        position: relative;
-        @include xsBreakPoint {
-            height: 200px;
-        }
 
-        .bannercontentsectionimage {
-            width: 70%;
-            margin: 0 auto;
-            .bannerinsidesection {
-                position: absolute;
-                top: 70%;
-                width: 70%;
-                margin: 0 auto;
-                display: flex;
-                // align-items:center;
-                // justify-content:center;
-                padding: 2% 0px;
-                background-color: #fff8f1;
-                @include xsBreakPoint {
-                    // bottom: 30%;
-                    top: 0;
-                    padding:0;
-                }
-                @include lgBreakPoint {
-                    bottom: 0;
-                }
-                @include xlBreakPoint {
-                    bottom: -10%;
-                }
-                .ceotext
+.mainboutus
+{
+    width:100%;
+    position:relative;
+    .exptyboxleft
+    {
+        
+background: #E95A5A;
+opacity: 0.3;
+filter: blur(329px);
+position:absolute;
+width:50%;
+height:15%;
+right:0;
+    }
+    .exptyboxright
+    {
+        background:  #FECF9D;
+        opacity: 0.3;
+        filter: blur(329px);
+        position:absolute;
+        width:28%;
+        height:20%;
+        left:0; 
+        top:22%;
+    }
+    .exptyboxleftblue
+    {
+        background: #415B91;
+opacity: 0.2;
+filter: blur(329px);
+width:20%;
+height:25%;
+right:0;
+top:70%;
+position:absolute;
+
+    }
+    .mainaboutsection {
+        width: 75%;
+        margin: 0 auto;
+        @include xsBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include smBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include mdBreakPoint {
+            width: 85%;
+        }
+        @include lgBreakPoint {
+            width: 89%;
+        }
+        @include xlBreakPoint {
+            width: 85%;
+        }
+        .mainimageabout {
+            width: 100%;
+            height: 640px;
+            @include xsBreakPoint {
+                height: 220px;
+            }
+            @include smBreakPoint {
+                height: 320px;
+            }
+            @include mdBreakPoint {
+                height: 420px;
+            }
+            @include lgBreakPoint {
+                height: 500px;
+            }
+            @include xlBreakPoint {
+                height: 570px;
+            }
+            .bannersectionabout {
+                width: 100%;
+                height: 450px;
+                // border: 5px solid blue;
+                background-image: url("../../../../assests/womeynlogos/Mask group.png");
+                background-size: 100%;
+                background-repeat: no-repeat;
+                position: relative;
+                @include lgBreakPoint
                 {
-                    font-size:1.2rem;
-                    @include xsBreakPoint
-                    {
-                        font-size:0.564rem;
-                        padding-top:2%;
-                    }
+                    height: 480px;
                 }
-                .isidelogoproduct {
-                    // border:3px solid green;
-                    width: 90%;
+                @include xlBreakPoint
+                {
+                    height: 500px;
+                }
+    
+                .bannercontentsectionimage {
+                    width: 70%;
                     margin: 0 auto;
-                    .we {
-                        width: 60%;
-                        font-size: 1.3rem;
-                        font-weight: 600;
-                        text-align: center;
+                    @include xsBreakPoint {
+                        width: 80%;
+                    }
+                    @include smBreakPoint {
+                        width: 80%;
+                    }
+                    @include mdBreakPoint {
+                        width: 80%;
+                    }
+                    @include lgBreakPoint {
+                        width: 80%;
+                    }
+                    .bannerinsidesection {
+                        position: absolute;
+                        top: 80%;
+                        width: 70%;
                         margin: 0 auto;
+                        display: flex;
+    
                         @include xsBreakPoint {
-                            font-size: 0.468rem;
+                            // bottom: 30%;
                             width: 80%;
+                            top: 20%;
+                        }
+                        @include smBreakPoint {
+                            // bottom: 30%;
+                            width: 80%;
+                            top: 35%;
+                        }
+                        @include mdBreakPoint {
+                            // bottom: 30%;
+                            width: 80%;
+                            top: 50%;
                         }
                         @include lgBreakPoint {
-                            font-size: 1rem;
+                            
+                            width: 80%;
+                            top:65%;
                         }
                         @include xlBreakPoint {
-                            font-size: 1rem;
+                            top:75%;
+                           
                         }
-                    }
-                    .qua1 {
-                        width: 30px;
-                        height: 30px;
-                        object-fit: contain;
-                        @include xsBreakPoint {
-                            width: 14px;
-                            height: 14px;
+                        .ceotext {
+                            font-size: 1.2rem;
+                            @include xsBreakPoint {
+                                font-size: 0.564rem;
+                                padding-top: 2%;
+                            }
+                            @include smBreakPoint {
+                                font-size: 0.864rem;
+                                padding-top: 2%;
+                            }
+                            @include mdBreakPoint {
+                                font-size: 1rem;
+                                padding-top: 2%;
+                            }
                         }
-                    }
-                    .qua2 {
-                        width: 30px;
-                        height: 30px;
-                        object-fit: contain;
-                        float: right;
-                        @include xsBreakPoint {
-                            width: 14px;
-                            height: 14px;
+                        .isidelogoproduct {
+                            // border: 3px solid green;
+                            width: 100%;
+                            margin: 0 auto;
+                            padding: 1.45% 4%;
+                            background-color: #fff8f1;
+                           
+                            .we {
+                                width: 80%;
+                                font-size: 1.3rem;
+                                font-weight: 600;
+                                text-align: center;
+                                margin: 0 auto;
+                                @include xsBreakPoint {
+                                    font-size: 0.468rem;
+                                    width: 80%;
+                                }
+                                @include smBreakPoint {
+                                    font-size: 0.89rem;
+                                    width: 80%;
+                                }
+                                @include mdBreakPoint {
+                                    font-size: 0.89rem;
+                                    width: 80%;
+                                }
+                                @include lgBreakPoint {
+                                    font-size: 1rem;
+                                }
+                                @include xlBreakPoint {
+                                    font-size: 1rem;
+                                }
+                            }
+                            .qua1 {
+                                width: 30px;
+                                height: 30px;
+                                object-fit: contain;
+                                @include xsBreakPoint {
+                                    width: 14px;
+                                    height: 14px;
+                                }
+                                @include smBreakPoint {
+                                    width: 20px;
+                                    height: 20px;
+                                }
+                            }
+                            .qua2 {
+                                width: 30px;
+                                height: 30px;
+                                object-fit: contain;
+                                float: right;
+                                @include xsBreakPoint {
+                                    width: 14px;
+                                    height: 14px;
+                                }
+                                @include smBreakPoint {
+                                    width: 20px;
+                                    height: 20px;
+                                }
+                            }
                         }
                     }
                 }
             }
         }
+        .anecommercetext {
+            font-size: 1.7rem;
+            font-weight: 600;
+            text-align: center;
+            // border: 2px solid red;
+            @include xsBreakPoint {
+                font-size: 1rem;
+                width: 90%;
+                margin: 0 auto;
+                line-height: 1.7;
+            }
+            @include mdBreakPoint {
+                font-size: 1.5rem;
+                width: 80%;
+                margin: 0 auto;
+                line-height: 1.7;
+            }
+        }
+        .womeynpurpose {
+            width: 70%;
+            margin: 0 auto;
+            color: #898989;
+            text-align: center;
+            line-height: 1.8;
+            padding-top: 1%;
+            @include xsBreakPoint {
+                font-size: 0.879rem;
+                width: 100%;
+                margin: 0 auto;
+                // line-height:1.7;
+            }
+            @include smBreakPoint {
+                font-size: 0.978rem;
+                width: 100%;
+                margin: 0 auto;
+                line-height: 2;
+            }
+            @include mdBreakPoint {
+                font-size: 0.978rem;
+                width: 100%;
+                margin: 0 auto;
+                line-height: 2;
+            }
+        }
+        .througth {
+            width: 60%;
+            margin: 0 auto;
+            color: #898989;
+            text-align: center;
+            line-height: 2;
+            padding-top: 2%;
+            @include xsBreakPoint {
+                font-size: 0.879rem;
+                width: 100%;
+                margin: 0 auto;
+                line-height: 1.7;
+            }
+            @include smBreakPoint {
+                font-size: 0.978rem;
+                width: 100%;
+                margin: 0 auto;
+                line-height: 2;
+            }
+            @include mdBreakPoint {
+                font-size: 0.978rem;
+                width: 100%;
+                margin: 0 auto;
+                line-height: 2;
+            }
+        }
+        .ourcontentsection {
+            padding-top: 5%;
+            .anecommercetexts {
+                font-size: 1.7rem;
+                font-weight: 600;
+                text-align: center;
+                @include xsBreakPoint {
+                    font-size: 1rem;
+                }
+            }
+            .alltexts {
+                width: 33%;
+                color: #898989;
+                text-align: center;
+                line-height: 1.6;
+                padding-top: 0.789%;
+                margin: 0 auto;
+                @include xsBreakPoint {
+                    font-size: 0.878rem;
+                    width: 100%;
+                    margin: 0 auto;
+                    line-height: 1.7;
+                }
+                @include smBreakPoint {
+                    font-size: 0.988rem;
+                    width: 100%;
+                    margin: 0 auto;
+                    line-height: 1.7;
+                }
+                @include mdBreakPoint {
+                    font-size: 0.978rem;
+                    width: 60%;
+                    margin: 0 auto;
+                    line-height: 2;
+                }
+            }
+        }
+        .whatmakeimage {
+            width: 190px;
+            height: 190px;
+            object-fit: contain;
+        }
     }
+    
 }

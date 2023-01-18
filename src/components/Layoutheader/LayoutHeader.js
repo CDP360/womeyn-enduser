@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import React from 'react'
+import React,{useEffect} from 'react'
 import Header from '../header/Header'
 import MobileHeader from '../header/Mobileheader/MobileHeader';
 import styles from './styles/Layoutheader.module.scss';
@@ -7,6 +7,10 @@ import Footer from './../footer/Footer';
 import Signupnewsletter from '../home/components/signupfornewsletter/Signupnewsletter';
 
 function LayoutHeader({ setdark, dark, title, children }) {
+
+    useEffect(()=>{
+
+    },[title])
     return (
         <>
             <Head>
@@ -45,13 +49,13 @@ function LayoutHeader({ setdark, dark, title, children }) {
                             {children}
                         </main>
                     </div>
-                    {title == ("women-profile" || "women-login" || "women-signup") ?
+                    {title == "women-profile" ||title=="women-login" || title=="women-signup" || title=="Cart" ?
                         <>
                         </>
                         :
                         <>
                             <div className='mb-5'>
-                                {title=="product-view"?<></>:<Signupnewsletter />}
+                                {title == "product-view" ? <></> : <Signupnewsletter />}
                             </div>
                             <div>
                                 <footer>
@@ -61,7 +65,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
                         </>
                     }
 
-                  
+
 
                 </div>
             </div>

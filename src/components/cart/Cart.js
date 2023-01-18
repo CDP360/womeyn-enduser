@@ -33,7 +33,7 @@ function Cart() {
 
 
 
-  const shopping=()=>{
+  const shopping = () => {
     router.push("//womeyn/womenpreneurs/product/")
   }
 
@@ -100,7 +100,7 @@ function Cart() {
                                 <div>
                                   <input type="checkbox" name={item?.id} checked={item?.isChecked || false} onChange={handleChange} />
                                 </div>
-                                <div>
+                                <div classsName={styles.storename}>
                                   Store Name {item?.id}
                                 </div>
                               </div>
@@ -129,13 +129,13 @@ function Cart() {
                                 </div>
                               </div>
                               <div className={styles.cartaddandaddqunatity}>
-                              <div className={styles.addcounts}>
+                                <div className={styles.addcounts}>
                                   -
                                 </div>
                                 <div>
                                   1
                                 </div>
-                                
+
                                 <div className={styles.addcount}>
                                   +
                                 </div>

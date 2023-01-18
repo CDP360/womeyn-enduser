@@ -457,3 +457,83 @@
     }
 }
 // detail card section womeyn end
+
+.abouts-cards {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    // margin: 0 auto;
+    .smalltextgrey {
+        font-size: 0.728rem;
+        @include themed() {
+            color: t($textgrey);
+        }
+    }
+    @include xsBreakPoint {
+        padding-left: 2%;
+        gap: 10px;
+    }
+    @include mdBreakPoint {
+        padding-left: 2%;
+        gap: 10px;
+    }
+    .cards-aboutus {
+        width: 30% !important;
+        height: auto;
+        // border: 2px solid red;
+        border-radius: 8px;
+        padding: 20px 0px;
+        border-radius: 7px;
+        // background: red;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        padding-top: 1.2%;
+        @include themed() {
+            background: t($card);
+        }
+
+        @include xsBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+        }
+        @include smBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+        }
+        @include mdBreakPoint {
+            width: 30% !important;
+            margin: 0 auto;
+        }
+        @include lgBreakPoint {
+            width: 30% !important;
+            margin: 0 auto;
+        }
+        @include xlBreakPoint {
+            width: 30% !important;
+            margin: 0 auto;
+        }
+        .aboutus-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            @include xsBreakPoint {
+                font-size: 0.978rem;
+            }
+            @include mdBreakPoint {
+                font-size: 0.978rem;
+            }
+        }
+
+        .smalltextgrey {
+            font-size: 0.789rem;
+            width: 90%;
+            line-height: 1.7;
+            @include xsBreakPoint {
+                font-size: 0.786rem;
+            }
+            // @include themed() {
+            //     color: t($textgrey);
+            // }
+        }
+    }
+}
