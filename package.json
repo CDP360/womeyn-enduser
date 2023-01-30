@@ -12,7 +12,6 @@
     "@next/font": "13.0.7",
     "@popperjs/core": "^2.11.6",
     "@react-icons/all-files": "^4.1.0",
-    "aos": "^2.3.4",
     "axios": "^1.2.1",
     "bootstrap": "^5.2.3",
     "dart-sass": "^1.25.0",
