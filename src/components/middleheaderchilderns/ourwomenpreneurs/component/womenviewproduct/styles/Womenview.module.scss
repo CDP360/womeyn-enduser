@@ -1,6 +1,27 @@
 @use "../../../../../../../scss/abstract/" as *;
 .mainsearchwomen {
     width: 100%;
+    position:relative;
+    .emptyboxsection {
+        background: #e95a5a;
+        opacity: 0.24;
+        filter: blur(329px);
+        position: absolute;
+        width: 20%;
+        height: 20%;
+        right: 0;
+    }
+    .emptyboxsectionleft
+    {
+        background: #FECF9D;
+        opacity: 0.24;
+        filter: blur(329px);
+        position: absolute;
+        width: 20%;
+        height: 20%;
+        left: 0;
+        top:20%;
+    }
     .insidesearchwomen {
         width: 75%;
         margin: 0 auto;
@@ -245,9 +266,8 @@
     }
     .reviewsection {
         // border: 2px solid red;
-        padding:5% 0px;
+        padding: 5% 0px;
         margin-top: 5%;
         background-color: #f9f9f9;
-        
     }
 }

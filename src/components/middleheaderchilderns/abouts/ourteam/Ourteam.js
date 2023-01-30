@@ -12,7 +12,7 @@ function Ourteam() {
         infinite: true,
         speed: 500,
         slidesToShow: 4,
-        slidesToScroll: 2,
+        slidesToScroll: 1,
         autoplaySpeed: 3500,
         pauseOnHover: true,
         nextArrow: <SlideNextArrow />,
@@ -58,46 +58,58 @@ function Ourteam() {
     const data = [
         {
             id: 1,
-            name: "Customer value is our fuel",
-            title: "Value is making a difference for our customers each and every day. That's what powers our business and energizes us.",
+            name: " Anu Kulkarni",
+            title: "crafted from top materials",
             image: anuwomen,
             colorbg: "#FFF8F1"
         },
         {
             id: 2,
-            name: "Experience is a superpower",
-            title: "We are a team of experts who know how to work together to tackle real challenges and create success.",
+            name: " Anu Kulkarni",
+            title: "crafted from top materials",
             image: anuwomen,
             colorbg: "#ECF2FB"
         },
         {
             id: 3,
-            name: "Actions speak louder than words",
-            title: "When challenges arise, we rise to the occasion. We roll up our sleeves, get to work, and get the job done",
+            name: " Anu Kulkarni",
+            title: "crafted from top materials",
             image: anuwomen,
             colorbg: " #F0F8F3"
+
         },
         {
             id: 4,
-            name: "Actions speak louder than words",
-            title: "When challenges arise, we rise to the occasion. We roll up our sleeves, get to work, and get the job done",
+            name: " Anu Kulkarni",
+            title: "crafted from top materials",
             image: anuwomen,
             colorbg: "#FDF0F0"
         },
         {
             id: 5,
-            name: "Actions speak louder than words",
-            title: "When challenges arise, we rise to the occasion. We roll up our sleeves, get to work, and get the job done",
+            name: " Anu Kulkarni",
+            title: "crafted from top materials",
             image: anuwomen,
-            colorbg: " #FDF0F0"
+            colorbg: "#ECF2FB"
         }
     ]
 
     return (
         <Fragment>
-            <div>
-                Ourteam
+            <div className='mt-5'>
+                <div className={styles.blogsectiontexts}>
+                    <div className='large-text text-center'>
+                        Our Team
+                    </div>
+                    <div className='blogloream mt-2'>
+                        All the latest news, stories, events & workshops from our experts & influencers.
+                    </div>
+                </div>
+
+
             </div>
+
+
 
             <div className={styles.mainslidesection}>
                 <Slider {...settings}>
@@ -109,9 +121,13 @@ function Ourteam() {
                                         <div className={styles.slideaboutimage}>
                                             <Image src={item?.image} alt="no image" className={styles.slideimagesize} />
                                         </div>
-                                        <div className='mt-4'>
-                                            <h6>{item?.title}</h6>
-                                        </div>
+
+                                    </div>
+                                    <div className={styles.nameshadowsection}>
+                                        <span className={styles.namecustomers}>{item?.name}</span>
+
+                                        <span className={styles.desc}>{item?.title}</span>
+
                                     </div>
                                 </div>
                             </div>

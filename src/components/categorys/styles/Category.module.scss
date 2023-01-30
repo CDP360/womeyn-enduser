@@ -1,0 +1,30 @@
+@use '../../../../scss/abstract/' as *;
+
+.maincategorysection
+{
+    width:100%;
+    .insidecategorysection
+    {
+        width:75%;
+        margin: 0 auto;
+        .bannercategoryimage
+        {
+            width:100%;
+            height:100%;
+            object-fit: cover;
+        }
+        .splitcategorysection
+        {
+            width:100%;
+            display:flex;
+            .leftcatgory
+            {
+                width:20%;
+            }
+            .rightcategory
+            {
+                width:80%;
+            }
+        }
+    }
+}

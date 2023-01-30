@@ -70,6 +70,10 @@ function Cart() {
   return (
     <Fragment>
       <div className={styles.maincartsection}>
+      <div className={styles.emptyboxsection}>
+                    </div>
+                    <div className={styles.emptyboxsectionleft}>
+                    </div>
         <div className={styles.insidecartsectionmain}>
           <div className={styles.leftcartsection}>
             <div className='large-text mb-4'>

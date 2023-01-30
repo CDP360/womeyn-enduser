@@ -47,6 +47,12 @@
             @include xsBreakPoint {
                 flex-direction: column;
             }
+            @include smBreakPoint {
+                flex-direction: column;
+            }
+            @include mdBreakPoint {
+                flex-direction: column;
+            }
             .lefteventfruit {
                 width: 50%;
                 padding-top: 3%;
@@ -65,34 +71,65 @@
                 @include xlBreakPoint {
                     width: 100%;
                 }
-                .imageeventsection {
-                    padding-top: 4%;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 20px;
-                    .fruitimage {
+
+                .workshopimage {
+                    .shopingimage {
                         width: 100%;
-                        height: 200px;
-                        // object-fit: contain;
+                        height: 190px;
+                        border-radius: 5px;
+                    }
+                }
+                .fruitcontent {
+                    display: flex;
+                    // border: 2px solid red;
+                    margin-top: 4%;
+                    border-radius: 10px;
+                    background: #ffffff;
+                    box-shadow: 10.8299px 12.9959px 101.801px rgba(0, 0, 0, 0.08);
+                    border-radius: 5.94495px;
+                    height: 120px;
+                    @include xsBreakPoint {
+                        flex-direction: column;
+                        height: auto;
+                    }
+                    .contentimage {
+                        width: 25%;
+                        // border: 2px solid green;
                         @include xsBreakPoint {
                             width: 100%;
-                            height: auto;
                         }
-                        @include smBreakPoint {
+                        .shopingimagecontent {
                             width: 100%;
-                            height: auto;
+                            height: 100%;
+                            border-radius: 10px;
+                            @include xsBreakPoint {
+                                height: 150px;
+                            }
                         }
-                        @include mdBreakPoint {
+                    }
+                    .contentfruit {
+                        width: 75%;
+                        // border: 4px solid orange;
+                        padding: 23px;
+                        @include xsBreakPoint {
                             width: 100%;
-                            height: auto;
                         }
-                        @include lgBreakPoint {
-                            width: 100%;
-                            height: auto;
+                        .fruitsectionsplit {
+                            display: flex;
+                            gap: 30px;
                         }
-                        @include xlBreakPoint {
-                            width: 100%;
-                            height: auto;
+                        .fruit {
+                            color: #1f4590;
+                            font-weight: 600;
+                        }
+                        .mins {
+                            color: #121212;
+                            mix-blend-mode: normal;
+                            opacity: 0.3;
+                        }
+                        .simple {
+                            width: 80%;
+                            padding-top: 2%;
                         }
                     }
                 }
@@ -115,34 +152,64 @@
                 @include xlBreakPoint {
                     width: 100%;
                 }
-                .imageeventsection {
-                    padding-top: 4%;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 20px;
-                    .fruitimage {
+                .workshopimage {
+                    .shopingimage {
                         width: 100%;
-                        height: 200px;
-                        // object-fit: contain;
+                        height: 190px;
+                        border-radius: 5px;
+                    }
+                }
+                .fruitcontent {
+                    display: flex;
+                    // border: 2px solid red;
+                    margin-top: 4%;
+                    border-radius: 10px;
+                    background: #ffffff;
+                    box-shadow: 10.8299px 12.9959px 101.801px rgba(0, 0, 0, 0.08);
+                    border-radius: 5.94495px;
+                    height: 120px;
+                    @include xsBreakPoint {
+                        flex-direction: column;
+                        height: auto;
+                    }
+                    .contentimage {
+                        width: 25%;
+                        // border: 2px solid green;
                         @include xsBreakPoint {
                             width: 100%;
-                            height: auto;
                         }
-                        @include smBreakPoint {
+                        .shopingimagecontent {
                             width: 100%;
-                            height: auto;
+                            height: 100%;
+                            border-radius: 10px;
+                            @include xsBreakPoint {
+                                height: 150px;
+                            }
                         }
-                        @include mdBreakPoint {
+                    }
+                    .contentfruit {
+                        width: 75%;
+                        // border: 4px solid orange;
+                        padding: 23px;
+                        @include xsBreakPoint {
                             width: 100%;
-                            height: auto;
                         }
-                        @include lgBreakPoint {
-                            width: 100%;
-                            height: auto;
+                        .fruitsectionsplit {
+                            display: flex;
+                            gap: 30px;
                         }
-                        @include xlBreakPoint {
-                            width: 100%;
-                            height: auto;
+                        .fruit {
+                            color: #1f4590;
+                            font-weight: 600;
+                        }
+                        .mins {
+                            color: #121212;
+                            mix-blend-mode: normal;
+                            opacity: 0.3;
+                        }
+                        .simple {
+                            width: 80%;
+                            padding-top: 2%;
                         }
                     }
                 }

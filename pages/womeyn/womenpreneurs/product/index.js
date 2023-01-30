@@ -6,7 +6,7 @@ import Womenpreneusdetails from '../../../../src/components/middleheaderchildern
 
 function index({ dark, setdark }) {
     return (
-        <LayoutHeader title="product" dark={dark} setdark={setdark}>
+        <LayoutHeader title="Product" dark={dark} setdark={setdark}>
             <Womenpreneusdetails />
         </LayoutHeader>
     )

@@ -87,6 +87,28 @@
     }
 }
 
+
+.resendbutton
+{
+    background-color: white !important;
+    border: none !important;
+    color: black;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 10px 0px;
+    font-weight: 700;
+    border: 1px solid #9F9F9F !important;
+    @include xsBreakPoint {
+        width: 100%;
+    }
+    @include smBreakPoint {
+        width: 100%;
+    }
+}
+
 .button {
     background-color: red !important;
     border: none !important;

@@ -1,43 +1,36 @@
 @use "../../../../../scss/abstract/" as *;
 
-
-.mainboutus
-{
-    width:100%;
-    position:relative;
-    .exptyboxleft
-    {
-        
-background: #E95A5A;
-opacity: 0.3;
-filter: blur(329px);
-position:absolute;
-width:50%;
-height:15%;
-right:0;
-    }
-    .exptyboxright
-    {
-        background:  #FECF9D;
+.mainboutus {
+    width: 100%;
+    position: relative;
+    .exptyboxleft {
+        background: #e95a5a;
         opacity: 0.3;
         filter: blur(329px);
-        position:absolute;
-        width:28%;
-        height:20%;
-        left:0; 
-        top:22%;
+        position: absolute;
+        width: 50%;
+        height: 15%;
+        right: 0;
     }
-    .exptyboxleftblue
-    {
-        background: #415B91;
-opacity: 0.2;
-filter: blur(329px);
-width:20%;
-height:25%;
-right:0;
-top:70%;
-position:absolute;
-
+    .exptyboxright {
+        background: #fecf9d;
+        opacity: 0.3;
+        filter: blur(329px);
+        position: absolute;
+        width: 28%;
+        height: 20%;
+        left: 0;
+        top: 22%;
+    }
+    .exptyboxleftblue {
+        background: #415b91;
+        opacity: 0.2;
+        filter: blur(329px);
+        width: 20%;
+        height: 25%;
+        right: 0;
+        top: 40%;
+        position: absolute;
     }
     .mainaboutsection {
         width: 75%;
@@ -85,15 +78,13 @@ position:absolute;
                 background-size: 100%;
                 background-repeat: no-repeat;
                 position: relative;
-                @include lgBreakPoint
-                {
+                @include lgBreakPoint {
                     height: 480px;
                 }
-                @include xlBreakPoint
-                {
+                @include xlBreakPoint {
                     height: 500px;
                 }
-    
+
                 .bannercontentsectionimage {
                     width: 70%;
                     margin: 0 auto;
@@ -115,7 +106,7 @@ position:absolute;
                         width: 70%;
                         margin: 0 auto;
                         display: flex;
-    
+
                         @include xsBreakPoint {
                             // bottom: 30%;
                             width: 80%;
@@ -132,13 +123,11 @@ position:absolute;
                             top: 50%;
                         }
                         @include lgBreakPoint {
-                            
                             width: 80%;
-                            top:65%;
+                            top: 65%;
                         }
                         @include xlBreakPoint {
-                            top:75%;
-                           
+                            top: 75%;
                         }
                         .ceotext {
                             font-size: 1.2rem;
@@ -161,7 +150,7 @@ position:absolute;
                             margin: 0 auto;
                             padding: 1.45% 4%;
                             background-color: #fff8f1;
-                           
+
                             .we {
                                 width: 80%;
                                 font-size: 1.3rem;
@@ -332,5 +321,4 @@ position:absolute;
             object-fit: contain;
         }
     }
-    
 }

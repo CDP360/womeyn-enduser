@@ -9,6 +9,7 @@ import bubble2 from '../../../assests/womeynlogos/bubble2.png';
 import bubble3 from '../../../assests/womeynlogos/bubble3.png';
 import Ourvision from './ourvision/Ourvision';
 import Ourteam from './ourteam/Ourteam';
+import Whatmake from '../../home/components/whatmake/Whatmake';
 
 function Aboutus() {
 
@@ -112,8 +113,13 @@ function Aboutus() {
                         <Ourvision />
                     </div>
                     <div>
-                        <Ourteam/>
+                        <Ourteam />
                     </div>
+
+
+                </div>
+                <div>
+                    <Whatmake />
                 </div>
             </div>
         </Fragment>

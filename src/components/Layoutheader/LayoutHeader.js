@@ -5,7 +5,7 @@ import MobileHeader from '../header/Mobileheader/MobileHeader';
 import styles from './styles/Layoutheader.module.scss';
 import Footer from './../footer/Footer';
 import Signupnewsletter from '../home/components/signupfornewsletter/Signupnewsletter';
-
+import Childfooter from './../footer/Childfooter';
 function LayoutHeader({ setdark, dark, title, children }) {
 
     useEffect(()=>{
@@ -49,7 +49,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
                             {children}
                         </main>
                     </div>
-                    {title == "women-profile" ||title=="women-login" || title=="women-signup" || title=="Cart" ?
+                    {title == "Women-profile" ||title=="Women-login" || title=="Women-signup" || title=="Cart" || title=="Checkout" || title=="404 NotFound" || title=="Otp"  || title=="Forgetpassword"?
                         <>
                         </>
                         :
@@ -60,6 +60,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
                             <div>
                                 <footer>
                                     <Footer />
+                                    <Childfooter/>
                                 </footer>
                             </div>
                         </>

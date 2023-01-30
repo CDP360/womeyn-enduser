@@ -16,23 +16,21 @@ function Ourvision() {
                     </div>
                 </div>
             </div>
+            <div className={styles.aboutimagesection}>
+                <div className={styles.aboutimagheinside}>
+                    <div><Image src={aboutimage} alt="no image" className={styles.aboutimagesplit} /></div>
 
-          
-                <div className={styles.aboutimagesection}>
-                    <div className={styles.aboutimagheinside}>
-                        <div><Image src={aboutimage} alt="no image" className={styles.aboutimagesplit} /></div>
-                        
-                    </div>
-                    <div className={styles.rightaboutsection}>
-                            <div className={styles.ourmision}>
-                                OUR MISSION
-                            </div>
-                            <div className={styles.topro}>
-                                To provide a comprehensive eCommerce platform for enterprising women of our community, disadvantaged or otherwise limited by the knowledge of technology, social media, organizational skills and lack of equal opportunity.
-                            </div>
-                        </div>
                 </div>
-           
+                <div className={styles.rightaboutsection}>
+                    <div className={styles.ourmision}>
+                        OUR MISSION
+                    </div>
+                    <div className={styles.topro}>
+                        To provide a comprehensive eCommerce platform for enterprising women of our community, disadvantaged or otherwise limited by the knowledge of technology, social media, organizational skills and lack of equal opportunity.
+                    </div>
+                </div>
+            </div>
+
 
         </Fragment>
     )

@@ -4,7 +4,7 @@ import Womenpreneurs from '../../../src/components/middleheaderchilderns/ourwome
 
 function index({ dark, setdark }) {
     return (
-        <LayoutHeader dark={dark} setdark={setdark} title="womeynpreneurs">
+        <LayoutHeader dark={dark} setdark={setdark} title="Womeynpreneurs">
             <Womenpreneurs />
         </LayoutHeader>
     )

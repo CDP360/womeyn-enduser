@@ -53,6 +53,10 @@ function Viewproduct({ id }) {
     return (
         <Fragment>
             <div className={styles.mainsearchwomen}>
+                <div className={styles.emptyboxsection}>
+                    </div>
+                    <div className={styles.emptyboxsectionleft}>
+                    </div>
                 <div className={styles.insidesearchwomen}>
                     <div className={styles.splitwomensearch}>
                         <div className={styles.leftwomensearchsection}>
@@ -65,15 +69,7 @@ function Viewproduct({ id }) {
                                     <button className={styles.btn}> <i class="fa-regular fa-heart" ></i></button>
 
                                 </div>
-                                {/* <div className={`${styles.ratingsection} mt-2`}>
-                                    <div className={styles.ratingsections}>
-                                        <Image src={redstar} alt="no image" className={styles.star} />
-                                        4.5 <span className='text-grey'>(106 ratings)</span>
-                                    </div>
-                                    <div className="fs-6">
-                                        Top Seller
-                                    </div>
-                                </div> */}
+                               
                             </div>
 
                         </div>
@@ -149,7 +145,7 @@ function Viewproduct({ id }) {
                     </div>
                 </div>
                 <div>
-                    <Caroselproducts/>
+                    <Caroselproducts />
                 </div>
             </div>
         </Fragment>

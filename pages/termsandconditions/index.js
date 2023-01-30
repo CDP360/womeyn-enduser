@@ -4,7 +4,7 @@ import LayoutHeader from './../../src/components/Layoutheader/LayoutHeader';
 
 function index() {
     return (
-        <LayoutHeader title="terms & conditions">
+        <LayoutHeader title="Terms & conditions">
             <Termsandconditions />
         </LayoutHeader>
     )

@@ -8,8 +8,9 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    @include themed() {
-        background: t($background);
-        color: t($text);
-    }
+    // @include themed() {
+    //     background: t($background);
+    //     color: t($text);
+    // }
+    background:white;
 }

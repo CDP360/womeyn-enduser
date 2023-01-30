@@ -13,6 +13,9 @@ import sun from '../../assests/homepage-logos/sun.png';
 import moon from '../../assests/homepage-logos/moon.png';
 import { signOut, useSession } from "next-auth/react"
 import { useSelector } from 'react-redux';
+import myprofile from '../../assests/login-logos/myprofile.png';
+import logout from '../../assests/login-logos/logout.png';
+
 function Header({ setdark, dark }) {
     const router = useRouter();
     const state = useSelector(state => state.cart.cartitems);
@@ -45,13 +48,7 @@ function Header({ setdark, dark }) {
                                 </div>
                             </div>
                             <div className={"d-flex gap-4"}>
-                                <div>
-                                    {session?.user?.name ? <div onClick={logoutHandler} className={styles.cursorpointor}>
-                                        Logout
-                                    </div> : <div onClick={Login} className={styles.cursorpointor}>
-                                        Login
-                                    </div>}
-                                </div>
+                                
                                 <div className={styles.falight} onClick={carts}>
                                     <Image src={cart} alt="no image" className={styles.carticons} />
                                     {state?.length}
@@ -64,25 +61,27 @@ function Header({ setdark, dark }) {
                                         {status === "loading" && "Loading....."}
                                     </div>
                                     <div className="dropdowncontent">
-                                        <div onClick={userProfile}>
-                                            Profile
+                                        <div onClick={userProfile} className={styles.profilesplit}>
+                                            <div><Image src={myprofile} alt="no image" className={styles.myprofile}/></div>
+                                            <div>My Profile</div>
                                         </div>
-                                        <div>
-                                            Privacy Setting
-                                        </div>
-                                        <div onClick={logoutHandler}>
+                                      <hr/>
+                                        <div onClick={logoutHandler} className={styles.profilesplit}>
+                                        <div><Image src={logout} alt="no image" className={styles.myprofile}/></div>
+                                            <div>
                                             Logout
+                                                </div>
                                         </div>
-                                        <div>
+                                        {/* <div>
                                             <div>
                                                 {status === "loading" && "loading"}
                                                 {session?.user?.name}
                                             </div>
 
-                                        </div>
-                                        <div onClick={() => setdark(!dark)}>
+                                        </div> */}
+                                        {/* <div onClick={() => setdark(!dark)}>
                                             {dark ? <Image src={moon} alt="no image sun" className="themebutton" /> : <Image src={sun} alt="no image" className="themebutton" />}
-                                        </div>
+                                        </div> */}
 
                                     </div>
                                 </div>

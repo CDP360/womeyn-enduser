@@ -1,11 +1,12 @@
 import React from 'react'
 import Getintouch from '../../src/components/getintouch/Getintouch'
+import LayoutHeader from '../../src/components/Layoutheader/LayoutHeader'
 
 function index() {
     return (
-        <div>
+        <LayoutHeader title="Getintouch">
             <Getintouch />
-        </div>
+        </LayoutHeader>
     )
 }
 

@@ -5,7 +5,7 @@ import LayoutHeader from './../../src/components/Layoutheader/LayoutHeader';
 
 function index({ dark, setdark }) {
     return (
-        <LayoutHeader title="women-login" setdark={setdark} dark={dark}>
+        <LayoutHeader title="Women-login" setdark={setdark} dark={dark}>
             <Login />
         </LayoutHeader>
     )

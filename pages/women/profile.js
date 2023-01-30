@@ -4,7 +4,7 @@ import LayoutHeader from './../../src/components/Layoutheader/LayoutHeader';
 
 function profile({ setdark, dark }) {
     return (
-        <LayoutHeader title="women-profile" dark={dark} setdark={setdark}>
+        <LayoutHeader title="Women-profile" dark={dark} setdark={setdark}>
             <Ourprofile />
         </LayoutHeader>
     )

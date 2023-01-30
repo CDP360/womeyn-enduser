@@ -2,11 +2,32 @@
 
 .maincartsection {
     width: 100%;
+    .emptyboxsection {
+        background: #e95a5a;
+        opacity: 0.24;
+        filter: blur(329px);
+        position: absolute;
+        width: 20%;
+        height: 20%;
+        right: 0;
+    }
+    .emptyboxsectionleft
+    {
+        background: #FECF9D;
+        opacity: 0.24;
+        filter: blur(329px);
+        position: absolute;
+        width: 20%;
+        height: 40%;
+        left: 0;
+        top:30%;
+    }
     .insidecartsectionmain {
         width: 75%;
         margin: 0 auto;
         display: flex;
         gap: 30px;
+        padding-bottom:5%;
         @include xsBreakPoint {
             flex-direction: column;
         }

@@ -40,6 +40,10 @@ function Checkout() {
   return (
     <Fragment>
       <div className={styles.maincheckoutsection}>
+        <div className={styles.emptyboxsection}>
+        </div>
+        <div className={styles.emptyboxsectionleft}>
+        </div>
         <div className={styles.insidesectioncheckout}>
           <div className={styles.leftcheckoutsection}>
             <div className="large-text mb-2">Checkout</div>
@@ -50,14 +54,14 @@ function Checkout() {
 
               <div className={styles.leftbarprogress}>
                 <ProgressBar now={width} />
-                <div className={styles.orderstepsection} onClick={()=> setStep(0)}>
+                <div className={styles.orderstepsection} onClick={() => setStep(0)}>
                   <div className={styles.numbercountorderstep}>1</div>
                   <div className={styles.setordertext}>Set the order</div>
                 </div>
               </div>
               <div className={styles.rightbarprogress}>
                 <ProgressBar now={step === 1 && width} />
-                <div className={styles.orderstepsection} onClick={()=> setStep(1)}>
+                <div className={styles.orderstepsection} onClick={() => setStep(1)}>
                   <div className={`${step === 1 ? styles.numbercountorderstep : styles.numbercountdisabled}`}>2</div>
                   <div className={styles.setordertext}>Set the payment</div>
                 </div>
@@ -66,7 +70,7 @@ function Checkout() {
             </div>
 
             {step === 0 && <div>
-              <Orderdetails state={state}/>
+              <Orderdetails state={state} />
             </div>}
 
             {step === 1 && <div>

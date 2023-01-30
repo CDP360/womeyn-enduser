@@ -1,8 +1,8 @@
 @use "../abstract/" as *;
 
 .large-text {
-    font-size: 2rem !important;
-    font-weight: 650;
+    font-size: 1.6rem !important;
+    font-weight: 600;
     @include xsBreakPoint {
         font-size: 1.2rem !important;
     }

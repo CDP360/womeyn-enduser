@@ -5,6 +5,18 @@
     .insidesectionlogin {
         width: 100%;
         height: 100%;
+        @include xsBreakPoint {
+            padding-top: 15%;
+        }
+        @include smBreakPoint {
+            padding-top: 8%;
+        }
+        @include mdBreakPoint {
+            padding-top: 6%;
+        }
+        @include xlBreakPoint {
+            padding-top: 5%;
+        }
         .insideloginsplit {
             width: 30%;
             margin: 0 auto;
@@ -15,7 +27,7 @@
             flex-direction: column;
             align-items: center;
             height: 100%;
-          padding:3% 3%;
+            padding: 3% 3%;
             @include xsBreakPoint {
                 width: 90%;
                 height: auto;
@@ -46,10 +58,25 @@
                 padding-top: 4%;
                 padding-bottom: 4%;
             }
+            .verifytexts {
+                color: #e95a5a;
+                font-size: 1.9rem;
+                font-weight: 600;
+                padding-bottom: 3%;
+                @include xsBreakPoint {
+                    font-size: 1.6rem;
+                }
+            }
+            .loraemlogin {
+                color: #6c6d6e;
+                width: 100%;
+                text-align: center;
+                font-size: 13px;
+            }
             .logintext {
                 color: #e95a5a;
                 font-size: 2rem;
-                font-weight: bold;
+                font-weight: 600;
                 padding-bottom: 7%;
             }
             .forms {
