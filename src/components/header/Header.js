@@ -7,10 +7,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import cartslogo from '../../assests/homepage-logos/cart.png';
 import profile from '../../assests/homepage-logos/profile.png';
-import { Button } from 'react-bootstrap';
 import iconmenu from '../../assests/homepage-logos/iconMenu.png';
-import sun from '../../assests/homepage-logos/sun.png';
-import moon from '../../assests/homepage-logos/moon.png';
 import { signOut, useSession } from "next-auth/react"
 import { useSelector } from 'react-redux';
 import myprofile from '../../assests/login-logos/myprofile.png';
@@ -39,6 +36,10 @@ function Header({ setdark, dark }) {
     const carts = () => {
         router.push("/cart")
     }
+
+    const notificationsPush=()=>{
+        router.push("/notifications")
+    }
     return (
         <Fragment>
             <div className={styles.headermainsection}>
@@ -56,9 +57,8 @@ function Header({ setdark, dark }) {
                             </div>
                             <div className={"d-flex gap-4"}>
 
-                                <div className={styles.falight} onClick={carts}>
+                                <div className={styles.falight} onClick={notificationsPush}>
                                     <Image src={notifications} alt="no image" className={styles.notifications} />
-
                                 </div>
                                 <div className={styles.falight} onClick={carts}>
                                     <Image src={cartslogo} alt="no image" className={styles.carticons} />

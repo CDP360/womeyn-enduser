@@ -23,6 +23,20 @@ function Signup() {
     const handlePushTerms = () => {
         router.push("/women/terms-and-conditions")
     }
+
+    const Googleoauth = () => {
+        window.open(
+            `https://womeynapi.cdp360.in/v1/auth/seller/google`,
+            "_self", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=600,height=600"
+        );
+
+    }
+    const FacebookAuth = () => {
+        window.open(
+            `https://womeynapi.cdp360.in/v1/auth/seller/facebook`,
+            "_self", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=600,height=600"
+        );
+    }
     return (
         <Fragment>
 
@@ -60,7 +74,7 @@ function Signup() {
                             <div className="text-center mt-2 mb-3">
                                 {LoginText?.oryoucanuse}
                             </div>
-                            <div className={styles.socialloginbutton}>
+                            <div className={styles.socialloginbutton} onClick={Googleoauth}>
                                 <div>
                                     <Image src={google} alt="no image" className={styles.googleiconsectionlogin} />
                                 </div>
@@ -68,7 +82,7 @@ function Signup() {
                                     {LoginText?.Google}
                                 </div>
                             </div>
-                            <div className={styles.socialloginbutton}>
+                            <div className={styles.socialloginbutton} onClick={FacebookAuth}>
                                 <div>
                                     <Image src={facebook} alt="no image" className={styles.googleiconsectionlogin} />
                                 </div>

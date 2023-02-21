@@ -41,7 +41,7 @@
     background-color: white !important;
     cursor: pointer;
     color: #e95a5a !important;
-    border: 1px solid #e95a5a !important;   
+    border: 1px solid #e95a5a !important;
 }
 .sellerinactive {
     background-color: white;
@@ -71,14 +71,14 @@
 .loginbutton {
     background-color: #e95a5a !important;
     border: none !important;
-    color: white;
+    color: white !important;
     cursor: pointer;
     width: 100%;
     border: none;
     outline: none;
     border-radius: 10px;
-    padding: 10px 0px;
-    font-weight: 700;
+    padding: 10px !important;
+    font-weight: 700 !important;
     @include xsBreakPoint {
         width: 100%;
     }
@@ -87,12 +87,11 @@
     }
 }
 
-
 .cancelbutton {
-    background-color: #FFFFFF !important;
-    background: #FFFFFF;
-    border: 1px solid #9F9F9F;
-  
+    background-color: #ffffff !important;
+    background: #ffffff;
+    border: 1px solid #9f9f9f;
+
     cursor: pointer;
     width: 100%;
     color: #121212;
@@ -108,9 +107,7 @@
     }
 }
 
-
-.resendbutton
-{
+.resendbutton {
     background-color: white !important;
     border: none !important;
     color: black;
@@ -121,7 +118,7 @@
     border-radius: 10px;
     padding: 10px 0px;
     font-weight: 700;
-    border: 1px solid #9F9F9F !important;
+    border: 1px solid #9f9f9f !important;
     @include xsBreakPoint {
         width: 100%;
     }

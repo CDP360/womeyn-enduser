@@ -11,6 +11,7 @@
      width:22px;
      height:22px;
      object-fit:contain;
+     cursor:pointer;
 
     }
 
@@ -41,7 +42,7 @@
         height:20px;
     }
     .headerinsidesection {
-        box-shadow: 0px -27px 40px rgba(0, 0, 0, 0.010);
+        box-shadow: 0px -27px 40px rgba(0, 0, 0, 0.40);
         margin:0 auto;
         .logoheadersection {
             display: flex;
@@ -75,7 +76,7 @@
     }
     .middleheadersection {
         width: 100%;
-        box-shadow: rgba(20, 1, 7, 0) 0px 1px 0px 0px, rgba(0, 4, 1, 0.10) 0px 1px 6px 0px;
+        box-shadow: rgba(20, 1, 7, 0) 0px 1px 0px 0px, rgba(100, 35, 30, 0.100) 0px 1px 6px 0px;
         align-items: center;
         display: flex;
         background: white;

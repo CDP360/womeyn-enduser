@@ -43,6 +43,10 @@ function Login() {
         }
     };
 
+    const handlePushForgetpassword=()=>{
+        history.push("/forgetpassword")
+    }
+
 
     return (
         <Fragment>
@@ -92,13 +96,13 @@ function Login() {
                                     {errors.password && <span className="active">{errors.password.message}</span>}
                                 </Form.Group>
 
-                                <div className={styles.forgetpassword}>{LoginText?.Forgotpassword}</div>
+                                <div className={styles.forgetpassword} onClick={handlePushForgetpassword}>{LoginText?.Forgotpassword}</div>
                                 <Button className="loginbutton" type="submit">
                                     {" "}
                                     {LoginText?.Login}
                                 </Button>
                             </Form>
-                            <div className="text-center mt-3 mb-4">orloginwith</div>
+                            <div className="text-center mt-3 mb-4">{LoginText?.orloginwith}</div>
                             <div className={styles.socialloginbutton}>
                                 <div>
                                     <Image

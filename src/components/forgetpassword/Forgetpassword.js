@@ -18,10 +18,11 @@ function Forgetpassword() {
     } = useForm();
     const onSubmit = async (data) => {
         console.log('data', data)
+        handlePushTerms();
     };
 
     const handlePushTerms = () => {
-        router.push("/women/terms-and-conditions")
+        router.push("/changepassword")
     }
     return (
         <Fragment>

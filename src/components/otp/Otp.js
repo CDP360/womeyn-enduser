@@ -23,7 +23,6 @@ function Otp() {
                         <div className={styles["loraemlogin"]}>
                             <div className="mb-5">
                                 Lorem ipsum sit dolor ametLorem ipsum sit dolor ametLorem ipsum sit dolor ametLorem ipsum sit dolor ametLorem ipsum sit dolor amet
-
                             </div>
                         </div>
                         <div>
@@ -40,12 +39,14 @@ function Otp() {
 
                                     />
                                 </div>
+                                <div className={styles.verifyotpsection}>
                                 <button type="submit" className="loginbutton mt-5 mb-3">
                                     Verify
                                 </button>
                                 <button className="resendbutton mt-2 mb-3">
                                     Resend link
                                 </button>
+                                </div>
                             </Form>
                         </div>
                     </div>
