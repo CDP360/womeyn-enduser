@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-loading-skeleton/dist/skeleton.css'
 import Cookies from 'js-cookie';
 import { SessionProvider } from "next-auth/react";
+import { StoreProviderContext } from '../src/Redux/store/Contextstore';
 function App({ Component, pageProps }) {
   const [dark, setDark] = useState(false);
   useEffect(() => {
@@ -23,10 +24,12 @@ function App({ Component, pageProps }) {
       <div className='womeyn-enduser'>
         <StrictMode>
           <SessionProvider session={pageProps.session}>
+            <StoreProviderContext>
             <Provider store={store}>
               <ToastContainer />
               <Component {...pageProps} setdark={setDark} dark={dark} />
             </Provider>
+            </StoreProviderContext>
           </SessionProvider>
         </StrictMode>
       </div >

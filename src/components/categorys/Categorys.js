@@ -9,6 +9,12 @@ function Categorys() {
   return (
     <Fragment>
       <div className={styles.maincategorysection}>
+        <div className={styles.emptyboxleft}>
+
+        </div>
+        <div className={styles.emptyboxright}>
+
+        </div>
         <div className={styles.insidecategorysection}>
           <div className='mb-3 mt-2'>
             Categorys / health
@@ -18,10 +24,10 @@ function Categorys() {
           </div>
           <div className={styles.splitcategorysection}>
             <div className={styles.leftcatgory}>
-              <Sidebarcateogrys/>
+              <Sidebarcateogrys />
             </div>
-            <div className={styles.rightcatgory}>
-              <Maincategorylist/>
+            <div className={styles.rightcategory}>
+              <Maincategorylist />
             </div>
 
           </div>

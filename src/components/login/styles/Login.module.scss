@@ -6,19 +6,24 @@
         width: 100%;
         height: 100%;
         @include xsBreakPoint {
-            padding-top: 15%;
+            padding-top: 5%;
+            padding-bottom: 5%;
         }
         @include smBreakPoint {
-            padding-top: 8%;
+            padding-top: 5%;
         }
         @include mdBreakPoint {
             padding-top: 6%;
         }
+        @include lgBreakPoint {
+            padding-top: 2%;
+        }
+
         @include xlBreakPoint {
-            padding-top: 5%;
+            padding-top: 1.2%;
         }
         .insideloginsplit {
-            width: 30%;
+            width: 28%;
             margin: 0 auto;
             background: #ffffff;
             border: 1px solid #9f9f9f;
@@ -27,7 +32,7 @@
             flex-direction: column;
             align-items: center;
             height: 100%;
-            padding: 3% 3%;
+            padding: 1% 3%;
             @include xsBreakPoint {
                 width: 90%;
                 height: auto;
@@ -41,7 +46,7 @@
                 padding-bottom: 8%;
             }
             @include mdBreakPoint {
-                width: 50%;
+                width: 60%;
                 height: auto;
                 padding-top: 5%;
                 padding-bottom: 5%;
@@ -49,13 +54,13 @@
             @include lgBreakPoint {
                 width: 45%;
                 height: auto;
-                padding-top: 5%;
+                padding-top: 3%;
                 padding-bottom: 6%;
             }
             @include xlBreakPoint {
                 width: 40%;
                 height: auto;
-                padding-top: 4%;
+                padding-top: 2%;
                 padding-bottom: 4%;
             }
             .verifytexts {
@@ -81,14 +86,20 @@
             }
             .forms {
                 width: 300px !important;
-                border: 1px solid #e95a5a;
+                border: 1px solid #e95a5a !important;
                 // border: none;
+                padding: 10px;
+                border-radius: 10px !important;
                 outline: none;
+
                 @include xsBreakPoint {
                     width: 300px !important;
                 }
                 @include smBreakPoint {
                     width: 320px !important;
+                }
+                @include mdBreakPoint {
+                    width: 340px !important;
                 }
                 @include lgBreakPoint {
                     width: 340px !important;
@@ -123,6 +134,112 @@
                     object-fit: contain;
                     height: 22px;
                 }
+            }
+        }
+    }
+    .endcustomerbutton {
+        width: 100%;
+        padding-bottom: 1.4%;
+        @include xsBreakPoint {
+            padding-top: 5%;
+        }
+        @include smBreakPoint {
+            padding-top: 5%;
+        }
+        @include mdBreakPoint {
+            padding-top: 5%;
+        }
+        .insidecustomerbutton {
+            display: flex;
+            margin: 0 auto;
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            @include xsBreakPoint {
+                flex-direction: column;
+                width: 100%;
+            }
+            @include smBreakPoint {
+                width: 100%;
+            }
+            @include mdBreakPoint {
+                width: 100%;
+            }
+        }
+        .womenprebutton {
+            background: white;
+            outline: none;
+            border: 1px solid #fecf9d;
+            width: 15%;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            @include xsBreakPoint {
+                width: 70%;
+            }
+            @include smBreakPoint {
+                width: 30%;
+            }
+            @include mdBreakPoint {
+                width: 25%;
+            }
+
+            @include lgBreakPoint {
+                width: 25%;
+            }
+            @include xlBreakPoint {
+                width: 20%;
+            }
+        }
+        .endconsumerbuttons {
+            background: #fecf9d;
+            font-weight: 600;
+            outline: none;
+            border: 1px solid #fecf9d;
+            width: 15%;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            @include xsBreakPoint {
+                width: 70%;
+            }
+            @include smBreakPoint {
+                width: 30%;
+            }
+            @include mdBreakPoint {
+                width: 25%;
+            }
+            @include lgBreakPoint {
+                width: 25%;
+            }
+            @include xlBreakPoint {
+                width: 20%;
+            }
+        }
+    }
+    .termsconditions {
+        // border: 2px solid red;
+        width: 100%;
+        padding-top: 2%;
+        padding-bottom: 5%;
+        .insideterms {
+            width: 80%;
+            margin: 0 auto;
+            // border: 3px solid blue;
+            text-align: center;
+
+            .toourtext {
+                color: #595959;
+            }
+            .termsactivetext {
+                color: #e95a5a;
+                text-decoration: underline;
+                padding-bottom: 1%;
+                font-weight: 600;
+                cursor: pointer;
             }
         }
     }

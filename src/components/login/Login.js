@@ -4,8 +4,6 @@ import styles from "./styles/Login.module.scss";
 import google from "../../assests/homepage-logos/google.png";
 import facebook from "../../assests/homepage-logos/loginfacebook.png";
 import Image from "next/image";
-// import Layout from '../../../pages/layout';
-import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { useSession, signIn, signOut } from "next-auth/react"
@@ -49,7 +47,13 @@ function Login() {
     return (
         <Fragment>
             <div className={styles.mainloginsection}>
-                <div>{/* <LayoutHeader/> */}</div>
+                <div className={styles.endcustomerbutton}>
+                    <div className={styles.insidecustomerbutton}>
+                        <button className={styles.womenprebutton}>{LoginText?.Womenpreneur}</button>
+                        <button className={styles.endconsumerbuttons}>{LoginText?.EndConsumer}</button>
+                    </div>
+                </div>
+
                 <div className={styles.insidesectionlogin}>
                     <div className={styles.insideloginsplit}>
                         <div className={styles.logintext}>{LoginText?.Login}</div>
@@ -115,11 +119,11 @@ function Login() {
                                 </div>
                                 <div>{LoginText?.Facebook}</div>
                             </div>
-                            <div className="text-center">
+                            <div className="text-center mb-3">
                                 {LoginText?.Donthaveanaccount}
                                 <span
                                     className="active"
-                                    onClick={() => history.push("/signup")}
+                                    onClick={() => history.push("/women/signup")}
                                 >
                                     {LoginText?.Signup}
                                 </span>

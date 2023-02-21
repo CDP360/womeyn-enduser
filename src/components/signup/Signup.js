@@ -5,35 +5,67 @@ import google from '../../assests/homepage-logos/google.png';
 import facebook from '../../assests/homepage-logos/loginfacebook.png';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { LoginText } from '../login/const/Consttext';
+import { useForm } from "react-hook-form";
+
 function Signup() {
-    const router=useRouter();
+    const router = useRouter();
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm();
+    const onSubmit = async (data) => {
+        console.log('data', data)
+    };
+
+    const handlePushTerms = () => {
+        router.push("/women/terms-and-conditions")
+    }
     return (
         <Fragment>
+
             <div className={styles.mainloginsection}>
-                
+                <div className={styles.endcustomerbutton}>
+                    <div className={styles.insidecustomerbutton}>
+                        <button className={styles.womenprebutton}>{LoginText?.Womenpreneur}</button>
+                        <button className={styles.endconsumerbuttons}>{LoginText?.EndConsumer}</button>
+                    </div>
+                </div>
                 <div className={styles.insidesectionlogin}>
                     <div className={styles.insideloginsplit}>
                         <div className={styles.logintext}>
-                            Sign up
+                            {LoginText?.Signup}
                         </div>
                         <div>
-                            <Form>
+                            <Form onSubmit={handleSubmit(onSubmit)}>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Control type="text" placeholder="Email / Phone Number" className={styles.forms} />
+                                    <Form.Control type="text" placeholder="Email / Phone Number" className={styles.forms}
+                                        {...register("email", {
+                                            required: "Please enter email / Phone Number",
+                                            pattern: {
+                                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                message: "invalid email address"
+                                            },
+                                        })}
+                                    />
+                                    {errors.email && <span className="active">{errors.email.message}</span>}
                                 </Form.Group>
-                                <button variant="primary" type="submit" className="loginbutton mt-4 mb-3">
-                                    Sign up
+
+                                <button variant="primary" type="submit" className="loginbutton mt-2 mb-2">
+                                    {LoginText?.Signup}
                                 </button>
                             </Form>
-                            <div className="text-center mt-3 mb-4">
-                                or you can use
+                            <div className="text-center mt-2 mb-3">
+                                {LoginText?.oryoucanuse}
                             </div>
                             <div className={styles.socialloginbutton}>
                                 <div>
                                     <Image src={google} alt="no image" className={styles.googleiconsectionlogin} />
                                 </div>
                                 <div>
-                                    Google
+                                    {LoginText?.Google}
                                 </div>
                             </div>
                             <div className={styles.socialloginbutton}>
@@ -41,11 +73,21 @@ function Signup() {
                                     <Image src={facebook} alt="no image" className={styles.googleiconsectionlogin} />
                                 </div>
                                 <div>
-                                    Facebook
+                                    {LoginText?.Facebook}
                                 </div>
                             </div>
-                            <div className='text-center'>
-                                Already have an account?  <span className='active' onClick={()=>router.push("/login")}>Log in</span>
+                            <div className='text-center mb-3'>
+                                {LoginText?.Alreadyhaveanaccount}  <span className='active' onClick={() => router.push("/login")}>{LoginText?.Login}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.termsconditions}>
+                        <div className={styles.insideterms}>
+                            <div className={styles.toourtext}>
+                                {LoginText?.Bysigningupyouagreetoour}
+                            </div>
+                            <div className={styles.termsactivetext} onClick={handlePushTerms}>
+                                {LoginText?.termsandconditions}
                             </div>
                         </div>
                     </div>

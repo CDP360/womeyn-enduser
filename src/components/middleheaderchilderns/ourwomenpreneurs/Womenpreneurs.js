@@ -6,7 +6,6 @@ import Form from 'react-bootstrap/Form';
 
 import serachicon from '../../../assests/homepage-logos/serachicon.png';
 import axios from 'axios';
-
 import { useRouter } from 'next/router';
 import girl from '../../../assests/womeynlogos/girl4.png';
 function Womenpreneurs() {    
@@ -26,12 +25,9 @@ function Womenpreneurs() {
         })
         
     }, [])
-
     const handlepush = (id) => {
         router.push(`/womeyn/womenpreneurs/product/${id}`);
     }
-
-
     return (
         <Fragment>
             <div className={styles.womeynmainsectionpre}>

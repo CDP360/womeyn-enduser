@@ -9,6 +9,7 @@ import fire from '../../../../assests/womeynlogos/fire.png';
 import Form from 'react-bootstrap/Form';
 import Image from 'next/image';
 import { Button } from 'react-bootstrap';
+import dynamic from 'next/dynamic';
 function Orderdetails({ state }) {
   return (
     <Fragment>
@@ -46,7 +47,7 @@ function Orderdetails({ state }) {
               Azhar
             </div>
 
-            {state.map((item, index) => {
+            {state.cartData.map((item, index) => {
               return (
                 <>
                   <div className={`mt-3 mb-4 ${styles.ordersectiondetailsorder}`}>
@@ -123,4 +124,4 @@ function Orderdetails({ state }) {
   )
 }
 
-export default Orderdetails
+export default  dynamic(() => Promise.resolve(Orderdetails), { ssr: false });

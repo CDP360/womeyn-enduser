@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext, useEffect } from 'react'
 import styles from './styles/Beverage.module.scss';
 
 import i1 from '../../../../../assests/womeynlogos/i1.png';
@@ -11,23 +11,20 @@ import plus from '../../../../../assests/womeynlogos/plus.png';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Cartactions } from '../../../../../Redux/actions/cart/Cartdata';
+import { useState } from 'react';
+import { ContextStore } from '../../../../../Redux/store/Contextstore';
+import { CART_SUCCESS } from '../../../../../Redux/types';
 
 function Beverage() {
 
+    const {state,dispatch}=useContext(ContextStore)
 
-    const dispatch=useDispatch();
-    
     const router = useRouter();
 
     const Carthandleproduct = (data) => {
-        dispatch(Cartactions(data));
+        dispatch({type:"CART_SUCCESS",payload:data});
     }
-
-    const state=useSelector(state=>state);
-
-    console.log('====================================');
-    console.log("kalai",state);
-    console.log('====================================');
+ 
     const data = [
         {
             id: 1,
@@ -114,7 +111,7 @@ function Beverage() {
                         return (
                             <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 col-xl-12 ' key={index} >
                                 <div className={styles.plussection}>
-                                    <Image src={plus} alt="no image" className={styles.plus} onClick={()=>Carthandleproduct(item)}/>
+                                    <Image src={plus} alt="no image" className={styles.plus} onClick={() => Carthandleproduct(item)} />
                                 </div>
                                 <div onClick={() => router.push(`/womeyn/womenpreneurs/product/view/${item?.name?.slice(0, 10)}`)}>
                                     <Image src={item?.image} alt="no image" className={styles.sellerimagesize} />

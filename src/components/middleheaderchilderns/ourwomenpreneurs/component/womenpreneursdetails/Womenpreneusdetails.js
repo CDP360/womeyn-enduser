@@ -14,7 +14,6 @@ import Sweets from '../sweets/Sweets';
 
 function Womenpreneusdetails({ id }) {
     const router = useRouter();
-
     const [productlist, setProductList] = useState([]);
     const [indexs, setIndexs] = useState(0);
     useEffect(() => {
@@ -26,40 +25,35 @@ function Womenpreneusdetails({ id }) {
 
     }, [indexs])
 
-
-
     const handlechnagedata = (id) => {
         setIndexs(id);
     }
-
     const data = [
         {
             id: 1,
             title: "Beverages",
-            component: <Beverage />
+
         },
         {
             id: 2,
             title: "Superfoods",
-            Component: <Superfoods />,
 
         },
         {
             id: 3,
             title: "Healthbars",
-            component: <Healthbars />
 
         },
         {
             id: 4,
             title: "Baking",
-            component: <Baking />,
+
 
         },
         {
             id: 5,
             title: "Sweets",
-            component: <Sweets />
+
 
         }
     ]
@@ -143,11 +137,11 @@ function Womenpreneusdetails({ id }) {
                     </div>
                 </div>
 
-               
+
 
 
             </div>
-     
+
         </Fragment>
     )
 }

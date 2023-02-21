@@ -88,6 +88,27 @@
 }
 
 
+.cancelbutton {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF;
+    border: 1px solid #9F9F9F;
+  
+    cursor: pointer;
+    width: 100%;
+    color: #121212;
+    outline: none;
+    border-radius: 10px;
+    padding: 10px 0px;
+    opacity: 0.7;
+    @include xsBreakPoint {
+        width: 100%;
+    }
+    @include smBreakPoint {
+        width: 100%;
+    }
+}
+
+
 .resendbutton
 {
     background-color: white !important;

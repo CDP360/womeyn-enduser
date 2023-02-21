@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect,useContext } from 'react'
 import styles from './styles/Checkout.module.scss';
 import Image from 'next/image';
 import usepromo from '../../assests/womeynlogos/cartprice.png';
@@ -7,24 +7,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Orderdetails from './components/orderdetails/Orderdetails';
 import Payment from './components/payment/Payment';
+import { ContextStore } from '../../Redux/store/Contextstore';
+import dynamic from 'next/dynamic';
 function Checkout() {
   const [step, setStep] = useState(0);
-  const state = useSelector(state => state.cart.cartitems)
-  const [price, setPrice] = useState(0);
+  const { state, dispatch } = useContext(ContextStore);
 
+  const { cart } = state;
+  const [price, setPrice] = useState(0);
   const [width, setWidth] = useState(0);
   const [width1, setWidth1] = useState(0);
 
   useEffect(() => {
     TotalPrice();
-
     handleprogress();
-
-
   }, [price, width])
   const TotalPrice = () => {
     let price = 0;
-    state.map((item) => {
+    cart.cartData.map((item) => {
       price = item.price + price;
     })
     setPrice(price);
@@ -70,7 +70,7 @@ function Checkout() {
             </div>
 
             {step === 0 && <div>
-              <Orderdetails state={state} />
+              <Orderdetails state={cart} />
             </div>}
 
             {step === 1 && <div>
@@ -101,7 +101,7 @@ function Checkout() {
                 </div>
                 <div className={styles.bordersection}></div>
                 <div className={styles.totalpricesection}>
-                  <div className={styles.shoppingsummary}>Total Discount item(s)</div>
+                  <div className={styles.shoppingsummary}>Total Price (item)</div>
                   <div className={styles.shoppingsummary}>Rs.{price}</div>
                 </div>
                 <div className="mt-4">
@@ -123,4 +123,4 @@ function Checkout() {
   )
 }
 
-export default Checkout
+export default dynamic(() => Promise.resolve(Checkout), { ssr: false })

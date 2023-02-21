@@ -1,12 +1,11 @@
 import React from 'react'
+import Termsandconditions from '../../../src/components/termsandconditions/Termsandconditions';
 import LayoutHeader from '../../../src/components/Layoutheader/LayoutHeader';
-import Getintouch from './../../../src/components/getintouch/Getintouch';
-
 
 function index() {
     return (
-        <LayoutHeader title="Getintouch">
-         <Getintouch/>
+        <LayoutHeader title="Terms & conditions">
+            <Termsandconditions />
         </LayoutHeader>
     )
 }

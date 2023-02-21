@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect, useContext } from 'react'
 import styles from './styles/Womenview.module.scss';
 import product1 from '../../../../../assests/womeynlogos/i1.png';
 import product2 from '../../../../../assests/womeynlogos/i2.png';
@@ -12,9 +12,11 @@ import { useDispatch } from 'react-redux';
 import { Cartactions } from '../../../../../Redux/actions/cart/Cartdata';
 import Reviewsproduct from './Reviews/Reviewsproduct';
 import Caroselproducts from './carouselproducts/Caroselproducts';
-
+import { ContextStore } from '../../../../../Redux/store/Contextstore';
 
 function Viewproduct({ id }) {
+
+    const { state, dispatch } = useContext(ContextStore);
     const [indexs, setIndex] = useState(0);
     const datas = {
         id: 1,
@@ -23,7 +25,7 @@ function Viewproduct({ id }) {
         title: "thala",
         price: 100,
     }
-    const dispatch = useDispatch();
+
 
     const router = useRouter();
     const data =
@@ -47,16 +49,16 @@ function Viewproduct({ id }) {
     }
 
     const handleChange = (cartdata) => {
-        dispatch(Cartactions(cartdata))
+        dispatch({ type: "CART_SUCCESS", payload: cartdata });
 
     }
     return (
         <Fragment>
             <div className={styles.mainsearchwomen}>
                 <div className={styles.emptyboxsection}>
-                    </div>
-                    <div className={styles.emptyboxsectionleft}>
-                    </div>
+                </div>
+                <div className={styles.emptyboxsectionleft}>
+                </div>
                 <div className={styles.insidesearchwomen}>
                     <div className={styles.splitwomensearch}>
                         <div className={styles.leftwomensearchsection}>
@@ -67,9 +69,8 @@ function Viewproduct({ id }) {
                                 </div>
                                 <div className={styles.heartimagesection}>
                                     <button className={styles.btn}> <i class="fa-regular fa-heart" ></i></button>
-
                                 </div>
-                               
+
                             </div>
 
                         </div>

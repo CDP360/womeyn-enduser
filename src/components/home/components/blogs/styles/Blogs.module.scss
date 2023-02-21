@@ -2,7 +2,7 @@
 
 .blogmainsection {
     width: 100%;
-    padding-top: 4%;
+    padding-top: 5%;
     .insideblogsection {
         width: 75%;
         height: 100%;
@@ -27,7 +27,7 @@
         }
         .blogimages {
             width: 100%;
-            // height: 100%;
+            height: 100%;
             object-fit: cover;
             @include mdBreakPoint {
                 width: 100%;

@@ -1,29 +1,72 @@
-@use '../../../../scss/abstract/' as *;
+@use "../../../../scss/abstract/" as *;
 
-.maincategorysection
-{
-    width:100%;
-    .insidecategorysection
-    {
-        width:75%;
+.maincategorysection {
+    width: 100%;
+    .emptyboxleft {
+        position: absolute;
+        background: #fecf9d;
+        opacity: 0.3;
+        filter: blur(239.825px);
+        left: 0;
+        width: 20%;
+        height: 40%;
+    }
+    .insidecategorysection {
+        width: 75%;
         margin: 0 auto;
-        .bannercategoryimage
-        {
-            width:100%;
-            height:100%;
+        @include xsBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include smBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include mdBreakPoint {
+            width: 85%;
+        }
+        @include lgBreakPoint {
+            width: 89%;
+        }
+        @include xlBreakPoint {
+            width: 85%;
+        }
+        .bannercategoryimage {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
-        .splitcategorysection
-        {
-            width:100%;
-            display:flex;
-            .leftcatgory
-            {
-                width:20%;
+        .splitcategorysection {
+            width: 100%;
+            display: flex;
+            // border:3px solid red;
+            padding-top: 5%;
+            @include xsBreakPoint {
+                flex-direction: column;
             }
-            .rightcategory
-            {
-                width:80%;
+            @include smBreakPoint {
+                flex-direction: column;
+            }
+            // gap:20px;
+            .leftcatgory {
+                width: 20%;
+                // border:2px solid green;
+                @include xsBreakPoint {
+                    width: 100%;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                }
+            }
+            .rightcategory {
+                width: 80%;
+                // border:2px solid blue;
+                @include xsBreakPoint {
+                    width: 100%;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                }
             }
         }
     }

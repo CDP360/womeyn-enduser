@@ -1,11 +1,11 @@
 import React from 'react'
-import Termsandconditions from '../../src/components/termsandconditions/Termsandconditions';
+import Changepassword from '../../src/components/forgetpassword/Changepassword'
 import LayoutHeader from './../../src/components/Layoutheader/LayoutHeader';
 
 function index() {
     return (
-        <LayoutHeader title="Terms & conditions">
-            <Termsandconditions />
+        <LayoutHeader title="Change-password">
+            <Changepassword/>
         </LayoutHeader>
     )
 }

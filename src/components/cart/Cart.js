@@ -1,23 +1,24 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { CartActionDelete } from '../../Redux/actions/cart/Cartdata';
+import { CartActionDelete, Cartactions } from '../../Redux/actions/cart/Cartdata';
 import styles from './styles/Cart.module.scss';
 import usepromo from '../../assests/womeynlogos/cartprice.png';
 import Image from 'next/image';
 import { Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import { CartActionClearDataAll } from './../../Redux/actions/cart/Cartdata';
+import { ContextStore } from '../../Redux/store/Contextstore';
 function Cart() {
 
+  const { state, dispatch } = useContext(ContextStore);
+
+  const { cart } = state;
   const router = useRouter();
-
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [price, setPrice] = useState(0);
+  const [deleteselect, setDeleteselect] = useState("");
   const [showlocal, setLocalData] = useState([]);
-  const state = useSelector((state) => state.cart.cartitems);
-
-
+  // const state = useSelector((state) => state.cart.cartitems);
   useEffect(() => {
     setLocalData(state);
     TotalPrice();
@@ -25,55 +26,73 @@ function Cart() {
 
   const TotalPrice = () => {
     let price = 0;
-    state.map((item) => {
+    cart.cartData.map((item) => {
       price = item.price + price;
     })
     setPrice(price);
   }
 
-
-
   const shopping = () => {
-    router.push("//womeyn/womenpreneurs/product/")
+    router.push("/womeyn/womenpreneurs/product")
   }
 
 
+  console.log("showlocal", cart)
+  const handleDelete = (e) => {
 
-  const handleDelete = (name) => {
-    console.log(name, "name")
-    if (name === "allselect") {
-      const data = setLocalData([]);
-      dispatch(CartActionClearDataAll(data));
-    }
-    else {
-      dispatch(CartActionDelete(name == "allselect" ? "" : name))
-    }
+
+    dispatch({ type: "CART_REMOVE", payload: e })
+
+    console.log("io", e)
+    // const value = e.target.value;
+    // const checked = e.target.checked;
+
+
+    // dispatch(CartActionDelete(e))
+
+    // dispatch(Cartactions(showlocal));
+
+
   }
 
   const handleChange = (e) => {
-    const { name, checked } = e.target;
-    handleDelete(name);
-    if (name === "allselect") {
-      let temp = showlocal.map((item) => {
-        return { ...item, isChecked: checked }
-      });
-      setLocalData(temp);
-    } else {
-      let checkvalue = showlocal.map(item => item.id === name ? { ...item, isChecked: checked } : item);
-      setLocalData(checkvalue);
+    // handleDelete(e);
+    // const { name, checked } = e.target;
+    // handleDelete(name);
+    // if (name === "allselect") {
+    //   let temp = showlocal.map((item) => {
+    //     return { ...item, isChecked: checked }
+    //   });
+    //   setLocalData(temp);
+    // } else {
+    //   let checkvalue = showlocal.map(item => item.id === name ? { ...item, isChecked: checked } : item);
+    //   setLocalData(checkvalue);
+    // }
 
-
+    const value = e.target.value;
+    const checked = e.target.checked;
+    if (checked) {
+      setDeleteselect(value)
+    }
+    else {
+      // setDeleteselect(deleteselect.filter((e) => e != value));
     }
 
   }
+
+
+
+
+
+
 
   return (
     <Fragment>
       <div className={styles.maincartsection}>
-      <div className={styles.emptyboxsection}>
-                    </div>
-                    <div className={styles.emptyboxsectionleft}>
-                    </div>
+        {/* <div className={styles.emptyboxsection}>
+        </div>
+        <div className={styles.emptyboxsectionleft}>
+        </div> */}
         <div className={styles.insidecartsectionmain}>
           <div className={styles.leftcartsection}>
             <div className='large-text mb-4'>
@@ -94,15 +113,15 @@ function Cart() {
               <div className={styles.cartshowsection}>
 
                 <div>
-                  {showlocal.length > 0 ?
+                  {cart.cartData.length > 0 ?
                     <>
-                      {showlocal.map((item, index) => {
+                      {cart.cartData.map((item, index) => {
                         return (
                           <>
                             <div className={styles.checkboxsectioncart}>
                               <div className={styles.insidestorenamesection}>
                                 <div>
-                                  <input type="checkbox" name={item?.id} checked={item?.isChecked || false} onChange={handleChange} />
+                                  <input type="checkbox" name={item?.name} value={item?.id} onChange={handleDelete} />
                                 </div>
                                 <div classsName={styles.storename}>
                                   Store Name {item?.id}
@@ -143,6 +162,9 @@ function Cart() {
                                 <div className={styles.addcount}>
                                   +
                                 </div>
+                              </div>
+                              <div>
+                                <button onClick={() => handleDelete(item)}>delete</button>
                               </div>
                             </div>
 
@@ -186,7 +208,7 @@ function Cart() {
                 </div>
                 <div className={styles.bordersection}></div>
                 <div className={styles.totalpricesection}>
-                  <div className={styles.shoppingsummary}>Total Discount item(s)</div>
+                  <div className={styles.shoppingsummary}>Total Price (item)</div>
                   <div className={styles.shoppingsummary}>Rs. {price}</div>
                 </div>
                 <div className="mt-4">
@@ -210,18 +232,3 @@ export default dynamic(() => Promise.resolve(Cart), { ssr: false });
 
 
 
-{/* <div>
-{state.length>0 ?
- <>
- {state.map((item, index) => {
-  return (
-    <div>
-      {item.name}
-      <button onClick={() => handleDelete(item.id)}>delete</button>
-    </div>
-  )
-})}
- </>:<div>No Data Found....</div>
-}
-
-</div> */}

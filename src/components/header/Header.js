@@ -5,7 +5,7 @@ import Image from 'next/image';
 import womeynlogo from '../../assests/homepage-logos/womeyn_logo.png';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import cart from '../../assests/homepage-logos/cart.png';
+import cartslogo from '../../assests/homepage-logos/cart.png';
 import profile from '../../assests/homepage-logos/profile.png';
 import { Button } from 'react-bootstrap';
 import iconmenu from '../../assests/homepage-logos/iconMenu.png';
@@ -15,10 +15,17 @@ import { signOut, useSession } from "next-auth/react"
 import { useSelector } from 'react-redux';
 import myprofile from '../../assests/login-logos/myprofile.png';
 import logout from '../../assests/login-logos/logout.png';
+import notifications from '../../assests/login-logos/notifications.png';
+import { useContext } from 'react';
+import { ContextStore } from '../../Redux/store/Contextstore';
+import dynamic from 'next/dynamic';
 
 function Header({ setdark, dark }) {
+
+    const { state, dispatch } = useContext(ContextStore);
+    const { cart } = state;
     const router = useRouter();
-    const state = useSelector(state => state.cart.cartitems);
+    const states = useSelector(state => state.cart.cartitems);
     const { status, data: session } = useSession();
     const logoutHandler = async () => {
         await signOut({ callbackUrl: "/" });
@@ -29,7 +36,7 @@ function Header({ setdark, dark }) {
     const Login = () => {
         router.push("/login");
     }
-    const carts=()=>{
+    const carts = () => {
         router.push("/cart")
     }
     return (
@@ -48,10 +55,14 @@ function Header({ setdark, dark }) {
                                 </div>
                             </div>
                             <div className={"d-flex gap-4"}>
-                                
+
                                 <div className={styles.falight} onClick={carts}>
-                                    <Image src={cart} alt="no image" className={styles.carticons} />
-                                    {state?.length}
+                                    <Image src={notifications} alt="no image" className={styles.notifications} />
+
+                                </div>
+                                <div className={styles.falight} onClick={carts}>
+                                    <Image src={cartslogo} alt="no image" className={styles.carticons} />
+                                    {cart.cartData?.length}
                                 </div>
                                 <div className="dropdown">
                                     <div>
@@ -62,15 +73,15 @@ function Header({ setdark, dark }) {
                                     </div>
                                     <div className="dropdowncontent">
                                         <div onClick={userProfile} className={styles.profilesplit}>
-                                            <div><Image src={myprofile} alt="no image" className={styles.myprofile}/></div>
+                                            <div><Image src={myprofile} alt="no image" className={styles.myprofile} /></div>
                                             <div>My Profile</div>
                                         </div>
-                                      <hr/>
+                                        <hr />
                                         <div onClick={logoutHandler} className={styles.profilesplit}>
-                                        <div><Image src={logout} alt="no image" className={styles.myprofile}/></div>
+                                            <div><Image src={logout} alt="no image" className={styles.myprofile} /></div>
                                             <div>
-                                            Logout
-                                                </div>
+                                                Logout
+                                            </div>
                                         </div>
                                         {/* <div>
                                             <div>
@@ -100,7 +111,7 @@ function Header({ setdark, dark }) {
                                 </Link>
                             </div>
                             <div className={styles.bordercolors}>
-|
+                                |
                             </div>
                             <div className={router.pathname == "/womeyn/womenpreneurs" ? "active" : ""}>
 
@@ -140,4 +151,5 @@ function Header({ setdark, dark }) {
     )
 }
 
-export default Header;
+export default dynamic(() => Promise.resolve(Header), { ssr: false });
+// export default Header;
