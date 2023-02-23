@@ -37,7 +37,7 @@ function Header({ setdark, dark }) {
         router.push("/cart")
     }
 
-    const notificationsPush=()=>{
+    const notificationsPush = () => {
         router.push("/notifications")
     }
     return (
@@ -72,7 +72,13 @@ function Header({ setdark, dark }) {
                                         {status === "loading" && "Loading....."}
                                     </div>
                                     <div className="dropdowncontent">
-                                        <div onClick={userProfile} className={styles.profilesplit}>
+                                        <div>
+                                            Create account / LogIn
+                                            <button className='active mt-3 loginbuttonhome' onClick={Login}>
+                                                LogIn/SignUp
+                                            </button>
+                                        </div>
+                                        {/* <div onClick={userProfile} className={styles.profilesplit}>
                                             <div><Image src={myprofile} alt="no image" className={styles.myprofile} /></div>
                                             <div>My Profile</div>
                                         </div>
@@ -82,7 +88,7 @@ function Header({ setdark, dark }) {
                                             <div>
                                                 Logout
                                             </div>
-                                        </div>
+                                        </div> */}
                                         {/* <div>
                                             <div>
                                                 {status === "loading" && "loading"}
@@ -104,8 +110,8 @@ function Header({ setdark, dark }) {
                 <div className={styles.middleheadersection}>
                     <div className='header'>
                         <div className={styles.insidemiddlesectionheader}>
-                            <div className={router.pathname == "/womeyn/explore" ? "active" : "nav-link"}>
-                                <Link href="/womeyn/explore" className='nav-link'>
+                            <div className={router.pathname == "/explore" ? "active" : "nav-link"}>
+                                <Link href="/explore" className='nav-link'>
                                     <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
                                     <span className='ms-2'>Explore</span>
                                 </Link>
@@ -113,30 +119,30 @@ function Header({ setdark, dark }) {
                             <div className={styles.bordercolors}>
                                 |
                             </div>
-                            <div className={router.pathname == "/womeyn/womenpreneurs" ? "active" : ""}>
+                            <div className={router.pathname == "/womenpreneurs" ? "active" : ""}>
 
-                                <Link href="/womeyn/womenpreneurs" className='nav-link'>
+                                <Link href="/womenpreneurs" className='nav-link'>
                                     {/* <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} /> */}
 
                                     <span className='ms-2'>Our womenpreneurs</span>
                                 </Link>
                             </div>
-                            <div className={router.pathname == "/womeyn/events" ? "active" : ""}>
-                                <Link href="/womeyn/events" className='nav-link'>
+                            <div className={router.pathname == "/events" ? "active" : ""}>
+                                <Link href="/events" className='nav-link'>
                                     {/* <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} /> */}
 
                                     <span className='ms-2'>Events & updates</span>
                                 </Link>
                             </div>
-                            <div className={router.pathname == "/womeyn/abouts" ? "active" : ""}>
-                                <Link href="/womeyn/abouts" className='nav-link'>
+                            <div className={router.pathname == "/abouts" ? "active" : ""}>
+                                <Link href="/abouts" className='nav-link'>
                                     {/* <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} /> */}
 
                                     <span className='ms-2'></span> About us
                                 </Link>
                             </div>
-                            <div className={router.pathname == "/womeyn/getintouch" ? "active" : ""}>
-                                <Link href="/womeyn/getintouch" className='nav-link'>
+                            <div className={router.pathname == "/getintouch" ? "active" : ""}>
+                                <Link href="/getintouch" className='nav-link'>
                                     {/* <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} /> */}
                                     <span className='ms-2'>Get in touch</span>
                                 </Link>

@@ -8,14 +8,14 @@ import serachicon from '../../../assests/homepage-logos/serachicon.png';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import girl from '../../../assests/womeynlogos/girl4.png';
-function Womenpreneurs() {    
+function Womenpreneurs() {
     const router = useRouter();
     const [data, setData] = useState([]);
     const [search, setSearch] = useState("");
-    const [loadingset,setLoading]=useState(false);
+    const [loadingset, setLoading] = useState(false);
     useEffect(() => {
         setLoading(true);
-       axios.get(`https://fakestoreapi.com/products`).then((res) => {
+        axios.get(`https://fakestoreapi.com/products`).then((res) => {
             setData(res?.data);
             setLoading(false);
 
@@ -23,10 +23,10 @@ function Womenpreneurs() {
             console.log(err);
             setLoading(false);
         })
-        
+
     }, [])
     const handlepush = (id) => {
-        router.push(`/womeyn/womenpreneurs/product/${id}`);
+        router.push(`/womenpreneurs/product/${id}`);
     }
     return (
         <Fragment>

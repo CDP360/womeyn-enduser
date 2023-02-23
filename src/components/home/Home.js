@@ -19,6 +19,7 @@ import Blogs from './components/blogs/Blogs';
 import { useSelector } from 'react-redux';
 import Whatmake from './components/whatmake/Whatmake';
 import LayoutHeader from '../Layoutheader/LayoutHeader';
+import { Bannerimage } from '../../services/banner-image-service/banner-image-service';
 function Home() {
     const history = useRouter();
     const [showTopBtn, setShowTopBtn] = useState(false);
@@ -71,14 +72,27 @@ function Home() {
             }
         ]
     };
+
     const gototop = () => {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
     }
+
+
+    
     const state = useSelector(state => state);
     console.log(state, "logindata");
     useEffect(() => {
+        GetBannerimages()
+    }, [state]);
 
-    }, [state])
+
+    const GetBannerimages = () => {
+        Bannerimage().then((res) => {
+            console.log(res?.data, "kalaisurya");
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     return (
         <Fragment>
 

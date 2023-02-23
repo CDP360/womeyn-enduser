@@ -1,6 +1,6 @@
 import React from 'react'
-import Termsandconditions from '../../../src/components/termsandconditions/Termsandconditions';
-import LayoutHeader from '../../../src/components/Layoutheader/LayoutHeader';
+import Termsandconditions from '../../src/components/termsandconditions/Termsandconditions';
+import LayoutHeader from '../../src/components/Layoutheader/LayoutHeader';
 
 function index() {
     return (

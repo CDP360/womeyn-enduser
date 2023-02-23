@@ -1,16 +1,18 @@
 import React from 'react'
-import Getintouch from '../../src/components/getintouch/Getintouch'
+
 import LayoutHeader from '../../src/components/Layoutheader/LayoutHeader'
+import Eventsupdate from './../../src/components/middleheaderchilderns/eventsupdate/Eventsupdate';
+
 
 
 
 function index() {
     return (
-        <LayoutHeader title="Getintouch">
-         <Getintouch/>
+        <LayoutHeader title="Events">
+         <Eventsupdate/>
         </LayoutHeader>
-    
-
+        
+       
     )
 }
 

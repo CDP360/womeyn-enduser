@@ -1,7 +1,7 @@
 import React from 'react'
-import Signup from '../../../src/components/signup/Signup';
+import Signup from '../../src/components/signup/Signup';
 
-import LayoutHeader from './../../../src/components/Layoutheader/LayoutHeader';
+import LayoutHeader from '../../src/components/Layoutheader/LayoutHeader';
 
 function index({dark,setdark}) {
     return (

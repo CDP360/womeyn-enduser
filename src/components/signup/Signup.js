@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Form } from 'react-bootstrap';
 import styles from '../../components/login/styles/Login.module.scss';
 import google from '../../assests/homepage-logos/google.png';
@@ -21,7 +21,7 @@ function Signup() {
     };
 
     const handlePushTerms = () => {
-        router.push("/women/terms-and-conditions")
+        router.push("/terms-and-conditions")
     }
 
     const Googleoauth = () => {
@@ -37,14 +37,37 @@ function Signup() {
             "_self", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=600,height=600"
         );
     }
+
+    const buttons = [
+        {
+            id: 1,
+            name: "Womenpreneur"
+        },
+        {
+            id: 1,
+            name: "End Consumer"
+        }
+    ]
+
+    const [indexs, setIndexs] = useState(0);
+
+
     return (
         <Fragment>
 
             <div className={styles.mainloginsection}>
                 <div className={styles.endcustomerbutton}>
                     <div className={styles.insidecustomerbutton}>
-                        <button className={styles.womenprebutton}>{LoginText?.Womenpreneur}</button>
-                        <button className={styles.endconsumerbuttons}>{LoginText?.EndConsumer}</button>
+                        <button className={`${indexs === 0 ? "endconsumerbuttons" : "womenprebutton"}`}
+                            onClick={() => {
+                                setIndexs(0);
+                            }}
+                        >{LoginText?.Womenpreneur}</button>
+                        <button className={`${indexs === 1 ? "endconsumerbuttons" : "womenprebutton"}`}
+                            onClick={() => {
+                                setIndexs(1);
+                            }}
+                        >{LoginText?.EndConsumer}</button>
                     </div>
                 </div>
                 <div className={styles.insidesectionlogin}>

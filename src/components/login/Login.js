@@ -43,18 +43,26 @@ function Login() {
         }
     };
 
-    const handlePushForgetpassword=()=>{
+    const handlePushForgetpassword = () => {
         history.push("/forgetpassword")
     }
 
-
+    const [indexs, setIndexs] = useState(0);
     return (
         <Fragment>
             <div className={styles.mainloginsection}>
                 <div className={styles.endcustomerbutton}>
                     <div className={styles.insidecustomerbutton}>
-                        <button className={styles.womenprebutton}>{LoginText?.Womenpreneur}</button>
-                        <button className={styles.endconsumerbuttons}>{LoginText?.EndConsumer}</button>
+                        <button className={`${indexs === 0 ? "endconsumerbuttons" : "womenprebutton"}`}
+                            onClick={() => {
+                                setIndexs(0);
+                            }}
+                        >{LoginText?.Womenpreneur}</button>
+                        <button className={`${indexs === 1 ? "endconsumerbuttons" : "womenprebutton"}`}
+                            onClick={() => {
+                                setIndexs(1);
+                            }}
+                        >{LoginText?.EndConsumer}</button>
                     </div>
                 </div>
 
@@ -127,7 +135,7 @@ function Login() {
                                 {LoginText?.Donthaveanaccount}
                                 <span
                                     className="active"
-                                    onClick={() => history.push("/women/signup")}
+                                    onClick={() => history.push("/signup")}
                                 >
                                     {LoginText?.Signup}
                                 </span>
