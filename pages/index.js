@@ -8,4 +8,6 @@ export default function index({ setdark, dark}) {
       <Home />
     </LayoutHeader>
   )
+  
 }
+

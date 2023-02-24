@@ -13,10 +13,11 @@ import instagram from '../../../../assests/homepage-logos/instagram.png';
 
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { Topwomenprenuers } from '../../../../services/banner-image-service/banner-image-service';
+import users from '../../../../assests/homepage-logos/usersimageprofile.png';
 function Ourwomenpreneurs() {
     const [count, setCount] = useState("");
     const [datas, setDatas] = useState([]);
-
     const router = useRouter();
     const state = useSelector((state) => state);
     const counts = state?.slidercount?.counts;
@@ -108,8 +109,20 @@ function Ourwomenpreneurs() {
 
     ]
     useEffect(() => {
+        Topwomenprenuers().then((res) => {
+            setDatas(res?.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, [counts]);
 
-    }, [counts])
+    const SocialIconsOpen = (urldata) => {
+        window.open(urldata);
+    }
+
+    const handleProductSeller = (id) => {
+        router.push(`/womenpreneurs/${id}`);
+    }
     return (
         <Fragment>
             <div className={styles.maonourwomensection}>
@@ -125,13 +138,12 @@ function Ourwomenpreneurs() {
                         <div className={styles.insidewomensectionslider}>
                             <div className={styles.leftwomeynsection}>
                                 <Slider {...settings}>
-                                    {data.map((item, index) => {
+                                    {datas.map((item, index) => {
                                         return (
                                             <div className={styles.insideslides}>
                                                 <div className={styles.backgroundslidewomen}>
                                                 </div>
-                                                <Image src={item?.image} alt="no image" className={styles.slideimagesize} />
-
+                                                {item.image ? <>no data</> : <Image src={users} alt="no image" className={styles.slideimagesize} />}
                                             </div>
                                         )
                                     })}
@@ -140,38 +152,44 @@ function Ourwomenpreneurs() {
                             <div className={styles.rightwomeynsection}>
 
                                 <div className={styles.rightinsidewomentext}>
-                                    <div className='textseller'>
-                                        {data[counts - 1]?.title}
+                                    <div className={styles.textsellers}>
+                                        {datas[counts - 1]?.firstName} {datas[counts - 1]?.lastName}
                                     </div>
-                                    <div className='textgrey'>
-                                        {data[counts - 1]?.title1}
-                                    </div>
+                                    {/* <div className='textgrey'>
+                                        {datas[counts - 1]?.lastName}
+                                    </div> */}
+                                    {/* <div className='textgrey'>
+                                        {datas[counts - 1]?.email}
+                                    </div> */}
                                     <div className={styles.descriptioninwomeyn}>
-                                        {data[counts - 1]?.description}
+                                        {datas[counts - 1]?.profileDescription}
                                     </div>
                                     <div className={styles.womenactiveprofiletext}>
                                         <div>
-                                            <button className={styles.selleractives}> {data[counts - 1]?.button}</button>
+                                            <button className={styles.selleractives} onClick={()=>handleProductSeller(datas[counts - 1]?.businessSlugName)}> {datas[counts - 1]?.businessSlugName}</button>
                                         </div>
                                         <div className={styles.socialspacewomen}>
-                                            <div className={styles.imagebackgroundwomen}>
-                                                <Image src={data[counts - 1]?.linked} alt='no image' className={styles.socialmdeiaicons} />
-                                            </div>
-                                            <div className={styles.imagebackgroundwomen}>
-                                                <Image src={data[counts - 1]?.twitter} alt='no image' className={styles.socialmdeiaicons} />
-                                            </div>
-                                            <div className={styles.imagebackgroundwomen}>
-                                                <Image src={data[counts - 1]?.facebook} alt='no image' className={styles.socialmdeiaicons} />
-                                            </div>
-                                            <div className={styles.imagebackgroundwomen}>
-                                                <Image src={data[counts - 1]?.instagram} alt='no image' className={styles.socialmdeiaicons} />
-                                            </div>
+                                            {datas[counts - 1]?.linkedinUrl ? <div className={styles.imagebackgroundwomen}>
+                                                <Image src={data[counts - 1]?.linked} alt='no image' className={styles.socialmdeiaicons} onClick={() => SocialIconsOpen(datas[counts - 1]?.linkedinUrl)} />
+                                            </div> : <></>}
+                                            {datas[counts - 1]?.twitterUrl ? <div className={styles.imagebackgroundwomen}>
+                                                <Image src={data[counts - 1]?.twitter} alt='no image' className={styles.socialmdeiaicons} onClick={() => SocialIconsOpen(datas[counts - 1]?.twitterUrl)} />
+                                            </div> : <></>}
+                                            {datas[counts - 1]?.facebookUrl ? <div className={styles.imagebackgroundwomen}>
+                                                <Image src={data[counts - 1]?.facebook} alt='no image' className={styles.socialmdeiaicons} onClick={() => SocialIconsOpen(datas[counts - 1]?.facebookUrl)} />
+                                            </div> : <></>}
+                                            {datas[counts - 1]?.instagramUrl ? <div className={styles.imagebackgroundwomen}>
+                                                <Image src={data[counts - 1]?.instagram} alt='no image' className={styles.socialmdeiaicons} onClick={() => SocialIconsOpen(datas[counts - 1]?.instagramUrl)} />
+                                            </div> : <></>}
+                                            {datas[counts - 1]?.youtubeUrl ? <div className={styles.imagebackgroundwomen}>
+                                                <Image src={data[counts - 1]?.instagram} alt='no image' className={styles.socialmdeiaicons} onClick={() => SocialIconsOpen(datas[counts - 1]?.youtubeUrl)} />
+                                            </div> : <></>}
                                         </div>
                                     </div>
                                     <div className="textdashed">
                                     </div>
                                     <div className='mt-2'>
-                                        <span className='active fs-2 fw-1'>{state?.slidercount?.counts}</span>/{data.length}
+                                        <span className='active fs-2 fw-1'>{state?.slidercount?.counts}</span>/{datas.length}
                                     </div>
                                 </div>
 

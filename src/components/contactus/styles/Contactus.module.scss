@@ -5,9 +5,26 @@
     .insidecontactuspage {
         width: 75%;
         margin: 0 auto;
+        @include xsBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include smBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include mdBreakPoint {
+            width: 85%;
+        }
+        @include lgBreakPoint {
+            width: 89%;
+        }
+        @include xlBreakPoint {
+            width: 85%;
+        }
         .textsizecontact {
-            font-size: 1.6rem;
-            font-weight: 700;
+            font-size: 1.7rem;
+            font-weight: 600;
         }
         .insidesectionboxcontact {
             width: 100%;
@@ -16,23 +33,201 @@
             box-shadow: rgba(10, 30, 50, 0.3) 0px 1px 2px;
             border-radius: 40px;
             padding: 30px 30px;
+            margin-top: 3%;
+            @include xsBreakPoint {
+                height: 100%;
+                padding: 30px 15px;
+            }
             .cardsectioncontacty {
                 display: flex;
-                gap: 30px;
+                gap: 50px;
+                position: relative;
+                @include xsBreakPoint {
+                    flex-direction: column;
+                }
+                @include smBreakPoint {
+                    flex-direction: column;
+                }  @include mdBreakPoint {
+                    flex-direction: column;
+                }
                 .leftcontactsection {
-                    width: 30%;
+                    width: 35%;
                     height: 100%;
                     background: #e95a5a;
-                    border-radius: 8px;
+                    border-radius: 20px;
                     color: white;
+                    padding: 2% 3%;
+                    height: 600px;
+                    position: relative;
+                    @include xsBreakPoint {
+                        width: 100%;
+                    }
+                    @include smBreakPoint {
+                        width: 100%;
+                    }
+                    @include mdBreakPoint {
+                        width: 100%;
+                    }
+                    .contactNumberinfor {
+                        font-size: 1.4rem;
+                        font-weight: 600;
+                        @include smBreakPoint
+                        {
+                            padding-top:4%;
+                        }
+                    }
+                    .filename {
+                        color: rgba(255, 255, 255, 0.6);
+                        padding-top: 3%;
+                        @include smBreakPoint
+                        {
+                            padding-top:4%;
+                        }
+                    }
+                    .contactbox {
+                        // border:2px solid red;
+                        display: flex;
+                        gap: 20px;
+                        align-items: center;
+                        padding: 0px 2px;
+                        .contactround {
+                            width: 35px;
+                            height: 35px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: white;
+                            border-radius: 50%;
+
+                            .contactimage {
+                                width: 18px;
+                                object-fit: contain;
+                                height: 18px;
+                                cursor: pointer;
+                            }
+                        }
+                        .contacttextsizes {
+                            font-size: 1.1rem;
+                            cursor: pointer;
+                        }
+                    }
+                    .boxbottomsection {
+                        .offcirclessection {
+                            position: absolute;
+                            bottom: 0;
+                            right: 0%;
+                            border-bottom-right-radius: 20px;
+                            overflow: hidden;
+                        }
+                        .offcirclessection1 {
+                            position: absolute;
+                            bottom: 0;
+                            right: 0;
+                            //    border-bottom-right-radius: 1000px;
+                            border-bottom-right-radius: 20px;
+                            overflow: hidden;
+                        }
+                    }
                 }
                 .rightcontactsection {
-                    width: 70%;
+                    width: 65%;
                     height: 100%;
-
                     border-radius: 8px;
+            
+                    position: relative;
+                    height: 600px;
+                    @include xsBreakPoint {
+                        width: 100%;
+                        height:720px;
+                    }
+                    @include smBreakPoint {
+                        width: 100%;
+                        height:470px;
+                    }
+                    @include mdBreakPoint {
+                        width: 100%;
+                        height:470px;
+                    }
+                    .sendbuttoncontact {
+                        // border: 2px solid blue;
+                        position: absolute;
+                        width: 35%;
+                        bottom: 3%;
+                        right: 0;
+                        @include xsBreakPoint {
+                            bottom: -2%;
+                            width:60%;
+                        }
+                         @include smBreakPoint {
+                            bottom: 0%;
+                            width:50%;
+                        }
+                    }
+                    .sendformsbutton {
+                        border: none;
+                        background-color: #e95a5a;
+                        color: white;
+                        cursor: pointer;
+                        padding: 10px !important;
+                        border-radius: 5px;
+                        width: 100%;
+                        @include xsBreakPoint {
+                            padding-top: 5%;
+                            
+                        }
+                    }
+                    .sendformsbutton:hover {
+                        background-color: white;
+                        color: #e95a5a;
+                        border: 1px solid #e95a5a;
+                    }
                 }
             }
+        }
+    }
+}
+
+// contact forms section
+
+.contactformsections {
+    .insidecontactforms {
+        display: flex;
+        gap: 70px;
+        margin-top: 3%;
+        @include xsBreakPoint {
+            width: 100%;
+            flex-direction: column;
+            gap: 10px;
+            // margin-top: 1%;
+        }
+    }
+    .contactformtextfield {
+        border: none !important;
+        border-bottom: 0.950794px solid rgba(0, 0, 0, 0.4) !important;
+        border-radius: 0px !important;
+        width: 100% !important;
+    }
+    .firstNametexts {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    .checkboxtext {
+        font-size: 0.989rem;
+        font-weight: 600;
+    }
+    .textshelptexts {
+        font-size: 0.989rem;
+        font-weight: 600;
+    }
+    .sendformsbutton {
+        width: 100% !important;
+    }
+    .checkboxs {
+        display: flex;
+        gap: 30px;
+        @include xsBreakPoint {
+            gap: 5px;
+            flex-direction: column;
         }
     }
 }

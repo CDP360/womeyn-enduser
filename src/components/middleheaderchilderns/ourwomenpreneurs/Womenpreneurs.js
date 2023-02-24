@@ -26,7 +26,7 @@ function Womenpreneurs() {
 
     }, [])
     const handlepush = (id) => {
-        router.push(`/womenpreneurs/product/${id}`);
+        router.push(`/womenpreneurs/${id}`);
     }
     return (
         <Fragment>

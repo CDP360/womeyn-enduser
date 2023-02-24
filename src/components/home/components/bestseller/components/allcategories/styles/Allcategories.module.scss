@@ -53,4 +53,33 @@
         padding-top: 5%;
         padding-bottom: 10%;
     }
+
+
+   
+    
+
+.insidecarouselsections
+{
+    // border:1px solid red;
+padding:10px 0px;
+
+    .cardsections
+    {
+        border:2px solid blue !important;
+        display:flex !important;
+     
+        width:90% !important;
+        margin:0 auto !important;
+        cursor:pointer;
+        
+background: #FFFFFF;
+box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
+border-radius: 8px;
+border:none !important;
+// padding:10px !important;
+    }
 }
+       
+    
+}
+

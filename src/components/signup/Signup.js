@@ -18,6 +18,7 @@ function Signup() {
     } = useForm();
     const onSubmit = async (data) => {
         console.log('data', data)
+        router.push("/login")
     };
 
     const handlePushTerms = () => {

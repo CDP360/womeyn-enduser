@@ -8,7 +8,8 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { useSession, signIn, signOut } from "next-auth/react"
 import { toast } from 'react-toastify';
-import { LoginText } from "./const/Consttext";
+import { LoginText } from "../../consttext/Loginconst";
+
 function Login() {
 
     const { data: session } = useSession();
@@ -48,8 +49,23 @@ function Login() {
     }
 
     const [indexs, setIndexs] = useState(0);
+
+    const Googleoauth = () => {
+        window.open(
+            `https://womeynapi.cdp360.in/v1/auth/seller/google`,
+            "_self", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=600,height=600"
+        );
+
+    }
+    const FacebookAuth = () => {
+        window.open(
+            `https://womeynapi.cdp360.in/v1/auth/seller/facebook`,
+            "_self", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=600,height=600"
+        );
+    }
     return (
         <Fragment>
+            
             <div className={styles.mainloginsection}>
                 <div className={styles.endcustomerbutton}>
                     <div className={styles.insidecustomerbutton}>
@@ -111,7 +127,7 @@ function Login() {
                                 </Button>
                             </Form>
                             <div className="text-center mt-3 mb-4">{LoginText?.orloginwith}</div>
-                            <div className={styles.socialloginbutton}>
+                            <div className={styles.socialloginbutton} onClick={Googleoauth}>
                                 <div>
                                     <Image
                                         src={google}
@@ -121,7 +137,7 @@ function Login() {
                                 </div>
                                 <div>{LoginText?.Google}</div>
                             </div>
-                            <div className={styles.socialloginbutton}>
+                            <div className={styles.socialloginbutton} onClick={FacebookAuth}>
                                 <div>
                                     <Image
                                         src={facebook}

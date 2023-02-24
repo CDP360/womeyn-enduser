@@ -6,14 +6,16 @@ import Allcategories from './components/allcategories/Allcategories';
 import Electronics from './components/electronics/Electronics';
 import Healthcare from './components/healthcare/Healthcare';
 import Healthfitness from './healthfitness/Healthfitness';
-function Bestseller() {
+import Carouselseller from './carouselseller/Carouselseller';
+function Bestseller({bannerimages,MovePageData}) {
     const [index, setIndex] = useState(0);
     return (
         <Fragment>
             <div className={styles.mainsellersection}>
                 <div className={styles.insidesellerimagesection}>
                     <div className={styles.insidesellerbreaksalary}>
-                        <Image src={imageadd} alt="no image" className={styles.imageadd} />
+                        {/* <Image src={imageadd} alt="no image" className={styles.imageadd} /> */}
+                        <Carouselseller bannerimages={bannerimages} MovePageData={MovePageData}/>
                     </div>
                     <div className='large-text mb-5 mt-3 text-center'>
                         Bestsellers to cheer you up!

@@ -15,7 +15,7 @@ import quene from '../../../../assests/homepage-logos/Quena.io.png';
 import Image from 'next/image';
 import SlideNextArrow from './slidenextarrow/SlideNextArrow';
 import SlidePreArrow from './slideprearrow/SlidePreArrow';
-function Summarybreaksalary() {
+function Summarybreaksalary({ bannerimages }) {
 
     const data = [
         {
@@ -101,13 +101,10 @@ function Summarybreaksalary() {
             <div className={styles.summarymainsection}>
                 <div className={styles.insidesummarysection}>
                     <Slider {...settings}>
-                        {data.map((item, index) => {
+                        {bannerimages?.ClientLogos?.map((item, index) => {
                             return (
                                 <div className={styles.insideslidess}>
-                                    <div>
-                                        {item.image ? <Image src={item.image} alt="no image" className={styles.slidesummaryimages1} /> : ""}
-                                    </div>
-                                    <div>  <Image src={item.text} alt="no image" className={styles.slidesummaryimages2} /></div>
+                                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.slidesummaryimages1} onClick={() => MovePageData(item.redirectUrl)} />
                                 </div>
                             )
                         })}

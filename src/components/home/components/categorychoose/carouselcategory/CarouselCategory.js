@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
+import { TopProductCategories } from '../../../../../services/banner-image-service/banner-image-service';
 import SlideNextArrow from './slidenextarrow/SlideNextArrow';
 
 import SlidePreArrow from './slideprearrow/SlidePreArrow';
@@ -12,8 +13,8 @@ function CarouselCategory() {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 2,
-    autoplay: true,
+    slidesToScroll: 3,
+    // autoplay: true,
     autoplaySpeed: 3500,
     pauseOnHover: true,
     nextArrow: <SlideNextArrow />,
@@ -57,21 +58,23 @@ function CarouselCategory() {
   };
 
   useEffect(() => {
-    axios.get("https://dummyjson.com/products").then((res) => {
-      setDatas(res?.data?.products)
-    }).catch((err) => {
+    TopProductCategories().then((res)=>{
+      setDatas(res?.data);
+     
+    }).catch((err)=>{
       console.log(err);
     })
   }, [])
+  console.log("datas",datas)
   return (
     <div className={styles.mainslidesection}>
       <Slider {...settings}>
         {datas.map((item, index) => {
           return (
             <div className={styles.insideslides}>
-              <img src={item?.thumbnail} alt="no image" className={styles.slideimagesize} />
+              <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesize} />
               <div className='mt-4'>
-                <h6>{item?.title}</h6>
+                <h6>{item?.name}</h6>
               </div>
             </div>
           )

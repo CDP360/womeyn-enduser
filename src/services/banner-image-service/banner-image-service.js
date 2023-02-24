@@ -1,8 +1,26 @@
-import Baseurl from './../../config/Baseurl';
+
+import instanceBaseurl from "../../config/Baseurl";
 
 export function Bannerimage() {
-    return Baseurl.get("/common/placement/63f66e0f73a58143f7752658").then((res) => {
-        console.log("thala",res);
+    return instanceBaseurl.get("/common/home-placements").then((res) => {
         return res
     }).catch((err) => console.log(err));
 }
+export function Topwomenprenuers() {
+    return instanceBaseurl.get("/common/top-womenprenuers").then((res) => {
+        return res
+    }).catch((err) => console.log(err));
+}
+
+export function TopProductCategories() {
+    return instanceBaseurl.get("/common/top-product-categories").then((res) => {
+        return res
+    }).catch((err) => console.log(err));
+}
+
+export function TopProducts() {
+    return instanceBaseurl.get("/common/top-products").then((res) => {
+        return res
+    }).catch((err) => console.log(err));
+}
+

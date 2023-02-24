@@ -1,8 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
-const Baseurl = axios.create({
-    baseURL: process.env.WOMEYN_BASEURL
+
+const instanceBaseurl = axios.create({
+    baseURL: process.env.NEXT_PUBLIC_URL,
 });
+// Instance.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
+// Instance.defaults.headers.post['Content-Type'] = 'application/json';
+
+export default instanceBaseurl;
 
 
-export default Baseurl;

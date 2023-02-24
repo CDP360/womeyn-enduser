@@ -20,10 +20,11 @@ import { useSelector } from 'react-redux';
 import Whatmake from './components/whatmake/Whatmake';
 import LayoutHeader from '../Layoutheader/LayoutHeader';
 import { Bannerimage } from '../../services/banner-image-service/banner-image-service';
+import Skeleton from 'react-loading-skeleton';
 function Home() {
     const history = useRouter();
     const [showTopBtn, setShowTopBtn] = useState(false);
-
+    const [bannerimages, setBannerImages] = useState([]);
     const settings = {
         dots: false,
         infinite: true,
@@ -72,26 +73,24 @@ function Home() {
             }
         ]
     };
-
     const gototop = () => {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
     }
-
-
-    
     const state = useSelector(state => state);
-    console.log(state, "logindata");
     useEffect(() => {
         GetBannerimages()
     }, [state]);
 
-
     const GetBannerimages = () => {
         Bannerimage().then((res) => {
-            console.log(res?.data, "kalaisurya");
+            console.log("kal", res?.data)
+            setBannerImages(res?.data);
         }).catch((err) => {
             console.log(err);
         })
+    }
+    const MovePageData = (data) => {
+        window.open(data);
     }
     return (
         <Fragment>
@@ -106,42 +105,43 @@ function Home() {
                 </div>
                 <div className={styles.insidesectionhome}>
                     <div className={styles.imagesectionhome}>
+                        {bannerimages[0]?.HeroBanner?.length === 0 && <div>No Banner Image</div>}
                         <Slider {...settings}>
-                            <div>
-                                <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
-                            </div>
-                            <div>
-                                <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
-                            </div>
-                            <div>
-                                <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
-                            </div>
-                            <div>
-                                <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
-                            </div>
-                            <div>
-                                <Image src={Womeynbanner} alt="no image" className={styles.sliderimage} />
-                            </div>
+                            {bannerimages[0]?.HeroBanner?.map((item, index) => {
+                                return (
+                                    <div>
+                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />
+                                    </div>
+                                )
+                            })}
                         </Slider>
                     </div>
                     <div className={styles.addimagetagss}>
                         <div className={styles.addimagessectionleft}>
-                            <Image src={ad1} alt="no image" className={styles.add1} />
+                            {bannerimages[1]?.HeroBannerBottom1[0] ? <>
+                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${bannerimages[1]?.HeroBannerBottom1[0]?.imageName}`} alt="no image" className={styles.add1} onClick={() => MovePageData(bannerimages[1]?.HeroBannerBottom1[0]?.redirectUrl)} />
+                            </> : <>
+                                <Skeleton width={565} height={230} />
+                            </>}
                         </div>
                         <div className={styles.addimagessectionright}>
-                            <Image src={ad1} alt="no image" className={styles.add1} />
+
+                            {bannerimages[2]?.HeroBannerBottom2[0] ? <>
+                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${bannerimages[2]?.HeroBannerBottom2[0]?.imageName}`} alt="no image" className={styles.add1} onClick={() => MovePageData(bannerimages[2]?.HeroBannerBottom2[0]?.redirectUrl)} />
+                            </> : <>
+                                <Skeleton width={565} height={230} />
+                            </>}
                         </div>
                     </div>
                     <div>
                         <Categorychoose />
                     </div>
-
                 </div>
                 <div>
-                    <Summarybreaksalary />
+                    <Summarybreaksalary bannerimages={bannerimages[4]} />
                 </div>
                 <div>
-                    <Bestseller />
+                    <Bestseller bannerimages={bannerimages[3]} MovePageData={MovePageData} />
                 </div>
                 <div>
                     <Ourwomenpreneurs />

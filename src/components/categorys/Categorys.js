@@ -29,7 +29,6 @@ function Categorys() {
             <div className={styles.rightcategory}>
               <Maincategorylist />
             </div>
-
           </div>
         </div>
       </div>

@@ -2,6 +2,20 @@
 .maonourwomensection {
     width: 100%;
     height: 100%;
+    .textsellers {
+        font-size: 2rem;
+        font-weight: 600;
+        text-transform: uppercase;
+
+        @include xsBreakPoint {
+            font-size: 1.2rem !important;
+            font-weight: 600;
+        }
+        @include mdBreakPoint {
+            font-size: 1.2rem !important;
+            font-weight: 600;
+        }
+    }
     .insideourwomensection {
         width: 75%;
         margin: 0 auto;
@@ -116,6 +130,10 @@
                 @include mdBreakPoint {
                     width: 100%;
                 }
+                .insidesplitboxcarousels {
+                    border: 2px solid blue;
+                    height: 80%;
+                }
                 .rightinsidewomentext {
                     padding-top: 4%;
                     height: 100%;
@@ -127,7 +145,7 @@
                         padding-left: 2%;
                     }
                     .descriptioninwomeyn {
-                        width: 60%;
+                        width: 70%;
                         @include xsBreakPoint {
                             width: 100%;
                             line-height: 1.5;
@@ -167,6 +185,8 @@
                             cursor: pointer;
                             padding: 7px 40px;
                             border-radius: 4px;
+                            text-transform: capitalize;
+
                             @include lgBreakPoint {
                                 width: 100%;
                                 padding: 4px 30px;
