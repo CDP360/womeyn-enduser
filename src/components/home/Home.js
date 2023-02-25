@@ -96,9 +96,9 @@ function Home() {
         <Fragment>
 
             <div className={styles.homesectionmain}>
-                <div className="emptyboxrightcolor">
+                <div className={styles.emptyboxrightcolor}>
                 </div>
-                <div className="emptyboxleftcolor">
+                <div className={styles.emptyboxleftcolor}>
                 </div>
                 <div>
 

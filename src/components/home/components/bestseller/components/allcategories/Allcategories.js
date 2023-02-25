@@ -9,14 +9,11 @@ import Slider from "react-slick";
 import SlideNextArrow from '../../../../slidenextarrow/SlideNextArrow';
 import SlidePreArrow from '../../../../slideprearrow/SlidePreArrow';
 import { useRouter } from 'next/router'
+import AllCategoryCard from './allcategorycard/AllCategoryCard';
+import Allbestservices from './allbestservices/Allbestservices';
 function Allcategories() {
-
-  const history = useRouter();
   const [products, setProducts] = useState([]);
-
-
   useEffect(() => {
-
     TopProducts().then((res) => {
       setProducts(res?.data);
     }).catch((err) => {
@@ -24,57 +21,8 @@ function Allcategories() {
     })
   }, []);
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 3,
-    // autoplay: true,
-    autoplaySpeed: 3500,
-    pauseOnHover: true,
-    nextArrow: <SlideNextArrow />,
-    prevArrow: <SlidePreArrow />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 2,
-          infinite: true,
-          dots: false,
 
-        }
-      },
-      {
-        breakpoint: 800,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1
-        }
-      }
-    ]
-  };
-  const categoryPush = (data) => {
-    history.push(`/categorys/${data}`);
-  }
+
   return (
     <Fragment>
       <>
@@ -83,8 +31,11 @@ function Allcategories() {
             Our bestselling products
           </div>
           <div className={styles.mainoursellercarousel}>
-            <div className={styles.insidecarouselsections}>
-              <Slider {...settings}>
+
+            <AllCategoryCard products={products} stars={stars}/>
+
+            {/* <div className={styles.insidecarouselsections}> */}
+            {/* <Slider {...settings}>
                 {products?.map((item, index) => {
                   return (
                     <div className={styles.cardsections}>
@@ -119,8 +70,8 @@ function Allcategories() {
                     </div>
                   )
                 })}
-              </Slider>
-            </div>
+              </Slider> */}
+            {/* </div> */}
 
           </div>
 
@@ -129,7 +80,7 @@ function Allcategories() {
           <div className='textseller'>
             Our bestselling sevices
           </div>
-          <div className='cardsection row justify-content-center  w-100 mt-4 mb-3 ms-1'>
+          {/* <div className='cardsection row justify-content-center  w-100 mt-4 mb-3 ms-1'>
             {products?.slice(0, 4).map((item, index) => {
               return (
                 <div className='cards col-lg-3 col-sm-6 col-xs-6 col-md-6 ' key={index}>
@@ -148,6 +99,9 @@ function Allcategories() {
                 </div>
               )
             })}
+          </div> */}
+          <div>
+            <Allbestservices stars={stars}/>
           </div>
         </div>
       </>

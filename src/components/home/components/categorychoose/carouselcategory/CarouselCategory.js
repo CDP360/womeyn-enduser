@@ -6,13 +6,16 @@ import SlideNextArrow from './slidenextarrow/SlideNextArrow';
 
 import SlidePreArrow from './slideprearrow/SlidePreArrow';
 import styles from './styles/Carouselslide.module.scss';
+import { useRouter } from 'next/router';
 function CarouselCategory() {
+
+  const history = useRouter();
   const [datas, setDatas] = useState([]);
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 2,
     slidesToScroll: 3,
     // autoplay: true,
     autoplaySpeed: 3500,
@@ -58,23 +61,28 @@ function CarouselCategory() {
   };
 
   useEffect(() => {
-    TopProductCategories().then((res)=>{
+    TopProductCategories().then((res) => {
       setDatas(res?.data);
-     
-    }).catch((err)=>{
+    }).catch((err) => {
       console.log(err);
     })
-  }, [])
-  console.log("datas",datas)
+  }, []);
+
+  const pushCatgorys = (data) => {
+    history.push(`/category/${data}`)
+  }
   return (
     <div className={styles.mainslidesection}>
       <Slider {...settings}>
         {datas.map((item, index) => {
           return (
-            <div className={styles.insideslides}>
+            <div className={styles.insideslides} onClick={() => pushCatgorys(item?.slugName)}>
               <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesize} />
               <div className='mt-4'>
                 <h6>{item?.name}</h6>
+              </div>
+              <div>
+                {item?.description}
               </div>
             </div>
           )

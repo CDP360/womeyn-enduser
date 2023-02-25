@@ -24,3 +24,8 @@ export function TopProducts() {
     }).catch((err) => console.log(err));
 }
 
+export function TopServices() {
+    return instanceBaseurl.get("/common/top-services").then((res) => {
+        return res
+    }).catch((err) => console.log(err));
+}

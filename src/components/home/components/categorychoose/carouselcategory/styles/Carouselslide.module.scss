@@ -4,13 +4,13 @@
     width: 96%;
     margin: 0 auto !important;
     padding-top: 7%;
+    padding-bottom: 5%;
     @include xsBreakPoint {
         width: 83%;
     }
     @include smBreakPoint {
         width: 90%;
         padding-top: 5%;
-
     }
     @include mdBreakPoint {
         width: 92%;

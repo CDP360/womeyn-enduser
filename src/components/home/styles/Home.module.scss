@@ -2,10 +2,34 @@
 
 .homesectionmain {
     width: 100%;
+    // position:relative;
+    .emptyboxrightcolor
+    {
+        background-color:orange;
+        position:absolute;
+      width:20%;
+      height:40% !important;
+background: #FECF9D;
+opacity: 0.36;
+filter: blur(239.825px);
+left:0;
+    }
+    .emptyboxleftcolor
+    {
+      
+        position:absolute;
+      width:20%;
+      height:40% !important;
+      background: #E95A5A;
+      opacity: 0.3;
+      filter: blur(500px);
+      right:0;
+      top:-10%;
+    }
     .insidesectionhome {
         width: 75%;
         margin: 0 auto;
-        position: relative;
+        // position: relative;
         @include xsBreakPoint {
             width: 85%;
             padding-top: 6%;

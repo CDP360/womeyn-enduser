@@ -5,9 +5,11 @@ import styles from './styles/Explore.module.scss';
 function Explore() {
     return (
         <Fragment>
-          <div>
-            kalai
+        <div className={styles.mainexploresection}>
+            <div className={styles.insideexploresection}>
+                kalai explore
             </div>
+        </div>
         </Fragment>
     )
 }

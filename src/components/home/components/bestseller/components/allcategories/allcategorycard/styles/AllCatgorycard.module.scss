@@ -1,11 +1,20 @@
-@use "../../../../../../../../scss/abstract/" as *;
+@use "../../../../../../../../../scss/abstract/" as *;
 
-.allcategorymainsection {
-    padding-bottom: 2%;
-    // border: 3px solid orange;
-    @include xsBreakPoint {
-        width: 100% !important;
-        margin: 0 auto;
+.appcard {
+    // border: 2px solid red;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0px;
+    .cardcategory {
+        // border: 2px solid blue;
+        overflow: hidden;
+        height: 340px;
+        width: 94% !important;
+        background: #ffffff;
+        // box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+        border-radius: 8px;
+        cursor: pointer;
     }
     .sellerimagesize {
         width: 100%;
@@ -53,28 +62,12 @@
         padding-top: 5%;
         padding-bottom: 10%;
     }
+}
 
-    // .insidecarouselsections
-    // {
-    //     // border:1px solid red;
-    // padding:10px 0px;
-
-    //     .cardsections
-    //     {
-    //         border:2px solid blue !important;
-    //         display:flex !important;
-
-    //         width:90% !important;
-    //         margin:0 auto !important;
-    //         cursor:pointer;
-
-    // background: #FFFFFF;
-    // box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
-    // border-radius: 8px;
-    // border:none !important;
-    // // padding:10px !important;
-    //     }
-    // }
-
-  
+.slick-slide,
+.cardcategory {
+    margin: 15px 7px !important;
+}
+.slick-slide {
+    margin: 0 -10px !important;
 }

@@ -1,3 +1,12 @@
 @use "../../../../../scss/abstract/" as *;
 
 
+.mainexploresection
+{
+    border:2px solid blue;
+    .insideexploresection
+    {
+        width:75%;
+        margin:0 auto;
+    }
+}
