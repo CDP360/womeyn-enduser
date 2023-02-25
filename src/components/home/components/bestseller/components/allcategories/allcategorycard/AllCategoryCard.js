@@ -16,7 +16,7 @@ function AllCategoryCard({ products, stars }) {
         infinite: true,
         speed: 500,
         slidesToShow: 4,
-        slidesToScroll: 3,
+        slidesToScroll: 1,
         // autoplay: true,
         autoplaySpeed: 3500,
         pauseOnHover: true,
@@ -65,12 +65,9 @@ function AllCategoryCard({ products, stars }) {
     return (
         <div className={styles.appcard}>
             <Slider {...settings}>
-
                 {products.map((item, index) => {
                     return (
                         <div className={styles.cardcategory}>
-                            {products?.map((item, index) => {
-                                return (
                                     <div className={styles.cardsections}>
                                         <div className="cards col-lg-12 mb-5" onClick={() => categoryPush(item?.productSlugName)}>
                                             <div>
@@ -101,8 +98,7 @@ function AllCategoryCard({ products, stars }) {
                                             </div>
                                         </div>
                                     </div>
-                                )
-                            })}
+                           
                         </div>
                     )
                 })}

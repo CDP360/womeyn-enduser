@@ -8,6 +8,7 @@ import serachicon from '../../../assests/homepage-logos/serachicon.png';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import girl from '../../../assests/womeynlogos/girl4.png';
+import Womencarouselbanner from './component/womenprebannerimages/Womencarouselbanner';
 function Womenpreneurs() {
     const router = useRouter();
     const [data, setData] = useState([]);
@@ -38,7 +39,8 @@ function Womenpreneurs() {
                 <div className={styles.bodysectionwomeynpre}>
 
                     <div className={styles.imagesectionwomeyn}>
-                        <Image src={Womeynbanner} alt="no image" className={styles.womeynbannerpre} />
+                        {/* <Image src={Womeynbanner} alt="no image" className={styles.womeynbannerpre} /> */}
+                        <Womencarouselbanner />
                     </div>
                     <div className={styles.ourwomenpreneurs}>
                         <div className='large-text'>

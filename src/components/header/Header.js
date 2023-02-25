@@ -16,6 +16,12 @@ import notifications from '../../assests/login-logos/notifications.png';
 import { useContext } from 'react';
 import { ContextStore } from '../../Redux/store/Contextstore';
 import dynamic from 'next/dynamic';
+import { useState } from 'react';
+import facebook from '../../assests/homepage-logos/facebookfooter.png';
+import youtube from '../../assests/homepage-logos/youtubered.png';
+import instagram from '../../assests/homepage-logos/newinstagramfooter.png';
+import linkdin from '../../assests/homepage-logos/linkedinfooter.png';
+import twitter from '../../assests/homepage-logos/twitterfooter.png';
 
 function Header({ setdark, dark }) {
 
@@ -37,9 +43,68 @@ function Header({ setdark, dark }) {
         router.push("/cart")
     }
 
+    const [hovers, setHovers] = useState(false);
+
     const notificationsPush = () => {
         router.push("/notifications")
     }
+
+    const NaigateHover = () => {
+
+        setHovers(true);
+    }
+
+
+    const datas = [
+        {
+            id: 1,
+            name: "Blazers"
+        },
+        {
+            id: 2,
+            name: "Dresses | Jumpsuits"
+        },
+        {
+            id: 3,
+            name: "Shirts"
+        },
+        {
+            id: 4,
+            name: "Trousers"
+        },
+        {
+            id: 5,
+            name: "Tops | Corsets"
+        },
+        {
+            id: 6,
+            name: "Bodysuits"
+        },
+        {
+            id: 7,
+            name: "Tshirts"
+        },
+        {
+            id: 8,
+            name: "Jeans"
+        },
+        {
+            id: 9,
+            name: "Skirts"
+        },
+        {
+            id: 10,
+            name: "Suits"
+        },
+        {
+            id: 11,
+            name: "Indian Wear"
+        },
+        {
+            id: 12,
+            name: "Jacket | Overcoats"
+        }
+    ]
     return (
         <Fragment>
             <div className={styles.mainheadersection}>
@@ -84,12 +149,129 @@ function Header({ setdark, dark }) {
 
             <div className={styles.middleheadersection}>
 
+                <div className={styles.emptyboxleftcolor}>
+                </div>
+
+
                 <div className={styles.insidemiddlesections}>
                     <div className={router.pathname == "/explore" ? "active" : "nav-link"}>
-                        <Link href="/explore" className='nav-link'>
+                        {/* <Link href="/explore" className='nav-link' onMouseOver={NaigateHover}>
                             <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
                             <span className='ms-2'>Explore</span>
-                        </Link>
+                        </Link> */}
+
+                        <ul>
+                            <li><a href="#">
+                                <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                <span className='ms-2'>Explore</span>
+                            </a>
+                                <ul class="dropdownkalai">
+                                    <div>
+<li><a className="kalai">Fashion & Lifestyle</a></li>
+                                    </div>
+                                    {datas.map((item, index) => {
+                                        return (
+                                            <div className="mt-2">
+
+                                                <li><a className="">{item?.name}</a></li>
+
+                                            </div>
+                                        )
+                                    })}
+                                    {/* <li><a>Sub-2</a></li>
+                                    <li><a>Sub-3</a></li> */}
+                                    
+                            <li className="d-flex align-items-center justify-content-center">
+<a>
+<div className={styles.socailfootersection}>
+                                    <div className={styles.footeremptysocialsection}>
+                                        <Image src={youtube} alt="no image" className={styles.footersocialicons} />
+                                    </div>
+                                    <div className={styles.footeremptysocialsection}>
+                                        <Image src={linkdin} alt="no image" className={styles.footersocialicons} />
+                                    </div>
+                                    <div className={styles.footeremptysocialsection}>
+                                        <Image src={twitter} alt="no image" className={styles.footersocialicons} />
+                                    </div>
+                                    <div className={styles.footeremptysocialsection}>
+                                        <Image src={facebook} alt="no image" className={styles.footersocialicons} />
+                                    </div>
+                                    <div className={styles.footeremptysocialsection}>
+                                        <Image src={instagram} alt="no image" className={styles.footersocialicons} />
+                                    </div>
+
+                                </div>
+</a>
+                            </li>
+                                </ul>
+                                
+                            </li>
+
+
+
+
+                        </ul>
+
+                        {/* <div className="dropdown1">
+
+                            <div>
+                                <span className='nav-link'>
+                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                    <span className='ms-2'>Explore</span>
+                                </span>
+                            </div>
+                            <div>
+                                {status === "loading" && "Loading....."}
+                            </div>
+                            <div className="dropdowncontent1">
+                                <div>
+                                    <div className="mt-4">
+                                        Dresses | Jumpsuits
+
+                                    </div>
+                                    <div>
+                                        Shirts
+
+                                    </div>
+                                    <div>
+                                        Trousers
+
+                                    </div>
+                                    <div>
+                                        Tops | Corsets
+
+                                    </div>
+                                    <div>
+                                        Bodysuits
+
+                                    </div>
+                                    <div>
+                                        Tshirts
+
+                                    </div>
+                                    <div>
+                                        Jeans
+
+                                    </div>
+                                    <div>
+                                        Skirts
+
+                                    </div>
+                                    <div>
+                                        Suits
+
+                                    </div>
+                                    <div>
+                                        Indian Wear
+                                    </div>
+                                    <div>
+                                        Jacket | Overcoats
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> */}
                     </div>
                     <div className={styles.bordercolors}>
                         |
@@ -123,7 +305,7 @@ function Header({ setdark, dark }) {
                         </Link>
                     </div>
 
-                    
+
                 </div>
             </div>
             {/* <div className={styles.headermainsection}>
@@ -221,6 +403,8 @@ function Header({ setdark, dark }) {
                     </div>
                 </div>
             </div> */}
+
+
 
         </Fragment>
     )

@@ -3,7 +3,7 @@ import styles from './styles/Footer.module.scss';
 import womeynlogo from '../../assests/homepage-logos/womeyn_logo.png';
 import Image from 'next/image';
 import facebook from '../../assests/homepage-logos/facebookfooter.png';
-import youtube from '../../assests/homepage-logos/youtube.png';
+import youtube from '../../assests/homepage-logos/youtubered.png';
 import instagram from '../../assests/homepage-logos/newinstagramfooter.png';
 import linkdin from '../../assests/homepage-logos/linkedinfooter.png';
 import twitter from '../../assests/homepage-logos/twitterfooter.png';

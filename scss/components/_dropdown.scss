@@ -44,3 +44,147 @@
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
+
+
+
+
+
+.dropdown1 {
+    position: relative;
+    display: inline-block;
+ 
+}
+.dropdowncontent1 {
+    display: none;
+    position: absolute;
+    background-color: white !important;
+    width: 70vw !important;
+// box-shadow: 0px 8px 16px 0px rgba(0, 0, 0);
+    // box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    // z-index: 1;
+    left: 0%;
+    // top:10vh;
+    padding: 0px 20px;
+    height:70vh;
+    border:2px solid red;
+    cursor: pointer;
+    z-index:-10%;
+    border-radius:7px;
+    // @include themed() {
+    //     background: t($header);
+    // }
+}
+.dropdowncontent1 a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background: blue;
+}
+.dropdowncontent1 a:hover {
+    background-color: white;
+}
+.dropdown1:hover .dropdowncontent1 {
+    display: block;
+    // height:20px;  
+    // margin-top:5%;
+}
+.dropdown1:hover .dropbtn1 {
+    background-color: blue;
+}
+
+
+
+
+
+
+
+
+
+// new sections
+
+
+a {
+    text-decoration: none;
+  }
+  
+  nav {
+      font-family: monospace;
+  }
+  
+  ul {
+    // background: darkorange;
+      list-style: none;
+      margin: 0;
+      padding-left: 0;
+      
+  }
+  
+  li {
+      color: #fff;
+    // background: darkorange;
+      display: block;
+      float: left;
+    //   padding: 1rem;
+      position: relative;
+      text-decoration: none;
+    transition-duration: 0.5s;
+  }
+    
+  li a {
+    color: black !important;
+    text-decoration:none !important;
+  }
+  
+  li a:hover {
+    //   background: #E75B5E;
+    color:#E75B5E !important;
+      cursor: pointer;
+
+  }
+  
+  ul li ul {
+      background: rgba(255, 255, 255, 1)!important;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+      visibility: hidden;
+    opacity: 0;
+    height:80vh;
+    width: 65vw;
+      position: absolute;
+    transition: all 0.5s ease;
+    // margin-top: 0.278rem;
+      left: -60%;
+    display: none;
+    border-radius: 10px;
+  }
+  
+  ul li:hover > ul,
+  ul li ul:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+  }
+  
+  ul li ul li {
+      clear: both;
+    width: 100%;
+    // height:10px;
+  }
+
+  .dropdownkalai
+  {
+    padding:40px 30px;
+    display:flex !important;
+    flex-direction:column !important;
+    gap:4px !important;
+  }
+  .kalai
+  {
+    color:black !important;
+    font-weight:650 !important;
+  }
+  .kalai:hover
+  {
+    color:black !important;
+  }
