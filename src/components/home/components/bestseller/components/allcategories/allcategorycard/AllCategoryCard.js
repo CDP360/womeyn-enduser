@@ -60,7 +60,7 @@ function AllCategoryCard({ products, stars }) {
         ]
     };
     const categoryPush = (data) => {
-        history.push(`/categorys/${data}`);
+        history.push(`/category/${data}`);
     }
     return (
         <div className={styles.appcard}>

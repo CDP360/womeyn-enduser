@@ -60,7 +60,7 @@ function Allbestservices({ stars }) {
         ]
     };
     const categoryPush = (data) => {
-        history.push(`/categorys/${data}`);
+        history.push(`/category/${data}`);
     }
 
 
@@ -74,7 +74,7 @@ function Allbestservices({ stars }) {
             <Slider {...settings}>
                 {services.map((item, index) => {
                     return (
-                        <div className={styles.cardcategory}>
+                        <div className={styles.cardcategory} onClick={()=>categoryPush(item?.serviceName)}>
                             <div>
                                 <img src={item?.image} alt="no image" className={styles.sellerimagesize} />
                             </div>
