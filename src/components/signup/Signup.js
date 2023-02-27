@@ -5,8 +5,9 @@ import google from '../../assests/homepage-logos/google.png';
 import facebook from '../../assests/homepage-logos/loginfacebook.png';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { LoginText } from '../login/const/Consttext';
+
 import { useForm } from "react-hook-form";
+import { LoginText } from '../../consttext/Loginconst';
 
 function Signup() {
     const router = useRouter();
@@ -55,6 +56,7 @@ function Signup() {
 
     return (
         <Fragment>
+
 
             <div className={styles.mainloginsection}>
                 <div className={styles.endcustomerbutton}>
