@@ -14,7 +14,7 @@ import Reviewsproduct from './Reviews/Reviewsproduct';
 import Caroselproducts from './carouselproducts/Caroselproducts';
 import { ContextStore } from '../../../../../Redux/store/Contextstore';
 
-function Viewproduct({ id }) {
+function Viewproducts({ id }) {
 
     const { state, dispatch } = useContext(ContextStore);
     const [indexs, setIndex] = useState(0);
@@ -153,4 +153,4 @@ function Viewproduct({ id }) {
     )
 }
 
-export default Viewproduct
+export default Viewproducts;
