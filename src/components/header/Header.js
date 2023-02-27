@@ -29,7 +29,7 @@ function Header({ setdark, dark }) {
     const router = useRouter();
     const states = useSelector(state => state.cart.cartitems);
     const { status, data: session } = useSession();
-    const [showmega, setShowMega] = useState(true);
+    const [showmega, setShowMega] = useState(false);
     const logoutHandler = async () => {
         await signOut({ callbackUrl: "/" });
     };
@@ -53,7 +53,7 @@ function Header({ setdark, dark }) {
     }
     const pushCategory = (data) => {
         router.push(`/category/${data}`);
-       
+
     }
 
 
@@ -129,12 +129,12 @@ function Header({ setdark, dark }) {
                         </div>
                         <div className={styles.falight} onClick={carts}>
                             <div className={styles.maincartcount}>
-                   <div>
-                   <Image src={cartslogo} alt="no image" className={styles.carticons} />
-                    </div>
-                            <div className={styles.cartcountbox}>
-                            {cart.cartData?.length}
-                            </div>
+                                <div>
+                                    <Image src={cartslogo} alt="no image" className={styles.carticons} />
+                                </div>
+                                <div className={styles.cartcountbox}>
+                                    {cart.cartData?.length}
+                                </div>
                             </div>
                         </div>
                         <div className="dropdown">
@@ -172,10 +172,15 @@ function Header({ setdark, dark }) {
 
 
                         <ul className="dropdownmegamain">
-                            <li><a href="#">
-                                <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
-                                <span className='ms-2' >Explore</span>
-                            </a>
+                            <li>
+                                {showmega ? <a href="#">
+                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                    <span className='ms-2' onMouseOver={() => setShowMega(false)}> Close</span>
+                                </a>
+                                    : <a href="#">
+                                        <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                        <span className='ms-2' onMouseOver={() => setShowMega(true)}>Explore</span>
+                                    </a>}
                                 <ul class="dropdownmega">
                                     <div>
                                         <li><a className="kalais">Fashion & Lifestyle</a></li>
