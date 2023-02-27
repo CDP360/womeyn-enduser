@@ -108,7 +108,6 @@ function Summarybreaksalary({ bannerimages }) {
                                 </div>
                             )
                         })}
-
                     </Slider>
                 </div>
             </div>

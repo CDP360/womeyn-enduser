@@ -59,18 +59,23 @@
             display: flex;
             justify-content: space-around;
             gap: 5%;
-            @include xsBreakPoint {
-                width: 100%;
-                gap: 2%;
+            @include xsBreakPoint
+            {
+                justify-content:space-between;
+                width:100% !important;
+                flex-direction:column;
+            gap: 20px !important;
+
             }
-            @include smBreakPoint {
-                width: 100%;
-                gap: 2%;
+            @include smBreakPoint
+            {
+                // justify-content:space-between;
+                // width:100% !important;
+                // flex-direction:column;
+            // gap: 20px !important;
+
             }
-            @include mdBreakPoint {
-                width: 100%;
-                gap: 2%;
-            }
+          
         }
         .borderseller {
             // border: 2px solid red;

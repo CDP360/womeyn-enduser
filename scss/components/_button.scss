@@ -18,12 +18,12 @@
     padding: 10px 0px;
     font-weight: 500;
     @include xsBreakPoint {
-        width: 100%;
-        // padding: 3px !important;
+        width:100% !important;
+        padding: 10px !important;
         font-size: 0.897rem !important;
     }
     @include smBreakPoint {
-        width: 100%;
+        width: 40% !important;
         padding: 3px !important;
         font-size: 0.857rem !important;
     }
@@ -55,12 +55,12 @@
     border: 1px solid #383838;
     font-weight: 500;
     @include xsBreakPoint {
-        width: 100%;
-        padding: 3px !important;
-        font-size: 0.657rem !important;
+        width:100% !important;
+        padding: 10px !important;
+        font-size: 0.957rem !important;
     }
     @include smBreakPoint {
-        width: 100%;
+        width: 80% !important;
         padding: 10px !important;
         font-size: 0.957rem !important;
     }

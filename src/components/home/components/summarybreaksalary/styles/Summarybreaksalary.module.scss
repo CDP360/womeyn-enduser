@@ -30,15 +30,28 @@
             display: flex !important;
             // border: 2px solid blue;
             flex-direction: row !important;
-            padding-left: 25%;
+            padding-left: 5%;
             gap: 10px !important ;
             align-items: center !important;
             display:flex;
             align-items:center;
             justify-content:center;
             padding-top: 5%;
+            @include xsBreakPoint {
+                padding-left: 2%;
+            // border: 2px solid blue;
+            }
             @include smBreakPoint {
-                padding-left: 18%;
+                padding-left:4%;
+            }
+            @include mdBreakPoint {
+                padding-left:4%;
+            }
+            @include lgBreakPoint {
+                padding-left:4%;
+            }
+            @include xlBreakPoint {
+                padding-left:0%;
             }
             .slidesummaryimages1,.slidesummaryimages2 {
                 width: 100%;

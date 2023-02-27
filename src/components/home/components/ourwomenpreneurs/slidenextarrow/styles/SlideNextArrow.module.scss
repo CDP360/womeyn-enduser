@@ -1,56 +1,6 @@
 @use "../../../../../../../scss/abstract/" as *;
 @import "https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css";
 
-// .slidenextcarouselwomeyn::before {
-//     content: none !important;
-//     width: 35px !important;
-//     height: 35px !important;
-//     border-radius: 50% !important;
-//     border: 2px solid #000000;
-//     font-style: normal;
-//     font-variant: normal;
-//     text-rendering: auto;
-//     -webkit-font-smoothing: antialiased;
-//     font-family: "Font Awesome 6 Pro" !important;
-//     font-size: 1.2rem !important;
-//     content: "\f105" !important;
-//     color: black;
-//     position: absolute;
-//     right: -220%;
-//     bottom: 0;
-//     display: flex;
-//     align-items: center;
-//     opacity: 0.6;
-//     font-weight: 800;
-//     cursor: pointer;
-//     justify-content: center;
-//     @include xsBreakPoint {
-//         width: 30px !important;
-//         height: 30px !important;
-//         right: -4%;
-//         bottom: -142%;
-//     }
-//     @include smBreakPoint {
-//         width: 30px !important;
-//         height: 30px !important;
-//         right: -4%;
-//         bottom: -129%;
-//     }
-//     @include mdBreakPoint {
-//         width: 30px !important;
-//         height: 30px !important;
-//         right: -3%;
-//         bottom: -137%;
-//     }
-//     @include lgBreakPoint {
-//         right: -220%;
-//         bottom: -4%;
-//     }
-//     @include xlBreakPoint {
-//         right: -220%;
-//         bottom: -4%;
-//     }
-// }
 
 .slidenextcarouselwomeyn:hover {
     background-color: #e95a5a;
@@ -70,11 +20,10 @@
     -webkit-font-smoothing: antialiased;
     font-family: "Font Awesome 6 Pro" !important;
     font-size: 1.2rem !important;
-    content: "\f105" !important;
     color: black;
     position: absolute;
     right: -220%;
-    bottom: 0;
+    bottom: -34%;
     display: flex;
     align-items: center;
     opacity: 0.6;
@@ -101,10 +50,10 @@
     }
     @include lgBreakPoint {
         right: -220%;
-        bottom: -4%;
+        bottom: -43%;
     }
     @include xlBreakPoint {
         right: -220%;
-        bottom: -4%;
+        bottom: -44%;
     }
 }

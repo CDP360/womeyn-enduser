@@ -102,11 +102,12 @@
                     background-size: 200px 200px;
                 }
                 .slideimagesize {
-                    width: 60%;
+                    width: 200px !important;
                     margin: 0 auto;
-                    height: 300px !important;
+                    height: 200px !important;
                     z-index: 98;
-                    object-fit: contain;
+                    // object-fit: cover;
+                    border-radius:50%;
                     @include xsBreakPoint {
                         width: 80%;
                     }
@@ -170,11 +171,20 @@
                         gap: 30px;
                         padding-top: 3%;
                         padding-bottom: 1%;
+                        height:100px;
                         @include xsBreakPoint {
                             flex-direction: column;
                         }
                         @include mdBreakPoint {
                             gap: 70px;
+                        }
+                        @include lgBreakPoint
+                        {
+                            height:120px;
+                        }
+                        @include xlBreakPoint
+                        {
+                            height:120px;
                         }
                         .selleractives {
                             width: 100%;

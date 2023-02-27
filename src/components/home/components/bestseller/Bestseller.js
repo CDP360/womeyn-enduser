@@ -14,17 +14,19 @@ function Bestseller({bannerimages,MovePageData}) {
             <div className={styles.mainsellersection}>
                 <div className={styles.insidesellerimagesection}>
                     <div className={styles.insidesellerbreaksalary}>
-           
+        
                         <Carouselseller bannerimages={bannerimages} MovePageData={MovePageData}/>
                     </div>
                     <div className='large-text mb-5 mt-3 text-center'>
                         Bestsellers to cheer you up!
                     </div>
                     <div className={styles.buttonsellersection}>
+                        <div className="col-lg-3 col-xs-6 col-sm-4">
                         <button className={index === 0 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(0)}>All Categories</button>
-                        <button className={index === 1 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(1)}>Electronics</button>
-                        <button className={index === 2 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(2)}>Health & Care</button>
-                        <button className={index === 3 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(3)}>Health & fitness</button>
+                            </div>
+                        <div className="col-lg-3 col-xs-6 col-sm-4"><button className={index === 1 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(1)}>Electronics</button>      </div>
+                        <div className="col-lg-3 col-xs-6 col-sm-4"><button className={index === 2 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(2)}>Health & Care</button>      </div>
+                        <div className="col-lg-3 col-xs-6 col-sm-4"><button className={index === 3 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(3)}>Health & fitness</button>      </div>
                     </div>
                     <div className={styles.borderseller}>
                         <div className={styles.insideborderseller}>

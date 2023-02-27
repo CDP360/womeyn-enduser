@@ -12,18 +12,22 @@ import Womencarouselbanner from './component/womenprebannerimages/Womencarouselb
 import { WomenpreneursCommoncategories, WomenpreneursSellers } from '../../../services/womenpreneurs-services/womenpreneurs-services';
 import users from '../../../assests/homepage-logos/usersimageprofile.png';
 import Select from 'react-select';
+import { WomenpreneursSerachandFilter } from './../../../services/womenpreneurs-services/womenpreneurs-services';
 function Womenpreneurs() {
     const router = useRouter();
     const [dataseller, setDataseller] = useState([]);
     const [datacategory, setDataCtagoryies] = useState([]);
 
-    const [search, setSearch] = useState("");
+    const [filterdata, setFilter] = useState("");
+    const [searchname, setSearchName] = useState("");
+
     const [loadingset, setLoading] = useState(false);
 
-    const [categoryid,setCtaegoryId]=useState("");
+    const [categoryid, setCategoryId] = useState(0);
     useEffect(() => {
         WomenSellerList();
         WomenSellercategories();
+        GetFilterandSearchData();
     }, [categoryid])
 
     const WomenSellerList = () => {
@@ -38,12 +42,12 @@ function Womenpreneurs() {
     const WomenSellercategories = () => {
         setLoading(true);
         WomenpreneursCommoncategories().then((res) => {
-            const storecategory=[];
-            res?.data.map((item,index)=>{
-                const data={
-                    value:item?.name,
-                    label:item?.name,
-                    id:item?.id
+            const storecategory = [];
+            res?.data.map((item, index) => {
+                const data = {
+                    value: item?.name,
+                    label: item?.name,
+                    id: item?.id
                 }
                 storecategory.push(data);
             })
@@ -55,14 +59,27 @@ function Womenpreneurs() {
     const handlepush = (id) => {
         router.push(`/womenpreneurs/${id}`);
     }
-    const handleFilterCategory=(data)=>{
-        console.log("c",data?.id)
-        setCtaegoryId(data?.id);
-        setSearch(data.name);
-        
+
+    const SearchNameBrand=(e)=>{
+        setSearchName(e.target.value);
+   
+    }
+    const handleFilterCategory = (data) => {
+        setCategoryId(data?.id);
+        setFilter(data.name);
     }
 
-    console.log("c",categoryid)
+
+    const GetFilterandSearchData=()=>{
+        WomenpreneursSerachandFilter(searchname,categoryid).then((res) => {
+            console.log("fil", res?.data?.results)
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
+
+
     return (
         <Fragment>
             <div className={styles.womeynmainsectionpre}>
@@ -89,15 +106,14 @@ function Womenpreneurs() {
                                 <Image src={serachicon} alt="no image" className={styles.serachiconwomen} />
                             </div>
                             <div>
-                                <input type='text' placeholder="Search by Name or Brand" className={styles.inputtypesection} name="search" value={search} onChange={(e) => setSearch(e.target.value)} />
+                                <input type='text' placeholder="Search by Name or Brand" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
                             </div>
                         </div>
                         <div className='col-lg-3'>
-                           
+
                             <Select
-                               
                                 placeholder={"Filter Category ..."}
-                                value={search} 
+                                value={filterdata}
                                 onChange={(e) => handleFilterCategory(e)}
                                 options={datacategory}
                             />
