@@ -19,67 +19,50 @@ function Womenpreneurs() {
 
     const [search, setSearch] = useState("");
     const [loadingset, setLoading] = useState(false);
-    useEffect(() => {
 
+    const [categoryid,setCtaegoryId]=useState("");
+    useEffect(() => {
         WomenSellerList();
         WomenSellercategories();
-    }, [])
-
+    }, [categoryid])
 
     const WomenSellerList = () => {
         setLoading(true);
-        WomenpreneursSellers().then((res) => {
+        WomenpreneursSellers(categoryid).then((res) => {
             setDataseller(res?.data?.results);
             setLoading(false);
         }).catch((err) => {
             console.log(err);
         })
     }
-
     const WomenSellercategories = () => {
         setLoading(true);
         WomenpreneursCommoncategories().then((res) => {
-            // setData(res?.data?.results);
-            // console.log("c", res?.data);
-
             const storecategory=[];
             res?.data.map((item,index)=>{
-
                 const data={
                     value:item?.name,
                     label:item?.name,
                     id:item?.id
                 }
-
                 storecategory.push(data);
-                
-                console.log("c",item?.name);
             })
             setDataCtagoryies(storecategory);
-            // setLoading(false);
         }).catch((err) => {
             console.log(err);
         })
     }
-
     const handlepush = (id) => {
         router.push(`/womenpreneurs/${id}`);
     }
-
-
     const handleFilterCategory=(data)=>{
-        console.log("c",data?.id    )
+        console.log("c",data?.id)
+        setCtaegoryId(data?.id);
         setSearch(data.name);
         
     }
 
-    // filter((itemsed) => {
-    //     if (itemsed.title.toLowerCase().includes(search) || itemsed.category.includes(search)) {
-    //         return itemsed
-    //     }
-    // }
-
-
+    console.log("c",categoryid)
     return (
         <Fragment>
             <div className={styles.womeynmainsectionpre}>
