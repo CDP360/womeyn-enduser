@@ -110,14 +110,9 @@ function Womenpreneurs() {
                             </div>
                         </div>
                         <div className='col-lg-3'>
-                            {/* <Form.Select aria-label="Default select example" value={search} onChange={(e) => setSearch(e.target.value)}>
-                                <option>Sort by Latest </option>
-                                <option value="men's clothing">men's clothing</option>
-                                <option value="jewelery">jewelery</option>
-                                <option value="electronics">electronics</option>
-                            </Form.Select> */}
+                           
                             <Select
-                                // value={}
+                               
                                 placeholder={"Filter Category ..."}
                                 value={search} 
                                 onChange={(e) => handleFilterCategory(e)}

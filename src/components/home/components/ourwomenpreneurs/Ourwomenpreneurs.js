@@ -140,7 +140,7 @@ function Ourwomenpreneurs() {
                                 <Slider {...settings}>
                                     {datas.map((item, index) => {
                                         return (
-                                            <div className={styles.insideslides}>
+                                            <div className={styles.insideslides}  key={index}>
                                                 <div className={styles.backgroundslidewomen}>
                                                 </div>
                                                 {item.image ? <>no data</> : <Image src={users} alt="no image" className={styles.slideimagesize} />}

@@ -76,7 +76,7 @@ function CarouselCategory() {
       <Slider {...settings}>
         {datas.map((item, index) => {
           return (
-            <div className={styles.insideslides} onClick={() => pushCatgorys(item?.slugName)}>
+            <div className={styles.insideslides} onClick={() => pushCatgorys(item?.slugName)}  key={index}>
               <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesize} />
               <div className='mt-4'>
                 <h6>{item?.name}</h6>

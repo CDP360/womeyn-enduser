@@ -6,7 +6,7 @@ function index() {
         <LayoutHeader title="Womeynpreneurs">
             <Womenpreneurs />
         </LayoutHeader>
-        
+
     )
 }
 

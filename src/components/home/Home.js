@@ -83,7 +83,7 @@ function Home() {
 
     const GetBannerimages = () => {
         Bannerimage().then((res) => {
-            console.log("kal", res?.data)
+          
             setBannerImages(res?.data);
         }).catch((err) => {
             console.log(err);
@@ -112,7 +112,7 @@ function Home() {
                         <Slider {...settings}>
                             {bannerimages[0]?.HeroBanner?.map((item, index) => {
                                 return (
-                                    <div>
+                                    <div key={index}>
                                         {item.imageName?<img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />:<>
                                         <Skeleton height={200} width={200}/>
                                         </>}

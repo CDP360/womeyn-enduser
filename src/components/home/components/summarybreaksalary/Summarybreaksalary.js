@@ -103,7 +103,7 @@ function Summarybreaksalary({ bannerimages }) {
                     <Slider {...settings}>
                         {bannerimages?.ClientLogos?.map((item, index) => {
                             return (
-                                <div className={styles.insideslidess}>
+                                <div className={styles.insideslidess}  key={index}>
                                     <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.slidesummaryimages1} onClick={() => MovePageData(item.redirectUrl)} />
                                 </div>
                             )

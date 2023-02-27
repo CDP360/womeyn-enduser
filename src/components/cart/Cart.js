@@ -118,7 +118,7 @@ function Cart() {
                       {cart.cartData.map((item, index) => {
                         return (
                           <>
-                            <div className={styles.checkboxsectioncart}>
+                            <div className={styles.checkboxsectioncart} key={index}>
                               <div className={styles.insidestorenamesection}>
                                 <div>
                                   <input type="checkbox" name={item?.name} value={item?.id} onChange={handleDelete} />

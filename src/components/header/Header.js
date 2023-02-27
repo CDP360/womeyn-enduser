@@ -174,7 +174,7 @@ function Header({ setdark, dark }) {
                         <ul className="dropdownmegamain">
                             <li><a href="#">
                                 <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
-                                <span className='ms-2'>Explore</span>
+                                <span className='ms-2' >Explore</span>
                             </a>
                                 <ul class="dropdownmega">
                                     <div>
@@ -182,7 +182,7 @@ function Header({ setdark, dark }) {
                                     </div>
                                     {datas.map((item, index) => {
                                         return (
-                                            <div className="mt-2" onClick={() => pushCategory(item?.name)}>
+                                            <div className="mt-2" onClick={() => pushCategory(item?.name)} key={index}>
                                                 <li><a className="" href="">{item?.name}</a></li>
                                             </div>
                                         )
