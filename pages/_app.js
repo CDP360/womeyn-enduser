@@ -11,23 +11,22 @@ import Cookies from 'js-cookie';
 import { SessionProvider } from "next-auth/react";
 import { StoreProviderContext } from '../src/Redux/store/Contextstore';
 function App({ Component, pageProps }) {
-  const [dark, setDark] = useState(false);
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap");
     import("slick-carousel/slick/slick.css");
     import("slick-carousel/slick/slick-theme.css");
-    Cookies.set("kalaiwomeyn", dark)
+
   }, []);
 
   return (
-    <div className={dark ? "theme--dark" : "theme--light"}>
+    <div>
       <div className='womeyn-enduser'>
         <StrictMode>
           <SessionProvider session={pageProps.session}>
             <StoreProviderContext>
             <Provider store={store}>
               <ToastContainer />
-              <Component {...pageProps} setdark={setDark} dark={dark} />
+              <Component {...pageProps}  />
             </Provider>
             </StoreProviderContext>
           </SessionProvider>

@@ -12,7 +12,7 @@ function Womencarouselbanner() {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: true,
+        // autoplay: true,
         autoplaySpeed: 3500,
         pauseOnHover: true,
         nextArrow: <SlideNextArrow/>,
@@ -70,7 +70,7 @@ function Womencarouselbanner() {
     return (
         <div>
              <div className={styles.imagesectionhome}>
-                        {/* {bannerimages[0]?.HeroBanner?.length === 0 && <div>No Banner Image</div>} */}
+                        
                         <Slider {...settings}>
                             {banners?.map((item, index) => {
                                 return (

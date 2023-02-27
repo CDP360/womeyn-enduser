@@ -71,24 +71,24 @@ function Footer() {
                                     CUSTOMER AREA
                                 </div>
                                 <div className="gapsectionfooter">
-                                    <li>
+                                    <div>
                                         My Account
-                                    </li>
-                                    <li>
+                                    </div>
+                                    <div>
                                         Orders
-                                    </li>
-                                    <li>
+                                    </div>
+                                    <div>
                                         Tracking List
-                                    </li>
-                                    <li>
+                                    </div>
+                                    <div>
                                         Terms
-                                    </li>
-                                    <li>
-                                        Privacy Policy
-                                    </li>
-                                    <li>
+                                    </div>
+                                    <div>
+                                        Privacy Policyw
+                                    </div>
+                                    <div>
                                         My Cart
-                                    </li>
+                                    </div>
                                 </div>
 
                             </div>

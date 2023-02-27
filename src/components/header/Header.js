@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import styles from './styles/Header.module.scss';
 import serachicon from '../../assests/homepage-logos/serachicon.png';
 import Image from 'next/image';
 import womeynlogo from '../../assests/homepage-logos/womeyn_logo.png';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import cartslogo from '../../assests/homepage-logos/cart.png';
+import cartslogo from '../../assests/homepage-logos/basket.png';
 import profile from '../../assests/homepage-logos/profile.png';
 import iconmenu from '../../assests/homepage-logos/iconMenu.png';
 import { signOut, useSession } from "next-auth/react"
@@ -24,12 +24,12 @@ import linkdin from '../../assests/homepage-logos/linkedinfooter.png';
 import twitter from '../../assests/homepage-logos/twitterfooter.png';
 
 function Header({ setdark, dark }) {
-
     const { state, dispatch } = useContext(ContextStore);
     const { cart } = state;
     const router = useRouter();
     const states = useSelector(state => state.cart.cartitems);
     const { status, data: session } = useSession();
+    const [showmega, setShowMega] = useState(true);
     const logoutHandler = async () => {
         await signOut({ callbackUrl: "/" });
     };
@@ -48,11 +48,15 @@ function Header({ setdark, dark }) {
     const notificationsPush = () => {
         router.push("/notifications")
     }
-
     const NaigateHover = () => {
-
         setHovers(true);
     }
+    const pushCategory = (data) => {
+        router.push(`/category/${data}`);
+       
+    }
+
+
 
 
     const datas = [
@@ -124,8 +128,14 @@ function Header({ setdark, dark }) {
                             <Image src={notifications} alt="no image" className={styles.notifications} />
                         </div>
                         <div className={styles.falight} onClick={carts}>
-                            <Image src={cartslogo} alt="no image" className={styles.carticons} />
+                            <div className={styles.maincartcount}>
+                   <div>
+                   <Image src={cartslogo} alt="no image" className={styles.carticons} />
+                    </div>
+                            <div className={styles.cartcountbox}>
                             {cart.cartData?.length}
+                            </div>
+                            </div>
                         </div>
                         <div className="dropdown">
                             <div>
@@ -160,51 +170,49 @@ function Header({ setdark, dark }) {
                             <span className='ms-2'>Explore</span>
                         </Link> */}
 
-                        <ul>
+
+                        <ul className="dropdownmegamain">
                             <li><a href="#">
                                 <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
                                 <span className='ms-2'>Explore</span>
                             </a>
-                                <ul class="dropdownkalai">
+                                <ul class="dropdownmega">
                                     <div>
-<li><a className="kalai">Fashion & Lifestyle</a></li>
+                                        <li><a className="kalais">Fashion & Lifestyle</a></li>
                                     </div>
                                     {datas.map((item, index) => {
                                         return (
-                                            <div className="mt-2">
-
-                                                <li><a className="">{item?.name}</a></li>
-
+                                            <div className="mt-2" onClick={() => pushCategory(item?.name)}>
+                                                <li><a className="" href="">{item?.name}</a></li>
                                             </div>
                                         )
                                     })}
-                                    {/* <li><a>Sub-2</a></li>
-                                    <li><a>Sub-3</a></li> */}
-                                    
-                            <li className="d-flex align-items-center justify-content-center">
-<a>
-<div className={styles.socailfootersection}>
-                                    <div className={styles.footeremptysocialsection}>
-                                        <Image src={youtube} alt="no image" className={styles.footersocialicons} />
-                                    </div>
-                                    <div className={styles.footeremptysocialsection}>
-                                        <Image src={linkdin} alt="no image" className={styles.footersocialicons} />
-                                    </div>
-                                    <div className={styles.footeremptysocialsection}>
-                                        <Image src={twitter} alt="no image" className={styles.footersocialicons} />
-                                    </div>
-                                    <div className={styles.footeremptysocialsection}>
-                                        <Image src={facebook} alt="no image" className={styles.footersocialicons} />
-                                    </div>
-                                    <div className={styles.footeremptysocialsection}>
-                                        <Image src={instagram} alt="no image" className={styles.footersocialicons} />
-                                    </div>
 
-                                </div>
-</a>
-                            </li>
+
+                                    <li className="d-flex align-items-center justify-content-center">
+                                        <a>
+                                            <div className={styles.socailfootersection}>
+                                                <div className={styles.footeremptysocialsection}>
+                                                    <Image src={youtube} alt="no image" className={styles.footersocialicons} />
+                                                </div>
+                                                <div className={styles.footeremptysocialsection}>
+                                                    <Image src={linkdin} alt="no image" className={styles.footersocialicons} />
+                                                </div>
+                                                <div className={styles.footeremptysocialsection}>
+                                                    <Image src={twitter} alt="no image" className={styles.footersocialicons} />
+                                                </div>
+                                                <div className={styles.footeremptysocialsection}>
+                                                    <Image src={facebook} alt="no image" className={styles.footersocialicons} />
+                                                </div>
+                                                <div className={styles.footeremptysocialsection}>
+                                                    <Image src={instagram} alt="no image" className={styles.footersocialicons} />
+                                                </div>
+
+                                            </div>
+                                        </a>
+                                    </li>
                                 </ul>
-                                
+
                             </li>
 
 
@@ -212,100 +220,34 @@ function Header({ setdark, dark }) {
 
                         </ul>
 
-                        {/* <div className="dropdown1">
 
-                            <div>
-                                <span className='nav-link'>
-                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
-                                    <span className='ms-2'>Explore</span>
-                                </span>
-                            </div>
-                            <div>
-                                {status === "loading" && "Loading....."}
-                            </div>
-                            <div className="dropdowncontent1">
-                                <div>
-                                    <div className="mt-4">
-                                        Dresses | Jumpsuits
 
-                                    </div>
-                                    <div>
-                                        Shirts
 
-                                    </div>
-                                    <div>
-                                        Trousers
 
-                                    </div>
-                                    <div>
-                                        Tops | Corsets
-
-                                    </div>
-                                    <div>
-                                        Bodysuits
-
-                                    </div>
-                                    <div>
-                                        Tshirts
-
-                                    </div>
-                                    <div>
-                                        Jeans
-
-                                    </div>
-                                    <div>
-                                        Skirts
-
-                                    </div>
-                                    <div>
-                                        Suits
-
-                                    </div>
-                                    <div>
-                                        Indian Wear
-                                    </div>
-                                    <div>
-                                        Jacket | Overcoats
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div> */}
                     </div>
                     <div className={styles.bordercolors}>
                         |
                     </div>
                     <div className={router.pathname == "/womenpreneurs" ? "active" : ""}>
-
                         <Link href="/womenpreneurs" className='nav-link'>
-                            {/* <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} /> */}
-
                             <span className='ms-2'>Our womenpreneurs</span>
                         </Link>
                     </div>
                     <div className={router.pathname == "/events" ? "active" : ""}>
                         <Link href="/events" className='nav-link'>
-                            {/* <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} /> */}
-
                             <span className='ms-2'>Events & updates</span>
                         </Link>
                     </div>
                     <div className={router.pathname == "/abouts" ? "active" : ""}>
                         <Link href="/abouts" className='nav-link'>
-                            {/* <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} /> */}
-
                             <span className='ms-2'></span> About us
                         </Link>
                     </div>
                     <div className={router.pathname == "/getintouch" ? "active" : ""}>
                         <Link href="/getintouch" className='nav-link'>
-                            {/* <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} /> */}
                             <span className='ms-2'>Get in touch</span>
                         </Link>
                     </div>
-
-
                 </div>
             </div>
             {/* <div className={styles.headermainsection}>

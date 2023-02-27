@@ -59,14 +59,6 @@ function Womenpreneusdetails({ id }) {
     ]
     return (
         <Fragment >
-
-
-            {/* <button onClick={() => router.push("/login?redirect=/shipping")}>
-                Check out
-            </button>
-            {id} */}
-
-
             <div className={styles.maindetailpage}>
                 <div className="emptyboxrightcolor">
                 </div>

@@ -2,9 +2,6 @@
 
 .summarymainsection {
     width: 100%;
-    // border: 2px solid red;
-    // background-color: rgba(255, 255, 255, 0.3);
-    // box-shadow: 0px 12px 116px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(66px);
     padding-top: 3%;
     padding-bottom: 3%;
@@ -13,13 +10,13 @@
         width: 96%;
         margin: 0 auto;
         @include xsBreakPoint {
-            width: 73%;
+            width: 90%;
         }
         @include smBreakPoint {
-            width: 77%;
+            width: 92%;
         }
         @include mdBreakPoint {
-            width: 78.78%;
+            width: 100%;
         }
         @include lgBreakPoint {
             width: 86%;
@@ -29,7 +26,6 @@
         }
         .insideslidess {
             display: flex !important;
-            // border: 2px solid blue;
             flex-direction: row !important;
             padding-left: 25%;
             gap: 10px !important ;
@@ -56,4 +52,24 @@
     cursor: pointer;
     width: 96%;
     margin: 0 auto;
+    border-radius:8px;
+
+    @include xsBreakPoint
+    {
+        width: 100%;
+        height:90px;
+        // object-fit:contain;
+    }
+    @include smBreakPoint
+    {
+        width: 100%;
+        height:120px;
+        // object-fit:contain;
+    }
+    @include mdBreakPoint
+    {
+        width: 100%;
+        height:120px;
+        // object-fit:contain;
+    }
 }

@@ -31,7 +31,7 @@ function Home() {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: true,
+        // autoplay: true,
         autoplaySpeed: 3500,
         pauseOnHover: true,
         nextArrow: <SlideNextArrow />,
@@ -105,12 +105,17 @@ function Home() {
                 </div>
                 <div className={styles.insidesectionhome}>
                     <div className={styles.imagesectionhome}>
-                        {bannerimages[0]?.HeroBanner?.length === 0 && <div>No Banner Image</div>}
+                        {bannerimages[0]?.HeroBanner?.length === 0 && <div>
+                            <Skeleton className={styles.skeltonbox}/>
+                            
+                            </div>}
                         <Slider {...settings}>
                             {bannerimages[0]?.HeroBanner?.map((item, index) => {
                                 return (
                                     <div>
-                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />
+                                        {item.imageName?<img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />:<>
+                                        <Skeleton height={200} width={200}/>
+                                        </>}
                                     </div>
                                 )
                             })}
@@ -121,7 +126,7 @@ function Home() {
                             {bannerimages[1]?.HeroBannerBottom1[0] ? <>
                                 <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${bannerimages[1]?.HeroBannerBottom1[0]?.imageName}`} alt="no image" className={styles.add1} onClick={() => MovePageData(bannerimages[1]?.HeroBannerBottom1[0]?.redirectUrl)} />
                             </> : <>
-                                <Skeleton width={565} height={230} />
+                                <Skeleton className={styles.addimageboxs} />
                             </>}
                         </div>
                         <div className={styles.addimagessectionright}>
@@ -129,7 +134,7 @@ function Home() {
                             {bannerimages[2]?.HeroBannerBottom2[0] ? <>
                                 <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${bannerimages[2]?.HeroBannerBottom2[0]?.imageName}`} alt="no image" className={styles.add1} onClick={() => MovePageData(bannerimages[2]?.HeroBannerBottom2[0]?.redirectUrl)} />
                             </> : <>
-                                <Skeleton width={565} height={230} />
+                                <Skeleton className={styles.addimageboxs}    />
                             </>}
                         </div>
                     </div>

@@ -74,7 +74,7 @@ function Allbestservices({ stars }) {
             <Slider {...settings}>
                 {services.map((item, index) => {
                     return (
-                        <div className={styles.cardcategory} onClick={()=>categoryPush(item?.serviceName)}>
+                        <div className={styles.cardcategory} onClick={() => categoryPush(item?.serviceName)}>
                             <div>
                                 <img src={item?.image} alt="no image" className={styles.sellerimagesize} />
                             </div>
