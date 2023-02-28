@@ -31,14 +31,13 @@
     @include themed() {
         color: t($textgreylight);
     }
-    @include xsBreakPoint
-    {
-        font-size:0.868rem;
+    @include xsBreakPoint {
+        font-size: 0.868rem;
     }
 }
 
-.text-grey{
-    opacity:0.5;
+.text-grey {
+    opacity: 0.5;
     @include themed() {
         color: t($textgreylight);
     }
@@ -91,10 +90,16 @@
 .textpricedashed {
     color: #8d8d8d;
 }
+.textpricebold {
+    color: #000000;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
 .textpricedashedgreen {
-    @include themed() {
-        color: t($textgreen);
-    }
+    color: rgba(89, 175, 89, 1);
+    display: flex;
+    align-items: center;
+    font-weight:600;
 }
 
 // textlight grey
@@ -153,11 +158,15 @@
     }
 }
 
-
-.womentitle
-{
-    color:white !important;
-    padding-left:2%;
-    font-weight:600;
-    text-transform:upperCase;
+.womentitle {
+    color: white !important;
+    padding-left: 6%;
+    padding-bottom: 5%;
+    font-weight: 600;
+    text-transform: upperCase;
+}
+.womendescription {
+    text-transform: upperCase;
+    padding-left: 6%;
+    padding-bottom: 5%;
 }

@@ -67,15 +67,20 @@
 // womenpreneurs card section start
 .cardsections {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     align-items: center;
     justify-content: center;
     // width:100%;
+    @include lgBreakPoint
+    {
+        // border:2px solid blue !important;
+        gap:5px;
+    }
 
     .cards {
-        width: 23% !important;
+        width: 24% !important;
         display: flex !important;
-        gap: 20px;
+        // gap: 20px;
         height: auto;
         background: #ffffff;
         // border:2px solid red !important;
@@ -94,7 +99,7 @@
             justify-content: center;
         }
         @include smBreakPoint {
-            width: 100% !important;
+            width: 44% !important;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -108,14 +113,14 @@
             justify-content: center;
         }
         @include lgBreakPoint {
-            width: 22% !important;
+            width: 24.5% !important;
             margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         @include xlBreakPoint {
-            width: 20% !important;
+            width: 24.2% !important;
             margin: 0 auto;
             display: flex;
             align-items: center;

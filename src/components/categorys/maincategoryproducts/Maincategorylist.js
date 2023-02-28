@@ -19,17 +19,17 @@ import c12 from '../../../assests/category-logos/c12.png';
 import c13 from '../../../assests/category-logos/c13.png';
 import c14 from '../../../assests/category-logos/c14.png';
 
+import rightarrow from '../../../assests/category-logos/leftcategoryarrow.png';
+import leftarrow from '../../../assests/category-logos/rightcategoryarrow.png';
+import Image from 'next/image';
 
+import styles from './styles/Maincategory.module.scss';
 function Maincategorylist() {
     const [product, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [perPage, setPerPage] = useState(10);
     const [size, setSize] = useState(perPage);
     const [current, setCurrent] = useState(1);
-
-    console.log("products",product)
-
-
     const PerPageChange = (value) => {
         setSize(value);
         const newPerPage = Math.ceil(datas.length / value);
@@ -52,7 +52,7 @@ function Maincategorylist() {
             id: 1,
             name: "sample",
             image: c1,
-            
+
         },
         {
             id: 2,
@@ -112,7 +112,7 @@ function Maincategorylist() {
             id: 15,
             name: "s12",
             image: c1,
-            
+
         },
         {
             id: 16,
@@ -132,7 +132,7 @@ function Maincategorylist() {
             name: "s16",
             image: c5
         }, {
-            id:20,
+            id: 20,
             name: "s17",
             image: c6
         }, {
@@ -174,9 +174,8 @@ function Maincategorylist() {
     useEffect(() => {
         const getproducts = async () => {
             setLoading(true);
-            // const response = await axios.get("https://fakestoreapi.com/products");
             if (componentrender) {
-                setProducts(await  CartDataProduct);
+                setProducts(await CartDataProduct);
                 setLoading(false);
             }
             return () => {
@@ -188,16 +187,18 @@ function Maincategorylist() {
         getproducts();
     }, [])
 
+
+    console.log("count", perPage)
+
     const PrevNextArrow = (current, type, originalElement) => {
         if (type === 'prev') {
-            return <button className={perPage === 4 ? "activess" : "disactive"}>
-                Prev
+            return <button className={perPage>11? "activess" : "disactive"}>
+                <Image src={leftarrow} alt="no image" className={styles.arrowsizefix} />
             </button>
         }
         if (type === 'next') {
             return <button className='activess'>
-
-                Next
+                <Image src={rightarrow} alt="no image" className={styles.arrowsizefix} />
             </button>
         }
         return originalElement;

@@ -173,14 +173,19 @@ function Header({ setdark, dark }) {
 
                         <ul className="dropdownmegamain">
                             <li>
-                                {showmega ? <a href="#">
+                                {/* {showmega ? <a href="#">
                                     <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
                                     <span className='ms-2' onMouseOver={() => setShowMega(false)}> Close</span>
                                 </a>
                                     : <a href="#">
                                         <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
                                         <span className='ms-2' onMouseOver={() => setShowMega(true)}>Explore</span>
-                                    </a>}
+                                    </a>} */}
+
+                                <a href="#">
+                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                    <span className='ms-2'>Explore</span>
+                                </a>
                                 <ul class="dropdownmega">
                                     <div>
                                         <li><a className="kalais">Fashion & Lifestyle</a></li>

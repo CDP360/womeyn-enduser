@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import styles from './styles/Categorycarousel.module.scss';
 import Slider from "react-slick";
-import styles from './styles/Womenprecarouse.module.scss';
-import { Getwomenpreneursbanner } from './../../../../../services/womenpreneurs-services/womenpreneurs-services';
-import SlideNextArrow from '../../../../home/slidenextarrow/SlideNextArrow';
-import SlidePreArrow from '../../../../home/slideprearrow/SlidePreArrow';
-function Womencarouselbanner() {
+import { CategoryBanners } from './../../../services/category-services/category-service';
+import SlideNextArrow from '../../home/slidenextarrow/SlideNextArrow';
+import SlidePreArrow from '../../home/slideprearrow/SlidePreArrow';
+
+function Categorycarouse() {
+
     const [banners, setBanners] = useState([]);
+
     const settings = {
         dots: false,
         infinite: true,
@@ -54,16 +57,14 @@ function Womencarouselbanner() {
             }
         ]
     };
-
     useEffect(() => {
-        Getwomenpreneursbanner().then((res) => {
+        CategoryBanners().then((res) => {
+        
             setBanners(res?.data);
         }).catch((err) => {
             console.log(err);
         })
-
-    }, [])
-
+    }, []);
     const MovePageData = (data) => {
         window.open(data);
     }
@@ -85,4 +86,4 @@ function Womencarouselbanner() {
     )
 }
 
-export default Womencarouselbanner
+export default Categorycarouse

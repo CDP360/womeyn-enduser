@@ -83,7 +83,7 @@ function Home() {
 
     const GetBannerimages = () => {
         Bannerimage().then((res) => {
-          
+
             setBannerImages(res?.data);
         }).catch((err) => {
             console.log(err);
@@ -106,15 +106,14 @@ function Home() {
                 <div className={styles.insidesectionhome}>
                     <div className={styles.imagesectionhome}>
                         {bannerimages[0]?.HeroBanner?.length === 0 && <div>
-                            <Skeleton className={styles.skeltonbox}/>
-                            
-                            </div>}
+                            <Skeleton className={styles.skeltonbox} />
+                        </div>}
                         <Slider {...settings}>
                             {bannerimages[0]?.HeroBanner?.map((item, index) => {
                                 return (
                                     <div key={index}>
-                                        {item.imageName?<img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />:<>
-                                        <Skeleton height={200} width={200}/>
+                                        {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
+                                            <Skeleton height={200} width={200} />
                                         </>}
                                     </div>
                                 )
@@ -134,7 +133,7 @@ function Home() {
                             {bannerimages[2]?.HeroBannerBottom2[0] ? <>
                                 <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${bannerimages[2]?.HeroBannerBottom2[0]?.imageName}`} alt="no image" className={styles.add1} onClick={() => MovePageData(bannerimages[2]?.HeroBannerBottom2[0]?.redirectUrl)} />
                             </> : <>
-                                <Skeleton className={styles.addimageboxs}    />
+                                <Skeleton className={styles.addimageboxs} />
                             </>}
                         </div>
                     </div>

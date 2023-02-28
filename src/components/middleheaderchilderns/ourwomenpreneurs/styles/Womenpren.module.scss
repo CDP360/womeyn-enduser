@@ -7,6 +7,23 @@
         width: 75%;
         margin: 0 auto;
         position: relative;
+        @include xsBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include smBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include mdBreakPoint {
+            width: 85%;
+        }
+        @include lgBreakPoint {
+            width: 89%;
+        }
+        @include xlBreakPoint {
+            width: 85%;
+        }
 
         .emptyboxcolorright {
             position: absolute;
@@ -59,14 +76,24 @@
                     width: 100%;
                     padding-bottom: 2%;
                 }
+                @include smBreakPoint {
+                    width: 100%;
+                    padding-bottom: 2%;
+                }
             }
         }
         .serachsectionwomen {
             display: flex;
-            justify-content: space-between;
+            gap: 20px;
+            justify-content: flex-end;
             padding-top: 2%;
             @include xsBreakPoint {
                 flex-direction: column;
+                gap: 20px;
+            }
+            @include smBreakPoint {
+                // flex-direction: column;
+                display: flex;
                 gap: 20px;
             }
             .serachwomenpresection {
@@ -91,26 +118,46 @@
                         height: 23px;
                     }
                 }
-            }
-        }
-        .mainimagestyles {
-            .sellerimagesize {
-                width: 230px;
-                height: 200px;
-                border-radius: 10px;
-                z-index: -1;
-                @include mdBreakPoint {
-                    height: 140px;
-                }
-                @include lgBreakPoint {
-                    height: auto;
-                    width: 150px;
-                }
-                @include xlBreakPoint {
-                    height: auto;
-                    width: 180px;
+                @include smBreakPoint {
+                    width: 100%;
                 }
             }
         }
     }
+}
+
+.sellerimagebox {
+    width: 100%;
+    height: auto;
+    position: relative;
+    .sellerimagesize {
+        height: auto;
+        width: 100%;
+        border-radius: 10px !important;
+        @include mdBreakPoint {
+            height: 100%;
+        }
+        @include lgBreakPoint {
+            height: 100%;
+            width: 100%;
+        }
+        @include xlBreakPoint {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+.sellerimagebox::before {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(18, 18, 18, 0) 0%,
+        rgba(18, 18, 18, 0.3) 76.56%,
+        rgba(18, 18, 18, 0.8) 100%
+    );
+    position: absolute;
+    content: "";
+    border-radius: 10px !important;
 }

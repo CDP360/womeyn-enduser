@@ -32,12 +32,20 @@ function Categorycard({ item }) {
                     </div>
                 </div>
                 <div className={styles.cardpricesection}>
-                    <div className='textprice'>
+                    <div className='textpricebold'>
                         <span>${200 - 15}</span>
                     </div>
-                    <div className='textpricedashed'>
+                    <div className={styles.pricecontentcategory}>
+
+                    <div className='textpricedashedgreen'>
                         <del>${78}</del>
                     </div>
+                    <div>
+                    (50% 0ff)
+                    </div>
+                    </div>
+
+                  
                 </div>
             </div>
         </div>

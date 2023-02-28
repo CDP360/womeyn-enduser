@@ -145,7 +145,7 @@ function Ourwomenpreneurs() {
                                                 {item.profileImageName ? <>
                                                     <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.profileImageName}`} alt="no image" className={styles.slideimagesize} />
                                                 </> :
-                                                    <Image src={users} alt="no image" className={styles.slideimagesize} />
+                                                    <Image src={anu} alt="no image" className={styles.slideimagesize} />
                                                 }
                                             </div>
                                         )

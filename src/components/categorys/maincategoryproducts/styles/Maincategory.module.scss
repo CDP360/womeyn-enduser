@@ -16,6 +16,8 @@
     color: #fff;
 }
 
+
+
 .rc-pagination {
     display: flex;
     align-items: center;
@@ -121,4 +123,13 @@
 .rc-pagination-total-text button:hover {
     background-color: #eceff5;
     border-color: #eceff5;
+}
+
+
+
+.arrowsizefix
+{
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
 }

@@ -3,9 +3,7 @@ import styles from './styles/Womenpren.module.scss';
 import Womeynbanner from '../../../../src/assests/homepage-logos/woymenbanner.png';
 import Image from 'next/image';
 import Form from 'react-bootstrap/Form';
-
 import serachicon from '../../../assests/homepage-logos/serachicon.png';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import girl from '../../../assests/womeynlogos/girl4.png';
 import Womencarouselbanner from './component/womenprebannerimages/Womencarouselbanner';
@@ -17,19 +15,15 @@ function Womenpreneurs() {
     const router = useRouter();
     const [dataseller, setDataseller] = useState([]);
     const [datacategory, setDataCtagoryies] = useState([]);
-
     const [filterdata, setFilter] = useState("");
     const [searchname, setSearchName] = useState("");
-
     const [loadingset, setLoading] = useState(false);
-
     const [categoryid, setCategoryId] = useState(0);
     useEffect(() => {
         WomenSellerList();
         WomenSellercategories();
         GetFilterandSearchData();
     }, [categoryid])
-
     const WomenSellerList = () => {
         setLoading(true);
         WomenpreneursSellers(categoryid).then((res) => {
@@ -59,27 +53,20 @@ function Womenpreneurs() {
     const handlepush = (id) => {
         router.push(`/womenpreneurs/${id}`);
     }
-
-    const SearchNameBrand=(e)=>{
+    const SearchNameBrand = (e) => {
         setSearchName(e.target.value);
-   
     }
     const handleFilterCategory = (data) => {
         setCategoryId(data?.id);
         setFilter(data.name);
     }
-
-
-    const GetFilterandSearchData=()=>{
-        WomenpreneursSerachandFilter(searchname,categoryid).then((res) => {
-            console.log("fil", res?.data?.results)
+    const GetFilterandSearchData = () => {
+        WomenpreneursSerachandFilter(searchname, categoryid).then((res) => {
+            setDataseller(res?.data?.results);
         }).catch((err) => {
             console.log(err);
         })
     }
-
-
-
     return (
         <Fragment>
             <div className={styles.womeynmainsectionpre}>
@@ -101,6 +88,8 @@ function Womenpreneurs() {
                         </div>
                     </div>
                     <div className={styles.serachsectionwomen}>
+                       
+
                         <div className={styles.serachwomenpresection}>
                             <div>
                                 <Image src={serachicon} alt="no image" className={styles.serachiconwomen} />
@@ -109,7 +98,7 @@ function Womenpreneurs() {
                                 <input type='text' placeholder="Search by Name or Brand" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
                             </div>
                         </div>
-                        <div className='col-lg-3'>
+                        <div className='col-lg-3 col-xs-6 col-sm-5'>
 
                             <Select
                                 placeholder={"Filter Category ..."}
@@ -117,32 +106,35 @@ function Womenpreneurs() {
                                 onChange={(e) => handleFilterCategory(e)}
                                 options={datacategory}
                             />
+                        
                         </div>
                     </div>
                     <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
+                        <div>
+                            {dataseller.length === 0 && <div>No Data Found!!!!</div>}
+                        </div>
                         {loadingset ? <>
-
                             <div>
                                 Loading....
                             </div>
                         </> : dataseller?.map((item, index) => {
                             return (
                                 <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.cityName)}>
-                                    <div className={styles.mainimagestyles}>
-                                        {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                    <div className={styles.sellerimagebox}>
 
+<div className={styles.insidebox}>
+{item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
                                             <Image src={users} alt="no image" className={styles.sellerimagesize} />
-
                                         </>}
+</div>
 
-                                        {/* <Image src={girl} alt="no image" className={styles.sellerimagesize} /> */}
                                     </div>
+
                                     <div className='womentitle'>
-                                        {/* {item?.title.slice(0, 10)} */}
-                                        {item?.firstName}{item?.lastName}
+                                        {item?.firstName}
                                     </div>
                                     <div className='womendescription'>
-                                        {/* {item?.description.slice(0, 5)} */}
+                                        {item?.businessSlugName}
                                     </div>
                                 </div>
                             )
