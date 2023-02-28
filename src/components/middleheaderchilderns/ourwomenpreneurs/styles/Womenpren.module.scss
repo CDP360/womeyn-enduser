@@ -85,7 +85,7 @@
         .serachsectionwomen {
             display: flex;
             gap: 20px;
-            justify-content: flex-end;
+            justify-content: space-between;
             padding-top: 2%;
             @include xsBreakPoint {
                 flex-direction: column;

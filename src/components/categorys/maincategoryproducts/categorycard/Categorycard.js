@@ -1,15 +1,15 @@
 import Image from 'next/image';
-import React,{useContext} from 'react'
+import React, { useContext } from 'react'
 import styles from './styles/Categorycard.module.scss';
 import stars from '../../../../assests/homepage-logos/stars.png';
 import plus from '../../../../assests/womeynlogos/plus.png';
 import { ContextStore } from '../../../../Redux/store/Contextstore';
 function Categorycard({ item }) {
-    const {state,dispatch}=useContext(ContextStore)
+    const { state, dispatch } = useContext(ContextStore)
 
-    
+
     const Carthandleproduct = (data) => {
-        dispatch({type:"CART_SUCCESS",payload:data});
+        dispatch({ type: "CART_SUCCESS", payload: data });
     }
     return (
         <div className={styles.cards}>
@@ -36,16 +36,13 @@ function Categorycard({ item }) {
                         <span>${200 - 15}</span>
                     </div>
                     <div className={styles.pricecontentcategory}>
-
-                    <div className='textpricedashedgreen'>
-                        <del>${78}</del>
+                        <div className='textpricedashedgreen'>
+                            <del>${78}</del>
+                        </div>
+                        <div>
+                            (50% 0ff)
+                        </div>
                     </div>
-                    <div>
-                    (50% 0ff)
-                    </div>
-                    </div>
-
-                  
                 </div>
             </div>
         </div>

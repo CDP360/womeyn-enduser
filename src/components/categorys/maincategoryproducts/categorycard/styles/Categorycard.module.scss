@@ -27,14 +27,13 @@
         height: 150px;
         // object-fit:cover;
     }
-    .pricecontentcategory
-    {
-        display:flex;
-        align-items:center;
-        gap:4px;
+    .pricecontentcategory {
+        display: flex;
+        align-items: center;
+        gap: 4px;
         color: rgba(89, 175, 89, 1);
-    
-        font-weight:600;
+
+        font-weight: 600;
     }
     .sellerimagesize {
         width: 100%;

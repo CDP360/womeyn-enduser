@@ -143,9 +143,9 @@ function Ourwomenpreneurs() {
                                                 <div className={styles.backgroundslidewomen}>
                                                 </div>
                                                 {item.profileImageName ? <>
-                                                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.profileImageName}`} alt="no image" className={styles.slideimagesize} />
+                                                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.profileImageName}`} alt="no image" className={styles.slideimagesize} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)}/>
                                                 </> :
-                                                    <Image src={anu} alt="no image" className={styles.slideimagesize} />
+                                                    <Image src={users} alt="no image" className={styles.slideimagesize} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)}/>
                                                 }
                                             </div>
                                         )
@@ -153,7 +153,6 @@ function Ourwomenpreneurs() {
                                 </Slider>
                             </div>
                             <div className={styles.rightwomeynsection}>
-
                                 <div className={styles.rightinsidewomentext}>
                                     <div className={styles.textsellers}>
                                         {datas[counts - 1]?.firstName} {datas[counts - 1]?.lastName}

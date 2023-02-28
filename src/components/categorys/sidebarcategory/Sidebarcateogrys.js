@@ -5,9 +5,9 @@ import Form from 'react-bootstrap/Form';
 function Sidebarcateogrys() {
 
 
-  const [dropdown1, setDropdown1] = useState(false);
-  const [dropdown2, setDropdown2] = useState(false);
-  const [dropdown3, setDropdown3] = useState(false);
+  const [dropdown1, setDropdown1] = useState(true);
+  const [dropdown2, setDropdown2] = useState(true);
+  const [dropdown3, setDropdown3] = useState(true);
   return (
     <div className={styles.mainsidebarsectioncategory}>
       <div className={styles.filtersectiontext}>
@@ -30,11 +30,13 @@ function Sidebarcateogrys() {
         </div>
       </div>
       <div>
-        <div className={styles.dropdownsection} onClick={() => {
-          setDropdown1(false)
-          setDropdown2(!dropdown2)
-          setDropdown3(false)
-        }}>
+        <div className={styles.dropdownsection} 
+        // onClick={() => {
+        //   setDropdown1(false)
+        //   setDropdown2(!dropdown2)
+        //   setDropdown3(false)
+        // }}
+        >
           <div className={styles.transactionsize}>
             Product / Service
           </div>
@@ -52,11 +54,13 @@ function Sidebarcateogrys() {
         </div>
       </div>
       <div>
-        <div className={styles.dropdownsection} onClick={() => {
-          setDropdown1(!dropdown1)
-          setDropdown2(false)
-          setDropdown3(false)
-        }}>
+        <div className={styles.dropdownsection}
+        //  onClick={() => {
+        //   setDropdown1(!dropdown1)
+        //   setDropdown2(false)
+        //   setDropdown3(false)
+        // }}
+        >
           <div className={styles.transactionsize}>
             Category
           </div>
@@ -79,11 +83,13 @@ function Sidebarcateogrys() {
       </div>
 
       <div>
-        <div className={styles.dropdownsection} onClick={() => {
-          setDropdown1(false)
-          setDropdown2(false)
-          setDropdown3(!dropdown3)
-        }}>
+        <div className={styles.dropdownsection}
+        //  onClick={() => {
+        //   setDropdown1(false)
+        //   setDropdown2(false)
+        //   setDropdown3(!dropdown3)
+        // }}
+        >
           <div className={styles.transactionsize}>
           Price
           </div>

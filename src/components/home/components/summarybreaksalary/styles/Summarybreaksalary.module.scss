@@ -33,39 +33,40 @@
             padding-left: 5%;
             gap: 10px !important ;
             align-items: center !important;
-            display:flex;
-            align-items:center;
-            justify-content:center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding-top: 5%;
             @include xsBreakPoint {
                 padding-left: 2%;
-            // border: 2px solid blue;
+                // border: 2px solid blue;
             }
             @include smBreakPoint {
-                padding-left:4%;
+                padding-left: 4%;
             }
             @include mdBreakPoint {
-                padding-left:4%;
+                padding-left: 4%;
             }
             @include lgBreakPoint {
-                padding-left:4%;
+                padding-left: 4%;
             }
             @include xlBreakPoint {
-                padding-left:0%;
+                padding-left: 0%;
             }
-            .slidesummaryimages1,.slidesummaryimages2 {
+            .slidesummaryimages1,
+            .slidesummaryimages2 {
                 width: 100%;
-                height:50px;
+                height: 50px;
                 object-fit: contain;
-              
+                cursor: pointer;
             }
             .slidesummaryimages2 {
                 width: 100px;
                 height: 50px;
                 object-fit: contain;
-                display:flex;
-                align-items:center;
-                justify-content:center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
     }

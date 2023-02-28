@@ -192,7 +192,7 @@ function Maincategorylist() {
 
     const PrevNextArrow = (current, type, originalElement) => {
         if (type === 'prev') {
-            return <button className={perPage>11? "activess" : "disactive"}>
+            return <button className={perPage > 11 ? "activess" : "disactive"}>
                 <Image src={leftarrow} alt="no image" className={styles.arrowsizefix} />
             </button>
         }

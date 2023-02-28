@@ -10,29 +10,22 @@ import Womencarouselbanner from './component/womenprebannerimages/Womencarouselb
 import { WomenpreneursCommoncategories, WomenpreneursSellers } from '../../../services/womenpreneurs-services/womenpreneurs-services';
 import users from '../../../assests/homepage-logos/usersimageprofile.png';
 import Select from 'react-select';
-import { WomenpreneursSerachandFilter } from './../../../services/womenpreneurs-services/womenpreneurs-services';
+import { WomenpreneursFilter, WomenpreneursSearch } from './../../../services/womenpreneurs-services/womenpreneurs-services';
 function Womenpreneurs() {
     const router = useRouter();
     const [dataseller, setDataseller] = useState([]);
     const [datacategory, setDataCtagoryies] = useState([]);
+    const [filters, setFilterData] = useState([]);
     const [filterdata, setFilter] = useState("");
     const [searchname, setSearchName] = useState("");
     const [loadingset, setLoading] = useState(false);
     const [categoryid, setCategoryId] = useState(0);
     useEffect(() => {
-        WomenSellerList();
+        // WomenSellerList();
         WomenSellercategories();
         GetFilterandSearchData();
     }, [categoryid])
-    const WomenSellerList = () => {
-        setLoading(true);
-        WomenpreneursSellers(categoryid).then((res) => {
-            setDataseller(res?.data?.results);
-            setLoading(false);
-        }).catch((err) => {
-            console.log(err);
-        })
-    }
+
     const WomenSellercategories = () => {
         setLoading(true);
         WomenpreneursCommoncategories().then((res) => {
@@ -61,8 +54,19 @@ function Womenpreneurs() {
         setFilter(data.name);
     }
     const GetFilterandSearchData = () => {
-        WomenpreneursSerachandFilter(searchname, categoryid).then((res) => {
+        setLoading(true);
+        WomenpreneursFilter(categoryid).then((res) => {
             setDataseller(res?.data?.results);
+            setLoading(false);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    const GetSearchdata = () => {
+        setLoading(true);
+        WomenpreneursSearch(searchname).then((res) => {
+            setDataseller(res?.data?.results);
+        setLoading(false);
         }).catch((err) => {
             console.log(err);
         })
@@ -88,14 +92,15 @@ function Womenpreneurs() {
                         </div>
                     </div>
                     <div className={styles.serachsectionwomen}>
-                       
+
 
                         <div className={styles.serachwomenpresection}>
-                            <div>
-                                <Image src={serachicon} alt="no image" className={styles.serachiconwomen} />
-                            </div>
+                            
                             <div>
                                 <input type='text' placeholder="Search by Name or Brand" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
+                            </div>
+                            <div>
+                                <Image src={serachicon} alt="no image" className={styles.serachiconwomen}  onClick={GetSearchdata}/>
                             </div>
                         </div>
                         <div className='col-lg-3 col-xs-6 col-sm-5'>
@@ -106,10 +111,27 @@ function Womenpreneurs() {
                                 onChange={(e) => handleFilterCategory(e)}
                                 options={datacategory}
                             />
-                        
+
                         </div>
                     </div>
                     <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
+
+
+                        {/* {filters.length > 0 ? <>
+                            {filters.map((item, index) => {
+                                return (
+                                    <div>
+                                        <div className='womentitle'>
+                                            {item?.firstName}
+                                        </div>
+                                        <div className='womendescription'>
+                                            {item?.businessSlugName}
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </> : <>
+                        no data found</>} */}
                         <div>
                             {dataseller.length === 0 && <div>No Data Found!!!!</div>}
                         </div>
@@ -122,11 +144,11 @@ function Womenpreneurs() {
                                 <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.cityName)}>
                                     <div className={styles.sellerimagebox}>
 
-<div className={styles.insidebox}>
-{item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                            <Image src={users} alt="no image" className={styles.sellerimagesize} />
-                                        </>}
-</div>
+                                        <div className={styles.insidebox}>
+                                            {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                                <Image src={users} alt="no image" className={styles.sellerimagesize} />
+                                            </>}
+                                        </div>
 
                                     </div>
 
