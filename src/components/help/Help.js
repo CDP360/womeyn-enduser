@@ -40,7 +40,6 @@ function Help() {
 
                         </div>
 
-
                         {dropdown1 && <div className={styles.bordertopsection}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales dapibus laoreet. Morbi arcu dolor, euismod ullamcorper nulla non, suscipit consequat justo. Duis urna orci, interdum vel mauris nec, rhoncus accumsan massa. Integer maximus accumsan sagittis. Morbi suscipit, tortor eget suscipit pellentesque, ante urna commodo mi, id consectetur justo metus vel dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in tortor aliquam, convallis augue et, elementum velit. In placerat rhoncus arcu ut ultrices. Integer neque elit, scelerisque sed eros vel, vehicula pretium velit. Duis id congue felis. Suspendisse potenti. Etiam nec dolor dictum, accumsan metus in, eleifend mi. Nulla ultrices accumsan leo mattis eleifend. Cras at neque non dui condimentum molestie. Integer condimentum quam a dolor bibendum, a suscipit risus auctor. Curabitur augue ligula, mattis id cursus eu, pulvinar ut nisl.
                         </div>}

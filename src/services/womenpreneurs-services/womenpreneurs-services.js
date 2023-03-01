@@ -37,3 +37,15 @@ export function WomenpreneursStores(data) {
         return res
     }).catch((err) => console.log(err));
 }
+
+export function WomenpreneursCategorylistStore(data) {
+    return instanceBaseurl.get(`/common/womenpreneurs/categories/${data}`).then((res) => {
+        return res
+    }).catch((err) => console.log(err));
+}
+
+export function WomenpreneursCategoryproducts(sellerid,categoryid) {
+    return instanceBaseurl.get(`/common/products/${sellerid}/${categoryid}`).then((res) => {
+        return res
+    }).catch((err) => console.log(err));
+}

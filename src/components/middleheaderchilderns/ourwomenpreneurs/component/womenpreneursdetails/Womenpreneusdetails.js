@@ -10,14 +10,20 @@ import Superfoods from '../superfoods/Superfoods';
 import Healthbars from '../healthbars/Healthbars';
 import Baking from '../baking/Baking';
 import Sweets from '../sweets/Sweets';
-import { WomenpreneursStores } from '../../../../../services/womenpreneurs-services/womenpreneurs-services';
+import { WomenpreneursCategoryproducts, WomenpreneursStores } from '../../../../../services/womenpreneurs-services/womenpreneurs-services';
+import { WomenpreneursCategorylistStore } from './../../../../../services/womenpreneurs-services/womenpreneurs-services';
 
 
 function Womenpreneusdetails({ id }) {
     const router = useRouter();
 
+    const [singlecategory,setCategoryId]=useState("");
+
     const [sellers, setSellers] = useState([]);
     const [productlist, setProductList] = useState([]);
+    const [productlistshow, setProductListshow] = useState([]);
+
+    const [categorys,setCategorys]=useState([]);
     const [indexs, setIndexs] = useState(0);
     useEffect(() => {
         // axios.get(`https://fakestoreapi.com/products/${id}`).then((res) => {
@@ -28,9 +34,21 @@ function Womenpreneusdetails({ id }) {
 
 
         GetSellerDetails();
-    }, [indexs]);
+        CategoryListStore();
 
- 
+      
+    }, [indexs, id, sellers?.id,singlecategory]);
+
+
+    useEffect(()=>{
+        WomenpreneursCategoryproducts(sellers?.id,singlecategory).then((res)=>{
+            setProductList(res?.data?.results);
+        }).catch((err)=>{
+            console.log(err);
+        })
+    },[id, sellers?.id,singlecategory])
+
+
 
 
     const GetSellerDetails = () => {
@@ -39,6 +57,26 @@ function Womenpreneusdetails({ id }) {
         }).catch((err) => {
             console.log(err)
         });
+    }
+
+
+
+    const CategoryListStore = () => {
+        WomenpreneursCategorylistStore(sellers?.id).then((res) => {
+            setCategorys(res?.data?.results);
+            setCategoryId(res?.data?.results[0]?.id)
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
+
+    const productListData=(categoryid)=>{
+        WomenpreneursCategoryproducts(sellers?.id,categoryid).then((res)=>{
+setProductList(res?.data?.results)
+        }).catch((err)=>{
+            console.log(err);
+        })
     }
 
     const handlechnagedata = (id) => {
@@ -72,11 +110,15 @@ function Womenpreneusdetails({ id }) {
 
 
         }
-    ]
+    ];
+
+console.log(productlistshow,"productlistshow")
+
     return (
         <Fragment >
             <div className={styles.maindetailpage}>
                 <div className="emptyboxrightcolor">
+
                 </div>
                 <div className={styles.insidedetailpage}>
                     <div className={styles.splitsectiondetails}>
@@ -87,18 +129,19 @@ function Womenpreneusdetails({ id }) {
                                 </div>
                                 <div>
                                     <div className="large-text">
-                                       <div className="capital">
-                                       {sellers?.firstName}
+                                        <div className="capital">
+                                            {sellers?.firstName}
                                         </div>
                                     </div>
                                     <div className="fs-4 capitalfirstletter">
-                                       {id}
+                                        {id}
                                     </div>
                                 </div>
 
                             </div>
                             <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
                                 {sellers?.productDescription}
+                                {/* {sellers?.id} */}
                                 {/* Earthy Souls has been built on the belief that we need to live alongside Mother Nature and not exploit it. Our chemical-free approach aims at shielding her from harmful toxins and helps preserve the natural state. Earthy Souls have curated an array of products through traditional practices, with a touch of innovation. These practices and products ensure there is zero pollution, reducing the wastage to almost nil. */}
                             </div>
                         </div>
@@ -113,10 +156,15 @@ function Womenpreneusdetails({ id }) {
                     </div>
                     <div className={styles.middleheaderpage}>
                         <div className={styles.insidemiddleheader}>
-                            {data?.map((item, index) => {
+                            {categorys?.map((item, index) => {
                                 return (
-                                    <div className={`${indexs === index ? styles.actives : styles.detailpage}`} onClick={() => handlechnagedata(index)}>
-                                        {item?.title}
+                                    <div className={`${indexs === index ? styles.actives : styles.detailpage}`} onClick={() => {
+                                        handlechnagedata(index)
+                                        productListData(item?.id);
+                                    }
+                                        
+                                        }>
+                                        {item?.name}
                                     </div>
                                 )
                             })}
@@ -124,14 +172,17 @@ function Womenpreneusdetails({ id }) {
                     </div>
 
                     <div className={styles.contentsetiondetails}>
-                        <div>
+
+                    <Beverage productlist={productlist}  productlistshow={productlistshow}/>
+
+                        {/* <div>
                             {indexs === 0 && <div>
-                                <Beverage />
+                                <Beverage productlist={productlist} />
                             </div>}
                         </div>
                         <div>
                             {indexs === 1 && <div>
-                                <Superfoods />
+                                <Superfoods productlist={productlist}/>
                             </div>}
                         </div>
                         <div>
@@ -148,7 +199,7 @@ function Womenpreneusdetails({ id }) {
                             {indexs === 4 && <div>
                                 <Sweets />
                             </div>}
-                        </div>
+                        </div> */}
 
                     </div>
                 </div>

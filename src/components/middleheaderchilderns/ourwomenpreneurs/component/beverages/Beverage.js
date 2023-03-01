@@ -15,16 +15,16 @@ import { useState } from 'react';
 import { ContextStore } from '../../../../../Redux/store/Contextstore';
 import { CART_SUCCESS } from '../../../../../Redux/types';
 
-function Beverage() {
+function Beverage({ productlist }) {
 
-    const {state,dispatch}=useContext(ContextStore)
+    const { state, dispatch } = useContext(ContextStore)
 
     const router = useRouter();
 
     const Carthandleproduct = (data) => {
-        dispatch({type:"CART_SUCCESS",payload:data});
+        dispatch({ type: "CART_SUCCESS", payload: data });
     }
- 
+
     const data = [
         {
             id: 1,
@@ -106,26 +106,32 @@ function Beverage() {
     return (
         <Fragment>
             <div className={styles.mainbeveragesection}>
+
+                <div>
+
+                    {productlist?.length===0 && <div>No Data Found!!!</div>}
+                </div>
                 <div className='cardsection row justify-content-center  w-100  mb-3 ms-1'>
-                    {data?.map((item, index) => {
+                    {productlist?.map((item, index) => {
                         return (
                             <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 col-xl-12 ' key={index} >
                                 <div className={styles.plussection}>
                                     <Image src={plus} alt="no image" className={styles.plus} onClick={() => Carthandleproduct(item)} />
                                 </div>
                                 <div onClick={() => router.push(`/womenpreneurs/product/view/${item?.name?.slice(0, 10)}`)}>
-                                    <Image src={item?.image} alt="no image" className={styles.sellerimagesize} />
+                                    {/* <Image src={item?.image} alt="no image" className={styles.sellerimagesize} /> */}
+                                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={styles.sellerimagesize} />
                                 </div>
                                 <div className={styles.cardinsidesection} onClick={() => router.push(`/womenpreneurs/product/view/${item?.name?.slice(0, 10)}`)}>
-                                    <Image src={item?.star} alt="no image" className={styles.stars} />
+                                    <Image src={star} alt="no image" className={styles.stars} />
                                     <div className={styles.brandname}>
-                                        <span>{item?.name}</span>
+                                        <span>{item?.productName}</span>
                                     </div>
                                     <div className="textgrey">
                                         {item?.title}
                                     </div>
                                     <div>
-                                        <span className='textgrey'>{item?.brand}</span>
+                                        <span className='textgrey'>{item?.brandName}</span>
                                     </div>
                                     <div className={styles.cardsellerborder}>
                                         <div className={styles.cardsellerinsideborder}>
@@ -133,12 +139,12 @@ function Beverage() {
                                     </div>
                                     <div className={styles.cardpricesection}>
                                         <div className='textprice'>
-                                            <span>${item?.price - 15}</span>
+                                            <span>${item?.salePrice}</span>
                                         </div>
                                         <div >
-                                            <span className='textpricedashedgreen'> <del>${item?.price}</del></span>
+                                            <span className='textpricedashedgreen'> <del>${item?.actualPrice}</del></span>
                                             <span className='textpricedashedgreen ms-2'>
-                                                ({item?.offer})
+                                                ({item?.offerPercentag})
                                             </span>
                                         </div>
 

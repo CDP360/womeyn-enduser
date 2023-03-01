@@ -26,7 +26,7 @@ function Womenpreneurs() {
         // WomenSellerList();
         WomenSellercategories();
         GetFilterandSearchData();
-        
+
     }, [categoryid])
 
     const WomenSellercategories = () => {
@@ -50,9 +50,9 @@ function Womenpreneurs() {
         router.push(`/womenpreneurs/${id}`);
     }
 
-    const SearchNameBrand = (e) => {      
+    const SearchNameBrand = (e) => {
         setSearchName(e.target.value);
-       
+
     }
     const handleFilterCategory = (data) => {
         setCategoryId(data?.id);
@@ -74,10 +74,7 @@ function Womenpreneurs() {
             setDataseller(res?.data?.results);
             setLoading(false);
             setFilter("");
-            // if(searchname=="")
-            // {
-            //     window.location.reload();
-            // }
+          
         }).catch((err) => {
             console.log(err);
         })
@@ -129,82 +126,80 @@ function Womenpreneurs() {
 
                     <div>
 
-{searchname?.length>0?<>
-
-
-    <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
-                        <div>
-                            {dataseller.length === 0 && <div>No Data Found!!!!</div>}
-                        </div>
-                        {loadingset ? <>
-                            <div>
-                               <LoaderLogo/>
-                            </div>
-                        </> : dataseller?.map((item, index) => {
-                            return (
-                                <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
-                                    <div className={styles.sellerimagebox}>
-
-                                        <div className={styles.insidebox}>
-                                            {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                                <Image src={users} alt="no image" className={styles.sellerimagesize} />
-                                            </>}
-                                        </div>
-
-                                    </div>
-
-                                    <div className='womentitle'>
-                                        {item?.firstName}
-                                    </div>
-                                    <div className='womendescription'>
-                                        {item?.businessSlugName}
-                                    </div>
+                        {searchname?.length > 0 ? <>
+                            <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
+                                <div>
+                                    {dataseller.length === 0 && <div>No Data Found!!!!</div>}
                                 </div>
-                            )
-                        })}
-                    </div>
+                                {loadingset ? <>
+                                    <div>
+                                        <LoaderLogo />
+                                    </div>
+                                </> : dataseller?.map((item, index) => {
+                                    return (
+                                        <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
+                                            <div className={styles.sellerimagebox}>
 
+                                                <div className={styles.insidebox}>
+                                                    {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                                        <Image src={users} alt="no image" className={styles.sellerimagesize} />
+                                                    </>}
+                                                </div>
 
+                                            </div>
 
-
-</>:<>
-
-
-    <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
-                        <div>
-                            {dataseller.length === 0 && <div>No Data Found!!!!</div>}
-                        </div>
-                        {loadingset ? <>
-                            <div>
-                                <LoaderLogo/>
-                            </div>
-                        </> : dataseller?.map((item, index) => {
-                            return (
-                                <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
-                                    <div className={styles.sellerimagebox}>
-
-                                        <div className={styles.insidebox}>
-                                            {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                                <Image src={users} alt="no image" className={styles.sellerimagesize} />
-                                            </>}
+                                            <div className='womentitle'>
+                                                {item?.firstName}
+                                            </div>
+                                            <div className='womendescription'>
+                                                {item?.businessSlugName}
+                                            </div>
                                         </div>
+                                    )
+                                })}
+                            </div>
 
-                                    </div>
 
-                                    <div className='womentitle'>
-                                        {item?.firstName}
-                                    </div>
-                                    <div className='womendescription'>
-                                        {item?.businessSlugName}
-                                    </div>
+
+
+                        </> : <>
+
+
+                            <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
+                                <div>
+                                    {dataseller.length === 0 && <div>No Data Found!!!!</div>}
                                 </div>
-                            )
-                        })}
-                    </div>
+                                {loadingset ? <>
+                                    <div>
+                                        <LoaderLogo />
+                                    </div>
+                                </> : dataseller?.map((item, index) => {
+                                    return (
+                                        <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
+                                            <div className={styles.sellerimagebox}>
+
+                                                <div className={styles.insidebox}>
+                                                    {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                                        <Image src={users} alt="no image" className={styles.sellerimagesize} />
+                                                    </>}
+                                                </div>
+
+                                            </div>
+
+                                            <div className='womentitle'>
+                                                {item?.firstName}
+                                            </div>
+                                            <div className='womendescription'>
+                                                {item?.businessSlugName}
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
 
 
 
-</>}
+                        </>}
 
                     </div>
                     {/* <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
