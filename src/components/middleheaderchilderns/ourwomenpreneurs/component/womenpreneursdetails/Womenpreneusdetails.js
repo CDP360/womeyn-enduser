@@ -10,20 +10,36 @@ import Superfoods from '../superfoods/Superfoods';
 import Healthbars from '../healthbars/Healthbars';
 import Baking from '../baking/Baking';
 import Sweets from '../sweets/Sweets';
+import { WomenpreneursStores } from '../../../../../services/womenpreneurs-services/womenpreneurs-services';
 
 
 function Womenpreneusdetails({ id }) {
     const router = useRouter();
+
+    const [sellers, setSellers] = useState([]);
     const [productlist, setProductList] = useState([]);
     const [indexs, setIndexs] = useState(0);
     useEffect(() => {
-        axios.get(`https://fakestoreapi.com/products/${id}`).then((res) => {
-            setProductList(res?.data);
-        }).catch((err) => {
-            console.log(err);
-        })
+        // axios.get(`https://fakestoreapi.com/products/${id}`).then((res) => {
+        //     setProductList(res?.data);
+        // }).catch((err) => {
+        //     console.log(err);
+        // })
 
-    }, [indexs])
+
+        GetSellerDetails();
+    }, [indexs]);
+
+ 
+
+
+    const GetSellerDetails = () => {
+        WomenpreneursStores(id).then((res) => {
+            setSellers(res?.data);
+        }).catch((err) => {
+            console.log(err)
+        });
+    }
 
     const handlechnagedata = (id) => {
         setIndexs(id);
@@ -71,20 +87,28 @@ function Womenpreneusdetails({ id }) {
                                 </div>
                                 <div>
                                     <div className="large-text">
-                                        Earthy Souls  {id}
+                                       <div className="capital">
+                                       {sellers?.firstName}
+                                        </div>
                                     </div>
-                                    <div>
-                                        Mansi K Bhatia
+                                    <div className="fs-4 capitalfirstletter">
+                                       {id}
                                     </div>
                                 </div>
 
                             </div>
                             <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
-                                Earthy Souls has been built on the belief that we need to live alongside Mother Nature and not exploit it. Our chemical-free approach aims at shielding her from harmful toxins and helps preserve the natural state. Earthy Souls have curated an array of products through traditional practices, with a touch of innovation. These practices and products ensure there is zero pollution, reducing the wastage to almost nil.
+                                {sellers?.productDescription}
+                                {/* Earthy Souls has been built on the belief that we need to live alongside Mother Nature and not exploit it. Our chemical-free approach aims at shielding her from harmful toxins and helps preserve the natural state. Earthy Souls have curated an array of products through traditional practices, with a touch of innovation. These practices and products ensure there is zero pollution, reducing the wastage to almost nil. */}
                             </div>
                         </div>
                         <div className={styles.rightdetailpage}>
-                            <Image src={girl1} alt="no image" className={styles.womenlogo} />
+                            {sellers?.profileImageName ? <>
+                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
+                            </> : <>
+                                <Image src={girl1} alt="no image" className={styles.womenlogo} />
+                            </>}
+
                         </div>
                     </div>
                     <div className={styles.middleheaderpage}>

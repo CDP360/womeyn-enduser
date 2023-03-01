@@ -21,12 +21,12 @@ function Bestseller({bannerimages,MovePageData}) {
                         Bestsellers to cheer you up!
                     </div>
                     <div className={styles.buttonsellersection}>
-                        <div className="col-lg-3 col-xs-6 col-sm-4">
+                     
                         <button className={index === 0 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(0)}>All Categories</button>
-                            </div>
-                        <div className="col-lg-3 col-xs-6 col-sm-4"><button className={index === 1 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(1)}>Electronics</button>      </div>
-                        <div className="col-lg-3 col-xs-6 col-sm-4"><button className={index === 2 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(2)}>Health & Care</button>      </div>
-                        <div className="col-lg-3 col-xs-6 col-sm-4"><button className={index === 3 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(3)}>Health & fitness</button>      </div>
+        
+                        <button className={index === 1 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(1)}>Electronics</button>     
+                        <button className={index === 2 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(2)}>Health & Care</button>     
+                        <button className={index === 3 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(3)}>Health & fitness</button>      
                     </div>
                     <div className={styles.borderseller}>
                         <div className={styles.insideborderseller}>

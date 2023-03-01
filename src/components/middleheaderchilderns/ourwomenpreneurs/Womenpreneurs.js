@@ -11,19 +11,22 @@ import { WomenpreneursCommoncategories, WomenpreneursSellers } from '../../../se
 import users from '../../../assests/homepage-logos/usersimageprofile.png';
 import Select from 'react-select';
 import { WomenpreneursFilter, WomenpreneursSearch } from './../../../services/womenpreneurs-services/womenpreneurs-services';
+import LoaderLogo from '../../loaderlogo/LoaderLogo';
 function Womenpreneurs() {
     const router = useRouter();
     const [dataseller, setDataseller] = useState([]);
     const [datacategory, setDataCtagoryies] = useState([]);
     const [filters, setFilterData] = useState([]);
     const [filterdata, setFilter] = useState("");
-    const [searchname, setSearchName] = useState("");
+    const [searchname, setSearchName] = useState('');
     const [loadingset, setLoading] = useState(false);
     const [categoryid, setCategoryId] = useState(0);
+    const [error, setError] = useState(false);
     useEffect(() => {
         // WomenSellerList();
         WomenSellercategories();
         GetFilterandSearchData();
+        
     }, [categoryid])
 
     const WomenSellercategories = () => {
@@ -46,12 +49,15 @@ function Womenpreneurs() {
     const handlepush = (id) => {
         router.push(`/womenpreneurs/${id}`);
     }
-    const SearchNameBrand = (e) => {
+
+    const SearchNameBrand = (e) => {      
         setSearchName(e.target.value);
+       
     }
     const handleFilterCategory = (data) => {
         setCategoryId(data?.id);
         setFilter(data.name);
+        setSearchName("");
     }
     const GetFilterandSearchData = () => {
         setLoading(true);
@@ -66,11 +72,17 @@ function Womenpreneurs() {
         setLoading(true);
         WomenpreneursSearch(searchname).then((res) => {
             setDataseller(res?.data?.results);
-        setLoading(false);
+            setLoading(false);
+            setFilter("");
+            // if(searchname=="")
+            // {
+            //     window.location.reload();
+            // }
         }).catch((err) => {
             console.log(err);
         })
     }
+
     return (
         <Fragment>
             <div className={styles.womeynmainsectionpre}>
@@ -95,12 +107,12 @@ function Womenpreneurs() {
 
 
                         <div className={styles.serachwomenpresection}>
-                            
+
                             <div>
                                 <input type='text' placeholder="Search by Name or Brand" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
                             </div>
                             <div>
-                                <Image src={serachicon} alt="no image" className={styles.serachiconwomen}  onClick={GetSearchdata}/>
+                                <Image src={serachicon} alt="no image" className={styles.serachiconwomen} onClick={GetSearchdata} />
                             </div>
                         </div>
                         <div className='col-lg-3 col-xs-6 col-sm-5'>
@@ -114,34 +126,23 @@ function Womenpreneurs() {
 
                         </div>
                     </div>
-                    <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
+
+                    <div>
+
+{searchname?.length>0?<>
 
 
-                        {/* {filters.length > 0 ? <>
-                            {filters.map((item, index) => {
-                                return (
-                                    <div>
-                                        <div className='womentitle'>
-                                            {item?.firstName}
-                                        </div>
-                                        <div className='womendescription'>
-                                            {item?.businessSlugName}
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                        </> : <>
-                        no data found</>} */}
+    <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
                         <div>
                             {dataseller.length === 0 && <div>No Data Found!!!!</div>}
                         </div>
                         {loadingset ? <>
                             <div>
-                                Loading....
+                               <LoaderLogo/>
                             </div>
                         </> : dataseller?.map((item, index) => {
                             return (
-                                <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.cityName)}>
+                                <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
                                     <div className={styles.sellerimagebox}>
 
                                         <div className={styles.insidebox}>
@@ -162,6 +163,81 @@ function Womenpreneurs() {
                             )
                         })}
                     </div>
+
+
+
+
+</>:<>
+
+
+    <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
+                        <div>
+                            {dataseller.length === 0 && <div>No Data Found!!!!</div>}
+                        </div>
+                        {loadingset ? <>
+                            <div>
+                                <LoaderLogo/>
+                            </div>
+                        </> : dataseller?.map((item, index) => {
+                            return (
+                                <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
+                                    <div className={styles.sellerimagebox}>
+
+                                        <div className={styles.insidebox}>
+                                            {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                                <Image src={users} alt="no image" className={styles.sellerimagesize} />
+                                            </>}
+                                        </div>
+
+                                    </div>
+
+                                    <div className='womentitle'>
+                                        {item?.firstName}
+                                    </div>
+                                    <div className='womendescription'>
+                                        {item?.businessSlugName}
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+
+
+
+</>}
+
+                    </div>
+                    {/* <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
+                        <div>
+                            {dataseller.length === 0 && <div>No Data Found!!!!</div>}
+                        </div>
+                        {loadingset ? <>
+                            <div>
+                                Loading....
+                            </div>
+                        </> : dataseller?.map((item, index) => {
+                            return (
+                                <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
+                                    <div className={styles.sellerimagebox}>
+
+                                        <div className={styles.insidebox}>
+                                            {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                                <Image src={users} alt="no image" className={styles.sellerimagesize} />
+                                            </>}
+                                        </div>
+
+                                    </div>
+
+                                    <div className='womentitle'>
+                                        {item?.firstName}
+                                    </div>
+                                    <div className='womendescription'>
+                                        {item?.businessSlugName}
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div> */}
                 </div>
             </div>
 

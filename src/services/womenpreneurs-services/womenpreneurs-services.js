@@ -30,3 +30,10 @@ export function WomenpreneursCommoncategories() {
         return res
     }).catch((err) => console.log(err));
 }
+
+
+export function WomenpreneursStores(data) {
+    return instanceBaseurl.get(`/common/womenpreneurs/${data}`).then((res) => {
+        return res
+    }).catch((err) => console.log(err));
+}

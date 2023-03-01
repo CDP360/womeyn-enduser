@@ -2,7 +2,7 @@ import React from 'react'
 
 function Getintouch() {
     return (
-        <div>Getintouch</div>
+        <div>Getintouch kaloia</div>
     )
 }
 

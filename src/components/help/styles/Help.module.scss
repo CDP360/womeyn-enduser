@@ -1,1 +1,64 @@
 @use "../../../../scss/abstract/" as *;
+
+.mainsectionhelp {
+    width: 100%;
+    .howcanhelp {
+        color: #303a42;
+        font-weight: 650;
+        font-size: 1.4rem;
+    }
+    .borderboxhelp {
+        display: flex;
+      flex-direction:column;
+        
+        margin-top: 3%;
+        width: 100%;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        .ordersslice
+        {
+            // border:2px solid red;
+        padding: 10px 20px;
+
+            display:flex;
+            justify-content:space-between;
+        }
+        .bordertopsection
+        {
+        
+background: #FFFFFF;
+border-top: 1px solid rgba(0, 0, 0, 0.2);
+            // padding-top:3%;
+            margin-top:0.589%;
+            width:100%;
+        padding: 7px 25px;
+        line-height:1.6;
+
+
+        }
+        .imagesectionhelp {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+
+            .imagehelp {
+                width: 50px;
+                height: 50px;
+                object-fit: contain;
+            }
+            .yours {
+                color: #303a42;
+
+                font-weight: 700;
+            }
+        }
+
+        .arrowsection {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

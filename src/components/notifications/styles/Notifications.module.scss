@@ -1,1 +1,84 @@
 @use "../../../../scss/abstract/" as *;
+
+
+
+        .splitboxnotification
+        {
+            width:100%;
+            .boxinsidesection
+            {
+                width:60%;
+                margin: 0 auto;
+                // border: 2px solid blue;
+                height:100vh;
+                overflow: hidden;
+                overflow-y: auto;
+                background: #FFFFFF;
+box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
+border-radius: 8px;
+padding:3% 4%;
+@include xsBreakPoint {
+    width: 100%;
+    padding-top: 6%;
+}
+@include smBreakPoint {
+    width: 100%;
+    padding-top: 6%;
+}
+@include mdBreakPoint {
+    width: 90%;
+}
+@include lgBreakPoint {
+    width: 80%;
+}
+@include xlBreakPoint {
+    width: 75%;
+}
+.textnotification
+{
+    font-weight:700;
+    color: #000000;
+    font-size:1.3rem;
+}
+
+.splitinsidecontent
+{
+    display:flex;
+    padding:4% 0px;
+    gap:3%;
+    align-items:center;
+    .notificationflexcolumn
+    {
+        display:flex;
+        flex-direction:column;
+        gap:2px;
+        .time
+        {
+            color: #E95A5A;
+        }
+    }
+
+    .userimage
+    {
+        width:50px;
+        height:50px;
+        border:2px solid orange;
+        object-fit:cover;
+        border-radius:50%;
+        cursor:pointer;
+    }
+    .cursors
+    {
+    cursor:pointer;
+
+    }
+
+}
+.boderbottmtexts
+{
+    opacity: 0.1;
+    border: 1px solid #000000;
+}
+            }
+        }
+   

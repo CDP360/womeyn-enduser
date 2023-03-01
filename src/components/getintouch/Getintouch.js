@@ -1,8 +1,13 @@
 import React from 'react'
+import Contactus from '../contactus/Contactus'
+import LoaderLogo from '../loaderlogo/LoaderLogo'
 
 function Getintouch() {
     return (
-        <div>Getintouch</div>
+        <div>
+            {/* <LoaderLogo/> */}
+            <Contactus/>
+        </div>
     )
 }
 

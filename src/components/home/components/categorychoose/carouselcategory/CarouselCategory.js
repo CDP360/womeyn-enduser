@@ -68,6 +68,8 @@ function CarouselCategory() {
     })
   }, []);
 
+ 
+
   const pushCatgorys = (data) => {
     history.push(`/category/${data}`)
   }
@@ -78,11 +80,11 @@ function CarouselCategory() {
           return (
             <div className={styles.insideslides} onClick={() => pushCatgorys(item?.slugName)}  key={index}>
               <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesize} />
-              <div className='mt-4'>
+              <div className='mt-4' onClick={() => pushCatgorys(item?.slugName)} >
                 <h6>{item?.name}</h6>
               </div>
-              <div>
-                {item?.description}
+              <div onClick={() => pushCatgorys(item?.slugName)} >
+                {item?.description} 
               </div>
             </div>
           )

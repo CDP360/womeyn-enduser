@@ -16,7 +16,6 @@ import Image from 'next/image';
 import SlideNextArrow from './slidenextarrow/SlideNextArrow';
 import SlidePreArrow from './slideprearrow/SlidePreArrow';
 function Summarybreaksalary({ bannerimages }) {
-
     const data = [
         {
             id: 1,
@@ -96,6 +95,9 @@ function Summarybreaksalary({ bannerimages }) {
             }
         ]
     };
+    const MovePageData = (data) => {
+        window.open(data);
+    }
     return (
         <Fragment>
             <div className={styles.summarymainsection}>

@@ -99,7 +99,7 @@
     color: rgba(89, 175, 89, 1);
     display: flex;
     align-items: center;
-    font-weight:600;
+    font-weight: 600;
 }
 
 // textlight grey
@@ -169,4 +169,12 @@
     text-transform: upperCase;
     padding-left: 6%;
     padding-bottom: 5%;
+}
+
+.capital {
+    text-transform: uppercase;
+}
+
+.capitalfirstletter {
+    text-transform: capitalize;
 }
