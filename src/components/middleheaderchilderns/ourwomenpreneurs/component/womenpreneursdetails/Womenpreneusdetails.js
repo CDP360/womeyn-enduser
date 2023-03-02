@@ -32,16 +32,16 @@ function Womenpreneusdetails({ id }) {
     useEffect(() => {
         GetSellerDetails();
         CategoryListStore();
-    }, [indexs, id, sellers?.id, ,current]);
+    }, [indexs, id, sellers?.id, , current]);
     useEffect(() => {
         setLoading(true);
         WomenpreneursCategoryproducts(sellers?.id, singlecategory).then((res) => {
             setProductList(res?.data?.results);
             setLimit(res?.data)
-            setTimeout(()=>{
+            setTimeout(() => {
                 setLoading(false);
 
-            },600)
+            }, 600)
         }).catch((err) => {
             console.log(err);
         })
@@ -51,10 +51,10 @@ function Womenpreneusdetails({ id }) {
         setLoading(true)
         WomenpreneursStores(id).then((res) => {
             setSellers(res?.data);
-            setTimeout(()=>{
+            setTimeout(() => {
                 setLoading(false);
 
-            },500)
+            }, 500)
         }).catch((err) => {
             console.log(err)
         });
@@ -65,10 +65,10 @@ function Womenpreneusdetails({ id }) {
         WomenpreneursCategorylistStore(sellers?.id).then((res) => {
             setCategorys(res?.data?.results);
             setCategoryId(res?.data?.results[0]?.id)
-            setTimeout(()=>{
+            setTimeout(() => {
                 setLoading(false);
 
-            },500)
+            }, 500)
 
         }).catch((err) => {
             console.log(err);
@@ -79,10 +79,10 @@ function Womenpreneusdetails({ id }) {
         setLoading(true);
         WomenpreneursCategoryproducts(sellers?.id, categoryid).then((res) => {
             setProductList(res?.data?.results);
-            setTimeout(()=>{
+            setTimeout(() => {
                 setLoading(false);
 
-            },500)
+            }, 500)
         }).catch((err) => {
             console.log(err);
         })
@@ -91,7 +91,7 @@ function Womenpreneusdetails({ id }) {
     const handlechnagedata = (id) => {
         setIndexs(id);
     }
-  
+
 
 
 
@@ -104,13 +104,13 @@ function Womenpreneusdetails({ id }) {
         const current = e;
         await fetchCurrentData(sellers?.id, current);
     }
-  
+
     const PrevNextArrow = (current, type, originalElement) => {
         if (type === 'prev') {
             return <button className='disactive'>
                 <Image src={leftarrow} alt="no image" className={styles.arrowsizefix} />
             </button>;
-            
+
         }
         if (type === 'next') {
             return <button className='activess'>
@@ -120,7 +120,7 @@ function Womenpreneusdetails({ id }) {
         return originalElement;
     }
 
-    console.log("limit",limit)
+    console.log("limit", limit)
 
     return (
         <Fragment >
@@ -185,12 +185,11 @@ function Womenpreneusdetails({ id }) {
 
 
 
-                    {productlist?.length>8 &&
-                    
-                    <div className='d-flex justify-content-center mt-4'>
-               
+                        {productlist?.length > 8 &&
 
-<Pagination
+                            <div className='d-flex justify-content-center mt-4'>
+
+                                <Pagination
                                     className="pagination-data"
                                     total={limit?.totalPages * 10}
                                     onChange={handleChangePagecount}
@@ -198,9 +197,9 @@ function Womenpreneusdetails({ id }) {
                                     itemRender={PrevNextArrow}
                                     breakLabel="..."
                                 />
-            </div>
+                            </div>
 
-                    }    
+                        }
 
 
                         {/* <div>

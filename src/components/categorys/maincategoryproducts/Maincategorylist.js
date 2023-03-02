@@ -188,7 +188,7 @@ function Maincategorylist() {
     }, [])
 
 
-    console.log("count", perPage)
+
 
     const PrevNextArrow = (current, type, originalElement) => {
         if (type === 'prev') {
