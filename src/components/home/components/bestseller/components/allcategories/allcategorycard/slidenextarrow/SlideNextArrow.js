@@ -5,11 +5,10 @@ function SlideNextArrowcategory(props) {
     const { onClick } = props;
     return (
         <div
-            className={styles.slidenextcarousel}
+            className="slidenextcarousel"
             onClick={onClick}
         >
             <ion-icon name="chevron-forward-outline"></ion-icon>
-     
          </div>
     );
 }

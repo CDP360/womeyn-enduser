@@ -4,7 +4,7 @@ function SlidePreArrowcategory(props) {
   const { onClick } = props;
   return (
     <div
-      className={styles.slideprecarousel}
+      className="slideprecarousels"
       onClick={onClick}
     >
       <ion-icon name="chevron-back-outline"></ion-icon>

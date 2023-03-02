@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import SlideNextArrowcategory from '../allcategorycard/slidenextarrow/SlideNextArrow';
 import SlidePreArrowcategory from '../allcategorycard/slideprearrow/SlidePreArrow';
 import { TopServices } from '../../../../../../../services/banner-image-service/banner-image-service';
+import Skeleton from 'react-loading-skeleton';
 
 function Allbestservices({ stars }) {
 
@@ -69,28 +70,43 @@ function Allbestservices({ stars }) {
             setServices(res?.data);
         }).catch((err) => console.log(err))
     }, [])
+
+
+    const datas=[1,2,3,4];
     return (
         <div className={styles.appcard}>
-            <Slider {...settings}>
-                {services.map((item, index) => {
-                    return (
-                        <div className={styles.cardcategory} onClick={() => categoryPush(item?.serviceName)}>
-                            <div>
-                                <img src={item?.image} alt="no image" className={styles.sellerimagesize} />
-                            </div>
-                            <div className={styles.cardinsidesection}>
-                                <Image src={stars} alt="no image" className={styles.stars} />
+            {services?.length > 0 ? <>
+                <Slider {...settings}>
+                    {services.map((item, index) => {
+                        return (
+                            <div className={styles.cardcategory} onClick={() => categoryPush(item?.serviceName)}>
                                 <div>
-                                    <span>{item?.serviceName}</span>
+                                    <img src={item?.image} alt="no image" className={styles.sellerimagesize} />
                                 </div>
-                                <div className='mb-4'>
-                                    <span className='textgrey'>{item?.serviceDescription}</span>
+                                <div className={styles.cardinsidesection}>
+                                    <Image src={stars} alt="no image" className={styles.stars} />
+                                    <div>
+                                        <span>{item?.serviceName}</span>
+                                    </div>
+                                    <div className='mb-4'>
+                                        <span className='textgrey'>{item?.serviceDescription}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    )
-                })}
-            </Slider>
+                        )
+                    })}
+                </Slider>
+            </> : <div className='row justify-content-center d-flex'>
+
+{datas.map((item,index)=>{
+    return(
+        <div className='col-lg-3'>
+            <Skeleton className="cardloading"/>
+        </div>
+    )
+})}
+            </div>}
+
         </div>
     )
 }

@@ -14,7 +14,6 @@ function Bestseller({bannerimages,MovePageData}) {
             <div className={styles.mainsellersection}>
                 <div className={styles.insidesellerimagesection}>
                     <div className={styles.insidesellerbreaksalary}>
-        
                         <Carouselseller bannerimages={bannerimages} MovePageData={MovePageData}/>
                     </div>
                     <div className='large-text mb-5 mt-3 text-center'>
