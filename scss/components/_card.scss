@@ -2,8 +2,8 @@
 .cardsection {
     display: flex;
     gap: 20px;
-    align-items: center;
-    justify-content: center;
+    // align-items: center;
+    // justify-content: center;
     position: relative;
     background-color:white !important;
     @include xlBreakPoint {
@@ -46,7 +46,7 @@
             justify-content: center;
         }
         @include lgBreakPoint {
-            width: 22% !important;
+            width: 23.3% !important;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -63,14 +63,13 @@
         }
     }
 }
-
 // womenpreneurs card section start
 .cardsections {
     display: flex;
     gap: 10px;
     align-items: center;
     justify-content: center;
-    // width:100%;
+    width:100%;
     @include lgBreakPoint
     {
         // border:2px solid blue !important;

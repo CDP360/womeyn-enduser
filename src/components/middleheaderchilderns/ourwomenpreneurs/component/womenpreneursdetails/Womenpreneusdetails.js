@@ -12,69 +12,78 @@ import Baking from '../baking/Baking';
 import Sweets from '../sweets/Sweets';
 import { WomenpreneursCategoryproducts, WomenpreneursStores } from '../../../../../services/womenpreneurs-services/womenpreneurs-services';
 import { WomenpreneursCategorylistStore } from './../../../../../services/womenpreneurs-services/womenpreneurs-services';
+import Pagination from 'rc-pagination';
+
+import rightarrow from '../../../../../assests/category-logos/leftcategoryarrow.png';
+import leftarrow from '../../../../../assests/category-logos/rightcategoryarrow.png';
 
 
 function Womenpreneusdetails({ id }) {
+    const [limit, setLimit] = useState([]);
+    const [current, setCurrent] = useState(1);
     const router = useRouter();
-
-    const [singlecategory,setCategoryId]=useState("");
-
+    const [loading, setLoading] = useState(false);
+    const [singlecategory, setCategoryId] = useState("");
     const [sellers, setSellers] = useState([]);
     const [productlist, setProductList] = useState([]);
     const [productlistshow, setProductListshow] = useState([]);
-
-    const [categorys,setCategorys]=useState([]);
+    const [categorys, setCategorys] = useState([]);
     const [indexs, setIndexs] = useState(0);
     useEffect(() => {
-        // axios.get(`https://fakestoreapi.com/products/${id}`).then((res) => {
-        //     setProductList(res?.data);
-        // }).catch((err) => {
-        //     console.log(err);
-        // })
-
-
         GetSellerDetails();
         CategoryListStore();
-
-      
-    }, [indexs, id, sellers?.id,singlecategory]);
-
-
-    useEffect(()=>{
-        WomenpreneursCategoryproducts(sellers?.id,singlecategory).then((res)=>{
+    }, [indexs, id, sellers?.id, ,current]);
+    useEffect(() => {
+        setLoading(true);
+        WomenpreneursCategoryproducts(sellers?.id, singlecategory).then((res) => {
             setProductList(res?.data?.results);
-        }).catch((err)=>{
+            setLimit(res?.data)
+            setTimeout(()=>{
+                setLoading(false);
+
+            },600)
+        }).catch((err) => {
             console.log(err);
         })
-    },[id, sellers?.id,singlecategory])
-
-
-
+    }, [id, sellers?.id, singlecategory])
 
     const GetSellerDetails = () => {
+        setLoading(true)
         WomenpreneursStores(id).then((res) => {
             setSellers(res?.data);
+            setTimeout(()=>{
+                setLoading(false);
+
+            },500)
         }).catch((err) => {
             console.log(err)
         });
     }
 
-
-
     const CategoryListStore = () => {
+        setLoading(true);
         WomenpreneursCategorylistStore(sellers?.id).then((res) => {
             setCategorys(res?.data?.results);
             setCategoryId(res?.data?.results[0]?.id)
+            setTimeout(()=>{
+                setLoading(false);
+
+            },500)
+
         }).catch((err) => {
             console.log(err);
         })
     }
 
+    const productListData = (categoryid) => {
+        setLoading(true);
+        WomenpreneursCategoryproducts(sellers?.id, categoryid).then((res) => {
+            setProductList(res?.data?.results);
+            setTimeout(()=>{
+                setLoading(false);
 
-    const productListData=(categoryid)=>{
-        WomenpreneursCategoryproducts(sellers?.id,categoryid).then((res)=>{
-setProductList(res?.data?.results)
-        }).catch((err)=>{
+            },500)
+        }).catch((err) => {
             console.log(err);
         })
     }
@@ -82,37 +91,36 @@ setProductList(res?.data?.results)
     const handlechnagedata = (id) => {
         setIndexs(id);
     }
-    const data = [
-        {
-            id: 1,
-            title: "Beverages",
-
-        },
-        {
-            id: 2,
-            title: "Superfoods",
-
-        },
-        {
-            id: 3,
-            title: "Healthbars",
-
-        },
-        {
-            id: 4,
-            title: "Baking",
+  
 
 
-        },
-        {
-            id: 5,
-            title: "Sweets",
 
-
+    const fetchCurrentData = async (id, current) => {
+        const resdata = await WomenpreneursCategoryproducts(id, current);
+        setProductList(resdata?.data?.results);
+    }
+    const handleChangePagecount = async (e) => {
+        setCurrent(e);
+        const current = e;
+        await fetchCurrentData(sellers?.id, current);
+    }
+  
+    const PrevNextArrow = (current, type, originalElement) => {
+        if (type === 'prev') {
+            return <button className='disactive'>
+                <Image src={leftarrow} alt="no image" className={styles.arrowsizefix} />
+            </button>;
+            
         }
-    ];
+        if (type === 'next') {
+            return <button className='activess'>
+                <Image src={rightarrow} alt="no image" className={styles.arrowsizefix} />
+            </button>;
+        }
+        return originalElement;
+    }
 
-console.log(productlistshow,"productlistshow")
+    console.log("limit",limit)
 
     return (
         <Fragment >
@@ -162,8 +170,8 @@ console.log(productlistshow,"productlistshow")
                                         handlechnagedata(index)
                                         productListData(item?.id);
                                     }
-                                        
-                                        }>
+
+                                    }>
                                         {item?.name}
                                     </div>
                                 )
@@ -173,7 +181,27 @@ console.log(productlistshow,"productlistshow")
 
                     <div className={styles.contentsetiondetails}>
 
-                    <Beverage productlist={productlist}  productlistshow={productlistshow}/>
+                        <Beverage productlist={productlist} productlistshow={productlistshow} loading={loading} />
+
+
+
+                    {productlist?.length>8 &&
+                    
+                    <div className='d-flex justify-content-center mt-4'>
+               
+
+<Pagination
+                                    className="pagination-data"
+                                    total={limit?.totalPages * 10}
+                                    onChange={handleChangePagecount}
+                                    current={current}
+                                    itemRender={PrevNextArrow}
+                                    breakLabel="..."
+                                />
+            </div>
+
+                    }    
+
 
                         {/* <div>
                             {indexs === 0 && <div>
@@ -200,6 +228,10 @@ console.log(productlistshow,"productlistshow")
                                 <Sweets />
                             </div>}
                         </div> */}
+
+
+
+
 
                     </div>
                 </div>

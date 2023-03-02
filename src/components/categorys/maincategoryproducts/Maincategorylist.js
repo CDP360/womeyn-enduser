@@ -233,6 +233,9 @@ function Maincategorylist() {
                     itemRender={PrevNextArrow}
                     onShowSizeChange={PerPageChange}
                 />
+
+
+
             </div>
         </div>
     )

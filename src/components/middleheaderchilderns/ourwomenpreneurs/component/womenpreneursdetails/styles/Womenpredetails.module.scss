@@ -3,6 +3,12 @@
 .maindetailpage {
     width: 100%;
     // height: 100%;
+    .arrowsizefix
+    {
+        width: 15px;
+        height: 15px;
+        object-fit: contain;
+    }
     .insidedetailpage {
         width: 75%;
         margin: 0 auto;

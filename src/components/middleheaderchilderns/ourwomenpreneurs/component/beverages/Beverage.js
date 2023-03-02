@@ -14,8 +14,17 @@ import { Cartactions } from '../../../../../Redux/actions/cart/Cartdata';
 import { useState } from 'react';
 import { ContextStore } from '../../../../../Redux/store/Contextstore';
 import { CART_SUCCESS } from '../../../../../Redux/types';
+import LoaderLogo from '../../../../loaderlogo/LoaderLogo';
 
-function Beverage({ productlist }) {
+
+
+
+
+function Beverage({ productlist, loading }) {
+
+    
+ 
+
 
     const { state, dispatch } = useContext(ContextStore)
 
@@ -103,16 +112,20 @@ function Beverage({ productlist }) {
             star: star
         }
     ]
+
+
+
+   
     return (
         <Fragment>
             <div className={styles.mainbeveragesection}>
-
                 <div>
-
-                    {productlist?.length===0 && <div>No Data Found!!!</div>}
+                    {productlist?.length === 0 && <div>No Data Found!!!</div>}
                 </div>
-                <div className='cardsection row justify-content-center  w-100  mb-3 ms-1'>
-                    {productlist?.map((item, index) => {
+                <div className='cardsection row w-100  mb-3 ms-1'>
+                    {loading ? <>
+                        <LoaderLogo />
+                    </> : <>{productlist?.map((item, index) => {
                         return (
                             <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 col-xl-12 ' key={index} >
                                 <div className={styles.plussection}>
@@ -141,10 +154,12 @@ function Beverage({ productlist }) {
                                         <div className='textprice'>
                                             <span>${item?.salePrice}</span>
                                         </div>
-                                        <div >
+                                        <div className={styles.splitoffers}>
                                             <span className='textpricedashedgreen'> <del>${item?.actualPrice}</del></span>
                                             <span className='textpricedashedgreen ms-2'>
-                                                ({item?.offerPercentag})
+                                                ({item?.offerPercentag==0?<></>:<>
+                                                {item?.offerPercentag} off
+                                                </>} )
                                             </span>
                                         </div>
 
@@ -152,8 +167,10 @@ function Beverage({ productlist }) {
                                 </div>
                             </div>
                         )
-                    })}
+                    })}</>}
                 </div>
+
+            
             </div>
         </Fragment>
     )

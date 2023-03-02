@@ -31,17 +31,17 @@ function Allcategories() {
             Our bestselling products
           </div>
           <div className={styles.mainoursellercarousel}>
-            <AllCategoryCard products={products} stars={stars}/>
+            <AllCategoryCard products={products} stars={stars} />
           </div>
 
         </div>
         <div className={styles.allcategorymainsection}>
           <div className='textseller'>
-            Our bestselling sevices
+            Our bestselling services
           </div>
-         
+
           <div>
-            <Allbestservices stars={stars}/>
+            <Allbestservices stars={stars} />
           </div>
         </div>
       </>

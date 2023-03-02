@@ -23,10 +23,8 @@ function Womenpreneurs() {
     const [categoryid, setCategoryId] = useState(0);
     const [error, setError] = useState(false);
     useEffect(() => {
-        // WomenSellerList();
         WomenSellercategories();
         GetFilterandSearchData();
-
     }, [categoryid])
 
     const WomenSellercategories = () => {
@@ -63,7 +61,9 @@ function Womenpreneurs() {
         setLoading(true);
         WomenpreneursFilter(categoryid).then((res) => {
             setDataseller(res?.data?.results);
-            setLoading(false);
+            setTimeout(() => {
+            setLoading(false); 
+            }, 400);
         }).catch((err) => {
             console.log(err);
         })
@@ -72,13 +72,20 @@ function Womenpreneurs() {
         setLoading(true);
         WomenpreneursSearch(searchname).then((res) => {
             setDataseller(res?.data?.results);
-            setLoading(false);
             setFilter("");
+            setTimeout(() => {
+                setLoading(false); 
+                }, 400);
           
         }).catch((err) => {
             console.log(err);
         })
     }
+
+
+
+
+
 
     return (
         <Fragment>
@@ -101,10 +108,7 @@ function Womenpreneurs() {
                         </div>
                     </div>
                     <div className={styles.serachsectionwomen}>
-
-
                         <div className={styles.serachwomenpresection}>
-
                             <div>
                                 <input type='text' placeholder="Search by Name or Brand" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
                             </div>
@@ -125,7 +129,6 @@ function Womenpreneurs() {
                     </div>
 
                     <div>
-
                         {searchname?.length > 0 ? <>
                             <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
                                 <div>
@@ -158,13 +161,7 @@ function Womenpreneurs() {
                                     )
                                 })}
                             </div>
-
-
-
-
                         </> : <>
-
-
                             <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
                                 <div>
                                     {dataseller.length === 0 && <div>No Data Found!!!!</div>}
@@ -196,11 +193,7 @@ function Womenpreneurs() {
                                     )
                                 })}
                             </div>
-
-
-
                         </>}
-
                     </div>
                     {/* <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
                         <div>
