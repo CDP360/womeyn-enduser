@@ -7,8 +7,8 @@ function index() {
   const router = useRouter();
   const categoryId = router?.query?.categoryId;
   return (
-    <LayoutHeader title="Categorys">
-      <Categorys id={categoryId}/>
+    <LayoutHeader title="Category">
+      <Categorys id={categoryId} />
     </LayoutHeader>
   )
 }

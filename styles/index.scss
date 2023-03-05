@@ -8,29 +8,37 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    // @include themed() {
-    //     background: t($background);
-    //     color: t($text);
-    // }
     background: white;
 }
 
 ::-webkit-scrollbar {
-    width: 10px !important;
+    width: 10px;
 }
-
 ::-webkit-scrollbar-track {
-    // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    background-color: grey;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-    color: red;
-    background-color: grey;
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
 }
+
+// ::-webkit-scrollbar {
+//     width: 10px !important;
+//     height:5vh !important;
+// }
+
+// ::-webkit-scrollbar-track {
+//     border-radius: 100px;
+
+//     background-color: grey !important;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//     border-radius: 10px;
+//     height:5vh !important;
+
+// }
 
 .blursectionhome {
     width: 100%;

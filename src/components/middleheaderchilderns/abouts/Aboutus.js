@@ -10,6 +10,7 @@ import bubble3 from '../../../assests/womeynlogos/bubble3.png';
 import Ourvision from './ourvision/Ourvision';
 import Ourteam from './ourteam/Ourteam';
 import Whatmake from '../../home/components/whatmake/Whatmake';
+import Ourclutures from './ourclutures/Ourclutures';
 
 function Aboutus() {
 
@@ -116,6 +117,11 @@ function Aboutus() {
                         <Ourteam />
                     </div>
 
+                    <div>
+                        
+                        <Ourclutures/>
+
+                    </div>
 
                 </div>
                 <div>

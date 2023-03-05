@@ -63,7 +63,7 @@ function Womenpreneurs() {
             setDataseller(res?.data?.results);
             setTimeout(() => {
             setLoading(false); 
-            }, 400);
+            }, 300);
         }).catch((err) => {
             console.log(err);
         })
@@ -75,7 +75,7 @@ function Womenpreneurs() {
             setFilter("");
             setTimeout(() => {
                 setLoading(false); 
-                }, 400);
+                }, 300);
           
         }).catch((err) => {
             console.log(err);

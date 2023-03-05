@@ -32,24 +32,24 @@
     cursor: pointer;
     color: black;
     justify-content: center;
-    bottom: -34%;
+    bottom: -30%;
     @include xsBreakPoint {
         width: 30px !important;
         height: 30px !important;
         right: 10%;
-        bottom: -142%;
+        bottom: -143%;
     }
     @include smBreakPoint {
         width: 30px !important;
         height: 30px !important;
         right: 10%;
-        bottom: -129%;
+        bottom: -160%;
     }
     @include mdBreakPoint {
         width: 30px !important;
         height: 30px !important;
         right: 6%;
-        bottom: -137%;
+        bottom: -160%;
     }
     @include lgBreakPoint {
         right: -200%;

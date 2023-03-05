@@ -143,9 +143,9 @@ function Ourwomenpreneurs() {
                                                 <div className={styles.backgroundslidewomen}>
                                                 </div>
                                                 {item.profileImageName ? <>
-                                                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.profileImageName}`} alt="no image" className={styles.slideimagesize} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)}/>
+                                                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.profileImageName}`} alt="no image" className={styles.slideimagesize} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)} />
                                                 </> :
-                                                    <Image src={users} alt="no image" className={styles.slideimagesize} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)}/>
+                                                    <Image src={users} alt="no image" className={styles.slideimagesize} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)} />
                                                 }
                                             </div>
                                         )
@@ -166,7 +166,9 @@ function Ourwomenpreneurs() {
                                     </div>
                                     <div className={styles.womenactiveprofiletext}>
                                         <div>
-                                            <button className={styles.selleractives} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)}>VISIT HER STORE!</button>
+                                            <button className={styles.selleractives} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)}>VISIT HER STORE!
+                               
+                                            </button>
                                         </div>
                                         <div className={styles.socialspacewomen}>
                                             {datas[counts - 1]?.linkedinUrl ? <div className={styles.imagebackgroundwomen}>

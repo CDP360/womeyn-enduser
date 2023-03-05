@@ -18,6 +18,9 @@ import rightarrow from '../../../../../assests/category-logos/leftcategoryarrow.
 import leftarrow from '../../../../../assests/category-logos/rightcategoryarrow.png';
 
 
+import users from '../../../../../assests/homepage-logos/usersimageprofile.png';
+
+
 function Womenpreneusdetails({ id }) {
     const [limit, setLimit] = useState([]);
     const [current, setCurrent] = useState(1);
@@ -40,8 +43,7 @@ function Womenpreneusdetails({ id }) {
             setLimit(res?.data)
             setTimeout(() => {
                 setLoading(false);
-
-            }, 600)
+            }, 300)
         }).catch((err) => {
             console.log(err);
         })
@@ -54,7 +56,7 @@ function Womenpreneusdetails({ id }) {
             setTimeout(() => {
                 setLoading(false);
 
-            }, 500)
+            }, 300)
         }).catch((err) => {
             console.log(err)
         });
@@ -68,13 +70,12 @@ function Womenpreneusdetails({ id }) {
             setTimeout(() => {
                 setLoading(false);
 
-            }, 500)
+            }, 300)
 
         }).catch((err) => {
             console.log(err);
         })
     }
-
     const productListData = (categoryid) => {
         setLoading(true);
         WomenpreneursCategoryproducts(sellers?.id, categoryid).then((res) => {
@@ -82,18 +83,14 @@ function Womenpreneusdetails({ id }) {
             setTimeout(() => {
                 setLoading(false);
 
-            }, 500)
+            }, 300)
         }).catch((err) => {
             console.log(err);
         })
     }
-
     const handlechnagedata = (id) => {
         setIndexs(id);
     }
-
-
-
 
     const fetchCurrentData = async (id, current) => {
         const resdata = await WomenpreneursCategoryproducts(id, current);
@@ -120,13 +117,12 @@ function Womenpreneusdetails({ id }) {
         return originalElement;
     }
 
-    console.log("limit", limit)
+    console.log("limit", limit?.limit + 2)
 
     return (
         <Fragment >
             <div className={styles.maindetailpage}>
                 <div className="emptyboxrightcolor">
-
                 </div>
                 <div className={styles.insidedetailpage}>
                     <div className={styles.splitsectiondetails}>
@@ -157,7 +153,7 @@ function Womenpreneusdetails({ id }) {
                             {sellers?.profileImageName ? <>
                                 <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
                             </> : <>
-                                <Image src={girl1} alt="no image" className={styles.womenlogo} />
+                                <Image src={users} alt="no image" className={styles.womenlogo} />
                             </>}
 
                         </div>
@@ -180,15 +176,9 @@ function Womenpreneusdetails({ id }) {
                     </div>
 
                     <div className={styles.contentsetiondetails}>
-
                         <Beverage productlist={productlist} productlistshow={productlistshow} loading={loading} />
-
-
-
                         {productlist?.length > 8 &&
-
                             <div className='d-flex justify-content-center mt-4'>
-
                                 <Pagination
                                     className="pagination-data"
                                     total={limit?.totalPages * 10}
@@ -198,10 +188,7 @@ function Womenpreneusdetails({ id }) {
                                     breakLabel="..."
                                 />
                             </div>
-
                         }
-
-
                         {/* <div>
                             {indexs === 0 && <div>
                                 <Beverage productlist={productlist} />
@@ -227,17 +214,8 @@ function Womenpreneusdetails({ id }) {
                                 <Sweets />
                             </div>}
                         </div> */}
-
-
-
-
-
                     </div>
                 </div>
-
-
-
-
             </div>
 
         </Fragment>

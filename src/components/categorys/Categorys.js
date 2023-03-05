@@ -7,8 +7,12 @@ import Maincategorylist from './maincategoryproducts/Maincategorylist';
 import { useEffect } from 'react';
 import Categorycarouse from './categoryslidecarousel/Categorycarouse';
 import Select from 'react-select';
+import serachicon from '../../assests/homepage-logos/serachicon.png';
+
 function Categorys() {
   const [selectname, selectedOption] = useState(null);
+  const [searchname, setSearchName] = useState('');
+
   useEffect(() => {
   }, [])
   const options = [
@@ -20,6 +24,15 @@ function Categorys() {
   const handleChange = (data) => {
     selectedOption(data);
   };
+
+  const SearchNameBrand = (e) => {
+    setSearchName(e.target.value);
+
+}
+
+const GetSearchdata=()=>{
+  console.log("Search here!!!!");
+}
   return (
     <Fragment>
       <div className={styles.maincategorysection}>
@@ -36,7 +49,17 @@ function Categorys() {
           </div>
           <div className={styles.mainselectbox}>
             <div className={styles.selectboxfilter}>
-              <div className="col-lg-4 mt-3 col-sm-10 col-md-6 col-xs-12">
+              <div>
+                <div className={styles.serachwomenpresection}>
+                  <div>
+                    <input type='text' placeholder="Search by Name or Brand" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
+                  </div>
+                  <div>
+                    <Image src={serachicon} alt="no image" className={styles.serachiconwomen} onClick={GetSearchdata} />
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-4 col-sm-10 col-md-6 col-xs-12">
                 <Select
                   value={selectname}
                   defaultValue={{ label: "Select Dept", value: 0 }}

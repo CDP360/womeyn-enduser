@@ -5,7 +5,7 @@
     // align-items: center;
     // justify-content: center;
     position: relative;
-    background-color:white !important;
+    background-color: white !important;
     @include xlBreakPoint {
         gap: 30px;
     }
@@ -27,39 +27,26 @@
         @include xsBreakPoint {
             width: 100% !important;
             margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         @include smBreakPoint {
             width: 43% !important;
             margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         @include mdBreakPoint {
             width: 45% !important;
             margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         @include lgBreakPoint {
             width: 23.3% !important;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             height: 310px;
         }
         @include xlBreakPoint {
             width: 22.3% !important;
             margin: 0 auto;
             height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            // display: flex;
+            // align-items: center;
+            // justify-content: center;
         }
     }
 }
@@ -69,11 +56,10 @@
     gap: 10px;
     align-items: center;
     justify-content: center;
-    width:100%;
-    @include lgBreakPoint
-    {
+    width: 100%;
+    @include lgBreakPoint {
         // border:2px solid blue !important;
-        gap:5px;
+        gap: 5px;
     }
 
     .cards {
@@ -84,8 +70,7 @@
         background: #ffffff;
         // border:2px solid red !important;
         border-radius: 8px;
-       
-       
+
         border-radius: 4px;
         flex-direction: column;
         position: relative;
@@ -538,9 +523,8 @@
     }
 }
 
-.cardloading
-{
-    width:23%;
-    height:300px;
-    cursor:pointer;
+.cardloading {
+    width: 23%;
+    height: 300px;
+    cursor: pointer;
 }

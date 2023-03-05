@@ -11,5 +11,6 @@ export const LoginText = {
     oryoucanuse: "or you can use",
     Alreadyhaveanaccount: "Already have an account?",
     Bysigningupyouagreetoour: "By signing up you agree to our",
-    termsandconditions: "terms and conditions"
+    termsandconditions: "terms and conditions",
+    YouarealreadyregisteredPleaselogin:"You are already registered. Please log in."
 }

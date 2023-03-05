@@ -122,12 +122,12 @@ function Beverage({ productlist, loading }) {
                 <div>
                     {productlist?.length === 0 && <div>No Data Found!!!</div>}
                 </div>
-                <div className='cardsection row w-100  mb-3 ms-1'>
+                <div className='cardsection row mb-3 ms-1'>
                     {loading ? <>
                         <LoaderLogo />
                     </> : <>{productlist?.map((item, index) => {
                         return (
-                            <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 col-xl-12 ' key={index} >
+                            <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 ' key={index} >
                                 <div className={styles.plussection}>
                                     <Image src={plus} alt="no image" className={styles.plus} onClick={() => Carthandleproduct(item)} />
                                 </div>

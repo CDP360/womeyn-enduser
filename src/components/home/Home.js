@@ -94,14 +94,12 @@ function Home() {
     }
     return (
         <Fragment>
-
             <div className={styles.homesectionmain}>
                 <div className={styles.emptyboxrightcolor}>
                 </div>
                 <div className={styles.emptyboxleftcolor}>
                 </div>
                 <div>
-
                 </div>
                 <div className={styles.insidesectionhome}>
                     <div className={styles.imagesectionhome}>
@@ -113,7 +111,7 @@ function Home() {
                                 return (
                                     <div key={index}>
                                         {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
-                                            <Skeleton height={200} width={200} />
+                                            <Skeleton className={styles.homebanner}/>
                                         </>}
                                     </div>
                                 )

@@ -2,12 +2,15 @@ import React, { Fragment, useState } from 'react'
 import { Form } from 'react-bootstrap';
 import styles from '../../components/login/styles/Login.module.scss';
 import google from '../../assests/homepage-logos/google.png';
-import facebook from '../../assests/homepage-logos/loginfacebook.png';
+import facebook from '../../assests/login-logos/facebook image.png';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import { useForm } from "react-hook-form";
 import { LoginText } from '../../consttext/Loginconst';
+import { toast } from 'react-toastify';
+import { OTP } from '../../toastdata/Toastmessages';
+import { userSignup } from '../../services/user-login-service/user-login-services';
 
 function Signup() {
     const router = useRouter();
@@ -18,8 +21,34 @@ function Signup() {
         formState: { errors },
     } = useForm();
     const onSubmit = async (data) => {
-        console.log('data', data)
-        router.push("/login")
+        const response = {
+            emailOrPhoneNo: data?.email
+        }
+        userSignup(response).then((res) => {
+            if (res) {
+                toast.success(OTP + "😀");
+                localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
+                localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
+                setTimeout(() => {
+                    router.push("/otp");
+                }, 1000)
+            }
+
+        }).catch((err) => {
+            if (err?.response?.data?.message == LoginText?.YouarealreadyregisteredPleaselogin) {
+                toast.error(err?.response?.data?.message,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme:"dark",
+                    });
+            }
+        })
     };
 
     const handlePushTerms = () => {
@@ -59,7 +88,7 @@ function Signup() {
 
 
             <div className={styles.mainloginsection}>
-                <div className={styles.endcustomerbutton}>
+                {/* <div className={styles.endcustomerbutton}>
                     <div className={styles.insidecustomerbutton}>
                         <button className={`${indexs === 0 ? "endconsumerbuttons" : "womenprebutton"}`}
                             onClick={() => {
@@ -72,13 +101,13 @@ function Signup() {
                             }}
                         >{LoginText?.EndConsumer}</button>
                     </div>
-                </div>
+                </div> */}
                 <div className={styles.insidesectionlogin}>
                     <div className={styles.insideloginsplit}>
                         <div className={styles.logintext}>
                             {LoginText?.Signup}
                         </div>
-                        <div>
+                        <div className="mt-3 mb-5">
                             <Form onSubmit={handleSubmit(onSubmit)}>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Control type="text" placeholder="Email / Phone Number" className={styles.forms}

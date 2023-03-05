@@ -127,6 +127,28 @@
     }
 }
 
+.resendbuttondisable {
+    // background-color: white !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    border: none !important;
+    color: white !important;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 10px 0px;
+    font-weight: 700;
+    border: 1px solid #9f9f9f !important;
+    
+    @include xsBreakPoint {
+        width: 100%;
+    }
+    @include smBreakPoint {
+        width: 100%;
+    }
+}
+
 .button {
     background-color: red !important;
     border: none !important;

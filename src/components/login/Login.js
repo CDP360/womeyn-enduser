@@ -2,13 +2,14 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import styles from "./styles/Login.module.scss";
 import google from "../../assests/homepage-logos/google.png";
-import facebook from "../../assests/homepage-logos/loginfacebook.png";
+import facebook from "../../assests/login-logos/facebook image.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { useSession, signIn, signOut } from "next-auth/react"
 import { toast } from 'react-toastify';
 import { LoginText } from "../../consttext/Loginconst";
+
 
 function Login() {
 
@@ -52,22 +53,22 @@ function Login() {
 
     const Googleoauth = () => {
         window.open(
-            `https://womeynapi.cdp360.in/v1/auth/seller/google`,
+            `https://womeynapi.cdp360.in/v1/customer/oauth/google`,
             "_self", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=600,height=600"
         );
 
     }
     const FacebookAuth = () => {
         window.open(
-            `https://womeynapi.cdp360.in/v1/auth/seller/facebook`,
+            `https://womeynapi.cdp360.in/v1/customer/oauth/facebook`,
             "_self", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=600,height=600"
         );
     }
     return (
         <Fragment>
-            
+
             <div className={styles.mainloginsection}>
-                <div className={styles.endcustomerbutton}>
+                {/* <div className={styles.endcustomerbutton}>
                     <div className={styles.insidecustomerbutton}>
                         <button className={`${indexs === 0 ? "endconsumerbuttons" : "womenprebutton"}`}
                             onClick={() => {
@@ -80,7 +81,7 @@ function Login() {
                             }}
                         >{LoginText?.EndConsumer}</button>
                     </div>
-                </div>
+                </div> */}
 
                 <div className={styles.insidesectionlogin}>
                     <div className={styles.insideloginsplit}>
@@ -142,7 +143,7 @@ function Login() {
                                     <Image
                                         src={facebook}
                                         alt="no image"
-                                        className={styles.googleiconsectionlogin}
+                                        className={styles.facebookicon}
                                     />
                                 </div>
                                 <div>{LoginText?.Facebook}</div>

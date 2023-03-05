@@ -23,7 +23,7 @@
     color: black;
     position: absolute;
     right: -220%;
-    bottom: -34%;
+    bottom: -30%;
     display: flex;
     align-items: center;
     opacity: 0.6;
@@ -34,19 +34,20 @@
         width: 30px !important;
         height: 30px !important;
         right: -4%;
-        bottom: -142%;
+        bottom: -143%;
+
     }
     @include smBreakPoint {
         width: 30px !important;
         height: 30px !important;
         right: -4%;
-        bottom: -129%;
+        bottom: -160%;
     }
     @include mdBreakPoint {
         width: 30px !important;
         height: 30px !important;
         right: -3%;
-        bottom: -137%;
+        bottom: -160%;
     }
     @include lgBreakPoint {
         right: -220%;

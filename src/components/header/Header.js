@@ -113,56 +113,110 @@ function Header({ setdark, dark }) {
         <Fragment>
             <div className={styles.mainheadersection}>
                 <div className={styles.insidesectionheader}>
-                    <div onClick={() => router.push("/")}>
-                        <Image src={womeynlogo} alt="no image" className={styles.womeynlogo} />
-                    </div>
-                    <div className={styles.inputsearchsection}>
-                        <input type="text" placeholder='Search here...' className="inputserach" />
-                        <div>
-                            <Image src={serachicon} alt="no image" className='serachicon' />
+                    <div className={styles.insidesplitheader}>
+                        <div className={styles.leftlogo}>
+                            <div onClick={() => router.push("/")}>
+                                <Image src={womeynlogo} alt="no image" className={styles.womeynlogo} />
+                            </div>
                         </div>
-                    </div>
-                    <div className={"d-flex gap-4"}>
-
+                        <div className={styles.middlelogo}>
+                        <div className={styles.inputsearchsection}>
+                            <input type="text" placeholder='Search here...' className="inputserach" />
+                            <div>
+                                <Image src={serachicon} alt="no image" className='serachicon' />
+                            </div>
+                        </div>
+                        </div>
+                        <div className={styles.rightlogo}>
                         <div className={styles.falight} onClick={notificationsPush}>
-                            <Image src={notifications} alt="no image" className={styles.notifications} />
-                        </div>
-                        <div className={styles.falight} onClick={carts}>
-                            <div className={styles.maincartcount}>
-                                <div>
-                                    <Image src={cartslogo} alt="no image" className={styles.carticons} />
+                                <Image src={notifications} alt="no image" className={styles.notifications} />
+                            </div>
+                            <div className={styles.falight} onClick={carts}>
+                                <div className={styles.maincartcount}>
+                                    <div>
+                                        <Image src={cartslogo} alt="no image" className={styles.notifications} />
+                                    </div>
+                                    {cart?.cartData?.length > 0 ? <div className={styles.cartcountbox}>
+                                        {cart.cartData?.length}
+                                    </div>
+                                        : <></>}
                                 </div>
-                                <div className={styles.cartcountbox}>
-                                    {cart.cartData?.length}
-                                </div>
                             </div>
-                        </div>
-                        <div className="dropdown">
-                            <div>
-                                <Image src={profile} alt="no image" className={styles.carticons} />
-                            </div>
-                            <div>
-                                {status === "loading" && "Loading....."}
-                            </div>
-                            <div className="dropdowncontent">
+                            <div className="dropdown">
                                 <div>
-                                    Create account / LogIn
-                                    <button className='active mt-3 loginbuttonhome' onClick={Login}>
-                                        LogIn/SignUp
-                                    </button>
+                                    <Image src={profile} alt="no image" className={styles.notifications} />
+                                </div>
+                                <div>
+                                    {status === "loading" && "Loading....."}
+                                </div>
+                                <div className="dropdowncontent">
+                                    <div>
+                                        Create account / LogIn
+                                        <button className='active mt-3 loginbuttonhome' onClick={Login}>
+                                            LogIn/SignUp
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {/* <div className={styles.leftlogo}>
+                        <div>
+                        <div onClick={() => router.push("/")}>
+                            <Image src={womeynlogo} alt="no image" className={styles.womeynlogo} />
+                        </div>
+                        </div>
+                    </div> */}
+                    {/* <div className={styles.middelogo}>
+                       <div>
+                       <div className={styles.inputsearchsection}>
+                            <input type="text" placeholder='Search here...' className="inputserach" />
+                            <div>
+                                <Image src={serachicon} alt="no image" className='serachicon' />
+                            </div>
+                        </div>
+                        </div>
+                    </div> */}
+                    {/* <div className={styles.rightlogo}>
+                        <div className={styles.spliticons}>
+                            <div className={styles.falight} onClick={notificationsPush}>
+                                <Image src={notifications} alt="no image" className={styles.notifications} />
+                            </div>
+                            <div className={styles.falight} onClick={carts}>
+                                <div className={styles.maincartcount}>
+                                    <div>
+                                        <Image src={cartslogo} alt="no image" className={styles.carticons} />
+                                    </div>
+                                    {cart?.cartData?.length > 0 ? <div className={styles.cartcountbox}>
+                                        {cart.cartData?.length}
+                                    </div>
+                                        : <></>}
+                                </div>
+                            </div>
+                            <div className="dropdown">
+                                <div>
+                                    <Image src={profile} alt="no image" className={styles.carticons} />
+                                </div>
+                                <div>
+                                    {status === "loading" && "Loading....."}
+                                </div>
+                                <div className="dropdowncontent">
+                                    <div>
+                                        Create account / LogIn
+                                        <button className='active mt-3 loginbuttonhome' onClick={Login}>
+                                            LogIn/SignUp
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> */}
                 </div>
             </div>
 
             <div className={styles.middleheadersection}>
-
                 <div className={styles.emptyboxleftcolor}>
                 </div>
-
-
                 <div className={styles.insidemiddlesections}>
                     <div className={router.pathname == "/explore" ? "active" : "nav-link"}>
                         {/* <Link href="/explore" className='nav-link' onMouseOver={NaigateHover}>
