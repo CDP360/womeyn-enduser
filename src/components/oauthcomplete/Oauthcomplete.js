@@ -10,10 +10,10 @@ function Oauthcomplete() {
         setTimeout(() => {
             // toast.success("Successfully Login!!");
             router.push("/");
-        }, 1400);
+        }, 1700);
     }, [])
     return (
-        <div>
+        <div className='d-flex align-content-center justify-content-center'>
             <LoaderLogo />
         </div>
     )
