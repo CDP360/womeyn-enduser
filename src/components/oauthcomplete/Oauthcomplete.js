@@ -2,41 +2,41 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import LoaderLogo from '../loaderlogo/LoaderLogo';
-import { oAuthSuccessTokenStage } from '../../services/user-login-service/user-login-services';
-import CredentialsProvider from "next-auth/providers/credentials";
-import { useSession, signIn, signOut } from "next-auth/react"
+import { OauthSuccess, oAuthSuccessTokenStage } from '../../services/user-login-service/user-login-services';
+// import CredentialsProvider from "next-auth/providers/credentials";
+// import { useSession, signIn, signOut } from "next-auth/react"
 
 function Oauthcomplete() {
 
     const router = useRouter();
-    useEffect(() => {
+    // useEffect(() => {
+    //     oAuthSuccessTokenStage().then((res) => {
+    //         console.log("kalaioath", res);
+    //         setTimeout(() => {
+    //             toast.success("Successfully Login!!");
+    //             router.push("/");
+    //         }, 1000);
+    //     }).catch((err) => {
+    //         console.log(err);
+    //         toast.error("Error Something!!");
+    //     })
+    // }, [])
 
-        oAuthSuccessTokenStage().then((res) => {
-            console.log("kalaioath", res);
-            // try {
-            //     const result = await signIn("credentials", {
-            //         redirect: false,
-            //         email: res?.data?.email,
-            //         password: res?.data?.password,
-            //         // password
-            //         res
-            //     })
-            //     if (result.error) {
-            //         toast.error(result.error);
-            //     }
-            // }
-            // catch (err) {
-            //     console.log(err);
-            // }
+
+    useEffect(() => {
+        OauthSuccess().then((res) => {
+            toast.success("Sucess!!!");
             setTimeout(() => {
-                toast.success("Successfully Login!!");
-                router.push("/");
-            }, 1000);
+                router.push("/womenpreneurs");
+            }, 1000)
         }).catch((err) => {
-            console.log(err);
-            toast.error("Error Something!!");
+
+            toast.error("Error !! code!!")
+            console.log(err)
         })
     }, [])
+
+
     return (
         <div className='d-flex align-content-center justify-content-center h-100'>
             <LoaderLogo />

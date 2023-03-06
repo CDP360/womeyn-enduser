@@ -62,33 +62,32 @@ export function GoogleOauth() {
 
 
 export function OauthSuccess() {
-    return new Promise((resolve, reject) => {
-        instanceBaseurl.get('/customer/oauth/success').then(response => {
-            resolve(response)
-        }).catch(err => {
-            reject(err)
-        })
+    return instanceBaseurl.get('/customer/oauth/success').then(res => {
+        return res;
+    }).catch(err => {
+        console.log(err);
     })
+
 }
 
-export function oAuthSuccessTokenStage() {
-    return new Promise(async (resolve, reject) => {
-        OauthSuccess().then(async (result) => {
-            if (result.tokens) {
-                // let auth_set = await this.asyncAuthStorage(result)
-                localStorage.setItem("womenUserToken", JSON.stringify(result?.tokens?.access?.token))
-                if (auth_set) {
-                    resolve(true)
-                }
-            } else {
-                reject(false)
-            }
-            return result;
-        }).catch(err => {
-            console.log(err)
-        })
-    })
-}
+// export function oAuthSuccessTokenStage() {
+//     return new Promise((resolve, reject) => {
+//         OauthSuccess().then((result) => {
+//             if (result?.tokens) {
+//                 // let auth_set = await this.asyncAuthStorage(result)
+//                 localStorage.setItem("womenUserToken", JSON.stringify(result?.tokens?.access?.token))
+//                 if (auth_set) {
+//                     resolve(true)
+//                 }
+//             } else {
+//                 reject(false)
+//             }
+//             return result;
+//         }).catch(err => {
+//             console.log(err)
+//         })
+//     })
+// }
 
 export function UserProfileImageupload(userid, data) {
     return instanceBaseurl.post(`/seller/update-photo/${userid}`, data).then((res) => {
