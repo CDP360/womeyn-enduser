@@ -2,6 +2,7 @@ import axios from "axios";
 import instanceBaseurl from './../../config/Baseurl';
 
 
+
 export function Userlogin(data) {
     return instanceBaseurl
         .post(`http://localhost:8000/auth/login`, data)
@@ -49,3 +50,21 @@ export function CreatePassword(userid, data) {
         })
 }
 
+export function oAuthSuccessTokenStage() {
+    return new Promise(async (resolve, reject) => {
+        this.oAuthSuccess().then(async (result) => {
+            // if (result.tokens) {
+            //     // let auth_set = await this.asyncAuthStorage(result)
+            //     localStorage.setItem("auth", true)
+            //     if (auth_set) {
+            //         resolve(true)
+            //     }
+            // } else {
+            //     reject(false)
+            // }
+            return res;
+        }).catch(err => {
+            console.log(err)
+        })
+    })
+}
