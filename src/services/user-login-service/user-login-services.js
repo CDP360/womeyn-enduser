@@ -5,7 +5,7 @@ import instanceBaseurl from './../../config/Baseurl';
 
 export function Userlogin(data) {
     return instanceBaseurl
-        .post(`http://localhost:8000/auth/login`, data)
+        .post(`/auth/customer/login`, data)
         .then((res) => {
             return res;
         })

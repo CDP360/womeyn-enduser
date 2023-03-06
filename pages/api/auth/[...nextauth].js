@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { oAuthSuccessTokenStage, Userlogin } from "../../../src/services/user-login-service/user-login-services";
+import { OauthSuccess, Userlogin } from "../../../src/services/user-login-service/user-login-services";
 export default NextAuth({
     session: {
         jwt: true,
@@ -8,7 +8,7 @@ export default NextAuth({
     providers: [
         CredentialsProvider({
             async authorize(credentials) {
-                const response = await Userlogin(credentials) || oAuthSuccessTokenStage(credentials);
+                const response = await Userlogin(credentials) || OauthSuccess(credentials);
                 const { user } = await response?.data;
                 return {
                     token: user?.tokens?.access?.token,
