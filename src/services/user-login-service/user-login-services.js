@@ -74,15 +74,15 @@ export function OauthSuccess() {
 export function oAuthSuccessTokenStage() {
     return new Promise(async (resolve, reject) => {
         OauthSuccess().then(async (result) => {
-            // if (result.tokens) {
-            //     // let auth_set = await this.asyncAuthStorage(result)
-            //     localStorage.setItem("auth", true)
-            //     if (auth_set) {
-            //         resolve(true)
-            //     }
-            // } else {
-            //     reject(false)
-            // }
+            if (result.tokens) {
+                // let auth_set = await this.asyncAuthStorage(result)
+                localStorage.setItem("womenUserToken", JSON.stringify(result?.tokens?.access?.token))
+                if (auth_set) {
+                    resolve(true)
+                }
+            } else {
+                reject(false)
+            }
             return result;
         }).catch(err => {
             console.log(err)

@@ -11,7 +11,7 @@ function Oauthcomplete() {
     const router = useRouter();
     useEffect(() => {
 
-        oAuthSuccessTokenStage().then(async (res) => {
+        oAuthSuccessTokenStage().then((res) => {
             console.log("kalaioath", res);
             // try {
             //     const result = await signIn("credentials", {
@@ -29,9 +29,9 @@ function Oauthcomplete() {
             //     console.log(err);
             // }
             setTimeout(() => {
-                // toast.success("Successfully Login!!");
+                toast.success("Successfully Login!!");
                 router.push("/");
-            }, 1700);
+            }, 1000);
         }).catch((err) => {
             console.log(err);
             toast.error("Error Something!!");
