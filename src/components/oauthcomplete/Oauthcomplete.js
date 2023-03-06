@@ -8,7 +8,12 @@ import { useSession, signIn, signOut } from "next-auth/react"
 
 function Oauthcomplete() {
 
-    const router = useRouter();
+
+
+    const { data: session } = useSession();
+    const history = useRouter();
+
+    const { redirect } = history.query;
     // useEffect(() => {
     //     oAuthSuccessTokenStage().then((res) => {
     //         console.log("kalaioath", res);
@@ -26,12 +31,12 @@ function Oauthcomplete() {
     useEffect(() => {
         OauthSuccess().then(async (res) => {
             toast.success("Sucess!!!");
-            localStorage.setItem("womenUseToken", JSON.stringify(res?.tokens?.access?.token))
+            localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token))
             try {
                 const result = await signIn("credentials", {
                     redirect: false,
                     email: res?.data?.user?.email,
-                    password
+                    password: ""
                 })
                 if (result.error) {
                     toast.error(result.error);
@@ -41,14 +46,20 @@ function Oauthcomplete() {
             catch (err) {
                 console.log(err);
             }
-            setTimeout(() => {
-                router.push("/");
-            }, 1000)
+            // setTimeout(() => {
+            //     router.push("/");
+            // }, 1000)
         }).catch((err) => {
             toast.error("Error !! code!!")
             console.log(err)
         })
     }, [])
+
+    useEffect(() => {
+        if (session?.user) {
+            history.push(redirect || "/")
+        }
+    }, [session])
 
 
     return (
