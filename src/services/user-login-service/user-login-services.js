@@ -50,6 +50,17 @@ export function CreatePassword(userid, data) {
         })
 }
 
+
+export function OauthSuccess() {
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.get('/oauth-success').then(response => {
+            resolve(response)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}
+
 export function oAuthSuccessTokenStage() {
     return new Promise(async (resolve, reject) => {
         this.oAuthSuccess().then(async (result) => {
@@ -62,7 +73,7 @@ export function oAuthSuccessTokenStage() {
             // } else {
             //     reject(false)
             // }
-            return res;
+            return result;
         }).catch(err => {
             console.log(err)
         })
