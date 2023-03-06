@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import  Router  from 'next/router';
+import Router from 'next/router';
 import '../styles/index.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 import { StrictMode } from "react";
@@ -15,7 +15,7 @@ import LoaderLogo from '../src/components/loaderlogo/LoaderLogo';
 function App({ Component, pageProps }) {
 
 
-  const [loading,setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
 
 
   useEffect(() => {
@@ -23,16 +23,16 @@ function App({ Component, pageProps }) {
     import("slick-carousel/slick/slick.css");
     import("slick-carousel/slick/slick-theme.css");
 
-    Router.events.on('routeChangeStart',(url)=>{
+    Router.events.on('routeChangeStart', (url) => {
       console.log("start Loding.....")
       setLoading(true);
     })
-    Router.events.on('routeChangeComplete',(url)=>{
+    Router.events.on('routeChangeComplete', (url) => {
       console.log("complete Loding.....")
       setLoading(false);
 
     })
-    Router.events.on('routeChangeError',(url)=>{
+    Router.events.on('routeChangeError', (url) => {
       console.log("Error Loding.....");
       // setLoading(true);
 
@@ -46,16 +46,16 @@ function App({ Component, pageProps }) {
         <StrictMode>
           <SessionProvider session={pageProps.session}>
             <StoreProviderContext>
-            <Provider store={store}>
-              <ToastContainer />
-        {loading ?<div className="blursectionhome">
-         <LoaderLogo/>
-        </div>:
-        <>
-        <Component {...pageProps}  />
-        </>}
+              <Provider store={store}>
+                <ToastContainer />
+                {loading ? <div className="blursectionhome">
+                  <LoaderLogo />
+                </div> :
+                  <>
+                    <Component {...pageProps} />
+                  </>}
 
-            </Provider>
+              </Provider>
             </StoreProviderContext>
           </SessionProvider>
         </StrictMode>

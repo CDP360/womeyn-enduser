@@ -20,6 +20,22 @@ function LayoutHeader({ setdark, dark, title, children }) {
                     name="viewport"
                     content="width=device-width, initial-scale=1, shrink-to-fit=no"
                 />
+                <meta
+                    name="description"
+                    content="Check out iPhone 12 XR Pro and iPhone 12 Pro Max. Visit your local store and for expert advice."
+                    key="desc"
+                />
+
+                <meta name="description" content="Checkout our cool page" key="desc" />
+                <meta property="og:title" content="Social Title for Cool Page" />
+                <meta
+                    property="og:description"
+                    content="And a social description for our cool page"
+                />
+                <meta
+                    property="og:image"
+                    content="https://example.com/images/cool-page.jpg"
+                />
                 <meta name="theme-color" content="#000000" />
                 {/* <link rel="icon" href="/favicon.ico" /> */}
                 <link rel="icon" type="image/png" sizes="16x16" href="/Mobileviewlogoshort.png"></link>
@@ -49,7 +65,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
                             {children}
                         </main>
                     </div>
-                    {title == "Women-profile" || title == "Women-login" || title == "Women-signup" || title == "Cart" || title == "Checkout" || title == "404 NotFound" || title == "Otp" || title == "Forgetpassword" || title == "Change-password" || title=="Explore" || title=="Events"?
+                    {title == "Women-profile" || title == "Women-login" || title == "Women-signup" || title == "Cart" || title == "Checkout" || title == "404 NotFound" || title == "Otp" || title == "Forgetpassword" || title == "Change-password" || title == "Explore" || title == "Events" ?
                         <>
                         </>
                         :

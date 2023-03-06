@@ -5,7 +5,11 @@ import Viewproducts from '../../../../src/components/middleheaderchilderns/ourwo
 function index() {
   return (
     <div>
-     <Viewproducts/>
+      <meta
+        name="description"
+        content="Meta description for the About page"
+      />
+      <Viewproducts />
     </div>
   )
 }

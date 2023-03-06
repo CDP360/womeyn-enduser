@@ -4,6 +4,10 @@ import Womenpreneurs from './../../src/components/middleheaderchilderns/ourwomen
 function index() {
     return (
         <LayoutHeader title="Womeynpreneurs">
+            <meta
+                name="description"
+                content="Meta description for the About page"
+            />
             <Womenpreneurs />
         </LayoutHeader>
 

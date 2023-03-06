@@ -13,16 +13,20 @@ import { toast } from 'react-toastify';
 
 axios.interceptors.request.use(
     function (config) {
-        // const token = localStorage.getItem("womenUserToken");
-        // config.url = process.env.NEXT_PUBLIC_URL + config.url;
-        // config.headers = {
-        //     ...config.headers,
-        //     "Content-Type": "application/json",
-        //     Authorization: `Bearer ${token}`
-        // };
-        // config.withCredentials = true;
-        // return config;
-        if ((config.url.search("/auth/customer/verify-otp") !== -1)) {
+        if (config.url.search("/seller/update-photo") !== -1) {
+            const token = localStorage.getItem("womenUserToken");
+            config.url = process.env.NEXT_PUBLIC_URL + config.url;
+            config.headers = {
+                ...config.headers,
+                "Content-Type": false,
+                "process-data": false,
+                cache: false,
+                "data-type": "Text",
+                Authorization: `Bearer ${JSON.parse(token)}`,
+            };
+            return config;
+        }
+        else if ((config.url.search("/customer/oauth/google") !== -1) || (config.url.search("/oauth-success") !== -1)) {
             console.log("crede called")
             const token = localStorage.getItem("womenUserToken");
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
@@ -46,8 +50,6 @@ axios.interceptors.request.use(
             return config;
 
         }
-
-
     },
     function (error) {
         return Promise.reject(error);

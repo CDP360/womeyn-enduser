@@ -5,7 +5,11 @@ import Otp from '../../src/components/otp/Otp'
 function index() {
   return (
     <LayoutHeader title="Otp">
-        <Otp/>
+      <meta
+        name="description"
+        content="Meta description for the About page"
+      />
+      <Otp />
     </LayoutHeader>
   )
 }

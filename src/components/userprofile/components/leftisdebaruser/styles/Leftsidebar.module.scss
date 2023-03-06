@@ -6,8 +6,23 @@
         width: 100%;
         .imageshowsection {
             display: flex;
-            gap: 30px;
+            // gap: 20px;
             align-items: center;
+
+            .leftcircleprofiles {
+                width: 50%;
+
+                margin: 0 auto;
+                @include lgBreakPoint {
+                    width: 100%;
+                }
+            }
+            .rightprofilecircle {
+                width: 50%;
+                @include lgBreakPoint {
+                    width: 100%;
+                }
+            }
             .smallimageuser {
                 width: 70px;
                 height: 70px;
@@ -29,31 +44,25 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            @include lgBreakPoint
-            {
-                width:100%;
+            @include lgBreakPoint {
+                width: 100%;
             }
-            @include xlBreakPoint
-            {
-                width:100%;
+            @include xlBreakPoint {
+                width: 100%;
             }
-            @include xxlBreakPoint
-            {
-                width:100%;
+            @include xxlBreakPoint {
+                width: 100%;
             }
-            .balanceimage
-            {
-                width:30px;
-                height:30px;
-                @include lgBreakPoint
-                {
-                    width:38px;
-                    height:auto;
+            .balanceimage {
+                width: 30px;
+                height: 30px;
+                @include lgBreakPoint {
+                    width: 38px;
+                    height: auto;
                 }
-                @include xlBreakPoint
-                {
-                    width:38px;
-                    height:auto;
+                @include xlBreakPoint {
+                    width: 38px;
+                    height: auto;
                 }
             }
         }
@@ -77,23 +86,19 @@
         width: 100%;
         padding-top: 4%;
         display: flex;
-        justify-content:space-between;
+        justify-content: space-between;
         align-items: center;
         cursor: pointer;
-        .transactionsize
-        {
-            font-size:1.2rem;
-            font-weight:590;
+        .transactionsize {
+            font-size: 1.2rem;
+            font-weight: 590;
         }
-        
     }
-    .gapsectiondropdown
-    {
-        display:flex;
+    .gapsectiondropdown {
+        display: flex;
         flex-direction: column;
-        gap:12px;
-        padding-top:4%;
+        gap: 12px;
+        padding-top: 4%;
         cursor: pointer;
-        
     }
 }

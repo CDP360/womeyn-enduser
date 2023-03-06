@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { useSession, signIn, signOut } from "next-auth/react"
 import { toast } from 'react-toastify';
 import { LoginText } from "../../consttext/Loginconst";
+import { GoogleOauth } from "../../services/user-login-service/user-login-services";
 
 
 function Login() {
@@ -52,6 +53,7 @@ function Login() {
     const [indexs, setIndexs] = useState(0);
 
     const Googleoauth = () => {
+        // GoogleOauth();
         window.open(
             `https://womeynapi.cdp360.in/v1/customer/oauth/google`,
             "_self", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=600,height=600"

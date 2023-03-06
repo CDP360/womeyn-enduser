@@ -5,7 +5,11 @@ import LayoutHeader from './../../src/components/Layoutheader/LayoutHeader';
 function index() {
     return (
         <LayoutHeader title="Change-password">
-            <Changepassword/>
+            <meta
+                name="description"
+                content="Meta description for the About page"
+            />
+            <Changepassword />
         </LayoutHeader>
     )
 }

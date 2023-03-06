@@ -44,7 +44,7 @@
 }
 
 .profile-text-sizes {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 600;
     display: flex;
 
@@ -52,6 +52,9 @@
         color: t($textgreyblack);
     }
     @include lgBreakPoint {
+        font-size: 1rem;
+    }
+    @include xlBreakPoint {
         font-size: 1.2rem;
     }
 }

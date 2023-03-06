@@ -2,7 +2,8 @@ import React, { Fragment, useState } from 'react'
 import styles from './styles/Leftsidebar.module.scss';
 import bank from '../../../../assests/womeynlogos/bankcase.png';
 import Image from 'next/image';
-function Leftsidebaruser({ indexsidebar,setShow ,indexcheck}) {
+import userprofile from '../../../../assests/womeynlogos/userprofile.png';
+function Leftsidebaruser({ indexsidebar,setShow ,indexcheck,user}) {
     const [dropdown1, setDropdown1] = useState(false);
     const [dropdown2, setDropdown2] = useState(false);
     const [dropdown3, setDropdown3] = useState(false);
@@ -11,17 +12,38 @@ function Leftsidebaruser({ indexsidebar,setShow ,indexcheck}) {
             <div className={styles.leftsidebarsection}>
                 <div className={styles.balancesection}>
                     <div className={styles.imageshowsection}>
-                        <div className={styles.smallimageuser} onClick={() => {
+
+                    <div className={styles.leftcircleprofiles}>
+
+
+                    {user?.profileImageName ? <>
+                            <img
+                                // width={"100px"}
+                                // height={"100px"}
+                                // style={{ borderRadius: "50%", cursor: "pointer" }}
+                                className={"circleuserprofile"}
+                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
+                                alt="profile-pic"
+                                onClick={() => {
+                                    indexsidebar(0)
+                                    setShow(false)
+                                    }}
+                            />
+                        </> : <Image src={userprofile} alt="no image" className={styles.smallimageuser} onClick={() => {
                             indexsidebar(0)
                             setShow(false)
-                            }}>
+                            }}/>}
+                        
                         </div>
                         <div onClick={() => {
                             indexsidebar(0)
                             setShow(false)
-                            }}>
+                            }}
+                            className={styles.rightprofilecircle}
+                            
+                            >
                             <div className='profile-text-sizes'>
-                                kalaiNazriya
+                               {user?.firstName}
                             </div>
                             <div className='verify'>
                                 Verified

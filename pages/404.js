@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import image from '../src/assests/homepage-logos/404notfound.png';
 import LayoutHeader from '../src/components/Layoutheader/LayoutHeader';
 import styles from './styles/Pagenotfound.module.scss';
-function ErrorPage({dark,setdark}) {
+function ErrorPage({ dark, setdark }) {
 
     const router = useRouter();
     return (

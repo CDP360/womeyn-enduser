@@ -27,7 +27,7 @@ function Header({ setdark, dark }) {
     const { state, dispatch } = useContext(ContextStore);
     const { cart } = state;
     const router = useRouter();
-    const states = useSelector(state => state.cart.cartitems);
+    const states = useSelector(state => state);
     const { status, data: session } = useSession();
     const [showmega, setShowMega] = useState(false);
     const logoutHandler = async () => {
@@ -56,9 +56,7 @@ function Header({ setdark, dark }) {
 
     }
 
-
-
-
+    console.log("states", states)
     const datas = [
         {
             id: 1,
@@ -120,15 +118,15 @@ function Header({ setdark, dark }) {
                             </div>
                         </div>
                         <div className={styles.middlelogo}>
-                        <div className={styles.inputsearchsection}>
-                            <input type="text" placeholder='Search here...' className="inputserach" />
-                            <div>
-                                <Image src={serachicon} alt="no image" className='serachicon' />
+                            <div className={styles.inputsearchsection}>
+                                <input type="text" placeholder='Search here...' className="inputserach" />
+                                <div>
+                                    <Image src={serachicon} alt="no image" className='serachicon' />
+                                </div>
                             </div>
                         </div>
-                        </div>
                         <div className={styles.rightlogo}>
-                        <div className={styles.falight} onClick={notificationsPush}>
+                            <div className={styles.falight} onClick={notificationsPush}>
                                 <Image src={notifications} alt="no image" className={styles.notifications} />
                             </div>
                             <div className={styles.falight} onClick={carts}>

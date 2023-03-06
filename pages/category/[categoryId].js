@@ -8,6 +8,10 @@ function index() {
   const categoryId = router?.query?.categoryId;
   return (
     <LayoutHeader title="Category">
+      <meta
+        name="description"
+        content="Meta description for the About page"
+      />
       <Categorys id={categoryId} />
     </LayoutHeader>
   )

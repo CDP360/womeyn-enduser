@@ -1,15 +1,15 @@
 import React from 'react'
-import Termsandconditions from '../../src/components/termsandconditions/Termsandconditions';
+import Ourprofile from '../../src/components/userprofile/Ourprofile';
 import LayoutHeader from '../../src/components/Layoutheader/LayoutHeader';
 
-function index() {
+function index({ setdark, dark }) {
     return (
-        <LayoutHeader title="Terms & conditions">
+        <LayoutHeader title="Women-profile" dark={dark} setdark={setdark}>
             <meta
                 name="description"
                 content="Meta description for the About page"
             />
-            <Termsandconditions />
+            <Ourprofile />
         </LayoutHeader>
     )
 }

@@ -81,6 +81,15 @@
                 @include smBreakPoint {
                     width: 100%;
                 }
+                @include mdBreakPoint {
+                    width: 100%;
+                }
+                @include lgBreakPoint {
+                    width: 100%;
+                }
+                @include xlBreakPoint {
+                    width: 100%;
+                }
             }
             .addimagessectionright {
                 width: 50%;
@@ -88,6 +97,15 @@
                     width: 100%;
                 }
                 @include smBreakPoint {
+                    width: 100%;
+                }
+                @include mdBreakPoint {
+                    width: 100%;
+                }
+                @include lgBreakPoint {
+                    width: 100%;
+                }
+                @include xlBreakPoint {
                     width: 100%;
                 }
             }
@@ -101,9 +119,20 @@
             .add1 {
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
+                object-fit: contain;
                 cursor: pointer;
                 @include xsBreakPoint {
+                    width: 100% !important;
+                }
+                @include xsBreakPoint {
+                    width: 100% !important;
+                } @include smBreakPoint {
+                    width: 100% !important;
+                } @include mdBreakPoint {
+                    width: 100% !important;
+                } @include lgBreakPoint {
+                    width: 100% !important;
+                } @include xlBreakPoint {
                     width: 100% !important;
                 }
             }
@@ -118,11 +147,11 @@
 
 .addimageboxs {
     width: 100% !important;
-    height: 200px !important;
+    height: 100% !important;
+    object-fit:contain !important;
 }
 
-.homebanner
-{
+.homebanner {
     width: 100% !important;
-    height:200px !important;
+    height: 200px !important;
 }

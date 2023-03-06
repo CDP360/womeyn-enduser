@@ -7,6 +7,10 @@ function index({ dark, setdark }) {
     const viewproductid = router?.query?.viewproductid;
     return (
         <LayoutHeader dark={dark} setdark={setdark} title="product-view">
+            <meta
+                name="description"
+                content="Meta description for the About page"
+            />
             <Viewproducts id={viewproductid} />
         </LayoutHeader>
 

@@ -50,7 +50,7 @@ export function CreatePassword(userid, data) {
         })
 }
 
-export function googleOauth() {
+export function GoogleOauth() {
     return new Promise((resolve, reject) => {
         instanceBaseurl.get('/customer/oauth/google').then(response => {
             window.open(response)
@@ -73,19 +73,36 @@ export function OauthSuccess() {
 
 export function oAuthSuccessTokenStage() {
     return new Promise(async (resolve, reject) => {
-        this.OauthSuccess().then(async (result) => {
-            // if (result.tokens) {
-            //     // let auth_set = await this.asyncAuthStorage(result)
-            //     localStorage.setItem("auth", true)
-            //     if (auth_set) {
-            //         resolve(true)
-            //     }
-            // } else {
-            //     reject(false)
-            // }
-            return result;
-        }).catch(err => {
-            console.log(err)
-        })
+        OauthSuccess().then(async (result) => {
+        // if (result.tokens) {
+        //     // let auth_set = await this.asyncAuthStorage(result)
+        //     localStorage.setItem("auth", true)
+        //     if (auth_set) {
+        //         resolve(true)
+        //     }
+        // } else {
+        //     reject(false)
+        // }
+        return result;
+    }).catch(err => {
+        console.log(err)
+    })
+    })
+}
+
+export function UserProfileImageupload(userid, data) {
+    return instanceBaseurl.post(`/seller/update-photo/${userid}`, data).then((res) => {
+        return res;
+    }).catch((err) => {
+        console.log(err);
+    })
+}
+
+
+export function UserProfileInformation(userid) {
+    return instanceBaseurl.get(`/seller/basicinfo/${userid}`).then((res) => {
+        return res;
+    }).catch((err) => {
+        console.log(err);
     })
 }

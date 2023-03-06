@@ -35,7 +35,14 @@
     }
 }
 .editbuttons {
-    width: 17%;
+    width: 100% !important;
+    font-size: 1rem !important;
+    background-color: #e95a5a !important;
+    color: white !important;
+    font-weight: 600;
+}
+.editbuttonss {
+    width: 30% !important;
     font-size: 1rem !important;
     background-color: #e95a5a !important;
     color: white !important;
@@ -54,4 +61,50 @@
     text-align: center;
     font-size: 1.2rem;
     font-weight: 600;
+}
+.editprofilesection {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+}
+
+.congratus {
+    width: 100%;
+    text-align: center;
+    // border: 2px solid blue;
+    height: 320px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    .congratusimage {
+        width: 55px;
+        height: 55px;
+    }
+    .congratustext {
+        color: #e95a5a;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+    .insidesectioncongratus {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+    .yourprofilehas {
+        width: 70%;
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+    .editbuttonssdone {
+        width: 140px !important;
+        font-size: 1rem !important;
+        background-color: #e95a5a !important;
+        color: white !important;
+        font-weight: 600;
+    }
 }

@@ -9,10 +9,14 @@ import Eventsupdate from './../../src/components/middleheaderchilderns/eventsupd
 function index() {
     return (
         <LayoutHeader title="Events">
-         <Eventsupdate/>
+            <meta
+                name="description"
+                content="Meta description for the About page"
+            />
+            <Eventsupdate />
         </LayoutHeader>
-        
-       
+
+
     )
 }
 

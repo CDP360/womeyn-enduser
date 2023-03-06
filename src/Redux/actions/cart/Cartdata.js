@@ -8,7 +8,7 @@ export const Cartactions = (data) => async (dispatch) => {
 }
 
 export const CartActionDelete = (data) => async (dispatch) => {
-   console.log("kalaiid",data)
+   console.log("kalaiid", data)
    dispatch({
       type: CART_DELETE,
       payload: data

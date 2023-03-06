@@ -1,14 +1,12 @@
-import { useSession } from "next-auth/react";
+import instanceBaseurl from "../../../config/Baseurl";
 
-const LoginActions = () => async (dispatch) => {
-    dispatch({ type: LOGIN_LOADING });
-    try {
-        const { status, data: session } = useSession();
 
-        dispatch({ type: LOGIN_SUCCESS, payload: session });
-    } catch (err) {
-        dispatch({ type: LOGIN_ERROR, error: "User not found" });
-    }
-};
-
-export default LoginActions;
+export const LoginActions = (dataresponse) => (dispatch) => {
+    console.log("67", data)
+    const userid = localStorage.getItem("womenUserid");
+    const dataresponse = instanceBaseurl.get(`/seller/basicinfo/${JSON.parse(userid)}`);
+    dispatch({
+        type: "LOGIN_SUCCESS",
+        payload: dataresponse
+    })
+}   

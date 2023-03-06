@@ -7,6 +7,10 @@ import Womenpreneusdetails from './../../../src/components/middleheaderchilderns
 function index() {
     return (
         <LayoutHeader title="Product">
+            <meta
+                name="description"
+                content="Meta description for the About page"
+            />
             <Womenpreneusdetails />
         </LayoutHeader>
 

@@ -13,7 +13,9 @@ export default NextAuth({
                 return {
                     token: user?.tokens?.access?.token,
                     email: user?.email,
-                    // name: user?.firstname + " " + user?.lastname,
+                    // name: user?.firstname + " " + user?.lastname
+                    // password: user?.firstname + " " + user?.lastname,
+                    // ,
                     userId: user?._id,
                 };
             },

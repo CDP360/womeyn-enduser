@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import Leftsidebaruser from './components/leftisdebaruser/Leftsidebaruser';
 import Profilewomen from './components/profilewomen/Profilewomen';
 import Pendingtransaction from './components/transactionpage/pendingtransactions/Pendingtransaction';
@@ -13,6 +13,10 @@ import Wishlist from './components/favoritespage/wishlist/Wishlist';
 import Recentlyview from './components/favoritespage/recentlyview/Recentlyview';
 import Address from './components/address/Address';
 import Editprofile from './components/editprofile/Editprofile';
+import { UserProfileInformation } from '../../services/user-login-service/user-login-services';
+import { useDispatch } from 'react-redux';
+import { LoginActions } from '../../Redux/actions/loginactions/Loginaction';
+
 function Ourprofile() {
   const [show, setShow] = useState(false);
   const [index, setIndex] = useState(0);
@@ -20,21 +24,31 @@ function Ourprofile() {
   const handleshowchange = () => {
     setShow(true);
   }
+  const [user, setUser] = useState([]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const userid = localStorage.getItem("womenUserid");
+    UserProfileInformation(JSON.parse(userid)).then((res) => {
+      setUser(res?.data);
+      dispatch(LoginActions(res?.data));
+    }).catch((err) => {
+      console.log(err);
+    })
+  }, [])
   return (
     <Fragment>
       <div className={styles.mainuserprofilesection}>
         <div className={styles.insideprofilesection}>
           <div className={styles.leftsidebarprofile}>
-            <Leftsidebaruser indexsidebar={setIndexsidebar} setShow={setShow} indexcheck={indexsidebar}/>
+            <Leftsidebaruser indexsidebar={setIndexsidebar} setShow={setShow} indexcheck={indexsidebar} user={user} />
           </div>
           <div className={styles.rightbodyprofilesection}>
             {indexsidebar === 0 && (
               <>
                 {show ? <>
                   <div>
-                    <Editprofile move={setShow} />
+                    <Editprofile move={setShow} user={user} />
                   </div>
-
                 </> : <>
                   <div className={styles.profileheadersection}>
                     <div className={`${index === 0 ? styles.activecode : styles.profiletext}`} onClick={() => setIndex(0)}>
@@ -46,7 +60,7 @@ function Ourprofile() {
                   </div>
                   <div hidden={index != 0}>
                     <div>
-                      <Profilewomen edits={handleshowchange} indexsidebar={setIndexsidebar} />
+                      <Profilewomen edits={handleshowchange} indexsidebar={setIndexsidebar} user={user} />
                     </div>
                   </div>
                   <div hidden={index != 1}>

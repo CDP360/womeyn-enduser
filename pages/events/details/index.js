@@ -6,6 +6,10 @@ import Eventsdetails from './../../../src/components/middleheaderchilderns/event
 function index() {
     return (
         <LayoutHeader title="eventsdetails">
+            <meta
+                name="description"
+                content="Meta description for the About page"
+            />
             <Eventsdetails />
         </LayoutHeader>
 
