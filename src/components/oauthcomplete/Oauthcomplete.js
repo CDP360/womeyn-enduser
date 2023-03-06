@@ -32,20 +32,20 @@ function Oauthcomplete() {
         OauthSuccess().then(async (res) => {
             toast.success("Sucess!!!");
             localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token))
-            try {
-                const result = await signIn("credentials", {
-                    redirect: false,
-                    email: res?.data?.user?.email,
-                    password: res?.data?.user?.password
-                })
-                if (result.error) {
-                    toast.error(result.error);
-                }
+            // try {
+            //     const result = await signIn("credentials", {
+            //         redirect: false,
+            //         email: res?.data?.user?.email,
+            //         password: res?.data?.user?.password
+            //     })
+            //     if (result.error) {
+            //         toast.error(result.error);
+            //     }
 
-            }
-            catch (err) {
-                console.log(err);
-            }
+            // }
+            // catch (err) {
+            //     console.log(err);
+            // }
             // setTimeout(() => {
             //     router.push("/");
             // }, 1000)
