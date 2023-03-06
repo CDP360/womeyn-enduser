@@ -50,6 +50,16 @@ export function CreatePassword(userid, data) {
         })
 }
 
+export function googleOauth() {
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.get('/customer/oauth/google').then(response => {
+            window.open(response)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}
+
 
 export function OauthSuccess() {
     return new Promise((resolve, reject) => {
@@ -63,7 +73,7 @@ export function OauthSuccess() {
 
 export function oAuthSuccessTokenStage() {
     return new Promise(async (resolve, reject) => {
-        this.oAuthSuccess().then(async (result) => {
+        this.OauthSuccess().then(async (result) => {
             // if (result.tokens) {
             //     // let auth_set = await this.asyncAuthStorage(result)
             //     localStorage.setItem("auth", true)
