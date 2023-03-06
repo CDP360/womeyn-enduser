@@ -13,21 +13,21 @@ function Oauthcomplete() {
 
         oAuthSuccessTokenStage().then(async (res) => {
             console.log("kalaioath", res);
-            try {
-                const result = await signIn("credentials", {
-                    redirect: false,
-                    email: res?.data?.email,
-                    password: res?.data?.password,
-                    // password
-                    res
-                })
-                if (result.error) {
-                    toast.error(result.error);
-                }
-            }
-            catch (err) {
-                console.log(err);
-            }
+            // try {
+            //     const result = await signIn("credentials", {
+            //         redirect: false,
+            //         email: res?.data?.email,
+            //         password: res?.data?.password,
+            //         // password
+            //         res
+            //     })
+            //     if (result.error) {
+            //         toast.error(result.error);
+            //     }
+            // }
+            // catch (err) {
+            //     console.log(err);
+            // }
             setTimeout(() => {
                 // toast.success("Successfully Login!!");
                 router.push("/");
@@ -38,7 +38,7 @@ function Oauthcomplete() {
         })
     }, [])
     return (
-        <div className='d-flex align-content-center justify-content-center'>
+        <div className='d-flex align-content-center justify-content-center h-100'>
             <LoaderLogo />
         </div>
     )

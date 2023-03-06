@@ -63,7 +63,7 @@ export function GoogleOauth() {
 
 export function OauthSuccess() {
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get('/oauth-success').then(response => {
+        instanceBaseurl.get('/customer/oauth/success').then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)
@@ -74,19 +74,19 @@ export function OauthSuccess() {
 export function oAuthSuccessTokenStage() {
     return new Promise(async (resolve, reject) => {
         OauthSuccess().then(async (result) => {
-        // if (result.tokens) {
-        //     // let auth_set = await this.asyncAuthStorage(result)
-        //     localStorage.setItem("auth", true)
-        //     if (auth_set) {
-        //         resolve(true)
-        //     }
-        // } else {
-        //     reject(false)
-        // }
-        return result;
-    }).catch(err => {
-        console.log(err)
-    })
+            // if (result.tokens) {
+            //     // let auth_set = await this.asyncAuthStorage(result)
+            //     localStorage.setItem("auth", true)
+            //     if (auth_set) {
+            //         resolve(true)
+            //     }
+            // } else {
+            //     reject(false)
+            // }
+            return result;
+        }).catch(err => {
+            console.log(err)
+        })
     })
 }
 
