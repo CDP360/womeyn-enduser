@@ -14,8 +14,7 @@ export default NextAuth({
                     token: user?.tokens?.access?.token,
                     email: user?.email,
                     // name: user?.firstname + " " + user?.lastname
-                    // password: user?.firstname + " " + user?.lastname,
-                    // ,
+                    password: user?.password,
                     userId: user?._id,
                 };
             },
@@ -23,11 +22,15 @@ export default NextAuth({
     ],
     callbacks: {
         async jwt({ token, user }) {
-            user && (token.user = user);
+            if (user) {
+                user && (token.user = user);
+            }
             return token;
         },
         async session({ session, token, user }) {
-            session.user = token.user;
+            if (token) {
+                session.user = token.user;
+            }
             return session;
         },
     },

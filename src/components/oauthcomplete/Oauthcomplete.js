@@ -36,7 +36,7 @@ function Oauthcomplete() {
                 const result = await signIn("credentials", {
                     redirect: false,
                     email: res?.data?.user?.email,
-                    password: ""
+                    password: res?.data?.user?.password
                 })
                 if (result.error) {
                     toast.error(result.error);
