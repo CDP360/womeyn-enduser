@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import LoaderLogo from '../loaderlogo/LoaderLogo';
 import { OauthSuccess, oAuthSuccessTokenStage } from '../../services/user-login-service/user-login-services';
-// import CredentialsProvider from "next-auth/providers/credentials";
-// import { useSession, signIn, signOut } from "next-auth/react"
+import CredentialsProvider from "next-auth/providers/credentials";
+import { useSession, signIn, signOut } from "next-auth/react"
 
 function Oauthcomplete() {
 
@@ -24,13 +24,27 @@ function Oauthcomplete() {
 
 
     useEffect(() => {
-        OauthSuccess().then((res) => {
+        OauthSuccess().then(async (res) => {
             toast.success("Sucess!!!");
+            localStorage.setItem("womenUseToken", JSON.stringify(res?.tokens?.access?.token))
+            try {
+                const result = await signIn("credentials", {
+                    redirect: false,
+                    email: res?.data?.user?.email,
+                    password
+                })
+                if (result.error) {
+                    toast.error(result.error);
+                }
+
+            }
+            catch (err) {
+                console.log(err);
+            }
             setTimeout(() => {
-                router.push("/womenpreneurs");
+                router.push("/");
             }, 1000)
         }).catch((err) => {
-
             toast.error("Error !! code!!")
             console.log(err)
         })
@@ -38,7 +52,7 @@ function Oauthcomplete() {
 
 
     return (
-        <div className='d-flex align-content-center justify-content-center h-100'>
+        <div className='d-flex align-content-center justify-content-center authsuccess'>
             <LoaderLogo />
         </div>
     )
