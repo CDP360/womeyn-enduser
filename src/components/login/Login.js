@@ -41,17 +41,6 @@ function Login() {
                 setTimeout(() => {
                     history.push("/");
                 }, 500)
-
-                // await signIn("credentials", {
-                //     redirect: false,
-                //     email: email,
-                //     password: password,
-                //     token: res?.data?.tokens?.access?.token,
-                //     id: res?.data?.user?.id
-
-                // });
-
-
             }
             else {
                 toast.error("Incorrect email or password");

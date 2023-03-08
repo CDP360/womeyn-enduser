@@ -6,11 +6,12 @@ import { OauthSuccess } from '../../services/user-login-service/user-login-servi
 
 
 function Oauthcomplete() {
-
     const history = useRouter();
     useEffect(() => {
         OauthSuccess().then((res) => {
-            localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token))
+            localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
+            localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
+
             setTimeout(() => {
                 history.push("/");
             }, 1000)
