@@ -8,12 +8,11 @@ import { OauthSuccess } from '../../services/user-login-service/user-login-servi
 function Oauthcomplete() {
 
     const history = useRouter();
-    const { redirect } = history.query;
     useEffect(() => {
-        OauthSuccess().then(async (res) => {
+        OauthSuccess().then((res) => {
             localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token))
             setTimeout(() => {
-                router.push("/");
+                history.push("/");
             }, 1000)
         }).catch((err) => {
             toast.error("Error !! code!!")
