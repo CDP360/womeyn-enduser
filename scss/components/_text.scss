@@ -44,9 +44,10 @@
 }
 
 .profile-text-sizes {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 600;
     display: flex;
+    word-break: break-all;
 
     @include themed() {
         color: t($textgreyblack);
@@ -182,15 +183,12 @@
     text-transform: capitalize;
 }
 
-
-.minutes-section
-{
-    color: #E95A5A;
+.minutes-section {
+    color: #e95a5a;
 }
 
-.shorttexts
-{
+.shorttexts {
     width: 100% !important;
-    margin:0 auto;
-    text-align:center;
+    margin: 0 auto;
+    text-align: center;
 }

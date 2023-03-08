@@ -111,7 +111,7 @@ function Passwordcreate() {
                     <div className={styles.insidesectionforget}>
                         <div className={styles.insideforgetsplit}>
                             <div className={styles.logintext}>
-                                New Credentials 
+                                New Credentials
                             </div>
                             <div>
                                 {matchcheck1 ? <div className='text-success'>
@@ -132,7 +132,7 @@ function Passwordcreate() {
 
                                     <div className={styles.passwordformsection}>
                                         <Form.Group className="mb-2" controlId="formBasicEmail">
-                                        <Form.Label>Password</Form.Label>
+                                            <Form.Label>Password</Form.Label>
                                             <Form.Control type={show ? "text" : "password"} placeholder="User@gmail.com" className={styles.forms}
                                                 {...register('password', {
                                                     pattern: {
@@ -152,7 +152,7 @@ function Passwordcreate() {
                                     <div className='mt-4'>
                                         <div className={styles.passwordformsection}>
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label>Confirmpassword</Form.Label>
+                                                <Form.Label>Confirmpassword</Form.Label>
 
                                                 <Form.Control type={show1 ? "text" : "password"} placeholder="User@gmail.com" className={styles.forms}
                                                     {...register('confirmPwd')}

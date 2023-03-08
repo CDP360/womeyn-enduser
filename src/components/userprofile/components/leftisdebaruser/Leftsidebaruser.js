@@ -32,7 +32,7 @@ function Leftsidebaruser({ indexsidebar, setShow, indexcheck, user }) {
                             </> : <Image src={userprofile} alt="no image" className={styles.smallimageuser} onClick={() => {
                                 indexsidebar(0)
                                 setShow(false)
-                            }} />}
+                        }} />}
 
                         </div>
                         <div onClick={() => {

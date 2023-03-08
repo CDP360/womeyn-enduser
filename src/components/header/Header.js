@@ -48,9 +48,7 @@ function Header() {
     const carts = () => {
         router.push("/cart")
     }
-
     const [hovers, setHovers] = useState(false);
-
     const notificationsPush = () => {
         router.push("/notifications")
     }
@@ -61,8 +59,6 @@ function Header() {
         router.push(`/category/${data}`);
 
     }
-
-    console.log("states", states)
     const datas = [
         {
             id: 1,
@@ -153,7 +149,6 @@ function Header() {
                             </div>
                             <div className="dropdown">
                                 <div>
-
                                     {/* {userimage ? <>
                                         <img
 
@@ -166,7 +161,6 @@ function Header() {
 
                                     </>} */}
                                     <Image src={profile} alt="no image" className={styles.notifications} />
-
                                 </div>
                                 <div>
                                     {status === "loading" && "Loading....."}
@@ -174,8 +168,6 @@ function Header() {
 
                                 {session?.user?.email ?
                                     <>
-
-
                                         <div className="dropdowncontent">
                                             <div className={styles.headerprofile} onClick={userProfile}>
                                                 <div>
@@ -189,8 +181,6 @@ function Header() {
                                             <div className={styles.headerprofile} onClick={logoutHandler}>
                                                 <div>
                                                     <Image src={logout} alt="no image" className={styles.profileimageover} />
-
-
                                                 </div>
                                                 <div className={styles.logouttexts}>
                                                     Logout

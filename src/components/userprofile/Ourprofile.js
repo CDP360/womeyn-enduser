@@ -31,7 +31,7 @@ function Ourprofile() {
     const userid = localStorage.getItem("womenUserid");
     UserProfileInformation(JSON.parse(userid)).then((res) => {
       setUser(res?.data);
-      localStorage.setItem("womenProfile",JSON.stringify(res?.data?.profileImageName));
+      localStorage.setItem("womenProfile", JSON.stringify(res?.data?.profileImageName));
 
       dispatch(LoginActions(res?.data));
     }).catch((err) => {
@@ -61,7 +61,7 @@ function Ourprofile() {
                       Address
                     </div>
                     <div className={`${index === 2 ? styles.activecode : styles.profiletext}`} onClick={() => setIndex(2)}>
-                   Changepassword
+                      Changepassword
                     </div>
                   </div>
                   <div hidden={index != 0}>
@@ -73,7 +73,7 @@ function Ourprofile() {
                     <Address />
                   </div>
                   <div hidden={index != 2}>
-                   <UserChangePassword/>
+                    <UserChangePassword />
                   </div>
                 </>}
               </>
