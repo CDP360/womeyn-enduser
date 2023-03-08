@@ -23,7 +23,7 @@ import instagram from '../../assests/homepage-logos/newinstagramfooter.png';
 import linkdin from '../../assests/homepage-logos/linkedinfooter.png';
 import twitter from '../../assests/homepage-logos/twitterfooter.png';
 import { toast } from 'react-toastify';
-function Header({ setdark, dark }) {
+function Header() {
     const { state, dispatch } = useContext(ContextStore);
     const { cart } = state;
     const router = useRouter();
@@ -213,57 +213,7 @@ function Header({ setdark, dark }) {
                             </div>
                         </div>
                     </div>
-                    {/* <div className={styles.leftlogo}>
-                        <div>
-                        <div onClick={() => router.push("/")}>
-                            <Image src={womeynlogo} alt="no image" className={styles.womeynlogo} />
-                        </div>
-                        </div>
-                    </div> */}
-                    {/* <div className={styles.middelogo}>
-                       <div>
-                       <div className={styles.inputsearchsection}>
-                            <input type="text" placeholder='Search here...' className="inputserach" />
-                            <div>
-                                <Image src={serachicon} alt="no image" className='serachicon' />
-                            </div>
-                        </div>
-                        </div>
-                    </div> */}
-                    {/* <div className={styles.rightlogo}>
-                        <div className={styles.spliticons}>
-                            <div className={styles.falight} onClick={notificationsPush}>
-                                <Image src={notifications} alt="no image" className={styles.notifications} />
-                            </div>
-                            <div className={styles.falight} onClick={carts}>
-                                <div className={styles.maincartcount}>
-                                    <div>
-                                        <Image src={cartslogo} alt="no image" className={styles.carticons} />
-                                    </div>
-                                    {cart?.cartData?.length > 0 ? <div className={styles.cartcountbox}>
-                                        {cart.cartData?.length}
-                                    </div>
-                                        : <></>}
-                                </div>
-                            </div>
-                            <div className="dropdown">
-                                <div>
-                                    <Image src={profile} alt="no image" className={styles.carticons} />
-                                </div>
-                                <div>
-                                    {status === "loading" && "Loading....."}
-                                </div>
-                                <div className="dropdowncontent">
-                                    <div>
-                                        Create account / LogIn
-                                        <button className='active mt-3 loginbuttonhome' onClick={Login}>
-                                            LogIn/SignUp
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
+
                 </div>
             </div>
 
@@ -272,23 +222,8 @@ function Header({ setdark, dark }) {
                 </div>
                 <div className={styles.insidemiddlesections}>
                     <div className={router.pathname == "/explore" ? "active" : "nav-link"}>
-                        {/* <Link href="/explore" className='nav-link' onMouseOver={NaigateHover}>
-                            <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
-                            <span className='ms-2'>Explore</span>
-                        </Link> */}
-
-
                         <ul className="dropdownmegamain">
                             <li>
-                                {/* {showmega ? <a href="#">
-                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
-                                    <span className='ms-2' onMouseOver={() => setShowMega(false)}> Close</span>
-                                </a>
-                                    : <a href="#">
-                                        <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
-                                        <span className='ms-2' onMouseOver={() => setShowMega(true)}>Explore</span>
-                                    </a>} */}
-
                                 <a href="#">
                                     <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
                                     <span className='ms-2'>Explore</span>
@@ -304,8 +239,6 @@ function Header({ setdark, dark }) {
                                             </div>
                                         )
                                     })}
-
-
                                     <li className="d-flex align-items-center justify-content-center">
                                         <a>
                                             <div className={styles.socailfootersection}>
@@ -331,16 +264,7 @@ function Header({ setdark, dark }) {
                                 </ul>
 
                             </li>
-
-
-
-
                         </ul>
-
-
-
-
-
                     </div>
                     <div className={styles.bordercolors}>
                         |
@@ -367,104 +291,6 @@ function Header({ setdark, dark }) {
                     </div>
                 </div>
             </div>
-            {/* <div className={styles.headermainsection}>
-                <div className={styles.headerinsidesection}>
-                    <div className="header">
-                        <div className={styles.logoheadersection}>
-                            <div onClick={() => router.push("/")}>
-                                <Image src={womeynlogo} alt="no image" className={styles.womeynlogo} />
-                            </div>
-                            <div className={styles.inputsearchsection}>
-                                <input type="text" placeholder='Search here...' className="inputserach" />
-                                <div>
-                                    <Image src={serachicon} alt="no image" className='serachicon' />
-                                </div>
-                            </div>
-                            <div className={"d-flex gap-4"}>
-
-                                <div className={styles.falight} onClick={notificationsPush}>
-                                    <Image src={notifications} alt="no image" className={styles.notifications} />
-                                </div>
-                                <div className={styles.falight} onClick={carts}>
-                                    <Image src={cartslogo} alt="no image" className={styles.carticons} />
-                                    {cart.cartData?.length}
-                                </div>
-                                <div className="dropdown">
-                                    <div>
-                                        <Image src={profile} alt="no image" className={styles.carticons} />
-                                    </div>
-                                    <div>
-                                        {status === "loading" && "Loading....."}
-                                    </div>
-                                    <div className="dropdowncontent">
-                                        <div>
-                                            Create account / LogIn
-                                            <button className='active mt-3 loginbuttonhome' onClick={Login}>
-                                                LogIn/SignUp
-                                            </button>
-                                        </div>
-                                      
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               
-
-            </div> */}
-
-            {/* <div>
-
-            <div className={styles.middleheadersection}>
-                    <div className='header'>
-                        <div className={styles.insidemiddlesectionheader}>
-                            <div className={router.pathname == "/explore" ? "active" : "nav-link"}>
-                                <Link href="/explore" className='nav-link'>
-                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
-                                    <span className='ms-2'>Explore</span>
-                                </Link>
-                            </div>
-                            <div className={styles.bordercolors}>
-                                |
-                            </div>
-                            <div className={router.pathname == "/womenpreneurs" ? "active" : ""}>
-
-                                <Link href="/womenpreneurs" className='nav-link'>
-                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
-
-                                    <span className='ms-2'>Our womenpreneurs</span>
-                                </Link>
-                            </div>
-                            <div className={router.pathname == "/events" ? "active" : ""}>
-                                <Link href="/events" className='nav-link'>
-                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
-
-                                    <span className='ms-2'>Events & updates</span>
-                                </Link>
-                            </div>
-                            <div className={router.pathname == "/abouts" ? "active" : ""}>
-                                <Link href="/abouts" className='nav-link'>
-                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
-
-                                    <span className='ms-2'></span> About us
-                                </Link>
-                            </div>
-                            <div className={router.pathname == "/getintouch" ? "active" : ""}>
-                                <Link href="/getintouch" className='nav-link'>
-                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
-                                    <span className='ms-2'>Get in touch</span>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-
-
-
         </Fragment>
     )
 }
