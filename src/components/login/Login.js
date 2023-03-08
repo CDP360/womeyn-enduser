@@ -47,6 +47,8 @@ function Login() {
                     redirect: false,
                     email: email,
                     password: password,
+                    token:res?.data?.tokens?.access?.token,
+                    id:res?.data?.user?.id
         
                 });
 

@@ -32,8 +32,8 @@ function Header() {
     const [showmega, setShowMega] = useState(false);
     const [userimage, setUserImage] = useState("");
     const logoutHandler = async () => {
-        toast.success("Logout User Successgully");
-        await signOut({ callbackUrl: "/" });
+        toast.success("Logout User Successflly");
+        await signOut({ callbackUrl: "https://www.womeyn.cdp360.in/" });
         localStorage.removeItem("womenUserid");
         localStorage.removeItem("womenUserToken");
         localStorage.removeItem("womenProfile");

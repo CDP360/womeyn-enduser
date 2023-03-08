@@ -91,14 +91,14 @@ export default NextAuth({
         CredentialsProvider({
             async authorize(credentials) {
                 const response = await credentials;
-
                 // console.log("response",response)
                 // const { user } = await response?.data;
                 return {
-                    // token: user?.tokens?.access?.token,
+                    token: response?.token,
                     email: response?.email,
                     name: response?.firstname,
-                    // userId: response?._id,
+                    password: response?.password,
+                    userId: response?.id,
                 };
             },
         }),
@@ -112,6 +112,14 @@ export default NextAuth({
             session.user = token.user;
             return session;
         },
+        // async jwt({ token, user }) {
+        //     user && (token.user = user);
+        //     return token;
+        // },
+        // async session({ session, token, user }) {
+        //     session.user = token.user;
+        //     return session;
+        // },
     },
     secret: process.env.NEXT_PUBLIC_SECRET_CODE,
 });

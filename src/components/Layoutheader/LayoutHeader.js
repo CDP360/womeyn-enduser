@@ -65,7 +65,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
                             {children}
                         </main>
                     </div>
-                    {title == "Women-profile" || title == "Women-login" || title == "Women-signup" || title == "Cart" || title == "Checkout" || title == "404 NotFound" || title == "Otp" || title == "Forgetpassword" || title == "Change-password" || title == "Explore" || title == "Events" || title=="passwordcreate"?
+                    {title == "Women-profile" || title == "Women-login" || title == "Women-signup" || title == "Cart" || title == "Checkout" || title == "404 NotFound" || title == "Otp" || title == "Forgetpassword" || title == "Change-password" || title == "Explore" || title == "Events" || title == "passwordcreate" || title == "Service" ?
                         <>
                         </>
                         :
