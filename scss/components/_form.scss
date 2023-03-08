@@ -80,30 +80,49 @@
     border-radius: 10px;
     outline: none;
     text-align: center;
-   
-}   	
+}
 .inputgap {
     margin: 20px;
-    @include xsBreakPoint
-    {
+    @include xsBreakPoint {
         margin: 10px;
     }
-    @include smBreakPoint
-    {
+    @include smBreakPoint {
         margin: 10px;
     }
-    @include mdBreakPoint
-    {
+    @include mdBreakPoint {
         margin: 14px;
     }
 }
 
-.form-control-profiles
-{
-    width:100%;
+.form-control-profiles {
+    width: 100%;
     background: rgba(151, 151, 151, 0.13) !important;
     padding: 10px 15px !important;
-    border:none !important;
-    outline:none !important;
-    border-radius:10px !important;
+    border: none !important;
+    outline: none !important;
+    border-radius: 10px !important;
+}
+
+.formsectioncommon {
+    // border: 2px solid blue;
+    position: relative;
+    width: 50%;
+    @include xsBreakPoint {
+        width: 100% !important;
+    }
+    @include smBreakPoint {
+        width: 80% !important;
+    }
+    @include mdBreakPoint {
+        width: 60% !important;
+    }
+    @include lgBreakPoint {
+        width: 60%;
+    }
+    .passwordicons {
+        position: absolute;
+        top: 0;
+        right: 2%;
+        cursor: pointer;
+    }
 }

@@ -4,21 +4,19 @@ import styles from "./styles/Login.module.scss";
 import google from "../../assests/homepage-logos/google.png";
 import facebook from "../../assests/login-logos/facebook image.png";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn, signOut, getSession } from "next-auth/react"
 import { toast } from 'react-toastify';
 import { LoginText } from "../../consttext/Loginconst";
-import { GoogleOauth } from "../../services/user-login-service/user-login-services";
+import { GoogleOauth, Userlogin } from "../../services/user-login-service/user-login-services";
 
 
 function Login() {
 
     const { data: session } = useSession();
     const history = useRouter();
-
     const { redirect } = history.query;
-
     useEffect(() => {
         if (session?.user) {
             history.push(redirect || "/")
@@ -31,19 +29,63 @@ function Login() {
         formState: { errors },
     } = useForm();
     const onSubmit = async ({ email, password }) => {
-        try {
-            const result = await signIn("credentials", {
-                redirect: false,
-                email,
-                password
-            })
-            if (result.error) {
-                toast.error(result.error);
+        const datas = {
+            email: email,
+            password: password
+        }
+        Userlogin(datas).then(async (res) => {
+            if (res) {
+                toast.success("User Login Success");
+                localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
+                localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
+                setTimeout(() => {
+                    history.push("/");
+                }, 500)
+
+
+                await signIn("credentials", {
+                    redirect: false,
+                    email: email,
+                    password: password,
+        
+                });
+
+
             }
-        }
-        catch (err) {
+            else {
+                toast.error("Incorrect email or password");
+            }
+        }).catch((err) => {
             console.log(err);
-        }
+        })
+
+        // try {
+        //     const result = await signIn("credentials", {
+        //         redirect: false,
+        //         email: email,
+        //         password: password
+        //     })
+        //     if (result.error === null) {
+        //         // Redirect to home or welcome page
+        //         const { user } = await getSession();
+        //         if (redir) {
+        //             const check = user?.isNewUser ? "/" : "/login";
+        //             history.push(check);
+        //         } else {
+
+        //             history.push("/login");
+        //         }
+        //     } else {
+        //         setError("NOT USERS");
+        //     }
+        //     if (result.error) {
+        //         toast.error(result.error);
+        //     }
+        // }
+        // catch (err) {
+        //     console.log(err);
+        // }
+
     };
 
     const handlePushForgetpassword = () => {

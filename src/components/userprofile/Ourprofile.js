@@ -16,6 +16,7 @@ import Editprofile from './components/editprofile/Editprofile';
 import { UserProfileInformation } from '../../services/user-login-service/user-login-services';
 import { useDispatch } from 'react-redux';
 import { LoginActions } from '../../Redux/actions/loginactions/Loginaction';
+import UserChangePassword from './components/userchangepassword/UserChangePassword';
 
 function Ourprofile() {
   const [show, setShow] = useState(false);
@@ -30,6 +31,8 @@ function Ourprofile() {
     const userid = localStorage.getItem("womenUserid");
     UserProfileInformation(JSON.parse(userid)).then((res) => {
       setUser(res?.data);
+      localStorage.setItem("womenProfile",JSON.stringify(res?.data?.profileImageName));
+
       dispatch(LoginActions(res?.data));
     }).catch((err) => {
       console.log(err);
@@ -57,6 +60,9 @@ function Ourprofile() {
                     <div className={`${index === 1 ? styles.activecode : styles.profiletext}`} onClick={() => setIndex(1)}>
                       Address
                     </div>
+                    <div className={`${index === 2 ? styles.activecode : styles.profiletext}`} onClick={() => setIndex(2)}>
+                   Changepassword
+                    </div>
                   </div>
                   <div hidden={index != 0}>
                     <div>
@@ -65,6 +71,9 @@ function Ourprofile() {
                   </div>
                   <div hidden={index != 1}>
                     <Address />
+                  </div>
+                  <div hidden={index != 2}>
+                   <UserChangePassword/>
                   </div>
                 </>}
               </>

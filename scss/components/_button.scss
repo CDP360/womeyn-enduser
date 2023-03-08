@@ -79,11 +79,21 @@
     border-radius: 10px;
     padding: 10px !important;
     font-weight: 700 !important;
+    margin: 0 auto;
+    // display:flex;
+    // align-items:center;
+    // justify-content:center;
     @include xsBreakPoint {
         width: 100%;
     }
     @include smBreakPoint {
         width: 100%;
+    }
+    @include lgBreakPoint {
+        width: 40%;
+    }
+    @include xlBreakPoint {
+        width: 40%;
     }
 }
 
@@ -302,4 +312,37 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.changepassword {
+    background-color: #e95a5a !important;
+    border: none !important;
+    color: white !important;
+    cursor: pointer;
+    width: 30%;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 10px !important;
+    font-weight: 700 !important;
+    margin: 0 auto;
+    // display:flex;
+    // align-items:center;
+    // justify-content:center;
+    @include xsBreakPoint {
+        width: 100%;
+    }
+    @include smBreakPoint {
+        width: 45%;
+    }
+    @include mdBreakPoint {
+        width: 40%;
+    }
+
+    @include lgBreakPoint {
+        width: 40%;
+    }
+    @include xlBreakPoint {
+        width: 40%;
+    }
 }

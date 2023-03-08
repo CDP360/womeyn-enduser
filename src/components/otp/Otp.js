@@ -61,7 +61,7 @@ function Otp() {
                 if (res?.data?.message == "OTP verification success") {
                     toast.success(res?.data?.message)
                     setTimeout(() => {
-                        router.push("/changepassword")
+                        router.push("/passwordcreate")
                     }, 1000)
                 }
                 else {

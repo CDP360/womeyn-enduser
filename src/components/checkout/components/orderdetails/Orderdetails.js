@@ -47,7 +47,7 @@ function Orderdetails({ state }) {
               Azhar
             </div>
 
-            {state.cartData.map((item, index) => {
+            {state?.cartData?.map((item, index) => {
               return (
                 <>
                   <div className={`mt-3 mb-4 ${styles.ordersectiondetailsorder}`}>
@@ -56,9 +56,9 @@ function Orderdetails({ state }) {
                         <div className={styles.orderimagebox}></div>
                       </div>
                       <div className={styles.gapsectiontext}>
-                        <div className={styles.ordertitlename}>{item.name.slice(0, 10)}</div>
-                        <div>Rs.{item.price}</div>
-                        <div>{item?.title?.slice(0, 15)}</div>
+                        {/* <div className={styles.ordertitlename}>{item.name.slice(0, 10)}</div> */}
+                        {/* <div>Rs.{item.price}</div> */}
+                        {/* <div>{item?.title?.slice(0, 15)}</div> */}
                       </div>
                     </div>
                     <div className={styles.oneitems}>{1} Item(s)</div>

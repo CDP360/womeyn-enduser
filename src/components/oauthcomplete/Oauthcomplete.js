@@ -7,61 +7,28 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { useSession, signIn, signOut } from "next-auth/react"
 
 function Oauthcomplete() {
-
-
-
     const { data: session } = useSession();
     const history = useRouter();
-
     const { redirect } = history.query;
-    // useEffect(() => {
-    //     oAuthSuccessTokenStage().then((res) => {
-    //         console.log("kalaioath", res);
-    //         setTimeout(() => {
-    //             toast.success("Successfully Login!!");
-    //             router.push("/");
-    //         }, 1000);
-    //     }).catch((err) => {
-    //         console.log(err);
-    //         toast.error("Error Something!!");
-    //     })
-    // }, [])
-
-
     useEffect(() => {
         OauthSuccess().then(async (res) => {
             toast.success("Sucess!!!");
             localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token))
-            // try {
-            //     const result = await signIn("credentials", {
-            //         redirect: false,
-            //         email: res?.data?.user?.email,
-            //         password: res?.data?.user?.password
-            //     })
-            //     if (result.error) {
-            //         toast.error(result.error);
-            //     }
-
-            // }
-            // catch (err) {
-            //     console.log(err);
-            // }
-            // setTimeout(() => {
-            //     router.push("/");
-            // }, 1000)
+                const result = await signIn("google", {
+                    redirect: false,
+                    email:res?.data?.user?.email,
+                    password:res?.data?.user?.password || null
+                })
+                setTimeout(() => {
+                    router.push("/");
+                }, 1000)
         }).catch((err) => {
             toast.error("Error !! code!!")
             console.log(err)
         })
     }, [])
 
-    useEffect(() => {
-        if (session?.user) {
-            history.push(redirect || "/")
-        }
-    }, [session])
-
-
+   
     return (
         <div className='d-flex align-content-center justify-content-center authsuccess'>
             <LoaderLogo />

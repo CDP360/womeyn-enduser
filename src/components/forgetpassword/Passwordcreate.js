@@ -11,15 +11,11 @@ import * as Yup from 'yup';
 import eye from '../../assests/login-logos/Eye.png';
 import eyeoff from '../../assests/login-logos/Eye Off.png';
 import { useState } from 'react';
-import { UserResetPassword } from '../../services/user-login-service/user-login-services';
+import { CreatePassword } from '../../services/user-login-service/user-login-services';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
-function Changepassword() {
+function Passwordcreate() {
     const router = useRouter();
-    const searchParams = useSearchParams();
-    const search = searchParams.get('token');
-    const data = router?.pathname.replace("/", "");
     const [matchcheck1, setMatchCheck1] = useState(false);
     const [matchcheck2, setMatchCheck2] = useState(false);
     const [matchcheck3, setMatchCheck3] = useState(false);
@@ -47,15 +43,19 @@ function Changepassword() {
         const userid = localStorage.getItem("womenUserid");
         const check = {
             password: data?.password,
+
         }
+
         var passwordRegex = /(?=^.{8,}$)(?=.{0,}[A-Z])(?=.{0,}[a-z])(?=.{0,}\W)(?=.{0,}\d)/g
+
         if (passwordRegex.test(check?.password)) {
             console.log("data", check)
             setMatchCheck1(true);
             setMatchCheck2(false);
-            UserResetPassword(search, check).then((res) => {
-                toast.success("Change Password Successfully");
+            CreatePassword(JSON.parse(userid), check).then((res) => {
+                toast.success("Create Password Successfully");
                 handlePushTerms();
+
             }).catch((err) => {
                 console.log(err);
             })
@@ -63,6 +63,10 @@ function Changepassword() {
         else {
             setMatchCheck2(true);
         }
+
+
+
+
         // if (check?.password?.match(/[a-z]/)) {
         //     console.log("matched type 1");
         //     setMatchCheck1(true);
@@ -84,15 +88,22 @@ function Changepassword() {
         //     setMatchCheck4(true);
 
         // }
+
+
+
+
+
     };
+
     const handlePushTerms = () => {
         setTimeout(() => {
             router.push("/login")
         }, 1000);
     }
-    useEffect(() => {
-    }, [matchcheck1, matchcheck2, matchcheck3, matchcheck4]);
 
+    useEffect(() => {
+
+    }, [matchcheck1, matchcheck2, matchcheck3, matchcheck4])
     return (
         <Fragment>
             <div className="mt-3">
@@ -100,7 +111,7 @@ function Changepassword() {
                     <div className={styles.insidesectionforget}>
                         <div className={styles.insideforgetsplit}>
                             <div className={styles.logintext}>
-                                Reset Password
+                                New Credentials 
                             </div>
                             <div>
                                 {matchcheck1 ? <div className='text-success'>
@@ -121,7 +132,7 @@ function Changepassword() {
 
                                     <div className={styles.passwordformsection}>
                                         <Form.Group className="mb-2" controlId="formBasicEmail">
-                                            <Form.Label>New Password</Form.Label>
+                                        <Form.Label>Password</Form.Label>
                                             <Form.Control type={show ? "text" : "password"} placeholder="User@gmail.com" className={styles.forms}
                                                 {...register('password', {
                                                     pattern: {
@@ -141,7 +152,7 @@ function Changepassword() {
                                     <div className='mt-4'>
                                         <div className={styles.passwordformsection}>
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                <Form.Label>Repeat New Password</Form.Label>
+                                        <Form.Label>Confirmpassword</Form.Label>
 
                                                 <Form.Control type={show1 ? "text" : "password"} placeholder="User@gmail.com" className={styles.forms}
                                                     {...register('confirmPwd')}
@@ -155,14 +166,14 @@ function Changepassword() {
                                         </div>
                                     </div>
                                     <button variant="primary" type="submit" className="loginbutton mt-4">
-                                        Reset Password
+                                        Submit
                                     </button>
 
                                 </Form>
 
-                                {/* <button variant="primary" type="submit" className="cancelbutton mt-4 mb-3">
+                                <button variant="primary" type="submit" className="cancelbutton mt-4 mb-3">
                                     Cancel
-                                </button> */}
+                                </button>
 
                                 {/* <div className='text-center mb-5 mt-5'>
                                 Already have an account?  <span className='active' onClick={() => router.push("/login")}>Sign up</span>
@@ -176,7 +187,7 @@ function Changepassword() {
     )
 }
 
-export default Changepassword;
+export default Passwordcreate;
 
 
 

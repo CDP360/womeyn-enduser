@@ -68,6 +68,7 @@
                 justify-content: space-between;
                 // padding-left:5%;
                 // padding-right:3%;
+                align-items:center;
                 .notifications {
                     width: 26px;
                     height: 26px;
@@ -83,27 +84,7 @@
             justify-content: space-between;
         }
 
-        // .womeynlogo {
-        //     width: 100%;
-        //     height: 26px;
-        //     cursor: pointer;
-        // }
-
-        // .notifications {
-        //     width: 22px;
-        //     height: 22px;
-        //     object-fit: contain;
-        //     cursor: pointer;
-        // }
-
-        // .carticons {
-        //     width: 18px;
-        //     height: 18px;
-        //     cursor: pointer;
-        // }
-        // .cursorpointor {
-        //     cursor: pointer;
-        // }
+     
         .arrowflex {
             display: flex;
             width: 100%;
@@ -143,6 +124,35 @@
             animation: bounds 3s linear infinite;
         }
     }
+    .headerprofile
+    {
+        // border:2px solid blue;
+        display:flex;
+        align-items:center;
+        gap:20px;
+        cursor:pointer;
+        .profileimageover
+        {
+            width:100%;
+            height:30px;
+            object-fit:contain;
+            cursor:pointer;
+        }
+        .logouttexts
+        {
+            font-weight:600;
+        }
+        
+    }
+    .profileimagesection
+    {
+        width:40px;
+        height:40px;
+        border:3px solid  #E95A5A;
+        border-radius:50%;
+        cursor:pointer;
+        animation:profile 5s infinite;
+    }
 }
 
 @keyframes bounds {
@@ -153,6 +163,16 @@
         transform: translateY(-2px);
     }
 }
+
+@keyframes profile {
+    // 50% {
+    //     transform: rotate(180deg);
+    // }
+    100% {
+        // transform: rotate(360deg);
+    }
+}
+
 
 .middleheadersection {
     // border: 2px solid blue;

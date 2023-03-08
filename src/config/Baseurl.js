@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 
 axios.interceptors.request.use(
     function (config) {
-        if (config.url.search("/seller/update-photo") !== -1) {
+        if (config.url.search("/customer/update-photo") !== -1) {
             const token = localStorage.getItem("womenUserToken");
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
             config.headers = {

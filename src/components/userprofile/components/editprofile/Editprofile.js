@@ -12,11 +12,9 @@ import { CreatePassword, UserProfileImageupload, UserProfileInformation } from '
 import { toast } from 'react-toastify';
 import congrtsimage from '../../../../assests/login-logos/congratusimage.png';
 function Editprofile({ move, user }) {
-
     const [imageshowmodel, setImageShowModel] = useState(true);
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const handleClose1 = () => setShow1(false);
@@ -29,7 +27,6 @@ function Editprofile({ move, user }) {
         setValue,
         formState: { errors },
     } = useForm();
-
     const onSubmit = (e) => {
         const datas = {
             firstName: e?.username,
@@ -50,8 +47,6 @@ function Editprofile({ move, user }) {
             console.log(err);
         })
     }
-
-
     const [image, setImage] = useState("");
     const [showuploadbutton, setShowUploadButton] = useState(false);
     const handleImagechange = (e) => {
@@ -63,46 +58,25 @@ function Editprofile({ move, user }) {
         const formDatas = new FormData();
         formDatas.append("upl", image);
         UserProfileImageupload(JSON.parse(userid), formDatas).then((res) => {
-            // toast.success("User Profile Image Upload Success",
-            //     {
-            //         position: "top-center",
-            //         autoClose: 5000,
-            //         hideProgressBar: false,
-            //         closeOnClick: true,
-            //         pauseOnHover: false,
-            //         draggable: true,
-            //         progress: undefined,
-            //         theme: "dark",
-            //     });
-            // setTimeout(() => {
             handleClose();
-            // }, 500);
-            setTimeout(()=>{
+            setTimeout(() => {
                 handleShow1();
-            },200)
+            }, 200)
         }).catch((err) => {
             console.log(err);
         })
     }
-
-
-    const confirmuploadprofileimage=()=>{
+    const confirmuploadprofileimage = () => {
         window.location.reload();
         handleClose1();
     }
-
-
     useEffect(() => {
-        console.log("89", user)
         setValue("username", user?.firstName);
-        // setValue("",user?.)
         setValue("gender", user?.gender);
         setValue("email", user?.email);
         setValue("phonenumber", user?.contactNumber);
 
     }, [user])
-
-
     return (
         <Fragment>
             <div className={styles.maineditprofile}>
@@ -116,7 +90,6 @@ function Editprofile({ move, user }) {
                                 width={"110px"}
                                 height={"110px"}
                                 style={{ borderRadius: "50%", cursor: "pointer" }}
-
                                 className={styles.editprofilesection}
                                 src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
                                 alt="profile-pic"
@@ -198,7 +171,7 @@ function Editprofile({ move, user }) {
                             />
                             {errors.phonenumber && <span className="active">{errors.phonenumber.message}</span>}
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        {/* <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Address</Form.Label>
                             <Form.Control type="text" placeholder="Enter Address" className='form-control-profile'
                                 {...register("address", {
@@ -210,7 +183,7 @@ function Editprofile({ move, user }) {
                                 })}
                             />
                         </Form.Group>
-                        {errors.address && <span className="active">{errors.address.message}</span>}
+                        {errors.address && <span className="active">{errors.address.message}</span>} */}
 
                         <div className="d-flex gap-4 mt-4 mb-3">
                             <Button className={["edit-btn", styles.editbutton]} onClick={() => move(false)} >Cancel</Button>
@@ -238,9 +211,6 @@ function Editprofile({ move, user }) {
                             <div className={styles.changepicturesize}>Change picture </div>
                         </div>
                         <div className="text-center">
-
-
-
 
                             {image ? <label htmlFor="upload-button">
                                 <>
@@ -299,18 +269,18 @@ function Editprofile({ move, user }) {
                         centered>
 
                         <Modal.Body>
-                        <div className={styles.cursors} onClick={handleClose1}>
-                            <ion-icon name="close-outline" size="large"></ion-icon>
-                        </div>
+                            <div className={styles.cursors} onClick={handleClose1}>
+                                <ion-icon name="close-outline" size="large"></ion-icon>
+                            </div>
                             <div className={styles.congratus}>
                                 <div className={styles.insidesectioncongratus}>
                                     <div className="mt-2 mb-3">
                                         <Image src={congrtsimage} alt="no image" className={styles.congratusimage} />
                                     </div>
-                                    <div  className="mt-2 mb-3">
-                                    <h1 className={styles.congratustext}>Congratulations!</h1>
+                                    <div className="mt-2 mb-3">
+                                        <h1 className={styles.congratustext}>Congratulations!</h1>
 
-                                        </div>
+                                    </div>
                                     <div className={styles.yourprofilehas}>
                                         Your profile has been Updated!
                                     </div>

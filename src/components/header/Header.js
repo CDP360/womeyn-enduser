@@ -22,7 +22,7 @@ import youtube from '../../assests/homepage-logos/youtubered.png';
 import instagram from '../../assests/homepage-logos/newinstagramfooter.png';
 import linkdin from '../../assests/homepage-logos/linkedinfooter.png';
 import twitter from '../../assests/homepage-logos/twitterfooter.png';
-
+import { toast } from 'react-toastify';
 function Header({ setdark, dark }) {
     const { state, dispatch } = useContext(ContextStore);
     const { cart } = state;
@@ -30,11 +30,17 @@ function Header({ setdark, dark }) {
     const states = useSelector(state => state);
     const { status, data: session } = useSession();
     const [showmega, setShowMega] = useState(false);
+    const [userimage, setUserImage] = useState("");
     const logoutHandler = async () => {
+        toast.success("Logout User Successgully");
         await signOut({ callbackUrl: "/" });
+        localStorage.removeItem("womenUserid");
+        localStorage.removeItem("womenUserToken");
+        localStorage.removeItem("womenProfile");
+
     };
     const userProfile = () => {
-        router.push("/women/profile")
+        router.push("/profile")
     }
     const Login = () => {
         router.push("/login");
@@ -107,6 +113,11 @@ function Header({ setdark, dark }) {
             name: "Jacket | Overcoats"
         }
     ]
+
+    useEffect(() => {
+        // const image = localStorage.getItem("womenProfile" || undefined);
+        // setUserImage(JSON.parse(image));
+    }, [userimage])
     return (
         <Fragment>
             <div className={styles.mainheadersection}>
@@ -142,19 +153,63 @@ function Header({ setdark, dark }) {
                             </div>
                             <div className="dropdown">
                                 <div>
+
+                                    {/* {userimage ? <>
+                                        <img
+
+                                            className={styles.profileimagesection}
+                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${userimage}`}
+                                            alt="profile-pic"
+                                        />
+                                    </> : <>
+                                        <Image src={profile} alt="no image" className={styles.notifications} />
+
+                                    </>} */}
                                     <Image src={profile} alt="no image" className={styles.notifications} />
+
                                 </div>
                                 <div>
                                     {status === "loading" && "Loading....."}
                                 </div>
-                                <div className="dropdowncontent">
-                                    <div>
-                                        Create account / LogIn
-                                        <button className='active mt-3 loginbuttonhome' onClick={Login}>
-                                            LogIn/SignUp
-                                        </button>
-                                    </div>
-                                </div>
+
+                                {session?.user?.email ?
+                                    <>
+
+
+                                        <div className="dropdowncontent">
+                                            <div className={styles.headerprofile} onClick={userProfile}>
+                                                <div>
+                                                    <Image src={myprofile} alt="no image" className={styles.profileimageover} />
+                                                </div>
+                                                <div className={styles.logouttexts}>
+                                                    My Profile
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div className={styles.headerprofile} onClick={logoutHandler}>
+                                                <div>
+                                                    <Image src={logout} alt="no image" className={styles.profileimageover} />
+
+
+                                                </div>
+                                                <div className={styles.logouttexts}>
+                                                    Logout
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </> : <div className="dropdowncontent">
+                                        <div>
+                                            Create account / LogIn
+                                            <button className='active mt-3 loginbuttonhome' onClick={Login}>
+                                                LogIn/SignUp
+                                            </button>
+                                        </div>
+
+
+                                    </div>}
                             </div>
                         </div>
                     </div>

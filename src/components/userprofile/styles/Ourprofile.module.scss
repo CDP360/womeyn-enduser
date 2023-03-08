@@ -66,6 +66,10 @@
                     color: grey;
                     font-weight: 500;
                     font-size: 1.2rem;
+                    @include xsBreakPoint
+                    {
+                        font-size:0.988rem;
+                    }
                 }
             }
             .activecode {
@@ -76,6 +80,10 @@
                 font-weight: 600;
                 @include themed() {
                     background: t($card);
+                }
+                @include xsBreakPoint
+                {
+                    font-size:0.889rem;
                 }
             }
         }
