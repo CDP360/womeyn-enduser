@@ -45,9 +45,7 @@ function Passwordcreate() {
             password: data?.password,
 
         }
-
         var passwordRegex = /(?=^.{8,}$)(?=.{0,}[A-Z])(?=.{0,}[a-z])(?=.{0,}\W)(?=.{0,}\d)/g
-
         if (passwordRegex.test(check?.password)) {
             console.log("data", check)
             setMatchCheck1(true);
@@ -63,9 +61,6 @@ function Passwordcreate() {
         else {
             setMatchCheck2(true);
         }
-
-
-
 
         // if (check?.password?.match(/[a-z]/)) {
         //     console.log("matched type 1");
@@ -88,10 +83,6 @@ function Passwordcreate() {
         //     setMatchCheck4(true);
 
         // }
-
-
-
-
 
     };
 
