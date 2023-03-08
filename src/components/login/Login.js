@@ -42,15 +42,14 @@ function Login() {
                     history.push("/");
                 }, 500)
 
+                // await signIn("credentials", {
+                //     redirect: false,
+                //     email: email,
+                //     password: password,
+                //     token: res?.data?.tokens?.access?.token,
+                //     id: res?.data?.user?.id
 
-                await signIn("credentials", {
-                    redirect: false,
-                    email: email,
-                    password: password,
-                    token:res?.data?.tokens?.access?.token,
-                    id:res?.data?.user?.id
-        
-                });
+                // });
 
 
             }

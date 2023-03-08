@@ -33,7 +33,7 @@ function Header() {
     const [userimage, setUserImage] = useState("");
     const logoutHandler = async () => {
         toast.success("Logout User Successflly");
-        await signOut({ callbackUrl: "https://www.womeyn.cdp360.in/" });
+        // await signOut({ callbackUrl: "https://www.womeyn.cdp360.in/" });
         localStorage.removeItem("womenUserid");
         localStorage.removeItem("womenUserToken");
         localStorage.removeItem("womenProfile");
@@ -111,8 +111,9 @@ function Header() {
     ]
 
     useEffect(() => {
-        // const image = localStorage.getItem("womenProfile" || undefined);
-        // setUserImage(JSON.parse(image));
+        const image = localStorage.getItem("womenUserToken");
+        setUserImage(JSON.parse(image));
+        // console.log("kalaio",image)
     }, [userimage])
     return (
         <Fragment>
@@ -166,7 +167,7 @@ function Header() {
                                     {status === "loading" && "Loading....."}
                                 </div>
 
-                                {session?.user?.email ?
+                                {userimage ?
                                     <>
                                         <div className="dropdowncontent">
                                             <div className={styles.headerprofile} onClick={userProfile}>

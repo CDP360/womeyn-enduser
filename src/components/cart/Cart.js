@@ -18,11 +18,15 @@ function Cart() {
   const [price, setPrice] = useState(0);
   const [deleteselect, setDeleteselect] = useState("");
   const [showlocal, setLocalData] = useState([]);
+
+  const [tokes,setTokens]=useState("");
   // const state = useSelector((state) => state.cart.cartitems);
   useEffect(() => {
     setLocalData(state);
     TotalPrice();
-  }, [price])
+    const checktoken=localStorage.getItem("womenUserToken");
+    setTokens(JSON.parse(checktoken));
+  }, [price,tokes])
 
   const TotalPrice = () => {
     let price = 0;
@@ -212,7 +216,10 @@ function Cart() {
                   <div className={styles.shoppingsummary}>Rs. {price}</div>
                 </div>
                 <div className="mt-4">
+                  {tokes?
+                  <Button className={styles.checkoutbutton} onClick={() => router.push("/checkout")}>Checkout</Button>:
                   <Button className={styles.checkoutbutton} onClick={() => router.push("/login?redirect=/checkout")}>Checkout</Button>
+                  }
                 </div>
               </div>
 
