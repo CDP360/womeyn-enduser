@@ -16,7 +16,7 @@ function MobileHeader({ dark, setdark }) {
     const router = useRouter();
     const state = useSelector(state => state.cart.cartitems);
 
-    const { status, data: session } = useSession();
+    // const { status, data: session } = useSession();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -99,11 +99,7 @@ function MobileHeader({ dark, setdark }) {
                                 <div>
 
                                     <div>
-                                        {session?.user?.name ? <div onClick={logoutHandler} className={styles.cursorpointor}>
-                                            Logout
-                                        </div> : <div onClick={Login} className={styles.cursorpointor}>
-                                            Login
-                                        </div>}
+                                        {/* p */}
                                     </div>
                                 </div>
 

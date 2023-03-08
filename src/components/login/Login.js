@@ -14,14 +14,14 @@ import { GoogleOauth, Userlogin } from "../../services/user-login-service/user-l
 
 function Login() {
 
-    const { data: session } = useSession();
+    // const { data: session } = useSession();
     const history = useRouter();
-    const { redirect } = history.query;
-    useEffect(() => {
-        if (session?.user) {
-            history.push(redirect || "/")
-        }
-    }, [session])
+    // const { redirect } = history.query;
+    // useEffect(() => {
+    //     if (session?.user) {
+    //         history.push(redirect || "/")
+    //     }
+    // }, [session])
     const {
         register,
         handleSubmit,

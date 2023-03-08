@@ -15,7 +15,7 @@ import LoaderLogo from '../src/components/loaderlogo/LoaderLogo';
 function App({ Component, pageProps }) {
 
 
-  const [loading, setLoading] = useState(false);
+const [loading, setLoading] = useState(false);
 
 
   useEffect(() => {
@@ -44,20 +44,20 @@ function App({ Component, pageProps }) {
     <div>
       <div className='womeyn-enduser'>
         <StrictMode>
-          <SessionProvider session={pageProps.session}>
-            <StoreProviderContext>
-              <Provider store={store}>
-                <ToastContainer />
-                {loading ? <div className="blursectionhome">
-                  <LoaderLogo />
-                </div> :
-                  <>
-                    <Component {...pageProps} />
-                  </>}
+          {/* <SessionProvider session={pageProps.session}> */}
+          <StoreProviderContext>
+            <Provider store={store}>
+              <ToastContainer />
+              {loading ? <div className="blursectionhome">
+                <LoaderLogo />
+              </div> :
+                <>
+                  <Component {...pageProps} />
+                </>}
 
-              </Provider>
-            </StoreProviderContext>
-          </SessionProvider>
+            </Provider>
+          </StoreProviderContext>
+          {/* </SessionProvider> */}
         </StrictMode>
       </div >
     </div >

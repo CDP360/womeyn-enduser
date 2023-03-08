@@ -29,10 +29,10 @@ function Ourprofile() {
   const dispatch = useDispatch();
   useEffect(() => {
     const userid = localStorage.getItem("womenUserid");
-    console.log("userid",userid)
+    console.log("userid", userid)
     UserProfileInformation(JSON.parse(userid)).then((res) => {
       setUser(res?.data);
-      console.log("kalai",res?.data);
+      console.log("kalai", res?.data);
       localStorage.setItem("womenProfile", JSON.stringify(res?.data?.profileImageName));
     }).catch((err) => {
       console.log(err);

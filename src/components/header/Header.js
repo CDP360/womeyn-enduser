@@ -28,7 +28,7 @@ function Header() {
     const { cart } = state;
     const router = useRouter();
     const states = useSelector(state => state);
-    const { status, data: session } = useSession();
+    // const { status, data: session } = useSession();
     const [showmega, setShowMega] = useState(false);
     const [userimage, setUserImage] = useState("");
     const logoutHandler = async () => {
@@ -37,6 +37,10 @@ function Header() {
         localStorage.removeItem("womenUserid");
         localStorage.removeItem("womenUserToken");
         localStorage.removeItem("womenProfile");
+
+        setTimeout(()=>{
+            router.push("/login");
+        },1000)
 
     };
     const userProfile = () => {
