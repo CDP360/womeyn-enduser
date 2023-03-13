@@ -130,3 +130,29 @@
         cursor: pointer;
     }
 }
+
+
+
+.formsectioncommonlogin {
+    // border: 2px solid blue;
+    position: relative;
+    width: 100%;
+    @include xsBreakPoint {
+        width: 100% !important;
+    }
+    @include smBreakPoint {
+        width: 100% !important;
+    }
+    @include mdBreakPoint {
+        width: 100% !important;
+    }
+    @include lgBreakPoint {
+        width: 100%;
+    }
+    .passwordicons {
+        position: absolute;
+        top: 0;
+        right: 2%;
+        cursor: pointer;
+    }
+}

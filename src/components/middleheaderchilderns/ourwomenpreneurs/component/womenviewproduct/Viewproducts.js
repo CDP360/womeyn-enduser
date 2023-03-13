@@ -187,7 +187,11 @@ function Viewproducts({ id }) {
 
                         <div className={styles.leftproductview}>
                             <div className={styles.leftmainsectionslide}>
+                            {/* <div>
+                                    {indexs+1}/{data?.images?.length}
+                                    </div> */}
                                 <div className={styles.leftcardimages}>
+                                    
                                     <div className={styles.imagerowsection}>
                                         {data?.images?.map((items, index) => {
                                             return (
@@ -280,7 +284,7 @@ function Viewproducts({ id }) {
                     </div>
 
                     <div className="mt-4">
-                        <div>
+                        <div className="mt-5">
                             Customer Reviews
                         </div>
                         <div>
@@ -327,9 +331,20 @@ function Viewproducts({ id }) {
                         </div>
                     </div>
 
+                    <div className={styles.viewsection}>
+                  <div>
+                  View all reviews 
+                  </div>
+                    <div className="mt-2">
+                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                    </div>
                 </div>
-
-
+                <div>
+                    <div>
+                    <Caroselproducts />
+                </div>
+                    </div>
             </div>
         </Fragment>
     )

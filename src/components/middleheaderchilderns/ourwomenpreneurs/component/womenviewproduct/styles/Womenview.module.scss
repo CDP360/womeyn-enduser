@@ -33,16 +33,31 @@
             @include xsBreakPoint {
                 flex-direction: column;
             }
+            @include smBreakPoint {
+                flex-direction: column;
+            }
+            @include mdBreakPoint {
+                flex-direction: column;
+            }
             .leftproductview {
                 width: 65%;
                 @include xsBreakPoint {
+                    width: 100%;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                }
+                @include mdBreakPoint {
                     width: 100%;
                 }
                 .leftmainsectionslide {
                     width: 100%;
                     display: flex;
                     @include xsBreakPoint {
-                        flex-direction: column;
+                        flex-direction: column-reverse;
+                    }
+                    @include smBreakPoint {
+                        flex-direction: column-reverse;
                     }
                     .leftcardimages {
                         width: 25%;
@@ -55,7 +70,23 @@
                         scrollbar-width: none;
                         @include xsBreakPoint {
                             width: 100%;
+                            overflow-x:auto;
+                            overflow-x:hidden;
                             // display:flex;
+                            height:auto;
+                            -ms-overflow-style: none;
+                            scrollbar-width: none;
+                        }
+                        @include smBreakPoint {
+                            width: auto;
+                            overflow-x:auto;
+                            overflow-x:hidden;
+                            // display:flex;
+                            height:auto;
+                            -ms-overflow-style: none;
+                            scrollbar-width: none;
+                            border:2px solid blue;
+
                         }
                         .imagerowsection {
                             // border:5px solid blue;
@@ -65,9 +96,19 @@
                             align-items: center;
                             @include xsBreakPoint {
                                 display: flex !important;
-                                border: 5px solid orange;
+                                flex-direction:row !important;
                                 gap: 10px;
-                                width: 100%;
+                               overflow-x:auto;
+                               -ms-overflow-style: none;
+                               scrollbar-width: none;
+                            }
+                            @include smBreakPoint {
+                                display: flex !important;
+                                flex-direction:row !important;
+                                gap: 10px;
+                               overflow-x:auto;
+                               -ms-overflow-style: none;
+                               scrollbar-width: none;
                             }
                         }
                         .borderimages {
@@ -80,6 +121,11 @@
                                 width: 40%;
                                 // flex-direction:row;
                                 // border:4px solid blue;
+                            }
+                            @include smBreakPoint {
+                                display: flex;
+                                width: 100%;
+                                // flex-direction:row;
                             }
                         }
                         .activewomen {
@@ -112,6 +158,12 @@
                         position: relative;
 
                         @include xsBreakPoint {
+                            width: 100%;
+                        }
+                        @include smBreakPoint {
+                            width: 100%;
+                        }
+                        @include mdBreakPoint {
                             width: 100%;
                         }
 
@@ -150,6 +202,15 @@
                 width: 35%;
                 // border: 2px solid blue;
                 padding: 0px 20px;
+                @include xsBreakPoint {
+                    width: 100%;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                }
+                @include mdBreakPoint {
+                    width: 100%;
+                }
                 .rigthcontenttexts {
                     font-size: 1.4rem;
                 }
@@ -196,6 +257,9 @@
                         display: flex;
                         gap: 23px;
                         padding-top: 2%;
+                        @include xsBreakPoint {
+                            gap: 8px;
+                        }
 
                         @include lgBreakPoint {
                             gap: 8px;
@@ -214,7 +278,7 @@
                             justify-content: center;
                             cursor: pointer;
                             padding: 15px;
-                            font-weight: 600;
+                            font-weight: 550;
                             @include lgBreakPoint {
                                 font-weight: 500;
                             }
@@ -228,7 +292,7 @@
                             justify-content: center;
                             cursor: pointer;
                             padding: 15px;
-                            font-weight: 600;
+                            font-weight: 550;
                             background: #e95a5a;
                             color: white;
                             @include lgBreakPoint {
@@ -254,6 +318,15 @@
                     border-radius: 10px;
                     width: 80%;
                     padding: 10px;
+                    @include xsBreakPoint {
+                        width: 100%;
+                    }
+                    @include smBreakPoint {
+                        width: 100%;
+                    }
+                    @include mdBreakPoint {
+                        width: 50%;
+                    }
                     @include lgBreakPoint {
                         width: 100%;
                     }
@@ -269,6 +342,15 @@
 
                     border-radius: 10px;
                     color: white;
+                    @include xsBreakPoint {
+                        width: 100%;
+                    }
+                    @include smBreakPoint {
+                        width: 100%;
+                    }
+                    @include mdBreakPoint {
+                        width: 50%;
+                    }
                     @include lgBreakPoint {
                         width: 100%;
                     }
@@ -287,6 +369,28 @@
                 // border:2px solid red;
                 border-bottom: 1px solid #f5f5f5;
                 padding: 10px 0px;
+                @include xsBreakPoint
+                {
+                    flex-direction:column;
+                    gap:30px;
+                padding: 15px 0px;
+
+                }
+                @include smBreakPoint
+                {
+                    // flex-direction:column;
+                    gap:10px;
+                padding: 15px 0px;
+
+                }
+                @include mdBreakPoint
+                {
+                    // flex-direction:column;
+                    gap:15px;
+                padding: 15px 0px;
+                margin-top:2%;
+
+                }
                 .leftcustomers {
                     width: 85%;
                     display: flex;
@@ -294,7 +398,31 @@
                     gap: 10px;
                     .soaps {
                         width: 70%;
+                        @include xsBreakPoint
+                        {
+                            width:100%;
+                        }
+                        @include smBreakPoint
+                        {
+                            width:100%;
+                        }
+                        @include mdBreakPoint
+                        {
+                            width:100%;
+                        }
                     }
+                     @include xsBreakPoint
+                {
+                  width:100%
+                }
+                @include smBreakPoint
+                {
+                  width:100%
+                }
+                @include mdBreakPoint
+                {
+                  width:100%
+                }
                 }
                 .rightcustomers {
                     width: 15%;
@@ -304,11 +432,38 @@
                     // border:2px solid blue;
                     height: 35px;
                     // justify-content:flex-end;
+                    @include xsBreakPoint
+                    {
+                        width:100%;
+                        display:flex;
+                        justify-content:flex-start;
+                    }
+                    @include smBreakPoint
+                    {
+                        width:50%;
+                        display:flex;
+                        justify-content:flex-start;
+                    }
+                    @include mdBreakPoint
+                    {
+                        width:25%;
+                        display:flex;
+                        justify-content:flex-start;
+                    }
                     .largeellips {
                         cursor: pointer;
                     }
                 }
             }
+        }
+        .viewsection
+        {
+            display:flex;
+            // border:2px solid blue;
+            align-items:center;
+            // justify-content:center;
+            gap:10px;
+            cursor:pointer;
         }
     }
 }

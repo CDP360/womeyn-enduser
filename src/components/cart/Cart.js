@@ -167,9 +167,9 @@ function Cart() {
                                   +
                                 </div>
                               </div>
-                              <div>
+                              {/* <div>
                                 <button onClick={() => handleDelete(item)}>delete</button>
-                              </div>
+                              </div> */}
                             </div>
 
                             {/* <button onClick={() => handleDelete(item.id)}>delete</button> */}

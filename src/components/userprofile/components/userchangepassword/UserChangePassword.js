@@ -136,7 +136,7 @@ function UserChangePassword() {
                                         <Form.Group className="mb-2" controlId="formBasicEmail">
                                             <Form.Label>Old Password</Form.Label>
                                             <div className={"formsectioncommon"}>
-                                                <Form.Control type={show1 ? "text" : "password"} placeholder="" className={styles.forms}
+                                                <Form.Control type={show1 ? "text" : "password"} placeholder="Old Password" className={styles.forms}
                                                     {...register('oldPassword', {
                                                         pattern: {
                                                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -157,7 +157,7 @@ function UserChangePassword() {
                                         <Form.Group className="mb-2" controlId="formBasicEmail">
                                             <Form.Label>New Password</Form.Label>
                                             <div className={"formsectioncommon"}>
-                                                <Form.Control type={show2 ? "text" : "password"} placeholder="" className={styles.forms}
+                                                <Form.Control type={show2 ? "text" : "password"} placeholder="New Password" className={styles.forms}
                                                     {...register('newPassword', {
                                                         pattern: {
                                                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -179,7 +179,7 @@ function UserChangePassword() {
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label>Confirm New Password</Form.Label>
                                                 <div className={"formsectioncommon"}>
-                                                    <Form.Control type={show3 ? "text" : "password"} placeholder="" className={styles.forms}
+                                                    <Form.Control type={show3 ? "text" : "password"} placeholder="Confirm New Password" className={styles.forms}
                                                         {...register('confirmNewPassword')}
 
                                                     />

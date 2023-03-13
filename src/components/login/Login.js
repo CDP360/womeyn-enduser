@@ -11,10 +11,13 @@ import { toast } from 'react-toastify';
 import { LoginText } from "../../consttext/Loginconst";
 import { GoogleOauth, Userlogin } from "../../services/user-login-service/user-login-services";
 
-
+import eye from '../../assests/login-logos/Eye.png';
+import eyeoff from '../../assests/login-logos/Eye Off.png';
 function Login() {
 
     // const { data: session } = useSession();
+    const [show1, setShow1] = useState(false);
+
     const history = useRouter();
     // const { redirect } = history.query;
     // useEffect(() => {
@@ -140,22 +143,28 @@ today = mm + '/' + dd + '/' + yyyy;
                                     />
                                     {errors.email && <span className="active">{errors.email.message}</span>}
                                 </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicPassword">
-                                    <Form.Control
-                                        type="password"
-                                        placeholder="Password"
-                                        className={styles.forms}
-                                        {...register("password", {
-                                            required: "Please enter password",
-                                            minLength: {
-                                                value: 6,
-                                                message: "Password is more than 5 charactor"
-                                            },
-                                        })}
+                                <div className={styles.passwordformsection}>
+                                        <Form.Group className="mb-2" controlId="formBasicEmail">
+                                   
+                                            <div className={"formsectioncommonlogin"}>
+                                                <Form.Control type={show1 ? "text" : "password"} placeholder="Password" className={styles.forms}
+                                                    {...register("password", {
+                                                        required: "Please enter password",
+                                                        minLength: {
+                                                            value: 6,
+                                                            message: "Password is more than 5 charactor"
+                                                        },
+                                                    })}
+                                                />
+                                                <div className={"passwordicons"}>
+                                                    {show1 ? <div className='mt-2' onClick={() => setShow1(!show1)}><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow1(!show1)}><Image src={eyeoff} alt="no image" /></div>}
+                                                </div>
+                                            </div>
+                                            {errors.password && <span className="active">{errors.password.message}</span>}
+                                        </Form.Group>
 
-                                    />
-                                    {errors.password && <span className="active">{errors.password.message}</span>}
-                                </Form.Group>
+                                    </div>
+                               
 
                                 <div className={styles.forgetpassword} onClick={handlePushForgetpassword}>{LoginText?.Forgotpassword}</div>
                                 <Button className="loginbutton" type="submit">
