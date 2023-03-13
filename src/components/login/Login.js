@@ -35,7 +35,17 @@ function Login() {
         }
         Userlogin(datas).then(async (res) => {
             if (res) {
-                toast.success("User Login Success");
+                var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = mm + '/' + dd + '/' + yyyy;
+                console.log(res?.data, "kalai")
+                localStorage.setItem('womenUserids', JSON.stringify({
+                    time: today,
+                    data: "your some data"
+                }));
                 localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
                 localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
                 setTimeout(() => {
@@ -43,41 +53,24 @@ function Login() {
                 }, 500)
             }
             else {
-                toast.error("Incorrect email or password");
+                toast.error("Incorrect email or password",
+                    {
+                        position: "top-center",
+                        autoClose: 3300,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
             }
         }).catch((err) => {
             console.log(err);
         })
 
-        // try {
-        //     const result = await signIn("credentials", {
-        //         redirect: false,
-        //         email: email,
-        //         password: password
-        //     })
-        //     if (result.error === null) {
-        //         // Redirect to home or welcome page
-        //         const { user } = await getSession();
-        //         if (redir) {
-        //             const check = user?.isNewUser ? "/" : "/login";
-        //             history.push(check);
-        //         } else {
-
-        //             history.push("/login");
-        //         }
-        //     } else {
-        //         setError("NOT USERS");
-        //     }
-        //     if (result.error) {
-        //         toast.error(result.error);
-        //     }
-        // }
-        // catch (err) {
-        //     console.log(err);
-        // }
-
     };
-
     const handlePushForgetpassword = () => {
         history.push("/forgetpassword")
     }
@@ -98,6 +91,15 @@ function Login() {
             "_self", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=600,height=600"
         );
     }
+
+    useEffect(() => {
+        const EXPIRE_TIME = 1000 * 60 * 60;
+
+        console.log("ex",EXPIRE_TIME)
+        setTimeout(()=> {
+            localStorage.removeItem('womenUserids');
+        }, EXPIRE_TIME);
+    }, [])
     return (
         <Fragment>
 

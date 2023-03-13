@@ -59,7 +59,7 @@ function Forgetpassword() {
                             <div>
                                 <Form onSubmit={handleSubmit(onSubmit)}>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Control type="email" placeholder="User@gmail.com" className={styles.forms}
+                                        <Form.Control type="email" placeholder="Enter Your Email" className={styles.forms}
 
                                             {...register("email", {
                                                 required: "Please enter your registered email",

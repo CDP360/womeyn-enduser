@@ -95,6 +95,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            height:auto;
+            border:2px solid orange !important;
         }
         @include lgBreakPoint {
             width: 24.5% !important;

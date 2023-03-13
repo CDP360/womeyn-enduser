@@ -12,6 +12,7 @@ import Cookies from 'js-cookie';
 import { SessionProvider } from "next-auth/react";
 import { StoreProviderContext } from '../src/Redux/store/Contextstore';
 import LoaderLogo from '../src/components/loaderlogo/LoaderLogo';
+import Errorboundary from '../src/components/errorboundary/Errorboundary';
 function App({ Component, pageProps }) {
 
 
@@ -46,6 +47,7 @@ const [loading, setLoading] = useState(false);
         <StrictMode>
           {/* <SessionProvider session={pageProps.session}> */}
           <StoreProviderContext>
+            <Errorboundary>
             <Provider store={store}>
               <ToastContainer />
               {loading ? <div className="blursectionhome">
@@ -56,6 +58,7 @@ const [loading, setLoading] = useState(false);
                 </>}
 
             </Provider>
+            </Errorboundary>
           </StoreProviderContext>
           {/* </SessionProvider> */}
         </StrictMode>

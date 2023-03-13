@@ -67,7 +67,7 @@ function AllCategoryCard({ products, stars }) {
             <Slider {...settings}>
                 {products.map((item, index) => {
                     return (
-                        <div className={styles.cardcategory}>
+                        <div className={styles.cardcategory} key={index}>
                             <div className={styles.cardsections}>
                                 <div className="cards col-lg-12 mb-5" onClick={() => categoryPush(item?.productSlugName)}>
                                     <div>

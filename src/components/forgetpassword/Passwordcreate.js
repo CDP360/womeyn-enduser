@@ -124,7 +124,7 @@ function Passwordcreate() {
                                     <div className={styles.passwordformsection}>
                                         <Form.Group className="mb-2" controlId="formBasicEmail">
                                             <Form.Label>Password</Form.Label>
-                                            <Form.Control type={show ? "text" : "password"} placeholder="User@gmail.com" className={styles.forms}
+                                            <Form.Control type={show ? "text" : "password"} placeholder="" className={styles.forms}
                                                 {...register('password', {
                                                     pattern: {
                                                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -143,9 +143,9 @@ function Passwordcreate() {
                                     <div className='mt-4'>
                                         <div className={styles.passwordformsection}>
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                <Form.Label>Confirmpassword</Form.Label>
+                                                <Form.Label>Confirm Password</Form.Label>
 
-                                                <Form.Control type={show1 ? "text" : "password"} placeholder="User@gmail.com" className={styles.forms}
+                                                <Form.Control type={show1 ? "text" : "password"} placeholder="" className={styles.forms}
                                                     {...register('confirmPwd')}
 
                                                 />

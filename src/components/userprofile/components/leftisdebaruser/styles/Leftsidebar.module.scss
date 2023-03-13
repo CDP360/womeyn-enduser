@@ -93,6 +93,15 @@
             font-size: 1.2rem;
             font-weight: 590;
         }
+      
+    }
+    .transactionlistflex
+    {
+        // border:2px solid red;
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        padding-top:5%;
     }
     .gapsectiondropdown {
         display: flex;

@@ -2,7 +2,20 @@
 
 
 
-
+.skeltons
+{
+    width:100%;
+    cursor:pointer;
+    height:200px;
+    @include mdBreakPoint
+    {
+        width: 100%;
+    }
+    @include lgBreakPoint
+    {
+        width: 100%;
+    }
+}
 
 .arrowsizefix
 {

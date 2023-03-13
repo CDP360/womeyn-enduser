@@ -37,10 +37,9 @@ function Header() {
         localStorage.removeItem("womenUserid");
         localStorage.removeItem("womenUserToken");
         localStorage.removeItem("womenProfile");
-
-        setTimeout(()=>{
+        setTimeout(() => {
             router.push("/login");
-        },1000)
+        }, 1000)
 
     };
     const userProfile = () => {
@@ -117,7 +116,6 @@ function Header() {
     useEffect(() => {
         const image = localStorage.getItem("womenUserToken");
         setUserImage(JSON.parse(image));
-        // console.log("kalaio",image)
     }, [userimage])
     return (
         <Fragment>
@@ -138,6 +136,8 @@ function Header() {
                             </div>
                         </div>
                         <div className={styles.rightlogo}>
+                           <div className={styles.insiderightlogos}>
+                       
                             <div className={styles.falight} onClick={notificationsPush}>
                                 <Image src={notifications} alt="no image" className={styles.notifications} />
                             </div>
@@ -153,24 +153,13 @@ function Header() {
                                 </div>
                             </div>
                             <div className="dropdown">
-                                <div>
-                                    {/* {userimage ? <>
-                                        <img
-
-                                            className={styles.profileimagesection}
-                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${userimage}`}
-                                            alt="profile-pic"
-                                        />
-                                    </> : <>
-                                        <Image src={profile} alt="no image" className={styles.notifications} />
-
-                                    </>} */}
-                                    <Image src={profile} alt="no image" className={styles.notifications} />
+                                <div className={styles.logintextsize}>
+                                    {userimage?<>
+                                        <Image src={profile} alt="no image" className={styles.notificationsprofile} />
+                                    
+                                    </>:<>Login</>}
                                 </div>
-                                <div>
-                                    {status === "loading" && "Loading....."}
-                                </div>
-
+                               
                                 {userimage ?
                                     <>
                                         <div className="dropdowncontent">
@@ -192,9 +181,6 @@ function Header() {
                                                 </div>
                                             </div>
                                         </div>
-
-
-
                                     </> : <div className="dropdowncontent">
                                         <div>
                                             Create account / LogIn
@@ -202,10 +188,11 @@ function Header() {
                                                 LogIn/SignUp
                                             </button>
                                         </div>
-
-
                                     </div>}
                             </div>
+                            
+                           </div>
+
                         </div>
                     </div>
 
@@ -219,11 +206,11 @@ function Header() {
                     <div className={router.pathname == "/explore" ? "active" : "nav-link"}>
                         <ul className="dropdownmegamain">
                             <li>
-                                <a href="#">
-                                    <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} />
+                                <a>
+                                    {/* <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} /> */}
                                     <span className='ms-2'>Explore</span>
                                 </a>
-                                <ul class="dropdownmega">
+                                <ul className="dropdownmega">
                                     <div>
                                         <li><a className="kalais">Fashion & Lifestyle</a></li>
                                     </div>
@@ -238,7 +225,7 @@ function Header() {
                                         <a>
                                             <div className={styles.socailfootersection}>
                                                 <div className={styles.footeremptysocialsection}>
-                                                    <Image src={youtube} alt="no image" className={styles.footersocialicons} />
+                                                    <Image src={youtube} alt="no image"  className={styles.footersocialicons} />
                                                 </div>
                                                 <div className={styles.footeremptysocialsection}>
                                                     <Image src={linkdin} alt="no image" className={styles.footersocialicons} />
@@ -261,27 +248,27 @@ function Header() {
                             </li>
                         </ul>
                     </div>
-                    <div className={styles.bordercolors}>
+                    {/* <div className={styles.bordercolors}>
                         |
-                    </div>
+                    </div> */}
                     <div className={router.pathname == "/womenpreneurs" ? "active" : ""}>
                         <Link href="/womenpreneurs" className='nav-link'>
-                            <span className='ms-2'>Our womenpreneurs</span>
+                            <span className='ms-2'>Our WomenPreneurs</span>
                         </Link>
                     </div>
                     <div className={router.pathname == "/events" ? "active" : ""}>
                         <Link href="/events" className='nav-link'>
-                            <span className='ms-2'>Events & updates</span>
+                            <span className='ms-2'>Events & Updates</span>
                         </Link>
                     </div>
                     <div className={router.pathname == "/abouts" ? "active" : ""}>
                         <Link href="/abouts" className='nav-link'>
-                            <span className='ms-2'></span> About us
+                            <span className='ms-2'></span> About Us
                         </Link>
                     </div>
                     <div className={router.pathname == "/getintouch" ? "active" : ""}>
                         <Link href="/getintouch" className='nav-link'>
-                            <span className='ms-2'>Get in touch</span>
+                            <span className='ms-2'>Get In Touch</span>
                         </Link>
                     </div>
                 </div>

@@ -15,6 +15,11 @@
         box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
         border-radius: 8px;
         cursor: pointer;
+        @include mdBreakPoint {
+            // height:auto;
+            // border:2px solid red;
+            height: 290px;
+        }
     }
     .sellerimagesize {
         width: 100%;
@@ -66,9 +71,8 @@
 
 .slick-slide,
 .cardcategory {
-    margin: 15px 7px !important;
+    margin: 2px 6px !important;
 }
 .slick-slide {
     margin: 0 -10px !important;
 }
-

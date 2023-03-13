@@ -9,12 +9,12 @@ import Categorycarouse from './categoryslidecarousel/Categorycarouse';
 import Select from 'react-select';
 import serachicon from '../../assests/homepage-logos/serachicon.png';
 
-function Categorys() {
+function Categorys({id}) {
   const [selectname, selectedOption] = useState(null);
   const [searchname, setSearchName] = useState('');
 
   useEffect(() => {
-  }, [])
+  }, [id])
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -42,7 +42,7 @@ const GetSearchdata=()=>{
         </div>
         <div className={styles.insidecategorysection}>
           <div className='mb-3 mt-2'>
-            Categorys / health
+            Categorys / health 
           </div>
           <div>
             <Categorycarouse />
@@ -74,7 +74,7 @@ const GetSearchdata=()=>{
               <Sidebarcateogrys />
             </div>
             <div className={styles.rightcategory}>
-              <Maincategorylist />
+              <Maincategorylist name={id}/>
             </div>
           </div>
         </div>

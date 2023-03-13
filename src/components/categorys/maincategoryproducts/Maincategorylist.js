@@ -24,27 +24,30 @@ import leftarrow from '../../../assests/category-logos/rightcategoryarrow.png';
 import Image from 'next/image';
 
 import styles from './styles/Maincategory.module.scss';
-function Maincategorylist() {
+import { ProductCatgorylist } from '../../../services/category-services/category-service';
+function Maincategorylist({ name }) {
     const [product, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [perPage, setPerPage] = useState(10);
     const [size, setSize] = useState(perPage);
     const [current, setCurrent] = useState(1);
-    const PerPageChange = (value) => {
-        setSize(value);
-        const newPerPage = Math.ceil(datas.length / value);
-        if (current > newPerPage) {
-            setCurrent(newPerPage);
-        }
-    }
-    const getData = (current, pageSize) => {
-        // Normally you should get the data from the server
-        return product.slice((current - 1) * pageSize, current * pageSize);
-    };
-    const PaginationChange = (page, pageSize) => {
-        setCurrent(page);
-        setSize(pageSize)
-    }
+
+
+    // const PerPageChange = (value) => {
+    //     setSize(value);
+    //     const newPerPage = Math.ceil(datas.length / value);
+    //     if (current > newPerPage) {
+    //         setCurrent(newPerPage);
+    //     }
+    // }
+    // const getData = (current, pageSize) => {
+    //     // Normally you should get the data from the server
+    //     return product.slice((current - 1) * pageSize, current * pageSize);
+    // };
+    // const PaginationChange = (page, pageSize) => {
+    //     setCurrent(page);
+    //     setSize(pageSize)
+    // }
 
 
     const CartDataProduct = [
@@ -91,104 +94,40 @@ function Maincategorylist() {
             id: 10,
             name: "s7",
             image: c10
-        }, {
-            id: 11,
-            name: "s8",
-            image: c11
-        }, {
-            id: 12,
-            name: "s9",
-            image: c12
-        }, {
-            id: 13,
-            name: "s10",
-            image: c13
-        }, {
-            id: 14,
-            name: "s11",
-            image: c14
-        },
-        {
-            id: 15,
-            name: "s12",
-            image: c1,
-
-        },
-        {
-            id: 16,
-            name: "s13",
-            image: c2
-        },
-        {
-            id: 17,
-            name: "s14",
-            image: c3
-        }, {
-            id: 18,
-            name: "s15",
-            image: c4
-        }, {
-            id: 19,
-            name: "s16",
-            image: c5
-        }, {
-            id: 20,
-            name: "s17",
-            image: c6
-        }, {
-            id: 21,
-            name: "s18",
-            image: c7
-        }, {
-            id: 22,
-            name: "s19",
-            image: c8
-        }, {
-            id: 23,
-            name: "s20",
-            image: c9
-        }, {
-            id: 24,
-            name: "s21",
-            image: c10
-        }, {
-            id: 25,
-            name: "s22",
-            image: c11
-        }, {
-            id: 26,
-            name: "s23",
-            image: c12
-        }, {
-            id: 27,
-            name: "s24",
-            image: c13
-        }, {
-            id: 28,
-            name: "s25",
-            image: c14
-        },
+        }, 
 
     ]
     let componentrender = true;
     useEffect(() => {
-        const getproducts = async () => {
-            setLoading(true);
-            if (componentrender) {
-                setProducts(await CartDataProduct);
-                setLoading(false);
-            }
-            return () => {
-                componentrender = false;
-                setLoading(false);
+        // const getproducts = async () => {
+        //     setLoading(true);
+        //     if (componentrender) {
+        //         setProducts(await CartDataProduct);
+        //         setLoading(false);
+        //     }
+        //     return () => {
+        //         componentrender = false;
+        //         setLoading(false);
 
-            }
-        }
+        //     }
+        // }
+
         getproducts();
-    }, [])
 
+    }, [name])
 
-
+    const getproducts = () => {
+        setLoading(true);
+        ProductCatgorylist(name).then((res) => {
+            console.log("name", res?.data?.results);
+            setProducts(res?.data?.results);
+          setTimeout(()=>{
+            setLoading(false);
+          },300)
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
 
     const PrevNextArrow = (current, type, originalElement) => {
         if (type === 'prev') {
@@ -205,25 +144,40 @@ function Maincategorylist() {
     }
     return (
         <div>
-
-
             <div>
                 {loading ? <>
-                    Loading....
-                    <Skeleton count={product.length} />
+                    Loading...
+                 
                 </> : <div className='row justify-content-center gap-5'>
-                    {getData(current, size)?.map((item, index) => {
+                {/* Skeleton */}
+
+                   
+                  {product?.length===0 ? <>
+                  
+
+{CartDataProduct?.map((item,index)=>{
+    return(
+        <div key={index} className="col-lg-3 col-md-6 col-sm-6 col-xs-6 ">
+<Skeleton className={styles.skeltons}/>
+        </div>
+    )
+})}
+
+                  </>:<>
+                  
+                  {product?.map((item, index) => {
                         return (
                             <>
                                 <Categorycard item={item} />
                             </>
                         )
                     })}
+                  </>}
                 </div>}
             </div>
-
+           
             <div className='d-flex justify-content-center mt-4'>
-                <Pagination
+                {/* <Pagination
                     className="pagination-data"
                     onChange={PaginationChange}
                     total={product.length}
@@ -232,10 +186,7 @@ function Maincategorylist() {
                     showSizeChanger={false}
                     itemRender={PrevNextArrow}
                     onShowSizeChange={PerPageChange}
-                />
-
-
-
+                /> */}
             </div>
         </div>
     )

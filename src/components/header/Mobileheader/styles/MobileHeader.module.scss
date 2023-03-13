@@ -11,8 +11,8 @@
     padding-bottom: 2%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
         rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-        background-color: white;
-      
+    background-color: white;
+
     .mobileleftsection {
         width: 18%;
         display: flex;
@@ -22,7 +22,7 @@
             width: 50px;
             height: 50px;
             object-fit: contain;
-            cursor:pointer;
+            cursor: pointer;
         }
         @include smBreakPoint {
             width: 20%;
@@ -31,6 +31,7 @@
             width: 20%;
         }
     }
+
     .mobilerightsection {
         width: 15%;
         display: flex;
@@ -47,7 +48,6 @@
         @include mdBreakPoint {
             width: 20%;
         }
-        
     }
     .mobilemiddlesection {
         width: 67%;
@@ -70,5 +70,54 @@
             }
         }
     }
-    
+}
+.editprofilesection {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border: 3px solid #e95a5a;
+    border-radius: 50%;
+}
+
+.cartlogolength {
+    // border: 3px solid blue;
+    position: relative;
+    .cartlengthsection {
+        position: absolute;
+        top: -4px;
+        right: 0;
+        width: 22px;
+        height: 22px;
+        border: 2px solid #e95a5a;
+        background: #e95a5a;
+        display: flex;
+        color: white;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        animation: rounds 5s infinite;
+    }
+}
+
+@keyframes rounds {
+    50% {
+        transform: translateY(-2px);
+    }
+    100% {
+        transform: translateY(-2px);
+    }
+}
+
+.loginbuttons
+{
+    width:60%;
+    border-radius:10px;
+    cursor:pointer;
+    text-align:center;
+    color:white;
+    // padding:10px 40px;
+    padding:8px;
+    background:#E95A5A;
+    margin-left:5%;
+    margin-top:5%;
 }

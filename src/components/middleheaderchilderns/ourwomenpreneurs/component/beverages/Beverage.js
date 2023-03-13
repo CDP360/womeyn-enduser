@@ -15,112 +15,17 @@ import { useState } from 'react';
 import { ContextStore } from '../../../../../Redux/store/Contextstore';
 import { CART_SUCCESS } from '../../../../../Redux/types';
 import LoaderLogo from '../../../../loaderlogo/LoaderLogo';
-
-
-
-
-
 function Beverage({ productlist, loading }) {
-
-    
- 
-
-
     const { state, dispatch } = useContext(ContextStore)
-
     const router = useRouter();
-
     const Carthandleproduct = (data) => {
         dispatch({ type: "CART_SUCCESS", payload: data });
     }
-
-    const data = [
-        {
-            id: 1,
-            name: "Women Wellness Herbal I...",
-            title: "Beverages",
-            price: 110,
-            offer: "25% off",
-            image: i1,
-            star: star
-        },
-        {
-            id: 2,
-            name: "Date Palm Jaggery",
-            title: "Beverages",
-            price: 110,
-            offer: "25% off",
-            image: i2,
-            star: star
-
-        },
-        {
-            id: 3,
-            name: "Moringa Herbal Infusion",
-            title: "Beverages",
-            price: 75,
-            offer: "25% off",
-            image: i3,
-            star: star
-
-        },
-        {
-            id: 4,
-            name: "Turmeric Spiced Superfood",
-            title: "Beverages",
-            price: 200,
-            offer: "25% off",
-            image: i4,
-            star: star
-        },
-        {
-            id: 5,
-            name: "Women Wellness Herbal I kalai...",
-            title: "Beverages",
-            price: 110,
-            offer: "25% off",
-            image: i1,
-            star: star
-        },
-        {
-            id: 6,
-            name: "Date Palm Jaggeryjgdkfjgkdfjg",
-            title: "Beverages",
-            price: 110,
-            offer: "25% off",
-            image: i2,
-            star: star
-
-        },
-        {
-            id: 7,
-            name: "Moringa Herbal Infusionjgfdkjgkdfjd",
-            title: "Beverages",
-            price: 75,
-            offer: "25% off",
-            image: i3,
-            star: star
-
-        },
-        {
-            id: 8,
-            name: "Turmeric Spiced Superfooduyjirtjyhjfkhf",
-            title: "Beverages",
-            price: 200,
-            offer: "25% off",
-            image: i4,
-            star: star
-        }
-    ]
-
-
-
-   
     return (
         <Fragment>
             <div className={styles.mainbeveragesection}>
                 <div>
-                    {productlist?.length === 0 && <div>No Data Found!!!</div>}
+                    {productlist?.length == 0 && <div>No Data Found!!!</div>}
                 </div>
                 <div className='cardsection row mb-3 ms-1'>
                     {loading ? <>
@@ -131,11 +36,10 @@ function Beverage({ productlist, loading }) {
                                 <div className={styles.plussection}>
                                     <Image src={plus} alt="no image" className={styles.plus} onClick={() => Carthandleproduct(item)} />
                                 </div>
-                                <div onClick={() => router.push(`/womenpreneurs/product/view/${item?.name?.slice(0, 10)}`)}>
-                                    {/* <Image src={item?.image} alt="no image" className={styles.sellerimagesize} /> */}
+                                <div onClick={() => router.push(`/womenpreneurs/product/view/${item?.productSlugName}`)}>
                                     <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={styles.sellerimagesize} />
                                 </div>
-                                <div className={styles.cardinsidesection} onClick={() => router.push(`/womenpreneurs/product/view/${item?.name?.slice(0, 10)}`)}>
+                                <div className={styles.cardinsidesection} onClick={() => router.push(`/womenpreneurs/product/view/${item?.productSlugName}`)}>
                                     <Image src={star} alt="no image" className={styles.stars} />
                                     <div className={styles.brandname}>
                                         <span>{item?.productName}</span>

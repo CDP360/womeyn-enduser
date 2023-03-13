@@ -90,10 +90,10 @@
         width: 100%;
     }
     @include lgBreakPoint {
-        width: 40%;
+        width: 100%;
     }
     @include xlBreakPoint {
-        width: 40%;
+        width: 100%;
     }
 }
 
@@ -228,7 +228,7 @@
     color: #e95a5a;
     padding: 3px 0px;
     border-radius: 10px;
-    width: 60% !important;
+    width: 100px !important;
     text-align: center;
     font-weight: 600;
     font-size: 13px;

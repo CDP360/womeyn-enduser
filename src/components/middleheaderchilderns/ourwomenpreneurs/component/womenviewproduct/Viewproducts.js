@@ -13,11 +13,15 @@ import { Cartactions } from '../../../../../Redux/actions/cart/Cartdata';
 import Reviewsproduct from './Reviews/Reviewsproduct';
 import Caroselproducts from './carouselproducts/Caroselproducts';
 import { ContextStore } from '../../../../../Redux/store/Contextstore';
+import starstart from '../../../../../assests/category-logos/starstart.png';
+import starend from '../../../../../assests/category-logos/starend.png';
+
 
 function Viewproducts({ id }) {
-
     const { state, dispatch } = useContext(ContextStore);
     const [indexs, setIndex] = useState(0);
+    const [index1, setIndex1] = useState(0);
+
     const datas = {
         id: 1,
         image: "image.jpb",
@@ -25,7 +29,6 @@ function Viewproducts({ id }) {
         title: "thala",
         price: 100,
     }
-
 
     const router = useRouter();
     const data =
@@ -52,9 +55,35 @@ function Viewproducts({ id }) {
         dispatch({ type: "CART_SUCCESS", payload: cartdata });
 
     }
+
+
+    const sizes = [
+
+        {
+            id: 1,
+            name: "M"
+        },
+        {
+            id: 1,
+            name: "S"
+        },
+        {
+            id: 1,
+            name: "XL"
+        },
+        {
+            id: 1,
+            name: "XXL"
+        },
+        {
+            id: 1,
+            name: "XXXL"
+        }
+
+    ]
     return (
         <Fragment>
-            <div className={styles.mainsearchwomen}>
+            {/* <div className={styles.mainsearchwomen}>
                 <div className={styles.emptyboxsection}>
                 </div>
                 <div className={styles.emptyboxsectionleft}>
@@ -148,6 +177,159 @@ function Viewproducts({ id }) {
                 <div>
                     <Caroselproducts />
                 </div>
+            </div> */}
+
+            <div className={styles.mainproductviewscreen}>
+
+                <div className={styles.insideproductview}>
+
+                    <div className={styles.splitproductview}>
+
+                        <div className={styles.leftproductview}>
+                            <div className={styles.leftmainsectionslide}>
+                                <div className={styles.leftcardimages}>
+                                    <div className={styles.imagerowsection}>
+                                        {data?.images?.map((items, index) => {
+                                            return (
+                                                <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)}>
+                                                    <Image src={items} alt="no image" className={styles.imagecards} />
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                </div>
+                                <div className={styles.rightcardimagesshow}>
+                                    <div className={styles.leftwomensearchsection}>
+
+                                        <div>
+                                            <Image src={data?.images[indexs]} alt="no image" className={styles.serachlargeimage} />
+                                        </div>
+                                        <div className={styles.heartimagesection}>
+                                            <button className={styles.btn}>
+                                                <ion-icon name="heart-outline" size="large"></ion-icon></button>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div className={styles.rightproductview}>
+                            <div className={styles.rigthcontenttexts}>{id}</div>
+                            <div className={styles.starsection}>
+                                <div className={styles.starsections}>
+                                    <Image src={starstart} alt="no image" className={styles.stars} />
+                                    <Image src={starstart} alt="no image" className={styles.stars} />
+                                    <Image src={starstart} alt="no image" className={styles.stars} />
+                                    <Image src={starstart} alt="no image" className={styles.stars} />
+                                    <Image src={starend} alt="no image" className={styles.stars} />
+                                </div>
+                                <div>
+                                    712 Ratings
+                                </div>
+
+                            </div>
+                            <div className={styles.proceinproduct}>
+                                <div className={styles.offertext}>
+                                    70% off
+                                </div>
+                                <div className={styles.priceautual}>
+                                    <span className={styles.prices}>$1000</span>
+                                </div>
+                                <div className='textpricedashed' >
+                                    <del className={styles.priceautuals}> $1500</del>
+                                </div>
+                            </div>
+
+                            <div className="mt-2 mb-3">
+                                <div className={styles.fontweightsizes}>Size:</div>
+                                <div className={styles.sizesection}>
+                                    <div className={styles.sizes}>
+                                        {sizes.map((item, index) => {
+                                            return (
+                                                <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex1(index)}>
+                                                    {item?.name}
+
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className={styles.buttons}>
+                                <div>
+                                    <Button className={styles.bynowcartbutton} onClick={Checkout}>
+                                        Buy Now
+                                    </Button>
+                                </div>
+                                <div>
+                                    <Button className={styles.addcartbutton} onClick={() => handleChange(datas)}>
+                                        Add To Cart
+                                    </Button>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div className="mt-4">
+                        <div>
+                            Customer Reviews
+                        </div>
+                        <div>
+                            {sizes?.map((item, index) => {
+                                return (
+                                    <div className={styles.customerreviews}>
+                                        <div className={styles.insidecustomersviews}>
+                                            <div className={styles.leftcustomers}>
+                                                <div>
+
+                                                    Writija Chabria
+                                                </div>
+                                                <div>
+                                                    <Image src={starstart} alt="no image" className={styles.stars} />
+                                                    <Image src={starstart} alt="no image" className={styles.stars} />
+                                                    <Image src={starstart} alt="no image" className={styles.stars} />
+                                                    <Image src={starstart} alt="no image" className={styles.stars} />
+                                                    <Image src={starend} alt="no image" className={styles.stars} />
+
+                                                </div>
+
+                                                <div>
+                                                    Freaking amazing
+                                                </div>
+
+                                                <div className={styles.soaps}>
+
+                                                    Soap is nice I mean the smell is great just like lemongrass. I m love in it but only for the smell it's expensive and its only 100g product...and packaging wow superb like it Smell ??
+                                                </div>
+                                            </div>
+                                            <div className={styles.rightcustomers}>
+                                                <div>
+                                                    Posted a week ago
+
+                                                </div>
+                                                <div className={styles.largeellips}>
+                                                    <ion-icon name="ellipsis-vertical-outline" size="large"></ion-icon>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+
+                </div>
+
+
             </div>
         </Fragment>
     )

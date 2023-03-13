@@ -8,3 +8,12 @@ export function CategoryBanners() {
         console.log(err);
     })
 }
+
+
+export function ProductCatgorylist(data) {
+    return instanceBaseurl.get(`/common/category/products?slugName=${data}`).then((res) => {
+        return res;
+    }).catch((err) => {
+        console.log(err);
+    })
+}

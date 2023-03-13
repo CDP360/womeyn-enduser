@@ -1,31 +1,10 @@
 @use "../../../../../../../scss/abstract/" as *;
-.mainsearchwomen {
+
+.mainproductviewscreen {
     width: 100%;
-    position:relative;
-    .emptyboxsection {
-        background: #e95a5a;
-        opacity: 0.24;
-        filter: blur(329px);
-        position: absolute;
-        width: 20%;
-        height: 20%;
-        right: 0;
-    }
-    .emptyboxsectionleft
-    {
-        background: #FECF9D;
-        opacity: 0.24;
-        filter: blur(329px);
-        position: absolute;
-        width: 20%;
-        height: 20%;
-        left: 0;
-        top:20%;
-    }
-    .insidesearchwomen {
+    .insideproductview {
         width: 75%;
         margin: 0 auto;
-        padding-top: 2%;
         @include xsBreakPoint {
             width: 85%;
             padding-top: 6%;
@@ -43,231 +22,566 @@
         @include xlBreakPoint {
             width: 85%;
         }
-        .splitwomensearch {
+        .stars {
+            width: 20px;
+            height: 20px;
+            object-fit: cover;
+        }
+        .splitproductview {
             width: 100%;
             display: flex;
             @include xsBreakPoint {
                 flex-direction: column;
             }
-            @include smBreakPoint {
-                flex-direction: column;
-            }
-            .leftwomensearchsection {
-                width: 50%;
-                position: relative;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            .leftproductview {
+                width: 65%;
                 @include xsBreakPoint {
                     width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
                 }
-                @include smBreakPoint {
+                .leftmainsectionslide {
                     width: 100%;
                     display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
-                }
-
-                .heartimagesection {
-                    position: absolute;
-                    top: 3%;
-                    cursor: pointer;
-                    left: 3%;
-                    .btn {
-                        border: none;
-                        background: transparent;
-                        color: black;
-                        font-size: 22px;
-                    }
-                }
-                .ratingsection {
-                    display: flex;
-                    align-items: center;
-
-                    gap: 30px;
-                    .star {
-                        width: 15px;
-                        height: 15px;
-                    }
-                }
-                .ratingsections {
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                    .star {
-                        width: 15px;
-                        height: 15px;
-                    }
-                }
-
-                .serachlargeimage {
-                    width: 80%;
-                    height: 300px;
-                    object-fit: cover;
-                    margin: 0 auto;
-                    border-radius: 10px;
                     @include xsBreakPoint {
-                        width: 100%;
-                        height: auto;
+                        flex-direction: column;
                     }
-                    @include smBreakPoint {
-                        width: 100%;
-                        height: 150px;
+                    .leftcardimages {
+                        width: 25%;
+                        // border: 2px solid red;
+                        padding: 10px;
+                        height: 400px;
+                        overflow: hidden;
+                        overflow-y: auto;
+                        -ms-overflow-style: none;
+                        scrollbar-width: none;
+                        @include xsBreakPoint {
+                            width: 100%;
+                            // display:flex;
+                        }
+                        .imagerowsection {
+                            // border:5px solid blue;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 25px;
+                            align-items: center;
+                            @include xsBreakPoint {
+                                display: flex !important;
+                                border: 5px solid orange;
+                                gap: 10px;
+                                width: 100%;
+                            }
+                        }
+                        .borderimages {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            @include xsBreakPoint {
+                                display: flex;
+                                width: 40%;
+                                // flex-direction:row;
+                                // border:4px solid blue;
+                            }
+                        }
+                        .activewomen {
+                            width: 110px;
+                            object-fit: cover;
+                            height: 110px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border: 2px solid #e95a5a;
+                            border-radius: 8px;
+                        }
+                        .imagecards {
+                            width: 100px;
+                            object-fit: cover;
+                            height: 80px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
                     }
-                    @include mdBreakPoint {
-                        width: 100%;
-                        height: 200px;
-                    }
-                }
-            }
-            .rightwomensearchsection {
-                width: 50%;
-                @include xsBreakPoint {
-                    width: 100%;
-                    padding-top: 6%;
-                }
-                @include smBreakPoint {
-                    width: 100%;
-                    padding-top: 6%;
-                }
-                .imagesearch {
-                    width: 100%;
-                    height: 100%;
-                    cursor: pointer;
-                    border-radius: 5px;
-                }
-                .activewomen {
-                    border: 2px solid #e95a5a;
-                }
-                .searchimagesections {
-                    width: 28%;
-                    padding: 10px;
-                    border-radius: 10px;
-                    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
-                }
-            }
-        }
-        .insidesplitanothecart {
-            display: flex;
-            @include xsBreakPoint {
-                flex-direction: column;
-            }
-            @include smBreakPoint {
-                flex-direction: column;
-            }
-            @include mdBreakPoint {
-                flex-direction: column;
-            }
-            .leftinsideanothersection {
-                width: 50%;
-                @include xsBreakPoint {
-                    width: 100%;
-                }
-                @include smBreakPoint {
-                    width: 100%;
-                }
-                @include mdBreakPoint {
-                    width: 100%;
-                }
-                .ratingsection {
-                    display: flex;
-                    align-items: center;
 
-                    gap: 30px;
-                    .star {
-                        width: 15px;
-                        height: 15px;
-                    }
-                }
-                .ratingsections {
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                    .star {
-                        width: 15px;
-                        height: 15px;
-                    }
-                }
+                    .rightcardimagesshow {
+                        width: 75%;
+                        // border: 2px solid orange;
+                        background-color: rgba(247, 247, 247, 1);
+                        // background-color:red;
+                        position: relative;
 
-                .loreamsectionproduct {
-                    width: 100%;
-                    display: flex;
-                    // border:2px solid red;
-                    flex-direction: column;
-                    gap: 10px;
-                    padding-top: 2%;
-                    .loremtextwidth {
-                        width: 70%;
                         @include xsBreakPoint {
                             width: 100%;
                         }
-                        @include smBreakPoint {
+
+                        .serachlargeimage {
                             width: 100%;
+                            height: 397px;
+                            object-fit: cover;
+                            // background-color: rgba(247, 247, 247, 1);
                         }
-                        @include mdBreakPoint {
-                            width: 100%;
+                        .heartimagesection {
+                            position: absolute;
+                            top: 0;
+                            right: 3%;
+                            padding: 10px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
                         }
-                        @include lgBreakPoint {
-                            width: 100%;
+                        .btn {
+                            border: none;
+                            outline: none;
+                            background-color: white;
+                            width: 40px;
+                            height: 40px;
+                            // padding:10px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border: 2px solid white;
+                            border-radius: 50%;
                         }
                     }
                 }
             }
-            .rightinsideanothersection {
-                width: 50%;
+            .rightproductview {
+                width: 35%;
+                // border: 2px solid blue;
+                padding: 0px 20px;
+                .rigthcontenttexts {
+                    font-size: 1.4rem;
+                }
+                .starsection {
+                    width: 100%;
+                    display: flex;
+                    gap: 15px;
+                    align-items: center;
+                    padding: 2% 0px;
+                    .starsections {
+                        display: flex;
+                        gap: 5px;
+                    }
+                    .stars {
+                        width: 20px;
+                        height: 20px;
+                        object-fit: cover;
+                    }
+                }
+                .proceinproduct {
+                    display: flex;
+                    gap: 20px;
+                    padding-top: 2%;
+                    align-items: center;
+                    .offertext {
+                        font-size: 1.4rem;
+                        font-weight: 600;
+                        color: rgba(84, 190, 67, 1);
+                    }
+                    .priceautual {
+                        font-size: 1.3rem;
+                        font-weight: 600;
+                    }
+                    .priceautuals {
+                        font-size: 1.1rem;
+                        font-weight: 600;
+                    }
+                }
+
+                .sizesection {
+                    display: flex;
+                    padding-top: 2%;
+                    .sizes {
+                        display: flex;
+                        gap: 23px;
+                        padding-top: 2%;
+
+                        @include lgBreakPoint {
+                            gap: 8px;
+                        }
+                        @include xlBreakPoint {
+                            gap: 14px;
+                        }
+
+                        .mainsizecard {
+                            width: auto;
+                            height: 30px;
+                            // border:2px solid red;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+                            padding: 15px;
+                            font-weight: 600;
+                            @include lgBreakPoint {
+                                font-weight: 500;
+                            }
+                        }
+                        .activewomensizes {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+                            padding: 15px;
+                            font-weight: 600;
+                            background: #e95a5a;
+                            color: white;
+                            @include lgBreakPoint {
+                                font-weight: 500;
+                            }
+                            @include xlBreakPoint {
+                                font-weight: 500;
+                            }
+                        }
+                    }
+                }
+                .buttons {
+                    display: flex;
+                    gap: 20px;
+                    flex-direction: column;
+                }
+
+                .addcartbutton {
+                    border: 1px solid #e95a5a;
+                    color: #e95a5a;
+                    font-weight: 700;
+                    // filter: drop-shadow(0px 11px 27px rgba(192, 48, 51, 0.25));
+                    border-radius: 10px;
+                    width: 80%;
+                    padding: 10px;
+                    @include lgBreakPoint {
+                        width: 100%;
+                    }
+                    @include xlBreakPoint {
+                        width: 100%;
+                    }
+                }
+                .bynowcartbutton {
+                    background: #e95a5a;
+                    // box-shadow: 0px 11px 27px rgba(192, 48, 51, 0.25);
+                    width: 80%;
+                    padding: 10px;
+
+                    border-radius: 10px;
+                    color: white;
+                    @include lgBreakPoint {
+                        width: 100%;
+                    }
+                    @include xlBreakPoint {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .customerreviews {
+            // border:2px solid blue;
+            width: 100%;
+            margin: 5px 0px;
+            .insidecustomersviews {
                 display: flex;
-                align-items: center;
-                justify-content: center;
-                @include xsBreakPoint {
-                    width: 100%;
-                }
-                @include smBreakPoint {
-                    width: 100%;
-                }
-                @include mdBreakPoint {
-                    width: 100%;
-                }
-                .cartaddsection {
+                // border:2px solid red;
+                border-bottom: 1px solid #f5f5f5;
+                padding: 10px 0px;
+                .leftcustomers {
+                    width: 85%;
                     display: flex;
                     flex-direction: column;
+                    gap: 10px;
+                    .soaps {
+                        width: 70%;
+                    }
+                }
+                .rightcustomers {
+                    width: 15%;
+                    display: flex;
                     justify-content: center;
                     align-items: center;
-                    // border:2px solid red;
-                    gap: 20px;
-                    padding-top: 3%;
-                    .cartpricesection {
-                        display: flex;
-                        align-items: center;
-                        gap: 30px;
-                    }
-                    .addcartbutton {
-                        border: 1px solid #e95a5a;
-                        color: #e95a5a;
-                        font-weight: 700;
-                        filter: drop-shadow(0px 11px 27px rgba(192, 48, 51, 0.25));
-                        border-radius: 12px;
-                        width: 150px;
-                    }
-                    .bynowcartbutton {
-                        background: #e95a5a;
-                        box-shadow: 0px 11px 27px rgba(192, 48, 51, 0.25);
-                        width: 150px;
-                        border-radius: 12px;
-                        color: white;
+                    // border:2px solid blue;
+                    height: 35px;
+                    // justify-content:flex-end;
+                    .largeellips {
+                        cursor: pointer;
                     }
                 }
             }
         }
     }
-    .reviewsection {
-        // border: 2px solid red;
-        padding: 5% 0px;
-        margin-top: 5%;
-        background-color: #f9f9f9;
-    }
 }
+
+// .mainsearchwomen {
+//     width: 100%;
+//     position:relative;
+//     .emptyboxsection {
+//         background: #e95a5a;
+//         opacity: 0.24;
+//         filter: blur(329px);
+//         position: absolute;
+//         width: 20%;
+//         height: 20%;
+//         right: 0;
+//     }
+//     .emptyboxsectionleft
+//     {
+//         background: #FECF9D;
+//         opacity: 0.24;
+//         filter: blur(329px);
+//         position: absolute;
+//         width: 20%;
+//         height: 20%;
+//         left: 0;
+//         top:20%;
+//     }
+//     .insidesearchwomen {
+//         width: 75%;
+//         margin: 0 auto;
+//         padding-top: 2%;
+//         @include xsBreakPoint {
+//             width: 85%;
+//             padding-top: 6%;
+//         }
+//         @include smBreakPoint {
+//             width: 85%;
+//             padding-top: 6%;
+//         }
+//         @include mdBreakPoint {
+//             width: 85%;
+//         }
+//         @include lgBreakPoint {
+//             width: 89%;
+//         }
+//         @include xlBreakPoint {
+//             width: 85%;
+//         }
+//         .splitwomensearch {
+//             width: 100%;
+//             display: flex;
+//             @include xsBreakPoint {
+//                 flex-direction: column;
+//             }
+//             @include smBreakPoint {
+//                 flex-direction: column;
+//             }
+//             .leftwomensearchsection {
+//                 width: 50%;
+//                 position: relative;
+//                 display: flex;
+//                 align-items: center;
+//                 justify-content: center;
+//                 @include xsBreakPoint {
+//                     width: 100%;
+//                     display: flex;
+//                     align-items: center;
+//                     justify-content: center;
+//                     flex-direction: column;
+//                 }
+//                 @include smBreakPoint {
+//                     width: 100%;
+//                     display: flex;
+//                     align-items: center;
+//                     justify-content: center;
+//                     flex-direction: column;
+//                 }
+
+//                 .heartimagesection {
+//                     position: absolute;
+//                     top: 3%;
+//                     cursor: pointer;
+//                     left: 3%;
+//                     .btn {
+//                         border: none;
+//                         background: transparent;
+//                         color: black;
+//                         font-size: 22px;
+//                     }
+//                 }
+//                 .ratingsection {
+//                     display: flex;
+//                     align-items: center;
+
+//                     gap: 30px;
+//                     .star {
+//                         width: 15px;
+//                         height: 15px;
+//                     }
+//                 }
+//                 .ratingsections {
+//                     display: flex;
+//                     align-items: center;
+//                     gap: 5px;
+//                     .star {
+//                         width: 15px;
+//                         height: 15px;
+//                     }
+//                 }
+
+//                 .serachlargeimage {
+//                     width: 80%;
+//                     height: 300px;
+//                     object-fit: cover;
+//                     margin: 0 auto;
+//                     border-radius: 10px;
+//                     @include xsBreakPoint {
+//                         width: 100%;
+//                         height: auto;
+//                     }
+//                     @include smBreakPoint {
+//                         width: 100%;
+//                         height: 150px;
+//                     }
+//                     @include mdBreakPoint {
+//                         width: 100%;
+//                         height: 200px;
+//                     }
+//                 }
+//             }
+//             .rightwomensearchsection {
+//                 width: 50%;
+//                 @include xsBreakPoint {
+//                     width: 100%;
+//                     padding-top: 6%;
+//                 }
+//                 @include smBreakPoint {
+//                     width: 100%;
+//                     padding-top: 6%;
+//                 }
+//                 .imagesearch {
+//                     width: 100%;
+//                     height: 100%;
+//                     cursor: pointer;
+//                     border-radius: 5px;
+//                 }
+//                 .activewomen {
+//                     border: 2px solid #e95a5a;
+//                 }
+//                 .searchimagesections {
+//                     width: 28%;
+//                     padding: 10px;
+//                     border-radius: 10px;
+//                     box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+//                 }
+//             }
+//         }
+//         .insidesplitanothecart {
+//             display: flex;
+//             @include xsBreakPoint {
+//                 flex-direction: column;
+//             }
+//             @include smBreakPoint {
+//                 flex-direction: column;
+//             }
+//             @include mdBreakPoint {
+//                 flex-direction: column;
+//             }
+//             .leftinsideanothersection {
+//                 width: 50%;
+//                 @include xsBreakPoint {
+//                     width: 100%;
+//                 }
+//                 @include smBreakPoint {
+//                     width: 100%;
+//                 }
+//                 @include mdBreakPoint {
+//                     width: 100%;
+//                 }
+//                 .ratingsection {
+//                     display: flex;
+//                     align-items: center;
+
+//                     gap: 30px;
+//                     .star {
+//                         width: 15px;
+//                         height: 15px;
+//                     }
+//                 }
+//                 .ratingsections {
+//                     display: flex;
+//                     align-items: center;
+//                     gap: 5px;
+//                     .star {
+//                         width: 15px;
+//                         height: 15px;
+//                     }
+//                 }
+
+//                 .loreamsectionproduct {
+//                     width: 100%;
+//                     display: flex;
+//                     // border:2px solid red;
+//                     flex-direction: column;
+//                     gap: 10px;
+//                     padding-top: 2%;
+//                     .loremtextwidth {
+//                         width: 70%;
+//                         @include xsBreakPoint {
+//                             width: 100%;
+//                         }
+//                         @include smBreakPoint {
+//                             width: 100%;
+//                         }
+//                         @include mdBreakPoint {
+//                             width: 100%;
+//                         }
+//                         @include lgBreakPoint {
+//                             width: 100%;
+//                         }
+//                     }
+//                 }
+//             }
+//             .rightinsideanothersection {
+//                 width: 50%;
+//                 display: flex;
+//                 align-items: center;
+//                 justify-content: center;
+//                 @include xsBreakPoint {
+//                     width: 100%;
+//                 }
+//                 @include smBreakPoint {
+//                     width: 100%;
+//                 }
+//                 @include mdBreakPoint {
+//                     width: 100%;
+//                 }
+//                 .cartaddsection {
+//                     display: flex;
+//                     flex-direction: column;
+//                     justify-content: center;
+//                     align-items: center;
+//                     // border:2px solid red;
+//                     gap: 20px;
+//                     padding-top: 3%;
+//                     .cartpricesection {
+//                         display: flex;
+//                         align-items: center;
+//                         gap: 30px;
+//                     }
+// .addcartbutton {
+//     border: 1px solid #e95a5a;
+//     color: #e95a5a;
+//     font-weight: 700;
+//     filter: drop-shadow(0px 11px 27px rgba(192, 48, 51, 0.25));
+//     border-radius: 12px;
+//     width: 150px;
+// }
+// .bynowcartbutton {
+//     background: #e95a5a;
+//     box-shadow: 0px 11px 27px rgba(192, 48, 51, 0.25);
+//     width: 150px;
+//     border-radius: 12px;
+//     color: white;
+// }
+//                 }
+//             }
+//         }
+//     }
+//     .reviewsection {
+//         // border: 2px solid red;
+//         padding: 5% 0px;
+//         margin-top: 5%;
+//         background-color: #f9f9f9;
+//     }
+// }

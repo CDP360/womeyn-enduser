@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import styles from './styles/MobileHeader.module.scss';
 import serachicon from '../../../assests/homepage-logos/serachicon.png'
@@ -8,21 +8,23 @@ import profile from '../../../assests/homepage-logos/profile.png';
 import closearrow from '../../../assests/homepage-logos/closearrow.png';
 import { signOut, useSession } from "next-auth/react"
 import { useSelector } from 'react-redux';
-import cart from '../../../assests/homepage-logos/cart.png';
-
+import cart from '../../../assests/homepage-logos/basket.png';
+import { toast } from 'react-toastify';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 function MobileHeader({ dark, setdark }) {
     const router = useRouter();
     const state = useSelector(state => state.cart.cartitems);
 
+    const [images, setImages] = useState("");
+
+    const [tokens,setUserToken]=useState("");
+
     // const { status, data: session } = useSession();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const logoutHandler = async () => {
-        await signOut({ callbackUrl: "/" });
-    };
+   
     const Login = () => {
         router.push("/login");
     }
@@ -32,6 +34,25 @@ function MobileHeader({ dark, setdark }) {
     const profilerouter = () => {
         router.push("/women/profile")
     }
+
+    useEffect(() => {
+        // const getimages = localStorage.getItem("womenProfile");
+            const image = localStorage.getItem("womenUserToken");
+            setUserToken(JSON.parse(image));
+        // setImages(JSON.parse(getimages));
+    }, [tokens]);
+
+    const logoutHandler = async () => {
+        toast.success("Logout User Successflly");
+        // await signOut({ callbackUrl: "https://www.womeyn.cdp360.in/" });
+        localStorage.removeItem("womenUserid");
+        localStorage.removeItem("womenUserToken");
+        localStorage.removeItem("womenProfile");
+        setTimeout(() => {
+            router.push("/login");
+        }, 1000)
+
+    };
     return (
         <Fragment>
             <div className={styles.mainmobilesection}>
@@ -51,64 +72,89 @@ function MobileHeader({ dark, setdark }) {
                 <div className={styles.mobilerightsection}>
                     <div onClick={handleShow} >
                         <Image src={profile} alt="no image" className={styles.barsection} />
+
                     </div>
                     <Offcanvas show={show} onHide={handleClose}>
                         <div className="offcanvebodysection">
                             <div className='arrowend mt-2 p-2' onClick={handleClose}>
-                                <Image src={closearrow} alt="no image" className='closearrow' />
+                                {/* <Image src={closearrow} alt="no image" className='closearrow' /> */}
+                                <ion-icon name="close-outline" className='closearrow' size="large"></ion-icon>
                             </div>
                             <div className='profile-section'>
-                                <Image src={profile} alt="no image" className="profile-image" />
+                                {images ?
+                                    <img
+                                        className={styles.editprofilesection}
+                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${images}`}
+                                        alt="profile-pic"
+                                    />
+                                    :
+                                    <Image src={profile} alt="no image"  className={styles.editprofilesection} />}
                             </div>
                             <div className='nav-links-section'>
-                                <div className={router.pathname == "/womeyn/explore" ? "active" : "nav-link"} onClick={handleClose}>
-                                    <Link href="/womeyn/explore" className='nav-link'>
+                                <div className={router.pathname == "/explore" ? "active" : "nav-link"} onClick={handleClose}>
+                                    <Link href="/explore" className='nav-link'>
                                         {/* <Image src={iconmenu} alt="no image" className="menuicons" /> */}
                                         <span className='ms-1'>Explore</span>
                                     </Link>
                                 </div>
-                                <div className={router.pathname == "/womeyn/womenpreneurs" ? "active" : ""} onClick={handleClose}>
-                                    <Link href="/womeyn/womenpreneurs" className='nav-link'>
+                                <div className={router.pathname == "/womenpreneurs" ? "active" : ""} onClick={handleClose}>
+                                    <Link href="/womenpreneurs" className='nav-link'>
                                         Our womenpreneurs
                                     </Link>
                                 </div>
-                                <div className={router.pathname == "/womeyn/events" ? "active" : ""} onClick={handleClose}>
-                                    <Link href="/womeyn/events" className='nav-link'>
+                                <div className={router.pathname == "/events" ? "active" : ""} onClick={handleClose}>
+                                    <Link href="/events" className='nav-link'>
                                         Events & updates
                                     </Link>
                                 </div>
-                                <div className={router.pathname == "/womeyn/abouts" ? "active" : ""} onClick={handleClose}>
-                                    <Link href="/womeyn/abouts" className='nav-link'>
+                                <div className={router.pathname == "/abouts" ? "active" : ""} onClick={handleClose}>
+                                    <Link href="/abouts" className='nav-link'>
                                         About us
                                     </Link>
                                 </div>
-                                <div className={router.pathname == "/womeyn/getintouch" ? "active" : ""} onClick={handleClose}>
-                                    <Link href="/womeyn/getintouch" className='nav-link'>
+                                <div className={router.pathname == "/getintouch" ? "active" : ""} onClick={handleClose}>
+                                    <Link href="/getintouch" className='nav-link'>
                                         Get in touch
                                     </Link>
                                 </div>
                             </div>
                             <div className="profilesettings">
-                                <div onClick={carts}>
-                                    <Image src={cart} alt="no image" className={"carticons"} />
-                                    {state?.length}
-                                </div>
-                                <div onClick={profilerouter}>
-                                    Profile
-                                </div>
-                                <div>
 
-                                    <div>
-                                        {/* p */}
+                                <div className="insideprofilemobile">
+
+                                    <div onClick={carts}>
+
+                                        <div className={styles.cartlogolength}>
+                                            <div className={styles.cartimageposition}>
+                                                <Image src={cart} alt="no image" className={"carticons"} />
+                                            </div>
+
+                                            <div className={styles.cartlengthsection}>
+                                                {state?.length}
+                                            </div>
+
+                                        </div>
                                     </div>
+                                    <div onClick={profilerouter}>
+                                        Profile
+                                    </div>
+                                   
                                 </div>
+                               
 
-                                <div onClick={() => setdark(!dark)}>
-                                    {dark ? "Dark" : "Light"}
-                                </div>
+
                             </div>
-
-
+                            <div>
+                                        <div>
+                                           {tokens?
+                                           <div className={styles.loginbuttons} onClick={logoutHandler}>
+                                           Logout
+                                           </div>
+                                           :<div onClick={Login} className={styles.loginbuttons}>
+                                           Login
+                                           </div>} 
+                                        </div>
+                                    </div>
                         </div>
                     </Offcanvas>
                 </div>

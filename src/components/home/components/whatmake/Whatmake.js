@@ -45,7 +45,7 @@ function Whatmake() {
                     <div className="whatmake-cards row d-flex justify-content-center mt-4 gap-4">
                         {data?.map((item, index) => {
                             return (
-                                <div className={`cards-whatmake col-lg-4  col-sm-12 col-xs-12 col-md-12 col-xl-4 mt-3 mb-3`} style={{ backgroundColor: item.colorbg }}>
+                                <div className={`cards-whatmake col-lg-4  col-sm-12 col-xs-12 col-md-12 col-xl-4 mt-3 mb-3`} style={{ backgroundColor: item.colorbg }} key={index}>
                                     <div>
                                         <Image src={item?.image} alt="no image" className={styles.whatmakeimage} />
                                     </div>

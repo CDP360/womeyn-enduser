@@ -6,8 +6,6 @@ import plus from '../../../../assests/womeynlogos/plus.png';
 import { ContextStore } from '../../../../Redux/store/Contextstore';
 function Categorycard({ item }) {
     const { state, dispatch } = useContext(ContextStore)
-
-
     const Carthandleproduct = (data) => {
         dispatch({ type: "CART_SUCCESS", payload: data });
     }

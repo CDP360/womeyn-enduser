@@ -63,14 +63,14 @@ export function UserProfileImageupload(userid, data) {
     return instanceBaseurl.post(`/customer/update-photo/${userid}`, data).then((res) => {
         return res;
     }).catch((err) => {
-        console.log(err);
+        return err?.response?.data?.message
     })
 }
 export function UserProfileInformation(userid) {
     return instanceBaseurl.get(`/customer/basicinfo/${userid}`).then((res) => {
         return res;
     }).catch((err) => {
-        console.log(err);
+        return err?.response?.data?.message
     })
 }
 export function UserForgetPassword(data) {

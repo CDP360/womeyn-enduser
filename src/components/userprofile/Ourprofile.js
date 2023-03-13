@@ -17,8 +17,10 @@ import { UserProfileInformation } from '../../services/user-login-service/user-l
 import { useDispatch } from 'react-redux';
 import { LoginActions } from '../../Redux/actions/loginactions/Loginaction';
 import UserChangePassword from './components/userchangepassword/UserChangePassword';
-
+import Mycoupons from './components/mycoupons/Mycoupons';
+import { useRouter } from 'next/router';
 function Ourprofile() {
+  const history = useRouter();
   const [show, setShow] = useState(false);
   const [index, setIndex] = useState(0);
   const [indexsidebar, setIndexsidebar] = useState(0);
@@ -28,11 +30,21 @@ function Ourprofile() {
   const [user, setUser] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
+    const womentoken = localStorage.getItem("womenUserToken");
+    if (JSON.parse(womentoken)) {
+    }
+    else {
+      history.push("/login");
+    }
     const userid = localStorage.getItem("womenUserid");
     console.log("userid", userid)
     UserProfileInformation(JSON.parse(userid)).then((res) => {
+      if (res == "Please authenticate") {
+        localStorage.removeItem("womenUserid");
+        localStorage.removeItem("womenUserToken");
+        localStorage.removeItem("womenProfile");
+      }
       setUser(res?.data);
-      console.log("kalai", res?.data);
       localStorage.setItem("womenProfile", JSON.stringify(res?.data?.profileImageName));
     }).catch((err) => {
       console.log(err);
@@ -41,6 +53,8 @@ function Ourprofile() {
   return (
     <Fragment>
       <div className={styles.mainuserprofilesection}>
+        <div className={styles.leftboxempty}></div>
+        <div className={styles.rightboxempty}></div>
         <div className={styles.insideprofilesection}>
           <div className={styles.leftsidebarprofile}>
             <Leftsidebaruser indexsidebar={setIndexsidebar} setShow={setShow} indexcheck={indexsidebar} user={user} />
@@ -88,23 +102,23 @@ function Ourprofile() {
             {/* pending transactions end */}
 
             {/* Alltransactions transactions start */}
-            {indexsidebar === 2 && (
+            {/* {indexsidebar === 2 && (
               <div>
                 <Alltransactions />
               </div>
-            )}
+            )} */}
             {/* Alltransactions transactions end */}
 
             {/* orders Ongoingorders start */}
-            {indexsidebar === 3 && (
+            {/* {indexsidebar === 3 && (
               <div>
                 <Ongoingorders />
               </div>
-            )}
+            )} */}
             {/* orders Ongoingorders end */}
 
             {/* orders Ongoingorders start */}
-            {indexsidebar === 4 && (
+            {indexsidebar === 2 && (
               <div>
                 <Allorders />
               </div>
@@ -112,25 +126,25 @@ function Ourprofile() {
             {/* orders Ongoingorders end */}
 
             {/* orders Reviews start */}
-            {indexsidebar === 5 && (
+            {/* {indexsidebar === 5 && (
               <div>
                 <Reviewsorder />
               </div>
-            )}
+            )} */}
             {/* orders Reviews end */}
 
 
             {/* orders Customerghelp start */}
-            {indexsidebar === 6 && (
+            {/* {indexsidebar === 6 && (
               <div>
                 <Customerghelp />
               </div>
-            )}
+            )} */}
             {/* orders Customerghelp end */}
 
 
             {/* favorits Wishlist start */}
-            {indexsidebar === 7 && (
+            {indexsidebar === 3 && (
               <div>
                 <Wishlist />
               </div>
@@ -138,21 +152,26 @@ function Ourprofile() {
             {/* favorits Wishlist end */}
 
             {/* favorits Recentlyview start */}
-            {indexsidebar === 8 && (
+            {/* {indexsidebar === 8 && (
               <div>
                 <Recentlyview />
               </div>
-            )}
+            )} */}
             {/* favorits Recentlyview end */}
 
             {/* favorits Reviews start */}
-            {indexsidebar === 9 && (
+            {/* {indexsidebar === 9 && (
               <div>
                 <Reviews />
               </div>
-            )}
+            )} */}
             {/* favorits Reviews end */}
 
+            {indexsidebar === 4 && (
+              <div>
+                <Mycoupons />
+              </div>
+            )}
 
           </div>
         </div>

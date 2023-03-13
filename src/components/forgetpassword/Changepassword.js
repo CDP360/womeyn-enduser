@@ -30,7 +30,6 @@ function Changepassword() {
         password: Yup.string()
             .required('Password is must ')
             .min(8, 'Password must be atleast 8 characters long'),
-
         confirmPwd: Yup.string()
             .required('Password is mendatory')
             .oneOf([Yup.ref('password')], 'Passwords does not match'),
@@ -122,7 +121,7 @@ function Changepassword() {
                                     <div className={styles.passwordformsection}>
                                         <Form.Group className="mb-2" controlId="formBasicEmail">
                                             <Form.Label>New Password</Form.Label>
-                                            <Form.Control type={show ? "text" : "password"} placeholder="User@gmail.com" className={styles.forms}
+                                            <Form.Control type={show ? "text" : "password"} placeholder="" className={styles.forms}
                                                 {...register('password', {
                                                     pattern: {
                                                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -143,7 +142,7 @@ function Changepassword() {
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label>Repeat New Password</Form.Label>
 
-                                                <Form.Control type={show1 ? "text" : "password"} placeholder="User@gmail.com" className={styles.forms}
+                                                <Form.Control type={show1 ? "text" : "password"} placeholder="" className={styles.forms}
                                                     {...register('confirmPwd')}
 
                                                 />

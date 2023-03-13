@@ -53,11 +53,12 @@
     }
     @include lgBreakPoint {
         right: -200%;
-        bottom: -43%;
+        bottom: -38%;
+
     }
     @include xlBreakPoint {
         right: -200%;
-        bottom: -44%;
+        bottom: -38%;
     }
 }
 

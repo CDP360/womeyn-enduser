@@ -80,11 +80,14 @@ function Profilewomen({ edits, user }) {
                                 </div>
                                 <div className={styles.righttextuser}>
                                     <div className={styles.textsizeuser}>
+                                        {user?.email?<div className="d-flex gap-3">
                                         {user?.email}
-                                    </div>
-                                    <div className='verify'>
+                                        <div className='verify'>
                                         Verified
                                     </div>
+                                        </div>:""}
+                                    </div>
+                                  
                                 </div>
                             </div>
                             <div className={styles.userdetailssection}>
@@ -100,7 +103,7 @@ function Profilewomen({ edits, user }) {
                                 </div>
 
                             </div>
-                            <div className={styles.userdetailssection}>
+                            {/* <div className={styles.userdetailssection}>
                                 <div className={styles.lefttextuser}>
                                     <div className='small-light-text-grey'>
                                         Address
@@ -113,7 +116,7 @@ function Profilewomen({ edits, user }) {
                                     </div>
                                 </div>
 
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

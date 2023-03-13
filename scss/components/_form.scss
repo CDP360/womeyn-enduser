@@ -4,8 +4,11 @@
     border: none;
     outline: none;
     background: #f1f1f1;
-    padding: 7px 10px;
+    padding: 7px 7px;
+    
     border-radius: 8px;
+    // border:2px solid blue;
+    width:90%;
     cursor: pointer;
     @include xsBreakPoint {
         width: 100% !important;
@@ -31,6 +34,7 @@
 .serachicon {
     width: 18px;
     height: 18px;
+    // padding-right:10px;
 }
 ::placeholder {
     font-size: 16px !important;

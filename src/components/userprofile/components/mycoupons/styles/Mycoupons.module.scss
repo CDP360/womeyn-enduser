@@ -1,0 +1,47 @@
+@use "../../../../../../scss/abstract/" as *;
+
+.mycouponsmainsection {
+    // border: 2px solid blue;
+    .availablecopons {
+        font-weight: 600 !important;
+    }
+    .couponcode
+    {
+        font-size:1.3rem;
+        font-weight:600;
+        padding:1% 0px;
+    }
+    .insidecoupons {
+        // border:1px solid orange;
+        // padding-top:4%;
+        border-radius: 10px;
+        margin-top: 4%;
+
+        .insidecontentcoupons {
+            // border:5px solid red;
+            .borderssection {
+                border: 1px solid #afafaf;
+                padding: 20px;
+                border-radius: 10px;
+                cursor: pointer;
+                margin: 13px 0px;
+                .splitsection {
+                    display: flex;
+                    .leftsplitcoupons {
+                        width: 60%;
+                        color: #e95a5a;
+                        font-weight: 600;
+                    }
+                    .rightsplitcoupons {
+                        width: 40%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        color: rgba(89, 175, 89, 1);
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
+}

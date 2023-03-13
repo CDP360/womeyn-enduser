@@ -6,7 +6,7 @@ function index() {
         <LayoutHeader title="Womeynpreneurs">
             <meta
                 name="description"
-                content="Meta description for the About page"
+                content="1 2Meta description for the About page"
             />
             <Womenpreneurs />
         </LayoutHeader>

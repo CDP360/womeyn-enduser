@@ -14,6 +14,9 @@
         @include smBreakPoint {
             width: 90%;
         }
+        @include mdBreakPoint {
+            width: 85%;
+        }
         @include lgBreakPoint {
             width: 90%;
         }
@@ -59,22 +62,20 @@
             display: flex;
             justify-content: space-around;
             gap: 5%;
-            @include xsBreakPoint
-            {
-                justify-content:space-between;
-                width:100% !important;
-                flex-direction:column;
-            gap: 20px !important;
-
+            @include xsBreakPoint {
+                justify-content: space-between;
+                width: 100% !important;
+                flex-direction: column;
+                gap: 20px !important;
             }
-            @include smBreakPoint
-            {
-              gap:10px;
-              width:100% !important;
-
-
+            @include smBreakPoint {
+                gap: 10px;
+                width: 100% !important;
             }
-          
+            @include mdBreakPoint {
+                gap: 10px;
+                width: 100% !important;
+            }
         }
         .borderseller {
             // border: 2px solid red;

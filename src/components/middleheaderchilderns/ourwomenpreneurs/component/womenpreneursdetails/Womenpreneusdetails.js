@@ -116,9 +116,6 @@ function Womenpreneusdetails({ id }) {
         }
         return originalElement;
     }
-
-    console.log("limit", limit?.limit + 2)
-
     return (
         <Fragment >
             <div className={styles.maindetailpage}>
@@ -160,6 +157,8 @@ function Womenpreneusdetails({ id }) {
                     </div>
                     <div className={styles.middleheaderpage}>
                         <div className={styles.insidemiddleheader}>
+
+                            {categorys?.length==0 && <div>No Categorys</div>}
                             {categorys?.map((item, index) => {
                                 return (
                                     <div className={`${indexs === index ? styles.actives : styles.detailpage}`} onClick={() => {

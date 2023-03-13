@@ -29,7 +29,7 @@ function Sidebarcateogrys() {
         <div className={styles.bordertopsection}>
         </div>
       </div>
-      <div>
+      {/* <div>
         <div className={styles.dropdownsection} 
         // onClick={() => {
         //   setDropdown1(false)
@@ -46,13 +46,13 @@ function Sidebarcateogrys() {
           <div><Form.Check type="checkbox" label="All products" /></div>
           <div><Form.Check type="checkbox" label="All services" /></div>
         </div>}
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <div className='mt-4 mb-2'>
           <div className={styles.bordertopsection}>
           </div>
         </div>
-      </div>
+      </div> */}
       <div>
         <div className={styles.dropdownsection}
         //  onClick={() => {

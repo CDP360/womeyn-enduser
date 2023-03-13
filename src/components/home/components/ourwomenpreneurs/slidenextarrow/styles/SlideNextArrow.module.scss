@@ -23,7 +23,7 @@
     color: black;
     position: absolute;
     right: -220%;
-    bottom: -30%;
+    bottom: -29%;
     display: flex;
     align-items: center;
     opacity: 0.6;
@@ -51,10 +51,11 @@
     }
     @include lgBreakPoint {
         right: -220%;
-        bottom: -43%;
+        bottom: -38%;
     }
     @include xlBreakPoint {
         right: -220%;
-        bottom: -44%;
+        bottom: -38%;
+
     }
 }

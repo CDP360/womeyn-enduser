@@ -77,7 +77,7 @@ function Explore() {
     };
     return (
         <Fragment>
-            {/* <div className={styles.mainexploresection}>
+            <div className={styles.mainexploresection}>
                 <div className={styles.insideexploresection}>
                     <div className={styles.splitboxexplore}>
                         <div className={styles.leftexplore}>
@@ -179,7 +179,7 @@ Jacket | Overcoats
                         </div>
                     </div>
                 </div>
-            </div> */}
+            </div>
           
             <div>
                 {/* <ReactMegaMenu

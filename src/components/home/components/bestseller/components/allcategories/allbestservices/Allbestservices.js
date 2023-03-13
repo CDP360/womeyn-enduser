@@ -79,7 +79,7 @@ function Allbestservices({ stars }) {
                 <Slider {...settings}>
                     {services.map((item, index) => {
                         return (
-                            <div className={styles.cardcategory} onClick={() => categoryPush(item?.serviceName)}>
+                            <div className={styles.cardcategory} onClick={() => categoryPush(item?.serviceName)} key={index}>
                                 <div>
                                     <img src={item?.image} alt="no image" className={styles.sellerimagesize} />
                                 </div>
@@ -100,7 +100,7 @@ function Allbestservices({ stars }) {
 
 {datas.map((item,index)=>{
     return(
-        <div className='col-lg-3'>
+        <div className='col-lg-3' key={index}>
             <Skeleton className="cardloading"/>
         </div>
     )

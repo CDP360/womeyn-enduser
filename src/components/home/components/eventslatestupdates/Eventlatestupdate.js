@@ -30,30 +30,33 @@ function Eventlatestupdate() {
                             <div className={styles.workshopimage}>
                                 <Image src={fruit2} al="no image" className={styles.shopingimage} />
                             </div>
+                            
+                            <div>
+
                             <div className={styles.fruitcontent}>
                                 <div className={styles.contentimage}>
                                     <Image src={fruit1} al="no image" className={styles.shopingimagecontent} />
-
                                 </div>
                                 <div className={styles.contentfruit}>
                                     <div className={styles.fruitsectionsplit}>
                                         <div className={styles.fruit}>
-                                        FRUIT
+                                            FRUIT
                                         </div>
                                         <div>
                                             -
                                         </div>
                                         <div className={styles.mins}>
-                                        5 mins read
+                                            5 mins read
                                         </div>
 
                                     </div>
                                     <div className={styles.simple}>
-                                    Simple Juice Recipes to boost your immune system
+                                        Simple Juice Recipes to boost your immune system
                                     </div>
                                 </div>
 
-                                
+
+                            </div>
                             </div>
 
                             <div className={styles.fruitcontent}>
@@ -64,22 +67,22 @@ function Eventlatestupdate() {
                                 <div className={styles.contentfruit}>
                                     <div className={styles.fruitsectionsplit}>
                                         <div className={styles.fruit}>
-                                        FRUIT
+                                            FRUIT
                                         </div>
                                         <div>
                                             -
                                         </div>
                                         <div className={styles.mins}>
-                                        5 mins read
+                                            5 mins read
                                         </div>
 
                                     </div>
                                     <div className={styles.simple}>
-                                    Simple Juice Recipes to boost your immune system
+                                        Simple Juice Recipes to boost your immune system
                                     </div>
                                 </div>
 
-                                
+
                             </div>
 
 
@@ -101,22 +104,22 @@ function Eventlatestupdate() {
                                 <div className={styles.contentfruit}>
                                     <div className={styles.fruitsectionsplit}>
                                         <div className={styles.fruit}>
-                                        FRUIT
+                                            FRUIT
                                         </div>
                                         <div>
                                             -
                                         </div>
                                         <div className={styles.mins}>
-                                        5 mins read
+                                            5 mins read
                                         </div>
 
                                     </div>
                                     <div className={styles.simple}>
-                                    Simple Juice Recipes to boost your immune system
+                                        Simple Juice Recipes to boost your immune system
                                     </div>
                                 </div>
 
-                                
+
                             </div>
 
 
@@ -128,22 +131,22 @@ function Eventlatestupdate() {
                                 <div className={styles.contentfruit}>
                                     <div className={styles.fruitsectionsplit}>
                                         <div className={styles.fruit}>
-                                        FRUIT
+                                            FRUIT
                                         </div>
                                         <div>
                                             -
                                         </div>
                                         <div className={styles.mins}>
-                                        5 mins read
+                                            5 mins read
                                         </div>
 
                                     </div>
                                     <div className={styles.simple}>
-                                    Simple Juice Recipes to boost your immune system
+                                        Simple Juice Recipes to boost your immune system
                                     </div>
                                 </div>
 
-                                
+
                             </div>
 
                         </div>

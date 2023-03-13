@@ -3,6 +3,15 @@
 .mainuserprofilesection {
     width: 100%;
     padding-bottom: 5%;
+    .leftboxempty {
+        background: #fecf9d;
+        // opacity: 0.36;
+        filter: blur(239.825px);
+        // position:absolute;
+        width: 30%;
+        height: 20%;
+        z-index: 0;
+    }
     .insideprofilesection {
         width: 76%;
         margin: 0 auto;
@@ -39,7 +48,7 @@
             }
             @include mdBreakPoint {
                 width: 70%;
-                margin:0 auto;
+                margin: 0 auto;
             }
         }
         .rightbodyprofilesection {
@@ -51,9 +60,9 @@
             @include smBreakPoint {
                 width: 100%;
             }
-           @include mdBreakPoint {
+            @include mdBreakPoint {
                 width: 100%;
-                margin:0 auto;
+                margin: 0 auto;
             }
             .profileheadersection {
                 width: 100%;
@@ -66,9 +75,8 @@
                     color: grey;
                     font-weight: 500;
                     font-size: 1.2rem;
-                    @include xsBreakPoint
-                    {
-                        font-size:0.988rem;
+                    @include xsBreakPoint {
+                        font-size: 0.988rem;
                     }
                 }
             }
@@ -81,12 +89,10 @@
                 @include themed() {
                     background: t($card);
                 }
-                @include xsBreakPoint
-                {
-                    font-size:0.889rem;
+                @include xsBreakPoint {
+                    font-size: 0.889rem;
                 }
             }
         }
     }
 }
-

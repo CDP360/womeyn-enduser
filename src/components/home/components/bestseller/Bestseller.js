@@ -22,7 +22,7 @@ function Bestseller({bannerimages,MovePageData}) {
                     <div className={styles.buttonsellersection}>
                      
                         <button className={index === 0 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(0)}>All Categories</button>
-        
+    
                         <button className={index === 1 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(1)}>Electronics</button>     
                         <button className={index === 2 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(2)}>Health & Care</button>     
                         <button className={index === 3 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(3)}>Health & fitness</button>      
