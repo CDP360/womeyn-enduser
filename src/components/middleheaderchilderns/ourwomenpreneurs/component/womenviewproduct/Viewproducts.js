@@ -14,9 +14,13 @@ import Caroselproducts from './carouselproducts/Caroselproducts';
 import { ContextStore } from '../../../../../Redux/store/Contextstore';
 import starstart from '../../../../../assests/category-logos/starstart.png';
 import starend from '../../../../../assests/category-logos/starend.png';
-import { ProductView } from '../../../../../services/productview-service/productview-services';
+import { ProductView, ProductLikeWishlist,ProductLikeWishlistGet } from '../../../../../services/productview-service/productview-services';
 
 import location from '../../../../../assests/product-logo/locationdelivery.png';
+import heartlike from '../../../../../assests/product-logo/heartred.png';
+import heartunlike from '../../../../../assests/product-logo/heart.png';
+
+
 function Viewproducts({ id }) {
     const { state, dispatch } = useContext(ContextStore);
     const [indexs, setIndex] = useState(0);
@@ -25,6 +29,10 @@ function Viewproducts({ id }) {
     const [productreview, setProductReview] = useState([]);
     const [productimages, setProductImage] = useState([]);
     const [index1, setIndex1] = useState(0);
+    const [index2, setIndex2] = useState(0);
+
+    const [like, setLike] = useState(true);
+
     const productnames = id;
     const router = useRouter();
     const data =
@@ -50,13 +58,13 @@ function Viewproducts({ id }) {
     }
     useEffect(() => {
         ProductView(productnames).then((res) => {
-            const productshowimages=[];
-            res?.data?.productDetails?.productImages?.map((item,index)=>{
+            const productshowimages = [];
+            res?.data?.productDetails?.productImages?.map((item, index) => {
                 productshowimages?.push(item)
             })
             productshowimages?.unshift({
-                id:0,
-                name:res?.data?.productDetails?.productThumbImage
+                id: 0,
+                name: res?.data?.productDetails?.productThumbImage
             });
             // console.log("j",f)
             setProductImage(productshowimages);
@@ -80,7 +88,49 @@ function Viewproducts({ id }) {
             console.log(err);
         });
     }, [productnames]);
-    console.log("productimages",productimages)
+
+
+    useEffect(()=>{
+        ProductLikeWishlistGet().then((res)=>{
+console.log("res",res)
+        }).catch((err)=>{
+            console.log(err);
+        })
+    },[])
+
+
+    const LikeWishlist = (id) => {
+
+        if (like) {
+            console.log(like, "like", "id", id)
+
+            const likeid = {
+                productId: id
+            }
+            // ProductLikeWishlist(likeid).then((res) => {
+            //     console.log(res);
+            // }).catch((err) => {
+            //     console.log(err);
+            // })
+        }
+        else {
+
+            const likeid = {
+                wishlistId: id
+            }
+            // ProductLikeWishlist(likeid).then((res) => {
+            //     console.log(err)
+            // }).catch((err) => {
+            //     console.log(err);
+            // })
+            console.log(like, "like", "id", id)
+
+        }
+
+    }
+
+
+    
     return (
         <Fragment>
             {/* <div className={styles.mainsearchwomen}>
@@ -210,23 +260,22 @@ function Viewproducts({ id }) {
 
 
 
-{productimages?.map((item,index)=>{
-    return(
-        <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)}>
-            <img
-                                                        width={"110px"}
-                                                        height={"110px"}
+                                        {productimages?.map((item, index) => {
+                                            return (
+                                                <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)}>
+                                                    <img
+                                                        className={styles.imagecards}
                                                         style={{ borderRadius: "50%", cursor: "pointer" }}
-                                                        className={styles.editprofilesection}
+
                                                         src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
                                                         alt="profile-pic"
                                                     />
                                                     {/* <Image src={items} alt="no image" className={styles.imagecards} /> */}
                                                 </div>
-    )
-})}
+                                            )
+                                        })}
 
-                                        
+
 
                                         {/* {data?.images?.map((items, index) => {
                                             return (
@@ -241,29 +290,40 @@ function Viewproducts({ id }) {
                                     <div className={styles.leftwomensearchsection}>
                                         <div>
 
-                                        <img
-                                                        width={"110px"}
-                                                        height={"110px"}
-                                                        style={{ borderRadius: "50%", cursor: "pointer" }}
-                                                        className={styles.editprofilesection}
-                                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
-                                                        alt="profile-pic"
-                                                    />
-                                       
-                                        {/* <Image src={productimages[indexs]?.name} alt="no image" className={styles.serachlargeimage} /> */}
-                                    
-                                         
+                                            <img
+                                                className={styles.serachlargeimage}
+                                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
+                                                alt="profile-pic"
+                                            />
+
+                                            {/* <Image src={productimages[indexs]?.name} alt="no image" className={styles.serachlargeimage} /> */}
+
+
                                         </div>
                                         <div className={styles.heartimagesection}>
-                                            <button className={styles.btn}>
-                                                <ion-icon name="heart-outline" size="large"></ion-icon></button>
+                                            <button className={styles.btn} onClick={() => {
+                                                setLike(!like)
+                                                LikeWishlist(productdata?.id)
+                                            }}>
+                                               {like?<>
+                                                <Image src={heartunlike} alt="no image" className={styles.heartlikes}/>
+                                              
+                                               </>:<>
+                                               <Image src={heartlike} alt="no image" className={styles.heartlikes}/>
+                                               
+                                               </>} 
+
+                                               {/* <ion-icon name="heart-outline" size="large"></ion-icon> */}
+                                                
+                                                
+                                                </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className={styles.rightproductview}>
-                            <div className={styles.rigthcontenttexts}>{id}</div>
+                            <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
                             <div className={styles.starsection}>
                                 <div className={styles.starsections}>
                                     <Image src={starstart} alt="no image" className={styles.stars} />
@@ -298,20 +358,29 @@ function Viewproducts({ id }) {
                                         {productvariations?.map((item, index) => {
                                             return (
                                                 <>
+                                                    {
+                                                        item?.name == "Size" ? <>
+                                                            <div className={styles.fontweightsizes}>{item?.name}:</div>
+                                                            {item?.variationValues?.map((items, index) => {
+                                                                return (
+                                                                    <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex1(index)}>
+                                                                        {items}
+                                                                    </div>
+                                                                )
+                                                            })}
 
-                                                    <div className={styles.fontweightsizes}>{item?.name}:</div>
+                                                        </> : <></>
+                                                    }
 
-                                                    {item?.variationValues?.map((items, index) => {
-                                                        return (
-                                                            <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex1(index)}>
-                                                                {items}
 
-                                                            </div>
-                                                        )
-                                                    })}
                                                 </>
                                             )
                                         })}
+
+
+
+
+
                                         {/* {productvariations?.variationValues?.map((item, index) => {
                                             return (
                                                 <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex1(index)}>
@@ -321,7 +390,57 @@ function Viewproducts({ id }) {
                                             )
                                         })} */}
                                     </div>
+
                                 </div>
+
+                                <div>
+
+                                    <div className={styles.sizesection}>
+                                        <div className={styles.sizes}>
+                                            {productvariations?.map((item, index) => {
+                                                return (
+                                                    <>
+                                                        {
+                                                            item?.name == "Color" ? <>
+                                                                <div className={styles.fontweightsizes}>{item?.name}:</div>
+                                                                {item?.variationValues?.map((items, index) => {
+                                                                    return (
+                                                                        <div className={`${index2 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex2(index)}>
+                                                                            <div>
+                                                                                {items.toLowerCase()}
+                                                                            </div>
+                                                                        </div>
+                                                                    )
+                                                                })}
+
+                                                            </> : <></>
+                                                        }
+
+
+                                                    </>
+                                                )
+                                            })}
+
+
+
+
+
+                                            {/* {productvariations?.variationValues?.map((item, index) => {
+                                            return (
+                                                <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex1(index)}>
+                                                    {item}
+
+                                                </div>
+                                            )
+                                        })} */}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+
+
                             </div>
 
                             <div className={styles.buttons}>
@@ -331,7 +450,7 @@ function Viewproducts({ id }) {
                                     </Button>
                                 </div>
                                 <div>
-                                    <Button className={styles.addcartbutton} onClick={() => handleChange(datas)}>
+                                    <Button className={styles.addcartbutton} onClick={() => handleChange(productdata)}>
                                         Add To Cart
                                     </Button>
                                 </div>

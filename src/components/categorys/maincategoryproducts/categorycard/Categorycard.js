@@ -9,20 +9,28 @@ function Categorycard({ item }) {
     const Carthandleproduct = (data) => {
         dispatch({ type: "CART_SUCCESS", payload: data });
     }
+
+    console.log("items", item)
     return (
         <div className={styles.cards}>
             {/* {item.title} */}
             <div className={styles.plussection}>
                 <Image src={plus} alt="no image" className={styles.plus} onClick={() => Carthandleproduct(item)} />
             </div>
-            <img src={item.image.src} alt="no image" className={styles.categoryimage} />
+            <img
+                className={styles.categoryimage}
+
+                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
+                alt="profile-pic"
+            />
+            {/* <img src={item?.productThumbImage} alt="no image" className={styles.categoryimage} /> */}
             <div className={styles.cardinsidesection}>
-                <Image src={stars} alt="no image" className={styles.stars} />
+                {/* <Image src={stars} alt="no image" className={styles.stars} /> */}
                 {/* <div>
                     <span>{item?.title.slice(0, 16)}</span>
                 </div> */}
                 <div>
-                    <span className='textgrey'>{item?.name}</span>
+                    {/* <span className='textgrey'>{item?.name}</span> */}
                 </div>
                 <div className={styles.cardsellerborder}>
                     <div className={styles.cardsellerinsideborder}>
@@ -31,14 +39,14 @@ function Categorycard({ item }) {
                 </div>
                 <div className={styles.cardpricesection}>
                     <div className='textpricebold'>
-                        <span>${200 - 15}</span>
+                        <span>${item?.salePrice}</span>
                     </div>
                     <div className={styles.pricecontentcategory}>
                         <div className='textpricedashedgreen'>
-                            <del>${78}</del>
+                            <del>{item?.offerPercentag===0 ? <></>:<>${item?.actualPrice}</>}</del>
                         </div>
                         <div>
-                            (50% 0ff)
+                            ({item?.offerPercentag}% 0ff)
                         </div>
                     </div>
                 </div>
