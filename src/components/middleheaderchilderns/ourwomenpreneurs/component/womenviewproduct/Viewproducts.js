@@ -20,11 +20,10 @@ import location from '../../../../../assests/product-logo/locationdelivery.png';
 function Viewproducts({ id }) {
     const { state, dispatch } = useContext(ContextStore);
     const [indexs, setIndex] = useState(0);
-
-
     const [productdata, setProductData] = useState([]);
     const [productvariations, setProductVariations] = useState([]);
     const [productreview, setProductReview] = useState([]);
+    const [productimages, setProductImage] = useState([]);
     const [index1, setIndex1] = useState(0);
     const productnames = id;
     const router = useRouter();
@@ -40,11 +39,9 @@ function Viewproducts({ id }) {
             product4
         ]
     }
-
     // const Addtocart=()=>{    
     //     router.push("/cart")
     // }
-
     const Checkout = () => {
         router.push("/checkout")
     }
@@ -53,13 +50,23 @@ function Viewproducts({ id }) {
     }
     useEffect(() => {
         ProductView(productnames).then((res) => {
+            const productshowimages=[];
+            res?.data?.productDetails?.productImages?.map((item,index)=>{
+                productshowimages?.push(item)
+            })
+            productshowimages?.unshift({
+                id:0,
+                name:res?.data?.productDetails?.productThumbImage
+            });
+            // console.log("j",f)
+            setProductImage(productshowimages);
             setProductData(res?.data?.productDetails);
             setProductReview(res?.data?.reviews);
-            const variationdata=[];
+            const variationdata = [];
             setProductVariations(variationdata);
             res?.data?.variations.map((item) => {
-                const y=item?.variationValues.length;
-                const forms=item?.variationValues.split(",",y);
+                const y = item?.variationValues.length;
+                const forms = item?.variationValues.split(",", y);
                 const datas = {
                     id: item?.id,
                     name: item?.name,
@@ -71,8 +78,9 @@ function Viewproducts({ id }) {
             });
         }).catch((err) => {
             console.log(err);
-        })
+        });
     }, [productnames]);
+    console.log("productimages",productimages)
     return (
         <Fragment>
             {/* <div className={styles.mainsearchwomen}>
@@ -199,19 +207,52 @@ function Viewproducts({ id }) {
                                                 </div>
                                             )
                                         })} */}
-                                        {data?.images?.map((items, index) => {
+
+
+
+{productimages?.map((item,index)=>{
+    return(
+        <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)}>
+            <img
+                                                        width={"110px"}
+                                                        height={"110px"}
+                                                        style={{ borderRadius: "50%", cursor: "pointer" }}
+                                                        className={styles.editprofilesection}
+                                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
+                                                        alt="profile-pic"
+                                                    />
+                                                    {/* <Image src={items} alt="no image" className={styles.imagecards} /> */}
+                                                </div>
+    )
+})}
+
+                                        
+
+                                        {/* {data?.images?.map((items, index) => {
                                             return (
                                                 <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)}>
                                                     <Image src={items} alt="no image" className={styles.imagecards} />
                                                 </div>
                                             )
-                                        })}
+                                        })} */}
                                     </div>
                                 </div>
                                 <div className={styles.rightcardimagesshow}>
                                     <div className={styles.leftwomensearchsection}>
                                         <div>
-                                            <Image src={data?.images[indexs]} alt="no image" className={styles.serachlargeimage} />
+
+                                        <img
+                                                        width={"110px"}
+                                                        height={"110px"}
+                                                        style={{ borderRadius: "50%", cursor: "pointer" }}
+                                                        className={styles.editprofilesection}
+                                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
+                                                        alt="profile-pic"
+                                                    />
+                                       
+                                        {/* <Image src={productimages[indexs]?.name} alt="no image" className={styles.serachlargeimage} /> */}
+                                    
+                                         
                                         </div>
                                         <div className={styles.heartimagesection}>
                                             <button className={styles.btn}>
@@ -254,20 +295,20 @@ function Viewproducts({ id }) {
                                 <div className={styles.fontweightsizes}></div>
                                 <div className={styles.sizesection}>
                                     <div className={styles.sizes}>
-                                        {productvariations?.map((item,index)=>{
-                                            return(
-                                                <>
-                                            
-                                               <div className={styles.fontweightsizes}>{item?.name}:</div>
-                                               
-{item?.variationValues?.map((items, index) => {
+                                        {productvariations?.map((item, index) => {
                                             return (
-                                                <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex1(index)}>
-                                                    {items}
+                                                <>
 
-                                                </div>
-                                            )
-                                        })}
+                                                    <div className={styles.fontweightsizes}>{item?.name}:</div>
+
+                                                    {item?.variationValues?.map((items, index) => {
+                                                        return (
+                                                            <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex1(index)}>
+                                                                {items}
+
+                                                            </div>
+                                                        )
+                                                    })}
                                                 </>
                                             )
                                         })}
@@ -403,7 +444,7 @@ function Viewproducts({ id }) {
                                 </div>
                             </div>
                             <div className={styles.productdetailsright}>
-                            <div className={styles.additionaldetails}>
+                                <div className={styles.additionaldetails}>
                                     Additional Details
                                 </div>
                                 <div className={styles.listproductdata}>

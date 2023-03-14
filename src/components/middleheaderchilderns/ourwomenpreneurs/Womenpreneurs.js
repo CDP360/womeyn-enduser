@@ -47,10 +47,8 @@ function Womenpreneurs() {
     const handlepush = (id) => {
         router.push(`/womenpreneurs/${id}`);
     }
-
     const SearchNameBrand = (e) => {
         setSearchName(e.target.value);
-
     }
     const handleFilterCategory = (data) => {
         setCategoryId(data?.id);
@@ -81,11 +79,6 @@ function Womenpreneurs() {
             console.log(err);
         })
     }
-
-
-
-
-
 
     return (
         <Fragment>
