@@ -78,7 +78,6 @@ function Otp() {
                         }
                     );
                 }
-
             }).catch((err) => {
                 console.log(err);
             })

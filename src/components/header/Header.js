@@ -8,7 +8,6 @@ import Link from 'next/link';
 import cartslogo from '../../assests/homepage-logos/basket.png';
 import profile from '../../assests/homepage-logos/profile.png';
 import iconmenu from '../../assests/homepage-logos/iconMenu.png';
-import { signOut, useSession } from "next-auth/react"
 import { useSelector } from 'react-redux';
 import myprofile from '../../assests/login-logos/myprofile.png';
 import logout from '../../assests/login-logos/logout.png';
@@ -28,12 +27,10 @@ function Header() {
     const { cart } = state;
     const router = useRouter();
     const states = useSelector(state => state);
-    // const { status, data: session } = useSession();
     const [showmega, setShowMega] = useState(false);
     const [userimage, setUserImage] = useState("");
     const logoutHandler = async () => {
         toast.success("Logout User Successflly");
-        // await signOut({ callbackUrl: "https://www.womeyn.cdp360.in/" });
         localStorage.removeItem("womenUserid");
         localStorage.removeItem("womenUserToken");
         localStorage.removeItem("womenProfile");
@@ -136,62 +133,62 @@ function Header() {
                             </div>
                         </div>
                         <div className={styles.rightlogo}>
-                           <div className={styles.insiderightlogos}>
-                       
-                            <div className={styles.falight} onClick={notificationsPush}>
-                                <Image src={notifications} alt="no image" className={styles.notifications} />
-                            </div>
-                            <div className={styles.falight} onClick={carts}>
-                                <div className={styles.maincartcount}>
-                                    <div>
-                                        <Image src={cartslogo} alt="no image" className={styles.notifications} />
-                                    </div>
-                                    {cart?.cartData?.length > 0 ? <div className={styles.cartcountbox}>
-                                        {cart.cartData?.length}
-                                    </div>
-                                        : <></>}
+                            <div className={styles.insiderightlogos}>
+
+                                <div className={styles.falight} onClick={notificationsPush}>
+                                    <Image src={notifications} alt="no image" className={styles.notifications} />
                                 </div>
-                            </div>
-                            <div className="dropdown">
-                                <div className={styles.logintextsize}>
-                                    {userimage?<>
-                                        <Image src={profile} alt="no image" className={styles.notificationsprofile} />
-                                    
-                                    </>:<>Login</>}
-                                </div>
-                               
-                                {userimage ?
-                                    <>
-                                        <div className="dropdowncontent">
-                                            <div className={styles.headerprofile} onClick={userProfile}>
-                                                <div>
-                                                    <Image src={myprofile} alt="no image" className={styles.profileimageover} />
-                                                </div>
-                                                <div className={styles.logouttexts}>
-                                                    My Profile
-                                                </div>
-                                            </div>
-                                            <hr />
-                                            <div className={styles.headerprofile} onClick={logoutHandler}>
-                                                <div>
-                                                    <Image src={logout} alt="no image" className={styles.profileimageover} />
-                                                </div>
-                                                <div className={styles.logouttexts}>
-                                                    Logout
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </> : <div className="dropdowncontent">
+                                <div className={styles.falight} onClick={carts}>
+                                    <div className={styles.maincartcount}>
                                         <div>
-                                            Create account / LogIn
-                                            <button className='active mt-3 loginbuttonhome' onClick={Login}>
-                                                LogIn/SignUp
-                                            </button>
+                                            <Image src={cartslogo} alt="no image" className={styles.notifications} />
                                         </div>
-                                    </div>}
+                                        {cart?.cartData?.length > 0 ? <div className={styles.cartcountbox}>
+                                            {cart.cartData?.length}
+                                        </div>
+                                            : <></>}
+                                    </div>
+                                </div>
+                                <div className="dropdown">
+                                    <div className={styles.logintextsize}>
+                                        {userimage ? <>
+                                            <Image src={profile} alt="no image" className={styles.notificationsprofile} />
+
+                                        </> : <>Login</>}
+                                    </div>
+
+                                    {userimage ?
+                                        <>
+                                            <div className="dropdowncontent">
+                                                <div className={styles.headerprofile} onClick={userProfile}>
+                                                    <div>
+                                                        <Image src={myprofile} alt="no image" className={styles.profileimageover} />
+                                                    </div>
+                                                    <div className={styles.logouttexts}>
+                                                        My Profile
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                                <div className={styles.headerprofile} onClick={logoutHandler}>
+                                                    <div>
+                                                        <Image src={logout} alt="no image" className={styles.profileimageover} />
+                                                    </div>
+                                                    <div className={styles.logouttexts}>
+                                                        Logout
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </> : <div className="dropdowncontent">
+                                            <div>
+                                                Create account / LogIn
+                                                <button className='active mt-3 loginbuttonhome' onClick={Login}>
+                                                    LogIn/SignUp
+                                                </button>
+                                            </div>
+                                        </div>}
+                                </div>
+
                             </div>
-                            
-                           </div>
 
                         </div>
                     </div>
@@ -225,7 +222,7 @@ function Header() {
                                         <a>
                                             <div className={styles.socailfootersection}>
                                                 <div className={styles.footeremptysocialsection}>
-                                                    <Image src={youtube} alt="no image"  className={styles.footersocialicons} />
+                                                    <Image src={youtube} alt="no image" className={styles.footersocialicons} />
                                                 </div>
                                                 <div className={styles.footeremptysocialsection}>
                                                     <Image src={linkdin} alt="no image" className={styles.footersocialicons} />

@@ -32,12 +32,15 @@
             display: flex;
             @include xsBreakPoint {
                 flex-direction: column;
+                gap: 15px;
             }
             @include smBreakPoint {
                 flex-direction: column;
+                gap: 15px;
             }
             @include mdBreakPoint {
                 flex-direction: column;
+                gap: 35px;
             }
             .leftproductview {
                 width: 65%;
@@ -62,7 +65,7 @@
                     .leftcardimages {
                         width: 25%;
                         // border: 2px solid red;
-                        padding: 10px;
+                        // padding: 10px;
                         height: 400px;
                         overflow: hidden;
                         overflow-y: auto;
@@ -70,62 +73,60 @@
                         scrollbar-width: none;
                         @include xsBreakPoint {
                             width: 100%;
-                            overflow-x:auto;
-                            overflow-x:hidden;
+                            overflow-x: auto;
+                            overflow-x: hidden;
                             // display:flex;
-                            height:auto;
+                            height: auto;
                             -ms-overflow-style: none;
                             scrollbar-width: none;
+                            margin-top: 6%;
+                            margin-bottom: 5%;
                         }
                         @include smBreakPoint {
                             width: auto;
-                            overflow-x:auto;
-                            overflow-x:hidden;
+                            overflow-x: auto;
+                            overflow-x: hidden;
                             // display:flex;
-                            height:auto;
+                            height: auto;
                             -ms-overflow-style: none;
                             scrollbar-width: none;
-                            border:2px solid blue;
-
+                            margin-top: 6%;
+                            margin-bottom: 5%;
                         }
                         .imagerowsection {
                             // border:5px solid blue;
                             display: flex;
                             flex-direction: column;
                             gap: 25px;
-                            align-items: center;
+                            // align-items: center;
                             @include xsBreakPoint {
                                 display: flex !important;
-                                flex-direction:row !important;
+                                flex-direction: row !important;
                                 gap: 10px;
-                               overflow-x:auto;
-                               -ms-overflow-style: none;
-                               scrollbar-width: none;
+                                overflow-x: auto;
+                                -ms-overflow-style: none;
+                                scrollbar-width: none;
                             }
                             @include smBreakPoint {
                                 display: flex !important;
-                                flex-direction:row !important;
+                                flex-direction: row !important;
                                 gap: 10px;
-                               overflow-x:auto;
-                               -ms-overflow-style: none;
-                               scrollbar-width: none;
+                                overflow-x: auto;
+                                -ms-overflow-style: none;
+                                scrollbar-width: none;
                             }
                         }
                         .borderimages {
                             width: 100%;
                             display: flex;
-                            align-items: center;
-                            justify-content: center;
+
                             @include xsBreakPoint {
                                 display: flex;
                                 width: 40%;
-                                // flex-direction:row;
-                                // border:4px solid blue;
                             }
                             @include smBreakPoint {
                                 display: flex;
                                 width: 100%;
-                                // flex-direction:row;
                             }
                         }
                         .activewomen {
@@ -138,6 +139,14 @@
                             justify-content: center;
                             border: 2px solid #e95a5a;
                             border-radius: 8px;
+                            @include xsBreakPoint {
+                                width: 80px;
+                                height: auto;
+                            }
+                            @include smBreakPoint {
+                                width: 80px;
+                                height: auto;
+                            }
                         }
                         .imagecards {
                             width: 100px;
@@ -147,15 +156,32 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
+                            border-radius:8px;
+                            @include xsBreakPoint {
+                                width: 80px;
+                                height: 80px;
+                                border-radius: 10px;
+                                padding: 8px;
+                            }
+                            @include smBreakPoint {
+                                width: 80px;
+                                height: 80px;
+                                border-radius: 10px;
+                                padding: 8px;
+                            }
+                            
                         }
                     }
 
                     .rightcardimagesshow {
-                        width: 75%;
+                        width: 65%;
                         // border: 2px solid orange;
                         background-color: rgba(247, 247, 247, 1);
                         // background-color:red;
                         position: relative;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
 
                         @include xsBreakPoint {
                             width: 100%;
@@ -168,10 +194,23 @@
                         }
 
                         .serachlargeimage {
-                            width: 100%;
-                            height: 397px;
-                            object-fit: cover;
+                            width: 400px;
+                            height: 400px;
+                            object-fit: contain;
                             // background-color: rgba(247, 247, 247, 1);
+                            border-radius: 5px;
+                            @include xsBreakPoint {
+                                height: 300px;
+                                width: 100%;
+                            }
+                            @include smBreakPoint {
+                                height: auto;
+                                width: 300px;
+                            }
+                            @include lgBreakPoint {
+                                height: auto;
+                                width: 350px;
+                            }
                         }
                         .heartimagesection {
                             position: absolute;
@@ -181,6 +220,7 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
+                            border-radius: 5px;
                         }
                         .btn {
                             border: none;
@@ -212,8 +252,38 @@
                     width: 100%;
                 }
                 .rigthcontenttexts {
-                    font-size: 1.4rem;
+                    font-size: 1.8rem;
+                    font-weight: 600;
                 }
+                .locationsection {
+                    padding-top: 5%;
+                    .deverisection {
+                        display: flex;
+                        align-items: center;
+                        padding-bottom: 2%;
+                        gap: 10px;
+                    }
+                    .location {
+                        width: 100%;
+                        border: 1px solid #d0cece;
+                        outline: none;
+                        border-radius: 4px;
+                        padding: 5px 5px;
+                    }
+                    .deliverytexts {
+                        color: #b5b3b3;
+                        font-weight: 600;
+                    }
+                    .deliveryicon {
+                        width: 30px;
+                        height: 30px;
+                        object-fit: contain;
+                    }
+                }
+                .free {
+                    color: #e95a5a;
+                }
+
                 .starsection {
                     width: 100%;
                     display: flex;
@@ -238,7 +308,7 @@
                     .offertext {
                         font-size: 1.4rem;
                         font-weight: 600;
-                        color: rgba(84, 190, 67, 1);
+                        color: rgba(233, 90, 90, 1);
                     }
                     .priceautual {
                         font-size: 1.3rem;
@@ -257,6 +327,9 @@
                         display: flex;
                         gap: 23px;
                         padding-top: 2%;
+                        // border:2px solid blue;
+                        width: 100%;
+                        align-items: center;
                         @include xsBreakPoint {
                             gap: 8px;
                         }
@@ -266,6 +339,11 @@
                         }
                         @include xlBreakPoint {
                             gap: 14px;
+                        }
+                        .fontweightsizes {
+                            color: #000000;
+                            font-weight: 600;
+                            font-size: 1.3rem;
                         }
 
                         .mainsizecard {
@@ -316,13 +394,13 @@
                     font-weight: 700;
                     // filter: drop-shadow(0px 11px 27px rgba(192, 48, 51, 0.25));
                     border-radius: 10px;
-                    width: 80%;
+                    width: 60%;
                     padding: 10px;
                     @include xsBreakPoint {
                         width: 100%;
                     }
                     @include smBreakPoint {
-                        width: 100%;
+                        // width: 40%;
                     }
                     @include mdBreakPoint {
                         width: 50%;
@@ -337,7 +415,7 @@
                 .bynowcartbutton {
                     background: #e95a5a;
                     // box-shadow: 0px 11px 27px rgba(192, 48, 51, 0.25);
-                    width: 80%;
+                    width: 60%;
                     padding: 10px;
 
                     border-radius: 10px;
@@ -345,9 +423,7 @@
                     @include xsBreakPoint {
                         width: 100%;
                     }
-                    @include smBreakPoint {
-                        width: 100%;
-                    }
+                   
                     @include mdBreakPoint {
                         width: 50%;
                     }
@@ -369,27 +445,21 @@
                 // border:2px solid red;
                 border-bottom: 1px solid #f5f5f5;
                 padding: 10px 0px;
-                @include xsBreakPoint
-                {
-                    flex-direction:column;
-                    gap:30px;
-                padding: 15px 0px;
-
+                @include xsBreakPoint {
+                    flex-direction: column;
+                    gap: 30px;
+                    padding: 15px 0px;
                 }
-                @include smBreakPoint
-                {
+                @include smBreakPoint {
                     // flex-direction:column;
-                    gap:10px;
-                padding: 15px 0px;
-
+                    gap: 10px;
+                    padding: 15px 0px;
                 }
-                @include mdBreakPoint
-                {
+                @include mdBreakPoint {
                     // flex-direction:column;
-                    gap:15px;
-                padding: 15px 0px;
-                margin-top:2%;
-
+                    gap: 15px;
+                    padding: 15px 0px;
+                    margin-top: 2%;
                 }
                 .leftcustomers {
                     width: 85%;
@@ -398,31 +468,25 @@
                     gap: 10px;
                     .soaps {
                         width: 70%;
-                        @include xsBreakPoint
-                        {
-                            width:100%;
+                        @include xsBreakPoint {
+                            width: 100%;
                         }
-                        @include smBreakPoint
-                        {
-                            width:100%;
+                        @include smBreakPoint {
+                            width: 100%;
                         }
-                        @include mdBreakPoint
-                        {
-                            width:100%;
+                        @include mdBreakPoint {
+                            width: 100%;
                         }
                     }
-                     @include xsBreakPoint
-                {
-                  width:100%
-                }
-                @include smBreakPoint
-                {
-                  width:100%
-                }
-                @include mdBreakPoint
-                {
-                  width:100%
-                }
+                    @include xsBreakPoint {
+                        width: 100%;
+                    }
+                    @include smBreakPoint {
+                        width: 100%;
+                    }
+                    @include mdBreakPoint {
+                        width: 100%;
+                    }
                 }
                 .rightcustomers {
                     width: 15%;
@@ -432,23 +496,20 @@
                     // border:2px solid blue;
                     height: 35px;
                     // justify-content:flex-end;
-                    @include xsBreakPoint
-                    {
-                        width:100%;
-                        display:flex;
-                        justify-content:flex-start;
+                    @include xsBreakPoint {
+                        width: 100%;
+                        display: flex;
+                        justify-content: flex-start;
                     }
-                    @include smBreakPoint
-                    {
-                        width:50%;
-                        display:flex;
-                        justify-content:flex-start;
+                    @include smBreakPoint {
+                        width: 50%;
+                        display: flex;
+                        justify-content: flex-start;
                     }
-                    @include mdBreakPoint
-                    {
-                        width:25%;
-                        display:flex;
-                        justify-content:flex-start;
+                    @include mdBreakPoint {
+                        width: 25%;
+                        display: flex;
+                        justify-content: flex-start;
                     }
                     .largeellips {
                         cursor: pointer;
@@ -456,14 +517,114 @@
                 }
             }
         }
-        .viewsection
-        {
-            display:flex;
+
+        .viewsection {
+            display: flex;
             // border:2px solid blue;
-            align-items:center;
+            align-items: center;
             // justify-content:center;
-            gap:10px;
-            cursor:pointer;
+            gap: 10px;
+            cursor: pointer;
+        }
+    }
+    .reviewsection {
+        // border: 2px solid red;
+        padding: 5% 0px;
+        margin-top: 5%;
+        background-color: #f9f9f9;
+    }
+
+    .productdetailslists {
+        // border: 2px solid red;
+        margin-top: 5%;
+        width: 100%;
+        .leftproductdetails {
+            display: flex;
+            @include xsBreakPoint {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .additionaldetails {
+                font-weight: 600;
+                font-size: 1.2rem;
+                padding: 2% 0px;
+            }
+            .productdetailsleft {
+                width: 50%;
+                @include xsBreakPoint {
+                    width: 100%;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                }
+                .listproductdata {
+                    display: flex;
+                    // gap: 20%;
+                    margin: 1.4% 0px;
+                    .leftname {
+                        width: 45%;
+                        // border:3px solid orange;
+                        color: rgba(138, 146, 166, 1);
+                        font-weight: 500;
+                        @include xsBreakPoint {
+                            width: 100%;
+                        }
+                        @include smBreakPoint {
+                            width: 100%;
+                        }
+                    }
+                    .rightname {
+                        width: 40%;
+                        color: #232d42;
+                        font-weight: 550;
+                        // border:2px solid blue;
+                        @include xsBreakPoint {
+                            width: 100%;
+                        }
+                        @include smBreakPoint {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            .productdetailsright {
+                width: 50%;
+                @include xsBreakPoint {
+                    width: 100%;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                }
+                .listproductdata {
+                    display: flex;
+                    // gap: 20%;
+                    margin: 1.4% 0px;
+                    .leftname {
+                        width: 45%;
+                        // border:3px solid orange;
+                        color: rgba(138, 146, 166, 1);
+                        font-weight: 500;
+                        @include xsBreakPoint {
+                            width: 100%;
+                        }
+                        @include smBreakPoint {
+                            width: 100%;
+                        }
+                    }
+                    .rightname {
+                        width: 40%;
+                        color: #232d42;
+                        font-weight: 550;
+                        // border:2px solid blue;
+                        @include xsBreakPoint {
+                            width: 100%;
+                        }
+                        @include smBreakPoint {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
         }
     }
 }

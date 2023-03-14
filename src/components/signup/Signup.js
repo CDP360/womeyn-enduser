@@ -5,13 +5,11 @@ import google from '../../assests/homepage-logos/google.png';
 import facebook from '../../assests/login-logos/facebook image.png';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-
 import { useForm } from "react-hook-form";
 import { LoginText } from '../../consttext/Loginconst';
 import { toast } from 'react-toastify';
 import { OTP } from '../../toastdata/Toastmessages';
 import { userSignup } from '../../services/user-login-service/user-login-services';
-
 function Signup() {
     const router = useRouter();
     const {
@@ -26,7 +24,16 @@ function Signup() {
         }
         userSignup(response).then((res) => {
             if (res) {
-                toast.success(OTP + "😀");
+                toast.success(OTP, {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
                 localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
                 localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
                 setTimeout(() => {
@@ -45,7 +52,7 @@ function Signup() {
                         pauseOnHover: true,
                         draggable: true,
                         progress: undefined,
-                        theme:"dark",
+                        theme: "dark",
                     });
             }
         })

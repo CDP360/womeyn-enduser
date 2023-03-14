@@ -8,7 +8,6 @@ import Image from 'next/image';
 import redstar from '../../../../../assests/womeynlogos/redstar.png';
 import { Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
 import { Cartactions } from '../../../../../Redux/actions/cart/Cartdata';
 import Reviewsproduct from './Reviews/Reviewsproduct';
 import Caroselproducts from './carouselproducts/Caroselproducts';
@@ -17,23 +16,17 @@ import starstart from '../../../../../assests/category-logos/starstart.png';
 import starend from '../../../../../assests/category-logos/starend.png';
 import { ProductView } from '../../../../../services/productview-service/productview-services';
 
-
+import location from '../../../../../assests/product-logo/locationdelivery.png';
 function Viewproducts({ id }) {
     const { state, dispatch } = useContext(ContextStore);
     const [indexs, setIndex] = useState(0);
 
 
     const [productdata, setProductData] = useState([]);
+    const [productvariations, setProductVariations] = useState([]);
+    const [productreview, setProductReview] = useState([]);
     const [index1, setIndex1] = useState(0);
-
-    const datas = {
-        id: 1,
-        image: "image.jpb",
-        name: "NEW NEW NEW NEW NEW",
-        title: "thala",
-        price: 100,
-    }
-
+    const productnames = id;
     const router = useRouter();
     const data =
     {
@@ -48,53 +41,38 @@ function Viewproducts({ id }) {
         ]
     }
 
-    // const Addtocart=()=>{
+    // const Addtocart=()=>{    
     //     router.push("/cart")
     // }
+
     const Checkout = () => {
         router.push("/checkout")
     }
-
     const handleChange = (cartdata) => {
         dispatch({ type: "CART_SUCCESS", payload: cartdata });
-
     }
-
-
-    const sizes = [
-
-        {
-            id: 1,
-            name: "M"
-        },
-        {
-            id: 1,
-            name: "S"
-        },
-        {
-            id: 1,
-            name: "XL"
-        },
-        {
-            id: 1,
-            name: "XXL"
-        },
-        {
-            id: 1,
-            name: "XXXL"
-        }
-
-    ]
-
-
     useEffect(() => {
-        ProductView().then((res) => {
-            console.log(res?.data?.productDetails, "kal")
+        ProductView(productnames).then((res) => {
             setProductData(res?.data?.productDetails);
+            setProductReview(res?.data?.reviews);
+            const variationdata=[];
+            setProductVariations(variationdata);
+            res?.data?.variations.map((item) => {
+                const y=item?.variationValues.length;
+                const forms=item?.variationValues.split(",",y);
+                const datas = {
+                    id: item?.id,
+                    name: item?.name,
+                    sellerId: item?.sellerId,
+                    stateId: item?.stateId,
+                    variationValues: forms
+                };
+                variationdata.push(datas);
+            });
         }).catch((err) => {
             console.log(err);
         })
-    }, [])
+    }, [productnames]);
     return (
         <Fragment>
             {/* <div className={styles.mainsearchwomen}>
@@ -207,7 +185,7 @@ function Viewproducts({ id }) {
                                 <div className={styles.leftcardimages}>
 
                                     <div className={styles.imagerowsection}>
-                                        {productdata?.productImages?.map((item, index) => {
+                                        {/* {productdata?.productImages?.map((item, index) => {
                                             return (
                                                 <div>
                                                     <img
@@ -220,7 +198,7 @@ function Viewproducts({ id }) {
                                                     />
                                                 </div>
                                             )
-                                        })}
+                                        })} */}
                                         {data?.images?.map((items, index) => {
                                             return (
                                                 <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)}>
@@ -239,12 +217,8 @@ function Viewproducts({ id }) {
                                             <button className={styles.btn}>
                                                 <ion-icon name="heart-outline" size="large"></ion-icon></button>
                                         </div>
-
-
-
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div className={styles.rightproductview}>
@@ -264,28 +238,47 @@ function Viewproducts({ id }) {
                             </div>
                             <div className={styles.proceinproduct}>
                                 <div className={styles.offertext}>
-                                    {productdata?.offerPercentag}% off
+                                    {productdata?.offerPercentag == 0 ? <></> : <>
+                                        {productdata?.offerPercentag}% off
+                                    </>}
                                 </div>
                                 <div className={styles.priceautual}>
                                     <span className={styles.prices}>${productdata?.salePrice}</span>
                                 </div>
                                 <div className='textpricedashed' >
-                                    <del className={styles.priceautuals}>${productdata?.actualPrice}</del>
+                                    {productdata?.offerPercentag == 0 ? <></> : <del className={styles.priceautuals}>${productdata?.actualPrice}</del>}
                                 </div>
                             </div>
 
                             <div className="mt-2 mb-3">
-                                <div className={styles.fontweightsizes}>Size:</div>
+                                <div className={styles.fontweightsizes}></div>
                                 <div className={styles.sizesection}>
                                     <div className={styles.sizes}>
-                                        {sizes.map((item, index) => {
+                                        {productvariations?.map((item,index)=>{
+                                            return(
+                                                <>
+                                            
+                                               <div className={styles.fontweightsizes}>{item?.name}:</div>
+                                               
+{item?.variationValues?.map((items, index) => {
                                             return (
                                                 <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex1(index)}>
-                                                    {item?.name}
+                                                    {items}
 
                                                 </div>
                                             )
                                         })}
+                                                </>
+                                            )
+                                        })}
+                                        {/* {productvariations?.variationValues?.map((item, index) => {
+                                            return (
+                                                <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex1(index)}>
+                                                    {item}
+
+                                                </div>
+                                            )
+                                        })} */}
                                     </div>
                                 </div>
                             </div>
@@ -301,15 +294,26 @@ function Viewproducts({ id }) {
                                         Add To Cart
                                     </Button>
                                 </div>
+                            </div>
 
+                            <div className={styles.locationsection}>
+                                <div className={styles.deverisection}>
+                                    <div>
+                                        <Image src={location} alt="no image" className={styles.deliveryicon} />
+                                    </div>
+                                    <div className={styles.deliverytexts}>Delivery To</div>
 
-
+                                </div>
+                                <input type="text" placeholder='Australia-7000' className={styles.location} />
+                                <div className='mt-2'>
+                                    Delivery in days Thursday |  <span className={styles.free}>Free</span>  <del> $ 40</del> is orderd before 3:34pm
+                                </div>
                             </div>
                         </div>
 
-
                     </div>
 
+                    {/* 
                     <div className="mt-4">
                         <div className="mt-5">
                             Customer Reviews
@@ -356,22 +360,97 @@ function Viewproducts({ id }) {
                                 )
                             })}
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div className={styles.viewsection}>
+                    {/* <div className={styles.viewsection}>
                         <div>
                             View all reviews
                         </div>
                         <div className="mt-2">
                             <ion-icon name="arrow-forward-outline"></ion-icon>
                         </div>
+                    </div> */}
+
+                    <div className={styles.productdetailslists}>
+                        <div className={styles.leftproductdetails}>
+                            <div className={styles.productdetailsleft}>
+                                <div className={styles.additionaldetails}>
+                                    Product Details
+                                </div>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Product Name</div>
+                                    <div className={styles.rightname}>{productdata?.productName}</div>
+                                </div>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Color</div>
+                                    <div className={styles.rightname}>Blue</div>
+                                </div>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Brand Name</div>
+                                    <div className={styles.rightname}>{productdata?.brandName}</div>
+                                </div>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Model Name</div>
+                                    <div className={styles.rightname}>{productdata?.modelName}</div>
+                                </div>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Style Name</div>
+                                    <div className={styles.rightname}>{productdata?.styleName}</div>
+                                </div>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Manufacture Name</div>
+                                    <div className={styles.rightname}>{productdata?.manufacturerName}</div>
+                                </div>
+                            </div>
+                            <div className={styles.productdetailsright}>
+                            <div className={styles.additionaldetails}>
+                                    Additional Details
+                                </div>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Product Name</div>
+                                    <div className={styles.rightname}>{productdata?.productName}</div>
+                                </div>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Color</div>
+                                    <div className={styles.rightname}>Blue</div>
+                                </div>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Brand Name</div>
+                                    <div className={styles.rightname}>{productdata?.brandName}</div>
+                                </div>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Model Name</div>
+                                    <div className={styles.rightname}>{productdata?.modelName}</div>
+                                </div>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Style Name</div>
+                                    <div className={styles.rightname}>{productdata?.styleName}</div>
+                                </div>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Manufacture Name</div>
+                                    <div className={styles.rightname}>{productdata?.manufacturerName}</div>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
+
+
+
+                <div className={styles.reviewsection}>
+                    <div>
+                        <Reviewsproduct />
+                    </div>
+                </div>
+
                 <div>
                     <div>
                         <Caroselproducts />
                     </div>
                 </div>
+
             </div>
         </Fragment>
     )

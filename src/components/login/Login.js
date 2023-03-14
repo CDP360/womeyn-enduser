@@ -6,25 +6,14 @@ import facebook from "../../assests/login-logos/facebook image.png";
 import Image from "next/image";
 import Router, { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { useSession, signIn, signOut, getSession } from "next-auth/react"
 import { toast } from 'react-toastify';
 import { LoginText } from "../../consttext/Loginconst";
-import { GoogleOauth, Userlogin } from "../../services/user-login-service/user-login-services";
-
+import { Userlogin } from "../../services/user-login-service/user-login-services";
 import eye from '../../assests/login-logos/Eye.png';
 import eyeoff from '../../assests/login-logos/Eye Off.png';
 function Login() {
-
-    // const { data: session } = useSession();
     const [show1, setShow1] = useState(false);
-
     const history = useRouter();
-    // const { redirect } = history.query;
-    // useEffect(() => {
-    //     if (session?.user) {
-    //         history.push(redirect || "/")
-    //     }
-    // }, [session])
     const {
         register,
         handleSubmit,
@@ -39,11 +28,11 @@ function Login() {
         Userlogin(datas).then(async (res) => {
             if (res) {
                 var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                var yyyy = today.getFullYear();
 
-today = mm + '/' + dd + '/' + yyyy;
+                today = mm + '/' + dd + '/' + yyyy;
                 console.log(res?.data, "kalai")
                 localStorage.setItem('womenUserids', JSON.stringify({
                     time: today,
@@ -98,8 +87,8 @@ today = mm + '/' + dd + '/' + yyyy;
     useEffect(() => {
         const EXPIRE_TIME = 1000 * 60 * 60;
 
-        console.log("ex",EXPIRE_TIME)
-        setTimeout(()=> {
+        console.log("ex", EXPIRE_TIME)
+        setTimeout(() => {
             localStorage.removeItem('womenUserids');
         }, EXPIRE_TIME);
     }, [])
@@ -144,27 +133,27 @@ today = mm + '/' + dd + '/' + yyyy;
                                     {errors.email && <span className="active">{errors.email.message}</span>}
                                 </Form.Group>
                                 <div className={styles.passwordformsection}>
-                                        <Form.Group className="mb-2" controlId="formBasicEmail">
-                                   
-                                            <div className={"formsectioncommonlogin"}>
-                                                <Form.Control type={show1 ? "text" : "password"} placeholder="Password" className={styles.forms}
-                                                    {...register("password", {
-                                                        required: "Please enter password",
-                                                        minLength: {
-                                                            value: 6,
-                                                            message: "Password is more than 5 charactor"
-                                                        },
-                                                    })}
-                                                />
-                                                <div className={"passwordicons"}>
-                                                    {show1 ? <div className='mt-2' onClick={() => setShow1(!show1)}><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow1(!show1)}><Image src={eyeoff} alt="no image" /></div>}
-                                                </div>
-                                            </div>
-                                            {errors.password && <span className="active">{errors.password.message}</span>}
-                                        </Form.Group>
+                                    <Form.Group className="mb-2" controlId="formBasicEmail">
 
-                                    </div>
-                               
+                                        <div className={"formsectioncommonlogin"}>
+                                            <Form.Control type={show1 ? "text" : "password"} placeholder="Password" className={styles.forms}
+                                                {...register("password", {
+                                                    required: "Please enter password",
+                                                    minLength: {
+                                                        value: 6,
+                                                        message: "Password is more than 5 charactor"
+                                                    },
+                                                })}
+                                            />
+                                            <div className={"passwordicons"}>
+                                                {show1 ? <div className='mt-2' onClick={() => setShow1(!show1)}><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow1(!show1)}><Image src={eyeoff} alt="no image" /></div>}
+                                            </div>
+                                        </div>
+                                        {errors.password && <span className="active">{errors.password.message}</span>}
+                                    </Form.Group>
+
+                                </div>
+
 
                                 <div className={styles.forgetpassword} onClick={handlePushForgetpassword}>{LoginText?.Forgotpassword}</div>
                                 <Button className="loginbutton" type="submit">

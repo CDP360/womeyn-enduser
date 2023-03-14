@@ -31,8 +31,6 @@ function Maincategorylist({ name }) {
     const [perPage, setPerPage] = useState(10);
     const [size, setSize] = useState(perPage);
     const [current, setCurrent] = useState(1);
-
-
     // const PerPageChange = (value) => {
     //     setSize(value);
     //     const newPerPage = Math.ceil(datas.length / value);
@@ -48,8 +46,6 @@ function Maincategorylist({ name }) {
     //     setCurrent(page);
     //     setSize(pageSize)
     // }
-
-
     const CartDataProduct = [
         {
             id: 1,
@@ -97,6 +93,8 @@ function Maincategorylist({ name }) {
         },
 
     ]
+
+    
     let componentrender = true;
     useEffect(() => {
         // const getproducts = async () => {
@@ -113,9 +111,7 @@ function Maincategorylist({ name }) {
         // }
 
         getproducts();
-
     }, [name])
-
 
     console.log("names", name)
     const getproducts = () => {
