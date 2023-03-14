@@ -15,11 +15,15 @@ import Caroselproducts from './carouselproducts/Caroselproducts';
 import { ContextStore } from '../../../../../Redux/store/Contextstore';
 import starstart from '../../../../../assests/category-logos/starstart.png';
 import starend from '../../../../../assests/category-logos/starend.png';
+import { ProductView } from '../../../../../services/productview-service/productview-services';
 
 
 function Viewproducts({ id }) {
     const { state, dispatch } = useContext(ContextStore);
     const [indexs, setIndex] = useState(0);
+
+
+    const [productdata, setProductData] = useState([]);
     const [index1, setIndex1] = useState(0);
 
     const datas = {
@@ -81,6 +85,16 @@ function Viewproducts({ id }) {
         }
 
     ]
+
+
+    useEffect(() => {
+        ProductView().then((res) => {
+            console.log(res?.data?.productDetails, "kal")
+            setProductData(res?.data?.productDetails);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, [])
     return (
         <Fragment>
             {/* <div className={styles.mainsearchwomen}>
@@ -187,12 +201,26 @@ function Viewproducts({ id }) {
 
                         <div className={styles.leftproductview}>
                             <div className={styles.leftmainsectionslide}>
-                            {/* <div>
+                                {/* <div>
                                     {indexs+1}/{data?.images?.length}
                                     </div> */}
                                 <div className={styles.leftcardimages}>
-                                    
+
                                     <div className={styles.imagerowsection}>
+                                        {productdata?.productImages?.map((item, index) => {
+                                            return (
+                                                <div>
+                                                    <img
+                                                        width={"110px"}
+                                                        height={"110px"}
+                                                        style={{ borderRadius: "50%", cursor: "pointer" }}
+                                                        className={styles.editprofilesection}
+                                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
+                                                        alt="profile-pic"
+                                                    />
+                                                </div>
+                                            )
+                                        })}
                                         {data?.images?.map((items, index) => {
                                             return (
                                                 <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)}>
@@ -204,7 +232,6 @@ function Viewproducts({ id }) {
                                 </div>
                                 <div className={styles.rightcardimagesshow}>
                                     <div className={styles.leftwomensearchsection}>
-
                                         <div>
                                             <Image src={data?.images[indexs]} alt="no image" className={styles.serachlargeimage} />
                                         </div>
@@ -237,13 +264,13 @@ function Viewproducts({ id }) {
                             </div>
                             <div className={styles.proceinproduct}>
                                 <div className={styles.offertext}>
-                                    70% off
+                                    {productdata?.offerPercentag}% off
                                 </div>
                                 <div className={styles.priceautual}>
-                                    <span className={styles.prices}>$1000</span>
+                                    <span className={styles.prices}>${productdata?.salePrice}</span>
                                 </div>
                                 <div className='textpricedashed' >
-                                    <del className={styles.priceautuals}> $1500</del>
+                                    <del className={styles.priceautuals}>${productdata?.actualPrice}</del>
                                 </div>
                             </div>
 
@@ -332,19 +359,19 @@ function Viewproducts({ id }) {
                     </div>
 
                     <div className={styles.viewsection}>
-                  <div>
-                  View all reviews 
-                  </div>
-                    <div className="mt-2">
-                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                        <div>
+                            View all reviews
+                        </div>
+                        <div className="mt-2">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
                         </div>
                     </div>
                 </div>
                 <div>
                     <div>
-                    <Caroselproducts />
-                </div>
+                        <Caroselproducts />
                     </div>
+                </div>
             </div>
         </Fragment>
     )

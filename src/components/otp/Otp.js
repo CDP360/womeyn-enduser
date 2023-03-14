@@ -66,16 +66,16 @@ function Otp() {
                 }
                 else {
                     toast.error("OTP Not Matched",
-                    {
-                        position: "top-center",
-                        autoClose: 3000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme:"dark",
-                    }
+                        {
+                            position: "top-center",
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "dark",
+                        }
                     );
                 }
 
@@ -133,7 +133,7 @@ function Otp() {
                                 />
 
                                 {error && otp?.length <= 0 ? <div className="text-danger mt-3">Otp Filed Is Empty</div> : <>{otp?.length >= 4 ? <div className="text-success text-center mt-3">
-                                Looks Good! 😎
+                                    Looks Good! 😎
                                 </div> : <></>}</>}
                             </div>
                             <div>

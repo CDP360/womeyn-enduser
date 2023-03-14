@@ -19,6 +19,7 @@ import { LoginActions } from '../../Redux/actions/loginactions/Loginaction';
 import UserChangePassword from './components/userchangepassword/UserChangePassword';
 import Mycoupons from './components/mycoupons/Mycoupons';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 function Ourprofile() {
   const history = useRouter();
   const [show, setShow] = useState(false);
@@ -37,9 +38,20 @@ function Ourprofile() {
       history.push("/login");
     }
     const userid = localStorage.getItem("womenUserid");
-    console.log("userid", userid)
     UserProfileInformation(JSON.parse(userid)).then((res) => {
       if (res == "Please authenticate") {
+        toast.error("Please Authenticate!!",
+          {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          }
+        );
         localStorage.removeItem("womenUserid");
         localStorage.removeItem("womenUserToken");
         localStorage.removeItem("womenProfile");

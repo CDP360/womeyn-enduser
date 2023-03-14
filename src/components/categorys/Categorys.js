@@ -13,8 +13,10 @@ function Categorys({id}) {
   const [selectname, selectedOption] = useState(null);
   const [searchname, setSearchName] = useState('');
 
+  const values=id;
+
   useEffect(() => {
-  }, [id])
+  }, [values])
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -74,7 +76,7 @@ const GetSearchdata=()=>{
               <Sidebarcateogrys />
             </div>
             <div className={styles.rightcategory}>
-              <Maincategorylist name={id}/>
+              <Maincategorylist name={values}/>
             </div>
           </div>
         </div>

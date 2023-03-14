@@ -94,7 +94,7 @@ function Maincategorylist({ name }) {
             id: 10,
             name: "s7",
             image: c10
-        }, 
+        },
 
     ]
     let componentrender = true;
@@ -116,14 +116,16 @@ function Maincategorylist({ name }) {
 
     }, [name])
 
+
+    console.log("names", name)
     const getproducts = () => {
         setLoading(true);
         ProductCatgorylist(name).then((res) => {
             console.log("name", res?.data?.results);
             setProducts(res?.data?.results);
-          setTimeout(()=>{
-            setLoading(false);
-          },300)
+            setTimeout(() => {
+                setLoading(false);
+            }, 300)
         }).catch((err) => {
             console.log(err);
         })
@@ -147,35 +149,35 @@ function Maincategorylist({ name }) {
             <div>
                 {loading ? <>
                     Loading...
-                 
+
                 </> : <div className='row justify-content-center gap-5'>
-                {/* Skeleton */}
+                    {/* Skeleton */}
 
-                   
-                  {product?.length===0 ? <>
-                  
 
-{CartDataProduct?.map((item,index)=>{
-    return(
-        <div key={index} className="col-lg-3 col-md-6 col-sm-6 col-xs-6 ">
-<Skeleton className={styles.skeltons}/>
-        </div>
-    )
-})}
+                    {product?.length === 0 ? <>
 
-                  </>:<>
-                  
-                  {product?.map((item, index) => {
-                        return (
-                            <>
-                                <Categorycard item={item} />
-                            </>
-                        )
-                    })}
-                  </>}
+
+                        {CartDataProduct?.map((item, index) => {
+                            return (
+                                <div key={index} className="col-lg-3 col-md-6 col-sm-6 col-xs-6 ">
+                                    <Skeleton className={styles.skeltons} />
+                                </div>
+                            )
+                        })}
+
+                    </> : <>
+
+                        {product?.map((item, index) => {
+                            return (
+                                <>
+                                    <Categorycard item={item} />
+                                </>
+                            )
+                        })}
+                    </>}
                 </div>}
             </div>
-           
+
             <div className='d-flex justify-content-center mt-4'>
                 {/* <Pagination
                     className="pagination-data"

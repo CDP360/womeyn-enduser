@@ -2,7 +2,10 @@ import React from 'react'
 import styles from './styles/Whishlist.module.scss';
 function Wishlist() {
     return (
-        <div>Wishlist</div>
+        <div>
+
+            kalai wishlists
+        </div>
     )
 }
 
