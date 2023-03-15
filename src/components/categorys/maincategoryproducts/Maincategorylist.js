@@ -25,11 +25,14 @@ import Image from 'next/image';
 
 import styles from './styles/Maincategory.module.scss';
 import { ProductCatgorylist } from '../../../services/category-services/category-service';
-function Maincategorylist({ name }) {
+
+function Maincategorylist({ name,searchnamevalue }) {
     const [product, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [perPage, setPerPage] = useState(10);
     const [size, setSize] = useState(perPage);
+    const [dummy,setDummy]=useState([]);
+    const [limit, seLimit] = useState([]);
     const [current, setCurrent] = useState(1);
     // const PerPageChange = (value) => {
     //     setSize(value);
@@ -46,6 +49,9 @@ function Maincategorylist({ name }) {
     //     setCurrent(page);
     //     setSize(pageSize)
     // }
+
+
+
     const CartDataProduct = [
         {
             id: 1,
@@ -94,7 +100,9 @@ function Maincategorylist({ name }) {
 
     ]
 
-    
+
+
+
     let componentrender = true;
     useEffect(() => {
         // const getproducts = async () => {
@@ -111,13 +119,16 @@ function Maincategorylist({ name }) {
         // }
 
         getproducts();
-    }, [name])
+    }, [name,searchnamevalue])
 
+
+  
 
     const getproducts = () => {
         setLoading(true);
         ProductCatgorylist(name).then((res) => {
-            console.log("name", res?.data?.results);
+            // console.log("nameskalai", res?.data);
+            seLimit(res?.data);
             setProducts(res?.data?.results);
             setTimeout(() => {
                 setLoading(false);
@@ -125,6 +136,15 @@ function Maincategorylist({ name }) {
         }).catch((err) => {
             console.log(err);
         })
+    }
+    const fetchCurrentData = async (names, current) => {
+        const resdata = await ProductCatgorylist(names, current,searchnamevalue);
+        setProducts(resdata?.data?.results);
+    }
+    const handleChangePagecount = async (e) => {
+        setCurrent(e);
+        const current = e;
+        await fetchCurrentData(name, current,searchnamevalue);
     }
 
     const PrevNextArrow = (current, type, originalElement) => {
@@ -174,18 +194,26 @@ function Maincategorylist({ name }) {
                 </div>}
             </div>
 
-            <div className='d-flex justify-content-center mt-4'>
-                {/* <Pagination
+            {product?.length>9 && <div className='d-flex justify-content-center mt-4'>
+                <Pagination
+                    // className="pagination-data"
+                    // onChange={handleChangePagecount}
+                    // total={product.length}
+                    // current={current}
+                    // pageSize={size}
+                    // showSizeChanger={false}
+                    // itemRender={PrevNextArrow}
+                    // breakLabel="..."
+
+
                     className="pagination-data"
-                    onChange={PaginationChange}
-                    total={product.length}
+                    total={limit?.totalPages * 10}
+                    onChange={handleChangePagecount}
                     current={current}
-                    pageSize={size}
-                    showSizeChanger={false}
                     itemRender={PrevNextArrow}
-                    onShowSizeChange={PerPageChange}
-                /> */}
-            </div>
+                    breakLabel="..."
+                />
+            </div>}
         </div>
     )
 }

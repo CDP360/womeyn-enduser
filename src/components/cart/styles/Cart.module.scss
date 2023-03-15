@@ -1,112 +1,336 @@
 @use "../../../../scss/abstract/" as *;
 
-.maincartsection {
+// .maincartsection {
+//     width: 100%;
+//     .emptyboxsection {
+//         background: #e95a5a;
+//         opacity: 0.24;
+//         filter: blur(329px);
+//         position: absolute;
+//         width: 20%;
+//         height: 20%;
+//         right: 0;
+//     }
+//     .emptyboxsectionleft
+//     {
+//         background: #FECF9D;
+//         opacity: 0.24;
+//         filter: blur(329px);
+//         position: absolute;
+//         width: 20%;
+//         height: 40%;
+//         left: 0;
+//         top:30%;
+//     }
+//     .insidecartsectionmain {
+//         width: 75%;
+//         margin: 0 auto;
+//         display: flex;
+//         gap: 30px;
+//         padding-bottom:5%;
+//         @include xsBreakPoint {
+//             flex-direction: column;
+//         }
+//         @include smBreakPoint {
+//             flex-direction: column;
+//         }
+//         @include mdBreakPoint {
+//             flex-direction: column;
+//         }
+//         @include xsBreakPoint {
+//             width: 85%;
+//             padding-top: 6%;
+//         }
+//         @include smBreakPoint {
+//             width: 85%;
+//             padding-top: 6%;
+//         }
+//         @include mdBreakPoint {
+//             width: 85%;
+//         }
+//         @include lgBreakPoint {
+//             width: 89%;
+//         }
+//         @include xlBreakPoint {
+//             width: 85%;
+//         }
+//         .leftcartsection {
+//             width: 60%;
+//             @include xsBreakPoint {
+//                 width: 100%;
+//             }
+//             @include smBreakPoint {
+//                 width: 100%;
+//             }
+//             @include mdBreakPoint {
+//                 width: 100%;
+//             }
+//             @include lgBreakPoint {
+//                 width: 100%;
+//             }
+//             @include xlBreakPoint {
+//                 width: 100%;
+//             }
+//             .shoppingcartempty {
+//                 color: #e75b5e;
+//                 font-weight: 600;
+//                 font-size: 1.2rem;
+//                 cursor: pointer;
+//             }
+//             .usepromocartmap {
+//                 width: 100%;
+//                 border: 1px solid #c4c4c4;
+//                 border-radius: 10px;
+//                 display: flex;
+//                 align-items: center;
+//                 gap: 10px;
+//                 padding: 5px 22px;
+//                 cursor: pointer;
+//                 .storename {
+//                     @include xsBreakPoint {
+//                         font-size: 0.678rem;
+//                     }
+//                 }
+//                 @include xsBreakPoint {
+//                     padding: 0 10px;
+//                 }
+//                 .promoimage {
+//                     width: 16px;
+//                     height: 16px;
+//                     object-fit: cover;
+//                 }
+//                 .codepromo {
+//                     font-size: 0.879rem;
+//                     font-weight: 600;
+//                     @include xsBreakPoint {
+//                         font-size: 0.768rem;
+//                     }
+//                 }
+//             }
+//             .sellectallsection {
+//                 display: flex;
+//                 gap: 10px;
+//             }
+// .removesection {
+//     color: #e95a5a;
+//     border-bottom: 2px solid #e95a5a;
+//     font-weight: 600;
+//     cursor: pointer;
+// }
+//             .removesectioncart {
+//                 border: 1px solid #c4c4c4;
+//                 width: 100%;
+//                 display: flex;
+//                 justify-content: space-between;
+//                 padding: 10px 20px;
+//                 border-radius: 10px;
+//             }
+//             .cartshowsection {
+//                 width: 100%;
+//                 border: 1px solid #c4c4c4;
+//                 border-radius: 10px;
+//                 padding: 15px 0px;
+//                 .checkboxsectioncart {
+//                     display: flex;
+//                     // border: 2px solid red;
+//                     justify-content: space-between;
+//                     padding: 3px 20px;
+//                     @include xsBreakPoint {
+//                         justify-content: space-between;
+//                     }
+//                     .insidestorenamesection {
+//                         display: flex;
+//                         gap: 10px;
+//                     }
+//                 }
+//                 .cartimageaddsection {
+//                     display: flex;
+//                     justify-content: space-between;
+//                     padding: 0px 20px;
+//                     margin-top: 2%;
+//                     margin-bottom: 2%;
+//                     border:2px solid blue;
+//                     align-items:center;
+//                     @include xsBreakPoint {
+//                         border: 2px solid red;
+//                         flex-direction: column;
+//                         width: 100%;
+//                       padding:10px;
+//                       gap:15px;
+//                     }
+//                     .imagecart {
+//                         display: flex;
+//                         gap: 20px;
+//                         .cartimagedummy {
+//                             width: 100px;
+//                             height: 100px;
+//                             border-radius: 10px;
+//                             background-color: grey;
+//                             object-fit:contain;
+//                             @include xsBreakPoint {
+//                                 width: 60px;
+//                                 height: 60px;
+//                             }
+//                         }
+//                         .controlcontentcart {
+//                             width: 55%;
+//                         }
+//                     }
+//                     .cartaddandaddqunatity {
+//                         display: flex;
+//                         align-items: center;
+//                         justify-content: center;
+//                         gap: 20px;
+//                         .addcounts {
+//                             width: 30px;
+//                             height: 30px;
+//                             border: 2px solid #e95a5a;
+//                             border-radius: 50%;
+//                             display: flex;
+//                             align-items: center;
+//                             justify-content: center;
+//                             cursor: pointer;
+//                         }
+//                         .addcount {
+//                             height: 30px;
+//                             width: 30px;
+//                             padding: 3px;
+//                             border: 2px solid #e95a5a;
+//                             border-radius: 50%;
+//                             display: flex;
+//                             align-items: center;
+//                             justify-content: center;
+//                             font-size: 1.2rem;
+//                             color: white;
+//                             background-color: #e95a5a;
+//                             cursor: pointer;
+//                         }
+//                     }
+
+//                 }
+//                 .removesectioncart
+//                     {
+//                         border:2px solid red;
+//                     }
+
+//             }
+//         }
+//         .rightcartsection {
+//             width: 40%;
+//             padding-top: 2%;
+//             @include xsBreakPoint {
+//                 width: 100%;
+//             }
+//             @include smBreakPoint {
+//                 width: 100%;
+//             }
+//             @include mdBreakPoint {
+//                 width: 100%;
+//             }
+//             @include lgBreakPoint {
+//                 width: 100%;
+//             }
+//             @include xlBreakPoint {
+//                 width: 100%;
+//             }
+//             .cartpricesectionright {
+//                 width: 80%;
+//                 border: 2px solid #c4c4c4;
+//                 margin: 0 auto;
+//                 border-radius: 20px;
+//                 padding: 20px 30px;
+//                 @include xsBreakPoint {
+//                     width: 100%;
+//                 }
+//                 @include smBreakPoint {
+//                     width: 100%;
+//                 }
+//                 @include mdBreakPoint {
+//                     width: 100%;
+//                 }
+//                 @include lgBreakPoint {
+//                     width: 80%;
+//                 }
+//                 .usepromocart {
+//                     border: 2px solid #c4c4c4;
+//                     border-radius: 12px;
+//                     display: flex;
+//                     align-items: center;
+//                     gap: 20px;
+//                     padding: 10px 20px;
+//                     .promo {
+//                         width: 40px;
+//                         height: 40px;
+//                         object-fit: cover;
+//                     }
+//                     .codepromo {
+//                         font-size: 1.4rem;
+//                         font-weight: 600;
+//                         @include xsBreakPoint {
+//                             font-size: 1rem;
+//                         }
+//                     }
+//                 }
+//                 .totalpricesection {
+//                     display: flex;
+//                     justify-content: space-between;
+//                     padding-top: 3%;
+//                     color: #121212;
+//                     font-weight: 500;
+//                 }
+//                 .bordersection {
+//                     border: 1px solid #c4c4c4;
+//                     margin-top: 6%;
+//                     margin-bottom: 2.5%;
+//                 }
+//                 .shoppingsummary {
+//                     font-size: 1.2rem;
+//                     font-weight: 600;
+//                 }
+//                 .checkoutbutton {
+//                     background-color: #e95a5a;
+//                     color: white;
+//                     padding: 10px;
+//                     border-radius: 10px;
+//                     cursor: pointer;
+//                     width: 100%;
+//                     font-size: 1.3rem;
+//                     font-weight: 600;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+.cartsection {
     width: 100%;
-    .emptyboxsection {
-        background: #e95a5a;
-        opacity: 0.24;
-        filter: blur(329px);
-        position: absolute;
-        width: 20%;
-        height: 20%;
-        right: 0;
-    }
-    .emptyboxsectionleft
+    display: flex;
+    gap: 25px;
+    border: 1px solid #9F9F9F;
+    .cartemptysection
     {
-        background: #FECF9D;
-        opacity: 0.24;
-        filter: blur(329px);
-        position: absolute;
-        width: 20%;
-        height: 40%;
-        left: 0;
-        top:30%;
+        // border: 4px solid orange;
+        padding:30px 20px;
+        font-size:1.4rem;
+        border: 1px solid #9F9F9F;
+        cursor:pointer;
+    
+        .shoppingcartempty
+        {
+       color: #e95a5a;
+       font-weight:600;
+        }
     }
-    .insidecartsectionmain {
-        width: 75%;
-        margin: 0 auto;
-        display: flex;
-        gap: 30px;
-        padding-bottom:5%;
-        @include xsBreakPoint {
-            flex-direction: column;
-        }
-        @include smBreakPoint {
-            flex-direction: column;
-        }
-        @include mdBreakPoint {
-            flex-direction: column;
-        }
-        @include xsBreakPoint {
-            width: 85%;
-            padding-top: 6%;
-        }
-        @include smBreakPoint {
-            width: 85%;
-            padding-top: 6%;
-        }
-        @include mdBreakPoint {
-            width: 85%;
-        }
-        @include lgBreakPoint {
-            width: 89%;
-        }
-        @include xlBreakPoint {
-            width: 85%;
-        }
-        .leftcartsection {
-            width: 60%;
-            @include xsBreakPoint {
-                width: 100%;
-            }
-            @include smBreakPoint {
-                width: 100%;
-            }
-            @include mdBreakPoint {
-                width: 100%;
-            }
-            @include lgBreakPoint {
-                width: 100%;
-            }
-            @include xlBreakPoint {
-                width: 100%;
-            }
-            .shoppingcartempty {
-                color: #e75b5e;
-                font-weight: 600;
-                font-size: 1.2rem;
-                cursor: pointer;
-            }
-            .usepromocartmap {
-                width: 100%;
-                border: 1px solid #c4c4c4;
-                border-radius: 10px;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                padding: 5px 22px;
-                cursor: pointer;
-                .storename {
-                    @include xsBreakPoint {
-                        font-size: 0.678rem;
-                    }
-                }
-                @include xsBreakPoint {
-                    padding: 0 10px;
-                }
-                .promoimage {
-                    width: 16px;
-                    height: 16px;
-                    object-fit: cover;
-                }
-                .codepromo {
-                    font-size: 0.879rem;
-                    font-weight: 600;
-                    @include xsBreakPoint {
-                        font-size: 0.768rem;
-                    }
-                }
-            }
+    .leftcartsection {
+        width: 65%;
+        // border: 2px solid blue;
+        .selectcartsection {
+            width: 100%;
+            border: 1px solid rgba(159, 159, 159, 1);
+            padding: 5px 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
             .sellectallsection {
                 display: flex;
                 gap: 10px;
@@ -117,178 +341,61 @@
                 font-weight: 600;
                 cursor: pointer;
             }
-            .removesectioncart {
-                border: 1px solid #c4c4c4;
-                width: 100%;
+        }
+        .cartlistsection {
+            // border: 5px solid green;
+            border: 1px solid #9F9F9F;
+border-radius: 10px;
+            margin-top: 3%;
+            padding: 4px 20px;
+            background-color: white;
+            display: flex;
+            .cartimagesection {
+                width: 60%;
                 display: flex;
-                justify-content: space-between;
-                padding: 10px 20px;
-                border-radius: 10px;
-            }
-            .cartshowsection {
-                width: 100%;
-                border: 1px solid #c4c4c4;
-                border-radius: 10px;
-                padding: 15px 0px;
-                .checkboxsectioncart {
-                    display: flex;
-                    // border: 2px solid red;
-                    justify-content: space-between;
-                    padding: 3px 20px;
-                    @include xsBreakPoint {
-                        justify-content: space-between;
-                    }
-                    .insidestorenamesection {
-                        display: flex;
-                        gap: 10px;
-                    }
-                }
-                .cartimageaddsection {
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 0px 20px;
-                    margin-top: 2%;
-                    margin-bottom: 2%;
-                    @include xsBreakPoint {
-                        border: 2px solid red;
-                        flex-direction: column;
-                        width: 100%;
-                      padding:10px;
-                      gap:15px;
-                    }
-                    .imagecart {
-                        display: flex;
-                        gap: 20px;
-                        .cartimagedummy {
-                            width: 100px;
-                            height: 100px;
-                            border-radius: 10px;
-                            background-color: grey;
-                            @include xsBreakPoint {
-                                width: 60px;
-                                height: 60px;
-                            }
-                        }
-                        .controlcontentcart {
-                            width: 55%;
-                        }
-                    }
-                    .cartaddandaddqunatity {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        gap: 20px;
-                        .addcounts {
-                            width: 30px;
-                            height: 30px;
-                            border: 2px solid #e95a5a;
-                            border-radius: 50%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            cursor: pointer;
-                        }
-                        .addcount {
-                            height: 30px;
-                            width: 30px;
-                            padding: 3px;
-                            border: 2px solid #e95a5a;
-                            border-radius: 50%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            font-size: 1.2rem;
-                            color: white;
-                            background-color: #e95a5a;
-                            cursor: pointer;
-                        }
-                    }
+                gap: 10px;
+                .editprofilesection
+                {
+                    width:100px;
+                  height:100px;
+                    object-fit:cover;
+                    border-radius:5px;
                 }
             }
-        }
-        .rightcartsection {
-            width: 40%;
-            padding-top: 2%;
-            @include xsBreakPoint {
-                width: 100%;
-            }
-            @include smBreakPoint {
-                width: 100%;
-            }
-            @include mdBreakPoint {
-                width: 100%;
-            }
-            @include lgBreakPoint {
-                width: 100%;
-            }
-            @include xlBreakPoint {
-                width: 100%;
-            }
-            .cartpricesectionright {
-                width: 80%;
-                border: 2px solid #c4c4c4;
-                margin: 0 auto;
-                border-radius: 20px;
-                padding: 20px 30px;
-                @include xsBreakPoint {
-                    width: 100%;
-                }
-                @include smBreakPoint {
-                    width: 100%;
-                }
-                @include mdBreakPoint {
-                    width: 100%;
-                }
-                @include lgBreakPoint {
-                    width: 80%;
-                }
-                .usepromocart {
-                    border: 2px solid #c4c4c4;
-                    border-radius: 12px;
-                    display: flex;
-                    align-items: center;
-                    gap: 20px;
-                    padding: 10px 20px;
-                    .promo {
-                        width: 40px;
-                        height: 40px;
-                        object-fit: cover;
-                    }
-                    .codepromo {
-                        font-size: 1.4rem;
-                        font-weight: 600;
-                        @include xsBreakPoint {
-                            font-size: 1rem;
-                        }
-                    }
-                }
-                .totalpricesection {
-                    display: flex;
-                    justify-content: space-between;
-                    padding-top: 3%;
-                    color: #121212;
-                    font-weight: 500;
-                }
-                .bordersection {
-                    border: 1px solid #c4c4c4;
-                    margin-top: 6%;
-                    margin-bottom: 2.5%;
-                }
-                .shoppingsummary {
-                    font-size: 1.2rem;
-                    font-weight: 600;
-                }
-                .checkoutbutton {
-                    background-color: #e95a5a;
-                    color: white;
-                    padding: 10px;
-                    border-radius: 10px;
+            .cartaddsection {
+                width: 20%;
+                // border: 2px solid red;
+                display: flex;
+                align-items: center;
+                gap: 22px;
+               
+                .carticonsadd {
+                    width: 25px;
+                    height: 25px;
+                    object-fit: contain;
                     cursor: pointer;
-                    width: 100%;
-                    font-size: 1.3rem;
-                    font-weight: 600;
                 }
             }
+            .cartremovesection {
+                width: 20%;
+                // border: 2px solid red;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                justify-content: center;
+                .deleteicons {
+                    width: 25px;
+                    height: 25px;
+                    object-fit: contain;
+                    cursor: pointer;
+                }
+                color: #e95a5a;
+                cursor: pointer;
+            }
         }
+    }
+    .rightcartsection {
+        width: 35%;
+        border: 2px solid red;
     }
 }

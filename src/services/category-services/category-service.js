@@ -10,8 +10,8 @@ export function CategoryBanners() {
 }
 
 
-export function ProductCatgorylist(data) {
-    return instanceBaseurl.get(`/common/category/products?slugName=${data}`).then((res) => {
+export function ProductCatgorylist(data,current) {
+    return instanceBaseurl.get(`/common/category/products?slugName=${data}&limit=10&page=${current}`).then((res) => {
         return res;
     }).catch((err) => {
         console.log(err);

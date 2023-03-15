@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CartActionDelete, Cartactions } from '../../Redux/actions/cart/Cartdata';
 import styles from './styles/Cart.module.scss';
 import usepromo from '../../assests/womeynlogos/cartprice.png';
+import delteteicon from '../../assests/cart-logos/deleteicons.png';
+import addicon from '../../assests/cart-logos/addcart.png';
+import minusicon from '../../assests/cart-logos/minuscart.png';
+
 import Image from 'next/image';
 import { Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
@@ -19,14 +23,14 @@ function Cart() {
   const [deleteselect, setDeleteselect] = useState("");
   const [showlocal, setLocalData] = useState([]);
 
-  const [tokes,setTokens]=useState("");
+  const [tokes, setTokens] = useState("");
   // const state = useSelector((state) => state.cart.cartitems);
   useEffect(() => {
     setLocalData(state);
     TotalPrice();
-    const checktoken=localStorage.getItem("womenUserToken");
+    const checktoken = localStorage.getItem("womenUserToken");
     setTokens(JSON.parse(checktoken));
-  }, [price,tokes])
+  }, [price, tokes])
 
   const TotalPrice = () => {
     let price = 0;
@@ -37,26 +41,18 @@ function Cart() {
   }
 
   const shopping = () => {
-    router.push("/womeyn/womenpreneurs/product")
+    router.push("/womenpreneurs")
   }
 
 
   console.log("showlocal", cart)
   const handleDelete = (e) => {
-
-
     dispatch({ type: "CART_REMOVE", payload: e })
-
     console.log("io", e)
     // const value = e.target.value;
     // const checked = e.target.checked;
-
-
     // dispatch(CartActionDelete(e))
-
     // dispatch(Cartactions(showlocal));
-
-
   }
 
   const handleChange = (e) => {
@@ -84,19 +80,13 @@ function Cart() {
 
   }
 
-
-
-
-
-
-
   return (
     <Fragment>
-      <div className={styles.maincartsection}>
-        {/* <div className={styles.emptyboxsection}>
+      {/* <div className={styles.maincartsection}>
+        <div className={styles.emptyboxsection}>
         </div>
         <div className={styles.emptyboxsectionleft}>
-        </div> */}
+        </div>
         <div className={styles.insidecartsectionmain}>
           <div className={styles.leftcartsection}>
             <div className='large-text mb-4'>
@@ -148,10 +138,10 @@ function Cart() {
                                 </div>
                                 <div className={styles.controlcontentcart}>
                                   <div>
-                                    {item.name}
+                                    {item.name} Shoes Waffle One
                                   </div>
                                   <div>
-                                    {item.price}
+                                    {item.price} Rs. 8000 (100000)   10% off
                                   </div>
                                 </div>
                               </div>
@@ -167,12 +157,20 @@ function Cart() {
                                   +
                                 </div>
                               </div>
-                              {/* <div>
+                              <div className={styles.removesectioncart}>
+                                <div className={styles.add}>
+                                <Image src={delteteicon} alt="no image" className={styles.removeiconsection}/>
+                                </div>
+                                <div className={styles.add}>
+                                Remove
+                                </div>
+                              </div>
+                              <div>
                                 <button onClick={() => handleDelete(item)}>delete</button>
-                              </div> */}
+                              </div>
                             </div>
 
-                            {/* <button onClick={() => handleDelete(item.id)}>delete</button> */}
+                            <button onClick={() => handleDelete(item.id)}>delete</button>
                           </>
                         )
                       })}
@@ -224,6 +222,91 @@ function Cart() {
               </div>
 
             </div>
+          </div>
+        </div>
+      </div> */}
+
+      <div className='mainsection'>
+        <div className="insidesection">
+          <div>
+            Cart
+          </div>
+          <div className={styles.cartsection}>
+            <div className={styles.leftcartsection}>
+              <div className={styles.selectcartsection}>
+                <div className={styles.sellectallsection}>
+                  <input type="checkbox" name="allselect" onChange={handleChange} />
+                  <div>
+                    Select All
+                  </div>
+                </div>
+                <div className={styles.removesection} onClick={handleDelete}>
+                  Remove
+                </div>
+
+              </div>
+
+              {cart?.cartData?.length > 0 ? <>
+
+                {cart?.cartData?.map((item, index) => {
+                  return (
+                    <>
+                      <div className={styles.cartlistsection}>
+                        <div className={styles.cartimagesection}>
+                          <div>
+                            <img
+                          
+                              className={styles.editprofilesection}
+                              src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
+                              alt="profile-pic"
+                            />
+                          </div>
+                          <div>
+                           <div>{item?.productName}
+
+                            </div>
+                            <div>
+                              Rs.{item?.salePrice}
+                            </div>
+                            <div>
+                              {item?.productDescription}
+                            </div>
+                          </div>
+                        </div>
+                        <div className={styles.cartaddsection}>
+                          <div >
+                            <Image src={minusicon} alt="no image" className={styles.carticonsadd} />
+                          </div>
+                          <div>1</div>
+                          <div>
+                            <Image src={addicon} alt="no image" className={styles.carticonsadd} />
+                          </div>
+
+                        </div>
+                        <div className={styles.cartremovesection} onClick={() => handleDelete(item)}>
+                          <div>
+                            <Image src={delteteicon} alt="no image" className={styles.deleteicons} />
+                          </div>
+                          <div>
+                            Remove
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )
+                })}
+              </> : <>
+
+                <div className={styles.cartemptysection}>
+                  Cart Is Empty. <span className={styles.shoppingcartempty} onClick={shopping}>Go Shopping</span>
+                </div>
+              </>}
+
+
+
+            </div>
+            <div className={styles.rightcartsection}>
+              rigth section cart                </div>
           </div>
         </div>
       </div>

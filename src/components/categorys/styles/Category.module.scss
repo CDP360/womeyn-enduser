@@ -5,7 +5,7 @@
     position: relative;
 
     .serachwomenpresection {
-        border: 2px solid #e0e0e0;
+        border: 1px solid #e0e0e0;
         border-radius: 8px;
         display: flex;
         padding: 0;
@@ -21,8 +21,8 @@
         }
         .serachiconwomen {
             width: 100%;
-            height: 25px;
-            opacity:0.6;
+            height: 24px;
+            opacity: 0.5;
             @include smBreakPoint {
                 height: 23px;
             }
@@ -82,9 +82,9 @@
                 width: 100%;
                 display: flex;
                 justify-content: flex-end;
-                align-items:center;
-                gap:20px;
-                padding-top:1.5%;
+                align-items: center;
+                gap: 20px;
+                padding-top: 1.5%;
             }
         }
 
