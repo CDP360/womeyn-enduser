@@ -331,7 +331,7 @@ function Viewproducts({ id }) {
                                     712 Ratings
                                 </div>
                             </div>
-                            
+
                             <div className={styles.proceinproduct}>
                                 <div className={styles.offertext}>
                                     {productdata?.offerPercentag == 0 ? <>
@@ -434,7 +434,7 @@ function Viewproducts({ id }) {
                                     </div>
                                 </div>
                             </div>
-                           
+
 
                             <div className={styles.buttons}>
                                 <div>
@@ -455,14 +455,14 @@ function Viewproducts({ id }) {
                                     </div>
                                     <div className={styles.deliverytexts}>Delivery To</div>
                                 </div>
-                              <div className={styles.inputlocationfield}>
+                                <div className={styles.inputlocationfield}>
 
-<div>
-<input type="text" placeholder='7000' className={styles.location} />
-</div>
-<div>
-  <button className={styles.check}>Check</button>
-</div>
+                                    <div>
+                                        <input type="text" placeholder='7000' className={styles.location} />
+                                    </div>
+                                    <div>
+                                        <button className={styles.check}>Check</button>
+                                    </div>
                                 </div>
                                 <div className='mt-2'>
                                     Delivery in days Thursday |  <span className={styles.free}>Free</span>  <del> $ 40</del> is orderd before 3:34pm
@@ -480,13 +480,15 @@ function Viewproducts({ id }) {
                     </div>
 
                     <div className={styles.descriptionsection}>
+                    <div className={styles.additionaldetails}>
+                    Product Description 
+                         </div>
+                        <div>
 
-<div>
-
-{productdata?.productDescription}
-    </div>
-
+                            {productdata?.productDescription}
                         </div>
+
+                    </div>
 
                     {/* 
                     <div className="mt-4">
@@ -594,11 +596,11 @@ function Viewproducts({ id }) {
 
 
 
-                {productreview?.length>0 ? <div className={styles.reviewsection}>
+                {productreview?.length > 0 ? <div className={styles.reviewsection}>
                     <div>
-                        <Reviewsproduct productreview={productreview}/>
+                        <Reviewsproduct productreview={productreview} />
                     </div>
-                </div>:<></>}
+                </div> : <></>}
 
                 <div>
                     <div>

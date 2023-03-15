@@ -12,10 +12,10 @@
     .sellerimagesize {
         width: 100%;
         height: 170px;
-        object-fit:cover;
+        object-fit:contain;
  
         @include mdBreakPoint {
-            height: 140px;
+            height: 160px;
         }
         @include lgBreakPoint {
             height: 120px;
@@ -67,6 +67,27 @@
     .cardinsidesection {
         width: 90%;
         margin: 0 auto;
+        padding-top:6%;
+        @include xsBreakPoint
+        {
+            padding-top:4%;
+        }
+        @include smBreakPoint
+        {
+            padding-top:4%;
+        }
+        @include mdBreakPoint
+        {
+            padding-top:4%;
+        }
+        @include lgBreakPoint
+        {
+            padding-top:4%;
+        }
+        @include xlBreakPoint
+        {
+            padding-top:4%;
+        }
     }
     .cardsellerborder {
         padding-top: 4%;

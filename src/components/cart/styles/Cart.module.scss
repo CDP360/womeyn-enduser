@@ -287,34 +287,50 @@
 //                     font-size: 1.2rem;
 //                     font-weight: 600;
 //                 }
-//                 .checkoutbutton {
-//                     background-color: #e95a5a;
-//                     color: white;
-//                     padding: 10px;
-//                     border-radius: 10px;
-//                     cursor: pointer;
-//                     width: 100%;
-//                     font-size: 1.3rem;
-//                     font-weight: 600;
-//                 }
+                // .checkoutbutton {
+                //     background-color: #e95a5a;
+                //     color: white;
+                //     padding: 10px;
+                //     border-radius: 10px;
+                //     cursor: pointer;
+                //     width: 100%;
+                //     font-size: 1.3rem;
+                //     font-weight: 600;
+                // }
 //             }
 //         }
 //     }
 // }
 
+.cartsectiontexts
+{
+    font-size:1.4rem;
+    font-weight:600;
+    padding:2% 0px;
+}
+
 .cartsection {
     width: 100%;
     display: flex;
     gap: 25px;
-    border: 1px solid #9F9F9F;
+    // border: 1px solid #9F9F9F;
+   
+    @include xsBreakPoint
+    {
+        flex-direction:column;
+        padding-bottom:10%;
+    }
+    @include smBreakPoint
+    {
+        flex-direction:column;
+    }
     .cartemptysection
     {
         // border: 4px solid orange;
         padding:30px 20px;
         font-size:1.4rem;
-        border: 1px solid #9F9F9F;
+        // border: 1px solid #9F9F9F;
         cursor:pointer;
-    
         .shoppingcartempty
         {
        color: #e95a5a;
@@ -324,6 +340,19 @@
     .leftcartsection {
         width: 65%;
         // border: 2px solid blue;
+        height:100%;
+        @include xsBreakPoint
+        {
+            width:100%;
+        }
+        @include smBreakPoint
+        {
+            width:100%;
+        }
+         @include mdBreakPoint
+        {
+            width:100%;
+        }
         .selectcartsection {
             width: 100%;
             border: 1px solid rgba(159, 159, 159, 1);
@@ -342,18 +371,45 @@
                 cursor: pointer;
             }
         }
-        .cartlistsection {
+        .bordersectioncart
+        {
             // border: 5px solid green;
             border: 1px solid #9F9F9F;
-border-radius: 10px;
+            border-radius: 10px;
             margin-top: 3%;
+
+        }
+        .cartlistsection {
+            // border: 1px solid #9F9F9F;
             padding: 4px 20px;
             background-color: white;
+            border-radius: 10px;
+margin:10px 0px;
             display: flex;
+            @include xsBreakPoint
+            {
+                width:100%;
+                flex-direction:column;
+            }
+              @include mdBreakPoint
+            {
+                width:100%;
+                flex-direction:column;
+            }
             .cartimagesection {
                 width: 60%;
                 display: flex;
                 gap: 10px;
+                @include xsBreakPoint
+                {
+                    width:100%;
+                    
+                }
+                @include mdBreakPoint
+                {
+                    width:100%;
+                    
+                }
                 .editprofilesection
                 {
                     width:100px;
@@ -368,6 +424,16 @@ border-radius: 10px;
                 display: flex;
                 align-items: center;
                 gap: 22px;
+              
+                @include smBreakPoint
+                {
+                    width:100%;
+                }
+                @include lgBreakPoint
+                {
+                    gap:15px;
+                    
+                }
                
                 .carticonsadd {
                     width: 25px;
@@ -383,11 +449,17 @@ border-radius: 10px;
                 gap: 10px;
                 align-items: center;
                 justify-content: center;
+               
                 .deleteicons {
                     width: 25px;
                     height: 25px;
                     object-fit: contain;
                     cursor: pointer;
+                    @include lgBreakPoint
+                    {
+                        width:20px;
+                        height:20px;
+                    }
                 }
                 color: #e95a5a;
                 cursor: pointer;
@@ -396,6 +468,83 @@ border-radius: 10px;
     }
     .rightcartsection {
         width: 35%;
-        border: 2px solid red;
+        // border: 2px solid red;
+        height:100%;
+        
+        @include xsBreakPoint
+        {
+            width:100%;
+        }
+        @include smBreakPoint
+        {
+            width:100%;
+        }
+        @include mdBreakPoint
+        {
+            width:100%;
+        }
+        .insiderigthcartsection
+        {
+            border: 1px solid #9F9F9F;
+            border-radius: 32px;
+            padding:10px 30px;
+            .pricetexts
+            {
+                font-weight: 600;
+                font-size: 1.4rem;
+            }
+            .borderdashedsection
+            {
+                padding:3% 0px;
+                .insideborderdashedsection
+                {
+                    border: 1px dashed #0D0C22;
+                }
+            }
+            .cartdetailsection
+            {
+                .splitcartsections
+                {
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 3% 0px;
+                }
+                .textprice
+                {
+                    font-size:1.3rem;
+                    font-weight: 600;
+                }
+            }
+            .splitcartsections
+            {
+                display: flex;
+                justify-content: space-between;
+                margin: 3% 0px;
+            }
+
+        }
+        .checkoutbutton {
+            background-color: #e95a5a;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
     }
+}
+
+
+// mobile section
+
+.mobilecartresponsive
+{
+    display:flex;
+    gap:40%;
+    padding-top:4%;
+    padding-bottom:3%;
+   
 }

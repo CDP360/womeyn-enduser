@@ -26,15 +26,15 @@
         }
         @include xsBreakPoint {
             width: 100% !important;
-            margin: 0 auto;
+        
         }
         @include smBreakPoint {
-            width: 43% !important;
-            margin: 0 auto;
+            width: 50% !important;
+          
         }
         @include mdBreakPoint {
             width: 45% !important;
-            margin: 0 auto;
+        
         }
         @include lgBreakPoint {
             width: 23.3% !important;
@@ -42,7 +42,7 @@
         }
         @include xlBreakPoint {
             width: 22.3% !important;
-            margin: 0 auto;
+          
             height: 300px;
             // display: flex;
             // align-items: center;
@@ -96,7 +96,7 @@
             align-items: center;
             justify-content: center;
             height:auto;
-            border:2px solid orange !important;
+            // border:2px solid orange !important;
         }
         @include lgBreakPoint {
             width: 24.5% !important;
