@@ -138,7 +138,7 @@ function Womenpreneurs() {
 
                                                 <div className={styles.insidebox}>
                                                     {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                                        <Image src={users} alt="no image" className={styles.sellerimagesize} />
+                                                        <Image src={users} alt="no image" className={styles.sellerimagesizes} />
                                                     </>}
                                                 </div>
 
@@ -170,7 +170,7 @@ function Womenpreneurs() {
 
                                                 <div className={styles.insidebox}>
                                                     {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                                        <Image src={users} alt="no image" className={styles.sellerimagesize} />
+                                                        <Image src={users} alt="no image" className={styles.sellerimagesizes} />
                                                     </>}
                                                 </div>
 

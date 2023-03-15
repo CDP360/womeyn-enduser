@@ -1,0 +1,23 @@
+@use '../../../../../../scss/abstract/' as *;
+
+
+.mainservicebooking
+{
+    width:100%;
+    border:2px solid blue;
+    .insideservicebooking
+    {
+        width:100%;
+        display:flex;
+        .leftservicebooking
+        {
+            width:50%;
+            border:3px solid orange;
+        }
+        .rightservicebooking
+        {
+            width:50%;
+            border:3px solid red;
+        }
+    }
+}

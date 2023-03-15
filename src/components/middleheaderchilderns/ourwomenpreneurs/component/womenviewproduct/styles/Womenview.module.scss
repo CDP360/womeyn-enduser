@@ -132,13 +132,14 @@
                         .activewomen {
                             width: 110px;
                             object-fit: cover;
-                            height: 110px;
+                            height: auto;
                             cursor: pointer;
                             display: flex;
                             align-items: center;
                             justify-content: center;
                             border: 2px solid #e95a5a;
                             border-radius: 8px;
+                        
                             @include xsBreakPoint {
                                 width: 80px;
                                 height: auto;
@@ -151,12 +152,13 @@
                         .imagecards {
                             width: 100px;
                             object-fit: cover;
-                            height: 80px;
+                            height: auto;
                             cursor: pointer;
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            border-radius:8px;
+                            border-radius: 8px;
+                            padding:4px;
                             @include xsBreakPoint {
                                 width: 80px;
                                 height: 80px;
@@ -169,7 +171,6 @@
                                 border-radius: 10px;
                                 padding: 8px;
                             }
-                            
                         }
                     }
 
@@ -182,6 +183,7 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
+                        padding:5px;
 
                         @include xsBreakPoint {
                             width: 100%;
@@ -195,10 +197,11 @@
 
                         .serachlargeimage {
                             width: 400px;
-                            height: 400px;
-                            object-fit: contain;
+                            height: auto;
+                            object-fit: cover;
                             // background-color: rgba(247, 247, 247, 1);
                             border-radius: 5px;
+        
                             @include xsBreakPoint {
                                 height: 300px;
                                 width: 100%;
@@ -234,13 +237,11 @@
                             justify-content: center;
                             border: 2px solid white;
                             border-radius: 50%;
-                            .heartlikes
-                            {
-                                width:25px;
-                                height:25px;
+                            .heartlikes {
+                                width: 25px;
+                                height: 25px;
                             }
                         }
-                        
                     }
                 }
             }
@@ -270,7 +271,7 @@
                         gap: 10px;
                     }
                     .location {
-                        width: 100%;
+                        width: 60%;
                         border: 1px solid #d0cece;
                         outline: none;
                         border-radius: 4px;
@@ -429,7 +430,7 @@
                     @include xsBreakPoint {
                         width: 100%;
                     }
-                   
+
                     @include mdBreakPoint {
                         width: 50%;
                     }

@@ -25,12 +25,12 @@ function Categorycard({ item }) {
             />
             {/* <img src={item?.productThumbImage} alt="no image" className={styles.categoryimage} /> */}
             <div className={styles.cardinsidesection}>
-                {/* <Image src={stars} alt="no image" className={styles.stars} /> */}
-                {/* <div>
-                    <span>{item?.title.slice(0, 16)}</span>
-                </div> */}
+                <Image src={stars} alt="no image" className={styles.stars} />
                 <div>
-                    {/* <span className='textgrey'>{item?.name}</span> */}
+                    <span>{item?.productName}</span>
+                </div>
+                <div>
+                    <span className={styles.brandnames}>{item?.brandName}</span>
                 </div>
                 <div className={styles.cardsellerborder}>
                     <div className={styles.cardsellerinsideborder}>

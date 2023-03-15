@@ -113,7 +113,7 @@ function Maincategorylist({ name }) {
         getproducts();
     }, [name])
 
-    console.log("names", name)
+
     const getproducts = () => {
         setLoading(true);
         ProductCatgorylist(name).then((res) => {

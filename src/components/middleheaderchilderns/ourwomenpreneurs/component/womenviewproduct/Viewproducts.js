@@ -265,8 +265,6 @@ console.log("res",res)
                                                 <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)}>
                                                     <img
                                                         className={styles.imagecards}
-                                                        style={{ borderRadius: "50%", cursor: "pointer" }}
-
                                                         src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
                                                         alt="profile-pic"
                                                     />
@@ -295,10 +293,7 @@ console.log("res",res)
                                                 src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
                                                 alt="profile-pic"
                                             />
-
                                             {/* <Image src={productimages[indexs]?.name} alt="no image" className={styles.serachlargeimage} /> */}
-
-
                                         </div>
                                         <div className={styles.heartimagesection}>
                                             <button className={styles.btn} onClick={() => {
@@ -310,12 +305,8 @@ console.log("res",res)
                                               
                                                </>:<>
                                                <Image src={heartlike} alt="no image" className={styles.heartlikes}/>
-                                               
                                                </>} 
-
                                                {/* <ion-icon name="heart-outline" size="large"></ion-icon> */}
-                                                
-                                                
                                                 </button>
                                         </div>
                                     </div>
@@ -455,16 +446,14 @@ console.log("res",res)
                                     </Button>
                                 </div>
                             </div>
-
                             <div className={styles.locationsection}>
                                 <div className={styles.deverisection}>
                                     <div>
-                                        <Image src={location} alt="no image" className={styles.deliveryicon} />
+                                    <Image src={location} alt="no image" className={styles.deliveryicon} />
                                     </div>
                                     <div className={styles.deliverytexts}>Delivery To</div>
-
                                 </div>
-                                <input type="text" placeholder='Australia-7000' className={styles.location} />
+                                <input type="text" placeholder='7000' className={styles.location} />
                                 <div className='mt-2'>
                                     Delivery in days Thursday |  <span className={styles.free}>Free</span>  <del> $ 40</del> is orderd before 3:34pm
                                 </div>

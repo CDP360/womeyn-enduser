@@ -165,7 +165,6 @@ function Womenpreneusdetails({ id }) {
                                         handlechnagedata(index)
                                         productListData(item?.id);
                                     }
-
                                     }>
                                         {item?.name}
                                     </div>

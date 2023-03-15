@@ -148,6 +148,25 @@
     }
 }
 
+
+.sellerimagesizes {
+    height: 315px;
+    width: 100%;
+    object-fit:contain;
+    border-radius: 10px !important;
+    @include mdBreakPoint {
+        height: 100%;
+    }
+    @include lgBreakPoint {
+        height: 100%;
+        width: 100%;
+    }
+    @include xlBreakPoint {
+        height: 100%;
+        width: 100%;
+    }
+}
+
 .sellerimagebox::before {
     height: 100%;
     width: 100%;

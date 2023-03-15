@@ -12,9 +12,7 @@ import serachicon from '../../assests/homepage-logos/serachicon.png';
 function Categorys({id}) {
   const [selectname, selectedOption] = useState(null);
   const [searchname, setSearchName] = useState('');
-
   const values=id;
-
   useEffect(() => {
   }, [values])
   const options = [
@@ -29,9 +27,7 @@ function Categorys({id}) {
 
   const SearchNameBrand = (e) => {
     setSearchName(e.target.value);
-
 }
-
 const GetSearchdata=()=>{
   console.log("Search here!!!!");
 }

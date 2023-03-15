@@ -1,0 +1,24 @@
+@use '../../../../../../scss/abstract/' as *;
+
+
+
+.mainservicepayment
+{
+    width:100%;
+    border:2px solid blue;
+    .insideservicepayment
+    {
+        width:100%;
+        display:flex;
+        .leftservicepayment
+        {
+            width:50%;
+            border:3px solid orange;
+        }
+        .rightservicepayment
+        {
+            width:50%;
+            border:3px solid red;
+        }
+    }
+}
