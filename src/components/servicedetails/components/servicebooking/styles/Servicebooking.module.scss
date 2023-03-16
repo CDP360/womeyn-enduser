@@ -1,23 +1,192 @@
-@use '../../../../../../scss/abstract/' as *;
+@use "../../../../../../scss/abstract/" as *;
 
-
-.mainservicebooking
-{
-    width:100%;
-    border:2px solid blue;
-    .insideservicebooking
-    {
-        width:100%;
-        display:flex;
-        .leftservicebooking
-        {
-            width:50%;
-            border:3px solid orange;
-        }
-        .rightservicebooking
-        {
-            width:50%;
-            border:3px solid red;
-        }
+.mainservicebooking {
+  width: 100%;
+  //   border: 2px solid blue;
+  .insideservicebooking {
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    @include smBreakPoint {
+      display: contents;
     }
+    .leftservicebooking {
+      width: 50%;
+      @include smBreakPoint {
+        margin-left: 3%;
+      }
+      .bannerlogo {
+        width: 100%;
+        object-fit: contain;
+        height: auto;
+        // border: 2px solid blue;
+      }
+
+      // border:3px solid orange;
+    }
+    .rightservicebooking {
+      width: 50%;
+      margin-top: 1%;
+      @include smBreakPoint {
+        width: 100%;
+      }
+      // border:3px solid red;
+      .parahead1 {
+        font-size: x-large;
+      }
+      .maincontainersub {
+        display: flex;
+        .maincontainerstar {
+          display: flex;
+        }
+        .ratingPara {
+          margin-left: 2%;
+          margin-top: -1%;
+          display: flex;
+          .para1 {
+            font-weight: bold;
+          }
+          .ratings {
+            margin-left: 0%;
+            color: gray;
+          }
+        }
+      }
+      .offlinepara {
+        color: #e95a5a;
+      }
+      .sidecontaineraddress {
+        width: 39%;
+        @include smBreakPoint {
+          width: 100%;
+        }
+        .address {
+          font-weight: bold;
+        }
+      }
+      .mappara {
+        color: #5865f2;
+        font-size: small;
+      }
+      .daysPara {
+        font-weight: bold;
+      }
+      .month {
+        display: flex;
+        flex-direction: row;
+        width: 80%;
+        flex-wrap: wrap;
+      }
+
+      .control {
+        display: inline-flex;
+        position: relative;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 99em;
+
+        input {
+          position: absolute;
+          opacity: 0;
+          z-index: -1;
+        }
+
+        svg {
+          margin-right: 6px;
+          border-radius: 50%;
+          box-shadow: 3px 3px 16px rgba(0, 0, 0, 0.2);
+        }
+      }
+      .control__content {
+        border: 1px solid #e95a5a;
+        padding: 10px;
+        text-align: center;
+        font-weight: 500;
+        color: #e95a5a;
+        // background-color: #e95a5a;
+        border-radius: 20px;
+        cursor: pointer;
+        width: 120px;
+        background-color: white;
+      }
+      .control input:focus ~ .control__content {
+        background-color: white;
+      }
+
+      .control input:checked ~ .control__content {
+        background-color: #e95a5a;
+        color: white;
+      }
+      .radio {
+        display: flex;
+        // justify-content: space-around;
+        width: 95%;
+        .radio1 {
+          border-radius: 50%;
+          width: 5%;
+          border: 1px solid #e95a5a;
+          height: 28px;
+          background-color: white;
+          .num {
+            text-align: center;
+            color: #e95a5a;
+          }
+        }
+        .radio2 {
+          border-radius: 50%;
+          width: 5%;
+          border: 1px solid #f5f5f5;
+          height: 28px;
+          margin-left: 3%;
+          .num {
+            text-align: center;
+          }
+        }
+      }
+
+      .viewmore {
+        color: #5865f2;
+      }
+      .bookbutton {
+        width: 55% !important;
+        background-color: #e95a5a;
+        color: white;
+      }
+    }
+  }
+  .customerserviceside {
+    width: 100%;
+    margin-top: 5%;
+    .review {
+      font-weight: 400;
+    }
+    .customerservicemaincontainer {
+      margin-top: 3%;
+      .Writija {
+        font-weight: initial;
+        margin-bottom: 2%;
+        font-size: large;
+      }
+      .freak {
+        font-weight: initial;
+        margin-bottom: 2%;
+        font-size: large;
+        margin-top: 2%;
+      }
+      .maincontainerstarservice {
+        display: flex;
+        width: 2%;
+      }
+      .customersubcontainer {
+        width: 100%;
+      }
+      .paraservice {
+        width: 67%;
+        color: #59626f;
+      }
+      .hrborder {
+        border: 1px solid #f5f5f5;
+      }
+    }
+  }
 }
