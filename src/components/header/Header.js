@@ -107,6 +107,10 @@ function Header() {
         {
             id: 12,
             name: "Jacket | Overcoats"
+        },
+        {
+            id: 13,
+            name: "bag"
         }
     ]
 

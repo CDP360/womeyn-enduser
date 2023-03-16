@@ -9,12 +9,12 @@ import Categorycarouse from './categoryslidecarousel/Categorycarouse';
 import Select from 'react-select';
 import serachicon from '../../assests/homepage-logos/serachicon.png';
 
-function Categorys({id}) {
+function Categorys({ id }) {
   const [selectname, selectedOption] = useState(null);
   const [searchname, setSearchName] = useState('');
   const [searchnamevalue, setSearchNameValue] = useState('');
 
-  const values=id;
+  const values = id;
   useEffect(() => {
   }, [values])
   const options = [
@@ -29,16 +29,16 @@ function Categorys({id}) {
 
   const SearchNameBrand = (e) => {
     setSearchName(e.target.value);
-}
-const GetSearchdata=()=>{
-  console.log("Search here!!!!");
-  setSearchNameValue(searchname);
+  }
+  const GetSearchdata = () => {
+    console.log("Search here!!!!");
+    setSearchNameValue(searchname);
 
-}
+  }
 
-useEffect(()=>{
+  useEffect(() => {
 
-},[searchname,searchnamevalue])
+  }, [searchname, searchnamevalue])
   return (
     <Fragment>
       <div className={styles.maincategorysection}>
@@ -48,12 +48,12 @@ useEffect(()=>{
         </div>
         <div className={styles.insidecategorysection}>
           <div className='mb-3 mt-2'>
-            Categorys / health 
+            Categorys / health
           </div>
           <div>
             <Categorycarouse />
           </div>
-          <div className={styles.mainselectbox}>
+          {/* <div className={styles.mainselectbox}>
             <div className={styles.selectboxfilter}>
               <div>
                 <div className={styles.serachwomenpresection}>
@@ -74,13 +74,13 @@ useEffect(()=>{
                 />
               </div>
             </div>
-          </div>
+          </div> */}
           <div className={styles.splitcategorysection}>
             <div className={styles.leftcatgory}>
               <Sidebarcateogrys />
             </div>
             <div className={styles.rightcategory}>
-              <Maincategorylist name={values} searchnamevalue={searchnamevalue}/>
+              <Maincategorylist name={values} searchnamevalue={searchnamevalue} />
             </div>
           </div>
         </div>
