@@ -8,12 +8,10 @@ import { useEffect } from 'react';
 import Categorycarouse from './categoryslidecarousel/Categorycarouse';
 import Select from 'react-select';
 import serachicon from '../../assests/homepage-logos/serachicon.png';
-
 function Categorys({ id }) {
   const [selectname, selectedOption] = useState(null);
   const [searchname, setSearchName] = useState('');
   const [searchnamevalue, setSearchNameValue] = useState('');
-
   const values = id;
   useEffect(() => {
   }, [values])
@@ -31,13 +29,11 @@ function Categorys({ id }) {
     setSearchName(e.target.value);
   }
   const GetSearchdata = () => {
-    console.log("Search here!!!!");
     setSearchNameValue(searchname);
 
   }
 
   useEffect(() => {
-
   }, [searchname, searchnamevalue])
   return (
     <Fragment>

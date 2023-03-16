@@ -88,7 +88,7 @@ function Passwordcreate() {
 
     const handlePushTerms = () => {
         setTimeout(() => {
-            router.push("/login")
+            router.push("/")
         }, 1000);
     }
 

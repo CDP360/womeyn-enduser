@@ -1,8 +1,10 @@
 import React from 'react'
 
 
-import LayoutHeader from '../../../src/components/Layoutheader/LayoutHeader'
-import Womenpreneusdetails from './../../../src/components/middleheaderchilderns/ourwomenpreneurs/component/womenpreneursdetails/Womenpreneusdetails';
+
+import Womenpreneusdetails from './../../src/components/middleheaderchilderns/ourwomenpreneurs/component/womenpreneursdetails/Womenpreneusdetails';
+import LayoutHeader from './../../src/components/Layoutheader/LayoutHeader';
+
 
 function index() {
     return (
@@ -13,6 +15,7 @@ function index() {
             />
             <Womenpreneusdetails />
         </LayoutHeader>
+
 
 
     )
