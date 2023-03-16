@@ -101,10 +101,10 @@
                 border-bottom: 3px solid #e75b5e;
                 cursor: pointer;
                 @include xsBreakPoint {
-                    width: 35%;
+                    width: 50%;
                 }
                 @include smBreakPoint {
-                    width: 35%;
+                    width: 28%;
                 }
             }
         }

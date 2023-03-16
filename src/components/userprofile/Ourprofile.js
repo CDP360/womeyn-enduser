@@ -87,7 +87,7 @@ function Ourprofile() {
                       Address
                     </div>
                     <div className={`${index === 2 ? styles.activecode : styles.profiletext}`} onClick={() => setIndex(2)}>
-                      Changepassword
+                      Change Password
                     </div>
                   </div>
                   <div hidden={index != 0}>
@@ -96,7 +96,7 @@ function Ourprofile() {
                     </div>
                   </div>
                   <div hidden={index != 1}>
-                    <Address />
+                    <Address setIndex={setIndex} index={index} />
                   </div>
                   <div hidden={index != 2}>
                     <UserChangePassword />

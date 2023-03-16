@@ -19,7 +19,6 @@ function Categorycard({ item }) {
             </div>
             <img
                 className={styles.categoryimage}
-
                 src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
                 alt="profile-pic"
             />

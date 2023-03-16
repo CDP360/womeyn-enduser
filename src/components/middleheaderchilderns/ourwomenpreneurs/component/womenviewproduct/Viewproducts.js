@@ -14,7 +14,7 @@ import Caroselproducts from './carouselproducts/Caroselproducts';
 import { ContextStore } from '../../../../../Redux/store/Contextstore';
 import starstart from '../../../../../assests/category-logos/starstart.png';
 import starend from '../../../../../assests/category-logos/starend.png';
-import { ProductView, ProductLikeWishlist,ProductLikeWishlistGet } from '../../../../../services/productview-service/productview-services';
+import { ProductView, ProductLikeWishlist, ProductLikeWishlistGet } from '../../../../../services/productview-service/productview-services';
 
 import location from '../../../../../assests/product-logo/locationdelivery.png';
 import heartlike from '../../../../../assests/product-logo/heartred.png';
@@ -28,6 +28,8 @@ function Viewproducts({ id }) {
     const [productvariations, setProductVariations] = useState([]);
     const [productreview, setProductReview] = useState([]);
     const [productimages, setProductImage] = useState([]);
+    const [productseller, setProductseller] = useState([]);
+
     const [index1, setIndex1] = useState(0);
     const [index2, setIndex2] = useState(0);
 
@@ -58,6 +60,7 @@ function Viewproducts({ id }) {
     }
     useEffect(() => {
         ProductView(productnames).then((res) => {
+            setProductseller(res?.data?.sellerInformation[0])
             const productshowimages = [];
             res?.data?.productDetails?.productImages?.map((item, index) => {
                 productshowimages?.push(item)
@@ -66,7 +69,6 @@ function Viewproducts({ id }) {
                 id: 0,
                 name: res?.data?.productDetails?.productThumbImage
             });
-            // console.log("j",f)
             setProductImage(productshowimages);
             setProductData(res?.data?.productDetails);
             setProductReview(res?.data?.reviews);
@@ -90,13 +92,13 @@ function Viewproducts({ id }) {
     }, [productnames]);
 
 
-    useEffect(()=>{
-        ProductLikeWishlistGet().then((res)=>{
-console.log("res",res)
-        }).catch((err)=>{
+    useEffect(() => {
+        ProductLikeWishlistGet().then((res) => {
+            console.log("res", res)
+        }).catch((err) => {
             console.log(err);
         })
-    },[])
+    }, [])
 
 
     const LikeWishlist = (id) => {
@@ -129,8 +131,10 @@ console.log("res",res)
 
     }
 
+    console.log("productseller", productseller?.firstName)
 
-    
+
+
     return (
         <Fragment>
             {/* <div className={styles.mainsearchwomen}>
@@ -262,7 +266,7 @@ console.log("res",res)
 
                                         {productimages?.map((item, index) => {
                                             return (
-                                                <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)}>
+                                                <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)} key={index}>
                                                     <img
                                                         className={styles.imagecards}
                                                         src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
@@ -300,14 +304,14 @@ console.log("res",res)
                                                 setLike(!like)
                                                 LikeWishlist(productdata?.id)
                                             }}>
-                                               {like?<>
-                                                <Image src={heartunlike} alt="no image" className={styles.heartlikes}/>
-                                              
-                                               </>:<>
-                                               <Image src={heartlike} alt="no image" className={styles.heartlikes}/>
-                                               </>} 
-                                               {/* <ion-icon name="heart-outline" size="large"></ion-icon> */}
-                                                </button>
+                                                {like ? <>
+                                                    <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+
+                                                </> : <>
+                                                    <Image src={heartlike} alt="no image" className={styles.heartlikes} />
+                                                </>}
+                                                {/* <ion-icon name="heart-outline" size="large"></ion-icon> */}
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -326,23 +330,24 @@ console.log("res",res)
                                 <div>
                                     712 Ratings
                                 </div>
-
                             </div>
+
                             <div className={styles.proceinproduct}>
                                 <div className={styles.offertext}>
-                                    {productdata?.offerPercentag == 0 ? <></> : <>
+                                    {productdata?.offerPercentag == 0 ? <>
+                                    </> : <>
                                         {productdata?.offerPercentag}% off
                                     </>}
                                 </div>
                                 <div className={styles.priceautual}>
-                                    <span className={styles.prices}>${productdata?.salePrice}</span>
+                                    <div className={styles.prices}>${productdata?.salePrice}</div>
                                 </div>
                                 <div className='textpricedashed' >
                                     {productdata?.offerPercentag == 0 ? <></> : <del className={styles.priceautuals}>${productdata?.actualPrice}</del>}
                                 </div>
                             </div>
 
-                            <div className="mt-2 mb-3">
+                            <div className="mt-2">
                                 <div className={styles.fontweightsizes}></div>
                                 <div className={styles.sizesection}>
                                     <div className={styles.sizes}>
@@ -354,7 +359,7 @@ console.log("res",res)
                                                             <div className={styles.fontweightsizes}>{item?.name}:</div>
                                                             {item?.variationValues?.map((items, index) => {
                                                                 return (
-                                                                    <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex1(index)}>
+                                                                    <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex1(index)} key={index}>
                                                                         {items}
                                                                     </div>
                                                                 )
@@ -396,7 +401,7 @@ console.log("res",res)
                                                                 <div className={styles.fontweightsizes}>{item?.name}:</div>
                                                                 {item?.variationValues?.map((items, index) => {
                                                                     return (
-                                                                        <div className={`${index2 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex2(index)}>
+                                                                        <div className={`${index2 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex2(index)} key={index}>
                                                                             <div>
                                                                                 {items.toLowerCase()}
                                                                             </div>
@@ -429,10 +434,7 @@ console.log("res",res)
                                     </div>
                                 </div>
                             </div>
-                            <div>
 
-
-                            </div>
 
                             <div className={styles.buttons}>
                                 <div>
@@ -449,15 +451,41 @@ console.log("res",res)
                             <div className={styles.locationsection}>
                                 <div className={styles.deverisection}>
                                     <div>
-                                    <Image src={location} alt="no image" className={styles.deliveryicon} />
+                                        <Image src={location} alt="no image" className={styles.deliveryicon} />
                                     </div>
                                     <div className={styles.deliverytexts}>Delivery To</div>
                                 </div>
-                                <input type="text" placeholder='7000' className={styles.location} />
+                                <div className={styles.inputlocationfield}>
+
+                                    <div>
+                                        <input type="text" placeholder='7000' className={styles.location} />
+                                    </div>
+                                    <div>
+                                        <button className={styles.check}>Check</button>
+                                    </div>
+                                </div>
                                 <div className='mt-2'>
                                     Delivery in days Thursday |  <span className={styles.free}>Free</span>  <del> $ 40</del> is orderd before 3:34pm
                                 </div>
                             </div>
+                            <div className={styles.sellernames}>
+
+                                <div className={styles.sellername}>
+                                    Seller  :
+                                </div>
+                                <div className={styles.nameinseller}>{productseller?.firstName}</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div className={styles.descriptionsection}>
+                    <div className={styles.additionaldetails}>
+                    Product Description 
+                         </div>
+                        <div>
+
+                            {productdata?.productDescription}
                         </div>
 
                     </div>
@@ -521,56 +549,36 @@ console.log("res",res)
                     </div> */}
 
                     <div className={styles.productdetailslists}>
+                        <div className={styles.additionaldetails}>
+                            Product Details
+                        </div>
                         <div className={styles.leftproductdetails}>
+
                             <div className={styles.productdetailsleft}>
-                                <div className={styles.additionaldetails}>
-                                    Product Details
-                                </div>
+
                                 <div className={styles.listproductdata}>
                                     <div className={styles.leftname}>Product Name</div>
                                     <div className={styles.rightname}>{productdata?.productName}</div>
                                 </div>
                                 <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Color</div>
-                                    <div className={styles.rightname}>Blue</div>
-                                </div>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Brand Name</div>
-                                    <div className={styles.rightname}>{productdata?.brandName}</div>
-                                </div>
-                                <div className={styles.listproductdata}>
                                     <div className={styles.leftname}>Model Name</div>
                                     <div className={styles.rightname}>{productdata?.modelName}</div>
                                 </div>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Style Name</div>
-                                    <div className={styles.rightname}>{productdata?.styleName}</div>
-                                </div>
+
                                 <div className={styles.listproductdata}>
                                     <div className={styles.leftname}>Manufacture Name</div>
                                     <div className={styles.rightname}>{productdata?.manufacturerName}</div>
                                 </div>
                             </div>
                             <div className={styles.productdetailsright}>
-                                <div className={styles.additionaldetails}>
-                                    Additional Details
-                                </div>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Product Name</div>
-                                    <div className={styles.rightname}>{productdata?.productName}</div>
-                                </div>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Color</div>
-                                    <div className={styles.rightname}>Blue</div>
-                                </div>
+
+
+
                                 <div className={styles.listproductdata}>
                                     <div className={styles.leftname}>Brand Name</div>
                                     <div className={styles.rightname}>{productdata?.brandName}</div>
                                 </div>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Model Name</div>
-                                    <div className={styles.rightname}>{productdata?.modelName}</div>
-                                </div>
+
                                 <div className={styles.listproductdata}>
                                     <div className={styles.leftname}>Style Name</div>
                                     <div className={styles.rightname}>{productdata?.styleName}</div>
@@ -588,11 +596,11 @@ console.log("res",res)
 
 
 
-                <div className={styles.reviewsection}>
+                {productreview?.length > 0 ? <div className={styles.reviewsection}>
                     <div>
-                        <Reviewsproduct />
+                        <Reviewsproduct productreview={productreview} />
                     </div>
-                </div>
+                </div> : <></>}
 
                 <div>
                     <div>

@@ -12,6 +12,8 @@ import serachicon from '../../assests/homepage-logos/serachicon.png';
 function Categorys({id}) {
   const [selectname, selectedOption] = useState(null);
   const [searchname, setSearchName] = useState('');
+  const [searchnamevalue, setSearchNameValue] = useState('');
+
   const values=id;
   useEffect(() => {
   }, [values])
@@ -30,7 +32,13 @@ function Categorys({id}) {
 }
 const GetSearchdata=()=>{
   console.log("Search here!!!!");
+  setSearchNameValue(searchname);
+
 }
+
+useEffect(()=>{
+
+},[searchname,searchnamevalue])
   return (
     <Fragment>
       <div className={styles.maincategorysection}>
@@ -72,7 +80,7 @@ const GetSearchdata=()=>{
               <Sidebarcateogrys />
             </div>
             <div className={styles.rightcategory}>
-              <Maincategorylist name={values}/>
+              <Maincategorylist name={values} searchnamevalue={searchnamevalue}/>
             </div>
           </div>
         </div>

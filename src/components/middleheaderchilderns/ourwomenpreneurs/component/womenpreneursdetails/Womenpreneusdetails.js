@@ -138,12 +138,9 @@ function Womenpreneusdetails({ id }) {
                                         {id}
                                     </div>
                                 </div>
-
                             </div>
                             <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
                                 {sellers?.productDescription}
-                                {/* {sellers?.id} */}
-                                {/* Earthy Souls has been built on the belief that we need to live alongside Mother Nature and not exploit it. Our chemical-free approach aims at shielding her from harmful toxins and helps preserve the natural state. Earthy Souls have curated an array of products through traditional practices, with a touch of innovation. These practices and products ensure there is zero pollution, reducing the wastage to almost nil. */}
                             </div>
                         </div>
                         <div className={styles.rightdetailpage}>
@@ -157,7 +154,6 @@ function Womenpreneusdetails({ id }) {
                     </div>
                     <div className={styles.middleheaderpage}>
                         <div className={styles.insidemiddleheader}>
-
                             {categorys?.length==0 && <div>No Categorys</div>}
                             {categorys?.map((item, index) => {
                                 return (
@@ -166,7 +162,7 @@ function Womenpreneusdetails({ id }) {
                                         productListData(item?.id);
                                     }
                                     }>
-                                        {item?.name}
+                                    {item?.name}
                                     </div>
                                 )
                             })}

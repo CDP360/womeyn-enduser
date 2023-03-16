@@ -13,7 +13,6 @@ function reducer(state = initialState, action) {
         case "CART_SUCCESS": {
             const newItemCart = action.payload;
             const existingproduct = state.cart.cartData.find((item) => item.id === newItemCart.id);
-            console.log("56", existingproduct)
             const cartData = existingproduct ? state.cart.cartData.map((item) => item.id === existingproduct.id ? newItemCart : item) : [...state.cart.cartData, newItemCart];
             Cookies.set("CartDatas", JSON.stringify({ ...state.cart, cartData }));
             return { ...state, cart: { ...state.cart, cartData } }

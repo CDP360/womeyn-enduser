@@ -3,6 +3,7 @@
 .homesectionmain {
     width: 100%;
     // position:relative;
+   
     .emptyboxrightcolor {
         background-color: orange;
         position: absolute;
@@ -20,7 +21,7 @@
         background: #e95a5a;
         opacity: 0.2;
         filter: blur(500px);
-        right: 0;
+        right: 5%;
         top: -5%;
     }
     .insidesectionhome {

@@ -31,7 +31,7 @@ function loadAsyncScript(src) {
         document.head.appendChild(script);
     })
 }
-function Address() {
+function Address({setIndex,index}) {
     const {
         register,
         handleSubmit,
@@ -63,14 +63,17 @@ function Address() {
             countryName: "Australia",
             fullAddress: e?.fulladdress
         }
-        Addaddress(datas).then((res) => {
-            setTimeout(() => {
-                handleClose();
-                window.location.reload();
-            }, 1000)
-        }).catch((err) => {
-            console.log(err);
-        })
+        window.location.reload();
+                setIndex(index+1);
+        // Addaddress(datas).then((res) => {
+        //     setTimeout(() => {
+        //         handleClose();
+        //         window.location.reload();
+        //         setIndex(1);
+        //     }, 1000)
+        // }).catch((err) => {
+        //     console.log(err);
+        // })
     }
 
 
@@ -97,6 +100,7 @@ function Address() {
         })
     }
 
+    console.log("setIndex",index)
 
     return (
         <div className={styles.mainaddresspage}>

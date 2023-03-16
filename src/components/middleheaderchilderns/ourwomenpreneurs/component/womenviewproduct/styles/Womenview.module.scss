@@ -139,7 +139,7 @@
                             justify-content: center;
                             border: 2px solid #e95a5a;
                             border-radius: 8px;
-                        
+
                             @include xsBreakPoint {
                                 width: 80px;
                                 height: auto;
@@ -158,7 +158,7 @@
                             align-items: center;
                             justify-content: center;
                             border-radius: 8px;
-                            padding:4px;
+                            padding: 4px;
                             @include xsBreakPoint {
                                 width: 80px;
                                 height: 80px;
@@ -183,7 +183,7 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        padding:5px;
+                        padding: 5px;
 
                         @include xsBreakPoint {
                             width: 100%;
@@ -201,7 +201,7 @@
                             object-fit: cover;
                             // background-color: rgba(247, 247, 247, 1);
                             border-radius: 5px;
-        
+
                             @include xsBreakPoint {
                                 height: 300px;
                                 width: 100%;
@@ -271,11 +271,27 @@
                         gap: 10px;
                     }
                     .location {
-                        width: 60%;
+                        width: 100%;
                         border: 1px solid #d0cece;
                         outline: none;
                         border-radius: 4px;
                         padding: 5px 5px;
+                    }
+                    .inputlocationfield {
+                        display: flex;
+                        gap: 10px;
+                        align-items: center;
+                        .check {
+                            border: none;
+                            outline: none;
+                            padding: 4px 20px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            width: 100%;
+                            background-color: #e95a5a;
+                            color: white;
+                            font-weight: 500;
+                        }
                     }
                     .deliverytexts {
                         color: #b5b3b3;
@@ -285,6 +301,19 @@
                         width: 30px;
                         height: 30px;
                         object-fit: contain;
+                    }
+                }
+                .sellernames {
+                    display: flex;
+                    padding-top: 2%;
+                    gap: 7px;
+                    .sellername {
+                        font-weight: 600;
+                    }
+                    .nameinseller {
+                        color: #121212;
+                        opacity: 0.5;
+                        font-weight: 600;
                     }
                 }
                 .free {
@@ -309,7 +338,7 @@
                 }
                 .proceinproduct {
                     display: flex;
-                    gap: 20px;
+                    gap: 15px;
                     padding-top: 2%;
                     align-items: center;
                     .offertext {
@@ -443,6 +472,10 @@
                 }
             }
         }
+        .descriptionsection
+        {
+            padding-top:4%;
+        }
         .customerreviews {
             // border:2px solid blue;
             width: 100%;
@@ -541,21 +574,23 @@
         background-color: #f9f9f9;
     }
 
+    .additionaldetails {
+        font-weight: 600;
+        font-size: 1.2rem;
+        padding: 2% 0px;
+    }
     .productdetailslists {
         // border: 2px solid red;
         margin-top: 5%;
         width: 100%;
+
         .leftproductdetails {
             display: flex;
             @include xsBreakPoint {
                 flex-direction: column;
                 gap: 20px;
             }
-            .additionaldetails {
-                font-weight: 600;
-                font-size: 1.2rem;
-                padding: 2% 0px;
-            }
+
             .productdetailsleft {
                 width: 50%;
                 @include xsBreakPoint {
@@ -602,6 +637,7 @@
                 @include smBreakPoint {
                     width: 100%;
                 }
+
                 .listproductdata {
                     display: flex;
                     // gap: 20%;

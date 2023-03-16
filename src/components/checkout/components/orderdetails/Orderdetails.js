@@ -29,13 +29,15 @@ function Orderdetails({ state }) {
               177A Bleecker Street, New York City, NY 10012-1406, on the corner of Bleecker Street and Fenno Place in the heart of Greenwich Village.
             </div>
             <div>
-              <Button className={`mt-2 mb-2 ${styles.editaddress}`}>Edit Address</Button>
+              <div>
+                Edit Address
+              </div>
             </div>
           </div>
 
         </div>
 
-        <div className={styles.addresspageorder}>
+        {/* <div className={styles.addresspageorder}>
           <div className={styles.leftorders}>
             <Image src={cartshow} alt="no image" className={styles.map} />
           </div>
@@ -56,9 +58,9 @@ function Orderdetails({ state }) {
                         <div className={styles.orderimagebox}></div>
                       </div>
                       <div className={styles.gapsectiontext}>
-                        {/* <div className={styles.ordertitlename}>{item.name.slice(0, 10)}</div> */}
-                        {/* <div>Rs.{item.price}</div> */}
-                        {/* <div>{item?.title?.slice(0, 15)}</div> */}
+                        <div className={styles.ordertitlename}>{item.name.slice(0, 10)}</div>
+                        <div>Rs.{item.price}</div>
+                        <div>{item?.title?.slice(0, 15)}</div>
                       </div>
                     </div>
                     <div className={styles.oneitems}>{1} Item(s)</div>
@@ -69,9 +71,9 @@ function Orderdetails({ state }) {
 
           </div>
 
-        </div>
+        </div> */}
 
-        <div className={styles.addresspageorder}>
+        {/* <div className={styles.addresspageorder}>
           <div className={styles.leftorders}>
             <Image src={truck} alt="no image" className={styles.maps} />
           </div>
@@ -118,10 +120,10 @@ function Orderdetails({ state }) {
 
           </div>
 
-        </div>
+        </div> */}
       </div>
     </Fragment>
   )
 }
 
-export default  dynamic(() => Promise.resolve(Orderdetails), { ssr: false });
+export default dynamic(() => Promise.resolve(Orderdetails), { ssr: false });

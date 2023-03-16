@@ -4,7 +4,7 @@ import redstar from '../../../../../../assests/womeynlogos/redstar.png';
 import Image from 'next/image';
 
 
-function Reviewsproduct() {
+function Reviewsproduct({productreview}) {
 
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
@@ -64,7 +64,7 @@ function Reviewsproduct() {
   
     return (
         <Fragment>
-            <div className={styles.mainreviewinsidesection}>
+            {/* <div className={styles.mainreviewinsidesection}>
                 <div className={styles.seeallsectionreviews}>
                     <div className={styles.reviwesectionrating}>
                         <div className={styles.reviewtexts}>Reviews</div>
@@ -105,7 +105,15 @@ function Reviewsproduct() {
                         )
                     })}
                 </div>
-            </div>
+            </div> */}
+
+
+            {productreview?.length>0 ? <div>
+
+                product view screen designs
+            </div>:<div>
+           
+                </div>}
            
         </Fragment>
     )
