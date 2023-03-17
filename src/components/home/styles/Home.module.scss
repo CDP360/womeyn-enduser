@@ -3,7 +3,7 @@
 .homesectionmain {
     width: 100%;
     // position:relative;
-   
+
     .emptyboxrightcolor {
         background-color: orange;
         position: absolute;
@@ -127,13 +127,17 @@
                 }
                 @include xsBreakPoint {
                     width: 100% !important;
-                } @include smBreakPoint {
+                }
+                @include smBreakPoint {
                     width: 100% !important;
-                } @include mdBreakPoint {
+                }
+                @include mdBreakPoint {
                     width: 100% !important;
-                } @include lgBreakPoint {
+                }
+                @include lgBreakPoint {
                     width: 100% !important;
-                } @include xlBreakPoint {
+                }
+                @include xlBreakPoint {
                     width: 100% !important;
                 }
             }
@@ -149,7 +153,7 @@
 .addimageboxs {
     width: 100% !important;
     height: 100% !important;
-    object-fit:contain !important;
+    object-fit: contain !important;
 }
 
 .homebanner {

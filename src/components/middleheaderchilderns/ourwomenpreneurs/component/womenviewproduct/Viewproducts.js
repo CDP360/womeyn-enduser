@@ -15,13 +15,17 @@ import { ContextStore } from '../../../../../Redux/store/Contextstore';
 import starstart from '../../../../../assests/category-logos/starstart.png';
 import starend from '../../../../../assests/category-logos/starend.png';
 import { ProductView, ProductLikeWishlist, ProductLikeWishlistGet } from '../../../../../services/productview-service/productview-services';
-
 import location from '../../../../../assests/product-logo/locationdelivery.png';
-import heartlike from '../../../../../assests/product-logo/heartred.png';
-import heartunlike from '../../../../../assests/product-logo/heart.png';
-
-
+import heartlike from '../../../../../assests/product-logo/likefullcolor.png';
+import heartunlike from '../../../../../assests/product-logo/likeborder.png';
+import LoginModalpopup from './../../../../loginmodalpopup/LoginModalpopup';
 function Viewproducts({ id }) {
+
+
+    const history = useRouter();
+
+    const [tokencheck, setTokenset] = useState("");
+
     const { state, dispatch } = useContext(ContextStore);
     const [indexs, setIndex] = useState(0);
     const [productdata, setProductData] = useState([]);
@@ -29,14 +33,15 @@ function Viewproducts({ id }) {
     const [productreview, setProductReview] = useState([]);
     const [productimages, setProductImage] = useState([]);
     const [productseller, setProductseller] = useState([]);
-
     const [index1, setIndex1] = useState(0);
     const [index2, setIndex2] = useState(0);
-
     const [like, setLike] = useState(true);
-
     const productnames = id;
     const router = useRouter();
+    const [loading, setLoading] = useState(false);
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     const data =
     {
         id: 1,
@@ -54,6 +59,11 @@ function Viewproducts({ id }) {
     // }
     const Checkout = () => {
         router.push("/checkout")
+    }
+
+
+    const CheckLoginUsers = (data) => {
+        router.push(`/signup?redirect=/product/${data}`)
     }
     const handleChange = (cartdata) => {
         dispatch({ type: "CART_SUCCESS", payload: cartdata });
@@ -89,7 +99,11 @@ function Viewproducts({ id }) {
         }).catch((err) => {
             console.log(err);
         });
-    }, [productnames]);
+
+        const tokencheck = localStorage.getItem("womenUserToken");
+        setTokenset(tokencheck)
+
+    }, [productnames, tokencheck]);
 
 
     useEffect(() => {
@@ -105,7 +119,6 @@ function Viewproducts({ id }) {
 
         if (like) {
             console.log(like, "like", "id", id)
-
             const likeid = {
                 productId: id
             }
@@ -114,9 +127,9 @@ function Viewproducts({ id }) {
             // }).catch((err) => {
             //     console.log(err);
             // })
+
         }
         else {
-
             const likeid = {
                 wishlistId: id
             }
@@ -131,121 +144,21 @@ function Viewproducts({ id }) {
 
     }
 
-    console.log("productseller", productseller?.firstName)
 
-
-
+    const productSellerPageView = (data) => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 500)
+        history.push(`/womenpreneurs/${data}`);
+    }
     return (
         <Fragment>
-            {/* <div className={styles.mainsearchwomen}>
-                <div className={styles.emptyboxsection}>
-                </div>
-                <div className={styles.emptyboxsectionleft}>
-                </div>
-                <div className={styles.insidesearchwomen}>
-                    <div className={styles.splitwomensearch}>
-                        <div className={styles.leftwomensearchsection}>
-                            <div>
-                                <div >
-                                    <Image src={data?.images[indexs]} alt="no image" className={styles.serachlargeimage} />
-
-                                </div>
-                                <div className={styles.heartimagesection}>
-                                    <button className={styles.btn}> <i class="fa-regular fa-heart" ></i></button>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div className={styles.rightwomensearchsection}>
-                            <div className="row justify-content-center align-items-center gap-5 mb-5">
-                                {data?.images?.map((items, index) => {
-                                    return (
-                                        <div className={`${indexs === index ? styles.activewomen : ""} ${styles.searchimagesections}`} onClick={() => setIndex(index)}>
-                                            <Image src={items} alt="no image" className={` ${styles.imagesearch}`} />
-                                        </div>
-                                    )
-                                })}
-                            </div>
-
-
-                        </div>
-                    </div>
-
-
-                    <div className={styles.insidesplitanothecart}>
-                        <div className={styles.leftinsideanothersection}>
-                            <div className={`${styles.ratingsection} mt-2`}>
-                                <div className={styles.ratingsections}>
-                                    <Image src={redstar} alt="no image" className={styles.star} />
-                                    4.5 <span className='text-grey'>(106 ratings)</span>
-                                </div>
-                                <div className="fs-6">
-                                    Top Seller
-                                </div>
-                            </div>
-                            <div className={styles.loreamsectionproduct}>
-
-                                <div className={`${styles.loremtextwidth} medium-text`}>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing.
-                                </div>
-                                <div className="medium-text">
-                                    Description
-                                </div>
-                                <div>
-                                    Learn to play and enjoy the sport of a lifetime. If you are alrea The Instructor for this activity will be Leo B.,a 3rd degree black-belt and long-time and teacher of variatios. Learn to play and enjoy the sport of a lifetime. If you are alrea The Instructor for this activity will be Leo B.,a 3rd degree black-belt and long-time and teacher of variatios
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.rightinsideanothersection}>
-                            <div className={styles.cartaddsection}>
-                                <div className={styles.cartpricesection}>
-                                    <div><span className='text-grey'><del>$65.00</del></span></div>
-                                    <div><span className='active fs-5'><>$43.00</></span></div>
-
-                                </div>
-
-                                <div>
-                                    <Button className={styles.addcartbutton} onClick={() => handleChange(datas)}>
-                                        Add To Cart
-                                    </Button>
-                                </div>
-
-                                <div>
-                                    <Button className={styles.bynowcartbutton} onClick={Checkout}>
-                                        Buy Now
-                                    </Button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div className={styles.reviewsection}>
-                    <div>
-                        <Reviewsproduct />
-                    </div>
-                </div>
-                <div>
-                    <Caroselproducts />
-                </div>
-            </div> */}
-
             <div className={styles.mainproductviewscreen}>
-
                 <div className={styles.insideproductview}>
-
                     <div className={styles.splitproductview}>
-
                         <div className={styles.leftproductview}>
                             <div className={styles.leftmainsectionslide}>
-                                {/* <div>
-                                    {indexs+1}/{data?.images?.length}
-                                    </div> */}
                                 <div className={styles.leftcardimages}>
-
                                     <div className={styles.imagerowsection}>
                                         {/* {productdata?.productImages?.map((item, index) => {
                                             return (
@@ -297,9 +210,9 @@ function Viewproducts({ id }) {
                                                 src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
                                                 alt="profile-pic"
                                             />
-                                            {/* <Image src={productimages[indexs]?.name} alt="no image" className={styles.serachlargeimage} /> */}
                                         </div>
-                                        <div className={styles.heartimagesection}>
+
+                                        {tokencheck ? <div className={styles.heartimagesection}>
                                             <button className={styles.btn} onClick={() => {
                                                 setLike(!like)
                                                 LikeWishlist(productdata?.id)
@@ -310,9 +223,24 @@ function Viewproducts({ id }) {
                                                 </> : <>
                                                     <Image src={heartlike} alt="no image" className={styles.heartlikes} />
                                                 </>}
-                                                {/* <ion-icon name="heart-outline" size="large"></ion-icon> */}
                                             </button>
-                                        </div>
+                                        </div> :
+                                            <div className={styles.heartimagesection}>
+                                                <button className={styles.btn} onClick={() => {
+CheckLoginUsers(productdata?.productSlugName)
+                                                    // LikeWishlist(productdata?.id)
+                                                }}>
+                                                    {/* {like ? <>
+                                                        <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+
+                                                    </> : <>
+                                                        <Image src={heartlike} alt="no image" className={styles.heartlikes} />
+                                                    </>} */}
+                                                    {/* kalai */}
+                                                    <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+                                                </button>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -390,7 +318,6 @@ function Viewproducts({ id }) {
                                 </div>
 
                                 <div>
-
                                     <div className={styles.sizesection}>
                                         <div className={styles.sizes}>
                                             {productvariations?.map((item, index) => {
@@ -398,7 +325,7 @@ function Viewproducts({ id }) {
                                                     <>
                                                         {
                                                             item?.name == "Color" ? <>
-                                                                <div className={styles.fontweightsizes}>{item?.name}:</div>
+                                                                <div className={styles.fontweightsizes} key={index}>{item?.name}:</div>
                                                                 {item?.variationValues?.map((items, index) => {
                                                                     return (
                                                                         <div className={`${index2 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex2(index)} key={index}>
@@ -411,15 +338,9 @@ function Viewproducts({ id }) {
 
                                                             </> : <></>
                                                         }
-
-
                                                     </>
                                                 )
                                             })}
-
-
-
-
 
                                             {/* {productvariations?.variationValues?.map((item, index) => {
                                             return (
@@ -430,12 +351,9 @@ function Viewproducts({ id }) {
                                             )
                                         })} */}
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
-
-
                             <div className={styles.buttons}>
                                 <div>
                                     <Button className={styles.bynowcartbutton} onClick={Checkout}>
@@ -469,93 +387,30 @@ function Viewproducts({ id }) {
                                 </div>
                             </div>
                             <div className={styles.sellernames}>
-
                                 <div className={styles.sellername}>
                                     Seller  :
                                 </div>
-                                <div className={styles.nameinseller}>{productseller?.firstName}</div>
+                                <div className={styles.nameinseller} onClick={() => productSellerPageView(productseller?.businessSlugName)} >
+                                    {productseller?.firstName}
+                                </div>
                             </div>
                         </div>
-
                     </div>
 
                     <div className={styles.descriptionsection}>
-                    <div className={styles.additionaldetails}>
-                    Product Description 
-                         </div>
+                        <div className={styles.additionaldetails}>
+                            Product Description
+                        </div>
                         <div>
-
                             {productdata?.productDescription}
                         </div>
-
                     </div>
-
-                    {/* 
-                    <div className="mt-4">
-                        <div className="mt-5">
-                            Customer Reviews
-                        </div>
-                        <div>
-                            {sizes?.map((item, index) => {
-                                return (
-                                    <div className={styles.customerreviews}>
-                                        <div className={styles.insidecustomersviews}>
-                                            <div className={styles.leftcustomers}>
-                                                <div>
-
-                                                    Writija Chabria
-                                                </div>
-                                                <div>
-                                                    <Image src={starstart} alt="no image" className={styles.stars} />
-                                                    <Image src={starstart} alt="no image" className={styles.stars} />
-                                                    <Image src={starstart} alt="no image" className={styles.stars} />
-                                                    <Image src={starstart} alt="no image" className={styles.stars} />
-                                                    <Image src={starend} alt="no image" className={styles.stars} />
-
-                                                </div>
-
-                                                <div>
-                                                    Freaking amazing
-                                                </div>
-
-                                                <div className={styles.soaps}>
-
-                                                    Soap is nice I mean the smell is great just like lemongrass. I m love in it but only for the smell it's expensive and its only 100g product...and packaging wow superb like it Smell ??
-                                                </div>
-                                            </div>
-                                            <div className={styles.rightcustomers}>
-                                                <div>
-                                                    Posted a week ago
-
-                                                </div>
-                                                <div className={styles.largeellips}>
-                                                    <ion-icon name="ellipsis-vertical-outline" size="large"></ion-icon>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div> */}
-
-                    {/* <div className={styles.viewsection}>
-                        <div>
-                            View all reviews
-                        </div>
-                        <div className="mt-2">
-                            <ion-icon name="arrow-forward-outline"></ion-icon>
-                        </div>
-                    </div> */}
-
                     <div className={styles.productdetailslists}>
                         <div className={styles.additionaldetails}>
                             Product Details
                         </div>
                         <div className={styles.leftproductdetails}>
-
                             <div className={styles.productdetailsleft}>
-
                                 <div className={styles.listproductdata}>
                                     <div className={styles.leftname}>Product Name</div>
                                     <div className={styles.rightname}>{productdata?.productName}</div>
@@ -571,14 +426,10 @@ function Viewproducts({ id }) {
                                 </div>
                             </div>
                             <div className={styles.productdetailsright}>
-
-
-
                                 <div className={styles.listproductdata}>
                                     <div className={styles.leftname}>Brand Name</div>
                                     <div className={styles.rightname}>{productdata?.brandName}</div>
                                 </div>
-
                                 <div className={styles.listproductdata}>
                                     <div className={styles.leftname}>Style Name</div>
                                     <div className={styles.rightname}>{productdata?.styleName}</div>
@@ -588,25 +439,20 @@ function Viewproducts({ id }) {
                                     <div className={styles.rightname}>{productdata?.manufacturerName}</div>
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
-
-
-
                 {productreview?.length > 0 ? <div className={styles.reviewsection}>
                     <div>
                         <Reviewsproduct productreview={productreview} />
                     </div>
                 </div> : <></>}
-
                 <div>
                     <div>
                         <Caroselproducts />
                     </div>
                 </div>
+
 
             </div>
         </Fragment>

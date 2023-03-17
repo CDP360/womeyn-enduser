@@ -36,10 +36,10 @@ function Beverage({ productlist, loading }) {
                                 <div className={styles.plussection}>
                                     <Image src={plus} alt="no image" className={styles.plus} onClick={() => Carthandleproduct(item)} />
                                 </div>
-                                <div onClick={() => router.push(`/womenpreneurs/product/view/${item?.productSlugName}`)}>
+                                <div onClick={() => router.push(`/product/${item?.productSlugName}`)}>
                                     <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={styles.sellerimagesize} />
                                 </div>
-                                <div className={styles.cardinsidesection} onClick={() => router.push(`/womenpreneurs/product/view/${item?.productSlugName}`)}>
+                                <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
                                     <Image src={star} alt="no image" className={styles.stars} />
                                     <div className={styles.brandname}>
                                         <span>{item?.productName}</span>

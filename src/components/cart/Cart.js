@@ -411,7 +411,7 @@ function Cart() {
 
                   {tokes ?
                     <Button className={styles.checkoutbutton} onClick={() => router.push("/checkout")}>Place Order</Button> :
-                    <Button className={styles.checkoutbutton} onClick={() => router.push("/login?redirect=/checkout")}>Place Order</Button>
+                    <Button className={styles.checkoutbutton} onClick={() => router.push("/login?redirect=/checkout", { kalai: "thala" })}>Place Order</Button>
                   }
                 </div>
               </div>

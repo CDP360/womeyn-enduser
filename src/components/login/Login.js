@@ -14,6 +14,7 @@ import eyeoff from '../../assests/login-logos/Eye Off.png';
 function Login() {
     const [show1, setShow1] = useState(false);
     const history = useRouter();
+    console.log("ops", history?.query?.redirect)
     const {
         register,
         handleSubmit,
@@ -114,6 +115,7 @@ function Login() {
                 <div className={styles.insidesectionlogin}>
                     <div className={styles.insideloginsplit}>
                         <div className={styles.logintext}>{LoginText?.Login}</div>
+                        
                         <div>
                             <Form onSubmit={handleSubmit(onSubmit)}>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -186,7 +188,12 @@ function Login() {
                                 {LoginText?.Donthaveanaccount}
                                 <span
                                     className="active"
-                                    onClick={() => history.push("/signup")}
+                                    onClick={() => history.push(
+                                        {
+                                            pathname: '/signup',
+                                            state: { name: history?.query?.redirect }
+                                        }
+                                    )}
                                 >
                                     {LoginText?.Signup}
                                 </span>

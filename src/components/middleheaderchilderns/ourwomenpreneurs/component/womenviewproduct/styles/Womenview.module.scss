@@ -197,8 +197,8 @@
 
                         .serachlargeimage {
                             width: 400px;
-                            height: auto;
-                            object-fit: cover;
+                            height: 400px;
+                            object-fit: contain;
                             // background-color: rgba(247, 247, 247, 1);
                             border-radius: 5px;
 
@@ -232,14 +232,18 @@
                             width: 40px;
                             height: 40px;
                             // padding:10px;
+                            
+                            object-fit:contain;
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            border: 2px solid white;
+                            border: 1px solid white;
                             border-radius: 50%;
                             .heartlikes {
                                 width: 25px;
                                 height: 25px;
+                                padding:1px;
+                                cursor:pointer;
                             }
                         }
                     }
@@ -311,9 +315,13 @@
                         font-weight: 600;
                     }
                     .nameinseller {
-                        color: #121212;
-                        opacity: 0.5;
+                        // color: #121212;
+                        // opacity: 0.3;
                         font-weight: 600;
+                        border-bottom:0.10px solid #E95A5A;
+                        color:#E95A5A;
+                        font-weight:600;
+                        cursor:pointer;
                     }
                 }
                 .free {
@@ -422,6 +430,7 @@
                     display: flex;
                     gap: 20px;
                     flex-direction: column;
+                    padding-top: 4%;
                 }
 
                 .addcartbutton {
@@ -472,9 +481,8 @@
                 }
             }
         }
-        .descriptionsection
-        {
-            padding-top:4%;
+        .descriptionsection {
+            padding-top: 4%;
         }
         .customerreviews {
             // border:2px solid blue;

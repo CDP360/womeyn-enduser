@@ -26,32 +26,14 @@ import Image from 'next/image';
 import styles from './styles/Maincategory.module.scss';
 import { ProductCatgorylist } from '../../../services/category-services/category-service';
 
-function Maincategorylist({ name,searchnamevalue }) {
+function Maincategorylist({ name, searchnamevalue }) {
     const [product, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [perPage, setPerPage] = useState(10);
     const [size, setSize] = useState(perPage);
-    const [dummy,setDummy]=useState([]);
+    const [dummy, setDummy] = useState([]);
     const [limit, seLimit] = useState([]);
     const [current, setCurrent] = useState(1);
-    // const PerPageChange = (value) => {
-    //     setSize(value);
-    //     const newPerPage = Math.ceil(datas.length / value);
-    //     if (current > newPerPage) {
-    //         setCurrent(newPerPage);
-    //     }
-    // }
-    // const getData = (current, pageSize) => {
-    //     // Normally you should get the data from the server
-    //     return product.slice((current - 1) * pageSize, current * pageSize);
-    // };
-    // const PaginationChange = (page, pageSize) => {
-    //     setCurrent(page);
-    //     setSize(pageSize)
-    // }
-
-
-
     const CartDataProduct = [
         {
             id: 1,
@@ -99,35 +81,12 @@ function Maincategorylist({ name,searchnamevalue }) {
         },
 
     ]
-
-
-
-
-    let componentrender = true;
     useEffect(() => {
-        // const getproducts = async () => {
-        //     setLoading(true);
-        //     if (componentrender) {
-        //         setProducts(await CartDataProduct);
-        //         setLoading(false);
-        //     }
-        //     return () => {
-        //         componentrender = false;
-        //         setLoading(false);
-
-        //     }
-        // }
-
         getproducts();
-    }, [name,searchnamevalue])
-
-
-  
-
+    }, [name, searchnamevalue])
     const getproducts = () => {
         setLoading(true);
         ProductCatgorylist(name).then((res) => {
-            // console.log("nameskalai", res?.data);
             seLimit(res?.data);
             setProducts(res?.data?.results);
             setTimeout(() => {
@@ -138,13 +97,13 @@ function Maincategorylist({ name,searchnamevalue }) {
         })
     }
     const fetchCurrentData = async (names, current) => {
-        const resdata = await ProductCatgorylist(names, current,searchnamevalue);
+        const resdata = await ProductCatgorylist(names, current, searchnamevalue);
         setProducts(resdata?.data?.results);
     }
     const handleChangePagecount = async (e) => {
         setCurrent(e);
         const current = e;
-        await fetchCurrentData(name, current,searchnamevalue);
+        await fetchCurrentData(name, current, searchnamevalue);
     }
 
     const PrevNextArrow = (current, type, originalElement) => {
@@ -167,12 +126,7 @@ function Maincategorylist({ name,searchnamevalue }) {
                     Loading...
 
                 </> : <div className='row justify-content-center gap-5'>
-                    {/* Skeleton */}
-
-
                     {product?.length === 0 ? <>
-
-
                         {CartDataProduct?.map((item, index) => {
                             return (
                                 <div key={index} className="col-lg-3 col-md-6 col-sm-6 col-xs-6 ">
@@ -182,7 +136,6 @@ function Maincategorylist({ name,searchnamevalue }) {
                         })}
 
                     </> : <>
-
                         {product?.map((item, index) => {
                             return (
                                 <>
@@ -194,18 +147,8 @@ function Maincategorylist({ name,searchnamevalue }) {
                 </div>}
             </div>
 
-            {product?.length>9 && <div className='d-flex justify-content-center mt-4'>
+            {product?.length > 9 && <div className='d-flex justify-content-center mt-4'>
                 <Pagination
-                    // className="pagination-data"
-                    // onChange={handleChangePagecount}
-                    // total={product.length}
-                    // current={current}
-                    // pageSize={size}
-                    // showSizeChanger={false}
-                    // itemRender={PrevNextArrow}
-                    // breakLabel="..."
-
-
                     className="pagination-data"
                     total={limit?.totalPages * 10}
                     onChange={handleChangePagecount}
