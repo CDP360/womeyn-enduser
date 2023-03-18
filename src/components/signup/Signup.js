@@ -12,7 +12,6 @@ import { OTP } from '../../toastdata/Toastmessages';
 import { userSignup } from '../../services/user-login-service/user-login-services';
 function Signup() {
     const router = useRouter();
-    console.log("ops",history)
     const {
         register,
         handleSubmit,
