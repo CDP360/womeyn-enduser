@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import styles from './styles/Orderdetails.module.scss';
 import map from '../../../../assests/womeynlogos/map.png';
 import cartshow from '../../../../assests/womeynlogos/cartshow.png';
@@ -10,32 +10,120 @@ import Form from 'react-bootstrap/Form';
 import Image from 'next/image';
 import { Button } from 'react-bootstrap';
 import dynamic from 'next/dynamic';
-function Orderdetails({ state }) {
+import deleteicons from '../../../../assests/cart-logos/deleteicons.png';
+function Orderdetails({ state,handleCheck }) {
+
+  const [selectAddress, setCheckAddress] = useState("");
+
+  const data = [
+    {
+      id: 1,
+      address: "Shipping Address",
+      city: "Azhar Ahmad Ar Rachman (Home)",
+      mainaddress: "177A Bleecker Street, New York City, NY 10012-1406, on the corner of Bleecker Street and Fenno Place in the heart of Greenwich Village."
+    },
+    {
+      id: 2,
+      address: "Shipping Address",
+      city: "Azhar Ahmad Ar Rachman (Home)",
+      mainaddress: "177A Bleecker Street, New York City, NY 10012-1406, on the corner of Bleecker Street and Fenno Place in the heart of Greenwich Village."
+    },
+    {
+      id: 3,
+      address: "Shipping Address",
+      city: "Azhar Ahmad Ar Rachman (Home)",
+      mainaddress: "177A Bleecker Street, New York City, NY 10012-1406, on the corner of Bleecker Street and Fenno Place in the heart of Greenwich Village."
+    }
+  ]
+
+  const handleAddress = (e) => {
+    const value = e.target.value;
+    const checked = e.target.checked;
+    if (checked) {
+      setCheckAddress(value);
+    }
+    // if (checked) {
+    //   setCheckAddress([...selectAddress, value]);
+    // } else {
+    //   setCheckAddress(selectAddress.filter((e) => e != value));
+    // }
+  };
+
   return (
     <Fragment>
       <div className={styles.mainorderpage}>
-        <div className={styles.addresspageorder}>
-          <div className={styles.leftorders}>
-            <Image src={map} alt="no image" className={styles.map} />
+        <div className={styles.addnewaddressbutton}>
+          <div className={styles.addnewaddressbuttonsubmenu}>
+            <button className={styles.addnewaddressbutton}>
+              Add New Address
+            </button>
           </div>
-          <div className={styles.rightorders}>
-            <div className={styles.shippingtext}>
-              Shipping Address
-            </div>
-            <div className={`mt-2 mb-2 ${styles.nameaddress}`}>
-              Azhar Ahmad Ar Rachman (Home)
-            </div>
-            <div className={`mt-2 mb-2 ${styles.addressorders}`}>
-              177A Bleecker Street, New York City, NY 10012-1406, on the corner of Bleecker Street and Fenno Place in the heart of Greenwich Village.
-            </div>
-            <div>
-              <div>
+        </div>
+        <div className="mt-1">
+          {data?.map((item, index) => {
+            return (
+              <div className="mb-2">
+                <div className={styles.addresspageorder}>
+                  <div className={styles.insideaddresspadding}>
+                    <label className={styles.control} name={item.id}>
+                      <input
+                        onChange={handleAddress}
+                        type="checkbox"
+                        name={item?.id}
+                        value={item?.id}
+                      />
+                      <span className={styles.control__content}><div className={styles.leftorders}>
+                        <Image src={map} alt="no image" className={styles.map} />
+                      </div>
+                        <div className={styles.rightorders}>
+                          <div className={styles.shippingtext}>
+                            Shipping Address
+                          </div>
+                          <div className={`mt-2 mb-2 ${styles.nameaddress}`}>
+                            Azhar Ahmad Ar Rachman (Home)
+                          </div>
+                          <div className={`mt-2 mb-2 ${styles.addressorders}`}>
+                            177A Bleecker Street, New York City, NY 10012-1406, on the corner of Bleecker Street and Fenno Place in the heart of Greenwich Village.
+                          </div>
+                        </div>
+                      </span>
+                    </label>
+                  </div>
+
+
+                </div>
+              </div>
+            )
+          })}
+        </div>
+
+        <div>
+
+          <button className={styles.DeliveryHere} onClick={handleCheck}>
+            Delivery Here
+          </button>
+        </div>
+
+        {/* <div>
+              <div className={styles.editaddress}>
                 Edit Address
               </div>
-            </div>
-          </div>
-
-        </div>
+            </div> */}
+        {/* <div className={styles.splitedits}>
+             <div className={styles.editaddresss}>
+             Edit Address
+              </div>
+              <div className={styles.editaddresss}>
+             <div className={styles.removebuttonssection}>
+             <div> 
+                <Image src={deleteicons} alt="no image" className={styles.mapremove}/>
+              </div>
+             <div>
+             Remove
+              </div>
+             </div>
+              </div>
+            </div> */}
 
         {/* <div className={styles.addresspageorder}>
           <div className={styles.leftorders}>
