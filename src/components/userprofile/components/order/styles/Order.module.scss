@@ -1,1 +1,93 @@
-@use '../../../../../../scss/abstract/' as *;
+@use "../../../../../../scss/abstract/" as *;
+
+.middlelogo {
+  width: 100%;
+  // border: 2px solid green;
+  .inputsearchsection {
+    display: flex;
+    width: auto;
+    padding: 0px 2px;
+    background: #f1f1f1;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    @include lgBreakPoint {
+      width: 40%;
+      padding: 4px 10px;
+    }
+    @include xlBreakPoint {
+      width: 40%;
+      padding: 4px 10px;
+    }
+  }
+}
+.middlecontainer {
+  width: 100%;
+  //   border: 1px solid black;
+  margin-top: 5%;
+  .middlecontainer2 {
+    // display: flex;
+    // width: auto;
+    // padding: 0px 2px;
+    background: #f1f1f1;
+    border-radius: 8px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 5%;
+  }
+  .subcontainer {
+    .subcontainer1 {
+      display: flex;
+      justify-content: space-between;
+      width: 49%;
+      margin-bottom: -4%;
+      //   border-bottom: 1px solid #c4c4c4;
+    }
+  }
+  .insidecontainer {
+    display: flex;
+    justify-content: space-between;
+    .status {
+      color: #ff3d00;
+      font-size: 13px;
+      opacity: 0.8;
+    }
+    .delivery {
+      color: #121212;
+      font-size: 16px;
+      font-weight: 400;
+      opacity: 0.7;
+    }
+  }
+  .insidecontainer1 {
+    display: flex;
+    .img {
+      width: 123px;
+      height: 95px;
+      border-radius: 20px;
+      background: gray;
+    }
+    .insidecontainer2 {
+      width: 60%;
+      margin-left: 4%;
+    }
+    .insidecontainer3 {
+      width: 20%;
+    }
+    .buttontrack {
+      width: 20%;
+    }
+    .trackbutton {
+      border: 1px solid #e95a5a;
+      border-radius: 10px;
+      color: #e95a5a;
+      width: 9%;
+      height: 38px;
+    }
+  }
+  .hrcontainer {
+    border-style: dotted;
+  }
+}
