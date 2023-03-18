@@ -121,8 +121,8 @@ function Servicebooking() {
           <p className={styles.offlinepara}>Offline</p>
           <div className={styles.sidecontaineraddress}>
             <p>
-              <span className={styles.address}>Address:</span> 1st Floor, 79, LB
-              Rd, above Capital Kia , Chennai, Tamil Nadu 600020
+              <span className={styles.address}>Location:</span> 1st Floor, 79,
+              LB Rd, above Capital Kia , Chennai, Tamil Nadu 600020
             </p>
           </div>
           <p className={styles.mappara}>view map</p>
