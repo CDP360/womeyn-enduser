@@ -1,0 +1,40 @@
+@use "../../../../../../scss/abstract/" as *;
+
+.profileformssection {
+    // border:3px solid orange;
+    .boldtexts {
+        color: #000000;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .personalinformation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .buttonsplitsections {
+            display: flex;
+            gap: 20px;
+        }
+
+        .editbutton {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 5px 30px;
+            background: #e95a5a;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+        }
+        .editbuttoncancel {
+            border: 1px solid #e95a5a;
+            outline: none;
+            cursor: pointer;
+            padding: 5px 30px;
+            background: white;
+            border-radius: 10px;
+            color: #e95a5a;
+            font-weight: 600;
+        }
+    }
+}

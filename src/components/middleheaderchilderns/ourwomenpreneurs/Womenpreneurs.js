@@ -164,15 +164,12 @@ function Womenpreneurs() {
                                     return (
                                         <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
                                             <div className={styles.sellerimagebox}>
-
                                                 <div className={styles.insidebox}>
                                                     {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
                                                         <Image src={users} alt="no image" className={styles.sellerimagesizes} />
                                                     </>}
                                                 </div>
-
                                             </div>
-
                                             <div className='womentitle'>
                                                 {item?.firstName}
                                             </div>

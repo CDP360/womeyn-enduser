@@ -66,7 +66,7 @@ function Viewproducts({ id }) {
         router.push(`/signup?redirect=/product/${data}`)
     }
     const handleChange = (cartdata) => {
-        dispatch({ type: "CART_SUCCESS", payload: cartdata });
+        dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 10 } });
     }
     useEffect(() => {
         ProductView(productnames).then((res) => {
@@ -227,7 +227,7 @@ function Viewproducts({ id }) {
                                         </div> :
                                             <div className={styles.heartimagesection}>
                                                 <button className={styles.btn} onClick={() => {
-CheckLoginUsers(productdata?.productSlugName)
+                                                    CheckLoginUsers(productdata?.productSlugName)
                                                     // LikeWishlist(productdata?.id)
                                                 }}>
                                                     {/* {like ? <>

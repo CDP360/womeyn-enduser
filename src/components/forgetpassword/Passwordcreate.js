@@ -43,7 +43,6 @@ function Passwordcreate() {
         const userid = localStorage.getItem("womenUserid");
         const check = {
             password: data?.password,
-
         }
         var passwordRegex = /(?=^.{8,}$)(?=.{0,}[A-Z])(?=.{0,}[a-z])(?=.{0,}\W)(?=.{0,}\d)/g
         if (passwordRegex.test(check?.password)) {
@@ -125,18 +124,18 @@ function Passwordcreate() {
                                         <Form.Group className="mb-2" controlId="formBasicEmail">
                                             <Form.Label>Password</Form.Label>
                                             <div className={"formsectioncommonlogin"}>
-                                            <Form.Control type={show ? "text" : "password"} placeholder="password" className={styles.forms}
-                                                {...register('password', {
-                                                    pattern: {
-                                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                        message: "invalid email address"
-                                                    },
-                                                })}
-                                            />
+                                                <Form.Control type={show ? "text" : "password"} placeholder="password" className={styles.forms}
+                                                    {...register('password', {
+                                                        pattern: {
+                                                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                            message: "invalid email address"
+                                                        },
+                                                    })}
+                                                />
 
-                                            <div className={styles.passwordicons}>
-                                                {show ? <div className='mt-2' onClick={() => setShow(!show)}><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow(!show)}><Image src={eyeoff} alt="no image" /></div>}
-                                            </div>
+                                                <div className={styles.passwordicons}>
+                                                    {show ? <div className='mt-2' onClick={() => setShow(!show)}><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow(!show)}><Image src={eyeoff} alt="no image" /></div>}
+                                                </div>
                                             </div>
                                             {errors.password && <span className="active">{errors.password.message}</span>}
                                         </Form.Group>
@@ -147,13 +146,13 @@ function Passwordcreate() {
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label>Confirm Password</Form.Label>
                                                 <div className={"formsectioncommonlogin"}>
-                                                <Form.Control type={show1 ? "text" : "password"} placeholder="Confirm Password" className={styles.forms}
-                                                    {...register('confirmPwd')}
+                                                    <Form.Control type={show1 ? "text" : "password"} placeholder="Confirm Password" className={styles.forms}
+                                                        {...register('confirmPwd')}
 
-                                                />
-                                                <div className={styles.passwordicons}>
-                                                    {show1 ? <div onClick={() => setShow1(!show1)} className="mt-2 ms-4"><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow1(!show1)}><Image src={eyeoff} alt="no image" /></div>}
-                                                </div>
+                                                    />
+                                                    <div className={styles.passwordicons}>
+                                                        {show1 ? <div onClick={() => setShow1(!show1)} className="mt-2 ms-4"><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow1(!show1)}><Image src={eyeoff} alt="no image" /></div>}
+                                                    </div>
                                                 </div>
                                                 {errors.confirmPwd && <span className="active">{errors.confirmPwd.message}</span>}
                                             </Form.Group>

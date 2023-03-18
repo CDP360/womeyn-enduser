@@ -1,6 +1,9 @@
+import Cookies from "js-cookie"
 import { CART_SUCCESS, CART_DELETE, CART_ALL_DELETE } from "../../types"
 
 export const Cartactions = (data) => async (dispatch) => {
+
+   Cookies.set("ammakalia",data)
    dispatch({
       type: CART_SUCCESS,
       payload: data

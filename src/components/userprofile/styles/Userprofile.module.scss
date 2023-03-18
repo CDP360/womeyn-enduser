@@ -1,0 +1,44 @@
+@use "../../../../scss/abstract/" as *;
+
+.insideprofilesection {
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    @include xsBreakPoint {
+        flex-direction: column;
+    }
+    @include smBreakPoint {
+        flex-direction: column;
+    }
+    .leftsidebarprofile {
+        width: 30%;
+        // border: 2px solid red;
+        height: 100%;
+        @include xsBreakPoint {
+            width: 100%;
+        }
+        @include smBreakPoint {
+            width: 100%;
+        }
+        @include mdBreakPoint {
+            width: 100%;
+        }
+    }
+    .rightmainprofile {
+        width: 70%;
+        // border: 1px solid #9f9f9f;
+        border-radius: 15px;
+        padding:2% 2%;
+        height: 100%;
+        margin-bottom:5%;
+        @include xsBreakPoint {
+            width: 100%;
+        }
+        @include smBreakPoint {
+            width: 100%;
+        }
+        @include mdBreakPoint {
+            width: 100%;
+        }
+    }
+}

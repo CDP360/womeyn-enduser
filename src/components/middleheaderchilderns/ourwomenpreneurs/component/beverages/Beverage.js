@@ -15,11 +15,22 @@ import { useState } from 'react';
 import { ContextStore } from '../../../../../Redux/store/Contextstore';
 import { CART_SUCCESS } from '../../../../../Redux/types';
 import LoaderLogo from '../../../../loaderlogo/LoaderLogo';
+import { cartContext } from '../../../../../Redux/store/CartContext';
 function Beverage({ productlist, loading }) {
-    const { state, dispatch } = useContext(ContextStore)
+    const { state, dispatch } = useContext(cartContext)
     const router = useRouter();
     const Carthandleproduct = (data) => {
-        dispatch({ type: "CART_SUCCESS", payload: data });
+      
+
+        let product=data;
+            dispatch({
+              type: "ADD_TO_CART",
+              id: product.id,
+              product,
+            });
+          
+        // dispatch({ type: "CART_SUCCESS", payload: { ...data, quantity: 1 } });
+        
     }
     return (
         <Fragment>
@@ -61,8 +72,8 @@ function Beverage({ productlist, loading }) {
                                         <div className={styles.splitoffers}>
                                             <span className='textpricedashedgreen'> <del>${item?.actualPrice}</del></span>
                                             <span className='textpricedashedgreen ms-2'>
-                                                ({item?.offerPercentag==0?<></>:<>
-                                                {item?.offerPercentag} off
+                                                ({item?.offerPercentag == 0 ? <></> : <>
+                                                    {item?.offerPercentag} off
                                                 </>} )
                                             </span>
                                         </div>
@@ -74,7 +85,7 @@ function Beverage({ productlist, loading }) {
                     })}</>}
                 </div>
 
-            
+
             </div>
         </Fragment>
     )

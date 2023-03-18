@@ -35,7 +35,7 @@ export function OTPResend(data) {
             console.log(err)
         })
 }
-export function CreatePassword(userid, data) {
+export function CreateProfileuser(userid, data) {
     return instanceBaseurl.post(`/customer/update-profile/${userid}`, data)
         .then((res) => {
             return res

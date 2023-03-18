@@ -22,9 +22,10 @@ import instagram from '../../assests/homepage-logos/newinstagramfooter.png';
 import linkdin from '../../assests/homepage-logos/linkedinfooter.png';
 import twitter from '../../assests/homepage-logos/twitterfooter.png';
 import { toast } from 'react-toastify';
+import { cartContext } from '../../Redux/store/CartContext';
 function Header() {
-    const { state, dispatch } = useContext(ContextStore);
-    const { cart } = state;
+    const { state, dispatch } = useContext(cartContext);
+    // const { cart } = state;
     const router = useRouter();
     const states = useSelector(state => state);
     const [showmega, setShowMega] = useState(false);
@@ -40,7 +41,7 @@ function Header() {
 
     };
     const userProfile = () => {
-        router.push("/profile")
+        router.push("/profile/youraccount")
     }
     const Login = () => {
         router.push("/login");
@@ -88,30 +89,7 @@ function Header() {
             id: 7,
             name: "Tshirts"
         },
-        {
-            id: 8,
-            name: "Jeans"
-        },
-        {
-            id: 9,
-            name: "Skirts"
-        },
-        {
-            id: 10,
-            name: "Suits"
-        },
-        {
-            id: 11,
-            name: "Indian Wear"
-        },
-        {
-            id: 12,
-            name: "Jacket | Overcoats"
-        },
-        {
-            id: 13,
-            name: "bag"
-        }
+
     ]
 
     useEffect(() => {
@@ -147,10 +125,10 @@ function Header() {
                                         <div>
                                             <Image src={cartslogo} alt="no image" className={styles.notifications} />
                                         </div>
-                                        {cart?.cartData?.length > 0 ? <div className={styles.cartcountbox}>
+                                        {/* {cart?.cartData?.length > 0 ? <div className={styles.cartcountbox}>
                                             {cart.cartData?.length}
                                         </div>
-                                            : <></>}
+                                            : <></>} */}
                                     </div>
                                 </div>
                                 <div className="dropdown">
@@ -212,46 +190,80 @@ function Header() {
                                     <span className='ms-2'>Explore</span>
                                 </a>
                                 <ul className="dropdownmega">
-                                    <div>
-                                        <li><a className="kalais">Fashion & Lifestyle</a></li>
-                                    </div>
-                                    {datas.map((item, index) => {
-                                        return (
-                                            <div className="mt-2" onClick={() => pushCategory(item?.name)} key={index}>
-                                                <li><a className="" href="">{item?.name}</a></li>
-                                            </div>
-                                        )
-                                    })}
-                                    <li className="d-flex align-items-center justify-content-center">
-                                        <a>
-                                            <div className={styles.socailfootersection}>
-                                                <div className={styles.footeremptysocialsection}>
-                                                    <Image src={youtube} alt="no image" className={styles.footersocialicons} />
-                                                </div>
-                                                <div className={styles.footeremptysocialsection}>
-                                                    <Image src={linkdin} alt="no image" className={styles.footersocialicons} />
-                                                </div>
-                                                <div className={styles.footeremptysocialsection}>
-                                                    <Image src={twitter} alt="no image" className={styles.footersocialicons} />
-                                                </div>
-                                                <div className={styles.footeremptysocialsection}>
-                                                    <Image src={facebook} alt="no image" className={styles.footersocialicons} />
-                                                </div>
-                                                <div className={styles.footeremptysocialsection}>
-                                                    <Image src={instagram} alt="no image" className={styles.footersocialicons} />
-                                                </div>
+                                    <div className="maindropdown">
+                                        <div className="firstsection">
+                                            <li><a className="commontitle">TopWare</a></li>
+                                            <div>
 
+                                                {datas?.map((item, index) => {
+                                                    return (
+                                                        <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
+                                                            <li><a className="unactivetext" href="">{item?.name}</a></li>
+                                                        </div>
+                                                    )
+                                                })}
                                             </div>
-                                        </a>
-                                    </li>
+                                        </div>
+                                        <div className="secondsection">
+                                            <li><a className="commontitle">TopWare</a></li>
+                                            <div>
+
+                                                {datas?.map((item, index) => {
+                                                    return (
+                                                        <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
+                                                            <li><a className="unactivetext">{item?.name}</a></li>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                        <div className="thirdsection">
+                                            <li><a className="commontitle">TopWare</a></li>
+                                            <div>
+
+                                                {datas?.map((item, index) => {
+                                                    return (
+                                                        <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
+                                                            <li><a className="unactivetext">{item?.name}</a></li>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                        <div className="fourthsection">
+                                            <li><a className="commontitle">TopWare</a></li>
+                                            <div>
+
+                                                {datas?.map((item, index) => {
+                                                    return (
+                                                        <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
+                                                            <li><a className="unactivetext">{item?.name}</a></li>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                        <div className="fifthsection">
+                                            <li><a className="commontitle">TopWare</a></li>
+                                            <div>
+
+                                                {datas?.map((item, index) => {
+                                                    return (
+                                                        <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
+                                                            <li><a className="unactivetext">{item?.name}</a></li>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </ul>
 
                             </li>
                         </ul>
                     </div>
-                    {/* <div className={styles.bordercolors}>
-                        |
-                    </div> */}
+
                     <div className={router.pathname == "/womenpreneurs" ? "active" : ""}>
                         <Link href="/womenpreneurs" className='nav-link'>
                             <span className='ms-2'>Our WomenPreneurs</span>

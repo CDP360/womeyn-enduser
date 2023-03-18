@@ -23,6 +23,7 @@
   padding: 20px 20px;
   cursor: pointer;
   border-radius: 20px;
+
   @include themed() {
     background: t($header);
   }
@@ -32,7 +33,7 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  background: red;
+
 }
 .dropdowncontent a:hover {
   background-color: #f1f1f1;
@@ -62,7 +63,7 @@
   // top:10vh;
   padding: 0px 20px;
   height: 70vh;
-  border: 2px solid red;
+
   cursor: pointer;
   z-index: -10%;
   border-radius: 7px;
@@ -123,12 +124,17 @@ li {
 li a {
   color: black !important;
   text-decoration: none !important;
+  transition: transform .4s;
 }
 
 li a:hover {
     // background: #E75B5E;
   color: #e75b5e !important;
   cursor: pointer;
+  transform: scale(1) !important;
+  -ms-transform: scale(1) !important;  /* IE 9 */
+  -webkit-transform: scale(1)!important;
+
 }
 
 .dropdownmegamain li ul {
@@ -144,7 +150,18 @@ li a:hover {
   left: -195%;
   display: none;
   border-radius: 10px;
+  border:1px solid  #D8E5F6;
 
+  @include lgBreakPoint
+  {
+    width:93vw !important;
+  }
+
+  
+  @include xlBreakPoint
+  {
+    width:85vw !important;
+  }
 }
 
 .dropdownmegamain li:hover > ul,
@@ -161,7 +178,7 @@ li a:hover {
 }
 
 .dropdownmega {
-  padding: 40px 30px;
+  padding: 10px 10px;
   display: flex !important;
   flex-direction: column !important;
   gap: 4px !important;
@@ -200,11 +217,11 @@ li a {
   text-decoration: none !important;
 }
 
-li a:hover {
-  //   background: #E75B5E;
-  color: #e75b5e !important;
-  cursor: pointer;
-}
+// li a:hover {
+//   //   background: #E75B5E;
+//   color: #e75b5e !important;
+//   cursor: pointer;
+// }
 
 .dropdownmegamainss li ul {
   background: rgba(255, 255, 255, 1) !important;
@@ -219,6 +236,7 @@ li a:hover {
   left: -60%;
   display: none;
   border-radius: 10px;
+
 }
 
 .dropdownmegamainss li:hover > ul,
@@ -235,17 +253,145 @@ li a:hover {
 }
 
 .dropdownmega {
-  padding: 40px 30px;
+  padding: 1px 1px;
   display: flex !important;
   flex-direction: column !important;
   gap: 4px !important;
 }
 
-.dropdownmegamainss:hover {
-  color: black !important;
-}
+// .dropdownmegamainss:hover {
+//   color: black !important;
+// }
 
 .dropdownmegamains {
   color: black !important;
   font-weight: 650 !important;
+}
+
+
+.maindropdown
+{
+  // border:2px solid red;
+  height:100%;
+  border-radius:10px;
+  display:flex;
+  padding-top:0%;
+  // gap:20px;
+  .firstsection
+  {
+    // border:2px solid red;
+    width:20%;
+    display:flex;
+    flex-direction:column;
+    gap:10px !important;
+padding-top:2%;
+    .flexdirections
+    {
+      display:flex;
+      flex-direction:column;
+    .unactivetext
+    {
+      margin:2% 0px !important;
+    }
+    
+    }
+  }
+  .secondsection
+  {
+    // border:2px solid red;
+    width:20%;
+    background-color:#F7F6F6;
+    display:flex;
+    flex-direction:column;
+    gap:10px !important;
+padding-top:2%;
+
+    .flexdirections
+    {
+      display:flex;
+      flex-direction:column;
+    .unactivetext
+    {
+      margin:2% 0px !important;
+    }
+    
+    }
+  }
+  .thirdsection
+  {
+    // border:2px solid red;
+    width:20%;
+    display:flex;
+    flex-direction:column;
+    gap:10px !important;
+padding-top:2%;
+
+    .flexdirections
+    {
+      display:flex;
+      flex-direction:column;
+    .unactivetext
+    {
+      margin:2% 0px !important;
+    }
+    
+    }
+  }
+  .fourthsection
+  {
+    // border:2px solid red;
+    width:20%;
+    background-color:#F7F6F6;
+    display:flex;
+    flex-direction:column;
+    gap:10px !important;
+padding-top:2%;
+
+    .flexdirections
+    {
+      display:flex;
+      flex-direction:column;
+    .unactivetext
+    {
+      margin:2% 0px !important;
+    }
+    
+    }
+
+  }
+  .fifthsection
+  {
+    // border:2px solid red;
+    width:20%;
+    display:flex;
+    flex-direction:column;
+    gap:10px !important;
+padding-top:2%;
+
+    .flexdirections
+    {
+      display:flex;
+      flex-direction:column;
+    .unactivetext
+    {
+      margin:2% 0px !important;
+    }
+    
+    }
+  }
+}
+.commontitle
+{
+  color: #E95A5A !important;
+  font-weight:600;
+  font-size:1.1rem;
+padding-left:5%;
+margin-top:5% !important;
+
+}
+.unactivetext
+{
+  display:flex;
+gap:4px !important;
+padding-left:5%;
 }
