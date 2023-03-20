@@ -11,7 +11,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
   return (
     <>
       <Head>
-        <title>{title ? title + "- womeyn" : "womeyn"}</title>
+        <title>{title ? title + "- Womeyn" : "Womeyn"}</title>
         <meta charSet="utf-8" />
         <meta
           name="viewport"

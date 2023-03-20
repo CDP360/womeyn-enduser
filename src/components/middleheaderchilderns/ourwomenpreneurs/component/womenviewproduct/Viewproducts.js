@@ -20,12 +20,8 @@ import heartlike from '../../../../../assests/product-logo/likefullcolor.png';
 import heartunlike from '../../../../../assests/product-logo/likeborder.png';
 import LoginModalpopup from './../../../../loginmodalpopup/LoginModalpopup';
 function Viewproducts({ id }) {
-
-
     const history = useRouter();
-
     const [tokencheck, setTokenset] = useState("");
-
     const { state, dispatch } = useContext(ContextStore);
     const [indexs, setIndex] = useState(0);
     const [productdata, setProductData] = useState([]);
@@ -39,34 +35,14 @@ function Viewproducts({ id }) {
     const productnames = id;
     const router = useRouter();
     const [loading, setLoading] = useState(false);
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const data =
-    {
-        id: 1,
-        images: [
-            product1,
-            product2,
-            product3,
-            product4,
-            product3,
-            product4
-        ]
-    }
-    // const Addtocart=()=>{    
-    //     router.push("/cart")
-    // }
     const Checkout = () => {
         router.push("/checkout")
     }
-
-
     const CheckLoginUsers = (data) => {
         router.push(`/signup?redirect=/product/${data}`)
     }
     const handleChange = (cartdata) => {
-        dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 10 } });
+        dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1 } });
     }
     useEffect(() => {
         ProductView(productnames).then((res) => {
@@ -116,35 +92,28 @@ function Viewproducts({ id }) {
 
 
     const LikeWishlist = (id) => {
-
         if (like) {
-            console.log(like, "like", "id", id)
             const likeid = {
                 productId: id
             }
-            // ProductLikeWishlist(likeid).then((res) => {
-            //     console.log(res);
-            // }).catch((err) => {
-            //     console.log(err);
-            // })
-
+            ProductLikeWishlist(likeid).then((res) => {
+                console.log(res);
+            }).catch((err) => {
+                console.log(err);
+            })
         }
         else {
             const likeid = {
                 wishlistId: id
             }
-            // ProductLikeWishlist(likeid).then((res) => {
-            //     console.log(err)
-            // }).catch((err) => {
-            //     console.log(err);
-            // })
-            console.log(like, "like", "id", id)
-
+            ProductLikeWishlist(likeid).then((res) => {
+                console.log(err)
+            }).catch((err) => {
+                console.log(err);
+            })
         }
 
     }
-
-
     const productSellerPageView = (data) => {
         setTimeout(() => {
             setLoading(false);
@@ -160,22 +129,6 @@ function Viewproducts({ id }) {
                             <div className={styles.leftmainsectionslide}>
                                 <div className={styles.leftcardimages}>
                                     <div className={styles.imagerowsection}>
-                                        {/* {productdata?.productImages?.map((item, index) => {
-                                            return (
-                                                <div>
-                                                    <img
-                                                        width={"110px"}
-                                                        height={"110px"}
-                                                        style={{ borderRadius: "50%", cursor: "pointer" }}
-                                                        className={styles.editprofilesection}
-                                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
-                                                        alt="profile-pic"
-                                                    />
-                                                </div>
-                                            )
-                                        })} */}
-
-
 
                                         {productimages?.map((item, index) => {
                                             return (
@@ -185,26 +138,14 @@ function Viewproducts({ id }) {
                                                         src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
                                                         alt="profile-pic"
                                                     />
-                                                    {/* <Image src={items} alt="no image" className={styles.imagecards} /> */}
                                                 </div>
                                             )
                                         })}
-
-
-
-                                        {/* {data?.images?.map((items, index) => {
-                                            return (
-                                                <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)}>
-                                                    <Image src={items} alt="no image" className={styles.imagecards} />
-                                                </div>
-                                            )
-                                        })} */}
                                     </div>
                                 </div>
                                 <div className={styles.rightcardimagesshow}>
                                     <div className={styles.leftwomensearchsection}>
                                         <div>
-
                                             <img
                                                 className={styles.serachlargeimage}
                                                 src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
@@ -300,19 +241,6 @@ function Viewproducts({ id }) {
                                                 </>
                                             )
                                         })}
-
-
-
-
-
-                                        {/* {productvariations?.variationValues?.map((item, index) => {
-                                            return (
-                                                <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex1(index)}>
-                                                    {item}
-
-                                                </div>
-                                            )
-                                        })} */}
                                     </div>
 
                                 </div>

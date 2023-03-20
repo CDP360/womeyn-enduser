@@ -12,72 +12,37 @@ import Image from 'next/image';
 import { Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import { ContextStore } from '../../Redux/store/Contextstore';
+import { ContextStore } from './../../Redux/store/Contextstore';
 function Cart() {
-  // const { state, dispatch } = useContext(cart);
-  const { shoppingCart, dispatch, qty, totalPrice } = useContext(cartContext);
-  // const { cart } = state;
+  const { state,dispatch} = useContext(ContextStore);
+  const { cart } = state;
   const router = useRouter();
-  // const dispatch = useDispatch();
   const [price, setPrice] = useState(0);
-  const [deleteselect, setDeleteselect] = useState("");
-  const [showlocal, setLocalData] = useState([]);
-  const [count, setCount] = useState(0);
   const [tokes, setTokens] = useState("");
-  // const state = useSelector((state) => state.cart.cartitems);
+  const [carts, setCart] = useState([]);
   const TotalPrice = () => {
     let prices = 0;
-    shoppingCart?.map((item, index) => {
+    cart?.cartData?.map((item, index) => {
       prices = Number(item.salePrice) + prices;
     });
     setPrice(prices);
   }
   useEffect(() => {
-    // setLocalData(state);
     const checktoken = localStorage.getItem("womenUserToken");
     setTokens(JSON.parse(checktoken));
     TotalPrice();
   }, [tokes, price])
-
-
-
-
-
+  useEffect(() => {
+      setCart(state?.cart?.cartData);
+  }, [])
   const shopping = () => {
     router.push("/womenpreneurs")
   }
-
-
-
   const handleDelete = (e) => {
     dispatch({ type: "CART_REMOVE", payload: e })
-    console.log("io", e)
-    // const value = e.target.value;
-    // const checked = e.target.checked;
-    // dispatch(CartActionDelete(e))
-    // dispatch(Cartactions(showlocal));
-  }
 
-  const Handleadded = (item, id) => {
-    const datas = {
-      ...item,
-      quantity: 1
-    }
-    dispatch({ type: "CART_QUANTITY_ADDED", payload: datas })
   }
   const handleChange = (e) => {
-    // handleDelete(e);
-    // const { name, checked } = e.target;
-    // handleDelete(name);
-    // if (name === "allselect") {
-    //   let temp = showlocal.map((item) => {
-    //     return { ...item, isChecked: checked }
-    //   });
-    //   setLocalData(temp);
-    // } else {
-    //   let checkvalue = showlocal.map(item => item.id === name ? { ...item, isChecked: checked } : item);
-    //   setLocalData(checkvalue);
-    // }
     const value = e.target.value;
     const checked = e.target.checked;
     if (checked) {
@@ -88,17 +53,29 @@ function Cart() {
     }
   }
 
-
-
-
-
-
-
+  const handleAdd = (index1, item) => {
+    const CARTS = carts?.map((forms, index) => {
+        return index1 === index ? { ...forms, quantity: item?.quantity + 1 } : forms
+    })
+    setCart(CARTS);
+    dispatch({
+        type: "ADD_CART",
+        payload: CARTS
+    })
+}
+const handleRemove = (index1, item) => {
+    const CARTS = carts?.map((forms, index) => {
+        return index1 === index ? { ...forms, quantity: item?.quantity - 1 } : forms
+    })
+    setCart(CARTS);
+    dispatch({
+        type: "REMOVE_CART",
+        payload: CARTS
+    })
+}
 
   return (
     <Fragment>
-
-
       <div className='mainsection'>
         <div className="insidesection">
           <div className={styles.cartsectiontexts}>
@@ -116,15 +93,13 @@ function Cart() {
                 <div className={styles.removesection} onClick={handleDelete}>
                   Remove
                 </div>
-
               </div>
-
               <div className="d-none d-lg-block">
-                {shoppingCart?.length > 0 ? <div className={styles.bordersectioncart}>
-                  {shoppingCart?.map((item, index) => {
+                {cart?.cartData?.length > 0 ? <div className={styles.bordersectioncart}>
+                  {cart?.cartData?.map((item, index) => {
                     return (
                       <>
-                        <div className={styles.cartlistsection}>
+                        <div className={styles.cartlistsection} key={index}>
                           <div className={styles.cartimagesection}>
                             <div className={"d-flex align-items-center justify-content-center"}>
                               <input type="checkbox" name={item?.name} value={item?.id} onChange={handleDelete} />
@@ -149,11 +124,15 @@ function Cart() {
                           </div>
                           <div className={styles.cartaddsection}>
                             <div >
-                              <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() => dispatch(decrement(item?.id))} />
+                              <Image src={minusicon} alt="no image" className={styles.carticonsadd}    onClick={() =>
+                                    handleRemove(index, item)
+                                } />
                             </div>
-                            <div>{item?.qty}</div>
+                            <div>{item?.quantity}</div>
                             <div>
-                              <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() => dispatch(increment(item?.id))} />
+                              <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() =>
+                                    handleAdd(index, item)
+                                } />
                             </div>
                           </div>
                           <div className={styles.cartremovesection} onClick={() => handleDelete(item)}>
@@ -177,11 +156,11 @@ function Cart() {
 
               <div className="d-block d-lg-none">
 
-                {shoppingCart.length > 0 ? <div className={styles.bordersectioncart}>
-                  {shoppingCart?.map((item, index) => {
+                {cart?.cartData?.length > 0 ? <div className={styles.bordersectioncart}>
+                  {cart?.cartData?.map((item, index) => {
                     return (
                       <>
-                        <div className={styles.cartlistsection}>
+                        <div className={styles.cartlistsection} key={index}>
                           <div className={styles.cartimagesection}>
                             <div>
                               <img
@@ -205,11 +184,15 @@ function Cart() {
 
                             <div className={styles.cartaddsection}>
                               <div>
-                                <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() => dispatch(decrement(item?.id))} />
+                                <Image src={minusicon} alt="no image" className={styles.carticonsadd}    onClick={() =>
+                                    handleRemove(index, item)
+                                } />
                               </div>
-                              <div>1</div>
+                              <div>{item?.quantity}</div>
                               <div >
-                                <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() => dispatch(increment(item?.id))} />
+                                <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() =>
+                                    handleAdd(index, item)
+                                } />
                               </div>
                             </div>
                             <div className={styles.cartremovesection} onClick={() => handleDelete(item)}>
@@ -247,14 +230,14 @@ function Cart() {
                       Quantity
                     </div>
                     <div className={styles.textprice}>
-                      {qty}
+                      {/* {item?.quantity} */}
                     </div>
                   </div>
                   <div className={styles.splitcartsections}>
                     <div>
                       Price</div>
                     <div className={styles.textprice}>
-                      {totalPrice}
+                      {price}
                     </div>
                   </div>
                   <div className={styles.splitcartsections}>
@@ -287,14 +270,12 @@ function Cart() {
                   <div className={styles.insideborderdashedsection}></div>
                 </div>
                 <div className="mt-3 mb-3">
-
                   {tokes ?
                     <Button className={styles.checkoutbutton} onClick={() => router.push("/checkout")}>Place Order</Button> :
                     <Button className={styles.checkoutbutton} onClick={() => router.push("/login?redirect=/checkout", { kalai: "thala" })}>Place Order</Button>
                   }
                 </div>
               </div>
-
             </div>
           </div>
         </div>
