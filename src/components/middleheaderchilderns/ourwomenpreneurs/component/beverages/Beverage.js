@@ -16,20 +16,12 @@ import { ContextStore } from '../../../../../Redux/store/Contextstore';
 import { CART_SUCCESS } from '../../../../../Redux/types';
 import LoaderLogo from '../../../../loaderlogo/LoaderLogo';
 import { cartContext } from '../../../../../Redux/store/CartContext';
-function Beverage({ productlist, loading }) {
-    const { state, dispatch } = useContext(cartContext)
-    const router = useRouter();
-    const Carthandleproduct = (data) => {
-      
 
-        let product=data;
-            dispatch({
-              type: "ADD_TO_CART",
-              id: product.id,
-              product,
-            });
-          
-        // dispatch({ type: "CART_SUCCESS", payload: { ...data, quantity: 1 } });
+function Beverage({ productlist, loading }) {
+    const { state, dispatch } = useContext(ContextStore)
+    const router = useRouter();
+    const Carthandleproduct = (data) => {          
+        dispatch({ type: "CART_SUCCESS", payload: { ...data, quantity: 1 } });
         
     }
     return (

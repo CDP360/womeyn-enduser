@@ -22,6 +22,7 @@ function Passwordcreate() {
     const [matchcheck4, setMatchCheck4] = useState(false);
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
+    
     const formSchema = Yup.object().shape({
         password: Yup.string()
             .required('Password is must ')
@@ -49,13 +50,13 @@ function Passwordcreate() {
             console.log("data", check)
             setMatchCheck1(true);
             setMatchCheck2(false);
-            CreatePassword(JSON.parse(userid), check).then((res) => {
-                toast.success("Create Password Successfully");
-                handlePushTerms();
+            // CreatePassword(JSON.parse(userid), check).then((res) => {
+            //     toast.success("Create Password Successfully");
+            //     handlePushTerms();
 
-            }).catch((err) => {
-                console.log(err);
-            })
+            // }).catch((err) => {
+            //     console.log(err);
+            // })
         }
         else {
             setMatchCheck2(true);

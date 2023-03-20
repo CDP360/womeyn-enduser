@@ -1,52 +1,45 @@
 @use "../../../../scss/abstract/" as *;
 
-.maincheckoutsection {
+.cartsection {
     width: 100%;
-    .emptyboxsection {
-        background: #e95a5a;
-        opacity: 0.24;
-        filter: blur(329px);
-        position: absolute;
-        width: 20%;
-        height: 20%;
-        right: 0;
+    display: flex;
+    gap: 25px;
+    // border: 1px solid #9F9F9F;
+    padding-top: 4%;
+    padding-bottom:5%;
+    @include xsBreakPoint {
+        flex-direction: column;
+        padding-bottom: 10%;
     }
-    .emptyboxsectionleft
-    {
-        background: #FECF9D;
-        opacity: 0.24;
-        filter: blur(329px);
-        position: absolute;
-        width: 20%;
-        height: 40%;
-        left: 0;
-        top:30%;
+    @include smBreakPoint {
+        flex-direction: column;
     }
-    .insidesectioncheckout {
-        width: 75%;
-        margin: 0 auto;
-        display: flex;
-        gap: 30px;
+    .leftcartsection {
+        width: 65%;
+        border: 1px solid #9f9f9f;
+        border-radius: 32px;
+        padding: 40px 30px;
+        height: 100%;
         @include xsBreakPoint {
-            width: 85%;
-            padding-top: 6%;
-            flex-direction:column;
+            width: 100%;
         }
         @include smBreakPoint {
-            width: 85%;
-            padding-top: 6%;
-            flex-direction:column;
-
+            width: 100%;
         }
         @include mdBreakPoint {
-            width: 85%;
+            width: 100%;
         }
-        @include lgBreakPoint {
-            width: 89%;
-            gap:0px;
-        }
-        @include xlBreakPoint {
-            width: 85%;
+        .progressbarcheck {
+            width: 100%;
+            // border:2px solid red;
+            display: flex;
+            gap: 20px;
+            .leftbarprogress {
+                width: 50%;
+            }
+            .rightbarprogress {
+                width: 50%;
+            }
         }
         .orderstepsection {
             display: flex;
@@ -86,118 +79,327 @@
                 font-size: 1.1rem;
             }
         }
-        .leftcheckoutsection {
-            width: 65%;
-            @include xsBreakPoint {
-                width: 100%;
-            }
-            @include smBreakPoint {
-                width: 100%;
-            }@include mdBreakPoint {
-                width: 100%;
-            }
-            @include lgBreakPoint {
-                width: 100%;
-            }
-            @include xlBreakPoint {
-                width: 100%;
-            }
-            .progressbarcheck {
-                width: 100%;
-                // border:2px solid red;
-                display: flex;
-                gap: 20px;
-                .leftbarprogress {
-                    width: 50%;
-                }
-                .rightbarprogress {
-                    width: 50%;
-                }
-            }
+    }
+    .rightcartsection {
+        width: 35%;
+        // border: 2px solid red;
+        height: 100%;
+
+        @include xsBreakPoint {
+            width: 100%;
         }
-        .rightcheckoutsection {
-            width: 35%;
-            padding-top: 2%;
-            @include xsBreakPoint {
-                width: 100%;
+        @include smBreakPoint {
+            width: 100%;
+        }
+        @include mdBreakPoint {
+            width: 100%;
+        }
+
+        .insiderigthcartsection {
+            border: 1px solid #9f9f9f;
+            border-radius: 32px;
+            padding: 32px 32px;
+            .pricetexts {
+                font-weight: 600;
+                font-size: 1.4rem;
             }
-            @include smBreakPoint {
-                width: 100%;
+            .borderdashedsection {
+                padding: 3% 0px;
+                .insideborderdashedsection {
+                    border: 1px dashed #0d0c22;
+                }
             }
-            @include mdBreakPoint {
-                width: 100%;
-            }
-            @include lgBreakPoint {
-                width: 100%;
-            }
-            @include xlBreakPoint {
-                width: 100%;
-            }
-            .cartpricesectionright {
-                width: 90%;
-                border: 1px solid #c4c4c4;
-                margin: 0 auto;
-                border-radius: 15px;
-                padding: 20px 30px;
-                @include xsBreakPoint {
-                    width: 100%;
-                }
-                @include smBreakPoint {
-                    width: 100%;
-                }
-                @include mdBreakPoint {
-                    width: 100%;
-                }
-                @include lgBreakPoint {
-                    width: 80%;
-                }
-                .usepromocart {
-                    border: 1px solid #c4c4c4;
-                    border-radius: 15px;
-                    display: flex;
-                    align-items: center;
-                    gap: 20px;
-                    padding: 10px 20px;
-                    .promo {
-                        width: 40px;
-                        height: 40px;
-                        object-fit: cover;
-                    }
-                    .codepromo {
-                        font-size: 1.4rem;
-                        font-weight: 600;
-                        @include xsBreakPoint {
-                            font-size: 1rem;
-                        }
-                    }
-                }
-                .totalpricesection {
+            .cartdetailsection {
+                .splitcartsections {
                     display: flex;
                     justify-content: space-between;
-                    padding-top: 3%;
-                    color: #121212;
-                    font-weight: 500;
+                    margin: 3% 0px;
                 }
-                .bordersection {
-                    border: 1px solid #c4c4c4;
-                    margin-top: 6%;
-                    margin-bottom: 2.5%;
-                }
-                .shoppingsummary {
-                    font-size: 1.2rem;
-                    font-weight: 600;
-                }
-                .checkoutbutton {
-                    background-color: #e95a5a;
-                    color: white;
-                    padding: 10px;
-                    border-radius: 10px;
-                    cursor: pointer;
-                    width: 100%;
+                .textprice {
                     font-size: 1.3rem;
                     font-weight: 600;
                 }
             }
+            .splitcartsections {
+                display: flex;
+                justify-content: space-between;
+                margin: 3% 0px;
+            }
+        }
+    }
+    .promotioninputsectionapply
+    {
+        display:flex;
+        gap:30px;
+        align-items:center;
+        .birdinput
+        
+        {
+            width:100% !important;
+            border: 1px solid #0D0C22 !important;
+            outline:none !important;
+            padding:10px;
+            border-radius:10px;
+            
+        }
+        .Apply
+        {
+            width:100px;
+            padding:10px;
+            border-radius:10px;
+            outline:none !important;
+            color:white;
+            border:none;
+background: #121E49;
+        }
+        ::placeHolder{
+color: #000000 !important;
+
         }
     }
 }
+
+// .maincheckoutsection {
+//     width: 100%;
+//     .emptyboxsection {
+//         background: #e95a5a;
+//         opacity: 0.24;
+//         filter: blur(329px);
+//         position: absolute;
+//         width: 20%;
+//         height: 20%;
+//         right: 0;
+//     }
+//     .emptyboxsectionleft
+//     {
+//         background: #FECF9D;
+//         opacity: 0.24;
+//         filter: blur(329px);
+//         position: absolute;
+//         width: 20%;
+//         height: 40%;
+//         left: 0;
+//         top:30%;
+//     }
+//     .insidesectioncheckout {
+//         width: 75%;
+//         margin: 0 auto;
+//         display: flex;
+//         gap: 30px;
+//         @include xsBreakPoint {
+//             width: 85%;
+//             padding-top: 6%;
+//             flex-direction:column;
+//         }
+//         @include smBreakPoint {
+//             width: 85%;
+//             padding-top: 6%;
+//             flex-direction:column;
+
+//         }
+//         @include mdBreakPoint {
+//             width: 85%;
+//         }
+//         @include lgBreakPoint {
+//             width: 89%;
+//             gap:0px;
+//         }
+//         @include xlBreakPoint {
+//             width: 85%;
+//         }
+// .orderstepsection {
+//     display: flex;
+//     padding-top: 2%;
+//     align-items: center;
+//     gap: 15px;
+//     .numbercountorderstep {
+//         width: 27px;
+//         height: 27px;
+//         background-color: #e95a5a;
+//         color: white;
+//         border-radius: 50%;
+//         cursor: pointer;
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         font-weight: 600;
+//         font-size: 1.1rem;
+//     }
+//     .setordertext {
+//         font-size: 1rem;
+//         font-weight: 600;
+//         color: #121212;
+//         opacity: 0.7;
+//     }
+//     .numbercountdisabled {
+//         width: 27px;
+//         height: 27px;
+//         border: 1px solid #e95a5a;
+//         color: #e95a5a;
+//         border-radius: 50%;
+//         cursor: pointer;
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         font-weight: 600;
+//         font-size: 1.1rem;
+//     }
+// }
+//         .leftcheckoutsection {
+//             width: 65%;
+//         border:2px solid red;
+//         padding:10px;
+//             @include xsBreakPoint {
+//                 width: 100%;
+//             }
+//             @include smBreakPoint {
+//                 width: 100%;
+//             }@include mdBreakPoint {
+//                 width: 100%;
+//             }
+//             @include lgBreakPoint {
+//                 width: 100%;
+//             }
+//             @include xlBreakPoint {
+//                 width: 100%;
+//             }
+//             .progressbarcheck {
+//                 width: 100%;
+//                 // border:2px solid red;
+//                 display: flex;
+//                 gap: 20px;
+//                 .leftbarprogress {
+//                     width: 50%;
+//                 }
+//                 .rightbarprogress {
+//                     width: 50%;
+//                 }
+//             }
+//         }
+//         .rightcheckoutsection {
+//             width: 35%;
+//             padding-top: 2%;
+//             @include xsBreakPoint {
+//                 width: 100%;
+//             }
+//             @include smBreakPoint {
+//                 width: 100%;
+//             }
+//             @include mdBreakPoint {
+//                 width: 100%;
+//             }
+//             @include lgBreakPoint {
+//                 width: 100%;
+//             }
+//             @include xlBreakPoint {
+//                 width: 100%;
+//             }
+//             .cartpricesectionright {
+//                 width: 90%;
+//                 border: 1px solid #c4c4c4;
+//                 margin: 0 auto;
+//                 border-radius: 15px;
+//                 padding: 20px 30px;
+//                 @include xsBreakPoint {
+//                     width: 100%;
+//                 }
+//                 @include smBreakPoint {
+//                     width: 100%;
+//                 }
+//                 @include mdBreakPoint {
+//                     width: 100%;
+//                 }
+//                 @include lgBreakPoint {
+//                     width: 80%;
+//                 }
+//                 .usepromocart {
+//                     border: 1px solid #c4c4c4;
+//                     border-radius: 15px;
+//                     display: flex;
+//                     align-items: center;
+//                     gap: 20px;
+//                     padding: 10px 20px;
+//                     .promo {
+//                         width: 40px;
+//                         height: 40px;
+//                         object-fit: cover;
+//                     }
+//                     .codepromo {
+//                         font-size: 1.4rem;
+//                         font-weight: 600;
+//                         @include xsBreakPoint {
+//                             font-size: 1rem;
+//                         }
+//                     }
+//                 }
+//                 .totalpricesection {
+//                     display: flex;
+//                     justify-content: space-between;
+//                     padding-top: 3%;
+//                     color: #121212;
+//                     font-weight: 500;
+//                 }
+//                 .bordersection {
+//                     border: 1px solid #c4c4c4;
+//                     margin-top: 6%;
+//                     margin-bottom: 2.5%;
+//                 }
+//                 .shoppingsummary {
+//                     font-size: 1.2rem;
+//                     font-weight: 600;
+//                 }
+//                 .checkoutbutton {
+//                     background-color: #e95a5a;
+//                     color: white;
+//                     padding: 10px;
+//                     border-radius: 10px;
+//                     cursor: pointer;
+//                     width: 100%;
+//                     font-size: 1.3rem;
+//                     font-weight: 600;
+//                 }
+//             }
+
+//     .insiderigthcartsection
+//     {
+//         border: 1px solid #9F9F9F;
+//         border-radius: 32px;
+//         padding:10px 30px;
+//         .pricetexts
+//         {
+//             font-weight: 600;
+//             font-size: 1.4rem;
+//         }
+//         .borderdashedsection
+//         {
+//             padding:3% 0px;
+//             .insideborderdashedsection
+//             {
+//                 border: 1px dashed #0D0C22;
+//             }
+//         }
+//         .cartdetailsection
+//         {
+//             .splitcartsections
+//             {
+//                 display: flex;
+//                 justify-content: space-between;
+//                 margin: 3% 0px;
+//             }
+//             .textprice
+//             {
+//                 font-size:1.3rem;
+//                 font-weight: 600;
+//             }
+//         }
+//         .splitcartsections
+//         {
+//             display: flex;
+//             justify-content: space-between;
+//             margin: 3% 0px;
+//         }
+
+//     }
+// }
+//     }
+// }

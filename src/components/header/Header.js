@@ -13,7 +13,7 @@ import myprofile from '../../assests/login-logos/myprofile.png';
 import logout from '../../assests/login-logos/logout.png';
 import notifications from '../../assests/login-logos/notifications.png';
 import { useContext } from 'react';
-import { ContextStore } from '../../Redux/store/Contextstore';
+
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import facebook from '../../assests/homepage-logos/facebookfooter.png';
@@ -22,10 +22,11 @@ import instagram from '../../assests/homepage-logos/newinstagramfooter.png';
 import linkdin from '../../assests/homepage-logos/linkedinfooter.png';
 import twitter from '../../assests/homepage-logos/twitterfooter.png';
 import { toast } from 'react-toastify';
-import { cartContext } from '../../Redux/store/CartContext';
+
+import { ContextStore } from './../../Redux/store/Contextstore';
 function Header() {
-    const { state, dispatch } = useContext(cartContext);
-    // const { cart } = state;
+    const { state, dispatch } = useContext(ContextStore);
+    const { cart } = state;
     const router = useRouter();
     const states = useSelector(state => state);
     const [showmega, setShowMega] = useState(false);
@@ -125,10 +126,10 @@ function Header() {
                                         <div>
                                             <Image src={cartslogo} alt="no image" className={styles.notifications} />
                                         </div>
-                                        {/* {cart?.cartData?.length > 0 ? <div className={styles.cartcountbox}>
+                                        {cart?.cartData?.length > 0 ? <div className={styles.cartcountbox}>
                                             {cart.cartData?.length}
                                         </div>
-                                            : <></>} */}
+                                            : <></>}
                                     </div>
                                 </div>
                                 <div className="dropdown">

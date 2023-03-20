@@ -31,8 +31,8 @@ function App({ Component, pageProps }) {
     <div>
       <div className='womeyn-enduser'>
         <StrictMode>
-          {/* <StoreProviderContext> */}
-          <CartContextProvider>
+          <StoreProviderContext>
+          
             <Errorboundary>
               <Provider store={store}>
                 <ToastContainer />
@@ -44,8 +44,8 @@ function App({ Component, pageProps }) {
                   </>}
               </Provider>
             </Errorboundary>
-         </CartContextProvider>
-          {/* </StoreProviderContext> */}
+         
+          </StoreProviderContext>
         </StrictMode>
       </div >
     </div >
