@@ -139,6 +139,10 @@
                             width: 65px;
                             height: 65px;
                         }
+                        @include xsBreakPoint{
+                            width: 65px;
+                            height: 65px;
+                        }
                     }
                     .serviceTrackingImgContent{
                         margin-left:10%;
@@ -146,6 +150,9 @@
                             margin-left:5%
                         }
                         @include mdBreakPoint{
+                            margin-left:5%
+                        }
+                        @include xsBreakPoint{
                             margin-left:5%
                         }
                         .serviceTrackingImgName{
@@ -156,6 +163,11 @@
                                 width:90px;
                                 font-size:15px;
                                 font-weight:400;
+                            }
+                            @include xsBreakPoint{
+                                font-size:11px;
+                            margin-bottom:5px;
+
                             }
                         }
                         .serviceTrackingRate{
@@ -173,6 +185,9 @@
                     color:#E95A5A;
                     @include mdBreakPoint{
                         margin-right:15%;
+                    }
+                    @include xsBreakPoint{
+                        width:100%
                     }
                 }
                 
