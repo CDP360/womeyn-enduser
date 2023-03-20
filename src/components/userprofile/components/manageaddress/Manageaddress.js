@@ -91,10 +91,10 @@ function Manageaddress() {
                         <div>
                             <Image src={searchcion} alt="no image" className={styles.searchicon} />
                         </div> */}
-           
-                <div className="commonprofiletextsize">
-Manage Address
-                  </div>
+
+                <div className="commonprofiletextsize" onClick={handleShow}>
+                  Manage Address
+                </div>
               </div>
               <div className={styles.rightaddresssection}>
                 <div>

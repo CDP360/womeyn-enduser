@@ -26,14 +26,13 @@ function Changepassword() {
 
     const formSchema = Yup.object().shape({
         oldPassword: Yup.string()
-            .required('Password is must ')
+            .required('Password is required')
             .min(8, 'Password must be atleast 8 characters long'),
         newPassword: Yup.string()
-            .required('Password is must ')
+            .required('NewPassword is required')
             .min(8, 'Password must be atleast 8 characters long'),
-
         confirmNewPassword: Yup.string()
-            .required('Password is mendatory')
+            .required('confirmNewPassword is required')
             .oneOf([Yup.ref('newPassword')], 'Passwords does not match'),
     })
     const formOptions = { resolver: yupResolver(formSchema) }
@@ -118,10 +117,10 @@ function Changepassword() {
                         <div>
                             <Image src={searchcion} alt="no image" className={styles.searchicon} />
                         </div> */}
-                        <div className="commonprofiletextsize">
-Change Password
-                            </div>
-                 
+                    <div className="commonprofiletextsize">
+                        Change Password
+                    </div>
+
                 </div>
                 <div className={styles.rightaddresssection}>
                     <div>

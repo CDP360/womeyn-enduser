@@ -153,7 +153,7 @@ function Womenpreneurs() {
 
                     <div>
                         {searchname?.length > 0 ? <>
-                            <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
+                            <div className='cardsections row justify-content-center  w-100 mt-5 mb-5 ms-1'>
                                 <div>
                                     {dataseller.length === 0 && <div>No Data Found!!!!</div>}
                                 </div>
@@ -163,7 +163,7 @@ function Womenpreneurs() {
                                     </div>
                                 </> : dataseller?.map((item, index) => {
                                     return (
-                                        <div className='cards mt-3 mb-5 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
+                                        <div className='cards mt-5 mb-5 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
                                             <div className={styles.sellerimagebox}>
                                                 <div className={styles.insidebox}>
                                                     {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
@@ -214,7 +214,7 @@ function Womenpreneurs() {
 
                         <div>
 
-                            {dataseller?.length > 8 &&
+                            {/* {dataseller?.length > 8 &&
                                 <div className='d-flex justify-content-center mt-4'>
                                     <Pagination
                                         className="pagination-data"
@@ -225,7 +225,7 @@ function Womenpreneurs() {
                                         breakLabel="..."
                                     />
                                 </div>
-                            }
+                            } */}
                         </div>
                     </div>
                 </div>
