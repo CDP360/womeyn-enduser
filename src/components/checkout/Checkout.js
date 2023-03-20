@@ -5,17 +5,18 @@ import usepromo from '../../assests/womeynlogos/cartprice.png';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import Orderdetails from './components/orderdetails/Orderdetails';
+import Addressdetail from './components/addressdetails/Addressdetail';
 import Payment from './components/payment/Payment';
 import { ContextStore } from '../../Redux/store/Contextstore';
 import dynamic from 'next/dynamic';
-import { cartContext } from './../../Redux/store/CartContext';
+import Confirmorders from './components/confirmorders/Confirmorders';
+
 function Checkout() {
   const [step, setStep] = useState(0);
-  const { shoppingCart, dispatch, qty, totalPrice } = useContext(cartContext);
+  const { state, dispatch } = useContext(ContextStore);
+  const [name, setName] = useState("");
+  const { cart } = state;
 
-  // const { cart } = state;
-  const [price, setPrice] = useState(0);
   const [width, setWidth] = useState(0);
   const [width1, setWidth1] = useState(0);
 
@@ -25,8 +26,11 @@ function Checkout() {
   const [step3, setStep3] = useState('');
 
 
+  const totalPrice=cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0);
+
+
   useEffect(() => {
-    TotalPrice();
+
     handleprogress();
 
     if (step === 0) {
@@ -40,14 +44,8 @@ function Checkout() {
       setStep3("active")
 
     }
-  }, [price, width, step1, step2, step3, step])
-  const TotalPrice = () => {
-    let price = 0;
-    shoppingCart.map((item) => {
-      price = item.salePrice + price;
-    })
-    setPrice(price);
-  }
+  }, [width, step1, step2, step3, step])
+
 
   const handleprogress = (id) => {
     // let width = 0;
@@ -57,12 +55,12 @@ function Checkout() {
     // setWidth(width)
   }
 
-  const handleAddressNavigate=()=>{
-  
-      setStep(1)
-      // handleprogress(1)
- 
-  }
+  // const handleAddressNavigate=()=>{
+
+  //     setStep(1)
+  //     // handleprogress(1)
+
+  // }
   return (
     <Fragment>
       {/* <div className={styles.maincheckoutsection}>
@@ -188,9 +186,6 @@ function Checkout() {
                   }
                 </div>
               </div>
-
-
-
             <div className={styles.cartpricesectionright}>
               <div className={styles.usepromocart}>
                 <div>
@@ -232,23 +227,19 @@ function Checkout() {
           </div>
         </div>
       </div> */}
-
       <div className='mainsection'>
         <div className="insidesection">
           <div className={styles.cartsectiontexts}>
             Checkout
           </div>
           <div className={styles.cartsection}>
-            
             <div className={styles.leftcartsection}>
               <div className={styles.progressbarcheck}>
-
                 <div className={styles.leftbarprogress}>
                   {/* <ProgressBar now={width} /> */}
                   <div className={styles.orderstepsection} onClick={() => setStep(0)}>
                     <div className={styles.numbercountorderstep}>1</div>
                     <div className={styles.setordertext}>Select Address</div>
-                   
                   </div>
                 </div>
                 <div className={styles.rightbarprogress}>
@@ -256,39 +247,36 @@ function Checkout() {
                   <div className={styles.orderstepsection} onClick={() => setStep(1)}>
                     <div className={`${step === 1 ? styles.numbercountorderstep : styles.numbercountdisabled}`}>2</div>
                     <div className={styles.setordertext}>Order Summary</div>
-                    
                   </div>
-
                 </div>
                 <div className={styles.rightbarprogress}>
                   {/* <ProgressBar now={step === 2 && width} /> */}
                   <div className={styles.orderstepsection} onClick={() => setStep(2)}>
                     <div className={`${step === 2 ? styles.numbercountorderstep : styles.numbercountdisabled}`}>3</div>
                     <div className={styles.setordertext}>Select the payment</div>
-                    
                   </div>
-
                 </div>
               </div>
               <div>
-              {step === 0 && <div>
-              <Orderdetails state={shoppingCart} handleCheck={handleAddressNavigate()} />
-            </div>}
-            {step === 1 && <div>
-              <Payment />
-            </div>}
-            {step === 2 && <div>
-              third section
-            </div>}
-                </div>
+                {step === 0 && <div>
+                  <Addressdetail state={cart} setStep={setStep} step={step} setName={setName} />
+                </div>}
+                {step === 1 && <div>
+                  {/* <Payment /> */}
+                  <Confirmorders name={name} totalPrice={totalPrice}/>
+                </div>}
+                {step === 2 && <div>
+                  third section
+                </div>}
+              </div>
             </div>
             <div>
 
-              
+
             </div>
-            <div className={styles.rightcartsection}> 
-            
-            <div className={styles.insiderigthcartsection}>
+            <div className={styles.rightcartsection}>
+
+              <div className={styles.insiderigthcartsection}>
                 <div className={styles.pricetexts}>
                   Price details
                 </div>
@@ -301,28 +289,28 @@ function Checkout() {
                       Quantity
                     </div>
                     <div className={styles.textprice}>
-                      {qty}
+                      {cart?.cartData?.reduce((acc, current) => acc + current.quantity, 0)}
                     </div>
                   </div>
                   <div className={styles.splitcartsections}>
                     <div>
                       Price</div>
                     <div className={styles.textprice}>
-                      {totalPrice}
+                      ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)}
                     </div>
                   </div>
                   <div className={styles.splitcartsections}>
                     <div>
                       Discount</div>
                     <div className={styles.textprice}>
-                      2
+                      $2
                     </div>
                   </div>
                   <div className={styles.splitcartsections}>
                     <div>
                       Delivery Charges</div>
                     <div className={styles.textprice}>
-                      2
+                      $2
                     </div>
                   </div>
                 </div>
@@ -332,8 +320,9 @@ function Checkout() {
                 <div className={styles.splitcartsections}>
                   <div className={styles.pricetexts}>
                     Total Payable</div>
-                  <div className={styles.textprice}>
-                    2
+                  <div className={styles.textprices}>
+                    ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)}
+
                   </div>
                 </div>
 
@@ -349,19 +338,19 @@ function Checkout() {
                 </div>
 
                 <div>
-              <div className="mb-3">
+                  <div className="mb-3">
 
-              Promotions
-                </div>
+                    Promotions
+                  </div>
 
-                <div className={styles.promotioninputsectionapply}>
+                  <div className={styles.promotioninputsectionapply}>
 
-<div>
-<input type="text"  placeHolder="EARLY BIRD" className={styles.birdinput}/>
-  </div>
-  <div>
-<button className={styles.Apply}>Apply</button>
-  </div>
+                    <div>
+                      <input type="text" placeHolder="EARLY BIRD" className={styles.birdinput} />
+                    </div>
+                    <div>
+                      <button className={styles.Apply}>Apply</button>
+                    </div>
                   </div>
                 </div>
               </div>

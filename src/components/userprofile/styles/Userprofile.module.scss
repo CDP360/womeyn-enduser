@@ -10,6 +10,10 @@
     @include smBreakPoint {
         flex-direction: column;
     }
+    @include mdBreakPoint
+    {
+        gap:15px;
+    }
     .leftsidebarprofile {
         width: 30%;
         // border: 2px solid red;
@@ -28,7 +32,6 @@
         width: 70%;
         // border: 1px solid #9f9f9f;
         border-radius: 15px;
-        padding:0% 2%;
         height: 100%;
         margin-bottom:5%;
         @include xsBreakPoint {

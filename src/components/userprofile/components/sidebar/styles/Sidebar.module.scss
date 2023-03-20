@@ -39,6 +39,7 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto;
+           
             @include lgBreakPoint {
                 width: 100%;
             }
@@ -52,6 +53,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight:600;
+            font-size:1.2rem;
             @include lgBreakPoint {
                 width: 100%;
             }

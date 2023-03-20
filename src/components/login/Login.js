@@ -14,7 +14,7 @@ import eyeoff from '../../assests/login-logos/Eye Off.png';
 function Login() {
     const [show1, setShow1] = useState(false);
     const history = useRouter();
-    console.log("ops", history?.query?.redirect)
+
     const {
         register,
         handleSubmit,
@@ -22,23 +22,44 @@ function Login() {
         formState: { errors },
     } = useForm();
     const onSubmit = async ({ email, password }) => {
+        const productWhishlist= JSON.parse(localStorage.getItem("productwhishlist"));
         const datas = {
             email: email,
             password: password
         }
+        if(productWhishlist)
+        {
+
+            Userlogin(datas).then(async (res) => {
+                if (res) {
+                    localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
+                    localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
+                    setTimeout(() => {
+                        history.push(`${productWhishlist}`);
+                    }, 100)
+                }
+                else {
+                    toast.error("Incorrect email or password",
+                        {
+                            position: "top-center",
+                            autoClose: 3300,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "dark",
+                        }
+                    );
+                }
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+       else
+       {
         Userlogin(datas).then(async (res) => {
             if (res) {
-                var today = new Date();
-                var dd = String(today.getDate()).padStart(2, '0');
-                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-                var yyyy = today.getFullYear();
-
-                today = mm + '/' + dd + '/' + yyyy;
-                console.log(res?.data, "kalai")
-                localStorage.setItem('womenUserids', JSON.stringify({
-                    time: today,
-                    data: "your some data"
-                }));
                 localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
                 localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
                 setTimeout(() => {
@@ -62,6 +83,7 @@ function Login() {
         }).catch((err) => {
             console.log(err);
         })
+       }
 
     };
     const handlePushForgetpassword = () => {

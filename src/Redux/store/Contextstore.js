@@ -2,7 +2,7 @@ import { createContext, useReducer } from "react";
 import Cookies from 'js-cookie'
 export const ContextStore = createContext();
 const initialState = {
-    cart: Cookies.get("CartDatas") ? JSON.parse(Cookies.get("CartDatas")) : {cartData:[]} 
+    cart: Cookies.get("CartDatas") ? JSON.parse(Cookies.get("CartDatas")) : { cartData: [] }
 }
 function reducer(state = initialState, action) {
     switch (action.type) {
@@ -14,15 +14,15 @@ function reducer(state = initialState, action) {
             return { ...state, cart: { ...state.cart, cartData } }
         }
         case "ADD_CART": {
-            const newItemCart = action.payload;           
-            Cookies.set("CartDatas", JSON.stringify({ ...state.cart, cartData:newItemCart }));
-            return {cart: { ...state.cart, cartData:newItemCart } }
+            const newItemCart = action.payload;
+            Cookies.set("CartDatas", JSON.stringify({ ...state.cart, cartData: newItemCart }));
+            return { cart: { ...state.cart, cartData: newItemCart } }
 
         }
         case "REMOVE_CART": {
             const newItemCart = action.payload;
-            Cookies.set("CartDatas", JSON.stringify({ ...state.cart, cartData:newItemCart }));
-            return {cart: { ...state.cart, cartData:newItemCart } }
+            Cookies.set("CartDatas", JSON.stringify({ ...state.cart, cartData: newItemCart }));
+            return { cart: { ...state.cart, cartData: newItemCart } }
         }
         case "CART_REMOVE": {
             const cartData = state.cart.cartData.filter((item) => item.id !== action.payload.id);

@@ -111,14 +111,17 @@ function Changepassword() {
     useEffect(() => {
     }, [matchcheck1, matchcheck2, matchcheck3, matchcheck4])
     return (
-        <div>
+        <div className={styles.mainchnagespasswordsection}>
             <div className={styles.topsectionaddress}>
                 <div className={styles.leftaddresssection}>
                     {/* <input type="text" placeholder='Search address or receiver name' className={styles.serachaddress} />
                         <div>
                             <Image src={searchcion} alt="no image" className={styles.searchicon} />
                         </div> */}
-                    Change Password
+                        <div className="commonprofiletextsize">
+Change Password
+                            </div>
+                 
                 </div>
                 <div className={styles.rightaddresssection}>
                     <div>

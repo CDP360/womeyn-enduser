@@ -7,8 +7,8 @@ export function Getwomenpreneursbanner() {
 }
 
 
-export function WomenpreneursSellers(search) {
-    return instanceBaseurl.get(`/common/womenpreneurs`).then((res) => {
+export function WomenpreneursSellers(current) {
+    return instanceBaseurl.get(`/common/womenpreneurs&limit=10&page=${current}`).then((res) => {
         return res
     }).catch((err) => console.log(err));
 }
@@ -44,7 +44,7 @@ export function WomenpreneursCategorylistStore(data) {
     }).catch((err) => console.log(err));
 }
 
-export function WomenpreneursCategoryproducts(sellerid,categoryid) {
+export function WomenpreneursCategoryproducts(sellerid, categoryid) {
     return instanceBaseurl.get(`/common/products/${sellerid}/${categoryid}`).then((res) => {
         return res
     }).catch((err) => console.log(err));

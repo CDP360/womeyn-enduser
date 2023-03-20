@@ -52,13 +52,15 @@ function Profile() {
     setValue("gender", user?.gender);
     setValue("email", user?.email);
     setValue("phonenumber", user?.contactNumber);
+    localStorage.setItem("womenuser", JSON.stringify(user?.firstName));
+
   }, [user])
   const [show, setShow] = useState(false);
 
   return (
     <div className={styles.profileformssection}>
       <div className={styles.personalinformation}>
-        <div className={styles.boldtexts}>Personal Information</div>
+        <div className="commonprofiletextsize">Personal Information</div>
         <div>
           <button className={styles.editbutton} onClick={() => history.push("/profile/edit")}>Edit</button>
         </div>

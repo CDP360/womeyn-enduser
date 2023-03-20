@@ -4,6 +4,7 @@ import styles from './styles/Womenprecarouse.module.scss';
 import { Getwomenpreneursbanner } from './../../../../../services/womenpreneurs-services/womenpreneurs-services';
 import SlideNextArrow from '../../../../home/slidenextarrow/SlideNextArrow';
 import SlidePreArrow from '../../../../home/slideprearrow/SlidePreArrow';
+import Skeleton from 'react-loading-skeleton';
 function Womencarouselbanner() {
     const [banners, setBanners] = useState([]);
     const settings = {
@@ -67,19 +68,39 @@ function Womencarouselbanner() {
     const MovePageData = (data) => {
         window.open(data);
     }
+    const dataCarousel=[
+        {
+            id:1,
+            name:"no names"
+        },
+        {
+            id:2,
+            name:"no names"
+        },
+        {
+            id:3,
+            name:"no names"
+        }
+    ]
     return (
         <div>
             <div className={styles.imagesectionhome}>
 
-                <Slider {...settings}>
-                    {banners?.map((item, index) => {
-                        return (
-                            <div>
-                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />
-                            </div>
-                        )
-                    })}
-                </Slider>
+                {banners?.length === 0 ? <>
+                                <div>
+                                    <Skeleton className={styles.womenbanners}/>
+                                </div>
+                </> :
+                    <Slider {...settings}>
+                        {banners?.map((item, index) => {
+                            return (
+                                <div>
+                                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />
+                                </div>
+                            )
+                        })}
+                    </Slider>
+                }
             </div>
         </div>
     )

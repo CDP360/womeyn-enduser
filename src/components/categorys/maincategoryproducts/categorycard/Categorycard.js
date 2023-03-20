@@ -10,13 +10,11 @@ function Categorycard({ item }) {
     const history = useRouter();
     const { state, dispatch } = useContext(ContextStore)
     const Carthandleproduct = (data) => {
-        dispatch({ type: "CART_SUCCESS", payload: data });
+        dispatch({ type: "CART_SUCCESS", payload: { ...data, quantity: 1, variations: [], couponName: "",sellerBussinesName:item?.businessSlugName  } });
     }
-
     const ProductView = (data) => {
         history.push(`/product/${data}`)
     }
-
     return (
         // onClick={()=>ProductView(item?.productSlugName)}
         <div className={styles.cards} onClick={() => ProductView(item?.productSlugName)}  >

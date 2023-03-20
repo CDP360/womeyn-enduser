@@ -39,10 +39,12 @@ function Viewproducts({ id }) {
         router.push("/checkout")
     }
     const CheckLoginUsers = (data) => {
-        router.push(`/signup?redirect=/product/${data}`)
+    const PathQuery=history?.asPath
+    localStorage.setItem("productwhishlist", JSON.stringify(PathQuery));
+        router.push(`/login?redirect=/product/${data}`);
     }
     const handleChange = (cartdata) => {
-        dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1 } });
+        dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1,variations:[],couponName:"",sellerBusinessName:productseller?.businessSlugName } });
     }
     useEffect(() => {
         ProductView(productnames).then((res) => {
@@ -75,12 +77,10 @@ function Viewproducts({ id }) {
         }).catch((err) => {
             console.log(err);
         });
-
         const tokencheck = localStorage.getItem("womenUserToken");
         setTokenset(tokencheck)
 
     }, [productnames, tokencheck]);
-
 
     useEffect(() => {
         ProductLikeWishlistGet().then((res) => {
@@ -129,7 +129,6 @@ function Viewproducts({ id }) {
                             <div className={styles.leftmainsectionslide}>
                                 <div className={styles.leftcardimages}>
                                     <div className={styles.imagerowsection}>
-
                                         {productimages?.map((item, index) => {
                                             return (
                                                 <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)} key={index}>

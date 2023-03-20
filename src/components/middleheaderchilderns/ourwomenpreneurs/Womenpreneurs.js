@@ -12,8 +12,13 @@ import users from '../../../assests/homepage-logos/usersimageprofile.png';
 import Select from 'react-select';
 import { WomenpreneursFilter, WomenpreneursSearch } from './../../../services/womenpreneurs-services/womenpreneurs-services';
 import LoaderLogo from '../../loaderlogo/LoaderLogo';
+import Pagination from 'rc-pagination';
+import rightarrow from '../../../assests/category-logos/leftcategoryarrow.png';
+import leftarrow from '../../../assests/category-logos/rightcategoryarrow.png';
 function Womenpreneurs() {
     const router = useRouter();
+    const [limit, setLimit] = useState([]);
+    const [current, setCurrent] = useState(1);
     const [dataseller, setDataseller] = useState([]);
     const [datacategory, setDataCtagoryies] = useState([]);
     const [filters, setFilterData] = useState([]);
@@ -59,6 +64,7 @@ function Womenpreneurs() {
         setLoading(true);
         WomenpreneursFilter(categoryid).then((res) => {
             setDataseller(res?.data?.results);
+            setLimit(res?.data);
             setTimeout(() => {
                 setLoading(false);
             }, 300);
@@ -78,6 +84,30 @@ function Womenpreneurs() {
         }).catch((err) => {
             console.log(err);
         })
+    }
+    const fetchCurrentData = async (current) => {
+        const resdata = await WomenpreneursSellers(current);
+        setDataseller(resdata?.data?.results);
+    }
+    const handleChangePagecount = async (e) => {
+        setCurrent(e);
+        const current = e;
+        await fetchCurrentData(current);
+    }
+
+    const PrevNextArrow = (current, type, originalElement) => {
+        if (type === 'prev') {
+            return <button className='disactive'>
+                <Image src={leftarrow} alt="no image" className={styles.arrowsizefix} />
+            </button>;
+
+        }
+        if (type === 'next') {
+            return <button className='activess'>
+                <Image src={rightarrow} alt="no image" className={styles.arrowsizefix} />
+            </button>;
+        }
+        return originalElement;
     }
 
     return (
@@ -181,6 +211,22 @@ function Womenpreneurs() {
                                 })}
                             </div>
                         </>}
+
+                        <div>
+
+                            {dataseller?.length > 8 &&
+                                <div className='d-flex justify-content-center mt-4'>
+                                    <Pagination
+                                        className="pagination-data"
+                                        total={limit?.totalPages * 10}
+                                        onChange={handleChangePagecount}
+                                        current={current}
+                                        itemRender={PrevNextArrow}
+                                        breakLabel="..."
+                                    />
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

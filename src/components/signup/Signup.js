@@ -19,6 +19,7 @@ function Signup() {
         formState: { errors },
     } = useForm();
     const onSubmit = async (data) => {
+        const productWhishlist= JSON.parse(localStorage.getItem("productwhishlist"));
         const response = {
             emailOrPhoneNo: data?.email
         }

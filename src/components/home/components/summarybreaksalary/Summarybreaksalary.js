@@ -15,6 +15,7 @@ import quene from '../../../../assests/homepage-logos/Quena.io.png';
 import Image from 'next/image';
 import SlideNextArrow from './slidenextarrow/SlideNextArrow';
 import SlidePreArrow from './slideprearrow/SlidePreArrow';
+import Skeleton from 'react-loading-skeleton';
 function Summarybreaksalary({ bannerimages }) {
     const data = [
         {
@@ -41,11 +42,11 @@ function Summarybreaksalary({ bannerimages }) {
             text: glowup,
             image: power
         },
-        {
-            id: 6,
-            text: quene,
-            image: circlecake
-        }
+        // {
+        //     id: 6,
+        //     text: quene,
+        //     image: circlecake
+        // }
     ]
     const settings = {
         dots: false,
@@ -102,7 +103,21 @@ function Summarybreaksalary({ bannerimages }) {
         <Fragment>
             <div className={styles.summarymainsection}>
                 <div className={styles.insidesummarysection}>
-                    <Slider {...settings}>
+                    {bannerimages?.ClientLogos?.length===0 ?<div className={styles.sketonbannes}>
+                       
+                    
+                    {data?.map((item,index)=>{
+                        return(
+                            <div className="col-lg-2">
+<Skeleton className={styles.summaryBreakPoints}/>
+
+                            </div>
+                        )
+                    })}
+                       
+                    
+                    </div>:
+                                        <Slider {...settings}>
                         {bannerimages?.ClientLogos?.map((item, index) => {
                             return (
                                 <div className={styles.insideslidess}  key={index}>
@@ -111,6 +126,7 @@ function Summarybreaksalary({ bannerimages }) {
                             )
                         })}
                     </Slider>
+}
                 </div>
             </div>
         </Fragment>

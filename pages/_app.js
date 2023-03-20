@@ -18,6 +18,7 @@ function App({ Component, pageProps }) {
     import("bootstrap/dist/js/bootstrap");
     import("slick-carousel/slick/slick.css");
     import("slick-carousel/slick/slick-theme.css");
+   
     Router.events.on('routeChangeStart', (url) => {
       setLoading(true);
     })

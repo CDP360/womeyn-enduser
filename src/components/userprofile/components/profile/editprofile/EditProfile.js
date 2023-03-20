@@ -68,16 +68,16 @@ function EditProfile() {
         const userid = localStorage.getItem("womenUserid");
         CreateProfileuser(JSON.parse(userid), datas).then((res) => {
             toast.success("Profile Updated",
-            {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-              })
+                {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                })
             history.push("/profile/youraccount")
         }).catch((err) => {
             console.log(err);
@@ -86,15 +86,13 @@ function EditProfile() {
     return (
         <div className={styles.profileformssection}>
             <div className={styles.personalinformation}>
-                <div className={styles.boldtexts}>Personal Information</div>
-           
-                   
-                        <div className={styles.buttonsplitsections}>
-                            <button className={styles.editbutton} onClick={handleSubmit(onSubmit)}>Save</button>
-                            <button className={styles.editbuttoncancel} onClick={()=>history.push("/profile/Personal Information")}>Cancel</button>
+                <div className="commonprofiletextsize">Personal Information</div>
+                <div className={styles.buttonsplitsections}>
+                    <button className={styles.editbutton} onClick={handleSubmit(onSubmit)}>Save</button>
+                    <button className={styles.editbuttoncancel} onClick={() => history.push("/profile/youraccount")}>Cancel</button>
 
-                        </div>
-                  
+                </div>
+
             </div>
             <div className="mt-4 mb-2">
                 <Row>

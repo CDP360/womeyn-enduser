@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import Categorycarouse from './categoryslidecarousel/Categorycarouse';
 import Select from 'react-select';
 import serachicon from '../../assests/homepage-logos/serachicon.png';
+import ReactSlider from 'react-slider';
 function Categorys({ id }) {
   const [selectname, selectedOption] = useState(null);
   const [searchname, setSearchName] = useState('');
@@ -30,7 +31,6 @@ function Categorys({ id }) {
   }
   const GetSearchdata = () => {
     setSearchNameValue(searchname);
-
   }
 
   useEffect(() => {
@@ -45,6 +45,14 @@ function Categorys({ id }) {
         <div className={styles.insidecategorysection}>
           <div className='mb-3 mt-2'>
             Categorys / health
+          </div>
+          <div>
+            <ReactSlider
+              className="horizontal-slider"
+              thumbClassName="example-thumb"
+              trackClassName="example-track"
+              renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
+            />
           </div>
           <div>
             <Categorycarouse />

@@ -44,6 +44,9 @@ function Userprofile({ name, users, error }) {
                 localStorage.removeItem("womenUserid");
                 localStorage.removeItem("womenUserToken");
                 localStorage.removeItem("womenProfile");
+                localStorage.removeItem("productwhishlist");
+                localStorage.removeItem("womenuser");
+
             }
             setUser(res?.data);
             localStorage.setItem("womenProfile", JSON.stringify(res?.data?.profileImageName));

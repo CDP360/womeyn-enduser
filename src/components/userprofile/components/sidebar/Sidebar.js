@@ -15,6 +15,10 @@ import profile from '../../../../assests/profile-logo/Profile.png';
 import order from '../../../../assests/profile-logo/order.png';
 import favorts from '../../../../assests/profile-logo/favorts.png';
 import coupons from '../../../../assests/profile-logo/coupons.png';
+import orderactive from '../../../../assests/profile-logo/orderactive.png';
+import favortsactive from '../../../../assests/profile-logo/favortsactive.png';
+import couponsactive from '../../../../assests/profile-logo/ticketactive.png';
+
 function Sidebar({ user }) {
     const [imageshowmodel, setImageShowModel] = useState(true);
     const [show, setShow] = useState(false);
@@ -94,7 +98,7 @@ function Sidebar({ user }) {
                             <Image src={camera} alt="no image" className={styles.profileimagecamera} onClick={handleShow} />
                         </div>
                     </div>
-                    <div className={styles.imagesectioncontent} >
+                    <div className={styles.imagesectioncontent}  >
                         {user?.firstName}
                     </div>
                 </div>
@@ -128,7 +132,7 @@ function Sidebar({ user }) {
                     </div>
                     <div className={pathname == "orders" ? styles.activeboldtexts : styles.profilecontentinlistsection} onClick={() => PathNavigate("orders")}>
                         <div>
-                            <Image src={order} alt="no image" className={styles.profileicon} />
+                            {pathname == "orders" ?<Image src={orderactive} alt="no image" className={styles.profileicon} />:<Image src={order} alt="no image" className={styles.profileicon} />}
                         </div>
                         <div className={pathname == "orders" ? styles.boldtextactive : styles.boldtexts}>
                             Orders
@@ -141,7 +145,7 @@ function Sidebar({ user }) {
                     </div>
                     <div className={pathname == "favorts" ? styles.activeboldtexts : styles.profilecontentinlistsection} onClick={() => PathNavigate("favorts")}>
                         <div >
-                            <Image src={favorts} alt="no image" className={styles.profileicon} />
+                           {pathname == "favorts"?<Image src={favortsactive} alt="no image" className={styles.profileicon} />:<Image src={favorts} alt="no image" className={styles.profileicon} />}
                         </div>
                         <div className={styles.boldtexts}>
                             Favorites
@@ -153,7 +157,7 @@ function Sidebar({ user }) {
                     </div>
                     <div className={pathname == "coupons" ? styles.activeboldtexts : styles.profilecontentinlistsection} onClick={() => PathNavigate("coupons")}>
                         <div >
-                            <Image src={coupons} alt="no image" className={styles.profileicon} />
+                            {pathname == "coupons" ?<Image src={couponsactive} alt="no image" className={styles.profileicon} /> :<Image src={coupons} alt="no image" className={styles.profileicon} />}
                         </div>
                         <div className={styles.boldtexts}>
                             Coupons

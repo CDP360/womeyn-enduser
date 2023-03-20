@@ -114,6 +114,8 @@
                     display: flex;
                     justify-content: space-between;
                     margin: 3% 0px;
+                align-item:center;
+
                 }
                 .textprice {
                     font-size: 1.3rem;
@@ -122,8 +124,18 @@
             }
             .splitcartsections {
                 display: flex;
+                align-item:center;
+
                 justify-content: space-between;
                 margin: 3% 0px;
+            }
+            .textprices
+            {
+                
+                font-weight:600;
+                display:flex;
+                align-item:center;
+                font-size:1.5rem;
             }
         }
     }

@@ -22,7 +22,6 @@ function Passwordcreate() {
     const [matchcheck4, setMatchCheck4] = useState(false);
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
-    
     const formSchema = Yup.object().shape({
         password: Yup.string()
             .required('Password is must ')
@@ -117,10 +116,7 @@ function Passwordcreate() {
                                 </div>}
                             </div>
                             <div className='mb-4 mt-2'>
-
-
                                 <Form onSubmit={handleSubmit(onSubmit)}>
-
                                     <div className={styles.passwordformsection}>
                                         <Form.Group className="mb-2" controlId="formBasicEmail">
                                             <Form.Label>Password</Form.Label>

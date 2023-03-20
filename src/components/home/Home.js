@@ -127,7 +127,6 @@ function Home() {
                             </>}
                         </div>
                         <div className={styles.addimagessectionright}>
-
                             {bannerimages[2]?.HeroBannerBottom2[0] ? <>
                                 <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${bannerimages[2]?.HeroBannerBottom2[0]?.imageName}`} alt="no image" className={styles.add1} onClick={() => MovePageData(bannerimages[2]?.HeroBannerBottom2[0]?.redirectUrl)} />
                             </> : <>

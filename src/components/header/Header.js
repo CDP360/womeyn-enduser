@@ -32,10 +32,23 @@ function Header() {
     const [showmega, setShowMega] = useState(false);
     const [userimage, setUserImage] = useState("");
     const logoutHandler = async () => {
-        toast.success("Logout User Successflly");
-        localStorage.removeItem("womenUserid");
-        localStorage.removeItem("womenUserToken");
-        localStorage.removeItem("womenProfile");
+        toast.success("Logout Successfull!!",
+        {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        }
+    );
+    localStorage.removeItem("womenUserid");
+    localStorage.removeItem("womenUserToken");
+    localStorage.removeItem("womenProfile");
+    localStorage.removeItem("productwhishlist");
+    localStorage.removeItem("womenuser");
         setTimeout(() => {
             router.push("/login");
         }, 1000)
@@ -193,7 +206,7 @@ function Header() {
                                 <ul className="dropdownmega">
                                     <div className="maindropdown">
                                         <div className="firstsection">
-                                            <li><a className="commontitle">TopWare</a></li>
+                                            <li><a className="commontitle">Fashion & Lifestyle</a></li>
                                             <div>
 
                                                 {datas?.map((item, index) => {
@@ -204,12 +217,34 @@ function Header() {
                                                     )
                                                 })}
                                             </div>
-                                        </div>
-                                        <div className="secondsection">
-                                            <li><a className="commontitle">TopWare</a></li>
+                                            <li><a className="commontitle">Educational Services</a></li>
                                             <div>
 
-                                                {datas?.map((item, index) => {
+                                                {datas?.slice(0,2).map((item, index) => {
+                                                    return (
+                                                        <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
+                                                            <li><a className="unactivetext">{item?.name}</a></li>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                        <div className="secondsection">
+                                            <li><a className="commontitle">Consumer Services</a></li>
+                                            <div>
+
+                                                {datas?.slice(0,5).map((item, index) => {
+                                                    return (
+                                                        <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
+                                                            <li><a className="unactivetext">{item?.name}</a></li>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                            <li><a className="commontitle">Consumer Services</a></li>
+                                            <div>
+
+                                                {datas?.slice(0,2).map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>
@@ -219,7 +254,7 @@ function Header() {
                                             </div>
                                         </div>
                                         <div className="thirdsection">
-                                            <li><a className="commontitle">TopWare</a></li>
+                                            <li><a className="commontitle">Health & Wellbeing</a></li>
                                             <div>
 
                                                 {datas?.map((item, index) => {
@@ -232,7 +267,7 @@ function Header() {
                                             </div>
                                         </div>
                                         <div className="fourthsection">
-                                            <li><a className="commontitle">TopWare</a></li>
+                                            <li><a className="commontitle">Dance & Fitness</a></li>
                                             <div>
 
                                                 {datas?.map((item, index) => {
@@ -245,7 +280,7 @@ function Header() {
                                             </div>
                                         </div>
                                         <div className="fifthsection">
-                                            <li><a className="commontitle">TopWare</a></li>
+                                            <li><a className="commontitle">Consumer Services</a></li>
                                             <div>
 
                                                 {datas?.map((item, index) => {

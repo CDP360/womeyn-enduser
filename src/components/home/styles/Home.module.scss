@@ -54,9 +54,11 @@
                 object-fit: cover;
                 border-radius: 8px;
                 cursor: pointer;
-
                 @include xsBreakPoint {
-                    height: auto;
+                    height: 120px;
+                    // width:100%;
+                    object-fit: contain;
+                    border-radius:10px !important;
                 }
                 @include smBreakPoint {
                     height: auto;
@@ -144,18 +146,15 @@
         }
     }
 }
-
 .skeltonbox {
     width: 100% !important;
     height: 300px !important;
 }
-
 .addimageboxs {
     width: 100% !important;
-    height: 100% !important;
+    height: 200px !important;
     object-fit: contain !important;
 }
-
 .homebanner {
     width: 100% !important;
     height: 200px !important;

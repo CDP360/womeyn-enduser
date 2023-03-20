@@ -8,7 +8,9 @@ import instagram from '../../assests/homepage-logos/newinstagramfooter.png';
 import linkdin from '../../assests/homepage-logos/linkedinfooter.png';
 import twitter from '../../assests/homepage-logos/twitterfooter.png';
 import headphone from '../../assests/homepage-logos/headphonefooter.png';
+import {useRouter} from 'next/router';
 function Footer() {
+    const router=useRouter();
     return (
         <Fragment>
             <div className={styles.mainfootersection}>
@@ -49,19 +51,19 @@ function Footer() {
                                     QUICK LINKS
                                 </div>
                                 <div className="gapsectionfooter">
-                                    <div>
+                                    <div  onClick={()=>router.push("/abouts")}>
                                         About us
                                     </div>
-                                    <div>
+                                    <div onClick={()=>router.push("/getintouch")}>
                                         Contact us
                                     </div>
-                                    <div>
+                                    <div onClick={()=>router.push("/womenpreneurs")}>
                                         Products
                                     </div>
-                                    <div>
+                                    <div onClick={()=>router.push("/login")}>
                                         Login
                                     </div>
-                                    <div>
+                                    <div onClick={()=>router.push("/signup")}>
                                         Sign Up
                                     </div>
                                 </div>

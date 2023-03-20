@@ -1,0 +1,51 @@
+@use '../../../../../../scss/abstract/' as *;
+
+.mainconfirmorders
+{
+    width:100%;
+    .insideconfirmorrders
+    {
+        width:100%;
+        padding-top:5%;
+        .splitorderconfirm
+        {
+
+display:flex;   
+gap:20px;
+border-bottom: 1px dashed #9F9F9F;
+padding-bottom:1.4%;
+
+.boxsectionimage
+{
+    width:120px;
+    height:100px;
+    border-radius:5px;
+    // border:1px solid red;
+    .editprofilesection
+                {
+                    width:100%;
+                  height:100%;
+                    // object-fit:cover;
+                    border-radius:5px;
+                }
+
+}
+.productNamesize
+{
+    font-weight:600;
+    font-size:1.2rem;
+}
+}
+    }
+    .continuebutton
+    {
+        border:none;
+        outline:none;
+        padding:8px 25px;
+        color:white;
+        cursor:pointer;
+        background: #E95A5A;
+        border-radius:10px;
+        font-weight:600;
+    }
+}

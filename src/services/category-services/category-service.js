@@ -10,7 +10,7 @@ export function CategoryBanners() {
 }
 
 
-export function ProductCatgorylist(data,current) {
+export function ProductCatgorylist(data, current) {
     return instanceBaseurl.get(`/common/category/products?slugName=${data}&limit=10&page=${current}`).then((res) => {
         return res;
     }).catch((err) => {

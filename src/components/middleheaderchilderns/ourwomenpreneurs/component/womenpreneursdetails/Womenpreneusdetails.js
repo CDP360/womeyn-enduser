@@ -141,6 +141,7 @@ function Womenpreneusdetails({ id }) {
                             </div>
                             <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
                                 {sellers?.productDescription}
+                             
                             </div>
                         </div>
                         <div className={styles.rightdetailpage}>
@@ -170,7 +171,7 @@ function Womenpreneusdetails({ id }) {
                     </div>
 
                     <div className={styles.contentsetiondetails}>
-                        <Beverage productlist={productlist} productlistshow={productlistshow} loading={loading} />
+                        <Beverage productlist={productlist} productlistshow={productlistshow} loading={loading} sellers={sellers?.businessSlugName}/>
                         {productlist?.length > 8 &&
                             <div className='d-flex justify-content-center mt-4'>
                                 <Pagination

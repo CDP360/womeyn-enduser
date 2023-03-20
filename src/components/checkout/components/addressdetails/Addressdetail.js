@@ -1,19 +1,31 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import styles from './styles/Orderdetails.module.scss';
 import map from '../../../../assests/womeynlogos/map.png';
 import cartshow from '../../../../assests/womeynlogos/cartshow.png';
 import truck from '../../../../assests/womeynlogos/truck.png';
 import fire from '../../../../assests/womeynlogos/fire.png';
-
-
 import Form from 'react-bootstrap/Form';
 import Image from 'next/image';
 import { Button } from 'react-bootstrap';
 import dynamic from 'next/dynamic';
 import deleteicons from '../../../../assests/cart-logos/deleteicons.png';
-function Orderdetails({ state,handleCheck }) {
+import { toast } from 'react-toastify';
+import { GetAddressData } from '../../../../services/user-profile-service/user-profile-services';
+
+function Addressdetail({ state, step, setStep, setName }) {
 
   const [selectAddress, setCheckAddress] = useState("");
+
+  const [address,setAddress]=useState([]);
+
+  useEffect(() => {
+    GetAddressData().then((res) => {
+      setAddress(res?.data?.results);
+      console.log(res?.data?.results,"kl")
+    }).catch((err) => {
+      console.log(err);
+    })
+  }, [])
 
   const data = [
     {
@@ -42,12 +54,38 @@ function Orderdetails({ state,handleCheck }) {
     if (checked) {
       setCheckAddress(value);
     }
+
+
+
     // if (checked) {
     //   setCheckAddress([...selectAddress, value]);
     // } else {
     //   setCheckAddress(selectAddress.filter((e) => e != value));
     // }
   };
+
+  const handleDeliverAddress = () => {
+    if (selectAddress.length === 0) {
+      toast.error("please Select Address",
+        {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+    }
+    if (selectAddress) {
+      setName(selectAddress);
+      setStep(step + 1);
+    }
+  }
+
+
 
   return (
     <Fragment>
@@ -60,7 +98,7 @@ function Orderdetails({ state,handleCheck }) {
           </div>
         </div>
         <div className="mt-1">
-          {data?.map((item, index) => {
+          {address?.map((item, index) => {
             return (
               <div className="mb-2">
                 <div className={styles.addresspageorder}>
@@ -77,13 +115,14 @@ function Orderdetails({ state,handleCheck }) {
                       </div>
                         <div className={styles.rightorders}>
                           <div className={styles.shippingtext}>
-                            Shipping Address
+                            {item?.cityName} <span>{item?.stateName}</span>
                           </div>
                           <div className={`mt-2 mb-2 ${styles.nameaddress}`}>
-                            Azhar Ahmad Ar Rachman (Home)
+                            {item?.countryName}
                           </div>
                           <div className={`mt-2 mb-2 ${styles.addressorders}`}>
-                            177A Bleecker Street, New York City, NY 10012-1406, on the corner of Bleecker Street and Fenno Place in the heart of Greenwich Village.
+                            
+                            {item?.fullAddress}
                           </div>
                         </div>
                       </span>
@@ -99,7 +138,7 @@ function Orderdetails({ state,handleCheck }) {
 
         <div>
 
-          <button className={styles.DeliveryHere} onClick={handleCheck}>
+          <button className={styles.DeliveryHere} onClick={handleDeliverAddress}>
             Delivery Here
           </button>
         </div>
@@ -214,4 +253,4 @@ function Orderdetails({ state,handleCheck }) {
   )
 }
 
-export default dynamic(() => Promise.resolve(Orderdetails), { ssr: false });
+export default dynamic(() => Promise.resolve(Addressdetail), { ssr: false });
