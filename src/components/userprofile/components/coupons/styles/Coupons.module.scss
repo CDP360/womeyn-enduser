@@ -1,1 +1,49 @@
 @use '../../../../../../scss/abstract/' as *;
+
+.couponsContainer{
+    width: 100%;
+    padding: 2%;
+    padding-left: 3%;
+    padding-right:3%;
+    border: 1px solid #9f9f9f;
+    border-radius: 10px;
+    .couponsHeading{
+        font-size:20px;
+        font-weight:600;
+    }
+    .couponsContentContainer{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom:2%;
+        .couponsOfferName{
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom:6%;
+            @include mdBreakPoint{
+                font-size: 14px;
+                font-weight: 500;
+            }
+        }
+        .couponsValidDate{
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom:10.5%;
+            @include mdBreakPoint{
+                font-size: 13px;
+                margin-bottom:8.5%;
+            }
+        }
+        .couponsSubContent{
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom:0px;
+            @include mdBreakPoint{
+                font-size: 13px;
+            }
+        }
+    }
+    .couponsDottedLine{
+        border:1px dashed #9F9F9F;
+        margin-top:0px;
+    }
+}

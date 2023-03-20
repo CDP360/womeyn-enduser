@@ -1,4 +1,197 @@
-@use "../../../../../../scss/abstract/" as *;
+@use '../../../../../../scss/abstract/' as *;
 
-.servicetrack {
+.serviceTrackingHeader{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+    .serviceTrackingHeaderText{
+        font-size:28px;
+        font-weight:600;
+    }
+    .serviceTrackingExploreBtn{
+        width:145px;
+        height:45px;
+        background-color:white;
+        border-radius:10px;
+        color:#E95A5A;
+        border: 1px solid #E95A5A;
+    }
+}
+
+.serviceTrackingCenterContainer{
+    display:flex;
+    justify-content:space-between;
+    margin-top:2%;
+    @include smBreakPoint{
+        flex-direction:column
+    }
+    @include xsBreakPoint{
+        flex-direction:column
+    }
+    .serviceTrackingLeftSide{
+        width: 29%;
+        border: 1px solid #9F9F9F;
+        border-radius: 10px;
+        padding: 2%;
+        @include smBreakPoint{
+            width: 100%;
+        }
+        @include xsBreakPoint{
+            width: 100%;
+        }
+        .serviceTrackingLeftText{
+            font-size: 16px;
+            font-weight: 400;
+            color:#9F9F9F;
+            margin-bottom:3px;
+        }
+        .serviceTrackingLeftText1{
+            font-size: 18px;
+            font-weight: 400;
+            color: #121212;
+            margin-bottom:3px;
+        }
+        .serviceTrackingLeftText2{
+            font-size: 14px;
+            font-weight: 400;
+            color:#9F9F9F;
+            margin-bottom:0px;
+        }
+        .serviceTrackingLeftText3{
+            font-size: 16px;
+            font-weight: 400;
+            color:#9F9F9F;
+            margin-top:7%;
+            margin-bottom:0px;
+        }
+        .serviceTrackingDotted{
+            border:1px dashed #9F9F9F;
+        }
+        .serviceTrackingLeftText4{
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+    .serviceTrackingRightSideFull{
+        width: 68%;
+        @include smBreakPoint{
+            margin-top: 2%;
+            width: 100%;
+        }
+        @include xsBreakPoint{
+            width: 100%;
+            margin-top: 5%;
+        }
+        .serviceTrackingRightSide{
+            width: 100%;
+            border: 1px solid #9F9F9F;
+            border-radius: 10px;
+            padding: 2%;
+            min-height: 100px;
+            display:flex;
+            justify-content:space-between;
+            .serviceTrackingInnerLeft{
+                width:60%;
+                padding:2%;
+                padding-bottom:0%;
+                .serviceTrackingInnerDividing{
+                    display:flex;
+                    justify-content:space-between;
+                    .serviceTrackingDimText{
+                        margin-bottom:0px;
+                        color:#121212;
+                        opacity:0.6;
+                        font-size:16px;
+                        font-weight:400;
+                    }
+                    .serviceTrackingDarkText{
+                        font-size:16px;
+                        font-weight:400;
+                    }
+                }
+                .serviceTrackingDot{
+                    border:1px dashed #9F9F9F;
+                    margin-top:0px;
+                }
+                .serviceTrackingDimText1{
+                    margin-bottom:0px;
+                    color:#121212;
+                    opacity:0.6;
+                    font-size:16px;
+                    font-weight:400;
+                }
+                .serviceTrackingDarkText1{
+                    font-size:16px;
+                    font-weight:400;
+                }
+            }
+            .serviceTrackingInnerRight{
+                width:40%;
+                padding:2%;
+                .serviceTracking1stBanner{
+                    display:flex;
+                    .serviceTrackingImgContainer{
+                        width:96px;
+                        height:96px;
+                        border-radius:10px;
+                        background-color:#C4C4C4;
+                        @include mdBreakPoint{
+                            width: 65px;
+                            height: 65px;
+                        }
+                        @include xsBreakPoint{
+                            width: 65px;
+                            height: 65px;
+                        }
+                    }
+                    .serviceTrackingImgContent{
+                        margin-left:10%;
+                        @include lgBreakPoint{
+                            margin-left:5%
+                        }
+                        @include mdBreakPoint{
+                            margin-left:5%
+                        }
+                        @include xsBreakPoint{
+                            margin-left:5%
+                        }
+                        .serviceTrackingImgName{
+                            margin-bottom:8px;
+                            font-size:18px;
+                            font-weight:400;
+                            @include mdBreakPoint{
+                                width:90px;
+                                font-size:15px;
+                                font-weight:400;
+                            }
+                            @include xsBreakPoint{
+                                font-size:11px;
+                            margin-bottom:5px;
+
+                            }
+                        }
+                        .serviceTrackingRate{
+                            font-size:16px;
+                            font-weight:600;
+                        }
+                    }
+                }
+                .serviceTrackingCancel{
+                    text-align:end;
+                    margin-top:5%;
+                    margin-right:5%;
+                    font-size:16px;
+                    font-weight:600;
+                    color:#E95A5A;
+                    @include mdBreakPoint{
+                        margin-right:15%;
+                    }
+                    @include xsBreakPoint{
+                        width:100%
+                    }
+                }
+                
+            }
+        }
+    }
 }
