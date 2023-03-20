@@ -53,7 +53,9 @@ function Favorts() {
             </div>
             <div className={styles.favortsRightContainer}>
                 <Image src={Delete}/>
-                {/* <p className={styles.favortsDeleteText}>Remove</p> */}
+                <div className='d-none d-lg-block'>
+                <p className={styles.favortsDeleteText}>Remove</p>
+                </div>
             </div>
         </div>
             )

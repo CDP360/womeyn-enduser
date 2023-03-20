@@ -51,6 +51,10 @@
                     width: 65px;
                     height: 65px;
                 }
+                @include xsBreakPoint{
+                    width: 85px;
+                    height: 85px;
+                }
             }
             .favortsContentContainer{
                 margin-left:5%;
@@ -66,6 +70,10 @@
                         font-weight: 500;
                         margin-bottom:-2%;
                     }
+                    @include xsBreakPoint{
+                        font-size:14px;
+                        margin-bottom:6%;
+                    }
                 }
                 .favortsOfferDetail{
                     margin-bottom:8px;
@@ -76,6 +84,10 @@
                         font-weight: 400;
                         margin-bottom:-2%;
                     }
+                    @include xsBreakPoint{
+                        font-size:12px;
+                        margin-bottom:2%;
+                    }
                 }
                 .favortsRatingContainer{
                     display: flex;
@@ -83,6 +95,9 @@
                     @include mdBreakPoint{
                         width:100%;
                         margin-top:-3%
+                    }
+                    @include xsBreakPoint{
+                        width:100%;
                     }
                     .favortsDot{
                         width:4px;
@@ -100,7 +115,11 @@
                         margin-top: 3px;
                         @include mdBreakPoint{
                             font-size: 13px;
-                        font-weight: 400;
+                            font-weight: 400;
+                        }
+                        @include xsBreakPoint{
+                            font-size:11px;
+                            margin-top: 5px;
                         }
                     }
                 }
