@@ -1,73 +1,62 @@
 @use "../../../../../../../../scss/abstract/" as *;
 
-.mainsection {
-  //   display: flex;
-  width: 80%;
-  padding: 2%;
-  margin-left: 10%;
-  @include mdBreakPoint {
-    padding: 0%;
-  }
-  @include lgBreakPoint {
-    padding: 0%;
-  }
-  @include smBreakPoint {
-    padding: 0%;
-  }
   .inside {
     display: flex;
     justify-content: space-between;
-    @include smBreakPoint {
-      width: 510px;
-    }
-    @include mdBreakPoint {
-      width: 720px;
-    }
-    @include lgBreakPoint {
-      width: 860px;
+    .product{
+      font-size: 28px;
+      font-weight: 600;
     }
     .show {
       border: 1px solid #e95a5a;
       border-radius: 10px;
       color: #e95a5a;
-      width: 9%;
-      height: 38px;
+      width: 127px;
+      height: 48px;
+      background-color: white;
       @include smBreakPoint {
-        width: 20%;
-        margin-left: 10%;
+        // width: 20%;
+        height: 40px;
+        // margin-left: 10%;
       }
       @include mdBreakPoint {
-        width: 14%;
+        // width: 14%;
+        height: 40px;
       }
-      @include lgBreakPoint {
-        width: 10%;
+      @include xsBreakPoint {
+        // width: 10%;
+        height: 40px;
       }
     }
   }
   .insidecontainer {
     display: flex;
+    justify-content:space-between;
     margin-top: 3%;
-    gap: 30px;
     @include smBreakPoint {
       display: contents;
     }
     @include mdBreakPoint {
       display: contents;
     }
-    @include lgBreakPoint {
-      width: 865px;
+    @include xsBreakPoint {
+      display: contents;
     }
     .leftinsidesection {
-      width: 40%;
+      width: 30%;
       border: 1px solid #9f9f9f;
       border-radius: 10px;
 
       @include smBreakPoint {
-        width: 510px;
+        width:100%;
         margin-top: 2%;
       }
       @include mdBreakPoint {
-        width: 720px;
+        width:100%;
+        margin-top: 2%;
+      }
+      @include xsBreakPoint {
+        width:100%;
         margin-top: 2%;
       }
       .leftContainer1 {
@@ -86,18 +75,21 @@
       }
     }
     .rightinsidesection {
-      //   margin-left: 2%;
-      width: 60%;
+      width: 65%;
       gap: 10px;
       border: 1px solid #9f9f9f;
       border-radius: 10px;
       padding: 2%;
       @include smBreakPoint {
-        width: 510px;
+        width:100%;
         margin-top: 2%;
       }
       @include mdBreakPoint {
-        width: 720px;
+        width:100%;
+        margin-top: 2%;
+      }
+      @include xsBreakPoint {
+        width:100%;
         margin-top: 2%;
       }
 
@@ -106,6 +98,9 @@
         gap: 30px;
         display: flex;
         @include smBreakPoint {
+          display: contents;
+        }
+        @include xsBreakPoint {
           display: contents;
         }
         @include lgBreakPoint {
@@ -118,6 +113,9 @@
             width: 95%;
           }
           @include lgBreakPoint {
+            width: 100%;
+          }
+          @include xsBreakPoint {
             width: 100%;
           }
 
@@ -151,46 +149,51 @@
         }
         .rightContainersection2 {
           width: 40%;
-          padding: 1%;
           .rightinsidecontainer {
             display: flex;
-            @include smBreakPoint {
-              width: 480px;
-            }
-            @include lgBreakPoint {
-              width: 100%;
-            }
             .img1 {
-              width: 96px;
-              height: 70px;
+              width: 120px;
+              height: 120px;
               border-radius: 15px;
               background-color: #c4c4c4;
+              @include mdBreakPoint {
+                width: 110px;
+              height: 110px;
+              }
             }
           }
           .rightinsidecontainer1 {
             margin-left: 4%;
+            @include lgBreakPoint{
+              margin-left: 10%;
+            }@include xsBreakPoint{
+              margin-left: 10%;
+            }
             .paracontent {
-              font-size: small;
-              font-weight: 700;
-              color: #121212;
               margin-bottom: 1%;
+              font-size: 18px;
+                font-weight: 400;
+                width:150px;
             }
             .paracontent2 {
-              font-size: 15px;
+              font-size: 16px;
               font-weight: 400;
               color: #121212;
               margin-bottom: 1%;
             }
             .dollar {
-              font-size: small;
+              font-size:16px;
+                font-weight:500;
             }
             .cancel {
               color: #e95a5a;
               margin-top: 14%;
+              @include mdBreakPoint {
+                margin-top:0px;
+              }
             }
           }
         }
       }
     }
   }
-}

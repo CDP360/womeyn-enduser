@@ -2,10 +2,13 @@ import React from "react";
 import style from "./styles/Ordertracking.module.scss";
 function Ordertarcking() {
   return (
-    <div className={style.mainsection}>
+    <div className="mainsection">
+      <div className="insidesection">
+        <div>
       <div className={style.inside}>
-        <h5 className={style.product}>Product Tracking</h5>
+        <p className={style.product}>Product Tracking</p>
         <button className={style.show}>Shop More</button>
+        </div>
       </div>
       <div className={style.insidecontainer}>
         <div className={style.leftinsidesection}>
@@ -65,6 +68,7 @@ function Ordertarcking() {
               
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
