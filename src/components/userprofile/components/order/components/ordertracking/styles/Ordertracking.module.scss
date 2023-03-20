@@ -59,7 +59,7 @@
     }
     .leftinsidesection {
       width: 40%;
-      border: 1px solid black;
+      border: 1px solid #9f9f9f;
       border-radius: 10px;
 
       @include smBreakPoint {
@@ -89,9 +89,8 @@
       //   margin-left: 2%;
       width: 60%;
       gap: 10px;
-      border: 1px solid black;
+      border: 1px solid #9f9f9f;
       border-radius: 10px;
-      border: 1px solid black;
       padding: 2%;
       @include smBreakPoint {
         width: 510px;

@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 const data = [
   {
     id: 1,
-    status: "inprocess",
+    status: "in process",
     delivery: " Delivery Date:3 July 2021",
     invoice: "INV/20210703/MPL/1374771502",
     subHead: "Shoes Waffle One",
@@ -61,7 +61,7 @@ function Order() {
               <p>In Progress</p>
               <p>Cancelled</p>
             </div>
-            <hr />
+            <hr className={styles.hrSub} />
           </div>
           {data.map((item, index) => {
             return (
@@ -70,7 +70,8 @@ function Order() {
                   <p className={styles.status}>{item.status}</p>
                   <p className={styles.delivery}>{item.delivery}</p>
                   <p className={styles.delivery}>
-                    Invoice Number:<span>{item.invoice}</span>{" "}
+                    Invoice Number:
+                    <span className={styles.invoicedata}>{item.invoice}</span>{" "}
                   </p>
                 </div>
                 <div className={styles.insidecontainer1}>

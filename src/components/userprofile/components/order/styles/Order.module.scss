@@ -7,12 +7,13 @@
     display: flex;
     width: auto;
     padding: 0px 2px;
-    background: #f1f1f1;
+    background: #ffffff;
     border-radius: 8px;
     align-items: center;
     justify-content: center;
     width: 100%;
     margin: 0 auto;
+    border: 1px solid #9f9f9f;
     @include lgBreakPoint {
       width: 40%;
       padding: 4px 10px;
@@ -28,10 +29,8 @@
   //   border: 1px solid black;
   margin-top: 5%;
   .middlecontainer2 {
-    // display: flex;
-    // width: auto;
-    // padding: 0px 2px;
-    background: #f1f1f1;
+    border: 1px solid #9f9f9f;
+    background: #ffffff;
     border-radius: 8px;
     width: 100%;
     margin: 0 auto;
@@ -43,12 +42,28 @@
       justify-content: space-between;
       width: 49%;
       margin-bottom: -4%;
+      @include xsBreakPoint {
+        width: 95%;
+        margin-bottom: -8%;
+      }
       //   border-bottom: 1px solid #c4c4c4;
+    }
+    .hrSub {
+      color: #c4c4c4;
     }
   }
   .insidecontainer {
     display: flex;
     justify-content: space-between;
+    @include xsBreakPoint {
+      display: contents;
+    }
+    @include smBreakPoint {
+      display: contents;
+    }
+    @include mdBreakPoint {
+      display: contents;
+    }
     .status {
       color: #ff3d00;
       font-size: 13px;
@@ -59,10 +74,21 @@
       font-size: 16px;
       font-weight: 400;
       opacity: 0.7;
+      @include xsBreakPoint {
+        font-size: small;
+      }
+    }
+    .invoicedata {
+      @include xsBreakPoint {
+        font-size: small;
+      }
     }
   }
   .insidecontainer1 {
     display: flex;
+    @include xsBreakPoint {
+      display: contents;
+    }
     .img {
       width: 123px;
       height: 95px;
@@ -72,19 +98,33 @@
     .insidecontainer2 {
       width: 60%;
       margin-left: 4%;
+      @include xsBreakPoint {
+        margin-top: 2%;
+        width: 100%;
+      }
     }
     .insidecontainer3 {
       width: 20%;
+      @include xsBreakPoint {
+        margin-left: 5%;
+      }
     }
     .buttontrack {
       width: 20%;
+      @include xsBreakPoint {
+        margin-left: 5%;
+      }
     }
     .trackbutton {
       border: 1px solid #e95a5a;
       border-radius: 10px;
       color: #e95a5a;
-      width: 9%;
+      width: 83%;
       height: 38px;
+      @include xsBreakPoint {
+        width: 117px;
+        // margin-left: 15%;
+      }
     }
   }
   .hrcontainer {
