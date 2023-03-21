@@ -6,9 +6,12 @@ import Col from 'react-bootstrap/Col';
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
+import Spinner from 'react-bootstrap/Spinner';
+
 import { CreateProfileuser, UserProfileInformation } from '../../../../../services/user-login-service/user-login-services';
 function EditProfile() {
     const history = useRouter();
+    const [loading, setLoading] = useState(false);
     const {
         register,
         handleSubmit,
@@ -51,6 +54,8 @@ function EditProfile() {
         setValue("gender", user?.gender);
         setValue("email", user?.email);
         setValue("phonenumber", user?.contactNumber);
+        setValue("dateofbirth", user?.dateOfBirth);
+
     }, [user])
     const [show, setShow] = useState(false);
     const EditProfile = () => {
@@ -63,10 +68,12 @@ function EditProfile() {
             gender: e?.gender,
             email: e?.email,
             contactNumber: e?.phonenumber,
+            dateOfBirth: e?.dateofbirth
 
         }
+        setLoading(true);
         const userid = localStorage.getItem("womenUserid");
-        CreateProfileuser(JSON.parse(userid), datas).then((res) => {
+        CreateProfileuser(datas).then((res) => {
             toast.success("Profile Updated",
                 {
                     position: "top-center",
@@ -78,7 +85,10 @@ function EditProfile() {
                     progress: undefined,
                     theme: "dark",
                 })
-            history.push("/profile/youraccount")
+            setTimeout(() => {
+                history.push("/profile/youraccount");
+                setLoading(false);
+            }, 400)
         }).catch((err) => {
             console.log(err);
         })
@@ -88,7 +98,21 @@ function EditProfile() {
             <div className={styles.personalinformation}>
                 <div className="commonprofiletextsize">Personal Information</div>
                 <div className={styles.buttonsplitsections}>
-                    <button className={styles.editbutton} onClick={handleSubmit(onSubmit)}>Save</button>
+                    <button className={styles.editbutton} onClick={handleSubmit(onSubmit)}>
+
+                        {loading ? <>
+                            <Spinner
+                                as="span"
+                                animation="grow"
+                                size="sm"
+                                role="status"
+                                aria-hidden="true"
+                            />
+                            Loading...
+                        </> : <>
+                            Save
+                        </>}
+                    </button>
                     <button className={styles.editbuttoncancel} onClick={() => history.push("/profile/youraccount")}>Cancel</button>
 
                 </div>
@@ -145,6 +169,7 @@ function EditProfile() {
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" placeholder="Enter Email" className='form-control-profile'
+                                disabled
                                 {...register("email", {
                                     required: "Please enter email",
                                     pattern: {

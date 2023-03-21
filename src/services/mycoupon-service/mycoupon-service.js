@@ -5,6 +5,6 @@ export function MyCouponList() {
     return instanceBaseurl.get(`/common/coupons`).then((res) => {
         return res
     }).catch((err) => {
-        console.log(err);
+        return err;
     })
 }

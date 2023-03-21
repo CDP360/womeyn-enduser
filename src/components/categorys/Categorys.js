@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import styles from './styles/Category.module.scss';
-import categorylogo from '../../assests/category-logos/categorybanner.png';
+
 import Image from 'next/image';
 import Sidebarcateogrys from './sidebarcategory/Sidebarcateogrys';
 import Maincategorylist from './maincategoryproducts/Maincategorylist';
@@ -47,12 +47,12 @@ function Categorys({ id }) {
             Categorys / health
           </div>
           <div>
-            <ReactSlider
+            {/* <ReactSlider
               className="horizontal-slider"
               thumbClassName="example-thumb"
               trackClassName="example-track"
               renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
-            />
+            /> */}
           </div>
           <div>
             <Categorycarouse />

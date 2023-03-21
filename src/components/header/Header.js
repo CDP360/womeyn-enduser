@@ -30,25 +30,28 @@ function Header() {
     const router = useRouter();
     const states = useSelector(state => state);
     const [showmega, setShowMega] = useState(false);
-    const [userimage, setUserImage] = useState("");
+    const [userauth, setUserAuth] = useState("");
     const logoutHandler = async () => {
         toast.success("Logout Successfull!!",
-        {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-        }
-    );
-    localStorage.removeItem("womenUserid");
-    localStorage.removeItem("womenUserToken");
-    localStorage.removeItem("womenProfile");
-    localStorage.removeItem("productwhishlist");
-    localStorage.removeItem("womenuser");
+            {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            }
+        );
+        localStorage.removeItem("womenUserid");
+        localStorage.removeItem("womenUserToken");
+        localStorage.removeItem("womenProfile");
+        localStorage.removeItem("productwhishlist");
+        localStorage.removeItem("womenuser");
+        localStorage.removeItem("womenauth");
+
+        
         setTimeout(() => {
             router.push("/login");
         }, 1000)
@@ -107,9 +110,9 @@ function Header() {
     ]
 
     useEffect(() => {
-        const image = localStorage.getItem("womenUserToken");
-        setUserImage(JSON.parse(image));
-    }, [userimage])
+        const auth =localStorage.getItem("womenauth");
+        setUserAuth(auth);
+    }, [userauth])
     return (
         <Fragment>
             <div className={styles.mainheadersection}>
@@ -147,13 +150,13 @@ function Header() {
                                 </div>
                                 <div className="dropdown">
                                     <div className={styles.logintextsize}>
-                                        {userimage ? <>
+                                        {userauth ? <>
                                             <Image src={profile} alt="no image" className={styles.notificationsprofile} />
 
                                         </> : <>Login</>}
                                     </div>
 
-                                    {userimage ?
+                                    {userauth ?
                                         <>
                                             <div className="dropdowncontent">
                                                 <div className={styles.headerprofile} onClick={userProfile}>
@@ -220,7 +223,7 @@ function Header() {
                                             <li><a className="commontitle">Educational Services</a></li>
                                             <div>
 
-                                                {datas?.slice(0,2).map((item, index) => {
+                                                {datas?.slice(0, 2).map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>
@@ -233,7 +236,7 @@ function Header() {
                                             <li><a className="commontitle">Consumer Services</a></li>
                                             <div>
 
-                                                {datas?.slice(0,5).map((item, index) => {
+                                                {datas?.slice(0, 5).map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>
@@ -244,7 +247,7 @@ function Header() {
                                             <li><a className="commontitle">Consumer Services</a></li>
                                             <div>
 
-                                                {datas?.slice(0,2).map((item, index) => {
+                                                {datas?.slice(0, 2).map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>

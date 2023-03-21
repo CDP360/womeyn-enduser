@@ -43,10 +43,13 @@
             display:flex;
             width:100%;
             .favortsImg{
-                width:100px;
-                height:100px;
-                border-radius:20px;
-                background-color:gray;
+                width:120px;
+                height:120px;
+                border-radius:15px;
+                background-color:white;
+                object-fit:cover;
+                cursor:pointer;
+            
                 @include mdBreakPoint{
                     width: 65px;
                     height: 65px;
@@ -128,6 +131,7 @@
         .favortsRightContainer{
             display: flex;
             margin-top: 4%;
+            cursor:pointer;
             @include mdBreakPoint{
                 margin-top:6%
             }

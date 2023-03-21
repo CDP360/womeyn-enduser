@@ -18,6 +18,8 @@ import coupons from '../../../../assests/profile-logo/coupons.png';
 import orderactive from '../../../../assests/profile-logo/orderactive.png';
 import favortsactive from '../../../../assests/profile-logo/favortsactive.png';
 import couponsactive from '../../../../assests/profile-logo/ticketactive.png';
+import logout from '../../../../assests/profile-logo/logout.png';
+
 
 function Sidebar({ user }) {
     const [imageshowmodel, setImageShowModel] = useState(true);
@@ -44,13 +46,14 @@ function Sidebar({ user }) {
             handleClose();
             setTimeout(() => {
                 handleShow1();
+                
             }, 200)
         }).catch((err) => {
             console.log(err);
         })
     }
     const confirmuploadprofileimage = () => {
-        // window.location.reload();
+        window.location.reload();
         handleClose1();
     }
 
@@ -80,6 +83,28 @@ function Sidebar({ user }) {
     useEffect(() => {
 
     }, [indexs])
+
+
+    const LogoutUser=()=>{
+           localStorage.removeItem("womenUserid");
+                localStorage.removeItem("womenUserToken");
+                localStorage.removeItem("womenProfile");
+                localStorage.removeItem("productwhishlist");
+                localStorage.removeItem("womenuser");
+toast.success("Logout Successfull",{
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+})
+                setTimeout(()=>{
+history.push("/");
+                },300)
+    }
 
 
     return (
@@ -163,6 +188,18 @@ function Sidebar({ user }) {
                             Coupons
                         </div>
                     </div>
+                    <div className={styles.dashedsectionmain}>
+                        <div className={styles.insidedashedsection}>
+                        </div>
+                    </div>
+                    <div className={styles.profilecontentinlistsection} onClick={LogoutUser}>
+                        <div >
+                            <Image src={logout} alt="no image" className={styles.profileicon} />
+                        </div>
+                        <div className={styles.boldtexts}>
+                      Logout
+                        </div>
+                    </div>
                 </div>
 
 
@@ -192,9 +229,8 @@ function Sidebar({ user }) {
                             {image ? <label htmlFor="upload-button">
                                 <>
                                     <img
-                                        alt="profile-pic"
-                                        width={"110px"}
-                                        height={"110px"}
+                                                                                  className={styles.editmodelprofile}
+
                                         style={{ borderRadius: "50%", cursor: "pointer" }}
                                         src={URL.createObjectURL(image)}
                                     />
@@ -211,17 +247,18 @@ function Sidebar({ user }) {
                                     {/* user?.profileImageName  */}
                                     {user?.profileImageName ? <label htmlFor="upload-button">
                                         <img
-                                            width={"110px"}
-                                            height={"110px"}
-                                            style={{ borderRadius: "50%", cursor: "pointer" }}
+                                           
+                                            className={styles.editmodelprofile}
                                             src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
                                             alt="profile-pic"
                                         />
                                     </label> :
                                         <img
-                                            className="theme-color-default-img  profile-pic rounded avatar-100"
+                                         
                                             src="https://sialifehospital.com/wp-content/uploads/2021/04/testimonial-1.png"
                                             alt="profile-pic"
+                                            className={styles.editmodelprofile}
+
                                         />
 
 
@@ -229,17 +266,17 @@ function Sidebar({ user }) {
                                 </>)}
                         </div>
                         <div className="text-center mt-4 mb-1">
-                            <div>
+                            {/* <div>
                                 <span className='active'> Drag & drop</span> an image
-                            </div>
+                            </div> */}
                             <label htmlFor="upload-button">
-                                Or <span className='active'>Click Here</span> an image
+                                 <span className='active'>Click Here</span> an image
                             </label>
                             <input type="file" id="upload-button" style={{ display: 'none' }} onChange={handleImagechange} />
                         </div>
                     </Modal.Body>
                     <div className="text-center mb-4 mt-3">
-                        <Button className={styles.editbuttonss} onClick={ImageUploadSuccess}>Done</Button>
+                        <Button className={styles.editbuttonssdone} onClick={ImageUploadSuccess}>Done</Button>
                     </div>
                 </Modal>
 

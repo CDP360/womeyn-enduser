@@ -11,34 +11,45 @@ import { LoginText } from "../../consttext/Loginconst";
 import { Userlogin } from "../../services/user-login-service/user-login-services";
 import eye from '../../assests/login-logos/Eye.png';
 import eyeoff from '../../assests/login-logos/Eye Off.png';
+import Spinner from 'react-bootstrap/Spinner';
 function Login() {
     const [show1, setShow1] = useState(false);
     const history = useRouter();
 
+    const [error,setError]=useState(false);
+const [loading,setLoading]=useState(false);
     const {
         register,
         handleSubmit,
         watch,
         formState: { errors },
     } = useForm();
+    const url=process?.env?.NEXT_PUBLIC_URL;
     const onSubmit = async ({ email, password }) => {
         const productWhishlist= JSON.parse(localStorage.getItem("productwhishlist"));
         const datas = {
             email: email,
             password: password
         }
+        setLoading(true);
         if(productWhishlist)
         {
 
             Userlogin(datas).then(async (res) => {
                 if (res) {
+                    localStorage.setItem("womenauth", true);
                     localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
                     localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
                     setTimeout(() => {
                         history.push(`${productWhishlist}`);
-                    }, 100)
+                        setLoading(false);
+                    }, 400)
+                    setError(false);
                 }
                 else {
+                    setError(true);
+                    setError(false);
+
                     toast.error("Incorrect email or password",
                         {
                             position: "top-center",
@@ -60,11 +71,13 @@ function Login() {
        {
         Userlogin(datas).then(async (res) => {
             if (res) {
+                localStorage.setItem("womenauth", true);
                 localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
                 localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
                 setTimeout(() => {
                     history.push("/");
-                }, 500)
+                    setLoading(false);
+                }, 600)
             }
             else {
                 toast.error("Incorrect email or password",
@@ -79,6 +92,8 @@ function Login() {
                         theme: "dark",
                     }
                 );
+                setError(false);
+
             }
         }).catch((err) => {
             console.log(err);
@@ -95,14 +110,14 @@ function Login() {
     const Googleoauth = () => {
         // GoogleOauth();
         window.open(
-            `https://womeynapi.cdp360.in/v1/customer/oauth/google`,
+            `${url}/customer/oauth/google`,
             "_self", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=600,height=600"
         );
 
     }
     const FacebookAuth = () => {
         window.open(
-            `https://womeynapi.cdp360.in/v1/customer/oauth/facebook`,
+            `${url}/customer/oauth/facebook`,
             "_self", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=600,height=600"
         );
     }
@@ -181,8 +196,25 @@ function Login() {
 
                                 <div className={styles.forgetpassword} onClick={handlePushForgetpassword}>{LoginText?.Forgotpassword}</div>
                                 <Button className="loginbutton" type="submit">
-                                    {" "}
-                                    {LoginText?.Login}
+
+                                    {error?<>
+                                        {LoginText?.Login}
+                                    </>:<>
+                                    
+                                    {loading?<>
+                                    <Spinner
+          as="span"
+          animation="grow"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        />
+        Loading...
+                                   </>:
+                                   <> {LoginText?.Login}</>
+                                            }
+                                    </>}
+                                   
                                 </Button>
                             </Form>
                             <div className="text-center mt-3 mb-4">{LoginText?.orloginwith}</div>

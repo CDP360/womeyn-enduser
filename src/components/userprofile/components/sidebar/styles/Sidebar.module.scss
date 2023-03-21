@@ -1,5 +1,14 @@
 @use "../../../../../../scss/abstract/" as *;
 
+
+.editbuttonssdone {
+    width: 140px !important;
+    font-size: 1rem !important;
+    background-color: #e95a5a !important;
+    color: white !important;
+    font-weight: 600;
+    border:1px solid red !important;
+}
 .boldtexts {
     color: #000000;
     font-weight: 600;
@@ -151,14 +160,20 @@
     font-weight: 600;
 }
 .editprofilesection {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
-    object-fit: contain;
     padding: 5px;
-    border: 2px solid #e95a5a;
+    border: 3px solid #e95a5a;
 }
-
+.editmodelprofile
+{
+    width:160px;
+    cursor:pointer;
+    height:160px;
+    border-radius:50%;
+    // object-fit:contain;
+}
 .congratus {
     width: 100%;
     text-align: center;
@@ -191,11 +206,6 @@
         line-height: 1.6;
         font-size: 1rem;
     }
-    .editbuttonssdone {
-        width: 140px !important;
-        font-size: 1rem !important;
-        background-color: #e95a5a !important;
-        color: white !important;
-        font-weight: 600;
-    }
+  
 }
+

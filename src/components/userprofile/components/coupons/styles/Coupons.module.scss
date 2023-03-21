@@ -18,6 +18,7 @@
         .couponsOfferName{
             font-size: 18px;
             font-weight: 600;
+            color:#E95A5A;
             margin-bottom:6%;
             @include mdBreakPoint{
                 font-size: 14px;
@@ -35,8 +36,10 @@
         }
         .couponsSubContent{
             font-size: 16px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom:0px;
+            padding-top:7%;
+
             @include mdBreakPoint{
                 font-size: 13px;
             }

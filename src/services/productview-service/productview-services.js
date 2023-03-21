@@ -11,7 +11,7 @@ export function ProductView(data) {
 }
 
 export function ProductLikeWishlist(data) {
-    return instanceBaseurl.post(`/customer/wishlist`,data).then((res) => {
+    return instanceBaseurl.post(`/customer/wishlist`, data).then((res) => {
         return res;
     }).catch((err) => {
         return err;

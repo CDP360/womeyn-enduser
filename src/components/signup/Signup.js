@@ -10,6 +10,8 @@ import { LoginText } from '../../consttext/Loginconst';
 import { toast } from 'react-toastify';
 import { OTP } from '../../toastdata/Toastmessages';
 import { userSignup } from '../../services/user-login-service/user-login-services';
+import Spinner from 'react-bootstrap/Spinner';
+
 function Signup() {
     const router = useRouter();
     const {
@@ -18,11 +20,15 @@ function Signup() {
         watch,
         formState: { errors },
     } = useForm();
+
+    const url=process?.env?.NEXT_PUBLIC_URL;
+const [loading,setLoading]=useState(false);
+
     const onSubmit = async (data) => {
-        const productWhishlist= JSON.parse(localStorage.getItem("productwhishlist"));
         const response = {
             emailOrPhoneNo: data?.email
         }
+        setLoading(true);
         userSignup(response).then((res) => {
             if (res) {
                 toast.success(OTP, {
@@ -39,7 +45,8 @@ function Signup() {
                 localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
                 setTimeout(() => {
                     router.push("/otp");
-                }, 1000)
+                setLoading(false);
+                }, 600)
             }
 
         }).catch((err) => {
@@ -65,14 +72,14 @@ function Signup() {
 
     const Googleoauth = () => {
         window.open(
-            `https://womeynapi.cdp360.in/v1/auth/seller/google`,
+            `${url}/customer/oauth/google`,
             "_self", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=600,height=600"
         );
 
     }
     const FacebookAuth = () => {
         window.open(
-            `https://womeynapi.cdp360.in/v1/auth/seller/facebook`,
+            `${url}/customer/oauth/facebook`,
             "_self", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=600,height=600"
         );
     }
@@ -90,6 +97,7 @@ function Signup() {
 
     const [indexs, setIndexs] = useState(0);
 
+    
 
     return (
         <Fragment>
@@ -131,7 +139,19 @@ function Signup() {
                                 </Form.Group>
 
                                 <button variant="primary" type="submit" className="loginbutton mt-2 mb-2">
+                                    {loading?<>
+                                        <Spinner
+          as="span"
+          animation="grow"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        />
+        Loading...
+                                    </>:<>
                                     {LoginText?.Signup}
+
+                                    </>}
                                 </button>
                             </Form>
                             <div className="text-center mt-2 mb-3">

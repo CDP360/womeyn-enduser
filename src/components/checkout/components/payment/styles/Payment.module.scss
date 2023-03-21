@@ -1,32 +1,58 @@
 @use "../../../../../../scss/abstract/" as *;
 
-.payemntmethodmainsection {
-    width: 100%;
-    .mainpaymentsectioncards {
-        // border:2px solid red;
-        .creditcardsection {
-            display: flex;
-            padding: 3%;
-            background-color: white;
-            border: 1px solid #9f9f9f;
-            border-radius: 20px;
-            margin-top: 4%;
-            // box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-            .leftcreditcard {
-                width: 4%;
-            }
-            .rightcreditcard {
-                width: 96%;
-                .visa {
-                    display: flex;
-                    justify-content: space-between;
-                }
-                .formborder {
-                    border: 1px solid #9f9f9f !important;
-                    border-radius: 10px;
-                    padding: 13px !important;
-                }
-            }
+// .payemntmethodmainsection {
+//     width: 100%;
+//     .mainpaymentsectioncards {
+//         // border:2px solid red;
+//         .creditcardsection {
+//             display: flex;
+//             padding: 3%;
+//             background-color: white;
+//             border: 1px solid #9f9f9f;
+//             border-radius: 20px;
+//             margin-top: 4%;
+//             // box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+//             .leftcreditcard {
+//                 width: 4%;
+//             }
+//             .rightcreditcard {
+//                 width: 96%;
+//                 .visa {
+//                     display: flex;
+//                     justify-content: space-between;
+//                 }
+//                 .formborder {
+//                     border: 1px solid #9f9f9f !important;
+//                     border-radius: 10px;
+//                     padding: 13px !important;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+
+.mainsectionpayment
+{
+    width:100%;
+    padding-top:8%;
+    .paymentsections
+    {
+        .paymentsection
+        {
+            padding:30px 0px;
+            border-bottom:1px dashed #9F9F9F;
         }
+        .usepayments
+        {
+            border:none;
+            outline:none;
+            padding:10px 20px;
+            border-radius:10px;
+            color:white;
+            background-color:rgba(233, 90, 90, 1);
+            font-weight:600;
+        }
+        
     }
 }

@@ -11,7 +11,7 @@ import * as Yup from 'yup';
 import eye from '../../assests/login-logos/Eye.png';
 import eyeoff from '../../assests/login-logos/Eye Off.png';
 import { useState } from 'react';
-import { CreatePassword } from '../../services/user-login-service/user-login-services';
+import { CreatePassword, CreateProfileuser } from '../../services/user-login-service/user-login-services';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 function Passwordcreate() {
@@ -40,25 +40,67 @@ function Passwordcreate() {
     } = useForm(formOptions);
 
     const onSubmit = async (data) => {
-        const userid = localStorage.getItem("womenUserid");
+        const productWhishlist = JSON.parse(localStorage.getItem("productwhishlist"));
         const check = {
             password: data?.password,
         }
-        var passwordRegex = /(?=^.{8,}$)(?=.{0,}[A-Z])(?=.{0,}[a-z])(?=.{0,}\W)(?=.{0,}\d)/g
-        if (passwordRegex.test(check?.password)) {
-            console.log("data", check)
-            setMatchCheck1(true);
-            setMatchCheck2(false);
-            // CreatePassword(JSON.parse(userid), check).then((res) => {
-            //     toast.success("Create Password Successfully");
-            //     handlePushTerms();
+        var passwordRegex = /(?=^.{8,}$)(?=.{0,}[A-Z])(?=.{0,}[a-z])(?=.{0,}\W)(?=.{0,}\d)/;
+        if (productWhishlist) {
+            if (passwordRegex.test(check?.password)) {
+                localStorage.setItem("womenauth", true);
+                setMatchCheck1(true);
+                setMatchCheck2(false);
+                CreateProfileuser(check).then((res) => {
+                    toast.success("Create Password Successfull", {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "success",
+                    });
+                    setTimeout(() => {
+                        router.push(`${productWhishlist}`)
+                    }, 1000);
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }
+            else {
+                setMatchCheck2(true);
+            }
 
-            // }).catch((err) => {
-            //     console.log(err);
-            // })
         }
         else {
-            setMatchCheck2(true);
+            if (passwordRegex.test(check?.password)) {
+
+                localStorage.setItem("womenauth", true);
+                setMatchCheck1(true);
+                setMatchCheck2(false);
+                CreateProfileuser(check).then((res) => {
+                    toast.success("Create Password Successfull", {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                    setTimeout(() => {
+                        router.push("/")
+                    }, 1000);
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }
+            else {
+                setMatchCheck2(true);
+            }
+
         }
 
         // if (check?.password?.match(/[a-z]/)) {
@@ -85,11 +127,6 @@ function Passwordcreate() {
 
     };
 
-    const handlePushTerms = () => {
-        setTimeout(() => {
-            router.push("/")
-        }, 1000);
-    }
 
     useEffect(() => {
 
@@ -102,6 +139,11 @@ function Passwordcreate() {
                         <div className={styles.insideforgetsplit}>
                             <div className={styles.logintext}>
                                 New Credentials
+                            </div>
+                            <div>
+
+
+
                             </div>
                             <div>
                                 {matchcheck1 ? <div className='text-success'>
@@ -121,7 +163,7 @@ function Passwordcreate() {
                                         <Form.Group className="mb-2" controlId="formBasicEmail">
                                             <Form.Label>Password</Form.Label>
                                             <div className={"formsectioncommonlogin"}>
-                                                <Form.Control type={show ? "text" : "password"} placeholder="password" className={styles.forms}
+                                                <Form.Control type={show ? "text" : "password"} placeholder="Password" className={styles.forms}
                                                     {...register('password', {
                                                         pattern: {
                                                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -145,7 +187,6 @@ function Passwordcreate() {
                                                 <div className={"formsectioncommonlogin"}>
                                                     <Form.Control type={show1 ? "text" : "password"} placeholder="Confirm Password" className={styles.forms}
                                                         {...register('confirmPwd')}
-
                                                     />
                                                     <div className={styles.passwordicons}>
                                                         {show1 ? <div onClick={() => setShow1(!show1)} className="mt-2 ms-4"><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow1(!show1)}><Image src={eyeoff} alt="no image" /></div>}

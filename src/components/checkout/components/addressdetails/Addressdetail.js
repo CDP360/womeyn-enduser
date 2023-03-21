@@ -10,63 +10,38 @@ import { Button } from 'react-bootstrap';
 import dynamic from 'next/dynamic';
 import deleteicons from '../../../../assests/cart-logos/deleteicons.png';
 import { toast } from 'react-toastify';
-import { GetAddressData } from '../../../../services/user-profile-service/user-profile-services';
-
+import { Addaddress, GetAddressData } from '../../../../services/user-profile-service/user-profile-services';
+import ModelAddress from './ModelAddress';
+import { useForm } from "react-hook-form";
 function Addressdetail({ state, step, setStep, setName }) {
 
   const [selectAddress, setCheckAddress] = useState("");
 
-  const [address,setAddress]=useState([]);
+  const [address, setAddress] = useState([]);
 
   useEffect(() => {
     GetAddressData().then((res) => {
       setAddress(res?.data?.results);
-      console.log(res?.data?.results,"kl")
+      console.log(res?.data?.results, "kl")
     }).catch((err) => {
       console.log(err);
     })
   }, [])
 
-  const data = [
-    {
-      id: 1,
-      address: "Shipping Address",
-      city: "Azhar Ahmad Ar Rachman (Home)",
-      mainaddress: "177A Bleecker Street, New York City, NY 10012-1406, on the corner of Bleecker Street and Fenno Place in the heart of Greenwich Village."
-    },
-    {
-      id: 2,
-      address: "Shipping Address",
-      city: "Azhar Ahmad Ar Rachman (Home)",
-      mainaddress: "177A Bleecker Street, New York City, NY 10012-1406, on the corner of Bleecker Street and Fenno Place in the heart of Greenwich Village."
-    },
-    {
-      id: 3,
-      address: "Shipping Address",
-      city: "Azhar Ahmad Ar Rachman (Home)",
-      mainaddress: "177A Bleecker Street, New York City, NY 10012-1406, on the corner of Bleecker Street and Fenno Place in the heart of Greenwich Village."
-    }
-  ]
 
+  const overalladdress = address?.length > 1;
   const handleAddress = (e) => {
     const value = e.target.value;
     const checked = e.target.checked;
     if (checked) {
       setCheckAddress(value);
     }
-
-
-
-    // if (checked) {
-    //   setCheckAddress([...selectAddress, value]);
-    // } else {
-    //   setCheckAddress(selectAddress.filter((e) => e != value));
-    // }
   };
 
   const handleDeliverAddress = () => {
     if (selectAddress.length === 0) {
-      toast.error("please Select Address",
+      const overs = "Please Select Address";
+      toast.error(overs,
         {
           position: "top-center",
           autoClose: 3000,
@@ -79,28 +54,73 @@ function Addressdetail({ state, step, setStep, setName }) {
         }
       );
     }
+
+
     if (selectAddress) {
       setName(selectAddress);
       setStep(step + 1);
     }
   }
 
+  console.log(address, "selectAddress")
 
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm();
+  const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const SubmitsAddress = (data) => {
+    const address = {
+      name: data?.name,
+      contactNumber: data?.contactno,
+      alternateContactNumber: data?.alternatecontactno,
+      fullAddress: data?.address,
+      pinCode: data?.pincode,
+      landMark: data?.landmark,
+      cityName: data?.city,
+      stateName: data?.state,
+      countryName: "Australia",
+    }
+    Addaddress(address).then((res) => {
+      toast.success("Address Added!!",
+        {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+      window.location.reload();
+      handleClose();
+
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
   return (
     <Fragment>
       <div className={styles.mainorderpage}>
         <div className={styles.addnewaddressbutton}>
           <div className={styles.addnewaddressbuttonsubmenu}>
-            <button className={styles.addnewaddressbutton}>
-              Add New Address
-            </button>
+            <ModelAddress register={register} show={show} errors={errors} SubmitsAddress={SubmitsAddress} handleSubmit={handleSubmit} handleShow={handleShow} handleClose={handleClose} />
+
           </div>
         </div>
         <div className="mt-1">
           {address?.map((item, index) => {
             return (
-              <div className="mb-2">
+              <div className="mb-2" key={index}>
                 <div className={styles.addresspageorder}>
                   <div className={styles.insideaddresspadding}>
                     <label className={styles.control} name={item.id}>
@@ -121,26 +141,22 @@ function Addressdetail({ state, step, setStep, setName }) {
                             {item?.countryName}
                           </div>
                           <div className={`mt-2 mb-2 ${styles.addressorders}`}>
-                            
+
                             {item?.fullAddress}
                           </div>
                         </div>
                       </span>
                     </label>
                   </div>
-
-
                 </div>
               </div>
             )
           })}
         </div>
-
         <div>
-
-          <button className={styles.DeliveryHere} onClick={handleDeliverAddress}>
+          {address?.length > 0 && <button className={styles.DeliveryHere} onClick={handleDeliverAddress}>
             Delivery Here
-          </button>
+          </button>}
         </div>
 
         {/* <div>

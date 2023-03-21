@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import instanceBaseurl from './../../config/Baseurl';
 
 
@@ -32,15 +32,15 @@ export function OTPResend(data) {
         .then((res) => {
             return res
         }).catch((err) => {
-            console.log(err)
+            return err;
         })
 }
-export function CreateProfileuser(userid, data) {
-    return instanceBaseurl.post(`/customer/update-profile/${userid}`, data)
+export function CreateProfileuser(data) {
+    return instanceBaseurl.post(`/customer/update-profile`, data)
         .then((res) => {
             return res
         }).catch((err) => {
-            console.log(err)
+            return err;
         })
 }
 export function GoogleOauth() {
@@ -56,7 +56,7 @@ export function OauthSuccess() {
     return instanceBaseurl.get('/customer/oauth/success').then(res => {
         return res;
     }).catch(err => {
-        console.log(err);
+        return err;
     })
 }
 export function UserProfileImageupload(userid, data) {
@@ -77,7 +77,7 @@ export function UserForgetPassword(data) {
     return instanceBaseurl.post(`/auth/customer/forgot-password`, data).then((res) => {
         return res;
     }).catch((err) => {
-        console.log(err);
+        return err;
     })
 }
 
@@ -85,7 +85,7 @@ export function UserResetPassword(token, data) {
     return instanceBaseurl.post(`/auth/customer/reset-password?token=${token}`, data).then((res) => {
         return res;
     }).catch((err) => {
-        console.log(err);
+        return err;
     })
 }
 
@@ -93,6 +93,6 @@ export function Changepassworduser(data) {
     return instanceBaseurl.post(`/customer/change-password`, data).then((res) => {
         return res;
     }).catch((err) => {
-        console.log(err);
+        return err;
     })
 }

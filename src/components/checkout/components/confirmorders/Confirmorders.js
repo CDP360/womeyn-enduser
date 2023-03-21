@@ -3,7 +3,7 @@ import styles from './styles/ConfirmOrders.module.scss';
 import { ContextStore } from '../../../../Redux/store/Contextstore';
 import { CustomerOrders } from '../../../../services/customer-order-service/customer-order-service';
 import { toast } from 'react-toastify';
-function Confirmorders({ name,totalPrice }) {
+function Confirmorders({ name, totalPrice, step, setStep }) {
     const [overs, setOvers] = useState([]);
     const { state, dispatch } = useContext(ContextStore);
 
@@ -48,8 +48,8 @@ function Confirmorders({ name,totalPrice }) {
                 quantity: item?.quantity,
                 variations: item?.variations,
                 sellerId: item?.sellerId,
-                sellerBusinessName:item?.sellerBussinesName,
-                productThumbImage:item?.productThumbImage,
+                sellerBusinessName: item?.sellerBussinesName,
+                productThumbImage: item?.productThumbImage,
                 couponName: "SUMMER50",
             })
         })
@@ -59,28 +59,30 @@ function Confirmorders({ name,totalPrice }) {
 
     const deliverOrderConfirm = () => {
 
-        const userName=JSON.parse(localStorage.getItem("womenuser"));
-        const overAllorders = {
-            deliveryAddressId: name,
-            itemsOrdered: orders,
-            totalOrderAmount:totalPrice,
-            customerName:userName
-        }
-        CustomerOrders(overAllorders).then((res) => {
-            toast.success(res?.data?.message, {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "success",
+        setStep(step + 1);
 
-            })
-        }).catch((err) => {
-            console.log(err);
-        })
+        // const userName=JSON.parse(localStorage.getItem("womenuser"));
+        // const overAllorders = {
+        //     deliveryAddressId: name,
+        //     itemsOrdered: orders,
+        //     totalOrderAmount:totalPrice,
+        //     customerName:userName
+        // }
+        // CustomerOrders(overAllorders).then((res) => {
+        //     toast.success(res?.data?.message, {
+        //         position: "top-center",
+        //         autoClose: 3000,
+        //         hideProgressBar: false,
+        //         closeOnClick: true,
+        //         pauseOnHover: true,
+        //         draggable: true,
+        //         progress: undefined,
+        //         theme: "success",
+
+        //     })
+        // }).catch((err) => {
+        //     console.log(err);
+        // })
 
         // console.log("cart", overAllorders)
     }

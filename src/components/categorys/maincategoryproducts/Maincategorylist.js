@@ -4,20 +4,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Categorycard from './categorycard/Categorycard';
 import Pagination from 'rc-pagination';
-import c1 from '../../../assests/category-logos/c1.png';
-import c2 from '../../../assests/category-logos/c2.png';
-import c3 from '../../../assests/category-logos/c3.png';
-import c4 from '../../../assests/category-logos/c4.png';
-import c5 from '../../../assests/category-logos/c5.png';
-import c6 from '../../../assests/category-logos/c6.png';
-import c7 from '../../../assests/category-logos/c7.png';
-import c8 from '../../../assests/category-logos/c8.png';
-import c9 from '../../../assests/category-logos/c9.png';
-import c10 from '../../../assests/category-logos/c10.png';
-import c11 from '../../../assests/category-logos/c11.png';
-import c12 from '../../../assests/category-logos/c12.png';
-import c13 from '../../../assests/category-logos/c13.png';
-import c14 from '../../../assests/category-logos/c14.png';
+
 
 import rightarrow from '../../../assests/category-logos/leftcategoryarrow.png';
 import leftarrow from '../../../assests/category-logos/rightcategoryarrow.png';
@@ -38,46 +25,46 @@ function Maincategorylist({ name, searchnamevalue }) {
         {
             id: 1,
             name: "sample",
-            image: c1,
+           
 
         },
         {
             id: 2,
             name: "sample",
-            image: c2
+           
         },
         {
             id: 3,
             name: "s",
-            image: c3
+           
         }, {
             id: 4,
             name: "s1",
-            image: c4
+           
         }, {
             id: 5,
             name: "s2",
-            image: c5
+           
         }, {
             id: 6,
             name: "s3",
-            image: c6
+          
         }, {
             id: 7,
             name: "s4",
-            image: c7
+          
         }, {
             id: 8,
             name: "s5",
-            image: c8
+          
         }, {
             id: 9,
             name: "s6",
-            image: c9
+          
         }, {
             id: 10,
             name: "s7",
-            image: c10
+           
         },
 
     ]

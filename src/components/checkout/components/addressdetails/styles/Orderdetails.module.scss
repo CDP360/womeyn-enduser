@@ -255,3 +255,349 @@ cursor:pointer;
     background-color: rgba(233, 90, 90, 0.14);;
     color: black;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mainaddresspage {
+    width: 100%;
+    // border: 2px solid blue;
+    border: 1px solid #9f9f9f;
+    border-radius: 15px;
+    padding:3%;
+   
+    .insideaddresspage {
+        width: 100%;
+        // border: 4px solid orange;
+        // padding-top:3%;
+        .topsectionaddress {
+            padding-top: 2%;
+            padding-bottom: 2%;
+            align-items: center;
+            display: flex;
+            .leftaddresssection {
+                width: 50%;
+                position: relative;
+                @include xsBreakPoint
+                {
+                    width:100%;
+                }
+
+                .serachaddress {
+                    width: 100% !important;
+                    padding: 13px !important;
+                    border-radius: 10px;
+                    border: 1px solid #9f9f9f !important;
+                    // opacity:0.5;
+                    outline: none !important;
+                    // font-size:1.3rem;
+                }
+
+                .searchicon {
+                    position: absolute;
+                    top: 18px;
+                    right: 3%;
+                    width: 20px;
+                    height: 20px;
+                    cursor: pointer;
+                }
+            }
+            .rightaddresssection {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                // border:2px solid blue;
+                @include xsBreakPoint
+                {
+                    width:100%;
+                }
+                .addbuttonnew {
+                    width: 200px;
+                    padding: 6px;
+                    border-radius: 10px;
+                    outline: none;
+                    background-color: #e95a5a;
+                    color: white;
+                    border: none;
+                    font-weight: 600;
+                    font-size: 1.2rem !important;
+                    @include xsBreakPoint
+                    {
+                        width:100%;
+                        font-size:0.989rem !important;
+                    }
+                    @include mdBreakPoint
+                    {
+                        width:100%;
+                        font-size:0.989rem !important;
+                    }
+                }
+            }
+        }
+    }
+    .addresslistsection {
+        border-bottom: 1px dashed #9f9f9f;
+        // border-radius: 20px;
+        padding: 15px 0px;
+        // margin: 16px 0px;
+        .addresssplit {
+            width: 100%;
+            display: flex;
+            padding-bottom:2%;
+            @include xsBreakPoint
+            {
+                gap:20px;
+            }
+            @include smBreakPoint
+            {
+                gap:20px;
+            }
+            @include mdBreakPoint
+            {
+                gap:20px;
+            }
+            .leftaddress {
+                width: 5%;
+                display:flex;
+                // align-items:center;
+                // justify-content:center;
+                // border:2px solid red;
+                // margin:0 auto;
+                
+                .map{
+                    width:25px;
+                    height:25px;
+                    object-fit:contain;
+                }
+            }
+            .rightaddress {
+                width: 93%;
+                // border:4px solid orange;
+                // margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                // align-items: center;
+                // justify-content: center;
+                gap: 5px;
+                @include xsBreakPoint
+                {
+                    word-break: break-all;
+                }
+                @include mdBreakPoint
+                {
+                    word-break: break-all;
+                }
+                .editbuttonaddress {
+                    border: none;
+                    outline: none;
+                    padding: 10px;
+                    width: 130px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    background: #e95a5a;
+                    color: white;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                }
+                .deletebuttonaddress {
+                    border: none;
+                    outline: none;
+                    padding: 10px;
+                    width: 130px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    background: white;
+                    border: 1px solid #e95a5a;
+                    color: #e95a5a;
+                }
+
+                .splitedits
+                {
+                    display:flex;
+                    gap:20px;
+                    align-items:center;
+                    padding-top:1%;
+    
+                    .editaddresss
+                    {
+                        color:#E95A5A;
+    cursor:pointer;
+    
+                      
+                    }
+                }
+                .removebuttonssection
+                {
+                    display:flex;
+                    align-items:center;
+                    gap:10px;
+    cursor:pointer;
+    
+                    .mapremove {
+                        width: 20px;
+                        height: 20px;
+                        object-fit: contain;
+                    align-items:center;
+    display:flex;
+    cursor:pointer;
+                        @include lgBreakPoint
+                        {
+                            width:60%;
+                        }
+                    }
+                }
+            }
+            
+        }
+      
+    }
+}
+
+.notlocation
+{
+    width:100%;
+    height:200px;
+    object-fit:contain;
+}
+
+.rightaddresssection {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .addbuttonnew {
+        width: 200px;
+        padding: 6px;
+        border-radius: 10px;
+        outline: none;
+        background-color: #e95a5a;
+        color: white;
+
+        border: none;
+        font-weight: 600;
+        font-size: 1.2rem !important;
+    }
+}
+
+.mainmodelsection
+{
+    width:100%;
+    // border:2px solid blue;
+    .addressnew
+    {
+        font-weight:600;
+        font-size:1.2rem;
+    }
+    .closesectionmodel
+    {
+        display:flex;
+        align-items: center;
+        justify-content:space-between;
+        .icons
+        {
+            display:flex;
+            align-items:center;
+            cursor:pointer;
+        }
+    }
+    .buttonsectionaddress
+    {
+        display:flex;
+        // border:2px solid red;
+        gap:20px;
+        padding-bottom:5%;
+        padding-top:2%;
+        .addbutton
+        {
+            width:120px;
+            border:none;
+            outline:none;
+            background-color:#E95A5A;
+            color:white;
+            cursor:pointer;
+            padding:8px;
+            border-radius:10px;
+            font-weight:600;
+        }
+        .cancelbutton
+        {
+            width:120px;
+            border:none;
+            outline:none;
+            border:1px solid #E95A5A;
+background-color:white;
+            color:#E95A5A;
+            cursor:pointer;
+            padding:8px;
+            border-radius:10px;
+            font-weight:600;
+        }
+    }
+}
+
+
+.pathbuttonsplit
+{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto;
+    gap:30px;
+    padding-top:8%;
+    padding-bottom:3%;
+
+    .cancelbutton
+    {
+        border:1px solid #E95A5A;;
+        outline:none;
+        cursor:pointer;
+        color:#E95A5A;
+        padding:5px 30px;
+        font-weight:600;
+        border-radius:10px;
+        font-size:1.2rem;
+    }
+    .removebutton
+    {
+        border:1px solid #E95A5A;;
+        outline:none;
+        cursor:pointer;
+        background-color:#E95A5A;
+        color:white;
+        padding:5px 30px;
+        font-weight:600;
+        border-radius:10px;
+        font-size:1.2rem;
+    }
+}

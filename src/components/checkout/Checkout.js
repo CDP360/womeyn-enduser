@@ -26,7 +26,7 @@ function Checkout() {
   const [step3, setStep3] = useState('');
 
 
-  const totalPrice=cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0);
+  const totalPrice = cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0);
 
 
   useEffect(() => {
@@ -61,6 +61,7 @@ function Checkout() {
   //     // handleprogress(1)
 
   // }
+
   return (
     <Fragment>
       {/* <div className={styles.maincheckoutsection}>
@@ -239,21 +240,21 @@ function Checkout() {
                   {/* <ProgressBar now={width} /> */}
                   <div className={styles.orderstepsection} onClick={() => setStep(0)}>
                     <div className={styles.numbercountorderstep}>1</div>
-                    <div className={styles.setordertext}>Select Address</div>
+                    <div className={styles.setordertextactive} >Select Address</div>
                   </div>
                 </div>
-                <div className={styles.rightbarprogress}>
+                <div className={styles.rightbarprogress} onClick={() => setStep(step > 1 ? step - 1 : step)}>
                   {/* <ProgressBar now={step === 1 && width} /> */}
-                  <div className={styles.orderstepsection} onClick={() => setStep(1)}>
-                    <div className={`${step === 1 ? styles.numbercountorderstep : styles.numbercountdisabled}`}>2</div>
-                    <div className={styles.setordertext}>Order Summary</div>
+                  <div className={styles.orderstepsection} >
+                    <div className={`${step === 1 || step === 2 ? styles.numbercountorderstep : styles.numbercountdisabled}`}>2</div>
+                    <div className={`${step === 1 || step === 2 ? styles.setordertextactive : styles.setordertext}`}>Order Summary</div>
                   </div>
                 </div>
-                <div className={styles.rightbarprogress}>
+                <div className={styles.rightbarprogress} onClick={() => setStep(step)}>
                   {/* <ProgressBar now={step === 2 && width} /> */}
-                  <div className={styles.orderstepsection} onClick={() => setStep(2)}>
+                  <div className={styles.orderstepsection} >
                     <div className={`${step === 2 ? styles.numbercountorderstep : styles.numbercountdisabled}`}>3</div>
-                    <div className={styles.setordertext}>Select the payment</div>
+                    <div className={`${step === 2 ? styles.setordertextactive : styles.setordertext}`}>Select the payment</div>
                   </div>
                 </div>
               </div>
@@ -263,10 +264,10 @@ function Checkout() {
                 </div>}
                 {step === 1 && <div>
                   {/* <Payment /> */}
-                  <Confirmorders name={name} totalPrice={totalPrice}/>
+                  <Confirmorders name={name} totalPrice={totalPrice} setStep={setStep} step={step} />
                 </div>}
                 {step === 2 && <div>
-                  third section
+                  <Payment />
                 </div>}
               </div>
             </div>

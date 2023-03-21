@@ -1,42 +1,57 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "./styles/Coupons.module.scss";
-
+import { MyCouponList } from '../../../../services/mycoupon-service/mycoupon-service';
+import moment from 'moment';
 function Coupons() {
-  const CouponData=[
-    {
-      offerName:'Extra 5% off on Nakpro',
-      extraOffer:'Get extra off on 1 item',
-      validDate:'Valid till 5 Apr, 2023',
-      terms:'View T&C',
-    },
-    {
-      offerName:'Extra 5% off on Nakpro',
-      extraOffer:'Get extra off on 1 item',
-      validDate:'Valid till 5 Apr, 2023',
-      terms:'View T&C',
-    },
-  ]
+ 
+
+
+  const [coupons, setCoupons] = useState([]);
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    MyCouponList().then((res) => {
+      setCoupons(res?.data?.results)
+      setTimeout(() => {
+        setLoading(false);
+      }, 400)
+    }).catch((err) => {
+      console.log(err);
+    })
+  }, [])
   return (
     <div className={styles.couponsContainer}>
-      <p className={styles.couponsHeading}>Coupons</p>
-      {
-        CouponData.map((data)=>
-        <div>
-        <div className={styles.couponsContentContainer}>
-        <div>
-          <p className={styles.couponsOfferName}>{data.offerName}</p>
-          <p className={styles.couponsSubContent}>{data.extraOffer}</p>
+      <div className="mb-4 mt-3">
+      <div className={styles.couponsHeading}>Coupons</div>
         </div>
-        <div>
-          <p className={styles.couponsValidDate}>{data.validDate}</p>
-          <p className={styles.couponsSubContent}>{data.terms}</p>
-        </div>
-      </div>
-      <hr className={styles.couponsDottedLine}/>
-      </div>
-        )
-      }
+      {loading ? <>
      
+     Loading.... 
+      </>:<>
+    
+      {
+        coupons.map((data) =>
+          <div>
+            <div className={styles.couponsContentContainer}>
+              <div>
+                <div className={styles.couponsOfferName}>{data.title}</div>
+                <div className={styles.couponsOfferNames}>{data.couponCode}</div>
+                <div className={styles.couponsSubContent}>{data.couponDescription}</div>
+              </div>
+              <div >
+                <div className={styles.couponsValidDate}>
+                  Valid {moment(data?.endDate).format("MMM Do YY",)}
+                </div>
+              </div>
+            </div>
+            <hr className={styles.couponsDottedLine} />
+          </div>
+        )
+      }</>}
+     
+
     </div>
   )
 }

@@ -9,10 +9,12 @@ import Col from 'react-bootstrap/Col';
 import { useForm } from "react-hook-form";
 import styles from './styles/Mangeaddress.module.scss';
 import address from '../../../../assests/profile-logo/addressempty.png';
-import { Addaddress, GetAddressData } from '../../../../services/user-profile-service/user-profile-services';
+import { Addaddress, GetAddressData, DeleteAddress } from '../../../../services/user-profile-service/user-profile-services';
 import maplocation from '../../../../assests/profile-logo/maplocation.png';
 import deleteicons from '../../../../assests/cart-logos/deleteicons.png';
 import { toast } from 'react-toastify';
+import LoaderLogo from '../../../loaderlogo/LoaderLogo';
+import Spinner from 'react-bootstrap/Spinner';
 
 function Manageaddress() {
   const {
@@ -25,15 +27,20 @@ function Manageaddress() {
   const [getaddress, setAddress] = useState([]);
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
+  const [showdelete, setShowdelete] = useState(false);
+  const [removeloading, setRemoveloading] = useState(false);
+
+  const [deleteaddressid, setDeleteId] = useState("");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const handleClosedelete = () => setShowdelete(false);
+  const handleShowdelete = (id) => {
+    setShowdelete(true);
+    setDeleteId(id);
+  };
   useEffect(() => {
-
     getAddressdata();
-
-  }, []);
-
+  }, [deleteaddressid]);
   const getAddressdata = () => {
     setLoading(true);
     GetAddressData().then((res) => {
@@ -45,7 +52,6 @@ function Manageaddress() {
       console.log(err);
     })
   }
-
   const onSubmit = (data) => {
     const address = {
       name: data?.name,
@@ -73,7 +79,28 @@ function Manageaddress() {
       );
       window.location.reload();
       handleClose();
-
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+  const DeleteAddressUser = () => {
+    setRemoveloading(true);
+    DeleteAddress(deleteaddressid).then((res) => {
+      toast.success("Delete Address",
+        {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      setTimeout(() => {
+        window.location.reload();
+        setRemoveloading(false);
+      }, 400)
     }).catch((err) => {
       console.log(err);
     })
@@ -82,8 +109,6 @@ function Manageaddress() {
     <>
       <div className={styles.mainaddresspage}>
         <div className={styles.insideaddresspage}>
-
-
           {getaddress?.length > 0 ? <>
             <div className={styles.topsectionaddress}>
               <div className={styles.leftaddresssection}>
@@ -92,7 +117,7 @@ function Manageaddress() {
                             <Image src={searchcion} alt="no image" className={styles.searchicon} />
                         </div> */}
 
-                <div className="commonprofiletextsize" onClick={handleShow}>
+                <div className="commonprofiletextsize" >
                   Manage Address
                 </div>
               </div>
@@ -105,7 +130,7 @@ function Manageaddress() {
             <div>
               {loading ? <>
                 {/* <Loader */}
-                loading...
+                <LoaderLogo />
               </> : <>
                 {getaddress?.map((item, index) => {
                   return (
@@ -132,11 +157,11 @@ function Manageaddress() {
                               {item?.fullAddress}
                             </div>
                             <div className={styles.splitedits}>
-                              <div className={styles.editaddresss}>
+                              {/* <div className={styles.editaddresss}>
                                 Edit Address
-                              </div>
+                              </div> */}
                               <div className={styles.editaddresss}>
-                                <div className={styles.removebuttonssection}>
+                                <div className={styles.removebuttonssection} onClick={() => handleShowdelete(item?.id)}>
                                   <div>
                                     <Image src={deleteicons} alt="no image" className={styles.mapremove} />
                                   </div>
@@ -165,7 +190,7 @@ function Manageaddress() {
             <div>
               <div className={styles.rightaddresssection}>
                 <div>
-                  <button className={styles.addbuttonnew} >Add new address</button>
+                  <button className={styles.addbuttonnew} onClick={handleShow} >Add new address</button>
                 </div>
               </div>
             </div>
@@ -178,7 +203,7 @@ function Manageaddress() {
           onHide={handleClose}
           backdrop="static"
           keyboard={false}
-          //  size="lg"
+          size="lg"
           centered
         >
           <Modal.Body>
@@ -262,11 +287,22 @@ function Manageaddress() {
                   <Col>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label className="labelname">Address</Form.Label>
-                      <Form.Control type="text" placeholder="Enter Address" className='form-control-profiles'
+                      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+
+                        <Form.Control as="textarea" rows={3}
+                          className='form-control-profiles'
+                          placeholder="Enter Address"
+                          {...register("address", {
+                            required: "Please enter Address",
+
+                          })}
+                        />
+                      </Form.Group>
+                      {/* <Form.Control type="text" placeholder="Enter Address" className='form-control-profiles'
                         {...register("address", {
                           required: "Please enter Address",
                         })}
-                      />
+                      /> */}
                       <Form.Text className="text-muted">
                         {errors.address && <span className="active">{errors.address.message}</span>}
                       </Form.Text>
@@ -338,6 +374,55 @@ function Manageaddress() {
             <Button variant="primary">Understood</Button>
           </Modal.Footer> */}
         </Modal>
+
+        <div>
+
+
+
+
+          <Modal
+            show={showdelete}
+            onHide={handleClosedelete}
+            backdrop="static"
+            keyboard={false}
+            centered
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>Remove Address</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div>
+                {/* you want to  */}
+                Are you sure remove this Address?
+              </div>
+              <div className={styles.pathbuttonsplit}>
+
+                <div className={styles.cancelbutton}>Cancel</div>
+                <div className={styles.removebutton} onClick={DeleteAddressUser}>
+
+                  {removeloading ? <>
+                    <Spinner
+                      as="span"
+                      animation="grow"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                    Loading...
+                  </> : <>
+                    Remove
+                  </>}
+
+
+                </div>
+
+
+              </div>
+            </Modal.Body>
+
+          </Modal>
+
+        </div>
       </>
 
     </>

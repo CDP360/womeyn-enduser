@@ -15,6 +15,7 @@ import LoaderLogo from '../../loaderlogo/LoaderLogo';
 import Pagination from 'rc-pagination';
 import rightarrow from '../../../assests/category-logos/leftcategoryarrow.png';
 import leftarrow from '../../../assests/category-logos/rightcategoryarrow.png';
+import noimage from '../../../assests/womeynlogos/noimage.png';
 function Womenpreneurs() {
     const router = useRouter();
     const [limit, setLimit] = useState([]);
@@ -167,7 +168,7 @@ function Womenpreneurs() {
                                             <div className={styles.sellerimagebox}>
                                                 <div className={styles.insidebox}>
                                                     {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                                        <Image src={users} alt="no image" className={styles.sellerimagesizes} />
+                                                        <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
                                                     </>}
                                                 </div>
                                             </div>
@@ -196,7 +197,7 @@ function Womenpreneurs() {
                                             <div className={styles.sellerimagebox}>
                                                 <div className={styles.insidebox}>
                                                     {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                                        <Image src={users} alt="no image" className={styles.sellerimagesizes} />
+                                                        <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
                                                     </>}
                                                 </div>
                                             </div>

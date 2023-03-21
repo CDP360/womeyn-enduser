@@ -7,12 +7,12 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import OtpInput from 'react-otp-input';
 import { toast } from 'react-toastify';
-
 import { OTPSend, OTPResend } from '../../services/user-login-service/user-login-services';
-
-
+import Spinner from 'react-bootstrap/Spinner';
 function Otp() {
     const router = useRouter();
+const [loading,setLoading]=useState(false);
+
 
     const [otp, setOtp] = useState("");
     const [minutes, setMinutes] = useState(1);
@@ -20,12 +20,8 @@ function Otp() {
     const [error, setError] = useState(false);
     const handleChange = (otp) => {
         setOtp(otp);
-
     };
-
-
     useEffect(() => {
-
         const interval = setInterval(() => {
             if (seconds > 0) {
                 setSeconds(seconds - 1);
@@ -56,12 +52,14 @@ function Otp() {
             userId: JSON.parse(userIds),
             otpValue: otp
         }
+        setLoading(true);
         if (otp) {
             OTPSend(otpSend).then((res) => {
                 if (res?.data?.message == "OTP verification success") {
                     toast.success(res?.data?.message)
                     setTimeout(() => {
-                        router.push("/passwordcreate")
+                        router.push("/passwordcreate");
+                        setLoading(false);
                     }, 1000)
                 }
                 else {
@@ -84,9 +82,6 @@ function Otp() {
         }
     }
 
-
-
-
     const ResendVerifyCheck = () => {
         const userIds = localStorage.getItem("womenUserid");
         const verify = {
@@ -104,7 +99,6 @@ function Otp() {
         setMinutes(1);
         setSeconds(59);
         ResendVerifyCheck();
-        // loginServices.logout();
     };
     return (
         <Fragment>
@@ -149,7 +143,20 @@ function Otp() {
                             </div>
                             <div className={styles.verifyotpsection}>
                                 <button onClick={SummitOtp} className="loginbutton mt-2 mb-3">
+                                    {loading?<>
+                                    
+                                        <Spinner
+          as="span"
+          animation="grow"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        />
+        Loading...
+                                    </>:<>
                                     Verify
+                                    </>}
+                                  
                                 </button>
                                 <button className={`${seconds > 0 || minutes > 0 ? "resendbuttondisable" : "resendbutton"}`} disabled={seconds > 0 || minutes > 0}
                                     style={{

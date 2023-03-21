@@ -1,66 +1,112 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles/Favorts.module.scss";
 import Star from '../../../../assests/category-logos/greenStar.png'
 import HalfStar from '../../../../assests/category-logos/greenHalfStar.png'
 import Search from '../../../../assests/homepage-logos/serachicon.png'
 import Delete from '../../../../assests/category-logos/deleteIcon.png'
 import Image from "next/image";
+import { GetFavoritsList } from "../../../../services/user-favorits-service/User-favorits-service";
+import Skeleton from 'react-loading-skeleton';
+import LoaderLogo from './../../../loaderlogo/LoaderLogo';
 
 
 function Favorts() {
 
-    const favoritesData=[
-        {
-            productName:'Shoes Waffle One',
-            offerDetails:'Rs. 8000 (100000)   10% off',
-            ratings:'712 Ratings'
-        },
-        {
-            productName:'Shoes Waffle One',
-            offerDetails:'Rs. 8000 (100000)   10% off',
-            ratings:'712 Ratings'
-        },
-    ]
+  const [favorts, setFavorts] = useState([]);
+
+  const [loading,setLoading]=useState(false);
+
+  const favoritesData = [
+    {
+      productName: 'Shoes Waffle One',
+      offerDetails: 'Rs. 8000 (100000)   10% off',
+      ratings: '712 Ratings'
+    },
+    {
+      productName: 'Shoes Waffle One',
+      offerDetails: 'Rs. 8000 (100000)   10% off',
+      ratings: '712 Ratings'
+    },
+  ]
+
+
+  useEffect(() => {
+    setLoading(true);
+    GetFavoritsList().then((res) => {
+      setTimeout(()=>{
+        setLoading(false);
+      setFavorts(res?.data[0]?.results);
+
+      },400)
+    }).catch((err) => {
+      console.log(err);
+    })
+  }, [])
   return (
     <div>
-        <div className={styles.favortsInputContainer}>
-      <input className={styles.favortsSearch}
-        placeholder="Search your favorites"/>
-        <Image src={Search} className={styles.searchImg}/>
-        </div>
+      <div className={styles.favortsInputContainer}>
+        <input className={styles.favortsSearch}
+          placeholder="Search your favorites" />
+        <Image src={Search} className={styles.searchImg} />
+      </div>
       <div className={styles.favortsContainer}>
         <p className={styles.favortsText}>Favorites</p>
-        {
-            favoritesData.map((data)=>
-            <div className={styles.favortsInnerContainer}>
-            <div className={styles.favortsLeftContainer}>
-            <div className={styles.favortsImg}></div>
-            <div className={styles.favortsContentContainer}>
-                <p className={styles.favortsProductName}>{data.productName}</p>
-                <p className={styles.favortsOfferDetail}>{data.offerDetails}</p>
-                <div className={styles.favortsRatingContainer}>
+
+
+        
+        <div>
+{loading?<>
+
+
+<LoaderLogo/>
+
+</>:<>
+
+
+  {
+          favorts.map((data, index) =>
+            <div className={styles.favortsInnerContainer} key={index}>
+              <div className={styles.favortsLeftContainer}>
+                {data?.productThumbImage ? <>
+                  <img
+                    className={styles.favortsImg}
+                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${data?.productThumbImage}`}
+                    alt="profile-pic"
+                  />
+                </> : <>
+                  <Skeleton className={styles.favortsImg} />
+                </>}
+                <div className={styles.favortsContentContainer}>
+                  <p className={styles.favortsProductName}>{data.productName}</p>
+                  <p className={styles.favortsOfferDetail}>{data.productSlugName}</p>
+                  <div className={styles.favortsRatingContainer}>
                     <div>
-                    <Image src={Star}/>
-                    <Image src={Star}/>
-                    <Image src={Star}/>
-                    <Image src={Star}/>
-                    <Image src={HalfStar}/>
+                      <Image src={Star} />
+                      <Image src={Star} />
+                      <Image src={Star} />
+                      <Image src={Star} />
+                      <Image src={HalfStar} />
                     </div>
                     <div className={styles.favortsDot}></div>
                     <p className={styles.favortsRatingText}>{data.ratings}</p>
+                  </div>
                 </div>
-            </div>
-            </div>
-            <div className={styles.favortsRightContainer}>
-                <Image src={Delete}/>
+              </div>
+              <div className={styles.favortsRightContainer}>
+                <Image src={Delete} />
                 <div className='d-none d-lg-block'>
-                <p className={styles.favortsDeleteText}>Remove</p>
+                  <p className={styles.favortsDeleteText}>Remove</p>
                 </div>
+              </div>
             </div>
-        </div>
-            )
+          )
         }
-        
+</> }
+
+
+        </div>
+       
+
       </div>
     </div>
   );

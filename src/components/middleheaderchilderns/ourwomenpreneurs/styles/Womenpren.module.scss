@@ -131,7 +131,7 @@
     height: auto;
     position: relative;
     .sellerimagesize {
-        height: auto;
+        height: 100%;
         width: 100%;
         border-radius: 10px !important;
         @include mdBreakPoint {
@@ -148,39 +148,22 @@
     }
 }
 
-
-.sellerimagesizes {
-    height: 320px;
-        width: 100px;
-        align-items:center;
-        display:flex;
-        justify-content:center;
-        margin:0 auto;
-    object-fit:contain;
-    border-radius: 10px !important;
-    @include smBreakPoint {
-        height: 250px;
-    }
-    @include mdBreakPoint {
-        height: 310px;
-    }
-    @include lgBreakPoint {
-        height: 240px;
-        width: 100px;
-        align-items:center;
-        display:flex;
-        justify-content:center;
-        margin:0 auto;
-    }
-    @include xlBreakPoint {
-        height: 275px;
-        width: 100px;
-        align-items:center;
-        display:flex;
-        justify-content:center;
-        margin:0 auto;
-    }
+.emptynoimage
+{
+    border:1px solid red;  
+    height:100%;
+    width:100%;
+    border-radius:10px;
+   
+    .sellerimagesizes {
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    border-radius:10px;
+      }
 }
+
+
 
 .sellerimagebox::before {
     height: 100%;

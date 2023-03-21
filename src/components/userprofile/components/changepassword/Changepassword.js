@@ -12,7 +12,11 @@ import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Changepassworduser } from '../../../../services/user-login-service/user-login-services';
+import Spinner from 'react-bootstrap/Spinner';
+
 function Changepassword() {
+
+    const [loading,setLoading]=useState(false);
 
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -50,6 +54,7 @@ function Changepassword() {
             newPassword: data?.newPassword,
             confirmNewPassword: data?.confirmNewPassword
         }
+        setLoading(true);
         var passwordRegex = /(?=^.{8,}$)(?=.{0,}[A-Z])(?=.{0,}[a-z])(?=.{0,}\W)(?=.{0,}\d)/g
         if (passwordRegex.test(check?.newPassword) || passwordRegex.test(check?.confirmNewPassword)) {
             console.log("data", check)
@@ -69,6 +74,7 @@ function Changepassword() {
                     });
                 setTimeout(() => {
                     handlePushTerms();
+                    setLoading(false);
                 }, 500)
             }).catch((err) => {
                 toast.error("error this page!!");
@@ -102,7 +108,7 @@ function Changepassword() {
     const handlePushTerms = async () => {
         setTimeout(() => {
             router.push("/login")
-        }, 1000);
+        }, 600);
         localStorage.removeItem("womenUserid");
         localStorage.removeItem("womenUserToken");
         localStorage.removeItem("womenProfile");
@@ -124,7 +130,22 @@ function Changepassword() {
                 </div>
                 <div className={styles.rightaddresssection}>
                     <div>
-                        <button className={styles.addbuttonnew} onClick={handleSubmit(onSubmit)}>Save</button>
+                        <button className={styles.addbuttonnew} onClick={handleSubmit(onSubmit)}>
+                            
+                            {loading?<>
+                                <Spinner
+          as="span"
+          animation="grow"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        />
+        Loading...
+                            </>:<>
+                            
+                            Save
+                            </>}
+                            </button>
                     </div>
                     <div>
                         <button className={styles.addbuttonnewcancel}>Cancel</button>

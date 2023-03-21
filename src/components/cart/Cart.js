@@ -74,6 +74,12 @@ function Cart() {
       payload: CARTS
     })
   }
+
+  const handleLoginUser=()=>{
+    const PathQuery=router?.asPath
+    localStorage.setItem("productwhishlist", JSON.stringify(PathQuery));
+    router.push(`/login?redirect=/cart`)
+  }
   return (
     <Fragment>
       <div className='mainsection'>
@@ -83,7 +89,7 @@ function Cart() {
           </div>
           <div className={styles.cartsection}>
             <div className={styles.leftcartsection}>
-              <div className={styles.selectcartsection}>
+              {/* <div className={styles.selectcartsection}>
                 <div className={styles.sellectallsection}>
                   <input type="checkbox" name="allselect" onChange={handleChange} />
                   <div>
@@ -93,7 +99,7 @@ function Cart() {
                 <div className={styles.removesection} onClick={handleDelete}>
                   Remove
                 </div>
-              </div>
+              </div> */}
               <div className="d-none d-lg-block">
                 {cart?.cartData?.length > 0 ? <div className={styles.bordersectioncart}>
                   {cart?.cartData?.map((item, index) => {
@@ -101,9 +107,9 @@ function Cart() {
                       <>
                         <div className={styles.cartlistsection} key={index}>
                           <div className={styles.cartimagesection}>
-                            <div className={"d-flex align-items-center justify-content-center"}>
+                            {/* <div className={"d-flex align-items-center justify-content-center"}>
                               <input type="checkbox" name={item?.name} value={item?.id} onChange={handleDelete} />
-                            </div>
+                            </div> */}
                             <div>
                               <img
                                 className={styles.editprofilesection}
@@ -305,7 +311,7 @@ function Cart() {
                 <div className="mt-3 mb-3">
                   {tokes ?
                     <Button className={styles.checkoutbutton} onClick={() => router.push("/checkout")}>Place Order</Button> :
-                    <Button className={styles.checkoutbutton} onClick={() => router.push("/login?redirect=/checkout", { kalai: "thala" })}>Place Order</Button>
+                    <Button className={styles.checkoutbutton} onClick={handleLoginUser}>Place Order</Button>
                   }
                 </div>
               </div>

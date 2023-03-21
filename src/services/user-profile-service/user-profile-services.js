@@ -10,10 +10,33 @@ export function Addaddress(data) {
 }
 
 
-export function GetAddressData(){
-    return instanceBaseurl.get(`/customer/addresses`).then((res)=>{
+export function GetAddressData() {
+    return instanceBaseurl.get(`/customer/addresses`).then((res) => {
         return res
-    }).catch((err)=>{
+    }).catch((err) => {
         return err;
     })
 }
+
+
+export function DeleteAddress(id) {
+    return instanceBaseurl.delete(`/customer/delete-address/${id}`).then((res) => {
+        return res
+    }).catch((err) => {
+        return err;
+    })
+}
+
+
+
+export function GetOrders() {
+    return instanceBaseurl.get(`/customer/order`).then((res) => {
+        return res;
+    }).catch((err) => {
+        return err;
+    })
+}
+
+
+
+

@@ -170,13 +170,7 @@ function Viewproducts({ id }) {
                                                     CheckLoginUsers(productdata?.productSlugName)
                                                     // LikeWishlist(productdata?.id)
                                                 }}>
-                                                    {/* {like ? <>
-                                                        <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
-
-                                                    </> : <>
-                                                        <Image src={heartlike} alt="no image" className={styles.heartlikes} />
-                                                    </>} */}
-                                                    {/* kalai */}
+                                                   
                                                     <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
                                                 </button>
                                             </div>

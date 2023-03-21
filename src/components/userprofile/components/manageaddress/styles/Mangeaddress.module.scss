@@ -278,3 +278,39 @@ background-color:white;
         }
     }
 }
+
+
+.pathbuttonsplit
+{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto;
+    gap:30px;
+    padding-top:8%;
+    padding-bottom:3%;
+
+    .cancelbutton
+    {
+        border:1px solid #E95A5A;;
+        outline:none;
+        cursor:pointer;
+        color:#E95A5A;
+        padding:5px 30px;
+        font-weight:600;
+        border-radius:10px;
+        font-size:1.2rem;
+    }
+    .removebutton
+    {
+        border:1px solid #E95A5A;;
+        outline:none;
+        cursor:pointer;
+        background-color:#E95A5A;
+        color:white;
+        padding:5px 30px;
+        font-weight:600;
+        border-radius:10px;
+        font-size:1.2rem;
+    }
+}

@@ -52,6 +52,7 @@ function Profile() {
     setValue("gender", user?.gender);
     setValue("email", user?.email);
     setValue("phonenumber", user?.contactNumber);
+    setValue("dateofbirth", user?.dateOfBirth);
     localStorage.setItem("womenuser", JSON.stringify(user?.firstName));
 
   }, [user])
