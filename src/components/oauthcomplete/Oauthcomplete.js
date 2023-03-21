@@ -11,7 +11,7 @@ function Oauthcomplete() {
         OauthSuccess().then((res) => {
             localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
             localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
-
+            localStorage.setItem("womenauth", true);
             setTimeout(() => {
                 history.push("/");
             }, 1000)
