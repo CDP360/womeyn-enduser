@@ -16,24 +16,23 @@ function Login() {
     const [show1, setShow1] = useState(false);
     const history = useRouter();
 
-    const [error,setError]=useState(false);
-const [loading,setLoading]=useState(false);
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
     const {
         register,
         handleSubmit,
         watch,
         formState: { errors },
     } = useForm();
-    const url=process?.env?.NEXT_PUBLIC_URL;
+    const url = process?.env?.NEXT_PUBLIC_URL;
     const onSubmit = async ({ email, password }) => {
-        const productWhishlist= JSON.parse(localStorage.getItem("productwhishlist"));
+        const productWhishlist = JSON.parse(localStorage.getItem("productwhishlist"));
         const datas = {
             email: email,
             password: password
         }
         setLoading(true);
-        if(productWhishlist)
-        {
+        if (productWhishlist) {
 
             Userlogin(datas).then(async (res) => {
                 if (res) {
@@ -67,38 +66,37 @@ const [loading,setLoading]=useState(false);
                 console.log(err);
             })
         }
-       else
-       {
-        Userlogin(datas).then(async (res) => {
-            if (res) {
-                localStorage.setItem("womenauth", true);
-                localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
-                localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
-                setTimeout(() => {
-                    history.push("/");
-                    setLoading(false);
-                }, 600)
-            }
-            else {
-                toast.error("Incorrect email or password",
-                    {
-                        position: "top-center",
-                        autoClose: 3300,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
-                    }
-                );
-                setError(false);
+        else {
+            Userlogin(datas).then(async (res) => {
+                if (res) {
+                    localStorage.setItem("womenauth", true);
+                    localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
+                    localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
+                    setTimeout(() => {
+                        history.push("/");
+                        setLoading(false);
+                    }, 600)
+                }
+                else {
+                    toast.error("Incorrect email or password",
+                        {
+                            position: "top-center",
+                            autoClose: 3300,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "dark",
+                        }
+                    );
+                    setError(false);
 
-            }
-        }).catch((err) => {
-            console.log(err);
-        })
-       }
+                }
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
 
     };
     const handlePushForgetpassword = () => {
@@ -152,7 +150,7 @@ const [loading,setLoading]=useState(false);
                 <div className={styles.insidesectionlogin}>
                     <div className={styles.insideloginsplit}>
                         <div className={styles.logintext}>{LoginText?.Login}</div>
-                        
+
                         <div>
                             <Form onSubmit={handleSubmit(onSubmit)}>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -197,24 +195,24 @@ const [loading,setLoading]=useState(false);
                                 <div className={styles.forgetpassword} onClick={handlePushForgetpassword}>{LoginText?.Forgotpassword}</div>
                                 <Button className="loginbutton" type="submit">
 
-                                    {error?<>
+                                    {error ? <>
                                         {LoginText?.Login}
-                                    </>:<>
-                                    
-                                    {loading?<>
-                                    <Spinner
-          as="span"
-          animation="grow"
-          size="sm"
-          role="status"
-          aria-hidden="true"
-        />
-        Loading...
-                                   </>:
-                                   <> {LoginText?.Login}</>
-                                            }
+                                    </> : <>
+
+                                        {loading ? <>
+                                            <Spinner
+                                                as="span"
+                                                animation="grow"
+                                                size="sm"
+                                                role="status"
+                                                aria-hidden="true"
+                                            />
+                                            Loading...
+                                        </> :
+                                            <> {LoginText?.Login}</>
+                                        }
                                     </>}
-                                   
+
                                 </Button>
                             </Form>
                             <div className="text-center mt-3 mb-4">{LoginText?.orloginwith}</div>

@@ -10,38 +10,30 @@ import Skeleton from 'react-loading-skeleton';
 import LoaderLogo from './../../../loaderlogo/LoaderLogo';
 
 
+import {useRouter} from 'next/router';
+
 function Favorts() {
+
+  const history=useRouter();
 
   const [favorts, setFavorts] = useState([]);
 
-  const [loading,setLoading]=useState(false);
-
-  const favoritesData = [
-    {
-      productName: 'Shoes Waffle One',
-      offerDetails: 'Rs. 8000 (100000)   10% off',
-      ratings: '712 Ratings'
-    },
-    {
-      productName: 'Shoes Waffle One',
-      offerDetails: 'Rs. 8000 (100000)   10% off',
-      ratings: '712 Ratings'
-    },
-  ]
-
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
     GetFavoritsList().then((res) => {
-      setTimeout(()=>{
+      setTimeout(() => {
         setLoading(false);
-      setFavorts(res?.data[0]?.results);
+        setFavorts(res?.data[0]?.results);
 
-      },400)
+      }, 400)
     }).catch((err) => {
       console.log(err);
     })
   }, [])
+const pushProductPage=(data)=>{
+  history.push(`/product/${data}`)
+}
   return (
     <div>
       <div className={styles.favortsInputContainer}>
@@ -53,59 +45,58 @@ function Favorts() {
         <p className={styles.favortsText}>Favorites</p>
 
 
-        
+
         <div>
-{loading?<>
+          {loading ? <>
 
 
-<LoaderLogo/>
+            <LoaderLogo />
 
-</>:<>
+          </> : <>
 
 
-  {
-          favorts.map((data, index) =>
-            <div className={styles.favortsInnerContainer} key={index}>
-              <div className={styles.favortsLeftContainer}>
-                {data?.productThumbImage ? <>
-                  <img
-                    className={styles.favortsImg}
-                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${data?.productThumbImage}`}
-                    alt="profile-pic"
-                  />
-                </> : <>
-                  <Skeleton className={styles.favortsImg} />
-                </>}
-                <div className={styles.favortsContentContainer}>
-                  <p className={styles.favortsProductName}>{data.productName}</p>
-                  <p className={styles.favortsOfferDetail}>{data.productSlugName}</p>
-                  <div className={styles.favortsRatingContainer}>
-                    <div>
-                      <Image src={Star} />
-                      <Image src={Star} />
-                      <Image src={Star} />
-                      <Image src={Star} />
-                      <Image src={HalfStar} />
+            {
+              favorts.map((data, index) =>
+                <div className={styles.favortsInnerContainer} key={index}>
+                  <div className={styles.favortsLeftContainer} onClick={()=>pushProductPage(data.productSlugName)}>
+                    {data?.productThumbImage ? <>
+                      <img
+                        className={styles.favortsImg}
+                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${data?.productThumbImage}`}
+                        alt="profile-pic"
+                      />
+                    </> : <>
+                      <Skeleton className={styles.favortsImg} />
+                    </>}
+                    <div className={styles.favortsContentContainer}>
+                      <p className={styles.favortsProductName}>{data.productName}</p>
+                      {/* <p className={styles.favortsOfferDetail}>{data.productSlugName}</p> */}
+                      <div className={styles.favortsRatingContainer}>
+                        <div className={styles.starsections}>
+                          <Image src={Star} className={styles.stars} />
+                          <Image src={Star} className={styles.stars}/>
+                          <Image src={Star} className={styles.stars}/>
+                          <Image src={Star} className={styles.stars}/>
+                          <Image src={HalfStar} className={styles.stars}/>
+                        </div>
+                    
+                      </div>
                     </div>
-                    <div className={styles.favortsDot}></div>
-                    <p className={styles.favortsRatingText}>{data.ratings}</p>
+                  </div>
+                  <div className={styles.favortsRightContainer}>
+                    <Image src={Delete} />
+                    <div className='d-none d-lg-block'>
+                      <p className={styles.favortsDeleteText}>Remove</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className={styles.favortsRightContainer}>
-                <Image src={Delete} />
-                <div className='d-none d-lg-block'>
-                  <p className={styles.favortsDeleteText}>Remove</p>
-                </div>
-              </div>
-            </div>
-          )
-        }
-</> }
+              )
+            }
+          </>}
 
 
         </div>
-       
+
 
       </div>
     </div>

@@ -20,6 +20,20 @@
         margin-right:10px;
     }
 }
+.starsections
+{
+    gap:2px;
+    display:flex;
+    flex-directn:row;
+    align-items:center;
+}
+.stars
+{
+    width:15px;
+    height:15px;
+    object-fit:cover;
+  
+}
 
 .favortsContainer{
     width: 100%;
@@ -42,6 +56,7 @@
         .favortsLeftContainer{
             display:flex;
             width:100%;
+            cursor:pointer;
             .favortsImg{
                 width:120px;
                 height:120px;
@@ -95,6 +110,8 @@
                 .favortsRatingContainer{
                     display: flex;
                     width: 90%;
+                    align-items:center;
+
                     @include mdBreakPoint{
                         width:100%;
                         margin-top:-3%

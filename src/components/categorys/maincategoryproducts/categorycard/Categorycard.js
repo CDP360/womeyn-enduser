@@ -18,9 +18,9 @@ function Categorycard({ item }) {
     return (
         // onClick={()=>ProductView(item?.productSlugName)}
         <div className={styles.cards} onClick={() => ProductView(item?.productSlugName)}  >
-            <div className={styles.plussection}>
+            {/* <div className={styles.plussection}>
                 <Image src={plus} alt="no image" className={styles.plus} onClick={() => Carthandleproduct(item)} />
-            </div>
+            </div> */}
             <img
                 className={styles.categoryimage}
                 src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}

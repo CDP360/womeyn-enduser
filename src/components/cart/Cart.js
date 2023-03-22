@@ -75,8 +75,8 @@ function Cart() {
     })
   }
 
-  const handleLoginUser=()=>{
-    const PathQuery=router?.asPath
+  const handleLoginUser = () => {
+    const PathQuery = router?.asPath
     localStorage.setItem("productwhishlist", JSON.stringify(PathQuery));
     router.push(`/login?redirect=/cart`)
   }
@@ -122,12 +122,12 @@ function Cart() {
                               </div>
                               <div>
                                 Rs.{item?.salePrice} <span>
-                              {item?.offerPercentag==0 ?<span></span>:<>
-                              <del>
-                              <span>{item?.actualPrice}</span>
-                              </del>
-                              </> }
-                              {item?.offerPercentag==0?<></>:<> {item?.offerPercentag} off</>}
+                                  {item?.offerPercentag == 0 ? <span></span> : <>
+                                    <del>
+                                      <span>{item?.actualPrice}</span>
+                                    </del>
+                                  </>}
+                                  {item?.offerPercentag == 0 ? <></> : <> {item?.offerPercentag} off</>}
                                 </span>
                               </div>
                               <div>
@@ -203,14 +203,14 @@ function Cart() {
                               {/* <div>
                                 Rs.{item?.salePrice}
                               </div> */}
-                               <div>
+                              <div>
                                 Rs.{item?.salePrice} <span>
-                              {item?.offerPercentag==0 ?<span></span>:<>
-                              <del>
-                              <span>{item?.actualPrice}</span>
-                              </del>
-                              </> }
-                              {item?.offerPercentag==0?<></>:<> {item?.offerPercentag} off</>}
+                                  {item?.offerPercentag == 0 ? <span></span> : <>
+                                    <del>
+                                      <span>{item?.actualPrice}</span>
+                                    </del>
+                                  </>}
+                                  {item?.offerPercentag == 0 ? <></> : <> {item?.offerPercentag} off</>}
                                 </span>
                               </div>
                               <div>
@@ -283,7 +283,7 @@ function Cart() {
                       Discount</div>
                     <div className={styles.textprice}>
                       {/* $ {cart?.cartData?.offerPercentag} */}
-                      {cart?.cartData?.reduce((acc, current) => acc + current.offerPercentag, 0)}
+                      ${Number(cart?.cartData?.reduce((acc, current) => acc + Number(current.offerPercentag), 0))}
                     </div>
                   </div>}
                   <div className={styles.splitcartsections}>

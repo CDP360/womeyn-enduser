@@ -19,6 +19,7 @@ import location from '../../../../../assests/product-logo/locationdelivery.png';
 import heartlike from '../../../../../assests/product-logo/likefullcolor.png';
 import heartunlike from '../../../../../assests/product-logo/likeborder.png';
 import LoginModalpopup from './../../../../loginmodalpopup/LoginModalpopup';
+import { toast } from 'react-toastify';
 function Viewproducts({ id }) {
     const history = useRouter();
     const [tokencheck, setTokenset] = useState("");
@@ -29,8 +30,8 @@ function Viewproducts({ id }) {
     const [productreview, setProductReview] = useState([]);
     const [productimages, setProductImage] = useState([]);
     const [productseller, setProductseller] = useState([]);
-    const [index1, setIndex1] = useState(0);
-    const [index2, setIndex2] = useState(0);
+    const [index1, setIndex1] = useState(null);
+    const [index2, setIndex2] = useState(null);
     const [like, setLike] = useState(true);
     const productnames = id;
     const router = useRouter();
@@ -39,12 +40,68 @@ function Viewproducts({ id }) {
         router.push("/checkout")
     }
     const CheckLoginUsers = (data) => {
-    const PathQuery=history?.asPath
-    localStorage.setItem("productwhishlist", JSON.stringify(PathQuery));
+        const PathQuery = history?.asPath
+        localStorage.setItem("productwhishlist", JSON.stringify(PathQuery));
         router.push(`/login?redirect=/product/${data}`);
     }
-    const handleChange = (cartdata) => {
-        dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1,variations:[],couponName:"",sellerBusinessName:productseller?.businessSlugName } });
+
+    const [productSize,setProductSize]=useState("");
+
+
+    const handleSizeProduct=(data)=>{
+       
+        setProductSize(data);
+    }
+
+    console.log(productSize,"productSize")
+
+
+    const handleChange = (cartdata, productvariations) => {
+
+        // console.log(productvariations[0]?.name, "productvariations")
+
+        
+        // if(productvariations[0]?.name)
+        // {
+        
+        //     alert("errr");
+
+           
+            
+
+
+        // }
+
+        const name=productvariations[0]?.name;
+
+        const dataSize={
+            name:name,
+            value:productSize
+        }
+
+        const urls=`Please Select ${name}`;
+
+        if(productSize.length===0)
+        {
+            toast.error(urls,
+            {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            }
+        );
+        }
+        if(productSize)
+        {
+        dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        }
+
+        // dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
     }
     useEffect(() => {
         ProductView(productnames).then((res) => {
@@ -63,8 +120,8 @@ function Viewproducts({ id }) {
             const variationdata = [];
             setProductVariations(variationdata);
             res?.data?.variations.map((item) => {
-                const y = item?.variationValues.length;
-                const forms = item?.variationValues.split(",", y);
+                const items = item?.variationValues.length;
+                const forms = item?.variationValues.split(",", items);
                 const datas = {
                     id: item?.id,
                     name: item?.name,
@@ -88,7 +145,7 @@ function Viewproducts({ id }) {
         }).catch((err) => {
             console.log(err);
         })
-    }, [])
+    }, [productSize])
 
 
     const LikeWishlist = (id) => {
@@ -97,7 +154,7 @@ function Viewproducts({ id }) {
                 productId: id
             }
             ProductLikeWishlist(likeid).then((res) => {
-                console.log(res);
+               
             }).catch((err) => {
                 console.log(err);
             })
@@ -107,7 +164,7 @@ function Viewproducts({ id }) {
                 wishlistId: id
             }
             ProductLikeWishlist(likeid).then((res) => {
-                console.log(err)
+              
             }).catch((err) => {
                 console.log(err);
             })
@@ -120,6 +177,7 @@ function Viewproducts({ id }) {
         }, 500)
         history.push(`/womenpreneurs/${data}`);
     }
+
     return (
         <Fragment>
             <div className={styles.mainproductviewscreen}>
@@ -170,7 +228,7 @@ function Viewproducts({ id }) {
                                                     CheckLoginUsers(productdata?.productSlugName)
                                                     // LikeWishlist(productdata?.id)
                                                 }}>
-                                                   
+
                                                     <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
                                                 </button>
                                             </div>
@@ -221,7 +279,10 @@ function Viewproducts({ id }) {
                                                             <div className={styles.fontweightsizes}>{item?.name}:</div>
                                                             {item?.variationValues?.map((items, index) => {
                                                                 return (
-                                                                    <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex1(index)} key={index}>
+                                                                    <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                                        setIndex1(index)
+                                                                        handleSizeProduct(items);
+                                                                        }} key={index}>
                                                                         {items}
                                                                     </div>
                                                                 )
@@ -282,7 +343,7 @@ function Viewproducts({ id }) {
                                     </Button>
                                 </div>
                                 <div>
-                                    <Button className={styles.addcartbutton} onClick={() => handleChange(productdata)}>
+                                    <Button className={styles.addcartbutton} onClick={() => handleChange(productdata, productvariations)}>
                                         Add To Cart
                                     </Button>
                                 </div>

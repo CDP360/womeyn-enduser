@@ -17,16 +17,17 @@ import { CART_SUCCESS } from '../../../../../Redux/types';
 import LoaderLogo from '../../../../loaderlogo/LoaderLogo';
 import { cartContext } from '../../../../../Redux/store/CartContext';
 import Skeleton from 'react-loading-skeleton';
-function Beverage({ productlist, loading,sellers }) {
+function Beverage({ productlist, loading, sellers }) {
     const { state, dispatch } = useContext(ContextStore)
     const router = useRouter();
     const Carthandleproduct = (data) => {
-        dispatch({ type: "CART_SUCCESS", payload: { ...data, quantity: 1, variations: [],couponName:"",sellerBussinesName:sellers } });
+        dispatch({ type: "CART_SUCCESS", payload: { ...data, quantity: 1, variations: [], couponName: "", sellerBussinesName: sellers } });
     }
-    useEffect(()=>{
-    },[sellers]);
+    useEffect(() => {
+    }, [sellers]);
 
 
+    console.log(productlist,"productlist")
     return (
         <Fragment>
             <div className={styles.mainbeveragesection}>
@@ -39,10 +40,10 @@ function Beverage({ productlist, loading,sellers }) {
                     </> : <>{productlist?.map((item, index) => {
                         return (
                             <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 ' key={index} >
-                                <div className={styles.plussection}>
+                                {/* <div className={styles.plussection}>
                                     <ion-icon name="add-outline" className={styles.ionicicons} onClick={() => Carthandleproduct(item)}></ion-icon>
-                                    {/* <Image src={plus} alt="no image" className={styles.plus} onClick={() => Carthandleproduct(item)} /> */}
-                                </div>
+                                    <Image src={plus} alt="no image" className={styles.plus} onClick={() => Carthandleproduct(item)} />
+                                </div> */}
                                 <div onClick={() => router.push(`/product/${item?.productSlugName}`)} className={styles.imagebox}>
                                     {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={styles.sellerimagesize} /> :
                                         <>
