@@ -9,6 +9,7 @@ function Checkoutsuccess() {
     const history = useRouter();
     const searchParams = useSearchParams();
     const Transaction_id = searchParams.get('transaction_id');
+    console.log(Transaction_id,"Transaction_id");
     useEffect(() => {
         CheckoutSuucessUpdate(Transaction_id).then((res) => {
             toast.success(res?.data?.message, {
