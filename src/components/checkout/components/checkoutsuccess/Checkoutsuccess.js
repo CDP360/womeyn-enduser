@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect } from 'react';
-import { CheckoutSuucessUpdate } from '../../../../services/checkout-services/checkout-service';
+import { CheckoutSuccessUpdate } from '../../../../services/checkout-services/checkout-service';
 import { useRouter } from 'next/router';
 import styles from './styles/Checkout.module.scss';
 import { useSearchParams } from 'next/navigation';
@@ -9,9 +9,9 @@ function Checkoutsuccess() {
     const history = useRouter();
     const searchParams = useSearchParams();
     const Transaction_id = searchParams.get('transaction_id');
-    console.log(Transaction_id,"Transaction_id");
+    console.log(Transaction_id, "Transaction_id");
     useEffect(() => {
-        CheckoutSuucessUpdate(Transaction_id).then((res) => {
+        CheckoutSuccessUpdate(Transaction_id).then((res) => {
             toast.success(res?.data?.message, {
                 position: "top-center",
                 autoClose: 3000,
@@ -23,15 +23,15 @@ function Checkoutsuccess() {
                 theme: "dark",
             });
             setTimeout(() => {
-                history?.push("/profile/orders");
+                history.push("/profile/orders");
             }, 500);
         }).catch((err) => {
             console.log(err);
         })
-    }, [])
+    }, [Transaction_id])
     return (
         <div className={styles.success}>
-           <LoaderLogo/>
+            <LoaderLogo />
 
         </div>
     )
