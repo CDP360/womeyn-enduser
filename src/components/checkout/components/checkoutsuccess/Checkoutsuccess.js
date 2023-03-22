@@ -4,6 +4,7 @@ import { CheckoutSuucessUpdate } from '../../../../services/checkout-services/ch
 import { useRouter } from 'next/router';
 import styles from './styles/Checkout.module.scss';
 import { useSearchParams } from 'next/navigation';
+import LoaderLogo from './../../../loaderlogo/LoaderLogo';
 function Checkoutsuccess() {
     const history = useRouter();
     const searchParams = useSearchParams();
@@ -29,7 +30,7 @@ function Checkoutsuccess() {
     }, [])
     return (
         <div className={styles.success}>
-            <LoaderLogo />
+           <LoaderLogo/>
 
         </div>
     )
