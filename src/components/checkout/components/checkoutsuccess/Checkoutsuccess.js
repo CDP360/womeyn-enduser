@@ -3,12 +3,11 @@ import { useEffect } from 'react';
 import { CheckoutSuucessUpdate } from '../../../../services/checkout-services/checkout-service';
 import { useRouter } from 'next/router';
 import styles from './styles/Checkout.module.scss';
+import { useSearchParams } from 'next/navigation';
 function Checkoutsuccess() {
-
     const history = useRouter();
-    const queryParameters = new URLSearchParams(window.location.search)
-    const Transaction_id = queryParameters.get("transaction_id");
-
+    const searchParams = useSearchParams();
+    const Transaction_id = searchParams.get('transaction_id');
     useEffect(() => {
         CheckoutSuucessUpdate(Transaction_id).then((res) => {
             toast.success(res?.data?.message, {
