@@ -37,24 +37,24 @@ function Confirmorders({ name, totalPrice, step, setStep }) {
         }
     ]
 
-    useEffect(() => {
-        let storesfilter = [];
-        cart?.cartData?.map((item, index) => {
-            storesfilter.push({
-                productName: item?.productName,
-                productId: item?.id,
-                price: item?.salePrice,
-                deliveryFee: "40",
-                quantity: item?.quantity,
-                variations: item?.variations,
-                sellerId: item?.sellerId,
-                sellerBusinessName: item?.sellerBussinesName,
-                productThumbImage: item?.productThumbImage,
-                couponName: "SUMMER50",
-            })
-        })
-        setOrders(storesfilter);
-    }, [overs, name])
+    // useEffect(() => {
+    //     let storesfilter = [];
+    //     cart?.cartData?.map((item, index) => {
+    //         storesfilter.push({
+    //             productName: item?.productName,
+    //             productId: item?.id,
+    //             price: item?.salePrice,
+    //             deliveryFee: "40",
+    //             quantity: item?.quantity,
+    //             variations: item?.variations,
+    //             sellerId: item?.sellerId,
+    //             sellerBusinessName: item?.sellerBussinesName,
+    //             productThumbImage: item?.productThumbImage,
+    //             couponName: "SUMMER50",
+    //         })
+    //     })
+    //     setOrders(storesfilter);
+    // }, [overs, name])
 
 
     const deliverOrderConfirm = () => {

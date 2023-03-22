@@ -267,7 +267,7 @@ function Checkout() {
                   <Confirmorders name={name} totalPrice={totalPrice} setStep={setStep} step={step} />
                 </div>}
                 {step === 2 && <div>
-                  <Payment />
+                  <Payment addressid={name} totalPrice={totalPrice}/>
                 </div>}
               </div>
             </div>

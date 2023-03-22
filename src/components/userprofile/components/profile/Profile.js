@@ -23,18 +23,18 @@ function Profile() {
     const userid = localStorage.getItem("womenUserid");
     UserProfileInformation(JSON.parse(userid)).then((res) => {
       if (res == "Please authenticate") {
-        toast.error("Please Authenticate!!",
-          {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-          }
-        );
+        // toast.error("Please Authenticate!!",
+        //   {
+        //     position: "top-center",
+        //     autoClose: 3000,
+        //     hideProgressBar: false,
+        //     closeOnClick: true,
+        //     pauseOnHover: true,
+        //     draggable: true,
+        //     progress: undefined,
+        //     theme: "dark",
+        //   }
+        // );
         localStorage.removeItem("womenUserid");
         localStorage.removeItem("womenUserToken");
         localStorage.removeItem("womenProfile");

@@ -74,12 +74,13 @@ function Cart() {
       payload: CARTS
     })
   }
-
   const handleLoginUser = () => {
     const PathQuery = router?.asPath
     localStorage.setItem("productwhishlist", JSON.stringify(PathQuery));
     router.push(`/login?redirect=/cart`)
   }
+
+  console.log(cart,"res1")
   return (
     <Fragment>
       <div className='mainsection'>

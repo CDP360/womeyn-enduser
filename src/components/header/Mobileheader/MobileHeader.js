@@ -1,30 +1,25 @@
 import Image from 'next/image';
-import React, { useState, Fragment, useEffect } from 'react';
+import React, { useState, Fragment, useEffect,useContext } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import styles from './styles/MobileHeader.module.scss';
 import serachicon from '../../../assests/homepage-logos/serachicon.png'
 import womeynlogo from '../../../assests/homepage-logos/Mobileviewlogoshort.png';
 import profile from '../../../assests/homepage-logos/profile.png';
 import closearrow from '../../../assests/homepage-logos/closearrow.png';
-import { signOut, useSession } from "next-auth/react"
-import { useSelector } from 'react-redux';
 import cart from '../../../assests/homepage-logos/basket.png';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-function MobileHeader({ dark, setdark }) {
+
+function MobileHeader() {
     const router = useRouter();
-    const state = useSelector(state => state.cart.cartitems);
-
+    // const {state,dispatch}=useContext();
+    // const {cart}=state;
     const [images, setImages] = useState("");
-
     const [tokens,setUserToken]=useState("");
-
-    // const { status, data: session } = useSession();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-   
     const Login = () => {
         router.push("/login");
     }
@@ -36,21 +31,18 @@ function MobileHeader({ dark, setdark }) {
     }
 
     useEffect(() => {
-        // const getimages = localStorage.getItem("womenProfile");
             const image = localStorage.getItem("womenUserToken");
             setUserToken(JSON.parse(image));
-        // setImages(JSON.parse(getimages));
     }, [tokens]);
 
     const logoutHandler = async () => {
         toast.success("Logout User Successflly");
-        // await signOut({ callbackUrl: "https://www.womeyn.cdp360.in/" });
         localStorage.removeItem("womenUserid");
         localStorage.removeItem("womenUserToken");
         localStorage.removeItem("womenProfile");
         setTimeout(() => {
             router.push("/login");
-        }, 1000)
+        }, 400)
 
     };
     return (
@@ -130,7 +122,7 @@ function MobileHeader({ dark, setdark }) {
                                             </div>
 
                                             <div className={styles.cartlengthsection}>
-                                                {state?.length}
+                                                {/* {state?.length} */}
                                             </div>
 
                                         </div>

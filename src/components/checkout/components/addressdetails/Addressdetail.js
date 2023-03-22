@@ -14,11 +14,8 @@ import { Addaddress, GetAddressData } from '../../../../services/user-profile-se
 import ModelAddress from './ModelAddress';
 import { useForm } from "react-hook-form";
 function Addressdetail({ state, step, setStep, setName }) {
-
   const [selectAddress, setCheckAddress] = useState("");
-
   const [address, setAddress] = useState([]);
-
   useEffect(() => {
     GetAddressData().then((res) => {
       setAddress(res?.data?.results);
@@ -54,16 +51,11 @@ function Addressdetail({ state, step, setStep, setName }) {
         }
       );
     }
-
-
     if (selectAddress) {
       setName(selectAddress);
       setStep(step + 1);
     }
   }
-
-  console.log(address, "selectAddress")
-
   const {
     register,
     handleSubmit,

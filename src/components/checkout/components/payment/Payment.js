@@ -1,149 +1,18 @@
-// import React, { Fragment, useState, useEffect } from 'react'
-// import { Col, Form, Row } from 'react-bootstrap';
-// import styles from './styles/Payment.module.scss';
-// function Payment() {
-//   return (
-//     <Fragment>
-//       <div className={styles.payemntmethodmainsection}>
-//         <div className="mt-3 mb-4">
-//           <h3>  Payment Method </h3>
-//         </div>
-//         <div className={styles.mainpaymentsectioncards}>
 
-//           <div className={styles.creditcardsection}>
-//             <div className={styles.leftcreditcard}>
-//               <input type="radio" />
-//             </div>
-//             <div className={styles.rightcreditcard}>
-//               <div className={styles.visa}>
-//                 <div>Credit Card</div>
-//                 <div>VISA</div>
-
-//               </div>
-//               <div className="mt-3">
-//                 <Row>
-//                   <Col>
-
-//                     <Form.Group className="mb-3" controlId="formBasicEmail">
-//                       <Form.Label>First Name</Form.Label>
-//                       <Form.Control type="text" className={styles.formborder} />
-
-//                     </Form.Group>
-
-//                   </Col>
-//                   <Col>
-
-//                     <Form.Group className="mb-3" controlId="formBasicEmail">
-//                       <Form.Label>Last Name</Form.Label>
-//                       <Form.Control type="text" className={styles.formborder} />
-
-//                     </Form.Group>
-
-//                   </Col>
-//                 </Row>
-//               </div>
-//               <div className="mt-2">
-//                 <Row>
-//                   <Col lg={5}>
-
-//                     <Form.Group className="mb-3" controlId="formBasicEmail">
-//                       <Form.Label>Card Number</Form.Label>
-//                       <Form.Control type="text" className={styles.formborder} />
-
-//                     </Form.Group>
-
-//                   </Col>
-//                   <Col lg={3}>
-
-//                     <Form.Group className="mb-3" controlId="formBasicEmail">
-//                       <Form.Label>Expiry Date</Form.Label>
-//                       <Form.Control type="text" className={styles.formborder} />
-
-//                     </Form.Group>
-
-//                   </Col>
-//                   <Col lg={4}>
-
-//                     <Form.Group className="mb-3" controlId="formBasicEmail">
-//                       <Form.Label>CVV</Form.Label>
-//                       <Form.Control type="text" className={styles.formborder} />
-
-//                     </Form.Group>
-
-//                   </Col>
-//                 </Row>
-//               </div>
-
-
-//               <div className="mt-2">
-//                 <Row>
-//                   <Col lg={9}>
-
-//                     <Form.Group className="mb-3" controlId="formBasicEmail">
-//                       <Form.Label>Country</Form.Label>
-//                       <Form.Control type="text" className={styles.formborder} />
-
-//                     </Form.Group>
-
-//                   </Col>
-//                   <Col lg={3}>
-
-//                     <Form.Group className="mb-3" controlId="formBasicEmail">
-//                       <Form.Label>Zip Code</Form.Label>
-//                       <Form.Control type="text" className={styles.formborder} />
-
-//                     </Form.Group>
-
-//                   </Col>
-
-//                 </Row>
-//               </div>
-//             </div>
-//           </div>
-//           <div className={styles.creditcardsection}>
-//             <div className={styles.leftcreditcard}>
-//               <input type="radio" />
-//             </div>
-//             <div className={styles.rightcreditcard}>
-//               <div className={styles.visa}>
-//                 <div>Paypal</div>
-//                 <div>PayPal</div>
-
-//               </div>
-//               <div className="mt-3">
-//                 <Row>
-//                   <Col>
-
-//                     <Form.Group className="mb-3" controlId="formBasicEmail">
-//                       <Form.Label>Email</Form.Label>
-//                       <Form.Control type="text" className={styles.formborder} />
-
-//                     </Form.Group>
-
-//                   </Col>
-
-//                 </Row>
-//               </div>
-
-
-
-//             </div>
-//           </div>
-//           <div>
-//             third
-//           </div>
-//         </div>
-//       </div>
-//     </Fragment>
-//   )
-// }
-
-// export default Payment
+import { ContextStore } from '../../../../Redux/store/Contextstore';
 import styles from './styles/Payment.module.scss';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { CustomerOrders } from '../../../../services/customer-order-service/customer-order-service';
+import { useRouter } from 'next/router';
+function Payment({ totalPrice, addressid }) {
 
-function Payment() {
+  const history=useRouter();
 
+  const { state, dispatch } = useContext(ContextStore);
+
+  const [orders, setOrders] = useState([]);
+
+  const { cart } = state;
   const paymentMethods = [
     {
       id: 1,
@@ -153,12 +22,60 @@ function Payment() {
     {
       id: 2,
       name: "Stripe"
-    },
-    {
-      id: 3,
-      name: "Pay with cards"
     }
   ]
+
+  useEffect(() => {
+    let storesfilter = [];
+    cart?.cartData?.map((item, index) => {
+      storesfilter.push({
+        productName: item?.productName,
+        productId: item?.id,
+        price: item?.salePrice,
+        deliveryFee: "40",
+        quantity: item?.quantity,
+        variations: item?.variations,
+        sellerId: item?.sellerId,
+        sellerBusinessName: item?.sellerBusinessName,
+        productThumbImage: item?.productThumbImage,
+        couponName: "SUMMER50",
+      })
+    })
+    setOrders(storesfilter);
+  }, [addressid]);
+
+  const deliverOrderConfirm = () => {
+    const userName = JSON.parse(localStorage.getItem("womenuser"));
+    const overAllorders = {
+      deliveryAddressId: addressid,
+      itemsOrdered: orders,
+      totalOrderAmount: totalPrice,
+      customerName: userName
+    }
+    CustomerOrders(overAllorders).then((res) => {
+      // toast.success(res?.data?.message, {
+      //   position: "top-center",
+      //   autoClose: 3000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      //   theme: "success",
+      // })
+
+
+      
+      window.location = res?.data?.url;
+      // history.push(res?.url);
+
+      console.log("thala",res?.data?.url)
+      window.location(res?.url);
+
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
   return (
     <div className={styles.mainsectionpayment}>
       <div className={styles.paymentsections}>
@@ -172,8 +89,9 @@ function Payment() {
           )
         })}
         <div className="mt-5">
-          <button className={styles.usepayments}>
-            Use this payment method
+          <button className={styles.usepayments} onClick={deliverOrderConfirm}>
+            {/* Use this payment method  */}
+            Continue Payment
           </button>
         </div>
       </div>

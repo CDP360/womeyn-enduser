@@ -29,7 +29,6 @@ function Manageaddress() {
   const [show, setShow] = useState(false);
   const [showdelete, setShowdelete] = useState(false);
   const [removeloading, setRemoveloading] = useState(false);
-
   const [deleteaddressid, setDeleteId] = useState("");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

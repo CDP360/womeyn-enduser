@@ -36,69 +36,84 @@ function Viewproducts({ id }) {
     const productnames = id;
     const router = useRouter();
     const [loading, setLoading] = useState(false);
-    const Checkout = () => {
-        router.push("/checkout")
+    const Checkout = (cartdata, productvariations) => {
+        const name = productvariations[0]?.name;
+        const dataSize = {
+            name: name,
+            value: productSize
+        }
+        const urls = `Please Select ${name}`;
+        if (name) {
+            if (productSize.length === 0) {
+                toast.error(urls,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+            }
+        }
+
+        if (name) {
+            if (productSize) {
+                router.push("/checkout")
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+            }
+
+        }
+        else {
+            router.push("/checkout")
+            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        }
     }
     const CheckLoginUsers = (data) => {
         const PathQuery = history?.asPath
         localStorage.setItem("productwhishlist", JSON.stringify(PathQuery));
         router.push(`/login?redirect=/product/${data}`);
     }
-
-    const [productSize,setProductSize]=useState("");
-
-
-    const handleSizeProduct=(data)=>{
-       
+    const [productSize, setProductSize] = useState("");
+    const handleSizeProduct = (data) => {
         setProductSize(data);
     }
 
-    console.log(productSize,"productSize")
-
-
     const handleChange = (cartdata, productvariations) => {
-
         // console.log(productvariations[0]?.name, "productvariations")
-
-        
         // if(productvariations[0]?.name)
         // {
-        
         //     alert("errr");
-
-           
-            
-
-
         // }
 
-        const name=productvariations[0]?.name;
-
-        const dataSize={
-            name:name,
-            value:productSize
+        const name = productvariations[0]?.name;
+        const dataSize = {
+            name: name,
+            value: productSize
         }
-
-        const urls=`Please Select ${name}`;
-
-        if(productSize.length===0)
-        {
+        const urls = `Please Select ${name}`;
+        if (productSize.length === 0) {
             toast.error(urls,
-            {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            }
-        );
+                {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                }
+            );
         }
-        if(productSize)
-        {
-        dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        if (productSize) {
+            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        }
+        else {
+            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
         }
 
         // dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
@@ -145,7 +160,7 @@ function Viewproducts({ id }) {
         }).catch((err) => {
             console.log(err);
         })
-    }, [productSize])
+    }, [productSize, productseller])
 
 
     const LikeWishlist = (id) => {
@@ -154,7 +169,7 @@ function Viewproducts({ id }) {
                 productId: id
             }
             ProductLikeWishlist(likeid).then((res) => {
-               
+
             }).catch((err) => {
                 console.log(err);
             })
@@ -164,7 +179,7 @@ function Viewproducts({ id }) {
                 wishlistId: id
             }
             ProductLikeWishlist(likeid).then((res) => {
-              
+
             }).catch((err) => {
                 console.log(err);
             })
@@ -248,7 +263,7 @@ function Viewproducts({ id }) {
                                     <Image src={starend} alt="no image" className={styles.stars} />
                                 </div>
                                 <div>
-                                    712 Ratings
+                                    712 Ratings{productseller?.businessSlugName}
                                 </div>
                             </div>
 
@@ -282,7 +297,7 @@ function Viewproducts({ id }) {
                                                                     <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
                                                                         setIndex1(index)
                                                                         handleSizeProduct(items);
-                                                                        }} key={index}>
+                                                                    }} key={index}>
                                                                         {items}
                                                                     </div>
                                                                 )
@@ -338,7 +353,7 @@ function Viewproducts({ id }) {
                             </div>
                             <div className={styles.buttons}>
                                 <div>
-                                    <Button className={styles.bynowcartbutton} onClick={Checkout}>
+                                    <Button className={styles.bynowcartbutton} onClick={() => Checkout(productdata, productvariations)}>
                                         Buy Now
                                     </Button>
                                 </div>
