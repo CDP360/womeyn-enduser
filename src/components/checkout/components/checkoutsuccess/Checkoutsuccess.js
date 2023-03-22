@@ -12,6 +12,8 @@ function Checkoutsuccess() {
     console.log(Transaction_id, "Transaction_id");
     useEffect(() => {
         CheckoutSuccessUpdate(Transaction_id).then((res) => {
+
+            console.log(res, "kalaicheckout")
             toast.success(res?.data?.message, {
                 position: "top-center",
                 autoClose: 3000,

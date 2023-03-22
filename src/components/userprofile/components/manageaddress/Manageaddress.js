@@ -339,7 +339,7 @@ function Manageaddress() {
                   </Col>
                   <Col>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label className="labelname">Pincode</Form.Label>
+                      <Form.Label className="labelname">Post code</Form.Label>
                       <Form.Control type="text" placeholder="Enter Pincode" className='form-control-profiles'
                         {...register("pincode", {
                           required: "Please enter Pincode",
