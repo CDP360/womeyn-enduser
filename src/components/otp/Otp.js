@@ -11,7 +11,7 @@ import { OTPSend, OTPResend } from '../../services/user-login-service/user-login
 import Spinner from 'react-bootstrap/Spinner';
 function Otp() {
     const router = useRouter();
-const [loading,setLoading]=useState(false);
+    const [loading, setLoading] = useState(false);
 
 
     const [otp, setOtp] = useState("");
@@ -126,7 +126,7 @@ const [loading,setLoading]=useState(false);
                                 />
 
                                 {error && otp?.length <= 0 ? <div className="text-danger mt-3">Otp Filed Is Empty</div> : <>{otp?.length >= 4 ? <div className="text-success text-center mt-3">
-                                 
+
                                 </div> : <></>}</>}
                             </div>
                             <div>
@@ -143,20 +143,20 @@ const [loading,setLoading]=useState(false);
                             </div>
                             <div className={styles.verifyotpsection}>
                                 <button onClick={SummitOtp} className="loginbutton mt-2 mb-3">
-                                    {loading?<>
-                                    
+                                    {loading ? <>
+
                                         <Spinner
-          as="span"
-          animation="grow"
-          size="sm"
-          role="status"
-          aria-hidden="true"
-        />
-        Loading...
-                                    </>:<>
-                                    Verify
+                                            as="span"
+                                            animation="grow"
+                                            size="sm"
+                                            role="status"
+                                            aria-hidden="true"
+                                        />
+                                        Loading...
+                                    </> : <>
+                                        Verify
                                     </>}
-                                  
+
                                 </button>
                                 <button className={`${seconds > 0 || minutes > 0 ? "resendbuttondisable" : "resendbutton"}`} disabled={seconds > 0 || minutes > 0}
                                     style={{

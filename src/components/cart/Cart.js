@@ -80,7 +80,7 @@ function Cart() {
     router.push(`/login?redirect=/cart`)
   }
 
-  console.log(cart,"res1")
+  console.log(cart, "res1")
   return (
     <Fragment>
       <div className='mainsection'>
@@ -284,7 +284,7 @@ function Cart() {
                       Discount</div>
                     <div className={styles.textprice}>
                       {/* $ {cart?.cartData?.offerPercentag} */}
-                      ${Number(cart?.cartData?.reduce((acc, current) => acc + Number(current.offerPercentag), 0))}
+                      ${cart?.cartData?.reduce((acc, current) => acc + Number(current.salePrice - current.actualPrice), 0)}
                     </div>
                   </div>}
                   <div className={styles.splitcartsections}>

@@ -2,7 +2,10 @@ import React from 'react'
 
 function Checkoutcancel() {
     return (
-        <div>Checkoutcancel</div>
+        <div className={styles.cancelsection}>
+
+
+        </div>
     )
 }
 

@@ -6,7 +6,7 @@ import { CustomerOrders } from '../../../../services/customer-order-service/cust
 import { useRouter } from 'next/router';
 function Payment({ totalPrice, addressid }) {
 
-  const history=useRouter();
+  const history = useRouter();
 
   const { state, dispatch } = useContext(ContextStore);
 
@@ -63,15 +63,7 @@ function Payment({ totalPrice, addressid }) {
       //   progress: undefined,
       //   theme: "success",
       // })
-
-
-      
       window.location = res?.data?.url;
-      // history.push(res?.url);
-
-      console.log("thala",res?.data?.url)
-      window.location(res?.url);
-
     }).catch((err) => {
       console.log(err);
     })

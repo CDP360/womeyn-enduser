@@ -71,7 +71,7 @@ function Login() {
             Userlogin(datas).then(async (res) => {
                 if (res) {
 
-                    console.log(res?.data,"res")
+    
     localStorage.setItem("womenuser", JSON.stringify(res?.data?.user?.firstName));
 
                     localStorage.setItem("womenauth", true);

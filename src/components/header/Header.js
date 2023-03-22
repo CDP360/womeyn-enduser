@@ -51,7 +51,7 @@ function Header() {
         localStorage.removeItem("womenuser");
         localStorage.removeItem("womenauth");
 
-        
+
         setTimeout(() => {
             router.push("/login");
         }, 1000)
@@ -110,7 +110,7 @@ function Header() {
     ]
 
     useEffect(() => {
-        const auth =localStorage.getItem("womenauth");
+        const auth = localStorage.getItem("womenauth");
         setUserAuth(auth);
     }, [userauth])
     return (

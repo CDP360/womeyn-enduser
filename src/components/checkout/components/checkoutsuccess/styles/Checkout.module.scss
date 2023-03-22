@@ -1,0 +1,9 @@
+@use "../../../../../../scss/abstract/" as *;
+.success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+}

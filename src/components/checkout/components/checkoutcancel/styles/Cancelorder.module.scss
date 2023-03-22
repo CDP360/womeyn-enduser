@@ -1,0 +1,10 @@
+@use "../../../../../../scss/abstract/" as *;
+
+.cancelsection {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

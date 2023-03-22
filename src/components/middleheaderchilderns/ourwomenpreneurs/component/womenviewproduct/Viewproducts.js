@@ -36,6 +36,8 @@ function Viewproducts({ id }) {
     const productnames = id;
     const router = useRouter();
     const [loading, setLoading] = useState(false);
+
+
     const Checkout = (cartdata, productvariations) => {
         const name = productvariations[0]?.name;
         const dataSize = {
@@ -62,13 +64,12 @@ function Viewproducts({ id }) {
 
         if (name) {
             if (productSize) {
-                router.push("/checkout")
+                router?.push("/checkout")
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
             }
-
         }
         else {
-            router.push("/checkout")
+            router?.push("/checkout")
             dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
         }
     }
@@ -95,22 +96,26 @@ function Viewproducts({ id }) {
             value: productSize
         }
         const urls = `Please Select ${name}`;
-        if (productSize.length === 0) {
-            toast.error(urls,
-                {
-                    position: "top-center",
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                }
-            );
+        if (name) {
+            if (productSize.length === 0) {
+                toast.error(urls,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+            }
         }
-        if (productSize) {
-            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        if (name) {
+            if (productSize) {
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+            }
         }
         else {
             dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
@@ -193,6 +198,44 @@ function Viewproducts({ id }) {
         history.push(`/womenpreneurs/${data}`);
     }
 
+    const buyNowPathNavigate = (cartdata, productvariations) => {
+        const pathnames = "/checkout";
+        localStorage.setItem("productwhishlist", JSON.stringify(pathnames));
+        const name = productvariations[0]?.name;
+        const dataSize = {
+            name: name,
+            value: productSize
+        }
+        const urls = `Please Select ${name}`;
+        if (name) {
+            if (productSize.length === 0) {
+                toast.error(urls,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+            }
+        }
+
+        if (name) {
+            if (productSize) {
+                router?.push("/login?redirect=/checkout")
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+            }
+        }
+        else {
+            router?.push("/login?redirect=/checkout")
+            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        }
+    }
+
     return (
         <Fragment>
             <div className={styles.mainproductviewscreen}>
@@ -263,7 +306,7 @@ function Viewproducts({ id }) {
                                     <Image src={starend} alt="no image" className={styles.stars} />
                                 </div>
                                 <div>
-                                    712 Ratings{productseller?.businessSlugName}
+                                    712 Ratings
                                 </div>
                             </div>
 
@@ -353,9 +396,14 @@ function Viewproducts({ id }) {
                             </div>
                             <div className={styles.buttons}>
                                 <div>
-                                    <Button className={styles.bynowcartbutton} onClick={() => Checkout(productdata, productvariations)}>
-                                        Buy Now
-                                    </Button>
+                                    {tokencheck ?
+                                        <Button className={styles.bynowcartbutton} onClick={() => Checkout(productdata, productvariations)}>
+                                            Buy Now
+                                        </Button> :
+                                        <Button className={styles.bynowcartbutton} onClick={() => buyNowPathNavigate(productdata, productvariations)}>
+                                            Buy Now
+                                        </Button>
+                                    }
                                 </div>
                                 <div>
                                     <Button className={styles.addcartbutton} onClick={() => handleChange(productdata, productvariations)}>
