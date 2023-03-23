@@ -13,6 +13,7 @@ import location from '../../../../../assests/product-logo/locationdelivery.png';
 import heartlike from '../../../../../assests/product-logo/likefullcolor.png';
 import heartunlike from '../../../../../assests/product-logo/likeborder.png';
 import { toast } from 'react-toastify';
+import Skeleton from 'react-loading-skeleton';
 function Viewproducts({ id }) {
     const history = useRouter();
     const [tokencheck, setTokenset] = useState("");
@@ -239,11 +240,13 @@ function Viewproducts({ id }) {
                                         {productimages?.map((item, index) => {
                                             return (
                                                 <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)} key={index}>
-                                                    <img
+                                                    {item?.name?<><img
                                                         className={styles.imagecards}
                                                         src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
                                                         alt="profile-pic"
-                                                    />
+                                                    /></>:<>
+                                                    <Skeleton/>
+                                                    </>}
                                                 </div>
                                             )
                                         })}
@@ -324,7 +327,7 @@ function Viewproducts({ id }) {
                                             return (
                                                 <>
                                                     {
-                                                        item?.name == "Size" ? <>
+                                                        item?.name?.toLowerCase() == "size" ? <>
                                                             <div className={styles.fontweightsizes}>{item?.name}:</div>
                                                             {item?.variationValues?.map((items, index) => {
                                                                 return (
@@ -355,7 +358,7 @@ function Viewproducts({ id }) {
                                                 return (
                                                     <>
                                                         {
-                                                            item?.name == "Color" ? <>
+                                                            item?.name?.toLowerCase() == "color" ? <>
                                                                 <div className={styles.fontweightsizes} key={index}>{item?.name}:</div>
                                                                 {item?.variationValues?.map((items, index) => {
                                                                     return (

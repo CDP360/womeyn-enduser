@@ -3,8 +3,9 @@ import { ContextStore } from '../../../../Redux/store/Contextstore';
 import styles from './styles/Payment.module.scss';
 import React, { useState, useEffect, useContext } from 'react';
 import { CustomerOrders } from '../../../../services/customer-order-service/customer-order-service';
+
 function Payment({ totalPrice, addressid }) {
-  const { state } = useContext(ContextStore);
+  const { state} = useContext(ContextStore);
   const [orders, setOrders] = useState([]);
   const { cart } = state;
   const paymentMethods = [
@@ -68,7 +69,7 @@ function Payment({ totalPrice, addressid }) {
         {paymentMethods?.map((item, index) => {
           return (
             <div key={index} className={styles.paymentsection}>
-              <input type="radio" id={item?.name} name={item?.name} value={item?.name} />
+              <input type="radio" id="payment" name={item?.name} value={item?.id} />
               {item?.name}
             </div>
           )

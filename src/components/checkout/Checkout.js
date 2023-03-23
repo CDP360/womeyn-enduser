@@ -304,7 +304,7 @@ function Checkout() {
                     <div>
                       Discount</div>
                     <div className={styles.textprice}>
-                      $2
+                    ${cart?.cartData?.reduce((acc, current) => acc + Number(current.salePrice - current.actualPrice), 0)}
                     </div>
                   </div>
                   <div className={styles.splitcartsections}>

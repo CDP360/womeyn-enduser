@@ -9,7 +9,22 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { ContextStore } from './../../Redux/store/Contextstore';
 import cartempty from '../../assests/cart-logos/emptycartlogo.png';
+
+import Modal from 'react-bootstrap/Modal';
 function Cart() {
+
+
+  const [show, setShow] = useState(false);
+
+  const [deleteid, setDeleteid] = useState("");
+
+  const handleClose = () => setShow(false);
+  const handleShow = (id) => {
+    setShow(true)
+    setDeleteid(id);
+  };
+
+
   const { state, dispatch } = useContext(ContextStore);
   const { cart } = state;
   const router = useRouter();
@@ -30,13 +45,15 @@ function Cart() {
   }, [tokes, price])
   useEffect(() => {
     setCart(state?.cart?.cartData);
-  }, [])
+  }, [deleteid])
   const shopping = () => {
     router.push("/womenpreneurs")
   }
   const handleDelete = (e) => {
-    dispatch({ type: "CART_REMOVE", payload: e })
-
+    setTimeout(() => {
+      handleClose();
+      dispatch({ type: "CART_REMOVE", payload: e })
+    }, 500);
   }
   const handleAdd = (index1, item) => {
     const CARTS = carts?.map((carts, index) => {
@@ -64,7 +81,6 @@ function Cart() {
     router.push(`/login?redirect=/cart`)
   }
 
-  console.log(cart, "res1")
   return (
     <Fragment>
       <div className='mainsection'>
@@ -119,7 +135,7 @@ function Cart() {
                               } />
                             </div>
                           </div>
-                          <div className={styles.cartremovesection} onClick={() => handleDelete(item)}>
+                          <div className={styles.cartremovesection} onClick={() => handleShow(item)}>
                             <div>
                               <Image src={delteteicon} alt="no image" className={styles.deleteicons} />
                             </div>
@@ -201,7 +217,7 @@ function Cart() {
                                 } />
                               </div>
                             </div>
-                            <div className={styles.cartremovesection} onClick={() => handleDelete(item)}>
+                            <div className={styles.cartremovesection} onClick={() => handleShow(item)}>
                               <div>
                                 <Image src={delteteicon} alt="no image" className={styles.deleteicons} />
                               </div>
@@ -286,6 +302,40 @@ function Cart() {
           </div>
         </div>
       </div>
+      <>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+          centered
+        >
+
+          <Modal.Body>
+            <div className={styles.modelremove}>
+
+              <div className={styles.insidemodelpopup}>
+                <div className={styles.removetexts}>
+                  Remove Item
+                </div>
+                <div onClick={handleClose}>
+                  <ion-icon name="close-outline" size="large"></ion-icon>
+                </div>
+              </div>
+              <div className={styles.removeitemname}>
+
+                Are you sure  remove this item?
+              </div>
+              <div className={styles.buttonsections}>
+
+                <button className={styles.buttonscancel} onClick={handleClose}>Cancel</button>
+                <button className={styles.buttonsremove} onClick={() => handleDelete(deleteid)}>Remove</button>
+              </div>
+            </div>
+          </Modal.Body>
+
+        </Modal>
+      </>
     </Fragment>
   )
 }

@@ -29,13 +29,13 @@ function Categorychoose() {
                                             crafted from top materials
                                         </div>
                                     </div> */}
-                                  
-                                
+
+
 
                                 </div>
                                 <div>
-                                <Skeleton className={styles.sketons}/>
-                                    </div>
+                                    <Skeleton className={styles.sketons} />
+                                </div>
                             </Col>
                             <Col lg="3" xs="12" sm="6" className='mt-3 mb-4'>
                                 <div className={styles.boxsection}>
@@ -54,8 +54,8 @@ function Categorychoose() {
 
                                 </div>
                                 <div>
-                                <Skeleton className={styles.sketons}/>
-                                    </div>
+                                    <Skeleton className={styles.sketons} />
+                                </div>
                             </Col>
                             <Col lg="3" xs="12" sm="6" className='mt-3 mb-4'>
                                 <div className={styles.boxsection}>
@@ -74,8 +74,8 @@ function Categorychoose() {
 
                                 </div>
                                 <div>
-                                <Skeleton className={styles.sketons}/>
-                                    </div>
+                                    <Skeleton className={styles.sketons} />
+                                </div>
                             </Col>
                             <Col lg="3" xs="12" sm="6" className='mt-3 mb-4'>
                                 <div className={styles.boxsection}>
@@ -94,17 +94,17 @@ function Categorychoose() {
 
                                 </div>
                                 <div>
-                                <Skeleton className={styles.sketons}/>
-                                    </div>
+                                    <Skeleton className={styles.sketons} />
+                                </div>
                             </Col>
                         </Row>
                     </div>
                     <div className={styles.categorybodysection}>
                         <div className='large-text mt-5 text-center'>
-                            A lot of categories to choose from 
+                            A lot of categories to choose from
                         </div>
                         <div>
-                            <CarouselCategory />    
+                            <CarouselCategory />
                         </div>
                     </div>
                 </div>

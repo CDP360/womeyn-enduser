@@ -76,7 +76,7 @@ function Order() {
             <hr className={styles.hrSub} />
           </div>
           {step === 0 && <div>
-            <Allorders Orders={Orders} />
+            <Allorders Orders={Orders} traking={traking} />
             {/* {data.map((item, index) => {
               return (
                 <>

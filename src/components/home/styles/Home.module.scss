@@ -1,161 +1,164 @@
 @use "../../../../scss/abstract/" as *;
 
 .homesectionmain {
-    width: 100%;
-    // position:relative;
+  width: 100%;
+  // position:relative;
 
-    .emptyboxrightcolor {
-        background-color: orange;
-        position: absolute;
-        width: 20%;
-        height: 40% !important;
-        background: #fecf9d;
-        opacity: 0.36;
-        filter: blur(239.825px);
-        left: 0;
+  .emptyboxrightcolor {
+    background-color: orange;
+    position: absolute;
+    width: 20%;
+    height: 40% !important;
+    background: #fecf9d;
+    opacity: 0.36;
+    filter: blur(239.825px);
+    left: 0;
+  }
+  .emptyboxleftcolor {
+    position: absolute;
+    width: 20%;
+    height: 40% !important;
+    background: #e95a5a;
+    opacity: 0.2;
+    filter: blur(500px);
+    right: 5%;
+    top: -5%;
+  }
+  .insidesectionhome {
+    width: 75%;
+    margin: 0 auto;
+    // position: relative;
+    @include xsBreakPoint {
+      width: 85%;
+      padding-top: 6%;
     }
-    .emptyboxleftcolor {
-        position: absolute;
-        width: 20%;
-        height: 40% !important;
-        background: #e95a5a;
-        opacity: 0.2;
-        filter: blur(500px);
-        right: 5%;
-        top: -5%;
+    @include smBreakPoint {
+      width: 85%;
+      padding-top: 6%;
     }
-    .insidesectionhome {
-        width: 75%;
-        margin: 0 auto;
-        // position: relative;
+    @include mdBreakPoint {
+      width: 85%;
+    }
+    @include lgBreakPoint {
+      width: 89%;
+    }
+    @include xlBreakPoint {
+      width: 85%;
+    }
+    .imagesectionhome {
+      width: 100%;
+      // position: relative;
+      .sliderimage {
+        width: 100%;
+        height: 330px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
         @include xsBreakPoint {
-            width: 85%;
-            padding-top: 6%;
+          height: 120px;
+          // width:100%;
+          object-fit: contain;
+          border-radius: 10px !important;
         }
         @include smBreakPoint {
-            width: 85%;
-            padding-top: 6%;
+          height: auto;
         }
         @include mdBreakPoint {
-            width: 85%;
+          height: auto;
         }
         @include lgBreakPoint {
-            width: 89%;
+          height: auto;
+        }
+      }
+    }
+    .addimagetagss {
+      display: flex;
+      gap: 20px;
+      padding-top: 2%;
+      padding-bottom: 2%;
+      .addimagessectionleft {
+        width: 50%;
+        @include xsBreakPoint {
+          width: 100%;
+        }
+        @include smBreakPoint {
+          width: 100%;
+        }
+        @include mdBreakPoint {
+          width: 100%;
+        }
+        @include lgBreakPoint {
+          width: 100%;
         }
         @include xlBreakPoint {
-            width: 85%;
+          width: 100%;
         }
-        .imagesectionhome {
-            width: 100%;
-            // position: relative;
-            .sliderimage {
-                width: 100%;
-                height: 330px;
-                object-fit: cover;
-                border-radius: 8px;
-                cursor: pointer;
-                @include xsBreakPoint {
-                    height: 120px;
-                    // width:100%;
-                    object-fit: contain;
-                    border-radius:10px !important;
-                }
-                @include smBreakPoint {
-                    height: auto;
-                }
-                @include mdBreakPoint {
-                    height: auto;
-                }
-                @include lgBreakPoint {
-                    height: auto;
-                }
-            }
+      }
+      .addimagessectionright {
+        width: 50%;
+        @include xsBreakPoint {
+          width: 100%;
         }
-        .addimagetagss {
-            display: flex;
-            gap: 20px;
-            padding-top: 2%;
-            padding-bottom: 2%;
-            .addimagessectionleft {
-                width: 50%;
-                @include xsBreakPoint {
-                    width: 100%;
-                }
-                @include smBreakPoint {
-                    width: 100%;
-                }
-                @include mdBreakPoint {
-                    width: 100%;
-                }
-                @include lgBreakPoint {
-                    width: 100%;
-                }
-                @include xlBreakPoint {
-                    width: 100%;
-                }
-            }
-            .addimagessectionright {
-                width: 50%;
-                @include xsBreakPoint {
-                    width: 100%;
-                }
-                @include smBreakPoint {
-                    width: 100%;
-                }
-                @include mdBreakPoint {
-                    width: 100%;
-                }
-                @include lgBreakPoint {
-                    width: 100%;
-                }
-                @include xlBreakPoint {
-                    width: 100%;
-                }
-            }
-            @include xsBreakPoint {
-                flex-direction: column;
-            }
-            @include smBreakPoint {
-                flex-direction: column;
-                gap: 20px;
-            }
-            .add1 {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                cursor: pointer;
-                @include xsBreakPoint {
-                    width: 100% !important;
-                }
-                @include xsBreakPoint {
-                    width: 100% !important;
-                }
-                @include smBreakPoint {
-                    width: 100% !important;
-                }
-                @include mdBreakPoint {
-                    width: 100% !important;
-                }
-                @include lgBreakPoint {
-                    width: 100% !important;
-                }
-                @include xlBreakPoint {
-                    width: 100% !important;
-                }
-            }
+        @include smBreakPoint {
+          width: 100%;
         }
+        @include mdBreakPoint {
+          width: 100%;
+        }
+        @include lgBreakPoint {
+          width: 100%;
+        }
+        @include xlBreakPoint {
+          width: 100%;
+        }
+      }
+      @include xsBreakPoint {
+        flex-direction: column;
+      }
+      @include smBreakPoint {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .add1 {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        cursor: pointer;
+        @include xsBreakPoint {
+          width: 100% !important;
+        }
+        @include xsBreakPoint {
+          width: 100% !important;
+        }
+        @include smBreakPoint {
+          width: 100% !important;
+        }
+        @include mdBreakPoint {
+          width: 100% !important;
+        }
+        @include lgBreakPoint {
+          width: 100% !important;
+        }
+        @include xlBreakPoint {
+          width: 100% !important;
+        }
+      }
     }
+  }
 }
 .skeltonbox {
-    width: 100% !important;
-    height: 300px !important;
+  width: 100% !important;
+  height: 300px !important;
+  background: #f1f1f1;
 }
 .addimageboxs {
-    width: 100% !important;
-    height: 200px !important;
-    object-fit: contain !important;
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: contain !important;
+  background: #f1f1f1;
 }
 .homebanner {
-    width: 100% !important;
-    height: 200px !important;
+  width: 100% !important;
+  height: 200px !important;
+  background: #f1f1f1;
 }

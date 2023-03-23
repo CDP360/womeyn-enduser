@@ -134,11 +134,12 @@
     .trackbtndivider {
       display: flex;
       width: 100%;
+      cursor:pointer;
       .img {
         width: 100px;
         height: 100px;
         border-radius: 20px;
-        background: gray;
+        background: #F1F1F1;
         @include mdBreakPoint {
           width: 80px;
           height: 80px;
@@ -150,7 +151,7 @@
       }
       .insidecontainer2 {
         width: 60%;
-        margin-left: 4%;
+      
         @include xsBreakPoint {
           margin-top: 2%;
           width: 100%;

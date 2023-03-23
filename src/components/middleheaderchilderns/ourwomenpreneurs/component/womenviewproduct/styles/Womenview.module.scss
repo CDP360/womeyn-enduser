@@ -30,6 +30,7 @@
         .splitproductview {
             width: 100%;
             display: flex;
+            gap:50px;
             @include xsBreakPoint {
                 flex-direction: column;
                 gap: 15px;
@@ -42,8 +43,12 @@
                 flex-direction: column;
                 gap: 35px;
             }
+            @include xlBreakPoint {
+         
+                gap: 60px;
+            }
             .leftproductview {
-                width: 65%;
+                width: 60%;
                 @include xsBreakPoint {
                     width: 100%;
                 }
@@ -53,9 +58,16 @@
                 @include mdBreakPoint {
                     width: 100%;
                 }
+                @include lgBreakPoint {
+                    width: 100%;
+                }
+                @include xlBreakPoint {
+                  width:100%;
+                }
                 .leftmainsectionslide {
                     width: 100%;
                     display: flex;
+                    gap:20px;
                     @include xsBreakPoint {
                         flex-direction: column-reverse;
                     }
@@ -63,10 +75,13 @@
                         flex-direction: column-reverse;
                     }
                     .leftcardimages {
-                        width: 25%;
-                        // border: 2px solid red;
-                        // padding: 10px;
-                        height: 400px;
+                        width: 20%;
+                        // border: 0.5px solid #9F9F9F;
+                        border: 0.1px solid #F6F6F6;
+                        padding: 10px 10px;
+                        // opacity: 0.1;
+                        border-radius:10px;
+                        height: 450px;
                         overflow: hidden;
                         overflow-y: auto;
                         -ms-overflow-style: none;
@@ -93,11 +108,21 @@
                             margin-top: 6%;
                             margin-bottom: 5%;
                         }
+                        @include lgBreakPoint
+                        {
+                            width:100%;
+                        }
+                        @include xlBreakPoint
+                        {
+                            width:100%;
+                        }
+                     
                         .imagerowsection {
                             // border:5px solid blue;
                             display: flex;
                             flex-direction: column;
-                            gap: 25px;
+                            align-items:center;
+                            gap: 15px;
                             // align-items: center;
                             @include xsBreakPoint {
                                 display: flex !important;
@@ -119,6 +144,11 @@
                         .borderimages {
                             width: 100%;
                             display: flex;
+                            align-items:center;
+                            justify-content:center;
+                            margin:0 auto;
+                            border:1px solid #F1F0F0;
+                            border-radius:10px;
 
                             @include xsBreakPoint {
                                 display: flex;
@@ -150,7 +180,7 @@
                             }
                         }
                         .imagecards {
-                            width: 100px;
+                            width: 70px;
                             object-fit: cover;
                             height: auto;
                             cursor: pointer;
@@ -175,16 +205,14 @@
                     }
 
                     .rightcardimagesshow {
-                        width: 65%;
-                        // border: 2px solid orange;
+                        width: 80%;
                         background-color: rgba(247, 247, 247, 1);
-                        // background-color:red;
                         position: relative;
                         display: flex;
                         align-items: center;
                         justify-content: center;
                         padding: 5px;
-
+                        border-radius:10px;
                         @include xsBreakPoint {
                             width: 100%;
                         }
@@ -193,6 +221,17 @@
                         }
                         @include mdBreakPoint {
                             width: 100%;
+                        }
+                        @include lgBreakPoint
+                        {
+                            width:100%;
+                        padding: 15px;
+
+                        }
+                        @include xlBreakPoint {
+                            width: 100%;
+                        padding: 70px;
+                            
                         }
 
                         .serachlargeimage {
@@ -211,8 +250,12 @@
                                 width: 300px;
                             }
                             @include lgBreakPoint {
-                                height: auto;
-                                width: 350px;
+                                height: 300px;
+                                width: 300px;
+                            }
+                            @include xlBreakPoint {
+                                height: 300px;
+                                width: 300px;
                             }
                         }
                         .heartimagesection {
@@ -250,8 +293,7 @@
                 }
             }
             .rightproductview {
-                width: 35%;
-                // border: 2px solid blue;
+                width: 40%;
                 padding: 0px 20px;
                 @include xsBreakPoint {
                     width: 100%;
@@ -260,6 +302,12 @@
                     width: 100%;
                 }
                 @include mdBreakPoint {
+                    width: 100%;
+                }
+                @include lgBreakPoint {
+                    width: 100%;
+                }
+                @include xlBreakPoint {
                     width: 100%;
                 }
                 .rigthcontenttexts {
@@ -451,10 +499,10 @@
                         width: 50%;
                     }
                     @include lgBreakPoint {
-                        width: 100%;
+                        width: 60%;
                     }
                     @include xlBreakPoint {
-                        width: 100%;
+                        width: 60%;
                     }
                 }
                 .bynowcartbutton {
@@ -473,10 +521,10 @@
                         width: 50%;
                     }
                     @include lgBreakPoint {
-                        width: 100%;
+                        width: 60%;
                     }
                     @include xlBreakPoint {
-                        width: 100%;
+                        width: 60%;
                     }
                 }
             }

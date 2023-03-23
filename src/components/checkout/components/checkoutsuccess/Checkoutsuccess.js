@@ -6,6 +6,7 @@ import styles from './styles/Checkout.module.scss';
 import { useSearchParams } from 'next/navigation';
 import LoaderLogo from './../../../loaderlogo/LoaderLogo';
 import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 function Checkoutsuccess() {
     const history = useRouter();
     const searchParams = useSearchParams();
@@ -24,7 +25,7 @@ function Checkoutsuccess() {
                     progress: undefined,
                     theme: "dark",
                 });
-
+                Cookies.remove("CartDatas");
                 setTimeout(() => {
                     history.push("/profile/orders");
                 }, 500);

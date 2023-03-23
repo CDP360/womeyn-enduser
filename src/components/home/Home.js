@@ -1,10 +1,7 @@
-import { useRouter } from 'next/router'
+
 import React, { useEffect, Fragment, useState } from 'react'
 import styles from './styles/Home.module.scss';
-import Image from 'next/image';
 import Slider from "react-slick";
-import Womeynbanner from '../../../src/assests/homepage-logos/woymenbanner.png';
-import ad1 from '../../../src/assests/homepage-logos/add2.png';
 import SlideNextArrow from './slidenextarrow/SlideNextArrow';
 import SlidePreArrow from './slideprearrow/SlidePreArrow';
 import Categorychoose from './components/categorychoose/Categorychoose';
@@ -12,18 +9,12 @@ import Summarybreaksalary from './components/summarybreaksalary/Summarybreaksala
 import Bestseller from './components/bestseller/Bestseller';
 import Ourwomenpreneurs from './components/ourwomenpreneurs/Ourwomenpreneurs';
 import Eventlatestupdate from './components/eventslatestupdates/Eventlatestupdate';
-import Signupnewsletter from './components/signupfornewsletter/Signupnewsletter';
-import Footer from '../footer/Footer';
-import Scrollbutton from '../scrollbutton/Scrollbutton';
 import Blogs from './components/blogs/Blogs';
 import { useSelector } from 'react-redux';
 import Whatmake from './components/whatmake/Whatmake';
-import LayoutHeader from '../Layoutheader/LayoutHeader';
 import { Bannerimage } from '../../services/banner-image-service/banner-image-service';
 import Skeleton from 'react-loading-skeleton';
 function Home() {
-    const history = useRouter();
-    const [showTopBtn, setShowTopBtn] = useState(false);
     const [bannerimages, setBannerImages] = useState([]);
     const settings = {
         dots: false,
@@ -83,7 +74,6 @@ function Home() {
 
     const GetBannerimages = () => {
         Bannerimage().then((res) => {
-
             setBannerImages(res?.data);
         }).catch((err) => {
             console.log(err);
@@ -111,7 +101,7 @@ function Home() {
                                 return (
                                     <div key={index}>
                                         {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
-                                            <Skeleton className={styles.homebanner}/>
+                                            <Skeleton className={styles.homebanner} />
                                         </>}
                                     </div>
                                 )

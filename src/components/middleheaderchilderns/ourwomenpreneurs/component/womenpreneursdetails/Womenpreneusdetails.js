@@ -13,14 +13,9 @@ import Sweets from '../sweets/Sweets';
 import { WomenpreneursCategoryproducts, WomenpreneursStores } from '../../../../../services/womenpreneurs-services/womenpreneurs-services';
 import { WomenpreneursCategorylistStore } from './../../../../../services/womenpreneurs-services/womenpreneurs-services';
 import Pagination from 'rc-pagination';
-
 import rightarrow from '../../../../../assests/category-logos/leftcategoryarrow.png';
 import leftarrow from '../../../../../assests/category-logos/rightcategoryarrow.png';
-
-
-import users from '../../../../../assests/homepage-logos/usersimageprofile.png';
-
-
+import users from '../../../../../assests/womeynlogos/noimage.png';
 function Womenpreneusdetails({ id }) {
     const [limit, setLimit] = useState([]);
     const [current, setCurrent] = useState(1);
@@ -55,7 +50,6 @@ function Womenpreneusdetails({ id }) {
             setSellers(res?.data);
             setTimeout(() => {
                 setLoading(false);
-
             }, 300)
         }).catch((err) => {
             console.log(err)
@@ -69,7 +63,6 @@ function Womenpreneusdetails({ id }) {
             setCategoryId(res?.data?.results[0]?.id)
             setTimeout(() => {
                 setLoading(false);
-
             }, 300)
 
         }).catch((err) => {
@@ -82,7 +75,6 @@ function Womenpreneusdetails({ id }) {
             setProductList(res?.data?.results);
             setTimeout(() => {
                 setLoading(false);
-
             }, 300)
         }).catch((err) => {
             console.log(err);
@@ -91,7 +83,6 @@ function Womenpreneusdetails({ id }) {
     const handlechnagedata = (id) => {
         setIndexs(id);
     }
-
     const fetchCurrentData = async (id, current) => {
         const resdata = await WomenpreneursCategoryproducts(id, current);
         setProductList(resdata?.data?.results);
@@ -107,7 +98,6 @@ function Womenpreneusdetails({ id }) {
             return <button className='disactive'>
                 <Image src={leftarrow} alt="no image" className={styles.arrowsizefix} />
             </button>;
-
         }
         if (type === 'next') {
             return <button className='activess'>
