@@ -12,8 +12,6 @@ import cartempty from '../../assests/cart-logos/emptycartlogo.png';
 
 import Modal from 'react-bootstrap/Modal';
 function Cart() {
-
-
   const [show, setShow] = useState(false);
 
   const [deleteid, setDeleteid] = useState("");
@@ -259,7 +257,7 @@ function Cart() {
                     <div>
                       Price</div>
                     <div className={styles.textprice}>
-                      ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)}
+                      ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.actualPrice, 0)}
                     </div>
                   </div>
                   {cart?.cartData?.offerPercentag === 0 ? <></> : <div className={styles.splitcartsections}>
