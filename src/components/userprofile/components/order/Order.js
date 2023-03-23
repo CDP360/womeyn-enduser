@@ -1,40 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styles from "./styles/Order.module.scss";
-// import serachicon from '../../assests/homepage-logos/serachicon.png';
 import serachicon from "../../../../assests/homepage-logos/serachicon.png";
 import Image from "next/image";
-
 import { useRouter } from "next/router";
-
 import Allorders from './components/allorders/Allorders'
 import { GetOrders } from "../../../../services/customer-order-service/customer-order-service";
-const data = [
-  {
-    id: 1,
-    status: "In process",
-    delivery: "Delivery Date:3 July 2021",
-    invoice: "INV/20210703/MPL/1374771502",
-    subHead: "Shoes Waffle One",
-    amount: "$24",
-    subHeader: "Additional Details - Size / Color",
-    button: "Track",
-    cancelb: "Cancel",
-  },
-  {
-    id: 2,
-    status: "Delivered",
-    delivery: "Delivery Date:3 July 2021",
-    invoice: "INV/20210703/MPL/1374771502",
-    subHead: "Shoes Waffle One",
-    amount: "$24",
-    subHeader: "Additional Details - Size / Color",
-    button: "Review",
-  },
-];
-
 function Order() {
   const history = useRouter();
-
   const [Orders, setOrders] = useState([]);
   const traking = () => {
     history.push("/order/tracking");
@@ -51,24 +23,10 @@ function Order() {
   }, [])
   return (
     <div>
-      {/* <div className={styles.middlelogo}>
-        <div className={styles.inputsearchsection}>
-          <input
-            type="text"
-            placeholder="Search here..."
-            className="inputserach"
-          />
-          <div>
-            <Image src={serachicon} alt="no image" className="serachicon" />
-          </div>
-        </div>
-      </div> */}
-
       <div className={styles.couponsInputContainer}>
         <input className={styles.couponsSearch} placeholder="Search here..." />
         <Image src={serachicon} className={styles.searchImg} />
       </div>
-
       <div className={styles.middlecontainer}>
         <div className={styles.middlecontainer2}>
           <h5>Orders</h5>
@@ -117,11 +75,8 @@ function Order() {
             </div>
             <hr className={styles.hrSub} />
           </div>
-
           {step === 0 && <div>
-
             <Allorders Orders={Orders} />
-
             {/* {data.map((item, index) => {
               return (
                 <>

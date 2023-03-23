@@ -1,14 +1,8 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react'
 import styles from './styles/Womenview.module.scss';
-import product1 from '../../../../../assests/womeynlogos/i1.png';
-import product2 from '../../../../../assests/womeynlogos/i2.png';
-import product3 from '../../../../../assests/womeynlogos/i3.png';
-import product4 from '../../../../../assests/womeynlogos/i4.png';
 import Image from 'next/image';
-import redstar from '../../../../../assests/womeynlogos/redstar.png';
 import { Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
-import { Cartactions } from '../../../../../Redux/actions/cart/Cartdata';
 import Reviewsproduct from './Reviews/Reviewsproduct';
 import Caroselproducts from './carouselproducts/Caroselproducts';
 import { ContextStore } from '../../../../../Redux/store/Contextstore';
@@ -18,12 +12,11 @@ import { ProductView, ProductLikeWishlist, ProductLikeWishlistGet } from '../../
 import location from '../../../../../assests/product-logo/locationdelivery.png';
 import heartlike from '../../../../../assests/product-logo/likefullcolor.png';
 import heartunlike from '../../../../../assests/product-logo/likeborder.png';
-import LoginModalpopup from './../../../../loginmodalpopup/LoginModalpopup';
 import { toast } from 'react-toastify';
 function Viewproducts({ id }) {
     const history = useRouter();
     const [tokencheck, setTokenset] = useState("");
-    const { state, dispatch } = useContext(ContextStore);
+    const { dispatch } = useContext(ContextStore);
     const [indexs, setIndex] = useState(0);
     const [productdata, setProductData] = useState([]);
     const [productvariations, setProductVariations] = useState([]);
@@ -84,14 +77,8 @@ function Viewproducts({ id }) {
     }
 
     const handleChange = (cartdata, productvariations) => {
-        // console.log(productvariations[0]?.name, "productvariations")
-        // if(productvariations[0]?.name)
-        // {
-        //     alert("errr");
-        // }
 
         const variationslist = []
-
         const values = productvariations?.map((item, index) => {
             variationslist.push(item?.name);
         })
@@ -128,8 +115,6 @@ function Viewproducts({ id }) {
         else {
             dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
         }
-
-        // dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
     }
     useEffect(() => {
         ProductView(productnames).then((res) => {
@@ -164,7 +149,6 @@ function Viewproducts({ id }) {
         });
         const tokencheck = localStorage.getItem("womenUserToken");
         setTokenset(tokencheck)
-
     }, [productnames, tokencheck]);
 
     useEffect(() => {
@@ -192,7 +176,6 @@ function Viewproducts({ id }) {
                 wishlistId: id
             }
             ProductLikeWishlist(likeid).then((res) => {
-
             }).catch((err) => {
                 console.log(err);
             })
@@ -389,15 +372,6 @@ function Viewproducts({ id }) {
                                                     </>
                                                 )
                                             })}
-
-                                            {/* {productvariations?.variationValues?.map((item, index) => {
-                                            return (
-                                                <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex1(index)}>
-                                                    {item}
-
-                                                </div>
-                                            )
-                                        })} */}
                                         </div>
                                     </div>
                                 </div>
@@ -505,8 +479,6 @@ function Viewproducts({ id }) {
                         <Caroselproducts />
                     </div>
                 </div>
-
-
             </div>
         </Fragment>
     )

@@ -1,90 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react'
 import styles from './styles/ConfirmOrders.module.scss';
 import { ContextStore } from '../../../../Redux/store/Contextstore';
-import { CustomerOrders } from '../../../../services/customer-order-service/customer-order-service';
-import { toast } from 'react-toastify';
 function Confirmorders({ name, totalPrice, step, setStep }) {
-    const [overs, setOvers] = useState([]);
-    const { state, dispatch } = useContext(ContextStore);
-
-    const [orders, setOrders] = useState([]);
-
+    const { state } = useContext(ContextStore);
     const { cart } = state;
-    const datas = [
-        {
-            id: 1,
-            name: "kalai",
-            address: 1,
-            saleprice: 700,
-            counts: 5,
-            phonenumbetrs: 2,
-        },
-        {
-            id: 2,
-            name: "kalai",
-            address: 1,
-            saleprice: 700,
-            counts: 5,
-            phonenumbetrs: 2,
-        },
-        {
-            id: 3,
-            name: "kalai",
-            address: 1,
-            saleprice: 700,
-            counts: 5,
-            phonenumbetrs: 2,
-        }
-    ]
-
-    // useEffect(() => {
-    //     let storesfilter = [];
-    //     cart?.cartData?.map((item, index) => {
-    //         storesfilter.push({
-    //             productName: item?.productName,
-    //             productId: item?.id,
-    //             price: item?.salePrice,
-    //             deliveryFee: "40",
-    //             quantity: item?.quantity,
-    //             variations: item?.variations,
-    //             sellerId: item?.sellerId,
-    //             sellerBusinessName: item?.sellerBussinesName,
-    //             productThumbImage: item?.productThumbImage,
-    //             couponName: "SUMMER50",
-    //         })
-    //     })
-    //     setOrders(storesfilter);
-    // }, [overs, name])
-
-
     const deliverOrderConfirm = () => {
-
         setStep(step + 1);
-
-        // const userName=JSON.parse(localStorage.getItem("womenuser"));
-        // const overAllorders = {
-        //     deliveryAddressId: name,
-        //     itemsOrdered: orders,
-        //     totalOrderAmount:totalPrice,
-        //     customerName:userName
-        // }
-        // CustomerOrders(overAllorders).then((res) => {
-        //     toast.success(res?.data?.message, {
-        //         position: "top-center",
-        //         autoClose: 3000,
-        //         hideProgressBar: false,
-        //         closeOnClick: true,
-        //         pauseOnHover: true,
-        //         draggable: true,
-        //         progress: undefined,
-        //         theme: "success",
-
-        //     })
-        // }).catch((err) => {
-        //     console.log(err);
-        // })
-
-        // console.log("cart", overAllorders)
     }
     return (
         <div className={styles.mainconfirmorders}>

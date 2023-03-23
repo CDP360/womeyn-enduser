@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react'
 import Sidebar from './components/sidebar/Sidebar';
 import styles from './styles/Userprofile.module.scss';
 import { UserProfileInformation } from '../../services/user-login-service/user-login-services';
-import { useDispatch } from 'react-redux';
-import { LoginActions } from '../../Redux/actions/loginactions/Loginaction';
 import { toast } from 'react-toastify';
 import Profile from './components/profile/Profile';
 import EditProfile from './components/profile/editprofile/EditProfile';
@@ -16,7 +14,7 @@ import Coupon from './components/coupons/Coupons';
 
 
 
-function Userprofile({ name, users, error }) {
+function Userprofile({ name, error }) {
     const history = useRouter();
     const [user, setUser] = useState([]);
     useEffect(() => {
@@ -57,7 +55,6 @@ function Userprofile({ name, users, error }) {
     return (
         <>
             {error == "errors" ? <>
-
                 <div>
                     no records found!!!
                 </div>
@@ -72,7 +69,6 @@ function Userprofile({ name, users, error }) {
                                 {name == "youraccount" && <div>
                                     <Profile />
                                 </div>}
-
                                 {name == "edit" && <div>
                                     <EditProfile />
                                 </div>}
@@ -81,16 +77,11 @@ function Userprofile({ name, users, error }) {
 
                                     <Manageaddress />
                                 </div>
-
                                 }
                                 {name == "changepassword" && <div>
                                     <Changepassword />
                                 </div>
-
-
-
                                 }
-
                                 {name == "orders" && <div>
 
                                     <Orders />
@@ -100,16 +91,12 @@ function Userprofile({ name, users, error }) {
                                 {name == "favorts" && <div>
                                     <Favorts />
                                 </div>
-
                                 }
                                 {name == "coupons" && <div>
                                     <Coupon />
                                 </div>
 
                                 }
-
-
-
                             </div>
                         </div>
                     </div>

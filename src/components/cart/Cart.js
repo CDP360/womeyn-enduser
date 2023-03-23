@@ -1,10 +1,5 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react'
-import { decrement, deleteProduct, increment } from "../../Redux/actions";
-import { cartContext } from './../../Redux/store/CartContext';
-import { useDispatch, useSelector } from 'react-redux';
-import { CartActionDelete, Cartactions } from '../../Redux/actions/cart/Cartdata';
 import styles from './styles/Cart.module.scss';
-import usepromo from '../../assests/womeynlogos/cartprice.png';
 import delteteicon from '../../assests/cart-logos/deleteicons.png';
 import addicon from '../../assests/cart-logos/addcart.png';
 import minusicon from '../../assests/cart-logos/minuscart.png';
@@ -23,7 +18,7 @@ function Cart() {
   const [carts, setCart] = useState([]);
   const TotalPrice = () => {
     let prices = 0;
-    cart?.cartData?.map((item, index) => {
+    cart?.cartData?.map((item) => {
       prices = Number(item.salePrice) + prices;
     });
     setPrice(prices);
@@ -43,17 +38,6 @@ function Cart() {
     dispatch({ type: "CART_REMOVE", payload: e })
 
   }
-  const handleChange = (e) => {
-    const value = e.target.value;
-    const checked = e.target.checked;
-    if (checked) {
-      setDeleteselect(value)
-    }
-    else {
-      // setDeleteselect(deleteselect.filter((e) => e != value));
-    }
-  }
-
   const handleAdd = (index1, item) => {
     const CARTS = carts?.map((carts, index) => {
       return index1 === index ? { ...carts, quantity: item?.quantity + 1 } : carts
@@ -90,17 +74,6 @@ function Cart() {
           </div>
           <div className={styles.cartsection}>
             <div className={styles.leftcartsection}>
-              {/* <div className={styles.selectcartsection}>
-                <div className={styles.sellectallsection}>
-                  <input type="checkbox" name="allselect" onChange={handleChange} />
-                  <div>
-                    Select All
-                  </div>
-                </div>
-                <div className={styles.removesection} onClick={handleDelete}>
-                  Remove
-                </div>
-              </div> */}
               <div className="d-none d-lg-block">
                 {cart?.cartData?.length > 0 ? <div className={styles.bordersectioncart}>
                   {cart?.cartData?.map((item, index) => {
@@ -108,9 +81,6 @@ function Cart() {
                       <>
                         <div className={styles.cartlistsection} key={index}>
                           <div className={styles.cartimagesection}>
-                            {/* <div className={"d-flex align-items-center justify-content-center"}>
-                              <input type="checkbox" name={item?.name} value={item?.id} onChange={handleDelete} />
-                            </div> */}
                             <div>
                               <img
                                 className={styles.editprofilesection}
@@ -201,9 +171,6 @@ function Cart() {
                             <div>
                               <div>{item?.productName}
                               </div>
-                              {/* <div>
-                                Rs.{item?.salePrice}
-                              </div> */}
                               <div>
                                 Rs.{item?.salePrice} <span>
                                   {item?.offerPercentag == 0 ? <span></span> : <>
@@ -283,7 +250,6 @@ function Cart() {
                     <div>
                       Discount</div>
                     <div className={styles.textprice}>
-                      {/* $ {cart?.cartData?.offerPercentag} */}
                       ${cart?.cartData?.reduce((acc, current) => acc + Number(current.salePrice - current.actualPrice), 0)}
                     </div>
                   </div>}

@@ -3,15 +3,9 @@ import { ContextStore } from '../../../../Redux/store/Contextstore';
 import styles from './styles/Payment.module.scss';
 import React, { useState, useEffect, useContext } from 'react';
 import { CustomerOrders } from '../../../../services/customer-order-service/customer-order-service';
-import { useRouter } from 'next/router';
 function Payment({ totalPrice, addressid }) {
-
-  const history = useRouter();
-
-  const { state, dispatch } = useContext(ContextStore);
-
+  const { state } = useContext(ContextStore);
   const [orders, setOrders] = useState([]);
-
   const { cart } = state;
   const paymentMethods = [
     {
