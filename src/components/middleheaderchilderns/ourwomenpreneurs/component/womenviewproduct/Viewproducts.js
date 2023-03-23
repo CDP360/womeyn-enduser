@@ -90,6 +90,14 @@ function Viewproducts({ id }) {
         //     alert("errr");
         // }
 
+        const variationslist=[]
+
+        const values=productvariations?.map((item,index)=>{
+            variationslist.push(item?.name);
+        })
+
+        console.log(variationslist,"variationslist")
+
         const name = productvariations[0]?.name;
         const dataSize = {
             name: name,
