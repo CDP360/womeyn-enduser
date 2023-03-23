@@ -29,9 +29,7 @@ function Checkoutsuccess() {
                     history.push("/profile/orders");
                 }, 500);
             }
-            else {
-                toast.error("Something Error!!!!");
-            }
+         
 
         }).catch((err) => {
             console.log(err);
