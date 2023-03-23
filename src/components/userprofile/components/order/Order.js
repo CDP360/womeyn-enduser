@@ -5,8 +5,9 @@ import serachicon from "../../../../assests/homepage-logos/serachicon.png";
 import Image from "next/image";
 
 import { useRouter } from "next/router";
-import { GetOrders } from "../../../../services/user-profile-service/user-profile-services";
+
 import Allorders from './components/allorders/Allorders'
+import { GetOrders } from "../../../../services/customer-order-service/customer-order-service";
 const data = [
   {
     id: 1,
@@ -34,7 +35,7 @@ const data = [
 function Order() {
   const history = useRouter();
 
-  const [Orders,setOrders]=useState([]);
+  const [Orders, setOrders] = useState([]);
   const traking = () => {
     history.push("/order/tracking");
   };
@@ -42,8 +43,8 @@ function Order() {
 
   useEffect(() => {
     GetOrders().then((res) => {
-console.log(res?.data?.results,"wrong");
-setOrders(res?.data?.results);
+      console.log(res?.data?.results, "wrong");
+      setOrders(res?.data?.results);
     }).catch((err) => {
       console.log(err);
     })
@@ -119,7 +120,7 @@ setOrders(res?.data?.results);
 
           {step === 0 && <div>
 
-            <Allorders Orders={Orders}/>
+            <Allorders Orders={Orders} />
 
             {/* {data.map((item, index) => {
               return (

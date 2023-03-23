@@ -29,7 +29,7 @@ function Checkoutsuccess() {
                     history.push("/profile/orders");
                 }, 500);
             }
-         
+
 
         }).catch((err) => {
             console.log(err);

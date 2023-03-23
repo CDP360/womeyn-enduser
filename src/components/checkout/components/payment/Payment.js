@@ -27,7 +27,7 @@ function Payment({ totalPrice, addressid }) {
 
   useEffect(() => {
     let storesfilter = [];
-    cart?.cartData?.map((item, index) => {
+    cart?.cartData?.map((item) => {
       storesfilter.push({
         productName: item?.productName,
         productId: item?.id,
@@ -71,18 +71,16 @@ function Payment({ totalPrice, addressid }) {
   return (
     <div className={styles.mainsectionpayment}>
       <div className={styles.paymentsections}>
-
         {paymentMethods?.map((item, index) => {
           return (
             <div key={index} className={styles.paymentsection}>
-              <input type="radio" id="html" name="fav_language" value="HTML" />
+              <input type="radio" id={item?.name} name={item?.name} value={item?.name} />
               {item?.name}
             </div>
           )
         })}
         <div className="mt-5">
           <button className={styles.usepayments} onClick={deliverOrderConfirm}>
-            {/* Use this payment method  */}
             Continue Payment
           </button>
         </div>

@@ -29,13 +29,6 @@ export function DeleteAddress(id) {
 
 
 
-export function GetOrders() {
-    return instanceBaseurl.get(`/customer/order`).then((res) => {
-        return res;
-    }).catch((err) => {
-        return err;
-    })
-}
 
 
 

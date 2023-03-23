@@ -6,3 +6,11 @@ export function CustomerOrders(data) {
         return err;
     })
 }
+
+export function GetOrders() {
+    return instanceBaseurl.get(`/customer/order`).then((res) => {
+        return res
+    }).catch((err) => {
+        return err;
+    })
+}
