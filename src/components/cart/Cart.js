@@ -79,6 +79,9 @@ function Cart() {
     router.push(`/login?redirect=/cart`)
   }
 
+
+  console.log(cart,"cart")
+
   return (
     <Fragment>
       <div className='mainsection'>
@@ -116,7 +119,7 @@ function Cart() {
                                 </span>
                               </div>
                               <div>
-                                {item?.productDescription}
+                                {/* {item?.productDescription} */}
                               </div>
                             </div>
                           </div>

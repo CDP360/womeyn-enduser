@@ -34,12 +34,15 @@ function Checkoutsuccess() {
                     Cookies.remove("CartDatas");
                     setTimeout(() => {
                         history.push("/profile/orders");
-                        window.location.reload();
                     }, 500);
                 }
             }).catch((err) => {
                 console.log(err);
             })
+        }
+        else if(paymentId_id && PayerID_id )
+        {
+alert("success")
         }
 
 

@@ -8,7 +8,7 @@ import Caroselproducts from './carouselproducts/Caroselproducts';
 import { ContextStore } from '../../../../../Redux/store/Contextstore';
 import starstart from '../../../../../assests/category-logos/starstart.png';
 import starend from '../../../../../assests/category-logos/starend.png';
-import { ProductView, ProductLikeWishlist, ProductLikeWishlistGet,ProductLikeandUnlikeCheck } from '../../../../../services/productview-service/productview-services';
+import { ProductView, ProductLikeWishlist, ProductLikeWishlistGet, ProductLikeandUnlikeCheck } from '../../../../../services/productview-service/productview-services';
 import location from '../../../../../assests/product-logo/locationdelivery.png';
 import heartlike from '../../../../../assests/product-logo/likefullcolor.png';
 import heartunlike from '../../../../../assests/product-logo/likeborder.png';
@@ -34,16 +34,27 @@ function Viewproducts({ id }) {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
 
-
     const Checkout = (cartdata, productvariations) => {
-        const name = productvariations[0]?.name;
-        const dataSize = {
-            name: name,
-            value: productSize
-        }
-        const urls = `Please Select ${name}`;
-        if (name) {
-            if (productSize.length === 0) {
+
+
+        const datas = productvariations?.length >= 0 && productvariations[0]?.name;
+        const datas1 = productvariations?.length >= 1 && productvariations[0]?.name && productvariations[1]?.name;
+        const datas2 = productvariations?.length >= 2 && productvariations[0]?.name && productvariations[1]?.name && productvariations[2]?.name;
+
+
+        const overalls=[]
+        if (datas) {
+
+           
+            overalls.push(
+                {
+                    name: datas,
+                    value: productSize1
+                }
+            )
+           
+            const urls = `Please Select ${datas}`;
+            if (productSize1.length === 0) {
                 toast.error(urls,
                     {
                         position: "top-center",
@@ -57,18 +68,94 @@ function Viewproducts({ id }) {
                     }
                 );
             }
+               
+
         }
 
-        if (name) {
-            if (productSize) {
-                router?.push("/checkout")
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        if(datas)
+        {
+            if(productSize1)
+            {
+                router?.push("/login?redirect=/checkout")
+
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations:overalls, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
             }
         }
-        else {
-            router?.push("/checkout")
-            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        else
+        {
+                router?.push("/login?redirect=/checkout")
+
+        dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations:[], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
         }
+        const overalls1=[]
+        if (datas1) {
+            overalls1.push(
+                {
+                    name: datas,
+                    value: productSize1
+                },
+                {
+                    name: datas1,
+                    value: productSize2
+                }
+            )
+        
+        }
+        if(datas1)
+        {
+            if(productSize2)
+            {
+                router?.push("/checkout")
+
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations:overalls1, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+            }
+        }
+        else
+        {
+                router?.push("/checkout")
+
+        dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations:[], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+        }
+
+
+
+
+        // const name = productvariations[0]?.name;
+        // const dataSize = {
+        //     name: name,
+        //     value: productSize
+        // }
+        // const urls = `Please Select ${name}`;
+        // if (name) {
+        //     if (productSize.length === 0) {
+        //         toast.error(urls,
+        //             {
+        //                 position: "top-center",
+        //                 autoClose: 3000,
+        //                 hideProgressBar: false,
+        //                 closeOnClick: true,
+        //                 pauseOnHover: true,
+        //                 draggable: true,
+        //                 progress: undefined,
+        //                 theme: "dark",
+        //             }
+        //         );
+        //     }
+        // }
+
+        // if (name) {
+        //     if (productSize) {
+        //         router?.push("/checkout")
+        //         dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        //     }
+        // }
+        // else {
+        //     router?.push("/checkout")
+        //     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        // }
     }
     const CheckLoginUsers = (data) => {
         const PathQuery = history?.asPath
@@ -76,7 +163,7 @@ function Viewproducts({ id }) {
         router.push(`/login?redirect=/product/${data}`);
     }
 
-    const [likecheck,setLikecheck]=useState("");
+    const [likecheck, setLikecheck] = useState("");
     const [productSize, setProductSize] = useState("");
     const [productSize1, setProductSize1] = useState("");
     const [productSize2, setProductSize2] = useState("");
@@ -97,21 +184,28 @@ function Viewproducts({ id }) {
     }
 
     const handleChange = (cartdata, productvariations) => {
-        const variationslist = []
-        const values = productvariations?.map((item, index) => {
-            variationslist.push(item?.name);
-        })
 
-        console.log(variationslist, "variationslist")
 
-        const name = productvariations[0]?.name;
-        const dataSize = {
-            name: name,
-            value: productSize
-        }
-        const urls = `Please Select ${name}`;
-        if (name) {
-            if (productSize.length === 0) {
+     
+
+        const datas = productvariations?.length >= 0 && productvariations[0]?.name;
+        const datas1 = productvariations?.length >= 1 && productvariations[0]?.name && productvariations[1]?.name;
+        const datas2 = productvariations?.length >= 2 && productvariations[0]?.name && productvariations[1]?.name && productvariations[2]?.name;
+
+
+        const overalls=[]
+        if (datas) {
+
+           
+            overalls.push(
+                {
+                    name: datas,
+                    value: productSize1
+                }
+            )
+           
+            const urls = `Please Select ${datas}`;
+            if (productSize1.length === 0) {
                 toast.error(urls,
                     {
                         position: "top-center",
@@ -125,15 +219,97 @@ function Viewproducts({ id }) {
                     }
                 );
             }
+               
+
         }
-        if (name) {
-            if (productSize) {
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+        if(datas)
+        {
+            if(productSize1)
+            {
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations:overalls, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
             }
         }
-        else {
-            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        else
+        {
+        dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations:[], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
         }
+        const overalls1=[]
+        if (datas1) {
+            overalls1.push(
+                {
+                    name: datas,
+                    value: productSize1
+                },
+                {
+                    name: datas1,
+                    value: productSize2
+                }
+            )
+        
+        }
+        if(datas1)
+        {
+            if(productSize2)
+            {
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations:overalls1, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+            }
+        }
+        else
+        {
+        dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations:[], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+        }
+
+
+
+       
+       
+
+  
+       
+
+        
+      
+
+
+
+      
+
+
+
+        // const name = productvariations[0]?.name;
+        // const dataSize = {
+        //     name: name,
+        //     value: productSize
+        // }
+        // const urls = `Please Select ${name}`;
+        // if (name) {
+        //     if (productSize.length === 0) {
+        //         toast.error(urls,
+        //             {
+        //                 position: "top-center",
+        //                 autoClose: 3000,
+        //                 hideProgressBar: false,
+        //                 closeOnClick: true,
+        //                 pauseOnHover: true,
+        //                 draggable: true,
+        //                 progress: undefined,
+        //                 theme: "dark",
+        //             }
+        //         );
+        //     }
+        // }
+        // if (name) {
+        //     if (productSize) {
+        //         dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        //     }
+        // }
+        // else {
+        //     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        // }
     }
     useEffect(() => {
         ProductView(productnames).then((res) => {
@@ -177,12 +353,12 @@ function Viewproducts({ id }) {
             console.log(err);
         })
 
-        ProductLikeandUnlikeCheck(likecheck).then((res)=>{
-console.log(res?.data,"likecheck")
-        }).catch((err)=>{
+        ProductLikeandUnlikeCheck(likecheck).then((res) => {
+            console.log(res?.data, "likecheck")
+        }).catch((err) => {
             console.log(err);
         })
-    }, [productSize, productseller,likecheck])
+    }, [productSize, productseller, likecheck])
 
 
     const LikeWishlist = (id) => {
@@ -218,14 +394,28 @@ console.log(res?.data,"likecheck")
     const buyNowPathNavigate = (cartdata, productvariations) => {
         const pathnames = "/checkout";
         localStorage.setItem("productwhishlist", JSON.stringify(pathnames));
-        const name = productvariations[0]?.name;
-        const dataSize = {
-            name: name,
-            value: productSize
-        }
-        const urls = `Please Select ${name}`;
-        if (name) {
-            if (productSize.length === 0) {
+
+
+
+        
+        const datas = productvariations?.length >= 0 && productvariations[0]?.name;
+        const datas1 = productvariations?.length >= 1 && productvariations[0]?.name && productvariations[1]?.name;
+        const datas2 = productvariations?.length >= 2 && productvariations[0]?.name && productvariations[1]?.name && productvariations[2]?.name;
+
+
+        const overalls=[]
+        if (datas) {
+
+           
+            overalls.push(
+                {
+                    name: datas,
+                    value: productSize1
+                }
+            )
+           
+            const urls = `Please Select ${datas}`;
+            if (productSize1.length === 0) {
                 toast.error(urls,
                     {
                         position: "top-center",
@@ -239,18 +429,104 @@ console.log(res?.data,"likecheck")
                     }
                 );
             }
+               
+
         }
 
-        if (name) {
-            if (productSize) {
+        if(datas)
+        {
+            if(productSize1)
+            {
                 router?.push("/login?redirect=/checkout")
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations:overalls, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
             }
         }
-        else {
-            router?.push("/login?redirect=/checkout")
-            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        else
+        {
+                router?.push("/login?redirect=/checkout")
+
+        dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations:[], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
         }
+        const overalls1=[]
+        if (datas1) {
+            overalls1.push(
+                {
+                    name: datas,
+                    value: productSize1
+                },
+                {
+                    name: datas1,
+                    value: productSize2
+                }
+            )
+        
+        }
+        if(datas1)
+        {
+            if(productSize2)
+            {
+                router?.push("/login?redirect=/checkout")
+
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations:overalls1, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+            }
+        }
+        else
+        {
+                router?.push("/login?redirect=/checkout")
+
+        dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations:[], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // const name = productvariations[0]?.name;
+        // const dataSize = {
+        //     name: name,
+        //     value: productSize
+        // }
+        // const urls = `Please Select ${name}`;
+        // if (name) {
+        //     if (productSize.length === 0) {
+        //         toast.error(urls,
+        //             {
+        //                 position: "top-center",
+        //                 autoClose: 3000,
+        //                 hideProgressBar: false,
+        //                 closeOnClick: true,
+        //                 pauseOnHover: true,
+        //                 draggable: true,
+        //                 progress: undefined,
+        //                 theme: "dark",
+        //             }
+        //         );
+        //     }
+        // }
+
+        // if (name) {
+        //     if (productSize) {
+        //         router?.push("/login?redirect=/checkout")
+        //         dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        //     }
+        // }
+        // else {
+        //     router?.push("/login?redirect=/checkout")
+        //     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        // }
     }
 
     return (
@@ -346,7 +622,8 @@ console.log(res?.data,"likecheck")
 
                             <div>
 
-                                {productvariations[0]?.name}
+
+                                <div className={styles.fontweightsizes}> {productvariations[0]?.name}:</div>
                                 <div className={styles.sizesection}>
                                     <div className={styles.sizes}>
                                         {productvariations[0]?.variationValues?.map((item, index) => {
@@ -363,7 +640,7 @@ console.log(res?.data,"likecheck")
 
                                 </div>
 
-                                {productvariations[1]?.name}
+                                <div className={styles.fontweightsizes}> {productvariations[1]?.name ? <>{productvariations[1]?.name}:</> : <></>} </div>
                                 <div className={styles.sizesection}>
                                     <div className={styles.sizes}>
                                         {productvariations[1]?.variationValues?.map((item, index) => {
@@ -379,7 +656,7 @@ console.log(res?.data,"likecheck")
                                     </div>
 
                                 </div>
-                                {productvariations[2]?.name}
+                                <div className={styles.fontweightsizes}> {productvariations[2]?.name ? <>{productvariations[2]?.name}:</> : <></>} </div>
                                 <div className={styles.sizesection}>
                                     <div className={styles.sizes}>
                                         {productvariations[2]?.variationValues?.map((item, index) => {
@@ -394,7 +671,7 @@ console.log(res?.data,"likecheck")
                                         })}
                                     </div>
                                 </div>
-                                {productvariations[3]?.name}
+                                <div className={styles.fontweightsizes}> {productvariations[3]?.name ? <>{productvariations[3]?.name}:</> : <></>} </div>
                                 {productvariations[3]?.variationValues?.map((item, index) => {
                                     return (
                                         <div className={`${index4 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
@@ -405,15 +682,9 @@ console.log(res?.data,"likecheck")
                                         </div>
                                     )
                                 })}
-                                {productvariations[4]?.name}
-                                {productvariations[5]?.name}
-                                {productvariations[6]?.name}
-
-
-
-
-
-
+                                <div className={styles.fontweightsizes}> {productvariations[4]?.name ? <>{productvariations[4]?.name}:</> : <></>} </div>
+                                <div className={styles.fontweightsizes}> {productvariations[5]?.name ? <>{productvariations[5]?.name}:</> : <></>} </div>
+                                <div className={styles.fontweightsizes}> {productvariations[6]?.name ? <>{productvariations[6]?.name}:</> : <></>} </div>
                             </div>
 
                             {/* <div className="mt-2">

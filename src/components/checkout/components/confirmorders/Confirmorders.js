@@ -169,7 +169,7 @@ function Confirmorders({ name, totalPrice, step, setStep,setCouponName }) {
                             </span>
                           </div>
                           <div>
-                            {item?.productDescription}
+                            {/* {item?.productDescription} */}
                           </div>
                         </div>
                       </div>
@@ -249,7 +249,7 @@ function Confirmorders({ name, totalPrice, step, setStep,setCouponName }) {
                             </span>
                           </div>
                           <div>
-                            {item?.productDescription}
+                            {/* {item?.productDescription} */}
                           </div>
                         </div>
                       </div>
