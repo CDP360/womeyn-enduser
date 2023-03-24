@@ -8,7 +8,7 @@ import Caroselproducts from './carouselproducts/Caroselproducts';
 import { ContextStore } from '../../../../../Redux/store/Contextstore';
 import starstart from '../../../../../assests/category-logos/starstart.png';
 import starend from '../../../../../assests/category-logos/starend.png';
-import { ProductView, ProductLikeWishlist, ProductLikeWishlistGet } from '../../../../../services/productview-service/productview-services';
+import { ProductView, ProductLikeWishlist, ProductLikeWishlistGet,ProductLikeandUnlikeCheck } from '../../../../../services/productview-service/productview-services';
 import location from '../../../../../assests/product-logo/locationdelivery.png';
 import heartlike from '../../../../../assests/product-logo/likefullcolor.png';
 import heartunlike from '../../../../../assests/product-logo/likeborder.png';
@@ -75,15 +75,13 @@ function Viewproducts({ id }) {
         localStorage.setItem("productwhishlist", JSON.stringify(PathQuery));
         router.push(`/login?redirect=/product/${data}`);
     }
+
+    const [likecheck,setLikecheck]=useState("");
     const [productSize, setProductSize] = useState("");
     const [productSize1, setProductSize1] = useState("");
     const [productSize2, setProductSize2] = useState("");
     const [productSize3, setProductSize3] = useState("");
     const [productSize4, setProductSize4] = useState("");
-
-
-
-
     const handleSizeProduct1 = (data) => {
         console.log(data, "data")
         setProductSize1(data);
@@ -99,7 +97,6 @@ function Viewproducts({ id }) {
     }
 
     const handleChange = (cartdata, productvariations) => {
-
         const variationslist = []
         const values = productvariations?.map((item, index) => {
             variationslist.push(item?.name);
@@ -179,10 +176,17 @@ function Viewproducts({ id }) {
         }).catch((err) => {
             console.log(err);
         })
-    }, [productSize, productseller])
+
+        ProductLikeandUnlikeCheck(likecheck).then((res)=>{
+console.log(res?.data,"likecheck")
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }, [productSize, productseller,likecheck])
 
 
     const LikeWishlist = (id) => {
+        setLikecheck(id);
         if (like) {
             const likeid = {
                 productId: id

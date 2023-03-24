@@ -11,31 +11,39 @@ function Checkoutsuccess() {
     const history = useRouter();
     const searchParams = useSearchParams();
     const Transaction_id = searchParams.get('transaction_id');
-    console.log(Transaction_id, "Transaction_id");
+    const paymentId_id = searchParams.get('paymentId');
+    const PayerID_id = searchParams.get('PayerID');
+    console.log({
+        paymentId_id,
+        PayerID_id
+    }, "Transaction_id");
     useEffect(() => {
-        CheckoutSuccessUpdate(Transaction_id).then((res) => {
-            if (res?.data?.message == "Order completed successfully") {
-                toast.success(res?.data?.message, {
-                    position: "top-center",
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-                Cookies.remove("CartDatas");
-                setTimeout(() => {
-                    history.push("/profile/orders");
-                    window.location.reload();
-                }, 500);
-            }
+        if (Transaction_id) {
+            CheckoutSuccessUpdate(Transaction_id).then((res) => {
+                if (res?.data?.message == "Order completed successfully") {
+                    toast.success(res?.data?.message, {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                    Cookies.remove("CartDatas");
+                    setTimeout(() => {
+                        history.push("/profile/orders");
+                        window.location.reload();
+                    }, 500);
+                }
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
 
 
-        }).catch((err) => {
-            console.log(err);
-        })
+
     }, [Transaction_id])
     return (
         <div className={styles.success}>

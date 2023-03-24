@@ -21,8 +21,8 @@ function Checkout() {
   const [step1, setStep1] = useState('');
   const [step2, setStep2] = useState('');
   const [step3, setStep3] = useState('');
-  const [couponname,setCouponName]=useState("");
-  const totalPrice = cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0);
+  const [couponname, setCouponName] = useState("");
+  const totalPrice = cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice+40, 0);
   useEffect(() => {
     if (step === 0) {
       setStep1("active")
@@ -71,10 +71,10 @@ function Checkout() {
                 </div>}
                 {step === 1 && <div>
                   {/* <Payment /> */}
-                  <Confirmorders name={name} totalPrice={totalPrice} setStep={setStep} step={step}setCouponName={setCouponName} />
+                  <Confirmorders name={name} totalPrice={totalPrice} setStep={setStep} step={step} setCouponName={setCouponName} />
                 </div>}
                 {step === 2 && <div>
-                  <Payment addressid={name} totalPrice={totalPrice} couponname={couponname}/>
+                  <Payment addressid={name} totalPrice={totalPrice} couponname={couponname} />
                 </div>}
               </div>
             </div>
@@ -101,14 +101,14 @@ function Checkout() {
                     <div>
                       Price</div>
                     <div className={styles.textprice}>
-                    ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.actualPrice, 0)}
+                      ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.actualPrice, 0)}
                     </div>
                   </div>
                   <div className={styles.splitcartsections}>
                     <div>
                       Discount</div>
                     <div className={styles.textprice}>
-                    ${cart?.cartData?.reduce((acc, current) => acc + Number(current.salePrice - current.actualPrice), 0)}
+                      ${cart?.cartData?.reduce((acc, current) => acc + Number(current.salePrice - current.actualPrice), 0)}
                     </div>
                   </div>
                   <div className={styles.splitcartsections}>
@@ -126,7 +126,7 @@ function Checkout() {
                   <div className={styles.pricetexts}>
                     Total Payable</div>
                   <div className={styles.textprices}>
-                    ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice+40, 0)}
+                    ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice + 40, 0)}
 
                   </div>
                 </div>
@@ -142,7 +142,7 @@ function Checkout() {
                   } */}
                 </div>
 
-                
+
               </div>
             </div>
           </div>

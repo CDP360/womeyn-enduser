@@ -25,3 +25,13 @@ export function ProductLikeWishlistGet() {
         return err;
     })
 }
+
+export function ProductLikeandUnlikeCheck(id) {
+    return instanceBaseurl.post(`/customer/wishlist/${id}`).then((res) => {
+        return res;
+    }).catch((err) => {
+        return err;
+    })
+}
+
+
