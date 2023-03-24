@@ -4,9 +4,11 @@ import styles from './styles/Payment.module.scss';
 import React, { useState, useEffect, useContext } from 'react';
 import { CustomerOrders } from '../../../../services/customer-order-service/customer-order-service';
 
-function Payment({ totalPrice, addressid }) {
+function Payment({ totalPrice, addressid ,couponname}) {
   const { state} = useContext(ContextStore);
   const [orders, setOrders] = useState([]);
+  const [paymentType, setPaymentType] = useState("");
+
   const { cart } = state;
   const paymentMethods = [
     {
@@ -33,7 +35,7 @@ function Payment({ totalPrice, addressid }) {
         sellerId: item?.sellerId,
         sellerBusinessName: item?.sellerBusinessName,
         productThumbImage: item?.productThumbImage,
-        couponName: "SUMMER50",
+        couponName: couponname,
       })
     })
     setOrders(storesfilter);
@@ -43,33 +45,32 @@ function Payment({ totalPrice, addressid }) {
     const userName = JSON.parse(localStorage.getItem("womenuser"));
     const overAllorders = {
       deliveryAddressId: addressid,
+      paymentMethod:paymentType,
       itemsOrdered: orders,
       totalOrderAmount: totalPrice,
       customerName: userName
     }
-    CustomerOrders(overAllorders).then((res) => {
-      // toast.success(res?.data?.message, {
-      //   position: "top-center",
-      //   autoClose: 3000,
-      //   hideProgressBar: false,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      //   theme: "success",
-      // })
-      window.location = res?.data?.url;
-    }).catch((err) => {
-      console.log(err);
-    })
+    // CustomerOrders(overAllorders).then((res) => {
+      
+    //   window.location = res?.data?.url;
+    // }).catch((err) => {
+    //   console.log(err);
+    // })
+
+    console.log(overAllorders,"overAllorders")
+  }
+
+  const onOptionChange=(e)=>{
+    setPaymentType(e.target.value);
   }
   return (
     <div className={styles.mainsectionpayment}>
       <div className={styles.paymentsections}>
+        
         {paymentMethods?.map((item, index) => {
           return (
             <div key={index} className={styles.paymentsection}>
-              <input type="radio" id="payment" name={item?.name} value={item?.id} />
+              <input type="radio" name={item?.name} value={item?.name} checked={paymentType==item?.name}  onChange={onOptionChange} />
               {item?.name}
             </div>
           )

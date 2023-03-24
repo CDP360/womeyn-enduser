@@ -14,6 +14,14 @@
   @include smBreakPoint {
     flex-direction: column;
   }
+  @include mdBreakPoint
+  {
+    gap:5px;
+  }
+  @include lgBreakPoint
+  {
+    gap:10px;
+  }
   .leftcartsection {
     width: 65%;
     border: 1px solid #9f9f9f;
@@ -34,11 +42,23 @@
       // border:2px solid red;
       display: flex;
       gap: 20px;
+      @include xsBreakPoint
+      {
+        flex-direction:column;
+      }
       .leftbarprogress {
         width: 50%;
+        @include xsBreakPoint
+        {
+          width: 100%;
+        }
       }
       .rightbarprogress {
         width: 50%;
+        @include xsBreakPoint
+        {
+          width: 100%;
+        }
       }
     }
     .orderstepsection {
@@ -46,6 +66,14 @@
       padding-top: 2%;
       align-items: center;
       gap: 15px;
+      @include xsBreakPoint
+      {
+        width: 100%;
+      }
+      @include lgBreakPoint
+      {
+        gap:5px;
+      }
       .numbercountorderstep {
         width: 27px;
         height: 27px;
@@ -109,7 +137,8 @@
           display: flex;
           justify-content: space-between;
           margin: 3% 0px;
-          align-item: center;
+          align-items: center;
+          // border:1px solid red;
         }
         .textprice {
           font-size: 1.3rem;
@@ -118,7 +147,7 @@
       }
       .splitcartsections {
         display: flex;
-        align-item: center;
+        align-items: center;
 
         justify-content: space-between;
         margin: 3% 0px;
@@ -161,11 +190,27 @@
     font-weight: 600;
     color: #121212;
     opacity: 0.7;
+    @include mdBreakPoint
+    {
+      font-size: 0.8679rem;
+    }
+    @include lgBreakPoint
+    {
+      font-size: 0.8679rem;
+    }
 }
 .setordertextactive {
     font-size: 1rem;
     font-weight: 600;
     color: #E95A5A;
+    @include lgBreakPoint
+    {
+      font-size: 0.8679rem;
+    }
+    @include mdBreakPoint
+    {
+      font-size: 0.8679rem;
+    }
  
     // opacity: 0.7;
 }

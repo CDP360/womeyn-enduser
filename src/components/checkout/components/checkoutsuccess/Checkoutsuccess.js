@@ -28,6 +28,7 @@ function Checkoutsuccess() {
                 Cookies.remove("CartDatas");
                 setTimeout(() => {
                     history.push("/profile/orders");
+                    window.location.reload();
                 }, 500);
             }
 

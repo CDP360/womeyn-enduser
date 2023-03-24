@@ -12,10 +12,9 @@ function Order() {
     history.push("/order/tracking");
   };
   const [step, setStep] = useState(0);
-
   useEffect(() => {
     GetOrders().then((res) => {
-      console.log(res?.data?.results, "wrong");
+      console.log(res?.data?.results);
       setOrders(res?.data?.results);
     }).catch((err) => {
       console.log(err);
@@ -29,7 +28,7 @@ function Order() {
       </div>
       <div className={styles.middlecontainer}>
         <div className={styles.middlecontainer2}>
-          <h5>Orders</h5>
+          <h5 className={styles.orderstexts}>Orders</h5>
           <div className={styles.subcontainer}>
             <div className={styles.subcontainer1}>
               <p

@@ -271,7 +271,7 @@ function Cart() {
                     <div>
                       Delivery Charges</div>
                     <div className={styles.textprice}>
-                      $100
+                      $40
                     </div>
                   </div>
                 </div>
@@ -282,7 +282,7 @@ function Cart() {
                   <div className={styles.pricetexts}>
                     Total Payable</div>
                   <div className={styles.textprices}>
-                    ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)}
+                    ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice+40, 0)}
                   </div>
                 </div>
 

@@ -1,353 +1,301 @@
 @use "../../../../scss/abstract/" as *;
 
-
-.cartsectiontexts
-{
-    font-size:1.4rem;
-    font-weight:600;
-    padding:2% 0px;
-    
+.cartsectiontexts {
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 2% 0px;
 }
 .cartsection {
-    width: 100%;
+  width: 100%;
+  display: flex;
+  gap: 25px;
+  margin-bottom: 10%;
+
+  @include xsBreakPoint {
+    flex-direction: column;
+    padding-bottom: 10%;
+  }
+  @include smBreakPoint {
+    flex-direction: column;
+  }
+  .cartemptysection {
+    border: 0.5px solid #9f9f9f;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-size: 1.4rem;
+    // border: 1px solid #9F9F9F;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 10px;
     display: flex;
-    gap: 25px; 
-    margin-bottom:10%;
-   
-    @include xsBreakPoint
-    {
-        flex-direction:column;
-        padding-bottom:10%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    .shoppingcartempty {
+      color: #e95a5a;
+      font-weight: 600;
     }
-    @include smBreakPoint
-    {
-        flex-direction:column;
+    .yourcarttexts {
+      width: 100%;
+      font-size: 1.2rem;
+      text-align: center;
     }
-    .cartemptysection
-    {
-        border: 0.5px solid #9F9F9F;
-        margin-top:5%;
-        margin-bottom:5%;
-        font-size:1.4rem;
-        // border: 1px solid #9F9F9F;
-        cursor:pointer;
-        background-color:white;
-        border-radius:10px;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        justify-content:center;
-        width:100%;
-        .shoppingcartempty
-        {
-       color: #e95a5a;
-       font-weight:600;
-        }
-        .yourcarttexts
-        {
-            width:100%;
-            font-size:1.2rem;
-            text-align:center;
-        }
-        .cartimage
-        {
-            width:400px;
-            height:400px;
-            object-fit:contain;
-        }
-        .shopbutton
-        {
-            border:none;
-            outline:none;
-            background-color:#E95A5A;
-            color:white;
-            padding:6px 20px;
-            font-size:1rem;
-            border-radius:10px;
-        }
+    .cartimage {
+      width: 400px;
+      height: 400px;
+      object-fit: contain;
     }
-    .leftcartsection {
-        width: 65%;
-                border: 1px solid #9F9F9F;
-                border-radius:20px;
-                padding-bottom:5%;
-padding-right:2%;
-padding-left:2%;
-        height:100%;
-        @include xsBreakPoint
-        {
-            width:100%;
-        }
-        @include smBreakPoint
-        {
-            width:100%;
-        }
-         @include mdBreakPoint
-        {
-            width:100%;
-        }
-        .selectcartsection {
-            width: 100%;
-            border: 1px solid rgba(159, 159, 159, 1);
-            display: flex;
-            justify-content: space-between;
-            .sellectallsection {
-                display: flex;
-                gap: 10px;
-            }
-            .removesection {
-                color: #e95a5a;
-                border-bottom: 2px solid #e95a5a;
-                font-weight: 600;
-                cursor: pointer;
-            }
-        }
-        .bordersectioncart
-        {
-      
-            display:flex;
-            flex-direction:column;
-            gap:20px;
-            border-radius: 10px;
-            margin-top: 3%;
+    .shopbutton {
+      border: none;
+      outline: none;
+      background-color: #e95a5a;
+      color: white;
+      padding: 6px 20px;
+      font-size: 1rem;
+      border-radius: 10px;
+    }
+  }
+  .leftcartsection {
+    width: 65%;
+    border: 1px solid #9f9f9f;
+    border-radius: 20px;
+    padding-bottom: 5%;
+    padding-right: 2%;
+    padding-left: 2%;
+    height: 100%;
+    @include xsBreakPoint {
+      width: 100%;
+    }
+    @include smBreakPoint {
+      width: 100%;
+    }
+    @include mdBreakPoint {
+      width: 100%;
+    }
+    .selectcartsection {
+      width: 100%;
+      border: 1px solid rgba(159, 159, 159, 1);
+      display: flex;
+      justify-content: space-between;
+      .sellectallsection {
+        display: flex;
+        gap: 10px;
+      }
+      .removesection {
+        color: #e95a5a;
+        border-bottom: 2px solid #e95a5a;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+    .bordersectioncart {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border-radius: 10px;
+      margin-top: 3%;
+    }
+    .cartlistsection {
+      border-bottom: 1px dashed #9f9f9f;
+      padding: 5px 20px;
+      background-color: white;
 
+      display: flex;
+      @include xsBreakPoint {
+        width: 100%;
+        flex-direction: column;
+      }
+      @include mdBreakPoint {
+        width: 100%;
+        flex-direction: column;
+      }
+      .cartimagesection {
+        width: 60%;
+        display: flex;
+        gap: 10px;
+        padding-bottom: 2%;
+        @include xsBreakPoint {
+          width: 100%;
         }
-        .cartlistsection {
-            border-bottom: 1px dashed #9F9F9F;
-            padding: 5px 20px;
-            background-color: white;
-
-            display: flex;
-            @include xsBreakPoint
-            {
-                width:100%;
-                flex-direction:column;
-            }
-              @include mdBreakPoint
-            {
-                width:100%;
-                flex-direction:column;
-            }
-            .cartimagesection {
-                width: 60%;
-                display: flex;
-                gap: 10px;
-                padding-bottom:2%;
-                @include xsBreakPoint
-                {
-                    width:100%;
-                    
-                }
-                @include mdBreakPoint
-                {
-                    width:100%;
-                    
-                }
-                .editprofilesection
-                {
-                    width:100px;
-                  height:100px;
-                    object-fit:cover;
-                    border-radius:5px;
-                }
-            }
-            .cartaddsection {
-                width: 20%;
-                // border: 2px solid red;
-                display: flex;
-                align-items: center;
-                gap: 22px;
-              
-                @include smBreakPoint
-                {
-                    width:100%;
-                }
-                @include lgBreakPoint
-                {
-                    gap:15px;
-                    
-                }
-               
-                .carticonsadd {
-                    width: 25px;
-                    height: 25px;
-                    object-fit: contain;
-                    cursor: pointer;
-                }
-            }
-            .cartremovesection {
-                width: 20%;
-                // border: 2px solid red;
-                display: flex;
-                gap: 10px;
-                align-items: center;
-                justify-content: center;
-               
-                .deleteicons {
-                    width: 25px;
-                    height: 25px;
-                    object-fit: contain;
-                    cursor: pointer;
-                    @include lgBreakPoint
-                    {
-                        width:20px;
-                        height:20px;
-                    }
-                }
-                color: #e95a5a;
-                cursor: pointer;
-            }
+        @include mdBreakPoint {
+          width: 100%;
         }
-    }
-    .rightcartsection {
-        width: 35%;
+        .editprofilesection {
+          width: 100px;
+          height: 100px;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+      }
+      .cartaddsection {
+        width: 20%;
         // border: 2px solid red;
-        height:100%;
-        
-        @include xsBreakPoint
-        {
-            width:100%;
-        }
-        @include smBreakPoint
-        {
-            width:100%;
-        }
-        @include mdBreakPoint
-        {
-            width:100%;
-        }
-        .insiderigthcartsection
-        {
-            border: 1px solid #9F9F9F;
-            border-radius: 32px;
-            padding:10px 30px;
-            .pricetexts
-            {
-                font-weight: 600;
-                font-size: 1.4rem;
-            }
-            .borderdashedsection
-            {
-                padding:3% 0px;
-                .insideborderdashedsection
-                {
-                    border: 1px dashed #0D0C22;
-                }
-            }
-            .cartdetailsection
-            {
-                .splitcartsections
-                {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items:center; 
-                    margin: 3% 0px;
-                }
-                .textprice
-                {
-                    font-size:1.3rem;
-                    font-weight: 600;
-                }
-            }
-            .splitcartsections
-            {
-                display: flex;
-                justify-content: space-between;
-                margin: 3% 0px;
-                align-items:center;
-                // font-weight:700;
-            }
-            .textprices
-            {
-                font-weight:700;
-                font-size:1.4rem;
-            }
+        display: flex;
+        align-items: center;
+        gap: 22px;
 
+        @include smBreakPoint {
+          width: 100%;
         }
-        .checkoutbutton {
-            background-color: #e95a5a;
-            color: white;
-            padding: 10px;
-            border-radius: 10px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1.3rem;
-            font-weight: 600;
+        @include lgBreakPoint {
+          gap: 15px;
         }
 
+        .carticonsadd {
+          width: 25px;
+          height: 25px;
+          object-fit: contain;
+          cursor: pointer;
+        }
+      }
+      .cartremovesection {
+        width: 20%;
+        // border: 2px solid red;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+
+        .deleteicons {
+          width: 25px;
+          height: 25px;
+          object-fit: contain;
+          cursor: pointer;
+          @include lgBreakPoint {
+            width: 20px;
+            height: 20px;
+          }
+        }
+        color: #e95a5a;
+        cursor: pointer;
+      }
     }
-}
+  }
+  .rightcartsection {
+    width: 35%;
+    // border: 2px solid red;
+    height: 100%;
 
+    @include xsBreakPoint {
+      width: 100%;
+    }
+    @include smBreakPoint {
+      width: 100%;
+    }
+    @include mdBreakPoint {
+      width: 100%;
+    }
+    .insiderigthcartsection {
+      border: 1px solid #9f9f9f;
+      border-radius: 32px;
+      padding: 10px 30px;
+      .pricetexts {
+        font-weight: 600;
+        font-size: 1.4rem;
+      }
+      .borderdashedsection {
+        padding: 3% 0px;
+        .insideborderdashedsection {
+          border: 1px dashed #0d0c22;
+        }
+      }
+      .cartdetailsection {
+        .splitcartsections {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 3% 0px;
+        }
+        .textprice {
+          font-size: 1.3rem;
+          font-weight: 600;
+        }
+      }
+      .splitcartsections {
+        display: flex;
+        justify-content: space-between;
+        margin: 3% 0px;
+        align-items: center;
+        // font-weight:700;
+      }
+      .textprices {
+        font-weight: 700;
+        font-size: 1.4rem;
+      }
+    }
+    .checkoutbutton {
+      background-color: #e95a5a;
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+  }
+}
 
 // mobile section
 
-.mobilecartresponsive
-{
-    display:flex;
-    gap:40%;
-    padding-top:4%;
-    padding-bottom:3%;
-   
+.mobilecartresponsive {
+  display: flex;
+  gap: 40%;
+  padding-top: 4%;
+  padding-bottom: 3%;
 }
-.removetexts
-{
-    font-size:1.3rem;
-    font-weight:600;
+.removetexts {
+  font-size: 1.3rem;
+  font-weight: 600;
 }
-.removeitemname
-{
-    padding:2% 0px;
-    text-align:center;
-    font-size:1.4rem;
-    
-color: #0D0C22;
+.removeitemname {
+  padding: 2% 0px;
+  text-align: center;
+  font-size: 1.4rem;
 
-font-weight:500;
+  color: #0d0c22;
 
-opacity: 0.4;
+  font-weight: 500;
+
+  opacity: 0.4;
 }
-.modelremove
-{
-    width:100%;
- 
-    .insidemodelpopup
-    {
-        // border:3px solid red;
-        display:flex;
-        justify-content:space-between;
-        cursor:pointer;
-        align-items:center;
+.modelremove {
+  width: 100%;
+
+  .insidemodelpopup {
+    // border:3px solid red;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    align-items: center;
+  }
+  .buttonsections {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 4%;
+    padding-bottom: 5%;
+    .buttonscancel {
+      outline: none;
+      cursor: pointer;
+      background-color: white;
+      color: rgba(233, 90, 90, 1);
+      border: 1px solid rgba(233, 90, 90, 1);
+      padding: 7px 30px;
+      border-radius: 10px;
+      font-weight: 600;
     }
-    .buttonsections
-    {
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        gap:30px;
-        padding-top:4%;
-        padding-bottom:5%;
-        .buttonscancel
-        {
-
-outline:none;
-cursor:pointer;
-background-color:white;
-color:rgba(233, 90, 90, 1);
-border:1px solid rgba(233, 90, 90, 1);
-padding:7px 30px;
-border-radius:10px;
-font-weight:600;
-        }
-        .buttonsremove
-        {
-            outline:none;
-cursor:pointer;
-background-color:rgba(233, 90, 90, 1);
-color:white;
-border:none;
-padding:7px 30px;
-border-radius:10px;
-font-weight:600;
-        }
+    .buttonsremove {
+      outline: none;
+      cursor: pointer;
+      background-color: rgba(233, 90, 90, 1);
+      color: white;
+      border: none;
+      padding: 7px 30px;
+      border-radius: 10px;
+      font-weight: 600;
     }
+  }
 }

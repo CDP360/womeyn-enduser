@@ -14,3 +14,13 @@ export function GetOrders() {
         return err;
     })
 }
+
+
+
+export function CustomerOrderCancel(id) {
+    return instanceBaseurl.post(`/customer/cancel-order/${id}`).then((res) => {
+        return res
+    }).catch((err) => {
+        return err;
+    })
+}

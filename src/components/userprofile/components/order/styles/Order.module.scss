@@ -31,13 +31,18 @@
     border-radius: 8px;
     width: 100%;
     margin: 0 auto;
-    padding: 5%;
+    padding: 4%;
+  }
+  .orderstexts
+  {
+  
+    font-weight:600;
   }
   .subcontainer1 {
     display: flex;
     justify-content: space-between;
     width: 49%;
-    margin-top: 2%;
+    margin-top: 5%;
     @include xsBreakPoint {
       flex-direction: column;
       width: 30%;

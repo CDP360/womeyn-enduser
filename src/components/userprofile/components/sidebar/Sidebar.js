@@ -91,6 +91,8 @@ function Sidebar({ user }) {
                 localStorage.removeItem("womenProfile");
                 localStorage.removeItem("productwhishlist");
                 localStorage.removeItem("womenuser");
+                localStorage.removeItem("womenauth");
+
 toast.success("Logout Successfull",{
     position: "top-center",
     autoClose: 3000,
@@ -155,7 +157,7 @@ history.push("/");
                         <div className={styles.insidedashedsection}>
                         </div>
                     </div>
-                    <div className={pathname == "orders" ? styles.activeboldtexts : styles.profilecontentinlistsection} onClick={() => PathNavigate("orders")}>
+                    <div className={pathname == "orders" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("orders")}>
                         <div>
                             {pathname == "orders" ?<Image src={orderactive} alt="no image" className={styles.profileicon} />:<Image src={order} alt="no image" className={styles.profileicon} />}
                         </div>
@@ -168,11 +170,11 @@ history.push("/");
                         <div className={styles.insidedashedsection}>
                         </div>
                     </div>
-                    <div className={pathname == "favorts" ? styles.activeboldtexts : styles.profilecontentinlistsection} onClick={() => PathNavigate("favorts")}>
+                    <div className={pathname == "favorts" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("favorts")}>
                         <div >
                            {pathname == "favorts"?<Image src={favortsactive} alt="no image" className={styles.profileicon} />:<Image src={favorts} alt="no image" className={styles.profileicon} />}
                         </div>
-                        <div className={styles.boldtexts}>
+                        <div className={pathname == "favorts" ? styles.boldtextactive : styles.boldtexts}>
                             Favorites
                         </div>
                     </div>
@@ -180,11 +182,11 @@ history.push("/");
                         <div className={styles.insidedashedsection}>
                         </div>
                     </div>
-                    <div className={pathname == "coupons" ? styles.activeboldtexts : styles.profilecontentinlistsection} onClick={() => PathNavigate("coupons")}>
+                    <div className={pathname == "coupons" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("coupons")}>
                         <div >
                             {pathname == "coupons" ?<Image src={couponsactive} alt="no image" className={styles.profileicon} /> :<Image src={coupons} alt="no image" className={styles.profileicon} />}
                         </div>
-                        <div className={styles.boldtexts}>
+                        <div className={pathname == "coupons" ? styles.boldtextactive : styles.boldtexts}>
                             Coupons
                         </div>
                     </div>

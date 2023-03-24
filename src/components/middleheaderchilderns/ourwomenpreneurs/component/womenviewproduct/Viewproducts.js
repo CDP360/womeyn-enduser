@@ -26,6 +26,9 @@ function Viewproducts({ id }) {
     const [productseller, setProductseller] = useState([]);
     const [index1, setIndex1] = useState(null);
     const [index2, setIndex2] = useState(null);
+    const [index3, setIndex3] = useState(null);
+    const [index4, setIndex4] = useState(null);
+
     const [like, setLike] = useState(true);
     const productnames = id;
     const router = useRouter();
@@ -73,8 +76,26 @@ function Viewproducts({ id }) {
         router.push(`/login?redirect=/product/${data}`);
     }
     const [productSize, setProductSize] = useState("");
-    const handleSizeProduct = (data) => {
-        setProductSize(data);
+    const [productSize1, setProductSize1] = useState("");
+    const [productSize2, setProductSize2] = useState("");
+    const [productSize3, setProductSize3] = useState("");
+    const [productSize4, setProductSize4] = useState("");
+
+
+
+
+    const handleSizeProduct1 = (data) => {
+        console.log(data, "data")
+        setProductSize1(data);
+    }
+    const handleSizeProduct2 = (data) => {
+        setProductSize2(data);
+    }
+    const handleSizeProduct3 = (data) => {
+        setProductSize3(data);
+    }
+    const handleSizeProduct4 = (data) => {
+        setProductSize4(data);
     }
 
     const handleChange = (cartdata, productvariations) => {
@@ -150,7 +171,7 @@ function Viewproducts({ id }) {
         });
         const tokencheck = localStorage.getItem("womenUserToken");
         setTokenset(tokencheck)
-    }, [productnames, tokencheck]);
+    }, [productnames, tokencheck, index1, index2, index3, index4]);
 
     useEffect(() => {
         ProductLikeWishlistGet().then((res) => {
@@ -240,12 +261,12 @@ function Viewproducts({ id }) {
                                         {productimages?.map((item, index) => {
                                             return (
                                                 <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)} key={index}>
-                                                    {item?.name?<><img
+                                                    {item?.name ? <><img
                                                         className={styles.imagecards}
                                                         src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
                                                         alt="profile-pic"
-                                                    /></>:<>
-                                                    <Skeleton/>
+                                                    /></> : <>
+                                                        <Skeleton />
                                                     </>}
                                                 </div>
                                             )
@@ -319,7 +340,79 @@ function Viewproducts({ id }) {
                                 </div>
                             </div>
 
-                            <div className="mt-2">
+                            <div>
+
+                                {productvariations[0]?.name}
+                                <div className={styles.sizesection}>
+                                    <div className={styles.sizes}>
+                                        {productvariations[0]?.variationValues?.map((item, index) => {
+                                            return (
+                                                <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                    setIndex1(index)
+                                                    handleSizeProduct1(item);
+                                                }} key={index}>
+                                                    {item}
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+
+                                </div>
+
+                                {productvariations[1]?.name}
+                                <div className={styles.sizesection}>
+                                    <div className={styles.sizes}>
+                                        {productvariations[1]?.variationValues?.map((item, index) => {
+                                            return (
+                                                <div className={`${index2 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                    setIndex2(index)
+                                                    handleSizeProduct2(item);
+                                                }} key={index}>
+                                                    {item}
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+
+                                </div>
+                                {productvariations[2]?.name}
+                                <div className={styles.sizesection}>
+                                    <div className={styles.sizes}>
+                                        {productvariations[2]?.variationValues?.map((item, index) => {
+                                            return (
+                                                <div className={`${index3 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                    setIndex3(index)
+                                                    handleSizeProduct3(item);
+                                                }} key={index}>
+                                                    {item}
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                </div>
+                                {productvariations[3]?.name}
+                                {productvariations[3]?.variationValues?.map((item, index) => {
+                                    return (
+                                        <div className={`${index4 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                            setIndex4(index)
+                                            handleSizeProduct4(item);
+                                        }} key={index}>
+                                            {item}
+                                        </div>
+                                    )
+                                })}
+                                {productvariations[4]?.name}
+                                {productvariations[5]?.name}
+                                {productvariations[6]?.name}
+
+
+
+
+
+
+                            </div>
+
+                            {/* <div className="mt-2">
                                 <div className={styles.fontweightsizes}></div>
                                 <div className={styles.sizesection}>
                                     <div className={styles.sizes}>
@@ -378,7 +471,7 @@ function Viewproducts({ id }) {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className={styles.buttons}>
                                 <div>
                                     {tokencheck ?

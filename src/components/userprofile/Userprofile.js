@@ -95,7 +95,6 @@ function Userprofile({ name, error }) {
                                 {name == "coupons" && <div>
                                     <Coupon />
                                 </div>
-
                                 }
                             </div>
                         </div>

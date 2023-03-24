@@ -32,6 +32,24 @@
         height: 30px;
     }
 }
+
+.activeboldtextss
+{
+ 
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding-left: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    cursor: pointer;
+    .profileicon {
+        width: 30px;
+        object-fit: contain;
+        height: 30px;
+    }
+    
+}
 .mainsidebarsection {
     width: 100%;
     .insideprofilesection {

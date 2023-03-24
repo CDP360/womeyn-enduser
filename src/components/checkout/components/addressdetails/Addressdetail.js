@@ -106,7 +106,6 @@ function Addressdetail({ state, step, setStep, setName }) {
         <div className={styles.addnewaddressbutton}>
           <div className={styles.addnewaddressbuttonsubmenu}>
             <ModelAddress register={register} show={show} errors={errors} SubmitsAddress={SubmitsAddress} handleSubmit={handleSubmit} handleShow={handleShow} handleClose={handleClose} />
-
           </div>
         </div>
         <div className="mt-1">
@@ -123,7 +122,7 @@ function Addressdetail({ state, step, setStep, setName }) {
                         value={item?.id}
                       />
                       <span className={styles.control__content}><div className={styles.leftorders}>
-                        <Image src={map} alt="no image" className={styles.map} />
+                        {/* <Image src={map} alt="no image" className={styles.map} /> */}
                       </div>
                         <div className={styles.rightorders}>
                           <div className={styles.shippingtext}>
