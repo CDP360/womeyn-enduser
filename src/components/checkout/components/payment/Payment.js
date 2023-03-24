@@ -13,12 +13,12 @@ function Payment({ totalPrice, addressid ,couponname}) {
   const paymentMethods = [
     {
       id: 1,
-      name: "Paypal",
+      name: "paypal",
 
     },
     {
       id: 2,
-      name: "Stripe"
+      name: "stripe"
     }
   ]
 
