@@ -50,14 +50,11 @@ function Payment({ totalPrice, addressid ,couponname}) {
       totalOrderAmount: totalPrice,
       customerName: userName
     }
-    // CustomerOrders(overAllorders).then((res) => {
-      
-    //   window.location = res?.data?.url;
-    // }).catch((err) => {
-    //   console.log(err);
-    // })
-
-    console.log(overAllorders,"overAllorders")
+    CustomerOrders(overAllorders).then((res) => {
+      window.location = res?.data?.url;
+    }).catch((err) => {
+      console.log(err);
+    })
   }
 
   const onOptionChange=(e)=>{
