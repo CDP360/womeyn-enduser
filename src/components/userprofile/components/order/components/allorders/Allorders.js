@@ -83,17 +83,16 @@ function Allorders({ Orders, traking }) {
                 <div className={styles.secondimagesection}>
                   ${item?.totalOrderAmount}
                 </div>
-                <div className={styles.thirdimagesection}>
+                {item?.stateId === 4 || item?.stateId === 5 || item?.stateId == 6 ? <></> : <div className={styles.thirdimagesection}>
                   <div>
                     <button className={styles.trackingbutton}>Track</button>
                   </div>
                   <div>
-                  {item?.stateId === 4 || item?.stateId === 5|| item?.stateId == 6 ?
-                    <></>:<div>
+                    <div>
                       <button className={styles.trackingbutton} onClick={() => handleShow(item?.orderId)}>Cancel</button>
-                      </div>}
+                    </div>
                   </div>
-                </div>
+                </div>}
               </div>
             </div>
           )

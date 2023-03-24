@@ -106,20 +106,27 @@ function Cart() {
                               />
                             </div>
                             <div>
-                              <div>{item?.productName}
+                              <div className="carttext">{item?.productName}
                               </div>
                               <div>
-                                Rs.{item?.salePrice} <span>
+                             <span className="saleprice">   Rs.{item?.salePrice}</span> <span>
                                   {item?.offerPercentag == 0 ? <span></span> : <>
-                                    <del>
-                                      <span>{item?.actualPrice}</span>
+                                    <del className="dim">
+                                      <span >{item?.actualPrice}</span>
                                     </del>
                                   </>}
-                                  {item?.offerPercentag == 0 ? <></> : <> {item?.offerPercentag} off</>}
+                                  {item?.offerPercentag == 0 ? <></> : <span className="offersection"> ( {item?.offerPercentag} off )</span>}
                                 </span>
                               </div>
                               <div>
                                 {/* {item?.productDescription} */}
+                                {item?.variations?.map((items,index)=>{
+return(
+  <div >
+<span className="sizecolor">{items?.name}</span> : {items?.value}
+  </div>
+)
+                                })}
                               </div>
                             </div>
                           </div>
@@ -186,20 +193,26 @@ function Cart() {
                               />
                             </div>
                             <div>
-                              <div>{item?.productName}
+                              <div className="carttext">{item?.productName}
                               </div>
                               <div>
-                                Rs.{item?.salePrice} <span>
+                               <span className="saleprice"> Rs.{item?.salePrice}</span> <span>
                                   {item?.offerPercentag == 0 ? <span></span> : <>
-                                    <del>
+                                    <del className="dim">
                                       <span>{item?.actualPrice}</span>
                                     </del>
                                   </>}
-                                  {item?.offerPercentag == 0 ? <></> : <> {item?.offerPercentag} off</>}
+                                  {item?.offerPercentag == 0 ? <></> : <span className="offersection">( {item?.offerPercentag} off )</span>}
                                 </span>
                               </div>
                               <div>
-                                {item?.productDescription}
+                              {item?.variations?.map((items,index)=>{
+return(
+  <div >
+<span className="sizecolor">{items?.name}</span> : {items?.value}
+  </div>
+)
+                                })}
                               </div>
                             </div>
                           </div>
