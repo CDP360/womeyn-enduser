@@ -237,7 +237,7 @@
                         .serachlargeimage {
                             width: 400px;
                             height: 400px;
-                            object-fit: contain;
+                            // object-fit: contain;
                             // background-color: rgba(247, 247, 247, 1);
                             border-radius: 5px;
 
@@ -414,8 +414,9 @@
 
                 .sizesection {
                     display: flex;
-                    padding-top: 1%;
-                    padding-bottom: 3%;
+                    gap:20px;
+ 
+                   
                     .sizes {
                         display: flex;
                         gap: 23px;
@@ -437,29 +438,32 @@
 
                         .mainsizecard {
                             width: auto;
-                            height: 30px;
-                            // border:2px solid red;
-                            border-radius: 50%;
+                            height: auto;
+                            border: 1px solid #DBD9D9;
+
+                            border-radius: 10px;
                             display: flex;
                             align-items: center;
                             justify-content: center;
                             cursor: pointer;
-                            padding: 15px;
-                            font-weight: 550;
+                            padding: 4px 13px;
+                            // font-weight: 550;
+                            background-color:white;
                             @include lgBreakPoint {
                                 font-weight: 500;
                             }
                         }
                         .activewomensizes {
-                            width: 40px;
-                            height: 40px;
-                            border-radius: 50%;
+                            width: auto;
+                            height: auto;
+                            border-radius: 10px;
                             display: flex;
                             align-items: center;
                             justify-content: center;
                             cursor: pointer;
-                            padding: 15px;
-                            font-weight: 550;
+                            padding: 8px;
+                            padding: 4px 13px;
+
                             background: #e95a5a;
                             color: white;
                             @include lgBreakPoint {
@@ -726,7 +730,37 @@
 }
 
 .fontweightsizes {
-    color: #000000;
+    color: #B1AFAF;
     font-weight: 600;
     font-size: 1.3rem;
+}
+
+
+.sizesectionandcolor
+{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    // border:1px solid blue;
+}
+
+.colorsectionlists
+{
+    // border:4px solid orange;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    padding-top:3%;
+}
+
+.kalairuond
+{
+    // border:1px solid red;
+    width:100%!important;
+    height:100% !important;
+    object-fit:contain;
+    .kalai
+    {
+        border:10px solid orange !important;
+    }
 }

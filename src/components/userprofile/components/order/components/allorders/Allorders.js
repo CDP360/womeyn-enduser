@@ -34,6 +34,8 @@ function Allorders({ Orders, traking }) {
   }
   useEffect(() => {
   }, [deleteid])
+
+  console.log(Orders, "Orders")
   return (
     <div className={styles.allordermainsection}>
       <div className={styles.insidemainordersection}>
@@ -70,7 +72,7 @@ function Allorders({ Orders, traking }) {
                             <Skeleton className={styles.img} />
                           </>}
                         </div>
-                        <div>
+                        <div className='carttextsmall'>
                           {items?.productName}
                         </div>
                       </div>
@@ -121,7 +123,7 @@ function Allorders({ Orders, traking }) {
               </div>
               <div className={styles.removeitemname}>
 
-                Are you sure remove this order?
+                Cancel Order
               </div>
               <div className={styles.buttonsections}>
 

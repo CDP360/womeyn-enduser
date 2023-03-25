@@ -27,6 +27,7 @@
     "react-bootstrap": "^2.7.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.41.5",
+    "react-image-magnify": "^2.7.4",
     "react-loading-skeleton": "^3.1.0",
     "react-otp-input": "^2.4.0",
     "react-paginate": "^8.1.4",

@@ -38,6 +38,9 @@ function Profile() {
         localStorage.removeItem("womenUserid");
         localStorage.removeItem("womenUserToken");
         localStorage.removeItem("womenProfile");
+        localStorage.removeItem("productwhishlist");
+        localStorage.removeItem("womenuser");
+        localStorage.removeItem("womenauth");
       }
       setUser(res?.data);
       localStorage.setItem("womenProfile", JSON.stringify(res?.data?.profileImageName));
