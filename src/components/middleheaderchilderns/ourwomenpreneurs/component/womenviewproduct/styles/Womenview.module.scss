@@ -766,6 +766,16 @@
     align-items:center;
     gap:20px;
     // border:1px solid blue;
+    padding:6px 0px;
+  
+}
+.sizecolorerror
+{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    border:1px solid red;
+    padding:6px 0px;
 }
 
 .colorsectionlists

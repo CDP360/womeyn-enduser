@@ -4,8 +4,8 @@ import styles from './styles/Payment.module.scss';
 import React, { useState, useEffect, useContext } from 'react';
 import { CustomerOrders } from '../../../../services/customer-order-service/customer-order-service';
 
-function Payment({ totalPrice, addressid ,couponname}) {
-  const { state} = useContext(ContextStore);
+function Payment({ totalPrice, addressid, couponname }) {
+  const { state } = useContext(ContextStore);
   const [orders, setOrders] = useState([]);
   const [paymentType, setPaymentType] = useState("");
 
@@ -45,7 +45,7 @@ function Payment({ totalPrice, addressid ,couponname}) {
     const userName = JSON.parse(localStorage.getItem("womenuser"));
     const overAllorders = {
       deliveryAddressId: addressid,
-      paymentMethod:paymentType,
+      paymentMethod: paymentType,
       itemsOrdered: orders,
       totalOrderAmount: totalPrice,
       customerName: userName
@@ -57,17 +57,17 @@ function Payment({ totalPrice, addressid ,couponname}) {
     })
   }
 
-  const onOptionChange=(e)=>{
+  const onOptionChange = (e) => {
     setPaymentType(e.target.value);
   }
   return (
     <div className={styles.mainsectionpayment}>
       <div className={styles.paymentsections}>
-        
+
         {paymentMethods?.map((item, index) => {
           return (
             <div key={index} className={styles.paymentsection}>
-              <input type="radio" name={item?.name} value={item?.name} checked={paymentType==item?.name}  onChange={onOptionChange} />
+              <input type="radio" name={item?.name} value={item?.name} checked={paymentType == item?.name} onChange={onOptionChange} />
               {item?.name}
             </div>
           )

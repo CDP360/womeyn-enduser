@@ -15,6 +15,8 @@ import heartunlike from '../../../../../assests/product-logo/likeborder.png';
 import { toast } from 'react-toastify';
 import Skeleton from 'react-loading-skeleton';
 import ReactImageMagnify from 'react-image-magnify';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 function Viewproducts({ id }) {
     const history = useRouter();
     const [tokencheck, setTokenset] = useState("");
@@ -29,25 +31,31 @@ function Viewproducts({ id }) {
     const [index2, setIndex2] = useState(null);
     const [index3, setIndex3] = useState(null);
     const [index4, setIndex4] = useState(null);
+    const [index5, setIndex5] = useState(null);
+
     const [like, setLike] = useState(true);
+    const [error, setError] = useState(false);
     const productnames = id;
     const router = useRouter();
     const [loading, setLoading] = useState(false);
     const Checkout = (cartdata, productvariations) => {
-        const datas = productvariations?.length >= 0 && productvariations[0]?.name;
-        const datas1 = productvariations?.length >= 1 && productvariations[0]?.name && productvariations[1]?.name;
-        // const datas2 = productvariations?.length >= 2 && productvariations[0]?.name && productvariations[1]?.name && productvariations[2]?.name;
-        const overalls = []
-        if (datas) {
-            overalls.push(
+        const datas = [productvariations[0]?.name];
+        const datas1 = [productvariations[0]?.name, productvariations[1]?.name];
+        const datas2 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name];
+        const datas3 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name];
+        const datas4 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name, productvariations[4]?.name];
+
+        if (datas?.length === productvariations?.length) {
+            const values = [
                 {
-                    name: datas,
+                    name: datas[0],
                     value: productSize1
                 }
-            )
-            const urls = `Please Select ${datas}`;
+
+            ]
+
             if (productSize1.length === 0) {
-                toast.error(urls,
+                toast.error(`Please select a ${datas[0]}`,
                     {
                         position: "top-center",
                         autoClose: 3000,
@@ -61,50 +69,237 @@ function Viewproducts({ id }) {
                 );
             }
 
-        }
+            if (datas) {
+                if (productSize1) {
+                router?.push("/checkout")
 
-        if (datas) {
-            if (productSize1) {
-                router?.push("/login?redirect=/checkout")
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: overalls, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                }
+            }
+            else {
+                router?.push("/checkout")
+
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
             }
-        }
-        else {
-            router?.push("/login?redirect=/checkout")
 
-            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
         }
-        const overalls1 = []
-        if (datas1) {
-            overalls1.push(
+        else if (datas1?.length === productvariations?.length) {
+            const values = [
                 {
-                    name: datas,
+                    name: datas1[0],
                     value: productSize1
                 },
                 {
-                    name: datas1,
+                    name: datas1[1],
                     value: productSize2
                 }
-            )
 
-        }
-        if (datas1) {
-            if (productSize2) {
+            ]
+
+            if (productSize1.length === 0 || productSize2?.length === 0) {
+                toast.error(`Please select a ${datas1[0]} and ${datas1[1]} `,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+            }
+
+            if (datas1) {
+                if (productSize1 && productSize2) {
+
+                    router?.push("/checkout")
+
+
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+                }
+            }
+            else {
                 router?.push("/checkout")
 
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: overalls1, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
             }
-        }
-        else {
-            router?.push("/checkout")
 
+        }
+        else if (datas2?.length === productvariations?.length) {
+
+            const values = [
+                {
+                    name: datas2[0],
+                    value: productSize1
+                },
+                {
+                    name: datas2[1],
+                    value: productSize2
+                },
+                {
+                    name: datas2[2],
+                    value: productSize3
+                }
+            ]
+
+
+
+            if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0) {
+                toast.error(`Please select a ${datas2[0]} and ${datas2[1]} and ${datas2[2]} `,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+            }
+
+            if (datas2) {
+                if (productSize1 && productSize2 && productSize3) {
+
+                    router?.push("/checkout")
+
+
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+                }
+            }
+            else {
+                router?.push("/checkout")
+
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+            }
+
+
+        }
+        else if (datas3?.length === productvariations?.length) {
+            const values = [
+                {
+                    name: datas3[0],
+                    value: productSize1
+                },
+                {
+                    name: datas3[1],
+                    value: productSize2
+                },
+                {
+                    name: datas3[2],
+                    value: productSize3
+                },
+                {
+                    name: datas3[3],
+                    value: productSize4
+                }
+            ]
+
+
+
+            if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0 || productSize4?.length === 0) {
+                toast.error(`Please select a ${datas3[0]} and ${datas3[1]} and ${datas3[2]} and ${datas3[3]}`,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+            }
+
+            if (datas3) {
+                if (productSize1 && productSize2 && productSize3 && productSize4) {
+                                   router?.push("/checkout")
+
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                }
+            }
+            else {
+                router?.push("/checkout")
+
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+            }
+
+        }
+        else if (datas4?.length === productvariations?.length) {
+            const values = [
+                {
+                    name: datas4[0],
+                    value: productSize1
+                },
+                {
+                    name: datas4[1],
+                    value: productSize2
+                },
+                {
+                    name: datas4[2],
+                    value: productSize3
+                },
+                {
+                    name: datas4[3],
+                    value: productSize4
+                },
+                {
+                    name: datas4[4],
+                    value: productSize5
+                }
+            ]
+
+
+
+            if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0 || productSize4?.length === 0 || productSize5?.length === 0) {
+                toast.error(`Please select a ${datas4[0]} and ${datas4[1]} and ${datas4[2]} and ${datas4[3]} and ${datas4[4]}`,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+            }
+
+            if (datas4) {
+                if (productSize1 && productSize2 && productSize3 && productSize4 && productSize5) {
+
+                    router?.push("/checkout")
+
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+                }
+            }
+            else {
+                router?.push("/checkout")
+
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+            }
+
+        }
+        else
+        {
+                router?.push("/checkout")
             dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
         }
-
     }
     const CheckLoginUsers = (data) => {
         const PathQuery = history?.asPath
@@ -115,8 +310,10 @@ function Viewproducts({ id }) {
     const [productSize, setProductSize] = useState("");
     const [productSize1, setProductSize1] = useState("");
     const [productSize2, setProductSize2] = useState("");
-    // const [productSize3, setProductSize3] = useState("");
-    // const [productSize4, setProductSize4] = useState("");
+    const [productSize3, setProductSize3] = useState("");
+    const [productSize4, setProductSize4] = useState("");
+    const [productSize5, setProductSize5] = useState("");
+
 
     const handleSizeProduct1 = (data) => {
         setProductSize1(data);
@@ -127,30 +324,35 @@ function Viewproducts({ id }) {
     const handleSizeProduct3 = (data) => {
         setProductSize3(data);
     }
-    // const handleSizeProduct4 = (data) => {
-    //     setProductSize4(data);
-    // }
+    const handleSizeProduct4 = (data) => {
+        setProductSize4(data);
+    }
+    const handleSizeProduct5 = (data) => {
+        setProductSize5(data);
+    }
 
     const handleChange = (cartdata, productvariations) => {
-        const datas = productvariations?.length >= 0 && productvariations[0]?.name;
-        const datas1 = productvariations?.length >= 1 && productvariations[0]?.name && productvariations[1]?.name;
-        // const datas2 = productvariations?.length >= 2 && productvariations[0]?.name && productvariations[1]?.name && productvariations[2]?.name;
+        const datas = [productvariations[0]?.name];
+        const datas1 = [productvariations[0]?.name, productvariations[1]?.name];
+        const datas2 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name];
+        const datas3 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name];
+        const datas4 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name, productvariations[4]?.name];
 
 
-        const overalls = []
-        if (datas) {
 
 
-            overalls.push(
+
+        if (datas?.length === productvariations?.length) {
+            const values = [
                 {
-                    name: datas,
+                    name: datas[0],
                     value: productSize1
                 }
-            )
 
-            const urls = `Please Select ${datas}`;
+            ]
+
             if (productSize1.length === 0) {
-                toast.error(urls,
+                toast.error(`Please select a ${datas[0]}`,
                     {
                         position: "top-center",
                         autoClose: 3000,
@@ -164,42 +366,220 @@ function Viewproducts({ id }) {
                 );
             }
 
+            if (datas) {
+                if (productSize1) {
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
-        }
-
-        if (datas) {
-            if (productSize1) {
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: overalls, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                }
+            }
+            else {
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
             }
+
         }
-        else {
-            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
-        }
-        const overalls1 = []
-        if (datas1) {
-            overalls1.push(
+        else if (datas1?.length === productvariations?.length) {
+            const values = [
                 {
-                    name: datas,
+                    name: datas1[0],
                     value: productSize1
                 },
                 {
-                    name: datas1,
+                    name: datas1[1],
                     value: productSize2
                 }
-            )
 
-        }
-        if (datas1) {
-            if (productSize2) {
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: overalls1, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+            ]
+
+            if (productSize1.length === 0 || productSize2?.length === 0) {
+                toast.error(`Please select a ${datas1[0]} and ${datas1[1]} `,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+            }
+
+            if (datas1) {
+                if (productSize1 && productSize2) {
+
+
+
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+                }
+            }
+            else {
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
             }
+
         }
-        else {
+        else if (datas2?.length === productvariations?.length) {
+
+            const values = [
+                {
+                    name: datas2[0],
+                    value: productSize1
+                },
+                {
+                    name: datas2[1],
+                    value: productSize2
+                },
+                {
+                    name: datas2[2],
+                    value: productSize3
+                }
+            ]
+
+
+
+            if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0) {
+                toast.error(`Please select a ${datas2[0]} and ${datas2[1]} and ${datas2[2]} `,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+            }
+
+            if (datas2) {
+                if (productSize1 && productSize2 && productSize3) {
+
+
+
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+                }
+            }
+            else {
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+            }
+
+
+        }
+        else if (datas3?.length === productvariations?.length) {
+            const values = [
+                {
+                    name: datas3[0],
+                    value: productSize1
+                },
+                {
+                    name: datas3[1],
+                    value: productSize2
+                },
+                {
+                    name: datas3[2],
+                    value: productSize3
+                },
+                {
+                    name: datas3[3],
+                    value: productSize4
+                }
+            ]
+
+
+
+            if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0 || productSize4?.length === 0) {
+                toast.error(`Please select a ${datas3[0]} and ${datas3[1]} and ${datas3[2]} and ${datas3[3]}`,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+            }
+
+            if (datas3) {
+                if (productSize1 && productSize2 && productSize3 && productSize4) {
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                }
+            }
+            else {
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+            }
+
+        }
+        else if (datas4?.length === productvariations?.length) {
+            const values = [
+                {
+                    name: datas4[0],
+                    value: productSize1
+                },
+                {
+                    name: datas4[1],
+                    value: productSize2
+                },
+                {
+                    name: datas4[2],
+                    value: productSize3
+                },
+                {
+                    name: datas4[3],
+                    value: productSize4
+                },
+                {
+                    name: datas4[4],
+                    value: productSize5
+                }
+            ]
+
+
+
+            if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0 || productSize4?.length === 0 || productSize5?.length === 0) {
+                toast.error(`Please select a ${datas4[0]} and ${datas4[1]} and ${datas4[2]} and ${datas4[3]} and ${datas4[4]}`,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+            }
+
+            if (datas4) {
+                if (productSize1 && productSize2 && productSize3 && productSize4 && productSize5) {
+
+
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+                }
+            }
+            else {
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+            }
+
+        }
+        else
+        {
             dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
         }
+
 
     }
     useEffect(() => {
@@ -285,20 +665,30 @@ function Viewproducts({ id }) {
     const buyNowPathNavigate = (cartdata, productvariations) => {
         const pathnames = "/checkout";
         localStorage.setItem("productwhishlist", JSON.stringify(pathnames));
-        const datas = productvariations?.length >= 0 && productvariations[0]?.name;
-        const datas1 = productvariations?.length >= 1 && productvariations[0]?.name && productvariations[1]?.name;
-        const overalls = []
-        if (datas) {
-            overalls.push(
+
+
+
+        const datas = [productvariations[0]?.name];
+        const datas1 = [productvariations[0]?.name, productvariations[1]?.name];
+        const datas2 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name];
+        const datas3 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name];
+        const datas4 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name, productvariations[4]?.name];
+
+
+
+
+
+        if (datas?.length === productvariations?.length) {
+            const values = [
                 {
-                    name: datas,
+                    name: datas[0],
                     value: productSize1
                 }
-            )
 
-            const urls = `Please Select ${datas}`;
+            ]
+
             if (productSize1.length === 0) {
-                toast.error(urls,
+                toast.error(`Please select a ${datas[0]}`,
                     {
                         position: "top-center",
                         autoClose: 3000,
@@ -312,50 +702,336 @@ function Viewproducts({ id }) {
                 );
             }
 
-
-        }
-
-        if (datas) {
-            if (productSize1) {
+            if (datas) {
+                if (productSize1) {
                 router?.push("/login?redirect=/checkout")
 
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: overalls, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+                }
+            }
+            else {
+                router?.push("/login?redirect=/checkout")
+
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
             }
-        }
-        else {
-            router?.push("/login?redirect=/checkout")
 
-            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
         }
-        const overalls1 = []
-        if (datas1) {
-            overalls1.push(
+        else if (datas1?.length === productvariations?.length) {
+            const values = [
                 {
-                    name: datas,
+                    name: datas1[0],
                     value: productSize1
                 },
                 {
-                    name: datas1,
+                    name: datas1[1],
                     value: productSize2
                 }
-            )
 
-        }
-        if (datas1) {
-            if (productSize2) {
+            ]
+
+            if (productSize1.length === 0 || productSize2?.length === 0) {
+                toast.error(`Please select a ${datas1[0]} and ${datas1[1]} `,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+            }
+
+            if (datas1) {
+                if (productSize1 && productSize2) {
+
+                    router?.push("/login?redirect=/checkout")
+
+
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+                }
+            }
+            else {
                 router?.push("/login?redirect=/checkout")
 
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: overalls1, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
             }
-        }
-        else {
-            router?.push("/login?redirect=/checkout")
 
+        }
+        else if (datas2?.length === productvariations?.length) {
+
+            const values = [
+                {
+                    name: datas2[0],
+                    value: productSize1
+                },
+                {
+                    name: datas2[1],
+                    value: productSize2
+                },
+                {
+                    name: datas2[2],
+                    value: productSize3
+                }
+            ]
+
+
+
+            if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0) {
+                toast.error(`Please select a ${datas2[0]} and ${datas2[1]} and ${datas2[2]} `,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+            }
+
+            if (datas2) {
+                if (productSize1 && productSize2 && productSize3) {
+
+                    router?.push("/login?redirect=/checkout")
+
+
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+                }
+            }
+            else {
+                router?.push("/login?redirect=/checkout")
+
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+            }
+
+
+        }
+        else if (datas3?.length === productvariations?.length) {
+            const values = [
+                {
+                    name: datas3[0],
+                    value: productSize1
+                },
+                {
+                    name: datas3[1],
+                    value: productSize2
+                },
+                {
+                    name: datas3[2],
+                    value: productSize3
+                },
+                {
+                    name: datas3[3],
+                    value: productSize4
+                }
+            ]
+
+
+
+            if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0 || productSize4?.length === 0) {
+                toast.error(`Please select a ${datas3[0]} and ${datas3[1]} and ${datas3[2]} and ${datas3[3]}`,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+            }
+
+            if (datas3) {
+                if (productSize1 && productSize2 && productSize3 && productSize4) {
+                                   router?.push("/login?redirect=/checkout")
+
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                }
+            }
+            else {
+                router?.push("/login?redirect=/checkout")
+
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+            }
+
+        }
+        else if (datas4?.length === productvariations?.length) {
+            const values = [
+                {
+                    name: datas4[0],
+                    value: productSize1
+                },
+                {
+                    name: datas4[1],
+                    value: productSize2
+                },
+                {
+                    name: datas4[2],
+                    value: productSize3
+                },
+                {
+                    name: datas4[3],
+                    value: productSize4
+                },
+                {
+                    name: datas4[4],
+                    value: productSize5
+                }
+            ]
+
+
+
+            if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0 || productSize4?.length === 0 || productSize5?.length === 0) {
+                toast.error(`Please select a ${datas4[0]} and ${datas4[1]} and ${datas4[2]} and ${datas4[3]} and ${datas4[4]}`,
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+            }
+
+            if (datas4) {
+                if (productSize1 && productSize2 && productSize3 && productSize4 && productSize5) {
+
+                    router?.push("/login?redirect=/checkout")
+
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+                }
+            }
+            else {
+                router?.push("/login?redirect=/checkout")
+
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+            }
+
+        }
+        else
+        {
+                router?.push("/login?redirect=/checkout")
             dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // const datas = productvariations?.length >= 0 && productvariations[0]?.name;
+        // const datas1 = productvariations?.length >= 1 && productvariations[0]?.name && productvariations[1]?.name;
+        // const overalls = []
+        // if (datas) {
+        //     overalls.push(
+        //         {
+        //             name: datas,
+        //             value: productSize1
+        //         }
+        //     )
+
+        //     const urls = `Please Select ${datas}`;
+        //     if (productSize1.length === 0) {
+        //         toast.error(urls,
+        //             {
+        //                 position: "top-center",
+        //                 autoClose: 3000,
+        //                 hideProgressBar: false,
+        //                 closeOnClick: true,
+        //                 pauseOnHover: true,
+        //                 draggable: true,
+        //                 progress: undefined,
+        //                 theme: "dark",
+        //             }
+        //         );
+        //     }
+
+
+        // }
+
+        // if (datas) {
+        //     if (productSize1) {
+        //         router?.push("/login?redirect=/checkout")
+
+        //         dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: overalls, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+        //     }
+        // }
+        // else {
+        //     router?.push("/login?redirect=/checkout")
+
+        //     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+        // }
+        // const overalls1 = []
+        // if (datas1) {
+        //     overalls1.push(
+        //         {
+        //             name: datas,
+        //             value: productSize1
+        //         },
+        //         {
+        //             name: datas1,
+        //             value: productSize2
+        //         }
+        //     )
+
+        // }
+        // if (datas1) {
+        //     if (productSize2) {
+        //         router?.push("/login?redirect=/checkout")
+
+        //         dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: overalls1, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+        //     }
+        // }
+        // else {
+        //     router?.push("/login?redirect=/checkout")
+
+        //     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+
+        // }
 
 
 
@@ -401,7 +1077,7 @@ function Viewproducts({ id }) {
 
                                             <ReactImageMagnify {...{
                                                 smallImage: {
-                                                   
+
                                                     alt: 'Wristwatch by Ted Baker London',
                                                     isFluidWidth: true,
                                                     src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
@@ -411,10 +1087,10 @@ function Viewproducts({ id }) {
                                                     width: 1000,
                                                     height: 1000
                                                 },
-                                              
+
                                             }}
-                                                
-                                        
+
+
                                             />
                                         </div>
 
@@ -478,10 +1154,11 @@ function Viewproducts({ id }) {
                             <div className={styles.colorsectionlists}>
 
 
-                                {productvariations[0]?.name ? <div className={styles.sizesectionandcolor}>
+                                {productvariations[0]?.name ? <><div className={styles.sizesectionandcolor}>
 
 
                                     <div className={styles.fontweightsizes}> {productvariations[0]?.name}</div>
+
                                     <div className={styles.sizesection}>
                                         <div className={styles.sizes}>
                                             {productvariations[0]?.variationValues?.map((item, index) => {
@@ -497,7 +1174,13 @@ function Viewproducts({ id }) {
                                         </div>
 
                                     </div>
-                                </div> : <></>}
+
+
+                                </div>
+                                    {/* <div>
+                                   {error && productSize1?.length<=1 ? <span>Please select a {productvariations[0]?.name}</span>:<div></div>}
+                                    </div> */}
+                                </> : <></>}
                                 {productvariations[1]?.name ? <div className={styles.sizesectionandcolor}>
                                     <div className={styles.fontweightsizes}> {productvariations[1]?.name ? <>{productvariations[1]?.name}</> : <></>} </div>
                                     <div className={styles.sizesection}>
@@ -533,90 +1216,47 @@ function Viewproducts({ id }) {
                                         </div>
                                     </div>
                                 </div> : <></>}
-                                {/* <div className={styles.sizesectionandcolor}>
-                                <div className={styles.fontweightsizes}> {productvariations[3]?.name ? <>{productvariations[3]?.name}</> : <></>} </div>
-                                <div className={styles.sizesection}>
-                                    <div className={styles.sizes}>
-                                {productvariations[3]?.variationValues?.map((item, index) => {
-                                    return (
-                                        <div className={`${index4 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                            setIndex4(index)
-                                            handleSizeProduct4(item);
-                                        }} key={index}>
-                                            {item}
-                                        </div>
-                                    )
-                                })}
-                                </div>
-
-                                </div>
-                                </div> */}
-
-                                <div className={styles.fontweightsizes}> {productvariations[4]?.name ? <>{productvariations[4]?.name}</> : <></>} </div>
-                                <div className={styles.fontweightsizes}> {productvariations[5]?.name ? <>{productvariations[5]?.name}</> : <></>} </div>
-                                <div className={styles.fontweightsizes}> {productvariations[6]?.name ? <>{productvariations[6]?.name}</> : <></>} </div>
-                            </div>
-
-                            {/* <div className="mt-2">
-                                <div className={styles.fontweightsizes}></div>
-                                <div className={styles.sizesection}>
-                                    <div className={styles.sizes}>
-                                        {productvariations?.map((item, index) => {
-                                            return (
-                                                <>
-                                                    {
-                                                        item?.name?.toLowerCase() == "size" ? <>
-                                                            <div className={styles.fontweightsizes}>{item?.name}:</div>
-                                                            {item?.variationValues?.map((items, index) => {
-                                                                return (
-                                                                    <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                                        setIndex1(index)
-                                                                        handleSizeProduct(items);
-                                                                    }} key={index}>
-                                                                        {items}
-                                                                    </div>
-                                                                )
-                                                            })}
-
-                                                        </> : <></>
-                                                    }
-
-
-                                                </>
-                                            )
-                                        })}
-                                    </div>
-
-                                </div>
-
-                                <div>
+                                {productvariations[3]?.name ? <div className={styles.sizesectionandcolor}>
+                                    <div className={styles.fontweightsizes}> {productvariations[3]?.name ? <>{productvariations[3]?.name}</> : <></>} </div>
                                     <div className={styles.sizesection}>
                                         <div className={styles.sizes}>
-                                            {productvariations?.map((item, index) => {
+                                            {productvariations[3]?.variationValues?.map((item, index) => {
                                                 return (
-                                                    <>
-                                                        {
-                                                            item?.name?.toLowerCase() == "color" ? <>
-                                                                <div className={styles.fontweightsizes} key={index}>{item?.name}:</div>
-                                                                {item?.variationValues?.map((items, index) => {
-                                                                    return (
-                                                                        <div className={`${index2 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => setIndex2(index)} key={index}>
-                                                                            <div>
-                                                                                {items.toLowerCase()}
-                                                                            </div>
-                                                                        </div>
-                                                                    )
-                                                                })}
-
-                                                            </> : <></>
-                                                        }
-                                                    </>
+                                                    <div className={`${index4 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                        setIndex4(index)
+                                                        handleSizeProduct4(item);
+                                                    }} key={index}>
+                                                        {item}
+                                                    </div>
                                                 )
                                             })}
                                         </div>
+
                                     </div>
-                                </div>
-                            </div> */}
+                                </div> : <></>}
+
+                                {productvariations[4]?.name ? <div className={styles.sizesectionandcolor}>
+                                    <div className={styles.fontweightsizes}> {productvariations[4]?.name ? <>{productvariations[4]?.name}</> : <></>} </div>
+                                    <div className={styles.sizesection}>
+                                        <div className={styles.sizes}>
+                                            {productvariations[4]?.variationValues?.map((item, index) => {
+                                                return (
+                                                    <div className={`${index5 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                        setIndex5(index)
+                                                        handleSizeProduct5(item);
+                                                    }} key={index}>
+                                                        {item}
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+
+                                    </div>
+                                </div> : <></>}
+
+                            </div>
+
+
                             <div className={styles.buttons}>
                                 <div>
                                     {tokencheck ?
