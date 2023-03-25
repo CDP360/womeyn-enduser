@@ -29,31 +29,22 @@ function Viewproducts({ id }) {
     const [index2, setIndex2] = useState(null);
     const [index3, setIndex3] = useState(null);
     const [index4, setIndex4] = useState(null);
-
     const [like, setLike] = useState(true);
     const productnames = id;
     const router = useRouter();
     const [loading, setLoading] = useState(false);
-
     const Checkout = (cartdata, productvariations) => {
-
-
         const datas = productvariations?.length >= 0 && productvariations[0]?.name;
         const datas1 = productvariations?.length >= 1 && productvariations[0]?.name && productvariations[1]?.name;
-        const datas2 = productvariations?.length >= 2 && productvariations[0]?.name && productvariations[1]?.name && productvariations[2]?.name;
-
-
+        // const datas2 = productvariations?.length >= 2 && productvariations[0]?.name && productvariations[1]?.name && productvariations[2]?.name;
         const overalls = []
         if (datas) {
-
-
             overalls.push(
                 {
                     name: datas,
                     value: productSize1
                 }
             )
-
             const urls = `Please Select ${datas}`;
             if (productSize1.length === 0) {
                 toast.error(urls,
@@ -69,7 +60,6 @@ function Viewproducts({ id }) {
                     }
                 );
             }
-
 
         }
 
@@ -115,55 +105,19 @@ function Viewproducts({ id }) {
 
         }
 
-
-
-
-        // const name = productvariations[0]?.name;
-        // const dataSize = {
-        //     name: name,
-        //     value: productSize
-        // }
-        // const urls = `Please Select ${name}`;
-        // if (name) {
-        //     if (productSize.length === 0) {
-        //         toast.error(urls,
-        //             {
-        //                 position: "top-center",
-        //                 autoClose: 3000,
-        //                 hideProgressBar: false,
-        //                 closeOnClick: true,
-        //                 pauseOnHover: true,
-        //                 draggable: true,
-        //                 progress: undefined,
-        //                 theme: "dark",
-        //             }
-        //         );
-        //     }
-        // }
-
-        // if (name) {
-        //     if (productSize) {
-        //         router?.push("/checkout")
-        //         dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
-        //     }
-        // }
-        // else {
-        //     router?.push("/checkout")
-        //     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
-        // }
     }
     const CheckLoginUsers = (data) => {
         const PathQuery = history?.asPath
         localStorage.setItem("productwhishlist", JSON.stringify(PathQuery));
         router.push(`/login?redirect=/product/${data}`);
     }
-
     const [likecheck, setLikecheck] = useState("");
     const [productSize, setProductSize] = useState("");
     const [productSize1, setProductSize1] = useState("");
     const [productSize2, setProductSize2] = useState("");
-    const [productSize3, setProductSize3] = useState("");
-    const [productSize4, setProductSize4] = useState("");
+    // const [productSize3, setProductSize3] = useState("");
+    // const [productSize4, setProductSize4] = useState("");
+
     const handleSizeProduct1 = (data) => {
         setProductSize1(data);
     }
@@ -173,18 +127,14 @@ function Viewproducts({ id }) {
     const handleSizeProduct3 = (data) => {
         setProductSize3(data);
     }
-    const handleSizeProduct4 = (data) => {
-        setProductSize4(data);
-    }
+    // const handleSizeProduct4 = (data) => {
+    //     setProductSize4(data);
+    // }
 
     const handleChange = (cartdata, productvariations) => {
-
-
-
-
         const datas = productvariations?.length >= 0 && productvariations[0]?.name;
         const datas1 = productvariations?.length >= 1 && productvariations[0]?.name && productvariations[1]?.name;
-        const datas2 = productvariations?.length >= 2 && productvariations[0]?.name && productvariations[1]?.name && productvariations[2]?.name;
+        // const datas2 = productvariations?.length >= 2 && productvariations[0]?.name && productvariations[1]?.name && productvariations[2]?.name;
 
 
         const overalls = []
@@ -251,53 +201,6 @@ function Viewproducts({ id }) {
 
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // const name = productvariations[0]?.name;
-        // const dataSize = {
-        //     name: name,
-        //     value: productSize
-        // }
-        // const urls = `Please Select ${name}`;
-        // if (name) {
-        //     if (productSize.length === 0) {
-        //         toast.error(urls,
-        //             {
-        //                 position: "top-center",
-        //                 autoClose: 3000,
-        //                 hideProgressBar: false,
-        //                 closeOnClick: true,
-        //                 pauseOnHover: true,
-        //                 draggable: true,
-        //                 progress: undefined,
-        //                 theme: "dark",
-        //             }
-        //         );
-        //     }
-        // }
-        // if (name) {
-        //     if (productSize) {
-        //         dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
-        //     }
-        // }
-        // else {
-        //     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
-        // }
     }
     useEffect(() => {
         ProductView(productnames).then((res) => {
@@ -336,17 +239,17 @@ function Viewproducts({ id }) {
 
     useEffect(() => {
         ProductLikeWishlistGet().then((res) => {
-            
+
         }).catch((err) => {
             console.log(err);
         })
 
         ProductLikeandUnlikeCheck(likecheck).then((res) => {
-        
+
         }).catch((err) => {
             console.log(err);
         })
-    }, [productSize, productseller, likecheck,productnames])
+    }, [productSize, productseller, likecheck, productnames])
 
 
     const LikeWishlist = (id) => {
@@ -382,19 +285,10 @@ function Viewproducts({ id }) {
     const buyNowPathNavigate = (cartdata, productvariations) => {
         const pathnames = "/checkout";
         localStorage.setItem("productwhishlist", JSON.stringify(pathnames));
-
-
-
-
         const datas = productvariations?.length >= 0 && productvariations[0]?.name;
         const datas1 = productvariations?.length >= 1 && productvariations[0]?.name && productvariations[1]?.name;
-        const datas2 = productvariations?.length >= 2 && productvariations[0]?.name && productvariations[1]?.name && productvariations[2]?.name;
-
-
         const overalls = []
         if (datas) {
-
-
             overalls.push(
                 {
                     name: datas,
@@ -465,51 +359,10 @@ function Viewproducts({ id }) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-        // const name = productvariations[0]?.name;
-        // const dataSize = {
-        //     name: name,
-        //     value: productSize
-        // }
-        // const urls = `Please Select ${name}`;
-        // if (name) {
-        //     if (productSize.length === 0) {
-        //         toast.error(urls,
-        //             {
-        //                 position: "top-center",
-        //                 autoClose: 3000,
-        //                 hideProgressBar: false,
-        //                 closeOnClick: true,
-        //                 pauseOnHover: true,
-        //                 draggable: true,
-        //                 progress: undefined,
-        //                 theme: "dark",
-        //             }
-        //         );
-        //     }
-        // }
-
-        // if (name) {
-        //     if (productSize) {
-        //         router?.push("/login?redirect=/checkout")
-        //         dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
-        //     }
-        // }
-        // else {
-        //     router?.push("/login?redirect=/checkout")
-        //     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [dataSize], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
-        // }
     }
+
+
+
 
 
 
@@ -541,27 +394,27 @@ function Viewproducts({ id }) {
                                     <div className={styles.leftwomensearchsection}>
                                         <div className={styles.serachlargeimage}>
                                             {/* <img
-                                                className={styles.serachlargeimage}
+                                                className={styles.serachlargeimages}
                                                 src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
                                                 alt="profile-pic"
                                             /> */}
 
                                             <ReactImageMagnify {...{
                                                 smallImage: {
+                                                   
                                                     alt: 'Wristwatch by Ted Baker London',
                                                     isFluidWidth: true,
                                                     src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
                                                 },
                                                 largeImage: {
                                                     src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                    width: 1120,
-                                                    height: 1800
+                                                    width: 1000,
+                                                    height: 1000
                                                 },
-                                                hoverDelayInMs:250,
-                                                // isHintEnabled:true
+                                              
                                             }}
-                                                className={styles.kalairuond}
-                                                lensStyle={styles.kalai}
+                                                
+                                        
                                             />
                                         </div>
 
@@ -625,7 +478,7 @@ function Viewproducts({ id }) {
                             <div className={styles.colorsectionlists}>
 
 
-                            {productvariations[0]?.name? <div className={styles.sizesectionandcolor}>
+                                {productvariations[0]?.name ? <div className={styles.sizesectionandcolor}>
 
 
                                     <div className={styles.fontweightsizes}> {productvariations[0]?.name}</div>
@@ -644,8 +497,8 @@ function Viewproducts({ id }) {
                                         </div>
 
                                     </div>
-                                </div>:<></>}
-                               {productvariations[1]?.name?<div className={styles.sizesectionandcolor}>
+                                </div> : <></>}
+                                {productvariations[1]?.name ? <div className={styles.sizesectionandcolor}>
                                     <div className={styles.fontweightsizes}> {productvariations[1]?.name ? <>{productvariations[1]?.name}</> : <></>} </div>
                                     <div className={styles.sizesection}>
                                         <div className={styles.sizes}>
@@ -662,8 +515,8 @@ function Viewproducts({ id }) {
                                         </div>
 
                                     </div>
-                                </div>:<></>}
-                                {productvariations[2]?.name?<div className={styles.sizesectionandcolor}>
+                                </div> : <></>}
+                                {productvariations[2]?.name ? <div className={styles.sizesectionandcolor}>
                                     <div className={styles.fontweightsizes}> {productvariations[2]?.name ? <>{productvariations[2]?.name}</> : <></>} </div>
                                     <div className={styles.sizesection}>
                                         <div className={styles.sizes}>
@@ -679,7 +532,7 @@ function Viewproducts({ id }) {
                                             })}
                                         </div>
                                     </div>
-                                </div>:<></>}
+                                </div> : <></>}
                                 {/* <div className={styles.sizesectionandcolor}>
                                 <div className={styles.fontweightsizes}> {productvariations[3]?.name ? <>{productvariations[3]?.name}</> : <></>} </div>
                                 <div className={styles.sizesection}>
@@ -873,3 +726,4 @@ function Viewproducts({ id }) {
 }
 
 export default Viewproducts;
+

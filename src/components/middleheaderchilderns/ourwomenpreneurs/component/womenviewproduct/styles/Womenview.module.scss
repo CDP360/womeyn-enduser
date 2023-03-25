@@ -213,6 +213,7 @@
                         justify-content: center;
                         padding: 5px;
                         border-radius:10px;
+                        height:auto;
                         @include xsBreakPoint {
                             width: 100%;
                         }
@@ -235,12 +236,35 @@
                         }
 
                         .serachlargeimage {
-                            width: 400px;
-                            height: 400px;
-                            // object-fit: contain;
-                            // background-color: rgba(247, 247, 247, 1);
-                            border-radius: 5px;
+                            width: 400px !important;
+                            height: 400px !important;
+                            over-flow:hidden;
+                            // object-fit: contain;  // background-color: rgba(247, 247, 247, 1);
+                            // border-radius: 5px;
+                            // border:2px solid red;
 
+                            @include xsBreakPoint {
+                                height: 300px;
+                                width: 100%;
+                            }
+                            @include smBreakPoint {
+                                height: auto;
+                                width: 300px;
+                            }
+                            @include lgBreakPoint {
+                                height: 300px;
+                                width: 300px;
+                            }
+                            @include xlBreakPoint {
+                                height: 300px;
+                                width: 300px;
+                            }
+                        }
+                        .serachlargeimages
+                        {
+                            width:400px;
+                            height:400px;
+                            object-fit:contain;
                             @include xsBreakPoint {
                                 height: 300px;
                                 width: 100%;
@@ -753,14 +777,14 @@
     padding-top:3%;
 }
 
-.kalairuond
-{
-    // border:1px solid red;
-    width:100%!important;
-    height:100% !important;
-    object-fit:contain;
-    .kalai
-    {
-        border:10px solid orange !important;
-    }
-}
+// .imagerounds
+// {
+//     // border:1px solid red;
+//     // width:100%!important;
+//     // height:100% !important;
+//     object-fit:contain;
+//     .kalai
+//     {
+//         border:10px solid orange !important;
+//     }
+// }
