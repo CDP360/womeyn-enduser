@@ -19,7 +19,7 @@ function Viewproducts({ id }) {
     const history = useRouter();
     const [tokencheck, setTokenset] = useState("");
     const { dispatch } = useContext(ContextStore);
-    const [indexs, setIndex] = useState(null);
+    const [indexs, setIndex] = useState(0);
     const [productdata, setProductData] = useState([]);
     const [productvariations, setProductVariations] = useState([]);
     const [productreview, setProductReview] = useState([]);
