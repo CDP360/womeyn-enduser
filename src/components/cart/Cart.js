@@ -123,7 +123,7 @@ function Cart() {
                                 {item?.variations?.map((items,index)=>{
 return(
   <div >
-<span className="sizecolor">{items?.name}</span> : {items?.value}
+<span className="sizecolor">{items?.name} : {items?.value}</span>
   </div>
 )
                                 })}

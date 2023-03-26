@@ -18,8 +18,9 @@ import leftarrow from '../../../assests/category-logos/rightcategoryarrow.png';
 import noimage from '../../../assests/womeynlogos/noimage.png';
 function Womenpreneurs() {
     const router = useRouter();
-    const [limit, setLimit] = useState([]);
     const [current, setCurrent] = useState(1);
+    const [limit, setLimit] = useState(current *10);
+
     const [dataseller, setDataseller] = useState([]);
     const [datacategory, setDataCtagoryies] = useState([]);
     const [filters, setFilterData] = useState([]);

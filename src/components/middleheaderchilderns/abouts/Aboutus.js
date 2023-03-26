@@ -58,7 +58,7 @@ function Aboutus() {
                 <div className={styles.mainaboutsection}>
                     <div className={styles.mainimageabout}>
                         <div className={styles.bannersectionabout}>
-                            {/* <Image src={maskup} alt="no image" className={styles.bannerimageabout} /> */}
+                            <Image src={maskup} alt="no image" className={styles.bannerimageabout} />
                             <div className={styles.bannercontentsectionimage}>
                                 <div className={styles.bannerinsidesection}>
                                     <div className={styles.isidelogoproduct}>

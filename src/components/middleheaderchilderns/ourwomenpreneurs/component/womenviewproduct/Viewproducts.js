@@ -71,7 +71,7 @@ function Viewproducts({ id }) {
 
             if (datas) {
                 if (productSize1) {
-                router?.push("/checkout")
+                    router?.push("/checkout")
 
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
@@ -223,7 +223,7 @@ function Viewproducts({ id }) {
 
             if (datas3) {
                 if (productSize1 && productSize2 && productSize3 && productSize4) {
-                                   router?.push("/checkout")
+                    router?.push("/checkout")
 
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
                 }
@@ -294,9 +294,8 @@ function Viewproducts({ id }) {
             }
 
         }
-        else
-        {
-                router?.push("/checkout")
+        else {
+            router?.push("/checkout")
             dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
         }
@@ -574,8 +573,7 @@ function Viewproducts({ id }) {
             }
 
         }
-        else
-        {
+        else {
             dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
         }
@@ -618,13 +616,14 @@ function Viewproducts({ id }) {
     }, [productnames, tokencheck, index1, index2, index3, index4]);
 
     useEffect(() => {
-        ProductLikeWishlistGet().then((res) => {
-
-        }).catch((err) => {
-            console.log(err);
-        })
+        //         ProductLikeWishlistGet().then((res) => {
+        // console.log(res?.data,"thalas")
+        //         }).catch((err) => {
+        //             console.log(err);
+        //         })
 
         ProductLikeandUnlikeCheck(likecheck).then((res) => {
+            console.log(res?.data, "thalas")
 
         }).catch((err) => {
             console.log(err);
@@ -704,7 +703,7 @@ function Viewproducts({ id }) {
 
             if (datas) {
                 if (productSize1) {
-                router?.push("/login?redirect=/checkout")
+                    router?.push("/login?redirect=/checkout")
 
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
@@ -856,7 +855,7 @@ function Viewproducts({ id }) {
 
             if (datas3) {
                 if (productSize1 && productSize2 && productSize3 && productSize4) {
-                                   router?.push("/login?redirect=/checkout")
+                    router?.push("/login?redirect=/checkout")
 
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
                 }
@@ -927,9 +926,8 @@ function Viewproducts({ id }) {
             }
 
         }
-        else
-        {
-                router?.push("/login?redirect=/checkout")
+        else {
+            router?.push("/login?redirect=/checkout")
             dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
         }

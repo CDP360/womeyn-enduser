@@ -35,7 +35,7 @@ function Allorders({ Orders, traking }) {
   useEffect(() => {
   }, [deleteid])
 
-  console.log("orders",Orders)
+  console.log("orders", Orders)
 
   return (
     <div className={styles.allordermainsection}>
@@ -74,20 +74,20 @@ function Allorders({ Orders, traking }) {
                           </>}
                         </div>
                         <div>
-                         <div  className='carttextsmall' >
-                         {items?.productName}
+                          <div className='carttextsmall' >
+                            {items?.productName}
                           </div>
                           <div>
-                        {items?.variations?.map((itemss,index)=>{
-return(
-  <div >
-<span className="sizecolor">{itemss?.name}</span> : {itemss?.value}
-  </div>
-)
-                                })}
+                            {items?.variations?.map((itemss, index) => {
+                              return (
+                                <div >
+                                  <span className="sizecolor">{itemss?.name}</span> : {itemss?.value}
+                                </div>
+                              )
+                            })}
                           </div>
                         </div>
-                        
+
                       </div>
                     )
                   })}

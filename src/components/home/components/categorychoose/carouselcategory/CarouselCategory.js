@@ -68,28 +68,47 @@ function CarouselCategory() {
     })
   }, []);
 
- 
+
 
   const pushCatgorys = (data) => {
     history.push(`/category/${data}`)
   }
   return (
     <div className={styles.mainslidesection}>
-      <Slider {...settings}>
-        {datas.map((item, index) => {
-          return (
-            <div className={styles.insideslides} onClick={() => pushCatgorys(item?.slugName)}  key={index}>
-              <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesize} />
-              <div className='mt-4' onClick={() => pushCatgorys(item?.slugName)} >
-                <h6>{item?.name}</h6>
+      {datas?.length <=4 ? <>
+      
+      <div className={styles.insideslidess}>
+
+      {datas.map((item, index) => {
+            return (
+              <div className={styles.cardsslide} onClick={() => pushCatgorys(item?.slugName)} key={index}>
+                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesizes} />
+                <div className='mt-4' onClick={() => pushCatgorys(item?.slugName)} >
+                  <h6>{item?.name}</h6>
+                </div>
+                <div onClick={() => pushCatgorys(item?.slugName)} >
+                  {item?.description}
+                </div>
               </div>
-              <div onClick={() => pushCatgorys(item?.slugName)} >
-                {item?.description} 
+            )
+          })}
+      </div>
+      </> :
+        <Slider {...settings}>
+          {datas.map((item, index) => {
+            return (
+              <div className={styles.insideslides} onClick={() => pushCatgorys(item?.slugName)} key={index}>
+                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesize} />
+                <div className='mt-4' onClick={() => pushCatgorys(item?.slugName)} >
+                  <h6>{item?.name}</h6>
+                </div>
+                <div onClick={() => pushCatgorys(item?.slugName)} >
+                  {item?.description}
+                </div>
               </div>
-            </div>
-          )
-        })}
-      </Slider>
+            )
+          })}
+        </Slider>}
     </div>
   )
 }
