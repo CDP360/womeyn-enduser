@@ -10,6 +10,8 @@ function Payment({ totalPrice, addressid, couponname }) {
   const [paymentType, setPaymentType] = useState("");
 
   const { cart } = state;
+
+  console.log(cart,"cart")
   const paymentMethods = [
     {
       id: 1,
@@ -36,6 +38,7 @@ function Payment({ totalPrice, addressid, couponname }) {
         sellerBusinessName: item?.sellerBusinessName,
         productThumbImage: item?.productThumbImage,
         couponName: couponname,
+        productSlugName:item?.productSlugName
       })
     })
     setOrders(storesfilter);

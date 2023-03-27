@@ -17,8 +17,11 @@ import Skeleton from 'react-loading-skeleton';
 import ReactImageMagnify from 'react-image-magnify';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import { Rate } from "antd";
 function Viewproducts({ id }) {
     const history = useRouter();
+    const [starcount, setStarCount] = useState(null);
+
     const [tokencheck, setTokenset] = useState("");
     const { dispatch } = useContext(ContextStore);
     const [indexs, setIndex] = useState(0);
@@ -33,7 +36,7 @@ function Viewproducts({ id }) {
     const [index4, setIndex4] = useState(null);
     const [index5, setIndex5] = useState(null);
 
-    const [like, setLike] = useState(true);
+    const [like, setLike] = useState(false);
     const [error, setError] = useState(false);
     const productnames = id;
     const router = useRouter();
@@ -621,39 +624,61 @@ function Viewproducts({ id }) {
         //         }).catch((err) => {
         //             console.log(err);
         //         })
-
-        ProductLikeandUnlikeCheck(likecheck).then((res) => {
+        // const productids = JSON.parse(localStorage.getItem("womenproductid"));
+        ProductLikeandUnlikeCheck(productdata?.id).then((res) => {
             console.log(res?.data, "thalas")
-
+            setLike(res?.data);
         }).catch((err) => {
             console.log(err);
         })
     }, [productSize, productseller, likecheck, productnames])
 
 
-    const LikeWishlist = (id) => {
-        setLikecheck(id);
-        if (like) {
-            const likeid = {
-                productId: id
-            }
-            ProductLikeWishlist(likeid).then((res) => {
 
-            }).catch((err) => {
-                console.log(err);
-            })
+    const LikeWishlistlike = (id) => {
+        const likeid = {
+            productId: id
         }
-        else {
-            const likeid = {
-                wishlistId: id
-            }
-            ProductLikeWishlist(likeid).then((res) => {
-            }).catch((err) => {
-                console.log(err);
-            })
-        }
+        ProductLikeWishlist(likeid).then((res) => {
+            toast.success("liked Whislist", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
 
+            })
+            setLike(true)
+        }).catch((err) => {
+            console.log(err);
+        })
     }
+
+    const LikeWishlistunlike = (id) => {
+        const likeid = {
+            productId: id
+        }
+        ProductLikeWishlist(likeid).then((res) => {
+            toast.success("unliked Whislist", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+
+            })
+            setLike(false)
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
     const productSellerPageView = (data) => {
         setTimeout(() => {
             setLoading(false);
@@ -922,7 +947,6 @@ function Viewproducts({ id }) {
                 router?.push("/login?redirect=/checkout")
 
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
-
             }
 
         }
@@ -931,114 +955,7 @@ function Viewproducts({ id }) {
             dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // const datas = productvariations?.length >= 0 && productvariations[0]?.name;
-        // const datas1 = productvariations?.length >= 1 && productvariations[0]?.name && productvariations[1]?.name;
-        // const overalls = []
-        // if (datas) {
-        //     overalls.push(
-        //         {
-        //             name: datas,
-        //             value: productSize1
-        //         }
-        //     )
-
-        //     const urls = `Please Select ${datas}`;
-        //     if (productSize1.length === 0) {
-        //         toast.error(urls,
-        //             {
-        //                 position: "top-center",
-        //                 autoClose: 3000,
-        //                 hideProgressBar: false,
-        //                 closeOnClick: true,
-        //                 pauseOnHover: true,
-        //                 draggable: true,
-        //                 progress: undefined,
-        //                 theme: "dark",
-        //             }
-        //         );
-        //     }
-
-
-        // }
-
-        // if (datas) {
-        //     if (productSize1) {
-        //         router?.push("/login?redirect=/checkout")
-
-        //         dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: overalls, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
-
-        //     }
-        // }
-        // else {
-        //     router?.push("/login?redirect=/checkout")
-
-        //     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
-        // }
-        // const overalls1 = []
-        // if (datas1) {
-        //     overalls1.push(
-        //         {
-        //             name: datas,
-        //             value: productSize1
-        //         },
-        //         {
-        //             name: datas1,
-        //             value: productSize2
-        //         }
-        //     )
-
-        // }
-        // if (datas1) {
-        //     if (productSize2) {
-        //         router?.push("/login?redirect=/checkout")
-
-        //         dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: overalls1, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
-
-        //     }
-        // }
-        // else {
-        //     router?.push("/login?redirect=/checkout")
-
-        //     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
-
-        // }
-
-
-
     }
-
-
-
-
-
 
     return (
         <Fragment>
@@ -1093,16 +1010,26 @@ function Viewproducts({ id }) {
                                         </div>
 
                                         {tokencheck ? <div className={styles.heartimagesection}>
-                                            <button className={styles.btn} onClick={() => {
-                                                setLike(!like)
-                                                LikeWishlist(productdata?.id)
-                                            }}>
+                                            <button className={styles.btn}
+                                                onClick={() => {
+                                                    if (!like) {
+                                                        LikeWishlistlike(productdata?.id)
+                                                    }
+                                                    else {
+                                                        LikeWishlistunlike(productdata?.id)
+                                                    }
+                                                }}
+                                            >
                                                 {like ? <>
-                                                    <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+                                                    <Image src={heartlike} alt="no image" className={styles.heartlikes} />
 
                                                 </> : <>
-                                                    <Image src={heartlike} alt="no image" className={styles.heartlikes} />
+                                                    <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+
+
                                                 </>}
+
+                                                {/* {like?"kalai true":"kalai false"} */}
                                             </button>
                                         </div> :
                                             <div className={styles.heartimagesection}>
@@ -1123,11 +1050,15 @@ function Viewproducts({ id }) {
                             <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
                             <div className={styles.starsection}>
                                 <div className={styles.starsections}>
-                                    <Image src={starstart} alt="no image" className={styles.stars} />
-                                    <Image src={starstart} alt="no image" className={styles.stars} />
-                                    <Image src={starstart} alt="no image" className={styles.stars} />
-                                    <Image src={starstart} alt="no image" className={styles.stars} />
-                                    <Image src={starend} alt="no image" className={styles.stars} />
+                                   
+                                    <Rate defaultValue={4.5} allowHalf style={{ color: "#54BE43" }}
+                                        tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                        onChange={(value) => {
+                                            setStarCount(value)
+
+                                        }}
+                                    // disabled
+                                    />
                                 </div>
                                 <div>
                                     712 Ratings
@@ -1150,13 +1081,8 @@ function Viewproducts({ id }) {
                             </div>
 
                             <div className={styles.colorsectionlists}>
-
-
                                 {productvariations[0]?.name ? <><div className={styles.sizesectionandcolor}>
-
-
                                     <div className={styles.fontweightsizes}> {productvariations[0]?.name}</div>
-
                                     <div className={styles.sizesection}>
                                         <div className={styles.sizes}>
                                             {productvariations[0]?.variationValues?.map((item, index) => {
@@ -1170,10 +1096,7 @@ function Viewproducts({ id }) {
                                                 )
                                             })}
                                         </div>
-
                                     </div>
-
-
                                 </div>
                                     {/* <div>
                                    {error && productSize1?.length<=1 ? <span>Please select a {productvariations[0]?.name}</span>:<div></div>}
@@ -1194,7 +1117,6 @@ function Viewproducts({ id }) {
                                                 )
                                             })}
                                         </div>
-
                                     </div>
                                 </div> : <></>}
                                 {productvariations[2]?.name ? <div className={styles.sizesectionandcolor}>
@@ -1229,10 +1151,8 @@ function Viewproducts({ id }) {
                                                 )
                                             })}
                                         </div>
-
                                     </div>
                                 </div> : <></>}
-
                                 {productvariations[4]?.name ? <div className={styles.sizesectionandcolor}>
                                     <div className={styles.fontweightsizes}> {productvariations[4]?.name ? <>{productvariations[4]?.name}</> : <></>} </div>
                                     <div className={styles.sizesection}>
@@ -1248,13 +1168,9 @@ function Viewproducts({ id }) {
                                                 )
                                             })}
                                         </div>
-
                                     </div>
                                 </div> : <></>}
-
                             </div>
-
-
                             <div className={styles.buttons}>
                                 <div>
                                     {tokencheck ?
@@ -1280,7 +1196,6 @@ function Viewproducts({ id }) {
                                     <div className={styles.deliverytexts}>Delivery To</div>
                                 </div>
                                 <div className={styles.inputlocationfield}>
-
                                     <div>
                                         <input type="text" placeholder='7000' className={styles.location} />
                                     </div>

@@ -1,13 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './styles/Sidebarcategory.module.scss';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
+import { Slider, Switch } from 'antd';
 function Sidebarcateogrys() {
 
 
   const [dropdown1, setDropdown1] = useState(true);
   const [dropdown2, setDropdown2] = useState(true);
   const [dropdown3, setDropdown3] = useState(true);
+  const [first, setFirst] = useState(null);
+  const [first1, setFirst1] = useState(null);
+
+
+  const onChange = (value) => {
+    // console.log('onChange: ', value);
+    setFirst(value);
+  }
+
+  const onAfterChange = (value) => {
+    // console.log('onAfterChange: ', value);
+    setFirst1(value);
+  }
+
+  useEffect(() => {
+
+  }, [first, first1])
   return (
     <div className={styles.mainsidebarsectioncategory}>
       <div className={styles.filtersectiontext}>
@@ -91,16 +109,21 @@ function Sidebarcateogrys() {
         // }}
         >
           <div className={styles.transactionsize}>
-          Price
+            Price
           </div>
           {dropdown3 ? <ion-icon name="chevron-up-outline" className="ion-icon" onClick={() => setDropdown3(!dropdown3)}></ion-icon> : <ion-icon name="chevron-down-outline" className="ion-icon" onClick={() => setDropdown3(!dropdown3)}></ion-icon>}
         </div>
         {dropdown3 && <div className={styles.gapsectiondropdown}>
-          <div><Form.Check type="checkbox" label="Under $100" /></div>
+          {/* <div><Form.Check type="checkbox" label="Under $100" /></div>
           <div><Form.Check type="checkbox" label="$100 - $200" /></div>
           <div><Form.Check type="checkbox" label="$200 - $300" /></div>
           <div><Form.Check type="checkbox" label="$300 - $400" /></div>
-          <div><Form.Check type="checkbox" label="$400 above" /></div>
+          <div><Form.Check type="checkbox" label="$400 above" /></div> */}
+
+          <Slider range defaultValue={[first, first1]}
+            className={styles.kalai}
+            onChange={onChange} onAfterChange={onAfterChange}
+          />
         </div>}
       </div>
     </div>

@@ -7,3 +7,12 @@ export function GetFavoritsList() {
         return err;
     })
 }
+
+
+export function ProductLikeWishlistRemove(data) {
+    return instanceBaseurl.post(`/customer/wishlist`, data).then((res) => {
+        return res;
+    }).catch((err) => {
+        return err;
+    })
+}

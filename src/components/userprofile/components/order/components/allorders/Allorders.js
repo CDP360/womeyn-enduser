@@ -6,13 +6,21 @@ import moment from 'moment';
 import Modal from 'react-bootstrap/Modal';
 import { CustomerOrderCancel } from "../../../../../../services/customer-order-service/customer-order-service";
 import { toast } from 'react-toastify';
+import Reviewmodel from './reviewmodel/Reviewmodel';
 function Allorders({ Orders, traking }) {
   const [show, setShow] = useState(false);
+  const [show1, setShow1] = useState(false);
+
   const [deleteid, setDeleteid] = useState("");
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
     setShow(true)
     setDeleteid(id);
+  };
+  const handleClose1 = () => setShow1(false);
+  const handleShow1 = () => {
+    setShow1(true)
+
   };
   const history = useRouter();
   const handleDelete = (e) => {
@@ -35,20 +43,21 @@ function Allorders({ Orders, traking }) {
   useEffect(() => {
   }, [deleteid])
 
-  console.log("orders", Orders)
-
   return (
     <div className={styles.allordermainsection}>
+
       <div className={styles.insidemainordersection}>
         {Orders?.map((item, index) => {
           return (
             <div className={styles.insideordersectionlist}>
               <div className={styles.orderstatussection}>
                 <div>
+                  {item?.stateId === 1 && <button className={styles.confirmorder}>New Order</button>}
                   {item?.stateId === 2 && <button className={styles.confirmorder}>Confirmed</button>}
                   {item?.stateId === 3 && <button className={styles.confirmorderprogress}>Progress</button>}
                   {item?.stateId === 4 && <button className={styles.confirmordercanceld}>Cancelled </button>}
-                  {item?.stateId === 5 && <button className={styles.confirmordersuccess}>Delivered </button>}
+                  {item?.stateId === 5 && <button className={styles.confirmordersuccess}>Cancelled  </button>}
+                  {item?.stateId === 6 && <button className={styles.confirmordersuccess}>Delivered </button>}
 
                 </div>
                 <div>
@@ -74,7 +83,7 @@ function Allorders({ Orders, traking }) {
                           </>}
                         </div>
                         <div>
-                          <div className='carttextsmall' >
+                          <div className='carttextsmall' onClick={() => Productview(item?.productSlugName)}>
                             {items?.productName}
                           </div>
                           <div>
@@ -85,6 +94,9 @@ function Allorders({ Orders, traking }) {
                                 </div>
                               )
                             })}
+                          </div>
+                          <div>
+                            Rs.{items?.price}
                           </div>
                         </div>
 
@@ -100,13 +112,17 @@ function Allorders({ Orders, traking }) {
                 </div>
                 {item?.stateId === 4 || item?.stateId === 5 || item?.stateId == 6 ? <></> : <div className={styles.thirdimagesection}>
                   <div>
-                    <button className={styles.trackingbutton}>Track</button>
+                    <button className={styles.trackingbutton} onClick={traking}>Track</button>
                   </div>
                   <div>
                     <div>
                       <button className={styles.trackingbutton} onClick={() => handleShow(item?.orderId)}>Cancel</button>
                     </div>
                   </div>
+                </div>}
+
+                {item?.stateId === 6 && <div>
+                  <button className={styles.trackingbutton} onClick={handleShow1}>Rate & Review </button>
                 </div>}
               </div>
             </div>
@@ -136,7 +152,7 @@ function Allorders({ Orders, traking }) {
               </div>
               <div className={styles.removeitemname}>
 
-                Cancel Order
+                Are you sure want to remove this item from your Cancel Order ?
               </div>
               <div className={styles.buttonsections}>
 
@@ -147,90 +163,20 @@ function Allorders({ Orders, traking }) {
           </Modal.Body>
 
         </Modal>
+
+
+      </>
+
+      <>
+
+
+
+        <Reviewmodel show1={show1}
+          handleClose1={handleClose1} />
       </>
 
     </div>
-    // <div>
-    //   {Orders.map((item, index) => {
-    //     return (
-    //       <>
-    //         <div className={styles.insidecontainer} key={index}>
-    //           <p
-    //             className={
-    //               item.status == "Delivered"
-    //                 ? `${styles.statusDel}`
-    //                 : `${styles.status}`
-    //             }
-    //           >
-    //             {item.status}
-    //           </p>
-    //           <p className={styles.delivery}>{item.delivery}</p>
-    //           <p className={styles.delivery}>
-    //             Invoice Number:
-    //             <span className={styles.invoicedata}>
-    //               {item?.id}
-    //             </span>
-    //           </p>
-    //         </div>
 
-    //         <div className={styles.insidecontainer1}>
-    //           <div className={styles.trackbtndivider} onClick={NavigateOrderdetails}>
-
-    //             <div className={styles.insidecontainer2}>
-
-    //               {item?.itemsOrdered?.map((items, index) => {
-    //                 return (
-    //                   <>
-    //                     <div>
-    // <div >
-    //   {item?.productThumbImage ? <>
-    //     <img
-    //       className={styles.img}
-    //       src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
-    //       alt="profile-pic"
-    //     />
-    //   </> : <>
-
-    //     <Skeleton className={styles.img} />
-    //   </>}
-    //                       </div>
-    //                       <div className={styles.subHead}>
-    //                         {items?.productName}
-    //                       </div>
-    //                       <div className={styles.subHead}>
-    //                         {items?.sellerBusinessName}
-    //                       </div>
-    //                     </div>
-    //                   </>
-    //                 )
-    //               })}
-
-
-
-
-    //             </div>
-    //             <div className={styles.insidecontainer3}>
-    //               <h5>{item.amount}</h5>
-    //             </div>
-    //           </div>
-    //           <div className={styles.buttontrack} onClick={traking}>
-    //             <button className={styles.trackbutton} onClick={traking}>
-    //               tracking
-    //             </button>
-    //             {item.status == "Delivered" ? (
-    //               <></>
-    //             ) : (
-    //               <button className={styles.cancelbutton}>
-    //                 {item.cancelb}
-    //               </button>
-    //             )}
-    //           </div>
-    //         </div>
-    //         <hr className={styles.hrcontainer} />
-    //       </>
-    //     );
-    //   })}
-    // </div>
   )
 }
 

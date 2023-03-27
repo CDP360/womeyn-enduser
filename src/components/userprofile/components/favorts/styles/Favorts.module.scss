@@ -109,7 +109,7 @@
                 }
                 .favortsRatingContainer{
                     display: flex;
-                    width: 90%;
+                    width: 100%;
                     align-items:center;
 
                     @include mdBreakPoint{
@@ -165,3 +165,73 @@
         }
     }
 }
+
+
+
+.mobilecartresponsive {
+    display: flex;
+    gap: 40%;
+    padding-top: 4%;
+    padding-bottom: 3%;
+  }
+  .removetexts {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+  .removeitemname {
+    padding: 5% 0px;
+    text-align: center;
+    font-size: 1.4rem;
+  
+    color: #0d0c22;
+  
+    font-weight: 500;
+  
+    opacity: 0.4;
+  }
+  .modelremove {
+    width: 100%;
+  
+    .insidemodelpopup {
+      // border:3px solid red;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      align-items: center;
+    }
+    .buttonsections {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      padding-top: 6%;
+      padding-bottom: 5%;
+      .buttonscancel {
+        outline: none;
+        cursor: pointer;
+        background-color: white;
+        color: rgba(233, 90, 90, 1);
+        border: 1px solid rgba(233, 90, 90, 1);
+        padding: 7px 30px;
+        border-radius: 10px;
+        font-weight: 600;
+      }
+      .buttonsremove {
+        outline: none;
+        cursor: pointer;
+        background-color: rgba(233, 90, 90, 1);
+        color: white;
+        border: none;
+        padding: 7px 30px;
+        border-radius: 10px;
+        font-weight: 600;
+      }
+    }
+  }
+  
+  .removeitems
+  {
+    width:20px;
+    height:20px;
+    object-fit:contain;
+  }

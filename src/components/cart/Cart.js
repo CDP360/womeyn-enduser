@@ -9,19 +9,15 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { ContextStore } from './../../Redux/store/Contextstore';
 import cartempty from '../../assests/cart-logos/emptycartlogo.png';
-
 import Modal from 'react-bootstrap/Modal';
 function Cart() {
   const [show, setShow] = useState(false);
-
   const [deleteid, setDeleteid] = useState("");
-
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
     setShow(true)
     setDeleteid(id);
   };
-
 
   const { state, dispatch } = useContext(ContextStore);
   const { cart } = state;
@@ -80,7 +76,6 @@ function Cart() {
   }
 
 
-  console.log(cart,"cart")
 
   return (
     <Fragment>

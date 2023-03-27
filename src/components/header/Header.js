@@ -50,6 +50,8 @@ function Header() {
         localStorage.removeItem("productwhishlist");
         localStorage.removeItem("womenuser");
         localStorage.removeItem("womenauth");
+        localStorage.removeItem("womenproductid");
+
 
 
         setTimeout(() => {

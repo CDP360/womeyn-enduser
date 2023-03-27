@@ -464,13 +464,14 @@
                             width: auto;
                             height: auto;
                             border: 1px solid #DBD9D9;
-
-                            border-radius: 10px;
+                            border-radius: 5px;
                             display: flex;
                             align-items: center;
                             justify-content: center;
                             cursor: pointer;
-                            padding: 4px 13px;
+                            padding: 2px 3px;
+                            width:50px;
+                            // font-size:0.789rem;
                             // font-weight: 550;
                             background-color:white;
                             @include lgBreakPoint {
@@ -480,14 +481,13 @@
                         .activewomensizes {
                             width: auto;
                             height: auto;
-                            border-radius: 10px;
+                            border-radius: 5px;
                             display: flex;
                             align-items: center;
                             justify-content: center;
                             cursor: pointer;
-                            padding: 8px;
-                            padding: 4px 13px;
-
+                            padding: 2px 3px;
+                            width:50px;
                             background: #e95a5a;
                             color: white;
                             @include lgBreakPoint {
