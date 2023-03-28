@@ -82,6 +82,8 @@ function Home() {
     const MovePageData = (data) => {
         window.open(data);
     }
+
+    console.log(bannerimages, "bannerimages")
     return (
         <Fragment>
             <div className={styles.homesectionmain}>

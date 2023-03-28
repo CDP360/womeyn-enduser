@@ -15,7 +15,8 @@ import deleteicons from '../../../../assests/cart-logos/deleteicons.png';
 import { toast } from 'react-toastify';
 import LoaderLogo from '../../../loaderlogo/LoaderLogo';
 import Spinner from 'react-bootstrap/Spinner';
-
+// import Autocomplete from "react-google-autocomplete";
+import dynamic from 'next/dynamic';
 function Manageaddress() {
   const {
     register,
@@ -119,6 +120,7 @@ function Manageaddress() {
                 <div className="commonprofiletextsize" >
                   Manage Address
                 </div>
+          
               </div>
               <div className={styles.rightaddresssection}>
                 <div>
@@ -429,4 +431,4 @@ function Manageaddress() {
   )
 }
 
-export default Manageaddress
+export default dynamic(() => Promise.resolve(Manageaddress), { ssr: false })

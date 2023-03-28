@@ -43,6 +43,11 @@
                 flex-direction: column;
                 gap: 35px;
             }
+            @include lgBreakPoint {
+         
+                gap: 15px;
+            }
+
             @include xlBreakPoint {
          
                 gap: 60px;
@@ -238,10 +243,11 @@
                         .serachlargeimage {
                             width: 400px !important;
                             height: 400px !important;
-                            over-flow:hidden;
+                        
                             // object-fit: contain;  // background-color: rgba(247, 247, 247, 1);
                             // border-radius: 5px;
-                            // border:2px solid red;
+              
+                            z-index:98989898;
 
                             @include xsBreakPoint {
                                 height: 300px;
@@ -265,6 +271,7 @@
                             width:400px;
                             height:400px;
                             object-fit:contain;
+                            z-index:9898989;
                             @include xsBreakPoint {
                                 height: 300px;
                                 width: 100%;
@@ -406,14 +413,17 @@
                     gap: 15px;
                     align-items: center;
                     padding: 2% 0px;
+                
                     .starsections {
                         display: flex;
                         gap: 5px;
+                        z-index:-10px !important;
                     }
                     .stars {
                         width: 20px;
                         height: 20px;
                         object-fit: cover;
+                        z-index:-10px !important;
                     }
                 }
                 .proceinproduct {
@@ -443,7 +453,7 @@
                    
                     .sizes {
                         display: flex;
-                        gap: 23px;
+                        gap: 10px;
                         padding-top: 2%;
                         // border:2px solid blue;
                         width: 100%;
@@ -471,9 +481,8 @@
                             cursor: pointer;
                             padding: 2px 3px;
                             width:50px;
-                            // font-size:0.789rem;
-                            // font-weight: 550;
                             background-color:white;
+                            font-size:0.789rem;
                             @include lgBreakPoint {
                                 font-weight: 500;
                             }
@@ -538,6 +547,67 @@
 
                     border-radius: 10px;
                     color: white;
+                    @include xsBreakPoint {
+                        width: 100%;
+                    }
+
+                    @include mdBreakPoint {
+                        width: 50%;
+                    }
+                    @include lgBreakPoint {
+                        width: 60%;
+                    }
+                    @include xlBreakPoint {
+                        width: 60%;
+                    }
+                }
+
+
+
+                .buttonss {
+                    display: flex;
+                    gap: 20px;
+                    flex-direction: column;
+                    padding-top: 4%;
+                    cursor:not-allowed;
+                }
+
+                .addcartbuttons {
+                    border: 1px solid rgba(233, 90, 90, 0.33);
+                    color: rgba(233, 90, 90, 0.33);
+                    font-weight: 700;
+                    // filter: drop-shadow(0px 11px 27px rgba(192, 48, 51, 0.25));
+                    border-radius: 10px;
+                    width: 60%;
+                    padding: 10px;
+                    cursor:not-allowed;
+
+                    @include xsBreakPoint {
+                        width: 100%;
+                    }
+                    @include smBreakPoint {
+                        // width: 40%;
+                    }
+                    @include mdBreakPoint {
+                        width: 50%;
+                    }
+                    @include lgBreakPoint {
+                        width: 60%;
+                    }
+                    @include xlBreakPoint {
+                        width: 60%;
+                    }
+                }
+                .bynowcartbuttons {
+                    background: rgba(233, 90, 90, 0.33);;
+                    // box-shadow: 0px 11px 27px rgba(192, 48, 51, 0.25);
+                    width: 60%;
+                    padding: 10px;
+                    border-radius: 10px;
+                    color: white;
+                    cursor:not-allowed;
+                    z-index:-10px !important;
+
                     @include xsBreakPoint {
                         width: 100%;
                     }
@@ -755,8 +825,8 @@
 
 .fontweightsizes {
     color: #B1AFAF;
-    font-weight: 600;
-    font-size: 1.3rem;
+    font-weight: 650;
+    font-size: 1rem;
 }
 
 
@@ -785,6 +855,10 @@
     flex-direction:column;
     gap:15px;
     padding-top:3%;
+    @include lgBreakPoint
+    {
+        gap:5px;
+    }
 }
 
 // .imagerounds

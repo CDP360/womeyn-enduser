@@ -26,7 +26,7 @@
           color: #59af59;
         }
         .confirmordercanceld {
-          background-color: #F9ACAC;
+          background-color: #f9acac;
           padding: 3px 10px;
           font-weight: 600;
           outline: none;
@@ -35,8 +35,7 @@
           font-size: 0.789rem;
           color: white;
         }
-        .confirmordersuccess
-        {
+        .confirmordersuccess {
           padding: 3px 10px;
           font-weight: 600;
           background-color: rgba(89, 175, 89, 0.1);
@@ -46,8 +45,7 @@
           font-size: 0.789rem;
           color: #59af59;
         }
-        .confirmorderprogress
-        {
+        .confirmorderprogress {
           padding: 3px 10px;
           font-weight: 600;
           background: rgba(255, 61, 0, 0.1);
@@ -55,7 +53,7 @@
           border: none;
           border-radius: 10px;
           font-size: 0.789rem;
-          color: #FF3D00;
+          color: #ff3d00;
         }
       }
     }
@@ -71,7 +69,7 @@
       width: 60%;
       display: flex;
       gap: 20px;
-      flex-direction:column;
+      flex-direction: column;
       .firstsectioninside {
         display: flex;
         gap: 10px;
@@ -90,11 +88,40 @@
       .trackingbutton {
         width: 100%;
         outline: none;
-        padding: 6px;
+        padding: 6px 30px;
         border-radius: 10px;
         color: #e95a5a;
         border: 1px solid #e95a5a;
         background-color: white;
+      }
+    }
+  }
+}
+
+.ordermapsectionlists {
+  width: 100%;
+  display: flex;
+  .firstimagesections {
+    width: 100%;
+    // border:1px solid red;
+    .firstsectioninsidess {
+      display: flex;
+      gap: 20px;
+      padding: 3% 0px;
+
+      .leftorderdelivery {
+        width: 60%;
+        display: flex;
+        gap: 20px;
+      }
+      .secondimagesections {
+        width: 20%;
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+      .rightimagesections
+      {
+        width:20%;
       }
     }
   }
@@ -177,10 +204,10 @@
   }
 }
 
-.trackingbutton {
+.trackingbuttons {
   width: 100%;
   outline: none;
-  padding: 9px 10px;
+  padding: 9px 40px;
   border-radius: 10px;
   color: #e95a5a;
   border: 1px solid #e95a5a;

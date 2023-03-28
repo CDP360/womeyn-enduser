@@ -11,7 +11,7 @@ function Payment({ totalPrice, addressid, couponname }) {
 
   const { cart } = state;
 
-  console.log(cart,"cart")
+  console.log(cart, "cart")
   const paymentMethods = [
     {
       id: 1,
@@ -37,8 +37,7 @@ function Payment({ totalPrice, addressid, couponname }) {
         sellerId: item?.sellerId,
         sellerBusinessName: item?.sellerBusinessName,
         productThumbImage: item?.productThumbImage,
-        couponName: couponname,
-        productSlugName:item?.productSlugName
+        productSlugName: item?.productSlugName
       })
     })
     setOrders(storesfilter);
@@ -51,7 +50,8 @@ function Payment({ totalPrice, addressid, couponname }) {
       paymentMethod: paymentType,
       itemsOrdered: orders,
       totalOrderAmount: totalPrice,
-      customerName: userName
+      customerName: userName,
+      couponName: couponname,
     }
     CustomerOrders(overAllorders).then((res) => {
       window.location = res?.data?.url;

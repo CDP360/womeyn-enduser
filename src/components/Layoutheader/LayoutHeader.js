@@ -7,7 +7,7 @@ import Footer from "./../footer/Footer";
 import Signupnewsletter from "../home/components/signupfornewsletter/Signupnewsletter";
 import Childfooter from "./../footer/Childfooter";
 function LayoutHeader({ setdark, dark, title, children }) {
-  useEffect(() => {}, [title]);
+  useEffect(() => { }, [title]);
   return (
     <>
       <Head>
@@ -82,6 +82,8 @@ function LayoutHeader({ setdark, dark, title, children }) {
           crossorigin="anonymous"
           referrerpolicy="no-referrer"
         />
+
+
       </Head>
       <div className={styles.mainheader}>
         <div className={styles.insidesectionlayout}>
@@ -99,28 +101,28 @@ function LayoutHeader({ setdark, dark, title, children }) {
             <main>{children}</main>
           </div>
           {title == "Profile" ||
-          title == "Women-login" ||
-          title == "Women-signup" ||
-          title == "Cart" ||
-          title == "Checkout" ||
-          title == "404 NotFound" ||
-          title == "Otp" ||
-          title == "Forgetpassword" ||
-          title == "Change-password" ||
-          title == "Explore" ||
-          title == "Events" ||
-          title == "tracking" ||
-          title == "detail" ||
-          title == "passwordcreate" ? (
+            title == "Women-login" ||
+            title == "Women-signup" ||
+            title == "Cart" ||
+            title == "Checkout" ||
+            title == "404 NotFound" ||
+            title == "Otp" ||
+            title == "Forgetpassword" ||
+            title == "Change-password" ||
+            title == "Explore" ||
+            title == "Events" ||
+            title == "tracking" ||
+            title == "detail" ||
+            title == "passwordcreate" ? (
             <></>
           ) : (
             <>
               <div className="mb-5">
                 {title == "product-view" ||
-                title == "Payment" ||
-                title == "Service" ||
-                title == "tracking" ||
-                title == "tracking" ? (
+                  title == "Payment" ||
+                  title == "Service" ||
+                  title == "tracking" ||
+                  title == "tracking" ? (
                   <></>
                 ) : (
                   <Signupnewsletter />

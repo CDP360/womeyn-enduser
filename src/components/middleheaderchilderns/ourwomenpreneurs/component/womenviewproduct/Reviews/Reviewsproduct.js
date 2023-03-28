@@ -2,9 +2,9 @@ import React, { Fragment, useState, useEffect } from 'react'
 import styles from './styles/Reviewproduct.module.scss';
 import redstar from '../../../../../../assests/womeynlogos/redstar.png';
 import Image from 'next/image';
-
-
-function Reviewsproduct({productreview}) {
+import Skeleton from 'react-loading-skeleton';
+import { Rate } from "antd";
+function Reviewsproduct({ productreview,ratingcount }) {
 
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
@@ -61,60 +61,77 @@ function Reviewsproduct({productreview}) {
             }
         })
     }
-  
+
     return (
         <Fragment>
-            {/* <div className={styles.mainreviewinsidesection}>
-                <div className={styles.seeallsectionreviews}>
-                    <div className={styles.reviwesectionrating}>
-                        <div className={styles.reviewtexts}>Reviews</div>
-                        <div className={styles.ratingsection}>
-                            <Image src={redstar} alt="no image" className={styles.redstartreview} />4.7 <span className={styles.dategrey}>(23 ratings)</span></div>
+            {productreview?.length > 0 ? <>
+                <div className={styles.mainreviewinsidesection}>
+                    <div className={styles.seeallsectionreviews}>
+                        <div className={styles.reviwesectionrating}>
+                            <div className={styles.reviewtexts}>Reviews</div>
+                            <div className={styles.ratingsection}>
+                                <Image src={redstar} alt="no image" className={styles.redstartreview} />4.7 <span className={styles.dategrey}>({ratingcount} ratings)</span></div>
+                        </div>
+                        <div className='light-active'>See all</div>
                     </div>
-                    <div className='light-active'>See all</div>
-                </div>
-                <div className={`row ${styles.maincardsection} mt-4`}>
-                    {data.map((item, index) => {
-                        return (
-                            <div className={`${styles.cards}`}>
-                                <div className={styles.splitcardsection}>
-                                    <div className={styles.imagecardsplit}>
-                                        <div className={styles.splitprofilesection}>
-                                            <div>
-                                                <img src={item.image} alt="no image" className={styles.profileuser} />
-                                            </div>
-                                            <div>
+                    <div className={`row ${styles.maincardsection} mt-4`}>
+                        {productreview.map((item, index) => {
+                            return (
+                                <div className={`${styles.cards}`}>
+                                    <div className={styles.splitcardsection}>
+                                        <div className={styles.imagecardsplit}>
+                                            {/* <div className={styles.splitprofilesection}>
                                                 <div>
-                                                    {item.name}
+                                                    <Skeleton className={styles.profileuser} />
+                                                    <img src={item.image} alt="no image" className={styles.profileuser} />
+
                                                 </div>
-                                                <div className={styles.dategrey}>
-                                                    {item.date} <span>{item.name.slice(0, 4)}</span>
+                                                <div>
+                                                    <div>
+                                                        {item.name}
+                                                    </div>
+                                                    <div className={styles.dategrey}>
+                                                        {item.date} <span>{item.title}</span>
+                                                    </div>
                                                 </div>
+                                            </div> */}
+                                            <div>
+                                                    <div>
+                                                        {item.name}
+                                                    </div>
+                                                    <div className={styles.dategrey}>
+                                                        {item.date} <span>{item.title}</span>
+                                                    </div>
+                                                </div>
+                                            <div className={styles.redstarsection}>
+                                                <Rate defaultValue={parseFloat(item?.ratingValue)} allowHalf style={{ color: "#54BE43" }}
+                                                    tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                    count={5}
+                                                    disabled
+                                                />
+                                               
+                                                {/* <Image src={redstar} alt="no image" className={styles.redstartreview} /> <span>{item.rating}</span> */}
                                             </div>
                                         </div>
-                                        <div className={styles.redstarsection}>
-                                            <Image src={redstar} alt="no image" className={styles.redstartreview} /> <span>{item.rating}</span>
+                                        <div className="mt-2 mb-3">
+                                            {item.message}
+
                                         </div>
-                                    </div>
-                                    <div className="mt-2 mb-3">
-                                        {item.des}
-                                        {item.id}
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    })}
+                            )
+                        })}
+                    </div>
                 </div>
-            </div> */}
+
+            </> : <div>
+                no Data Review
+            </div>}
 
 
-            {productreview?.length>0 ? <div>
 
-                product view screen designs
-            </div>:<div>
-           
-                </div>}
-           
+
+
         </Fragment>
     )
 }

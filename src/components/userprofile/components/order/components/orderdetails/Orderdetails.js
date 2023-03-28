@@ -3,28 +3,28 @@ import styles from "./styles/Orderdetails.module.scss";
 function Orderdetails() {
   const [topping, setTopping] = useState("");
 
-  const index=0;
+  const index = 0;
   const data = [
     {
       id: 1,
       name: "size",
-      vaiations: ["m","c","l","o"]
+      vaiations: ["m", "c", "l", "o"]
     },
     {
       id: 2,
       name: "color",
-      vaiations: ["2","3","4","5"]
+      vaiations: ["2", "3", "4", "5"]
     },
-    
+
   ]
 
-  console.log(data[0],"data")
+  console.log(data[0], "data")
 
 
   return (
     <div className="mainsection">
 
-      
+
       {/* <div className="insidesection">
         <div>
           {topping}
@@ -72,6 +72,9 @@ function Orderdetails() {
 
        
       </div> */}
+
+
+
     </div>
   );
 }

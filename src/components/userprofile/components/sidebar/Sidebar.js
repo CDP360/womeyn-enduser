@@ -46,7 +46,7 @@ function Sidebar({ user }) {
             handleClose();
             setTimeout(() => {
                 handleShow1();
-                
+
             }, 200)
         }).catch((err) => {
             console.log(err);
@@ -85,27 +85,27 @@ function Sidebar({ user }) {
     }, [indexs])
 
 
-    const LogoutUser=()=>{
-           localStorage.removeItem("womenUserid");
-                localStorage.removeItem("womenUserToken");
-                localStorage.removeItem("womenProfile");
-                localStorage.removeItem("productwhishlist");
-                localStorage.removeItem("womenuser");
-                localStorage.removeItem("womenauth");
+    const LogoutUser = () => {
+        localStorage.removeItem("womenUserid");
+        localStorage.removeItem("womenUserToken");
+        localStorage.removeItem("womenProfile");
+        localStorage.removeItem("productwhishlist");
+        localStorage.removeItem("womenuser");
+        localStorage.removeItem("womenauth");
 
-toast.success("Logout Successfull",{
-    position: "top-center",
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-})
-                setTimeout(()=>{
-history.push("/");
-                },300)
+        toast.success("Logout Successfull", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        })
+        setTimeout(() => {
+            history.push("/");
+        }, 300)
     }
 
 
@@ -159,7 +159,7 @@ history.push("/");
                     </div>
                     <div className={pathname == "orders" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("orders")}>
                         <div>
-                            {pathname == "orders" ?<Image src={orderactive} alt="no image" className={styles.profileicon} />:<Image src={order} alt="no image" className={styles.profileicon} />}
+                            {pathname == "orders" ? <Image src={orderactive} alt="no image" className={styles.profileicon} /> : <Image src={order} alt="no image" className={styles.profileicon} />}
                         </div>
                         <div className={pathname == "orders" ? styles.boldtextactive : styles.boldtexts}>
                             Orders
@@ -172,7 +172,7 @@ history.push("/");
                     </div>
                     <div className={pathname == "favorts" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("favorts")}>
                         <div >
-                           {pathname == "favorts"?<Image src={favortsactive} alt="no image" className={styles.profileicon} />:<Image src={favorts} alt="no image" className={styles.profileicon} />}
+                            {pathname == "favorts" ? <Image src={favortsactive} alt="no image" className={styles.profileicon} /> : <Image src={favorts} alt="no image" className={styles.profileicon} />}
                         </div>
                         <div className={pathname == "favorts" ? styles.boldtextactive : styles.boldtexts}>
                             Favorites
@@ -184,7 +184,7 @@ history.push("/");
                     </div>
                     <div className={pathname == "coupons" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("coupons")}>
                         <div >
-                            {pathname == "coupons" ?<Image src={couponsactive} alt="no image" className={styles.profileicon} /> :<Image src={coupons} alt="no image" className={styles.profileicon} />}
+                            {pathname == "coupons" ? <Image src={couponsactive} alt="no image" className={styles.profileicon} /> : <Image src={coupons} alt="no image" className={styles.profileicon} />}
                         </div>
                         <div className={pathname == "coupons" ? styles.boldtextactive : styles.boldtexts}>
                             Coupons
@@ -199,7 +199,7 @@ history.push("/");
                             <Image src={logout} alt="no image" className={styles.profileicon} />
                         </div>
                         <div className={styles.boldtexts}>
-                      Logout
+                            Logout
                         </div>
                     </div>
                 </div>
@@ -231,7 +231,7 @@ history.push("/");
                             {image ? <label htmlFor="upload-button">
                                 <>
                                     <img
-                                                                                  className={styles.editmodelprofile}
+                                        className={styles.editmodelprofile}
 
                                         style={{ borderRadius: "50%", cursor: "pointer" }}
                                         src={URL.createObjectURL(image)}
@@ -249,14 +249,14 @@ history.push("/");
                                     {/* user?.profileImageName  */}
                                     {user?.profileImageName ? <label htmlFor="upload-button">
                                         <img
-                                           
+
                                             className={styles.editmodelprofile}
                                             src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
                                             alt="profile-pic"
                                         />
                                     </label> :
                                         <img
-                                         
+
                                             src="https://sialifehospital.com/wp-content/uploads/2021/04/testimonial-1.png"
                                             alt="profile-pic"
                                             className={styles.editmodelprofile}
@@ -272,7 +272,7 @@ history.push("/");
                                 <span className='active'> Drag & drop</span> an image
                             </div> */}
                             <label htmlFor="upload-button">
-                                 <span className='active'>Click Here</span> an image
+                                <span className='active'>Click Here</span> an image
                             </label>
                             <input type="file" id="upload-button" style={{ display: 'none' }} onChange={handleImagechange} />
                         </div>

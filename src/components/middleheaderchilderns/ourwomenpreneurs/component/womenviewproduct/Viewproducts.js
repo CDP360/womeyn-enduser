@@ -22,6 +22,7 @@ function Viewproducts({ id }) {
     const history = useRouter();
     const [starcount, setStarCount] = useState(null);
 
+    const [ratingcount, setRatingcount] = useState("");
     const [tokencheck, setTokenset] = useState("");
     const { dispatch } = useContext(ContextStore);
     const [indexs, setIndex] = useState(0);
@@ -594,9 +595,11 @@ function Viewproducts({ id }) {
                 id: 0,
                 name: res?.data?.productDetails?.productThumbImage
             });
+
             setProductImage(productshowimages);
             setProductData(res?.data?.productDetails);
             setProductReview(res?.data?.reviews);
+            setRatingcount(res?.data?.totalReviewsCount)
             const variationdata = [];
             setProductVariations(variationdata);
             res?.data?.variations.map((item) => {
@@ -640,7 +643,7 @@ function Viewproducts({ id }) {
             productId: id
         }
         ProductLikeWishlist(likeid).then((res) => {
-            toast.success("liked Whislist", {
+            toast.success("Product added to your Wish List", {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -662,7 +665,7 @@ function Viewproducts({ id }) {
             productId: id
         }
         ProductLikeWishlist(likeid).then((res) => {
-            toast.success("unliked Whislist", {
+            toast.success("Product removed from your Wish List", {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -999,9 +1002,34 @@ function Viewproducts({ id }) {
                                                 },
                                                 largeImage: {
                                                     src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                    width: 1000,
-                                                    height: 1000
+                                                    width:1200,
+                                                    height:1200,
+                                                    backgroundColor:"white",
+                                                    // border:"3px solid blue"
+                                                    zIndex:"989898988989898989898989"
+                                                    
                                                 },
+                                                imageStyle:{
+                                                    // border:"2px solid red",
+                                                    width:"100%",
+                                                    height:"100%",
+                                                    maxHeight:"400px",
+                                                    objectFit:"contain",
+                                                    zIndex:"9898989898",
+                                                    backgroundColor:"white"
+                                                },
+                                                // smallImage: {
+                                                //     src: String, (required)
+                                                //     srcSet: String,
+                                                //     sizes: String,
+                                                //     width: Number, (required if isFluidWidth is not set)
+                                                //     height: Number, (required if isFluidWidth is not set)
+                                                //     isFluidWidth: Boolean, (default false)
+                                                //     alt: String,
+                                                //     onLoad: Function,
+                                                //     onError: Function
+                                                // },
+                                               
 
                                             }}
 
@@ -1050,14 +1078,14 @@ function Viewproducts({ id }) {
                             <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
                             <div className={styles.starsection}>
                                 <div className={styles.starsections}>
-                                   
-                                    <Rate defaultValue={4.5} allowHalf style={{ color: "#54BE43" }}
+
+                                    <Rate defaultValue={ratingcount} allowHalf style={{ color: "#54BE43" }}
                                         tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
                                         onChange={(value) => {
                                             setStarCount(value)
 
                                         }}
-                                    // disabled
+
                                     />
                                 </div>
                                 <div>
@@ -1171,23 +1199,51 @@ function Viewproducts({ id }) {
                                     </div>
                                 </div> : <></>}
                             </div>
-                            <div className={styles.buttons}>
-                                <div>
-                                    {tokencheck ?
-                                        <Button className={styles.bynowcartbutton} onClick={() => Checkout(productdata, productvariations)}>
-                                            Buy Now
-                                        </Button> :
-                                        <Button className={styles.bynowcartbutton} onClick={() => buyNowPathNavigate(productdata, productvariations)}>
-                                            Buy Now
-                                        </Button>
-                                    }
-                                </div>
-                                <div>
-                                    <Button className={styles.addcartbutton} onClick={() => handleChange(productdata, productvariations)}>
-                                        Add To Cart
-                                    </Button>
-                                </div>
-                            </div>
+                            {productdata?.stateId == 1 && productdata?.quantityLeft > 0 ?
+
+                                <>
+
+                                    <div className={styles.buttons}>
+
+                                        <div>
+                                            {tokencheck ?
+                                                <Button className={styles.bynowcartbutton} onClick={() => Checkout(productdata, productvariations)}>
+                                                    Buy Now
+                                                </Button> :
+                                                <Button className={styles.bynowcartbutton} onClick={() => buyNowPathNavigate(productdata, productvariations)}>
+                                                    Buy Now
+                                                </Button>
+                                            }
+                                        </div>
+                                        <div>
+                                            <Button className={styles.addcartbutton} onClick={() => handleChange(productdata, productvariations)}>
+                                                Add To Cart
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </> : <>
+
+                                    <div className={styles.buttonss}>
+
+                                        <div>
+                                            {tokencheck ?
+                                                <Button className={styles.bynowcartbuttons}  onClick={() => Checkout(productdata, productvariations)}>
+                                                    Buy Now
+                                                </Button> :
+                                                <Button className={styles.bynowcartbuttons}  onClick={() => buyNowPathNavigate(productdata, productvariations)}>
+                                                    Buy Now
+                                                </Button>
+                                            }
+                                        </div>
+                                        <div>
+                                            <Button className={styles.addcartbuttons} onClick={() => handleChange(productdata, productvariations)}>
+                                                Add To Cart
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </>
+                            }
+
                             <div className={styles.locationsection}>
                                 <div className={styles.deverisection}>
                                     <div>
@@ -1265,7 +1321,7 @@ function Viewproducts({ id }) {
                 </div>
                 {productreview?.length > 0 ? <div className={styles.reviewsection}>
                     <div>
-                        <Reviewsproduct productreview={productreview} />
+                        <Reviewsproduct productreview={productreview} ratingcount={ratingcount} />
                     </div>
                 </div> : <></>}
                 <div>
