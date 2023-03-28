@@ -333,7 +333,7 @@ return(
               </div>
               <div className={styles.removeitemname}>
 
-                Are you sure  remove this item?
+              Are you sure want to remove this item from your cart?
               </div>
               <div className={styles.buttonsections}>
 

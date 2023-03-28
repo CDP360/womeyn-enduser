@@ -4,7 +4,7 @@ import redstar from '../../../../../../assests/womeynlogos/redstar.png';
 import Image from 'next/image';
 import Skeleton from 'react-loading-skeleton';
 import { Rate } from "antd";
-function Reviewsproduct({ productreview,ratingcount }) {
+function Reviewsproduct({ productreview,ratingcount,averageRatings }) {
 
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
@@ -70,7 +70,7 @@ function Reviewsproduct({ productreview,ratingcount }) {
                         <div className={styles.reviwesectionrating}>
                             <div className={styles.reviewtexts}>Reviews</div>
                             <div className={styles.ratingsection}>
-                                <Image src={redstar} alt="no image" className={styles.redstartreview} />4.7 <span className={styles.dategrey}>({ratingcount} ratings)</span></div>
+                                <Image src={redstar} alt="no image" className={styles.redstartreview} />{averageRatings?.avgRating} <span className={styles.dategrey}>({ratingcount} Review)</span></div>
                         </div>
                         <div className='light-active'>See all</div>
                     </div>

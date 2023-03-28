@@ -67,7 +67,7 @@ function Checkout() {
               </div>
               <div className="mt-3 mb-3">
                 {step === 0 && <div>
-                  <Addressdetail state={cart} setStep={setStep} step={step} setName={setName} />
+                  <Addressdetail state={cart} setStep={setStep} step={step} setName={setName} name={name} />
                 </div>}
                 {step === 1 && <div>
                   {/* <Payment /> */}

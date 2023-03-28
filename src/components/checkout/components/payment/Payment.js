@@ -3,7 +3,8 @@ import { ContextStore } from '../../../../Redux/store/Contextstore';
 import styles from './styles/Payment.module.scss';
 import React, { useState, useEffect, useContext } from 'react';
 import { CustomerOrders } from '../../../../services/customer-order-service/customer-order-service';
-
+import strip from '../../../../assests/cart-logos/Stripe-Logo1.png';
+import paypal from '../../../../assests/cart-logos/PayPal-Logo1.png';
 function Payment({ totalPrice, addressid, couponname }) {
   const { state } = useContext(ContextStore);
   const [orders, setOrders] = useState([]);
@@ -16,11 +17,13 @@ function Payment({ totalPrice, addressid, couponname }) {
     {
       id: 1,
       name: "paypal",
+      image:strip
 
     },
     {
       id: 2,
-      name: "stripe"
+      name: "stripe",
+      image:paypal
     }
   ]
 
@@ -71,13 +74,13 @@ function Payment({ totalPrice, addressid, couponname }) {
           return (
             <div key={index} className={styles.paymentsection}>
               <input type="radio" name={item?.name} value={item?.name} checked={paymentType == item?.name} onChange={onOptionChange} />
-              {item?.name}
+             <span><img src={item.image.src} alt="no image" className={styles.strips}/></span>
             </div>
           )
         })}
         <div className="mt-5">
           <button className={styles.usepayments} onClick={deliverOrderConfirm}>
-            Continue Payment
+            Continue Payment 
           </button>
         </div>
       </div>

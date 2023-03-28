@@ -185,8 +185,8 @@
                             }
                         }
                         .imagecards {
-                            width: 70px;
-                            object-fit: cover;
+                            width: 100%;
+                            object-fit: contain;
                             height: auto;
                             cursor: pointer;
                             display: flex;
@@ -211,7 +211,7 @@
 
                     .rightcardimagesshow {
                         width: 80%;
-                        background-color: rgba(247, 247, 247, 1);
+                        // background-color: rgba(247, 247, 247, 1);
                         position: relative;
                         display: flex;
                         align-items: center;
@@ -236,7 +236,7 @@
                         }
                         @include xlBreakPoint {
                             width: 100%;
-                        padding: 70px;
+                        // padding: 70px;
                             
                         }
 
@@ -861,14 +861,3 @@
     }
 }
 
-// .imagerounds
-// {
-//     // border:1px solid red;
-//     // width:100%!important;
-//     // height:100% !important;
-//     object-fit:contain;
-//     .kalai
-//     {
-//         border:10px solid orange !important;
-//     }
-// }

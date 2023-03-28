@@ -9,7 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 import Image from 'next/image';
 import coupons from '../../../../assests/cart-logos/couponicon.png';
 
-function Confirmorders({ name, totalPrice, step, setStep,setCouponName }) {
+function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
   const { state, dispatch } = useContext(ContextStore);
   const [carts, setCart] = useState([]);
   const [show, setShow] = useState(false);
@@ -159,7 +159,7 @@ function Confirmorders({ name, totalPrice, step, setStep,setCouponName }) {
                           <div className="carttext">{item?.productName}
                           </div>
                           <div>
-                           <span className="saleprice"> Rs.{item?.salePrice}</span> <span>
+                            <span className="saleprice"> Rs.{item?.salePrice}</span> <span>
                               {item?.offerPercentag == 0 ? <span></span> : <>
                                 <del className="dim">
                                   <span>{item?.actualPrice}</span>
@@ -169,13 +169,13 @@ function Confirmorders({ name, totalPrice, step, setStep,setCouponName }) {
                             </span>
                           </div>
                           <div>
-                          {item?.variations?.map((items,index)=>{
-return(
-  <div >
-<span className="sizecolor">{items?.name} : {items?.value}</span>
-  </div>
-)
-                                })}
+                            {item?.variations?.map((items, index) => {
+                              return (
+                                <div >
+                                  <span className="sizecolor">{items?.name} : {items?.value}</span>
+                                </div>
+                              )
+                            })}
                           </div>
                         </div>
                       </div>
@@ -197,7 +197,7 @@ return(
                           <Image src={delteteicon} alt="no image" className={styles.deleteicons} />
                         </div>
                         <div>
-                          Remove 
+                          Remove
                         </div>
                       </div>
                     </div>
@@ -367,7 +367,7 @@ return(
                 </div>
               </div>
               <div className={styles.removeitemname}>
-                Are you sure  remove this item?
+                Are you sure want to remove this item?
               </div>
               <div className={styles.buttonsections}>
 

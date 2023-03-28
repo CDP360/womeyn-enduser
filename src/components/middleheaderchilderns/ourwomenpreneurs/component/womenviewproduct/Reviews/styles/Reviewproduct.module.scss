@@ -60,7 +60,10 @@
     // border: 3px solid blue;
     .cards {
       // border: 2px solid red;
+      border-radius:10px;
+      background-color:white;
       width: 49% !important;
+      padding:2% 20px;
       @include xsBreakPoint {
         width: 100% !important;
       }

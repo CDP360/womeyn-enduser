@@ -49,7 +49,7 @@ function Order() {
                 }
                 onClick={() => setStep(1)}
               >
-   In Progress
+                In Progress
               </p>
               <p
                 className={
@@ -59,7 +59,7 @@ function Order() {
                 }
                 onClick={() => setStep(2)}
               >
-              Cancelled
+                Cancelled
               </p>
               <p
                 className={
@@ -69,7 +69,7 @@ function Order() {
                 }
                 onClick={() => setStep(3)}
               >
-              Delivered
+                Delivered
               </p>
             </div>
             <hr className={styles.hrSub} />

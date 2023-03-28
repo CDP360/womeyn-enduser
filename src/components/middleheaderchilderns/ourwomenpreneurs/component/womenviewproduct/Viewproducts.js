@@ -31,6 +31,8 @@ function Viewproducts({ id }) {
     const [productreview, setProductReview] = useState([]);
     const [productimages, setProductImage] = useState([]);
     const [productseller, setProductseller] = useState([]);
+
+    const [averageRatings,setAverageRating]=useState([]);
     const [index1, setIndex1] = useState(null);
     const [index2, setIndex2] = useState(null);
     const [index3, setIndex3] = useState(null);
@@ -600,6 +602,7 @@ function Viewproducts({ id }) {
             setProductData(res?.data?.productDetails);
             setProductReview(res?.data?.reviews);
             setRatingcount(res?.data?.totalReviewsCount)
+            setAverageRating(res?.data?.averageRating[0])
             const variationdata = [];
             setProductVariations(variationdata);
             res?.data?.variations.map((item) => {
@@ -619,7 +622,7 @@ function Viewproducts({ id }) {
         });
         const tokencheck = localStorage.getItem("womenUserToken");
         setTokenset(tokencheck)
-    }, [productnames, tokencheck, index1, index2, index3, index4]);
+    }, [productnames, tokencheck, index1, index2, index3, index4,averageRatings]);
 
     useEffect(() => {
         //         ProductLikeWishlistGet().then((res) => {
@@ -1002,21 +1005,21 @@ function Viewproducts({ id }) {
                                                 },
                                                 largeImage: {
                                                     src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                    width:1200,
-                                                    height:1200,
-                                                    backgroundColor:"white",
+                                                    width: 1200,
+                                                    height: 1200,
+                                                    backgroundColor: "white",
                                                     // border:"3px solid blue"
-                                                    zIndex:"989898988989898989898989"
-                                                    
+                                                    zIndex: "989898988989898989898989"
+
                                                 },
-                                                imageStyle:{
+                                                imageStyle: {
                                                     // border:"2px solid red",
-                                                    width:"100%",
-                                                    height:"100%",
-                                                    maxHeight:"400px",
-                                                    objectFit:"contain",
-                                                    zIndex:"9898989898",
-                                                    backgroundColor:"white"
+                                                    width: "100%",
+                                                    height: "100%",
+                                                    maxHeight: "400px",
+                                                    objectFit: "contain",
+                                                    zIndex: "9898989898",
+                                                    backgroundColor: "white"
                                                 },
                                                 // smallImage: {
                                                 //     src: String, (required)
@@ -1029,7 +1032,7 @@ function Viewproducts({ id }) {
                                                 //     onLoad: Function,
                                                 //     onError: Function
                                                 // },
-                                               
+
 
                                             }}
 
@@ -1079,17 +1082,19 @@ function Viewproducts({ id }) {
                             <div className={styles.starsection}>
                                 <div className={styles.starsections}>
 
-                                    <Rate defaultValue={ratingcount} allowHalf style={{ color: "#54BE43" }}
+                                    <Rate defaultValue={parseFloat(averageRatings?.avgRating)} allowHalf style={{ color: "#54BE43" }}
                                         tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                        onChange={(value) => {
-                                            setStarCount(value)
+                                        // onChange={(value) => {
+                                        //     setStarCount(value)
 
-                                        }}
+                                        // }}
+
+                                        disabled
 
                                     />
                                 </div>
                                 <div>
-                                    712 Ratings
+                                    {ratingcount} Review
                                 </div>
                             </div>
 
@@ -1227,16 +1232,16 @@ function Viewproducts({ id }) {
 
                                         <div>
                                             {tokencheck ?
-                                                <Button className={styles.bynowcartbuttons}  onClick={() => Checkout(productdata, productvariations)}>
+                                                <Button className={styles.bynowcartbuttons} >
                                                     Buy Now
                                                 </Button> :
-                                                <Button className={styles.bynowcartbuttons}  onClick={() => buyNowPathNavigate(productdata, productvariations)}>
+                                                <Button className={styles.bynowcartbuttons} >
                                                     Buy Now
                                                 </Button>
                                             }
                                         </div>
                                         <div>
-                                            <Button className={styles.addcartbuttons} onClick={() => handleChange(productdata, productvariations)}>
+                                            <Button className={styles.addcartbuttons} >
                                                 Add To Cart
                                             </Button>
                                         </div>
@@ -1321,7 +1326,7 @@ function Viewproducts({ id }) {
                 </div>
                 {productreview?.length > 0 ? <div className={styles.reviewsection}>
                     <div>
-                        <Reviewsproduct productreview={productreview} ratingcount={ratingcount} />
+                        <Reviewsproduct productreview={productreview} ratingcount={ratingcount} averageRatings={averageRatings} />
                     </div>
                 </div> : <></>}
                 <div>

@@ -5,6 +5,8 @@ import stars from '../../../../assests/homepage-logos/stars.png';
 import plus from '../../../../assests/womeynlogos/plus.png';
 import { ContextStore } from '../../../../Redux/store/Contextstore';
 import { useRouter } from 'next/router';
+import Skeleton from 'react-loading-skeleton'
+
 function Categorycard({ item }) {
 
     const history = useRouter();
@@ -21,12 +23,17 @@ function Categorycard({ item }) {
             {/* <div className={styles.plussection}>
                 <Image src={plus} alt="no image" className={styles.plus} onClick={() => Carthandleproduct(item)} />
             </div> */}
-            <img
+            {item?.productThumbImage?<>
+                <img
                 className={styles.categoryimage}
                 src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
                 alt="profile-pic"
                 onClick={() => ProductView(item?.productSlugName)}
             />
+            </>:<>
+            <Skeleton className={styles.categoryimages} />
+            </>}
+           
             <div className={styles.cardinsidesection}>
                 <Image src={stars} alt="no image" className={styles.stars} />
                 <div>
