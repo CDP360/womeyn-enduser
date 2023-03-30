@@ -108,6 +108,16 @@
       display: flex;
       gap: 20px;
       padding: 3% 0px;
+      .confirmordercanceld {
+        background-color: #f9acac;
+        padding: 3px 10px;
+        font-weight: 600;
+        outline: none;
+        border: none;
+        border-radius: 10px;
+        font-size: 0.789rem;
+        color: white;
+      }
 
       .leftorderdelivery {
         width: 60%;
@@ -187,7 +197,7 @@
       background-color: white;
       color: rgba(233, 90, 90, 1);
       border: 1px solid rgba(233, 90, 90, 1);
-      padding: 7px 30px;
+      padding: 8px 30px;
       border-radius: 10px;
       font-weight: 600;
     }
@@ -197,7 +207,7 @@
       background-color: rgba(233, 90, 90, 1);
       color: white;
       border: none;
-      padding: 7px 30px;
+      padding: 8px 30px;
       border-radius: 10px;
       font-weight: 600;
     }
@@ -213,3 +223,51 @@
   border: 1px solid #e95a5a;
   background-color: white;
 }
+
+
+
+.orderstatussection {
+  display: flex;
+  gap: 40px;
+  .confirmorder {
+    padding: 3px 10px;
+    font-weight: 600;
+    background-color: rgba(89, 175, 89, 0.1);
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.789rem;
+    color: #59af59;
+  }
+  .confirmordercanceld {
+    background-color: #f9acac;
+    padding: 3px 10px;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.789rem;
+    color: white;
+  }
+  .confirmordersuccess {
+    padding: 3px 10px;
+    font-weight: 600;
+    background-color: rgba(89, 175, 89, 0.1);
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.789rem;
+    color: #59af59;
+  }
+  .confirmorderprogress {
+    padding: 3px 10px;
+    font-weight: 600;
+    background: rgba(255, 61, 0, 0.1);
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.789rem;
+    color: #ff3d00;
+  }
+}
+

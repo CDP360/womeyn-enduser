@@ -5,6 +5,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import { CustomerOrders } from '../../../../services/customer-order-service/customer-order-service';
 import strip from '../../../../assests/cart-logos/Stripe-Logo1.png';
 import paypal from '../../../../assests/cart-logos/PayPal-Logo1.png';
+import Spinner from 'react-bootstrap/Spinner';
+
 function Payment({ totalPrice, addressid, couponname }) {
   const [loading,setLoading]=useState(false);
   const { state } = useContext(ContextStore);
@@ -55,9 +57,10 @@ function Payment({ totalPrice, addressid, couponname }) {
       couponName: couponname,
     }
     CustomerOrders(overAllorders).then((res) => {
+      window.location = res?.data?.url;
+
       setTimeout(()=>{
         setLoading(false);
-      window.location = res?.data?.url;
       },1000)
     }).catch((err) => {
       console.log(err);

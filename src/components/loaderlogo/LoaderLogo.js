@@ -6,7 +6,6 @@ import Image from 'next/image';
 function LoaderLogo() {
   return (
     <div className={styles.mainloader}>
-
       <div className={styles.insideloader}>
         <div className={styles.loadersection}>
           <Image src={womeynlogo} alt="no image" className={styles.womeynlogo} />

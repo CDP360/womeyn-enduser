@@ -26,6 +26,8 @@ function Coupons() {
       <div className="mb-4 mt-3">
       <div className={styles.couponsHeading}>Coupons</div>
         </div>
+
+        {coupons?.length===0 && <div>No Data Found!!!</div>}
       {loading ? <>
      
      Loading.... 

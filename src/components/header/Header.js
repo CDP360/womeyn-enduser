@@ -113,6 +113,11 @@ function Header() {
 
     ]
 
+    const heartpushdata=()=>{
+        router.push(`/profile/favorts`);
+
+    }
+
     useEffect(() => {
         const auth = localStorage.getItem("womenauth");
         setUserAuth(auth);
@@ -140,6 +145,17 @@ function Header() {
                                 <div className={styles.falight} onClick={notificationsPush}>
                                     <Image src={notifications} alt="no image" className={styles.notifications} />
                                 </div>
+                                <div className={styles.falight} >
+                                    <div className={styles.maincartcount} onClick={heartpushdata}>
+                                        <div>
+                                            <Image src={heart} alt="no image" className={styles.notifications} />
+                                        </div>
+                                        {/* {cart?.cartData?.length > 0 ? <div className={styles.cartcountbox}>
+                                            {cart.cartData?.length}
+                                        </div>
+                                            : <></>} */}
+                                    </div>
+                                </div>
 
                                 <div className={styles.falight} onClick={carts}>
                                     <div className={styles.maincartcount}>
@@ -152,48 +168,48 @@ function Header() {
                                             : <></>}
                                     </div>
                                 </div>
-                              <div className={styles.dropdownsectionkalai}>
-                              <div onClick={()=>setShowMega(!showmega)}>
-                              {userauth ? <>
+                                <div className={styles.dropdownsectionkalai}>
+                                    <div onClick={() => setShowMega(!showmega)}>
+                                        {userauth ? <>
                                             <Image src={profile} alt="no image" className={styles.notificationsprofile} />
 
                                         </> : <div className={styles.logintexts}>Login</div>}
-                                </div>
-                                {showmega &&
-                                
-                                <div className={styles.bordersections}>
- {userauth ?
-                                        <>
-                                            <div className="dropdowncontents">
-                                                <div className={styles.headerprofile} onClick={userProfile}>
+                                    </div>
+                                    {showmega &&
+
+                                        <div className={styles.bordersections}>
+                                            {userauth ?
+                                                <>
+                                                    <div className="dropdowncontents">
+                                                        <div className={styles.headerprofile} onClick={userProfile}>
+                                                            <div>
+                                                                <Image src={myprofile} alt="no image" className={styles.profileimageover} />
+                                                            </div>
+                                                            <div className={styles.logouttexts}>
+                                                                My Profile
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        <div className={styles.headerprofile} onClick={logoutHandler}>
+                                                            <div>
+                                                                <Image src={logout} alt="no image" className={styles.profileimageover} />
+                                                            </div>
+                                                            <div className={styles.logouttexts}>
+                                                                Logout
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </> : <div className="dropdowncontents">
                                                     <div>
-                                                        <Image src={myprofile} alt="no image" className={styles.profileimageover} />
+                                                        Create account / LogIn
+                                                        <button className='active mt-3 loginbuttonhome' onClick={Login}>
+                                                            LogIn/SignUp
+                                                        </button>
                                                     </div>
-                                                    <div className={styles.logouttexts}>
-                                                        My Profile
-                                                    </div>
-                                                </div>
-                                                <hr />
-                                                <div className={styles.headerprofile} onClick={logoutHandler}>
-                                                    <div>
-                                                        <Image src={logout} alt="no image" className={styles.profileimageover} />
-                                                    </div>
-                                                    <div className={styles.logouttexts}>
-                                                        Logout
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </> : <div className="dropdowncontents">
-                                            <div>
-                                                Create account / LogIn
-                                                <button className='active mt-3 loginbuttonhome' onClick={Login}>
-                                                    LogIn/SignUp
-                                                </button>
-                                            </div>
-                                        </div>}
-                                </div>
-                                }
-                             
+                                                </div>}
+                                        </div>
+                                    }
+
                                 </div>
                                 <div className="dropdown">
                                     {/* <div className={styles.logintextsize}>

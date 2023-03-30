@@ -7,7 +7,8 @@ import Modal from 'react-bootstrap/Modal';
 import { CustomerOrderCancel } from "../../../../../../services/customer-order-service/customer-order-service";
 import { toast } from 'react-toastify';
 import Reviewmodel from './reviewmodel/Reviewmodel';
-function Allorders({ Orders, traking }) {
+import LoaderLogo from '../../../../../loaderlogo/LoaderLogo';
+function Allorders({ Orders, traking, loading }) {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
 
@@ -43,7 +44,7 @@ function Allorders({ Orders, traking }) {
     history.push(`/product/${data}`)
   }
   useEffect(() => {
-  }, [deleteid,Orders])
+  }, [deleteid, Orders])
 
 
   useEffect(() => {
@@ -52,150 +53,154 @@ function Allorders({ Orders, traking }) {
   return (
     <div className={styles.allordermainsection}>
 
-      <div className={styles.insidemainordersection}>
-        {Orders?.map((item, index) => {
-          return (
-            <div className={styles.insideordersectionlist}>
-              <div className={styles.orderstatussection}>
-                <div>
-                  {item?.stateId === 1 && <button className={styles.confirmorder}>New Order</button>}
-                  {item?.stateId === 2 && <button className={styles.confirmorder}>Confirmed</button>}
-                  {item?.stateId === 3 && <button className={styles.confirmorderprogress}>Progress</button>}
-                  {item?.stateId === 4 && <button className={styles.confirmordercanceld}>Cancelled </button>}
-                  {item?.stateId === 5 && <button className={styles.confirmordersuccess}>Cancelled  </button>}
-                  {item?.stateId === 6 && <button className={styles.confirmordersuccess}>Delivered </button>}
+      {loading ? <>
+        <LoaderLogo />
 
-                </div>
-                <div>
-                  {moment(item?.orderedDate).format("MMM Do YY",)}
-                </div>
-              </div>
+      </> : <>
+        <div className={styles.insidemainordersection}>
+          {Orders?.map((item, index) => {
+            return (
+              <div className={styles.insideordersectionlist}>
+                <div className={styles.orderstatussection}>
+                  <div>
+                    {item?.stateId === 1 && <button className={styles.confirmorder}>New Order</button>}
+                    {item?.stateId === 2 && <button className={styles.confirmorder}>Confirmed</button>}
+                    {item?.stateId === 3 && <button className={styles.confirmorderprogress}>Progress</button>}
+                    {item?.stateId === 4 && <button className={styles.confirmordercanceld}>Cancelled </button>}
+                    {item?.stateId === 5 && <button className={styles.confirmordersuccess}>Cancelled  </button>}
+                    {item?.stateId === 6 && <button className={styles.confirmordersuccess}>Delivered </button>}
 
-              {item?.stateId === 6 ? <>
-                <div className={styles.ordermapsectionlists}>
-                  <div className={styles.firstimagesections}>
-                    {item?.itemsOrdered?.map((items, index) => {
-                      return (
-                        <div className={styles.firstsectioninsidess} key={index}>
-                          <div className={styles.leftorderdelivery}>
-
-                            <div onClick={NavigateOrderdetails}>
-                              {items?.productThumbImage ? <>
-                                <img
-                                  className={styles.img}
-                                  src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${items?.productThumbImage}`}
-                                  alt="profile-pic"
-                                />
-                              </> : <>
-                                <Skeleton className={styles.img} />
-                              </>}
-                            </div>
-                            <div>
-                              <div className='carttextsmall' onClick={() => Productview(item?.productSlugName)}>
-                                {items?.productName}
-                              </div>
-                              <div>
-                                {items?.variations?.map((itemss, index) => {
-                                  return (
-                                    <div >
-                                      <span className="sizecolor">{itemss?.name}</span> : {itemss?.value}
-                                    </div>
-                                  )
-                                })}
-                              </div>
-                              <div>
-                                {/* Rs.{items?.price} */}
-                              </div>
-                            </div>
-                          </div>
-
-
-                          <div className={styles.secondimagesections}>
-                            ${items?.price}
-                          </div>
-
-                          <div>
-
-                            {item?.stateId === 6 && <div>
-                              <button className={styles.trackingbuttons} onClick={() => handleShow1(items)}>Review</button>
-                            </div>}
-                          </div>
-
-                        </div>
-                      )
-                    })}
                   </div>
-
+                  <div>
+                    {moment(item?.orderedDate).format("MMM Do YY",)}
+                  </div>
                 </div>
 
-              </> : <>
+                {item?.stateId === 6 ? <>
+                  <div className={styles.ordermapsectionlists}>
+                    <div className={styles.firstimagesections}>
+                      {item?.itemsOrdered?.map((items, index) => {
+                        return (
+                          <div className={styles.firstsectioninsidess} key={index}>
+                            <div className={styles.leftorderdelivery}>
 
-
-                <div className={styles.ordermapsectionlists}>
-                  <div className={styles.firstimagesections}>
-                    {item?.itemsOrdered?.map((items, index) => {
-                      return (
-                        <div className={styles.firstsectioninsidess} key={index}>
-                          <div className={styles.leftorderdelivery}>
-
-                            <div onClick={NavigateOrderdetails}>
-                              {items?.productThumbImage ? <>
-                                <img
-                                  className={styles.img}
-                                  src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${items?.productThumbImage}`}
-                                  alt="profile-pic"
-                                />
-                              </> : <>
-                                <Skeleton className={styles.img} />
-                              </>}
-                            </div>
-                            <div>
-                              <div className='carttextsmall' onClick={() => Productview(item?.productSlugName)}>
-                                {items?.productName}
+                              <div onClick={NavigateOrderdetails}>
+                                {items?.productThumbImage ? <>
+                                  <img
+                                    className={styles.img}
+                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${items?.productThumbImage}`}
+                                    alt="profile-pic"
+                                  />
+                                </> : <>
+                                  <Skeleton className={styles.img} />
+                                </>}
                               </div>
                               <div>
-                                {items?.variations?.map((itemss, index) => {
-                                  return (
-                                    <div >
-                                      <span className="sizecolor">{itemss?.name}</span> : {itemss?.value}
-                                    </div>
-                                  )
-                                })}
-                              </div>
-                              <div>
-                                {/* Rs.{items?.price} */}
-                              </div>
-                            </div>
-                          </div>
-
-
-                          <div className={styles.secondimagesections}>
-                            ${items?.price}
-                          </div>
-
-                          <div className={styles.rightimagesections}>
-
-                           
-                            {item?.stateId === 4 || item?.stateId === 5 || item?.stateId == 6 ? <></> : <div className={styles.thirdimagesection}>
-                              <div>
-                                <button className={styles.trackingbuttons} onClick={traking}>Track</button>
-                              </div>
-                              <div className="mt-3">
+                                <div className='carttextsmall' onClick={() => Productview(item?.productSlugName)}>
+                                  {items?.productName}
+                                </div>
                                 <div>
-                                  <button className={styles.trackingbuttons} onClick={() => handleShow(item?.orderId)}>Cancel</button>
+                                  {items?.variations?.map((itemss, index) => {
+                                    return (
+                                      <div >
+                                        <span className="sizecolor">{itemss?.name}</span> : {itemss?.value}
+                                      </div>
+                                    )
+                                  })}
+                                </div>
+                                <div>
+                                  {/* Rs.{items?.price} */}
                                 </div>
                               </div>
-                            </div>}
-                          </div>
+                            </div>
 
-                        </div>
-                      )
-                    })}
+
+                            <div className={styles.secondimagesections}>
+                              ${items?.price}
+                            </div>
+
+                            <div>
+
+                              {item?.stateId === 6 && <div>
+                                <button className={styles.trackingbuttons} onClick={() => handleShow1(items)}>Review</button>
+                              </div>}
+                            </div>
+
+                          </div>
+                        )
+                      })}
+                    </div>
+
                   </div>
 
-                </div>
+                </> : <>
 
-                {/* <div className={styles.ordermapsectionlist}>
+
+                  <div className={styles.ordermapsectionlists}>
+                    <div className={styles.firstimagesections}>
+                      {item?.itemsOrdered?.map((items, index) => {
+                        return (
+                          <div className={styles.firstsectioninsidess} key={index}>
+                            <div className={styles.leftorderdelivery}>
+
+                              <div onClick={NavigateOrderdetails}>
+                                {items?.productThumbImage ? <>
+                                  <img
+                                    className={styles.img}
+                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${items?.productThumbImage}`}
+                                    alt="profile-pic"
+                                  />
+                                </> : <>
+                                  <Skeleton className={styles.img} />
+                                </>}
+                              </div>
+                              <div>
+                                <div className='carttextsmall' onClick={() => Productview(item?.productSlugName)}>
+                                  {items?.productName}
+                                </div>
+                                <div>
+                                  {items?.variations?.map((itemss, index) => {
+                                    return (
+                                      <div >
+                                        <span className="sizecolor">{itemss?.name}</span> : {itemss?.value}
+                                      </div>
+                                    )
+                                  })}
+                                </div>
+                                <div>
+                                  {/* Rs.{items?.price} */}
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div className={styles.secondimagesections}>
+                              ${items?.price}
+                            </div>
+
+                            <div className={styles.rightimagesections}>
+
+
+                              {item?.stateId === 4 || item?.stateId === 5 || item?.stateId == 6 ? <></> : <div className={styles.thirdimagesection}>
+                                <div>
+                                  <button className={styles.trackingbuttons} onClick={traking}>Track</button>
+                                </div>
+                                <div className="mt-3">
+                                  <div>
+                                    <button className={styles.trackingbuttons} onClick={() => handleShow(item?.orderId)}>Cancel</button>
+                                  </div>
+                                </div>
+                              </div>}
+                            </div>
+
+                          </div>
+                        )
+                      })}
+                    </div>
+
+                  </div>
+
+                  {/* <div className={styles.ordermapsectionlist}>
                   <div className={styles.firstimagesection}>
 
 
@@ -257,13 +262,18 @@ function Allorders({ Orders, traking }) {
                 </div>}
                 </div> */}
 
-              </>}
+                </>}
 
 
-            </div>
-          )
-        })}
-      </div>
+              </div>
+            )
+          })}
+        </div>
+
+
+      </>}
+
+
 
       <>
         <Modal
@@ -291,8 +301,8 @@ function Allorders({ Orders, traking }) {
               </div>
               <div className={styles.buttonsections}>
 
-                <button className={styles.buttonscancel} onClick={handleClose}>Cancel</button>
-                <button className={styles.buttonsremove} onClick={() => handleDelete(deleteid)}>Remove</button>
+                <button className={styles.buttonscancel} onClick={handleClose}>NO</button>
+                <button className={styles.buttonsremove} onClick={() => handleDelete(deleteid)}>YES,I'M SURE</button>
               </div>
             </div>
           </Modal.Body>

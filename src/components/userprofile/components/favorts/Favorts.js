@@ -53,6 +53,7 @@ function Favorts() {
     })
 
   }
+
   return (
     <>
       <div>
@@ -74,19 +75,14 @@ function Favorts() {
 
             </> : <>
 
-              {/* <Rate defaultValue={starcount} allowHalf style={{color:"#54BE43"}}
-                          tooltips={["Bad","Normal","Average","Good","Very Good"]}
-onChange={(value)=>{
-  setStarCount(value)
-  console.log("value",value)
-}}
-// disabled
-                          /> */}
+            
               {
                 favorts.map((data, index) =>
                   <div className={styles.favortsInnerContainer} key={index}>
                     <div className={styles.favortsLeftContainer} onClick={() => pushProductPage(data.productSlugName)}>
-                      {data?.productThumbImage ? <>
+                     <div className={styles.boximage}>
+
+                     {data?.productThumbImage ? <>
                         <img
                           className={styles.favortsImg}
                           src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${data?.productThumbImage}`}
@@ -95,25 +91,23 @@ onChange={(value)=>{
                       </> : <>
                         <Skeleton className={styles.favortsImg} />
                       </>}
+                      </div>
                       <div className={styles.favortsContentContainer}>
                         <p className={styles.favortsProductName}>{data.productName}</p>
                         {/* <p className={styles.favortsOfferDetail}>{data.productSlugName}</p> */}
                         <div className={styles.favortsRatingContainer}>
-                          {/* <div className={styles.starsections}> */}
-                          {/* <Image src={Star} className={styles.stars} />
-                          <Image src={Star} className={styles.stars}/>
-                          <Image src={Star} className={styles.stars}/>
-                          <Image src={Star} className={styles.stars}/>
-                          <Image src={HalfStar} className={styles.stars}/> */}
-                          <Rate defaultValue={3.5} allowHalf style={{ color: "#54BE43" }}
+                         
+                          {/* <Rate defaultValue={3.5} allowHalf style={{ color: "#54BE43" }}
                             tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
                             onChange={(value) => {
                               setStarCount(value)
 
                             }}
                             disabled
-                          />
+                          /> */}
                           {/* </div> */}
+
+                          {data?.salePrice}
 
                         </div>
                       </div>

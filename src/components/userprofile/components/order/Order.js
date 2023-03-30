@@ -5,19 +5,28 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Allorders from './components/allorders/Allorders'
 import { GetOrders } from "../../../../services/customer-order-service/customer-order-service";
+import Inprogress from "./components/inprogress/Inprogress";
+import Cancelled from "./components/cancelled/Cancelled";
+import Delivered from "./components/delivered/Delivered";
 function Order() {
   const history = useRouter();
   const [Orders, setOrders] = useState([]);
+  const [loading,setLoading]=useState(false);
   const traking = () => {
     history.push("/order/tracking");
   };
   const [step, setStep] = useState(0);
   useEffect(() => {
+    setLoading(true);
     GetOrders().then((res) => {
-      console.log(res?.data?.results);
       setOrders(res?.data?.results);
+      setTimeout(()=>{
+        setLoading(false);
+      },[])
     }).catch((err) => {
       console.log(err);
+      setLoading(false);
+
     })
   }, [])
   return (
@@ -75,56 +84,16 @@ function Order() {
             <hr className={styles.hrSub} />
           </div>
           {step === 0 && <div>
-            <Allorders Orders={Orders} traking={traking} />
-            {/* {data.map((item, index) => {
-              return (
-                <>
-                  <div className={styles.insidecontainer}>
-                    <p
-                      className={
-                        item.status == "Delivered"
-                          ? `${styles.statusDel}`
-                          : `${styles.status}`
-                      }
-                    >
-                      {item.status}
-                    </p>
-                    <p className={styles.delivery}>{item.delivery}</p>
-                    <p className={styles.delivery}>
-                      Invoice Number:
-                      <span className={styles.invoicedata}>
-                        {item.invoice}
-                      </span>{" "}
-                    </p>
-                  </div>
-                  <div className={styles.insidecontainer1}>
-                    <div className={styles.trackbtndivider}>
-                      <div className={styles.img}></div>
-                      <div className={styles.insidecontainer2}>
-                        <p className={styles.subHead}>{item.subHead}</p>
-                        <p className={styles.subHeader}>{item.subHeader}</p>
-                      </div>
-                      <div className={styles.insidecontainer3}>
-                        <h5>{item.amount}</h5>
-                      </div>
-                    </div>
-                    <div className={styles.buttontrack} onClick={traking}>
-                      <button className={styles.trackbutton} onClick={traking}>
-                        {item.button}
-                      </button>
-                      {item.status == "Delivered" ? (
-                        <></>
-                      ) : (
-                        <button className={styles.cancelbutton}>
-                          {item.cancelb}
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                  <hr className={styles.hrcontainer} />
-                </>
-              );
-            })} */}
+            <Allorders Orders={Orders} traking={traking} loading={loading}/>
+          </div>}
+          {step === 1 && <div>
+            <Inprogress Orders={Orders} traking={traking} loading={loading}/>
+          </div>}
+          {step === 2 && <div>
+            <Cancelled Orders={Orders} traking={traking} loading={loading}/>
+          </div>}
+          {step === 3 && <div>
+            <Delivered Orders={Orders} traking={traking} loading={loading}/>
           </div>}
         </div>
       </div>
