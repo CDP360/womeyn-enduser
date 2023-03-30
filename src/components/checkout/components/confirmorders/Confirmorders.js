@@ -8,14 +8,14 @@ import delteteicon from '../../../../assests/cart-logos/deleteicons.png';
 import Modal from 'react-bootstrap/Modal';
 import Image from 'next/image';
 import coupons from '../../../../assests/cart-logos/couponicon.png';
+import Spinner from 'react-bootstrap/Spinner';
 
 function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
   const { state, dispatch } = useContext(ContextStore);
   const [carts, setCart] = useState([]);
   const [show, setShow] = useState(false);
-
+  const [loading,setLoading]=useState(false);
   const [deleteid, setDeleteid] = useState("");
-
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
     setShow(true)
@@ -25,7 +25,11 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
   const history = useRouter()
   const { cart } = state;
   const deliverOrderConfirm = () => {
+    setLoading(true);
+    setTimeout(()=>{
+      setLoading(false);
     setStep(step + 1);
+    },1000)
   }
 
   const handlePush = (path) => {
@@ -342,7 +346,26 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
           </div>
         </>}
         <div className="mt-4">
-          <button className={styles.continuebutton} onClick={deliverOrderConfirm}>Continue</button>
+          <button className={styles.continuebutton} onClick={deliverOrderConfirm}>
+            
+            
+            
+
+
+            {loading?<>
+           
+           <Spinner
+         as="span"
+         animation="border"
+         size="sm"
+         role="status"
+         aria-hidden="true"
+       />
+       <span className="ms-3">Loading...</span>
+          </>:<>
+          Continue
+          </>}
+            </button>
         </div>
 
       </div>

@@ -6,24 +6,21 @@ import { CustomerOrders } from '../../../../services/customer-order-service/cust
 import strip from '../../../../assests/cart-logos/Stripe-Logo1.png';
 import paypal from '../../../../assests/cart-logos/PayPal-Logo1.png';
 function Payment({ totalPrice, addressid, couponname }) {
+  const [loading,setLoading]=useState(false);
   const { state } = useContext(ContextStore);
   const [orders, setOrders] = useState([]);
   const [paymentType, setPaymentType] = useState("");
-
   const { cart } = state;
-
-  console.log(cart, "cart")
   const paymentMethods = [
     {
       id: 1,
       name: "paypal",
-      image:strip
-
+      image: paypal
     },
     {
       id: 2,
       name: "stripe",
-      image:paypal
+      image: strip
     }
   ]
 
@@ -47,6 +44,7 @@ function Payment({ totalPrice, addressid, couponname }) {
   }, [addressid]);
 
   const deliverOrderConfirm = () => {
+    setLoading(true);
     const userName = JSON.parse(localStorage.getItem("womenuser"));
     const overAllorders = {
       deliveryAddressId: addressid,
@@ -57,7 +55,10 @@ function Payment({ totalPrice, addressid, couponname }) {
       couponName: couponname,
     }
     CustomerOrders(overAllorders).then((res) => {
+      setTimeout(()=>{
+        setLoading(false);
       window.location = res?.data?.url;
+      },1000)
     }).catch((err) => {
       console.log(err);
     })
@@ -74,13 +75,28 @@ function Payment({ totalPrice, addressid, couponname }) {
           return (
             <div key={index} className={styles.paymentsection}>
               <input type="radio" name={item?.name} value={item?.name} checked={paymentType == item?.name} onChange={onOptionChange} />
-             <span><img src={item.image.src} alt="no image" className={styles.strips}/></span>
+              <span><img src={item.image.src} alt="no image" className={styles.strips} /></span>
             </div>
           )
         })}
         <div className="mt-5">
           <button className={styles.usepayments} onClick={deliverOrderConfirm}>
-            Continue Payment 
+
+          {loading?<>
+           
+           <Spinner
+         as="span"
+         animation="border"
+         size="sm"
+         role="status"
+         aria-hidden="true"
+       />
+       <span className="ms-3">Loading...</span>
+          </>:<>
+          Continue Payment
+          
+          </>}
+          
           </button>
         </div>
       </div>

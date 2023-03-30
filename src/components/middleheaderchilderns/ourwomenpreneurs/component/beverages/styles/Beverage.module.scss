@@ -32,7 +32,7 @@
         width: 100%;
         height: 170px;
         object-fit:contain;
- 
+    
         @include mdBreakPoint {
             height: 160px;
         }
@@ -42,6 +42,10 @@
         @include xlBreakPoint {
             height: 100px;
         }
+    }
+    .sellerimagesize:hover
+    {
+        transform:scale(1.2);
     }
     .plussection {
         width: 30px;
@@ -112,7 +116,7 @@
     .cardsellerborder {
         padding-top: 4%;
         .cardsellerinsideborder {
-            border-top: 1px solid grey;
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
         }
     }
     .cardpricesection {

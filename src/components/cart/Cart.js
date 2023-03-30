@@ -104,7 +104,7 @@ function Cart() {
                               <div className="carttext">{item?.productName}
                               </div>
                               <div>
-                             <span className="saleprice">   Rs.{item?.salePrice}</span> <span>
+                                <span className="saleprice">   Rs.{item?.salePrice}</span> <span>
                                   {item?.offerPercentag == 0 ? <span></span> : <>
                                     <del className="dim">
                                       <span >{item?.actualPrice}</span>
@@ -115,12 +115,12 @@ function Cart() {
                               </div>
                               <div>
                                 {/* {item?.productDescription} */}
-                                {item?.variations?.map((items,index)=>{
-return(
-  <div >
-<span className="sizecolor">{items?.name} : {items?.value}</span>
-  </div>
-)
+                                {item?.variations?.map((items, index) => {
+                                  return (
+                                    <div >
+                                      <span className="sizecolor">{items?.name} : {items?.value}</span>
+                                    </div>
+                                  )
                                 })}
                               </div>
                             </div>
@@ -191,7 +191,7 @@ return(
                               <div className="carttext">{item?.productName}
                               </div>
                               <div>
-                               <span className="saleprice"> Rs.{item?.salePrice}</span> <span>
+                                <span className="saleprice"> Rs.{item?.salePrice}</span> <span>
                                   {item?.offerPercentag == 0 ? <span></span> : <>
                                     <del className="dim">
                                       <span>{item?.actualPrice}</span>
@@ -201,12 +201,12 @@ return(
                                 </span>
                               </div>
                               <div>
-                              {item?.variations?.map((items,index)=>{
-return(
-  <div >
-<span className="sizecolor">{items?.name}</span> : {items?.value}
-  </div>
-)
+                                {item?.variations?.map((items, index) => {
+                                  return (
+                                    <div >
+                                      <span className="sizecolor">{items?.name}</span> : {items?.value}
+                                    </div>
+                                  )
                                 })}
                               </div>
                             </div>
@@ -268,16 +268,16 @@ return(
                     <div>
                       Price</div>
                     <div className={styles.textprice}>
-                      ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.actualPrice, 0)}
+                      ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)}
                     </div>
                   </div>
-                  {cart?.cartData?.offerPercentag === 0 ? <></> : <div className={styles.splitcartsections}>
+                  {/* {cart?.cartData?.offerPercentag === 0 ? <></> : <div className={styles.splitcartsections}>
                     <div>
                       Discount</div>
                     <div className={styles.textprice}>
                       ${cart?.cartData?.reduce((acc, current) => acc + Number(current.salePrice - current.actualPrice), 0)}
                     </div>
-                  </div>}
+                  </div>} */}
                   <div className={styles.splitcartsections}>
                     <div>
                       Delivery Charges</div>
@@ -290,10 +290,10 @@ return(
                   <div className={styles.insideborderdashedsection}></div>
                 </div>
                 <div className={styles.splitcartsections}>
-                  <div className={styles.pricetexts}>
+                  <div className={styles.pricetextss}>
                     Total Payable</div>
                   <div className={styles.textprices}>
-                    ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice+40, 0)}
+                    ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0) + 40}
                   </div>
                 </div>
 
@@ -333,7 +333,7 @@ return(
               </div>
               <div className={styles.removeitemname}>
 
-              Are you sure want to remove this item from your cart?
+                Are you sure want to remove this item from your cart?
               </div>
               <div className={styles.buttonsections}>
 

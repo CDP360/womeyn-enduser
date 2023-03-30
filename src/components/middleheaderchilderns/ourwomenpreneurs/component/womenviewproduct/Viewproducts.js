@@ -21,7 +21,6 @@ import { Rate } from "antd";
 function Viewproducts({ id }) {
     const history = useRouter();
     const [starcount, setStarCount] = useState(null);
-
     const [ratingcount, setRatingcount] = useState("");
     const [tokencheck, setTokenset] = useState("");
     const { dispatch } = useContext(ContextStore);
@@ -31,8 +30,7 @@ function Viewproducts({ id }) {
     const [productreview, setProductReview] = useState([]);
     const [productimages, setProductImage] = useState([]);
     const [productseller, setProductseller] = useState([]);
-
-    const [averageRatings,setAverageRating]=useState([]);
+    const [averageRatings, setAverageRating] = useState([]);
     const [index1, setIndex1] = useState(null);
     const [index2, setIndex2] = useState(null);
     const [index3, setIndex3] = useState(null);
@@ -622,7 +620,7 @@ function Viewproducts({ id }) {
         });
         const tokencheck = localStorage.getItem("womenUserToken");
         setTokenset(tokencheck)
-    }, [productnames, tokencheck, index1, index2, index3, index4,averageRatings]);
+    }, [productnames, tokencheck, index1, index2, index3, index4, averageRatings]);
 
     useEffect(() => {
         //         ProductLikeWishlistGet().then((res) => {

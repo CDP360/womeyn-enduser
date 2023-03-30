@@ -22,7 +22,7 @@ import instagram from '../../assests/homepage-logos/newinstagramfooter.png';
 import linkdin from '../../assests/homepage-logos/linkedinfooter.png';
 import twitter from '../../assests/homepage-logos/twitterfooter.png';
 import { toast } from 'react-toastify';
-
+import heart from '../../assests/homepage-logos/hearticon.png';
 import { ContextStore } from './../../Redux/store/Contextstore';
 function Header() {
     const { state, dispatch } = useContext(ContextStore);
@@ -52,6 +52,7 @@ function Header() {
         localStorage.removeItem("womenauth");
         localStorage.removeItem("womenproductid");
 
+        setShowMega(false);
 
 
         setTimeout(() => {
@@ -61,6 +62,7 @@ function Header() {
     };
     const userProfile = () => {
         router.push("/profile/youraccount")
+        setShowMega(false);
     }
     const Login = () => {
         router.push("/login");
@@ -135,10 +137,10 @@ function Header() {
                         </div>
                         <div className={styles.rightlogo}>
                             <div className={styles.insiderightlogos}>
-
                                 <div className={styles.falight} onClick={notificationsPush}>
                                     <Image src={notifications} alt="no image" className={styles.notifications} />
                                 </div>
+
                                 <div className={styles.falight} onClick={carts}>
                                     <div className={styles.maincartcount}>
                                         <div>
@@ -150,15 +152,58 @@ function Header() {
                                             : <></>}
                                     </div>
                                 </div>
+                              <div className={styles.dropdownsectionkalai}>
+                              <div onClick={()=>setShowMega(!showmega)}>
+                              {userauth ? <>
+                                            <Image src={profile} alt="no image" className={styles.notificationsprofile} />
+
+                                        </> : <div className={styles.logintexts}>Login</div>}
+                                </div>
+                                {showmega &&
+                                
+                                <div className={styles.bordersections}>
+ {userauth ?
+                                        <>
+                                            <div className="dropdowncontents">
+                                                <div className={styles.headerprofile} onClick={userProfile}>
+                                                    <div>
+                                                        <Image src={myprofile} alt="no image" className={styles.profileimageover} />
+                                                    </div>
+                                                    <div className={styles.logouttexts}>
+                                                        My Profile
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                                <div className={styles.headerprofile} onClick={logoutHandler}>
+                                                    <div>
+                                                        <Image src={logout} alt="no image" className={styles.profileimageover} />
+                                                    </div>
+                                                    <div className={styles.logouttexts}>
+                                                        Logout
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </> : <div className="dropdowncontents">
+                                            <div>
+                                                Create account / LogIn
+                                                <button className='active mt-3 loginbuttonhome' onClick={Login}>
+                                                    LogIn/SignUp
+                                                </button>
+                                            </div>
+                                        </div>}
+                                </div>
+                                }
+                             
+                                </div>
                                 <div className="dropdown">
-                                    <div className={styles.logintextsize}>
+                                    {/* <div className={styles.logintextsize}>
                                         {userauth ? <>
                                             <Image src={profile} alt="no image" className={styles.notificationsprofile} />
 
                                         </> : <>Login</>}
-                                    </div>
+                                    </div> */}
 
-                                    {userauth ?
+                                    {/* {userauth ?
                                         <>
                                             <div className="dropdowncontent">
                                                 <div className={styles.headerprofile} onClick={userProfile}>
@@ -186,7 +231,7 @@ function Header() {
                                                     LogIn/SignUp
                                                 </button>
                                             </div>
-                                        </div>}
+                                        </div>} */}
                                 </div>
 
                             </div>

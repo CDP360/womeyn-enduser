@@ -21,13 +21,14 @@ function Signup() {
         formState: { errors },
     } = useForm();
 
-    const url=process?.env?.NEXT_PUBLIC_URL;
-const [loading,setLoading]=useState(false);
-
+    const url = process?.env?.NEXT_PUBLIC_URL;
+    const [loading, setLoading] = useState(false);
     const onSubmit = async (data) => {
         const response = {
             emailOrPhoneNo: data?.email
         }
+
+        localStorage.setItem("womensignupuser",JSON.stringify(data?.email))
         setLoading(true);
         userSignup(response).then((res) => {
             if (res) {
@@ -45,7 +46,7 @@ const [loading,setLoading]=useState(false);
                 localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
                 setTimeout(() => {
                     router.push("/otp");
-                setLoading(false);
+                    setLoading(false);
                 }, 600)
             }
 
@@ -63,6 +64,8 @@ const [loading,setLoading]=useState(false);
                         theme: "dark",
                     });
             }
+            setLoading(false);
+
         })
     };
 
@@ -97,7 +100,7 @@ const [loading,setLoading]=useState(false);
 
     const [indexs, setIndexs] = useState(0);
 
-    
+
 
     return (
         <Fragment>
@@ -126,11 +129,12 @@ const [loading,setLoading]=useState(false);
                         <div className="mt-3 mb-5">
                             <Form onSubmit={handleSubmit(onSubmit)}>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Control type="text" placeholder="Email / Phone Number" className={styles.forms}
+                                    <Form.Control type={`${ "text" || "number"}`} placeholder="Email / Phone Number" className={styles.forms}
                                         {...register("email", {
                                             required: "Please enter email / Phone Number",
                                             pattern: {
-                                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                // value: /\S+@\S+\.\S+/ || /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                value:/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/ || /\S+@\S+\.\S+/,
                                                 message: "invalid email address"
                                             },
                                         })}
@@ -139,17 +143,17 @@ const [loading,setLoading]=useState(false);
                                 </Form.Group>
 
                                 <button variant="primary" type="submit" className="loginbutton mt-2 mb-2">
-                                    {loading?<>
+                                    {loading ? <>
                                         <Spinner
-          as="span"
-          animation="grow"
-          size="sm"
-          role="status"
-          aria-hidden="true"
-        />
-        Loading...
-                                    </>:<>
-                                    {LoginText?.Signup}
+                                            as="span"
+                                            animation="grow"
+                                            size="sm"
+                                            role="status"
+                                            aria-hidden="true"
+                                        />
+                                        Loading...
+                                    </> : <>
+                                        {LoginText?.Signup}
 
                                     </>}
                                 </button>

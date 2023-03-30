@@ -44,11 +44,10 @@ function Login() {
                         history.push(`${productWhishlist}`);
                         setLoading(false);
                     }, 400)
-                    setError(false);
                 }
                 else {
                     setError(true);
-                    setError(false);
+                
 
                     toast.error("Incorrect email or password",
                         {
@@ -65,15 +64,14 @@ function Login() {
                 }
             }).catch((err) => {
                 console.log(err);
+                setError(false);
+
             })
         }
         else {
             Userlogin(datas).then(async (res) => {
-                if (res) {
-
-    
+                if (res) {    
     localStorage.setItem("womenuser", JSON.stringify(res?.data?.user?.firstName));
-
                     localStorage.setItem("womenauth", true);
                     localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
                     localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
@@ -95,11 +93,12 @@ function Login() {
                             theme: "dark",
                         }
                     );
-                    setError(false);
 
                 }
             }).catch((err) => {
                 console.log(err);
+                setError(false);
+
             })
         }
 

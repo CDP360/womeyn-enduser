@@ -1,35 +1,29 @@
 @use "../../../../../../scss/abstract/" as *;
-.mainsectionpayment
-{
-    width:100%;
-    padding-top:8%;
-    .paymentsections
-    {
-        .paymentsection
-        {
-            padding:30px 0px;
-            border-bottom:1px dashed #9F9F9F;
-            display:flex;
-            gap:10px;
-        }
-        .usepayments
-        {
-            border:none;
-            outline:none;
-            padding:10px 20px;
-            border-radius:10px;
-            color:white;
-            background-color:rgba(233, 90, 90, 1);
-            font-weight:600;
-        }
-        
+.mainsectionpayment {
+  width: 100%;
+  padding-top: 8%;
+  .paymentsections {
+    .paymentsection {
+      padding: 30px 0px;
+      border-bottom: 1px dashed #9f9f9f;
+      display: flex;
+      gap: 10px;
     }
-    
-    .strips
-    {
-        width:100%;
-        height:50px;
-        object-fit: contain;
-        cursor:pointer;
+    .usepayments {
+      border: none;
+      outline: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: white;
+      background-color: rgba(233, 90, 90, 1);
+      font-weight: 600;
     }
+  }
+
+  .strips {
+    width: 100%;
+    height: 60px;
+    object-fit: contain;
+    cursor: pointer;
+  }
 }

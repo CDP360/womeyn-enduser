@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import Image from 'next/image';
 import { Button } from 'react-bootstrap';
 import dynamic from 'next/dynamic';
-import deleteicons from '../../../../assests/cart-logos/deleteicons.png';
+import Spinner from 'react-bootstrap/Spinner';
 import { toast } from 'react-toastify';
 import { Addaddress, GetAddressData } from '../../../../services/user-profile-service/user-profile-services';
 import ModelAddress from './ModelAddress';
@@ -18,44 +18,40 @@ function Addressdetail({ state, step, setStep, setName, name }) {
   const [address, setAddress] = useState([]);
   const [topping, setTopping] = useState("");
 
+  const [loading,setLoading]=useState(false);
   useEffect(() => {
     GetAddressData().then((res) => {
       setAddress(res?.data?.results);
-      console.log(res?.data?.results, "kl")
     }).catch((err) => {
       console.log(err);
     })
   }, [])
 
 
-  // const overalladdress = address?.length > 1;
-  // const handleAddress = (e) => {
-  //   const value = e.target.value;
-  //   const checked = e.target.checked;
-  //   if (checked) {
-  //     setCheckAddress(value);
-  //   }
-  // };
 
   const handleDeliverAddress = () => {
-    // if (selectAddress.length === 0) {
-    //   const overs = "Please Select Address";
-    //   toast.error(overs,
-    //     {
-    //       position: "top-center",
-    //       autoClose: 3000,
-    //       hideProgressBar: false,
-    //       closeOnClick: true,
-    //       pauseOnHover: true,
-    //       draggable: true,
-    //       progress: undefined,
-    //       theme: "dark",
-    //     }
-    //   );
-    // }
+    if (selectAddress.length === 0) {
+      const overs = "Please Select Address";
+      toast.error(overs,
+        {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+    }
     if (selectAddress) {
       setName(selectAddress);
+      setLoading(true);
+      setTimeout(()=>{
+        setLoading(false);
       setStep(step + 1);
+      },1000)
     }
   }
   const {
@@ -146,7 +142,20 @@ function Addressdetail({ state, step, setStep, setName, name }) {
         </div>
         <div className="mt-5">
           {address?.length > 0 && <button className={styles.DeliveryHere} onClick={handleDeliverAddress}>
-            Delivery Here
+           {loading?<>
+           
+            <Spinner
+          as="span"
+          animation="border"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        />
+        <span className="ms-3">Loading...</span>
+           </>:<>
+           Delivery Here
+           
+           </>}
           </button>}
         </div>
       </div>

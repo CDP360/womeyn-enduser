@@ -190,9 +190,18 @@
       border: 1px solid #9f9f9f;
       border-radius: 32px;
       padding: 10px 30px;
-      .pricetexts {
+      .pricetextss
+      {
         font-weight: 600;
         font-size: 1.4rem;
+        // color: #9f9f9f;
+        // text-transform: uppercase; 
+      }
+      .pricetexts {
+        font-weight: 600;
+        font-size: 1.3rem;
+        color: #9f9f9f;
+        text-transform: uppercase;
       }
       .borderdashedsection {
         padding: 3% 0px;

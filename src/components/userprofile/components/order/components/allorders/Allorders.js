@@ -43,10 +43,8 @@ function Allorders({ Orders, traking }) {
     history.push(`/product/${data}`)
   }
   useEffect(() => {
-  }, [deleteid])
+  }, [deleteid,Orders])
 
-
-  console.log(Orders, "Orders")
 
   useEffect(() => {
 

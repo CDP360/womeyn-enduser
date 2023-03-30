@@ -266,3 +266,35 @@
         }
     }
 }
+
+
+.dropdownsectionkalai
+{
+    // border:1px solid red;
+    position:relative;
+    cursor:pointer;
+    .bordersections
+    {
+        position:absolute;
+        // border:1px solid blue;
+        width:13vw;
+        height:auto;
+        z-index:9898989898;
+        background-color:white;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        cursor:pointer;
+        margin-top:15%;
+        border-radius:10px;
+        padding:10px;
+    }
+}
+
+.logintexts
+{
+    font-weight:700;
+    font-size:1.3rem;
+    align-items:center;
+    display:flex;
+    justify-content:center;
+    color:#E84A4E;
+}
