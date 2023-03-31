@@ -8,7 +8,6 @@ import Image from 'next/image';
 import { Col, Row } from 'react-bootstrap';
 import CarouselCategory from './carouselcategory/CarouselCategory';
 import Skeleton from 'react-loading-skeleton';
-
 function Categorychoose() {
     return (
         <Fragment>

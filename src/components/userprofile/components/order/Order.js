@@ -22,13 +22,13 @@ function Order() {
       setOrders(res?.data?.results);
       setTimeout(()=>{
         setLoading(false);
-      },[])
+      },500)
     }).catch((err) => {
       console.log(err);
       setLoading(false);
-
     })
   }, [])
+  console.log(Orders,"Orders")
   return (
     <div>
       <div className={styles.couponsInputContainer}>

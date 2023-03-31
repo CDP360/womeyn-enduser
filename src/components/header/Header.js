@@ -113,7 +113,7 @@ function Header() {
 
     ]
 
-    const heartpushdata=()=>{
+    const heartpushdata = () => {
         router.push(`/profile/favorts`);
 
     }

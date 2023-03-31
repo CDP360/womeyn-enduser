@@ -104,7 +104,7 @@ function Cart() {
                               <div className="carttext">{item?.productName}
                               </div>
                               <div>
-                                <span className="saleprice">   Rs.{item?.salePrice}</span> <span>
+                                <span className="saleprice"> A${item?.salePrice}</span> <span>
                                   {item?.offerPercentag == 0 ? <span></span> : <>
                                     <del className="dim">
                                       <span >{item?.actualPrice}</span>
@@ -268,7 +268,7 @@ function Cart() {
                     <div>
                       Price</div>
                     <div className={styles.textprice}>
-                      ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)}
+                      A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)}
                     </div>
                   </div>
                   {/* {cart?.cartData?.offerPercentag === 0 ? <></> : <div className={styles.splitcartsections}>
@@ -282,7 +282,7 @@ function Cart() {
                     <div>
                       Delivery Charges</div>
                     <div className={styles.textprice}>
-                      $40
+                    A$40
                     </div>
                   </div>
                 </div>
@@ -293,7 +293,7 @@ function Cart() {
                   <div className={styles.pricetextss}>
                     Total Payable</div>
                   <div className={styles.textprices}>
-                    ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0) + 40}
+                  A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0) + 40}
                   </div>
                 </div>
 

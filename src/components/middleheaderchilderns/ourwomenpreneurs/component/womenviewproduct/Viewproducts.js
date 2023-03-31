@@ -591,10 +591,10 @@ function Viewproducts({ id }) {
             res?.data?.productDetails?.productImages?.map((item, index) => {
                 productshowimages?.push(item)
             })
-            productshowimages?.unshift({
-                id: 0,
-                name: res?.data?.productDetails?.productThumbImage
-            });
+            // productshowimages?.unshift({
+            //     id: 0,
+            //     name: res?.data?.productDetails?.productThumbImage
+            // });
 
             setProductImage(productshowimages);
             setProductData(res?.data?.productDetails);
@@ -1084,9 +1084,7 @@ function Viewproducts({ id }) {
                                         tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
                                         // onChange={(value) => {
                                         //     setStarCount(value)
-
                                         // }}
-
                                         disabled
 
                                     />
@@ -1104,10 +1102,10 @@ function Viewproducts({ id }) {
                                     </>}
                                 </div>
                                 <div className={styles.priceautual}>
-                                    <div className={styles.prices}>${productdata?.salePrice}</div>
+                                    <div className={styles.prices}>A${productdata?.salePrice}</div>
                                 </div>
                                 <div className='textpricedashed' >
-                                    {productdata?.offerPercentag == 0 ? <></> : <del className={styles.priceautuals}>${productdata?.actualPrice}</del>}
+                                    {productdata?.offerPercentag == 0 ? <></> : <del className={styles.priceautuals}>A${productdata?.actualPrice}</del>}
                                 </div>
                             </div>
 
@@ -1203,11 +1201,8 @@ function Viewproducts({ id }) {
                                 </div> : <></>}
                             </div>
                             {productdata?.stateId == 1 && productdata?.quantityLeft > 0 ?
-
                                 <>
-
                                     <div className={styles.buttons}>
-
                                         <div>
                                             {tokencheck ?
                                                 <Button className={styles.bynowcartbutton} onClick={() => Checkout(productdata, productvariations)}>
@@ -1225,9 +1220,7 @@ function Viewproducts({ id }) {
                                         </div>
                                     </div>
                                 </> : <>
-
                                     <div className={styles.buttonss}>
-
                                         <div>
                                             {tokencheck ?
                                                 <Button className={styles.bynowcartbuttons} >
@@ -1263,7 +1256,7 @@ function Viewproducts({ id }) {
                                     </div>
                                 </div>
                                 <div className='mt-2'>
-                                    Delivery in days Thursday |  <span className={styles.free}>Free</span>  <del> $ 40</del> is orderd before 3:34pm
+                                    Delivery in days Thursday |  <span className={styles.free}>Free</span>  <del> A$ 40</del> is orderd before 3:34pm
                                 </div>
                             </div>
                             <div className={styles.sellernames}>

@@ -11,9 +11,8 @@ function Cancelled({ Orders, traking, loading }) {
   const history = useRouter();
 
   useEffect(() => {
-    Orders?.map((item, index) => {
+    Orders?.filter((item, index) => {
       if (item?.stateId === 4) {
-        console.log("res", item)
         setData(item)
       }
     })
@@ -30,21 +29,20 @@ function Cancelled({ Orders, traking, loading }) {
     <div>
       <div className={styles.ordermapsectionlists}>
         <div className={styles.firstimagesections}>
+
+          {data?.length===0 && <div>No Data Found!!</div>}
           <div className={styles.orderstatussection}>
             <div>
               {data?.stateId === 4 && <button className={styles.confirmordercanceld}>Cancelled </button>}
             </div>
             <div>
-              {moment(data?.orderedDate).format("MMM Do YY",)}
+              {/* {moment(data?.orderedDate).format("MMM Do YY",)} */}
             </div>
           </div>
           {data?.itemsOrdered?.map((items, index) => {
             return (
               <div className={styles.firstsectioninsidess} key={index}>
                 <div className={styles.leftorderdelivery}>
-
-
-
                   <div>
                     {items?.productThumbImage ? <>
                       <img
@@ -74,8 +72,6 @@ function Cancelled({ Orders, traking, loading }) {
                     </div>
                   </div>
                 </div>
-
-
                 <div className={styles.secondimagesections}>
                   ${items?.price}
                 </div>
@@ -83,9 +79,7 @@ function Cancelled({ Orders, traking, loading }) {
             )
           })}
         </div>
-
       </div>
-
     </div>
   )
 }

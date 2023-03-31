@@ -1,22 +1,33 @@
 import React, { Fragment, useEffect, useState } from 'react'
-
-import LayoutHeader from '../../Layoutheader/LayoutHeader'
 import eventbaner from '../../../assests/homepage-logos/event banner.png';
 import styles from './styles/EventUpdate.module.scss';
 import Image from 'next/image';
-import axios from 'axios';
 import Signupnewsletter from '../../home/components/signupfornewsletter/Signupnewsletter';
 import Footer from '../../footer/Footer';
 import Childfooter from './../../footer/Childfooter';
 function Eventsupdate() {
-    const [data, setData] = useState([]);
-    useEffect(() => {
-        axios.get("https://fakestoreapi.com/products").then((res) => {
-            setData(res?.data);
-        }).catch((err) => {
-            console.log(err);
-        })
-    }, [])
+    const data = [
+        {
+            id: 1,
+            image: "",
+            description: "no"
+        },
+        {
+            id: 2,
+            image: "",
+            description: "no"
+        },
+        {
+            id: 3,
+            image: "",
+            description: "no"
+        },
+        {
+            id: 4,
+            image: "",
+            description: "no"
+        }
+    ]
     return (
         <Fragment>
             <div className={styles.eventupdatemainsection}>
@@ -37,21 +48,18 @@ function Eventsupdate() {
                         </div>
                         <div className={styles.spliteventcommonbox}>
                             <div className={styles.spliteventcommonletf}>
-
-
                             </div>
                             <div className={styles.spliteventcommonright}>
                             </div>
                         </div>
 
                         <div className={styles.splitboxeventsection}>
-
                             <div className={styles.lefteventsection}>
                                 <div className="textseller">
                                     Latest Events
                                 </div>
                                 <div className='cardsections-events row justify-content-center  w-100 mt-1 mb-3'>
-                                    {data.slice(10, 21).map((item, index) => {
+                                    {data.map((item, index) => {
                                         return (
                                             <div className='cardevents mb-3' key={index}>
                                                 <div>
@@ -67,7 +75,6 @@ function Eventsupdate() {
                                                     <div className={styles.loramsevents}>
                                                         {item?.description.slice(0, 55)}
                                                     </div>
-
                                                 </div>
                                             </div>
                                         )
@@ -76,13 +83,11 @@ function Eventsupdate() {
                             </div>
                             <div className={styles.righteventsection}>
                                 <div className="textseller ms-3">Topics</div>
-
-                                {data.slice(15, 21).map((items, index) => {
+                                {data.map((items, index) => {
                                     return (
-                                        <div className="mb-4 mt-3">
+                                        <div className="mb-4 mt-3" key={index}>
                                             <img src={items?.image} alt="no image" className={styles.imageeventcard} />
                                             <div className={styles.categoryevents}>
-                                                {items?.title.slice(0, 10)}
                                             </div>
                                         </div>
                                     )

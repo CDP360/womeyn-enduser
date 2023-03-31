@@ -15,7 +15,6 @@ function Footer() {
         <Fragment>
             <div className={styles.mainfootersection}>
                 <div className={styles.footerrightemptybox}>
-
                 </div>
                 <div className={styles.insidefootersection}>
                     <div className={styles.splitinsidefootersection}>
@@ -43,7 +42,6 @@ function Footer() {
                                     <div className={styles.footeremptysocialsection}>
                                         <Image src={instagram} alt="no image" className={styles.footersocialicons} />
                                     </div>
-
                                 </div>
                             </div>
                             <div className={styles.footersectiontwo}>
@@ -51,7 +49,7 @@ function Footer() {
                                     QUICK LINKS
                                 </div>
                                 <div className="gapsectionfooter">
-                                    <div  onClick={()=>router.push("/abouts")}>
+                                    <div onClick={()=>router.push("/abouts")}>
                                         About us
                                     </div>
                                     <div onClick={()=>router.push("/getintouch")}>
@@ -86,13 +84,12 @@ function Footer() {
                                         Terms
                                     </div>
                                     <div>
-                                        Privacy Policyw
+                                        Privacy Policy
                                     </div>
                                     <div>
                                         My Cart
                                     </div>
                                 </div>
-
                             </div>
                             <div className={styles.footersectionfour}>
                                 <div className='footertext'>

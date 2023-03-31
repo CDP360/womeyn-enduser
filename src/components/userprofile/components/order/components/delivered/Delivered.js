@@ -8,9 +8,8 @@ function Delivered({ Orders, traking, loading }) {
   const history = useRouter();
 
   useEffect(() => {
-    Orders?.map((item, index) => {
+    Orders?.filter((item, index) => {
       if (item?.stateId === 6) {
-        console.log("res", item)
         setData(item)
       }
     })
@@ -25,6 +24,8 @@ function Delivered({ Orders, traking, loading }) {
   }
   return (
     <div>
+
+      {data?.length===0 && <div>No Data Found!!</div>}
        <div className={styles.orderstatussection}>
             <div>
             {data?.stateId === 6 && <button className={styles.confirmordersuccess}>Delivered </button>}

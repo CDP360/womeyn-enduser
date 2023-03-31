@@ -101,7 +101,7 @@ function Checkout() {
                     <div>
                       Price</div>
                     <div className={styles.textprice}>
-                      ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)}
+                    A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)}
                     </div>
                   </div>
                   {/* <div className={styles.splitcartsections}> */}
@@ -115,7 +115,7 @@ function Checkout() {
                     <div>
                       Delivery Charges</div>
                     <div className={styles.textprice}>
-                      $40
+                    A$40
                     </div>
                   </div>
                 </div>
@@ -126,7 +126,7 @@ function Checkout() {
                   <div className={styles.pricetextss}>
                     Total Payable</div>
                   <div className={styles.textprices}>
-                    ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)+40}
+                  A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)+40}
 
                   </div>
                 </div>

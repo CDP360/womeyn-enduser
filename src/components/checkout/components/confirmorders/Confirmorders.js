@@ -163,7 +163,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
                           <div className="carttext">{item?.productName}
                           </div>
                           <div>
-                            <span className="saleprice"> Rs.{item?.salePrice}</span> <span>
+                            <span className="saleprice"> A${item?.salePrice}</span> <span>
                               {item?.offerPercentag == 0 ? <span></span> : <>
                                 <del className="dim">
                                   <span>{item?.actualPrice}</span>

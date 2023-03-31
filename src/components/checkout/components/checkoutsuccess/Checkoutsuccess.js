@@ -62,14 +62,10 @@ function Checkoutsuccess() {
                 console.log(err);
             })
         }
-
-
-
     }, [Transaction_id,PayerID_id,paymentId_id])
     return (
         <div className={styles.success}>
             <LoaderLogo />
-
         </div>
     )
 }

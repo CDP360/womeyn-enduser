@@ -269,8 +269,9 @@ function Passwordcreate() {
                                 </div>}
                             </div>
                                     <div className='mt-4'>
+                                 <div className="mb-2">   Gender:</div>
                                       <div className='d-flex gap-2'>
-                                      <input {...register("gender", { required: true })} type="radio" value="Female" /> <span>Female</span>
+                                       <input {...register("gender", { required: true })} type="radio" value="Female" /> <span>Female</span>
                                         <input {...register("gender", { required: true })} type="radio" value="Male" /><span>Male</span>
                                       </div>
 

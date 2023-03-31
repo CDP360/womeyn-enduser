@@ -2,16 +2,16 @@
 
 .homesectionmain {
   width: 100%;
-  // position:relative;
+  position:relative;
 
   .emptyboxrightcolor {
-    background-color: orange;
+    // background-color: orange;
     position: absolute;
-    width: 20%;
-    height: 40% !important;
+    width: 15%;
+    height: 10% !important;
     background: #fecf9d;
-    opacity: 0.36;
-    filter: blur(239.825px);
+    opacity: 0.4;
+    filter: blur(500px);
     left: 0;
   }
   .emptyboxleftcolor {

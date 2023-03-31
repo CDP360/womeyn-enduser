@@ -103,7 +103,7 @@ function CarouselCategory() {
                   <h6>{item?.name}</h6>
                 </div>
                 <div onClick={() => pushCatgorys(item?.slugName)} >
-                  {item?.description}
+                  {item?.description?.length<=10 ?<>{item?.description}</>:<>{item?.description.slice(0,20)}...</>}
                 </div>
               </div>
             )

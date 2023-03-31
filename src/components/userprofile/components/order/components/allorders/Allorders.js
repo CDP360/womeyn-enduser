@@ -50,8 +50,12 @@ function Allorders({ Orders, traking, loading }) {
   useEffect(() => {
 
   }, [orderlist])
+
+  console.log(Orders, "Orderslists")
   return (
     <div className={styles.allordermainsection}>
+
+      {Orders?.length === 0 && <div>No Data Found!!</div>}
 
       {loading ? <>
         <LoaderLogo />
@@ -109,14 +113,12 @@ function Allorders({ Orders, traking, loading }) {
                                   })}
                                 </div>
                                 <div>
-                                  {/* Rs.{items?.price} */}
+                                  A${items?.price}
                                 </div>
                               </div>
                             </div>
-
-
                             <div className={styles.secondimagesections}>
-                              ${items?.price}
+                              A${items?.price}
                             </div>
 
                             <div>
@@ -161,26 +163,30 @@ function Allorders({ Orders, traking, loading }) {
                                 <div>
                                   {items?.variations?.map((itemss, index) => {
                                     return (
-                                      <div >
+                                      <div key={index} >
                                         <span className="sizecolor">{itemss?.name}</span> : {itemss?.value}
                                       </div>
                                     )
                                   })}
                                 </div>
                                 <div>
-                                  {/* Rs.{items?.price} */}
+                                  
                                 </div>
                               </div>
+
                             </div>
 
 
                             <div className={styles.secondimagesections}>
-                              ${items?.price}
+                              A${items?.price}
                             </div>
 
                             <div className={styles.rightimagesections}>
 
 
+                            
+                            {index===0 ?<>
+                            
                               {item?.stateId === 4 || item?.stateId === 5 || item?.stateId == 6 ? <></> : <div className={styles.thirdimagesection}>
                                 <div>
                                   <button className={styles.trackingbuttons} onClick={traking}>Track</button>
@@ -191,6 +197,19 @@ function Allorders({ Orders, traking, loading }) {
                                   </div>
                                 </div>
                               </div>}
+                            </>:<></>}
+
+
+                              {/* {item?.stateId === 4 || item?.stateId === 5 || item?.stateId == 6 ? <></> : <div className={styles.thirdimagesection}>
+                                <div>
+                                  <button className={styles.trackingbuttons} onClick={traking}>Track</button>
+                                </div>
+                                <div className="mt-3">
+                                  <div>
+                                    <button className={styles.trackingbuttons} onClick={() => handleShow(item?.orderId)}>Cancel</button>
+                                  </div>
+                                </div>
+                              </div>} */}
                             </div>
 
                           </div>
@@ -289,7 +308,7 @@ function Allorders({ Orders, traking, loading }) {
 
               <div className={styles.insidemodelpopup}>
                 <div className={styles.removetexts}>
-                  Remove Order
+                  Cancel Order
                 </div>
                 <div onClick={handleClose}>
                   <ion-icon name="close-outline" size="large"></ion-icon>

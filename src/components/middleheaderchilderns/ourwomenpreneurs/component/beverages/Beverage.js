@@ -68,10 +68,10 @@ function Beverage({ productlist, loading, sellers }) {
                                     </div>
                                     <div className={styles.cardpricesection}>
                                         <div className='textprice'>
-                                            <span>${item?.salePrice}</span>
+                                            <span>A${item?.salePrice}</span>
                                         </div>
                                         <div className={styles.splitoffers}>
-                                            {item?.offerPercentag == 0 ? <></> : <span className='textpricedashedgreen'> <del>${item?.actualPrice}</del></span>}
+                                            {item?.offerPercentag == 0 ? <></> : <span className='textpricedashedgreen'> <del>A${item?.actualPrice}</del></span>}
                                             <span className='textpricedashedgreen ms-2'>
                                                 {item?.offerPercentag == 0 ? <></> : <>
                                                     ({item?.offerPercentag} off)

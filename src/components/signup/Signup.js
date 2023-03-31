@@ -28,7 +28,7 @@ function Signup() {
             emailOrPhoneNo: data?.email
         }
 
-        localStorage.setItem("womensignupuser",JSON.stringify(data?.email))
+        localStorage.setItem("womensignupuser", JSON.stringify(data?.email))
         setLoading(true);
         userSignup(response).then((res) => {
             if (res) {
@@ -129,12 +129,12 @@ function Signup() {
                         <div className="mt-3 mb-5">
                             <Form onSubmit={handleSubmit(onSubmit)}>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Control type={`${ "text" || "number"}`} placeholder="Email / Phone Number" className={styles.forms}
+                                    <Form.Control type={`${"text" || "number"}`} placeholder="Email / Phone Number" className={styles.forms}
                                         {...register("email", {
                                             required: "Please enter email / Phone Number",
                                             pattern: {
                                                 // value: /\S+@\S+\.\S+/ || /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                value:/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/ || /\S+@\S+\.\S+/,
+                                                value: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/ || /\S+@\S+\.\S+/,
                                                 message: "invalid email address"
                                             },
                                         })}

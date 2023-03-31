@@ -78,7 +78,7 @@ function AllCategoryCard({ products, stars }) {
                                     <div className={styles.cardinsidesection}>
                                         <Image src={stars} alt="no image" className={styles.stars} />
                                         <div>
-                                            <span>{item?.productName.length>=20?<>{item?.productName.slice(0,35)}...</>:<>{item?.productName}</>}</span>
+                                            <span>{item?.productName.length>=10?<>{item?.productName.slice(0,25)}...</>:<>{item?.productName}</>}</span>
                                         </div>
                                         <div>
                                             <span className='textgrey'>{item?.brand}</span>
@@ -89,10 +89,10 @@ function AllCategoryCard({ products, stars }) {
                                         </div>
                                         <div className={styles.cardpricesection}>
                                             <div className='textprice'>
-                                                {item?.offerPercentag == 0 ? <span>${item?.salePrice}</span> : <span>${item?.salePrice}</span>}
+                                                {item?.offerPercentag == 0 ? <span>A${item?.salePrice}</span> : <span>A${item?.salePrice}</span>}
                                             </div>
                                             <div className='textpricedashed'>
-                                                <del>{item?.offerPercentag == 0 ?<></>:<>${item?.actualPrice}</>}</del>
+                                                <del>{item?.offerPercentag == 0 ?<></>:<>A${item?.actualPrice}</>}</del>
                                         
                                             </div>
                                         </div>

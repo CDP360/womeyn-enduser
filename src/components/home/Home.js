@@ -83,7 +83,7 @@ function Home() {
         window.open(data);
     }
 
-    console.log(bannerimages, "bannerimages")
+  
     return (
         <Fragment>
             <div className={styles.homesectionmain}>
