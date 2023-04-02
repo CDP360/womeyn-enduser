@@ -5,6 +5,7 @@
     background: rgba(255, 255, 255);
     box-shadow: 0px -27px 120px rgba(0, 0, 0, 0.08);
     padding: 10px 0px;
+    z-index:9898989989898988989898989898989898989898898;
     .insidesectionheader {
         width: 75%;
         margin: 0 auto;
@@ -75,7 +76,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: flex-end;
-                    gap: 30px;
+                    gap: 18px;
 
                     .insideiconssection {
                         // width:80%;
@@ -202,8 +203,10 @@
     backdrop-filter: blur(30px);
     background: rgb(229, 229, 229, 0.3);
     padding: 15px 0px;
-    z-index: 98989898;
+    // z-index: 98989898;
     // border-radius: 0px 0px 4px 4px;
+    z-index:9898989989898988989898989898989898989898898;
+
     .insidemiddlesections {
         width: 60%;
         margin: 0 auto;
@@ -277,7 +280,7 @@
     {
         position:absolute;
         // border:1px solid blue;
-        width:13vw;
+        width:15vw;
         height:auto;
         z-index:9898989898;
         background-color:white;
@@ -285,7 +288,21 @@
         cursor:pointer;
         margin-top:15%;
         border-radius:10px;
-        padding:10px;
+        padding:15px;
+        left:-400%;
+
+        @include lgBreakPoint
+        {
+            width:22vw !important;
+            padding:12px !important;
+        left:-500%;
+
+        }
+        @include xlBreakPoint
+        {
+            width:20vw !important;
+            padding:20px !important;
+        }
     }
 }
 

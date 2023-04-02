@@ -68,7 +68,7 @@ function Order() {
                 }
                 onClick={() => setStep(2)}
               >
-                Cancelled
+                Cancelled Byseller
               </p>
               <p
                 className={
@@ -77,6 +77,17 @@ function Order() {
                     : `${styles.inActiveTabText}`
                 }
                 onClick={() => setStep(3)}
+              >
+                Cancelled
+              </p>
+
+              <p
+                className={
+                  step == 4
+                    ? `${styles.activeTabText}`
+                    : `${styles.inActiveTabText}`
+                }
+                onClick={() => setStep(4)}
               >
                 Delivered
               </p>
@@ -90,11 +101,16 @@ function Order() {
             <Inprogress Orders={Orders} traking={traking} loading={loading}/>
           </div>}
           {step === 2 && <div>
-            <Cancelled Orders={Orders} traking={traking} loading={loading}/>
+            No Data Found!!!
           </div>}
           {step === 3 && <div>
+            <Cancelled Orders={Orders} traking={traking} loading={loading}/>
+
+          </div>} 
+          {step===4 && <div>
             <Delivered Orders={Orders} traking={traking} loading={loading}/>
-          </div>}
+            
+            </div>}
         </div>
       </div>
     </div>

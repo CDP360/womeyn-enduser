@@ -175,7 +175,7 @@ function Changepassword() {
                             <div className='mb-4 mt-2'>
 
 
-                                <Form>
+                                <Form className="forms-bg">
                                     <div className={styles.passwordformsection}>
                                         <Form.Group className="mb-3" controlId="formBasicEmail">
                                             <Form.Label>Old Password</Form.Label>

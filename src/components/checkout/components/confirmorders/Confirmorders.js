@@ -249,7 +249,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
                           <div>{item?.productName}
                           </div>
                           <div>
-                            Rs.{item?.salePrice} <span>
+                          A${item?.salePrice} <span>
                               {item?.offerPercentag == 0 ? <span></span> : <>
                                 <del>
                                   <span>{item?.actualPrice}</span>

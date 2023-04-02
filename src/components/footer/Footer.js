@@ -111,9 +111,9 @@ function Footer() {
                                         </div>
                                     </div>
                                 </div>
-                                <div>
+                                {/* <div>
                                     <button className={styles.livechat}>LIVE CHAT</button>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

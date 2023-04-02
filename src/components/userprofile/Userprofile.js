@@ -55,6 +55,7 @@ function Userprofile({ name, error }) {
     }, [])
     return (
         <>
+        <>
             {error == "errors" ? <>
                 <div>
                     no records found!!!
@@ -100,9 +101,21 @@ function Userprofile({ name, error }) {
                             </div>
                         </div>
                     </div>
+                    <div className={styles.leftsectionboxcolor}>
+            
+            </div>
+            <div className={styles.righttopectionboxcolor}>
+            
+            </div>
+            <div className={styles.rightbottomsectionboxcolor}>
+            
+            </div>
+            
                 </div>
             }
         </>
+       
+            </>
     )
 }
 

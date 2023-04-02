@@ -1000,6 +1000,7 @@ function Viewproducts({ id }) {
                                                     alt: 'Wristwatch by Ted Baker London',
                                                     isFluidWidth: true,
                                                     src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
+                                                    borderRadius:"10px"
                                                 },
                                                 largeImage: {
                                                     src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
@@ -1007,7 +1008,9 @@ function Viewproducts({ id }) {
                                                     height: 1200,
                                                     backgroundColor: "white",
                                                     // border:"3px solid blue"
-                                                    zIndex: "989898988989898989898989"
+                                                    zIndex: "989898988989898989898989",
+                                                    borderRadius:"10px"
+
 
                                                 },
                                                 imageStyle: {
@@ -1017,7 +1020,9 @@ function Viewproducts({ id }) {
                                                     maxHeight: "400px",
                                                     objectFit: "contain",
                                                     zIndex: "9898989898",
-                                                    backgroundColor: "white"
+                                                    backgroundColor: "white",
+                                                    borderRadius:"10px"
+
                                                 },
                                                 // smallImage: {
                                                 //     src: String, (required)
@@ -1080,7 +1085,7 @@ function Viewproducts({ id }) {
                             <div className={styles.starsection}>
                                 <div className={styles.starsections}>
 
-                                    <Rate defaultValue={parseFloat(averageRatings?.avgRating)} allowHalf style={{ color: "#54BE43" }}
+                                    <Rate defaultValue={parseFloat(averageRatings?.avgRating)} allowHalf style={{ color: "#54BE43",zIndex:0 }}
                                         tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
                                         // onChange={(value) => {
                                         //     setStarCount(value)
@@ -1326,6 +1331,12 @@ function Viewproducts({ id }) {
                     </div>
                 </div>
             </div>
+            <div className={styles.leftbg}>
+
+            </div>
+            <div className={styles.righttopbg}></div>
+
+            
         </Fragment>
     )
 }

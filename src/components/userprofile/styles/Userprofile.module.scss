@@ -5,6 +5,8 @@
     display: flex;
     gap: 30px;
     padding-bottom:8%;
+    position:relative;
+    z-index:9;
     @include xsBreakPoint {
         flex-direction: column;
     }
@@ -45,4 +47,41 @@
             width: 100%;
         }
     }
+}
+
+.leftsectionboxcolor
+{
+    width:18%;
+    height:50%;
+    position:absolute;
+    top:20%;
+    background: #FFF0DF;
+// opacity: 0.36;
+filter: blur(200rem);
+z-index:0;
+}
+
+.righttopectionboxcolor
+{
+    width:20%;
+    height:40%;
+    position:absolute;
+    top:0%;
+    background:#FCE5E5;
+// opacity: 0.36;
+filter: blur(200rem);
+z-index:0;
+right:0;
+}
+.rightbottomsectionboxcolor
+{
+    width:25%;
+    height:40%;
+    position:absolute;
+    bottom:0%;
+    background:#DFE9FF;
+// opacity: 0.36;
+filter: blur(200rem);
+z-index:0;
+right:0; 
 }

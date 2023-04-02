@@ -12,10 +12,10 @@ import { useSelector } from 'react-redux';
 import myprofile from '../../assests/login-logos/myprofile.png';
 import logout from '../../assests/login-logos/logout.png';
 import notifications from '../../assests/login-logos/notifications.png';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
+
 import facebook from '../../assests/homepage-logos/facebookfooter.png';
 import youtube from '../../assests/homepage-logos/youtubered.png';
 import instagram from '../../assests/homepage-logos/newinstagramfooter.png';
@@ -24,6 +24,7 @@ import twitter from '../../assests/homepage-logos/twitterfooter.png';
 import { toast } from 'react-toastify';
 import heart from '../../assests/homepage-logos/hearticon.png';
 import { ContextStore } from './../../Redux/store/Contextstore';
+import { GetFavoritsList } from './../../services/user-favorits-service/User-favorits-service';
 function Header() {
     const { state, dispatch } = useContext(ContextStore);
     const { cart } = state;
@@ -31,6 +32,7 @@ function Header() {
     const states = useSelector(state => state);
     const [showmega, setShowMega] = useState(false);
     const [userauth, setUserAuth] = useState("");
+    const [favortscount, setFavortcount] = useState([]);
     const logoutHandler = async () => {
         toast.success("Logout Successfull!!",
             {
@@ -51,10 +53,7 @@ function Header() {
         localStorage.removeItem("womenuser");
         localStorage.removeItem("womenauth");
         localStorage.removeItem("womenproductid");
-
         setShowMega(false);
-
-
         setTimeout(() => {
             router.push("/login");
         }, 1000)
@@ -121,7 +120,16 @@ function Header() {
     useEffect(() => {
         const auth = localStorage.getItem("womenauth");
         setUserAuth(auth);
-    }, [userauth])
+        Favortscount();
+    }, [userauth]);
+
+    const Favortscount = () => {
+        GetFavoritsList().then((res) => {
+            setFavortcount(res?.data[0]?.results);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     return (
         <Fragment>
             <div className={styles.mainheadersection}>
@@ -150,10 +158,11 @@ function Header() {
                                         <div>
                                             <Image src={heart} alt="no image" className={styles.notifications} />
                                         </div>
-                                        {/* {cart?.cartData?.length > 0 ? <div className={styles.cartcountbox}>
-                                            {cart.cartData?.length}
+                                        {favortscount?.length > 0 ? <div className={styles.cartcountbox}>
+                                            {favortscount?.length}
                                         </div>
-                                            : <></>} */}
+                                            : <></>}
+
                                     </div>
                                 </div>
 
@@ -211,44 +220,6 @@ function Header() {
                                     }
 
                                 </div>
-                                <div className="dropdown">
-                                    {/* <div className={styles.logintextsize}>
-                                        {userauth ? <>
-                                            <Image src={profile} alt="no image" className={styles.notificationsprofile} />
-
-                                        </> : <>Login</>}
-                                    </div> */}
-
-                                    {/* {userauth ?
-                                        <>
-                                            <div className="dropdowncontent">
-                                                <div className={styles.headerprofile} onClick={userProfile}>
-                                                    <div>
-                                                        <Image src={myprofile} alt="no image" className={styles.profileimageover} />
-                                                    </div>
-                                                    <div className={styles.logouttexts}>
-                                                        My Profile
-                                                    </div>
-                                                </div>
-                                                <hr />
-                                                <div className={styles.headerprofile} onClick={logoutHandler}>
-                                                    <div>
-                                                        <Image src={logout} alt="no image" className={styles.profileimageover} />
-                                                    </div>
-                                                    <div className={styles.logouttexts}>
-                                                        Logout
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </> : <div className="dropdowncontent">
-                                            <div>
-                                                Create account / LogIn
-                                                <button className='active mt-3 loginbuttonhome' onClick={Login}>
-                                                    LogIn/SignUp
-                                                </button>
-                                            </div>
-                                        </div>} */}
-                                </div>
 
                             </div>
 
@@ -266,7 +237,6 @@ function Header() {
                         <ul className="dropdownmegamain">
                             <li>
                                 <a>
-                                    {/* <Image src={iconmenu} alt="no image" className={styles.menuicons} style={{ color: "blue" }} /> */}
                                     <span className='ms-2'>Explore</span>
                                 </a>
                                 <ul className="dropdownmega">
@@ -393,4 +363,4 @@ function Header() {
 }
 
 export default dynamic(() => Promise.resolve(Header), { ssr: false });
-// export default Header;
+
