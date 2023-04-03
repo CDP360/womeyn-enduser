@@ -22,7 +22,7 @@ function EditProfile() {
     const [user, setUser] = useState([]);
 
     useEffect(() => {
-        const userid = localStorage.getItem("womenUserid");
+        const userid = localStorage.getItem("userid");
         UserProfileInformation(JSON.parse(userid)).then((res) => {
             if (res == "Please authenticate") {
                 toast.error("Please Authenticate!!",
@@ -37,12 +37,12 @@ function EditProfile() {
                         theme: "dark",
                     }
                 );
-                localStorage.removeItem("womenUserid");
-                localStorage.removeItem("womenUserToken");
-                localStorage.removeItem("womenProfile");
+                localStorage.removeItem("userid");
+                localStorage.removeItem("userToken");
+                localStorage.removeItem("profile");
             }
             setUser(res?.data);
-            localStorage.setItem("womenProfile", JSON.stringify(res?.data?.profileImageName));
+            localStorage.setItem("profile", JSON.stringify(res?.data?.profileImageName));
         }).catch((err) => {
             console.log(err);
         })
@@ -72,7 +72,7 @@ function EditProfile() {
 
         }
         setLoading(true);
-        const userid = localStorage.getItem("womenUserid");
+        const userid = localStorage.getItem("userid");
         CreateProfileuser(datas).then((res) => {
             toast.success("Profile Updated",
                 {

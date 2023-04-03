@@ -57,7 +57,7 @@ function Passwordcreate() {
         var passwordRegex = /(?=^.{8,}$)(?=.{0,}[A-Z])(?=.{0,}[a-z])(?=.{0,}\W)(?=.{0,}\d)/;
         if (productWhishlist) {
             if (passwordRegex.test(check?.password)) {
-                localStorage.setItem("womenauth", true);
+                localStorage.setItem("auth", true);
                 setMatchCheck1(true);
                 setMatchCheck2(false);
                 CreateProfileuser(check).then((res) => {
@@ -77,7 +77,7 @@ function Passwordcreate() {
                 }).catch((err) => {
                     console.log(err);
                 })
-    
+
             }
             else {
                 setMatchCheck2(true);
@@ -87,7 +87,7 @@ function Passwordcreate() {
         else {
             if (passwordRegex.test(check?.password)) {
 
-                localStorage.setItem("womenauth", true);
+                localStorage.setItem("auth", true);
                 setMatchCheck1(true);
                 setMatchCheck2(false);
                 CreateProfileuser(check).then((res) => {
@@ -159,7 +159,7 @@ function Passwordcreate() {
 
 
                             </div>
-                          
+
                             <div className='mb-4 mt-2'>
                                 <Form onSubmit={handleSubmit(onSubmit)}>
                                     <div className={styles.passwordformsection}>
@@ -257,23 +257,23 @@ function Passwordcreate() {
                                         </div>
                                     </div>
                                     <div>
-                                {matchcheck1 ? <div className='text-success'>
-                                    Password Matched!
-                                </div> : <>
-                                </>}
-                                {matchcheck2 && <div className='text-danger shorttexts'>
-                                    At least one letter,
-                                    one capital letter,
-                                    one number,
-                                    one special character,
-                                </div>}
-                            </div>
+                                        {matchcheck1 ? <div className='text-success'>
+                                            Password Matched!
+                                        </div> : <>
+                                        </>}
+                                        {matchcheck2 && <div className='text-danger shorttexts'>
+                                            At least one letter,
+                                            one capital letter,
+                                            one number,
+                                            one special character,
+                                        </div>}
+                                    </div>
                                     <div className='mt-4'>
-                                 <div className="mb-2">   Gender:</div>
-                                      <div className='d-flex gap-2'>
-                                       <input {...register("gender", { required: true })} type="radio" value="Female" /> <span>Female</span>
-                                        <input {...register("gender", { required: true })} type="radio" value="Male" /><span>Male</span>
-                                      </div>
+                                        <div className="mb-2">   Gender:</div>
+                                        <div className='d-flex gap-2'>
+                                            <input {...register("gender", { required: true })} type="radio" value="Female" /> <span>Female</span>
+                                            <input {...register("gender", { required: true })} type="radio" value="Male" /><span>Male</span>
+                                        </div>
 
                                         {errors.gender && <span className="active">{errors.gender.message}</span>}
                                     </div>

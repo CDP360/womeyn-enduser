@@ -22,7 +22,7 @@ function Checkout() {
   const [step2, setStep2] = useState('');
   const [step3, setStep3] = useState('');
   const [couponname, setCouponName] = useState("");
-  const totalPrice = cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice+40, 0);
+  const totalPrice = cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice + 40, 0);
   useEffect(() => {
     if (step === 0) {
       setStep1("active")
@@ -40,7 +40,7 @@ function Checkout() {
     <Fragment>
       <div className='mainsection'>
         <div className="insidesection">
-          <div className={styles.cartsectiontexts}>
+          <div className={styles.cartsectiontextss}>
             Checkout
           </div>
           <div className={styles.cartsection}>
@@ -101,11 +101,11 @@ function Checkout() {
                     <div>
                       Price</div>
                     <div className={styles.textprice}>
-                    A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)}
+                      A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)}
                     </div>
                   </div>
                   {/* <div className={styles.splitcartsections}> */}
-                    {/* <div>
+                  {/* <div>
                       Discount</div>
                     <div className={styles.textprice}>
                       ${cart?.cartData?.reduce((acc, current) => acc + Number(current.salePrice - current.actualPrice), 0)}
@@ -115,7 +115,7 @@ function Checkout() {
                     <div>
                       Delivery Charges</div>
                     <div className={styles.textprice}>
-                    A$40
+                      A$40
                     </div>
                   </div>
                 </div>
@@ -126,7 +126,7 @@ function Checkout() {
                   <div className={styles.pricetextss}>
                     Total Payable</div>
                   <div className={styles.textprices}>
-                  A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)+40}
+                    A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0) + 40}
 
                   </div>
                 </div>
@@ -147,6 +147,17 @@ function Checkout() {
             </div>
           </div>
         </div>
+      </div>
+
+
+      <div className={styles.leftcolorbg}>
+
+      </div>
+      <div className={styles.rightcolorbg}>
+
+      </div>
+      <div className={styles.righttopcolorbg}>
+
       </div>
     </Fragment>
   )

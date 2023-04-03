@@ -31,15 +31,18 @@ function MobileHeader() {
     }
 
     useEffect(() => {
-            const image = localStorage.getItem("womenUserToken");
+            const image = localStorage.getItem("userToken");
             setUserToken(JSON.parse(image));
     }, [tokens]);
 
     const logoutHandler = async () => {
         toast.success("Logout User Successflly");
-        localStorage.removeItem("womenUserid");
-        localStorage.removeItem("womenUserToken");
-        localStorage.removeItem("womenProfile");
+        localStorage.removeItem("userid");
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("whish");
+        localStorage.removeItem("user");
+        localStorage.removeItem("auth");
+        localStorage.removeItem("productid");
         setTimeout(() => {
             router.push("/login");
         }, 400)

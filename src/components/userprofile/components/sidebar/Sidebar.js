@@ -39,7 +39,7 @@ function Sidebar({ user }) {
         setShowUploadButton(true);
     }
     const ImageUploadSuccess = () => {
-        const userid = localStorage.getItem("womenUserid");
+        const userid = localStorage.getItem("userid");
         const formDatas = new FormData();
         formDatas.append("upl", image);
         UserProfileImageupload(JSON.parse(userid), formDatas).then((res) => {
@@ -86,12 +86,12 @@ function Sidebar({ user }) {
 
 
     const LogoutUser = () => {
-        localStorage.removeItem("womenUserid");
-        localStorage.removeItem("womenUserToken");
-        localStorage.removeItem("womenProfile");
-        localStorage.removeItem("productwhishlist");
-        localStorage.removeItem("womenuser");
-        localStorage.removeItem("womenauth");
+        localStorage.removeItem("userid");
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("profile");
+        localStorage.removeItem("whish");
+        localStorage.removeItem("user");
+        localStorage.removeItem("auth");
 
         toast.success("Logout Successfull", {
             position: "top-center",

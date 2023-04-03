@@ -18,37 +18,39 @@ function Userprofile({ name, error }) {
     const history = useRouter();
     const [user, setUser] = useState([]);
     useEffect(() => {
-        const womentoken = localStorage.getItem("womenUserToken");
+        const womentoken = localStorage.getItem("userToken");
         if (JSON.parse(womentoken)) {
         }
         else {
             history.push("/login");
         }
-        const userid = localStorage.getItem("womenUserid");
+        const userid = localStorage.getItem("userid");
         UserProfileInformation(JSON.parse(userid)).then((res) => {
-            if (res == "Please authenticate") {
-                toast.error("Please Authenticate!!",
-                    {
-                        position: "top-center",
-                        autoClose: 3000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
-                    }
-                );
-                localStorage.removeItem("womenUserid");
-                localStorage.removeItem("womenUserToken");
-                localStorage.removeItem("womenProfile");
-                localStorage.removeItem("productwhishlist");
-                localStorage.removeItem("womenuser");
-                localStorage.removeItem("womenauth");
-                localStorage.removeItem("womenproductid");
-            }
+            // if (res == "Please authenticate") {
+            //     toast.error("Please Authenticate!!",
+            //         {
+            //             position: "top-center",  
+            //             autoClose: 3000,
+            //             hideProgressBar: false,
+            //             closeOnClick: true,
+            //             pauseOnHover: true,
+            //             draggable: true,
+            //             progress: undefined,
+            //             theme: "dark",
+            //         }
+            //     );
+            //     localStorage.removeItem("userid");
+            //     localStorage.removeItem("userToken");
+            //     localStorage.removeItem("profile");
+            //     localStorage.removeItem("whish");
+            //     localStorage.removeItem("user");
+            //     localStorage.removeItem("auth");
+            //     localStorage.removeItem("productid");
+            // }
+
+            
             setUser(res?.data);
-            localStorage.setItem("womenProfile", JSON.stringify(res?.data?.profileImageName));
+          
         }).catch((err) => {
             console.log(err);
         })
@@ -85,7 +87,6 @@ function Userprofile({ name, error }) {
                                 </div>
                                 }
                                 {name == "orders" && <div>
-
                                     <Orders />
                                 </div>
                                 }

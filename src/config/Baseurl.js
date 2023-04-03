@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 axios.interceptors.request.use(
     function (config) {
         if (config.url.search("/customer/update-photo") !== -1 || config.url.search("/customer/add-review") !== -1) {
-            const token = localStorage.getItem("womenUserToken");
+            const token = localStorage.getItem("userToken");
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
             config.headers = {
                 ...config.headers,
@@ -28,7 +28,7 @@ axios.interceptors.request.use(
         }
         else if ((config.url.search("/customer/oauth/google") !== -1) || (config.url.search("/oauth-success") !== -1)) {
             console.log("crede called")
-            const token = localStorage.getItem("womenUserToken");
+            const token = localStorage.getItem("userToken");
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
             config.headers = {
                 ...config.headers,
@@ -39,7 +39,7 @@ axios.interceptors.request.use(
             return config;
         }
         else {
-            const token = localStorage.getItem("womenUserToken");
+            const token = localStorage.getItem("userToken");
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
             config.headers = {
                 ...config.headers,

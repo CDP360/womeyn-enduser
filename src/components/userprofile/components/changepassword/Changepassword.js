@@ -48,7 +48,7 @@ function Changepassword() {
     } = useForm(formOptions);
 
     const onSubmit = async (data) => {
-        const userid = localStorage.getItem("womenUserid");
+        const userid = localStorage.getItem("userid");
         const check = {
             oldPassword: data?.oldPassword,
             newPassword: data?.newPassword,
@@ -109,9 +109,9 @@ function Changepassword() {
         setTimeout(() => {
             router.push("/login")
         }, 600);
-        localStorage.removeItem("womenUserid");
-        localStorage.removeItem("womenUserToken");
-        localStorage.removeItem("womenProfile");
+        localStorage.removeItem("userid");
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("profile");
     }
     useEffect(() => {
     }, [matchcheck1, matchcheck2, matchcheck3, matchcheck4])

@@ -20,7 +20,7 @@ function Reviewmodel({ show1, handleClose1, orderlist }) {
     const [image, setImage] = useState([]);
     useEffect(() => {
 
-        const names = JSON.parse(localStorage.getItem("womenuser"));
+        const names = JSON.parse(localStorage.getItem("user"));
         setValue("username", names)
     }, [count])
 

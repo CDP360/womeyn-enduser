@@ -33,7 +33,7 @@ function Cart() {
     setPrice(prices);
   }
   useEffect(() => {
-    const checktoken = localStorage.getItem("womenUserToken");
+    const checktoken = localStorage.getItem("userToken");
     setTokens(JSON.parse(checktoken));
     TotalPrice();
   }, [tokes, price])
@@ -71,7 +71,7 @@ function Cart() {
   }
   const handleLoginUser = () => {
     const PathQuery = router?.asPath
-    localStorage.setItem("productwhishlist", JSON.stringify(PathQuery));
+    localStorage.setItem("whish", JSON.stringify(PathQuery));
     router.push(`/login?redirect=/cart`)
   }
 
@@ -345,6 +345,15 @@ function Cart() {
 
         </Modal>
       </>
+      <div className={styles.leftcolorbg}>
+
+      </div>
+      <div className={styles.rightcolorbg}>
+
+      </div>
+      <div className={styles.righttopcolorbg}>
+
+</div>
     </Fragment>
   )
 }

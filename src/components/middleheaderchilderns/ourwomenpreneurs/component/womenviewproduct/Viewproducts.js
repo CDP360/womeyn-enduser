@@ -306,7 +306,7 @@ function Viewproducts({ id }) {
     }
     const CheckLoginUsers = (data) => {
         const PathQuery = history?.asPath
-        localStorage.setItem("productwhishlist", JSON.stringify(PathQuery));
+        localStorage.setItem("whish", JSON.stringify(PathQuery));
         router.push(`/login?redirect=/product/${data}`);
     }
     const [likecheck, setLikecheck] = useState("");
@@ -618,7 +618,7 @@ function Viewproducts({ id }) {
         }).catch((err) => {
             console.log(err);
         });
-        const tokencheck = localStorage.getItem("womenUserToken");
+        const tokencheck = localStorage.getItem("userToken");
         setTokenset(tokencheck)
     }, [productnames, tokencheck, index1, index2, index3, index4, averageRatings]);
 
@@ -692,7 +692,7 @@ function Viewproducts({ id }) {
 
     const buyNowPathNavigate = (cartdata, productvariations) => {
         const pathnames = "/checkout";
-        localStorage.setItem("productwhishlist", JSON.stringify(pathnames));
+        localStorage.setItem("whish", JSON.stringify(pathnames));
 
 
 

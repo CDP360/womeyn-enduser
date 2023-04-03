@@ -26,7 +26,7 @@ function Login() {
     } = useForm();
     const url = process?.env?.NEXT_PUBLIC_URL;
     const onSubmit = async ({ email, password }) => {
-        const productWhishlist = JSON.parse(localStorage.getItem("productwhishlist"));
+        const productWhishlist = JSON.parse(localStorage.getItem("whish"));
         const datas = {
             email: email,
             password: password
@@ -36,10 +36,10 @@ function Login() {
 
             Userlogin(datas).then(async (res) => {
                 if (res) {
-    localStorage.setItem("womenuser", JSON.stringify(res?.data?.user?.firstName));
-                    localStorage.setItem("womenauth", true);
-                    localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
-                    localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
+                    localStorage.setItem("user", JSON.stringify(res?.data?.user?.firstName));
+                    localStorage.setItem("auth", true);
+                    localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
+                    localStorage.setItem("userToken", JSON.stringify(res?.data?.tokens?.access?.token));
                     setTimeout(() => {
                         history.push(`${productWhishlist}`);
                         setLoading(false);
@@ -47,7 +47,7 @@ function Login() {
                 }
                 else {
                     setError(true);
-                
+
 
                     toast.error("Incorrect email or password",
                         {
@@ -70,11 +70,11 @@ function Login() {
         }
         else {
             Userlogin(datas).then(async (res) => {
-                if (res) {    
-    localStorage.setItem("womenuser", JSON.stringify(res?.data?.user?.firstName));
-                    localStorage.setItem("womenauth", true);
-                    localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
-                    localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
+                if (res) {
+                    localStorage.setItem("user", JSON.stringify(res?.data?.user?.firstName));
+                    localStorage.setItem("auth", true);
+                    localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
+                    localStorage.setItem("userToken", JSON.stringify(res?.data?.tokens?.access?.token));
                     setTimeout(() => {
                         history.push("/");
                         setLoading(false);
@@ -129,7 +129,7 @@ function Login() {
 
         console.log("ex", EXPIRE_TIME)
         setTimeout(() => {
-            localStorage.removeItem('womenUserids');
+            localStorage.removeItem('userid');
         }, EXPIRE_TIME);
     }, [])
     return (

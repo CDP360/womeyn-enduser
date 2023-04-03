@@ -535,9 +535,10 @@
 }
 
 .questions input[type="radio"]:checked ~ label {
-  background-color: #fc6666;
+  background-color: #fce5e5;
   padding: 10px 10px;
-  color: white;
+  // color: white;
+  font-weight: 550;
 }
 
 .questions input[type="radio"]:checked ~ label:before {
@@ -549,6 +550,12 @@
   cursor: pointer;
   padding: 10px;
   margin-bottom: 10px;
-  background-color: white;
+  // background-color: white;
   border-radius: 6px;
+}
+
+.shippingtextname
+{
+  font-weight:600;
+  font-size:1.2rem;
 }

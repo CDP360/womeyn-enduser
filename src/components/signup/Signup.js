@@ -28,7 +28,7 @@ function Signup() {
             emailOrPhoneNo: data?.email
         }
 
-        localStorage.setItem("womensignupuser", JSON.stringify(data?.email))
+        localStorage.setItem("signupuser", JSON.stringify(data?.email))
         setLoading(true);
         userSignup(response).then((res) => {
             if (res) {
@@ -42,8 +42,8 @@ function Signup() {
                     progress: undefined,
                     theme: "dark",
                 });
-                localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
-                localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
+                localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
+                localStorage.setItem("userToken", JSON.stringify(res?.data?.tokens?.access?.token));
                 setTimeout(() => {
                     router.push("/otp");
                     setLoading(false);

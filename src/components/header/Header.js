@@ -46,16 +46,15 @@ function Header() {
                 theme: "dark",
             }
         );
-        localStorage.removeItem("womenUserid");
-        localStorage.removeItem("womenUserToken");
-        localStorage.removeItem("womenProfile");
-        localStorage.removeItem("productwhishlist");
-        localStorage.removeItem("womenuser");
-        localStorage.removeItem("womenauth");
-        localStorage.removeItem("womenproductid");
+        localStorage.removeItem("userid");
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("whish");
+        localStorage.removeItem("user");
+        localStorage.removeItem("auth");
+        localStorage.removeItem("productid");
         setShowMega(false);
         setTimeout(() => {
-            router.push("/login");
+            router.push("/");   
         }, 1000)
 
     };
@@ -118,7 +117,7 @@ function Header() {
     }
 
     useEffect(() => {
-        const auth = localStorage.getItem("womenauth");
+        const auth = localStorage.getItem("auth");
         setUserAuth(auth);
         Favortscount();
     }, [userauth]);

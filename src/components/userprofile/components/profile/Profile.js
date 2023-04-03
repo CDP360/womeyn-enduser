@@ -19,33 +19,30 @@ function Profile() {
   } = useForm();
   const [user, setUser] = useState([]);
 
-  useEffect(() => {
-    const userid = localStorage.getItem("womenUserid");
+  useEffect(() => {    const userid = localStorage.getItem("userid");
     UserProfileInformation(JSON.parse(userid)).then((res) => {
       if (res == "Please authenticate") {
-        // toast.error("Please Authenticate!!",
-        //   {
-        //     position: "top-center",
-        //     autoClose: 3000,
-        //     hideProgressBar: false,
-        //     closeOnClick: true,
-        //     pauseOnHover: true,
-        //     draggable: true,
-        //     progress: undefined,
-        //     theme: "dark",
-        //   }
-        // );
-        localStorage.removeItem("womenUserid");
-        localStorage.removeItem("womenUserToken");
-        localStorage.removeItem("womenProfile");
-        localStorage.removeItem("productwhishlist");
-        localStorage.removeItem("womenuser");
-        localStorage.removeItem("womenauth");
-        localStorage.removeItem("womenproductid");
+        toast.error("Please Authenticate!!",
+          {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          }
+        );
+        localStorage.removeItem("userid");
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("whish");
+        localStorage.removeItem("user");
+        localStorage.removeItem("auth");
+        localStorage.removeItem("productid");
 
       }
       setUser(res?.data);
-      localStorage.setItem("womenProfile", JSON.stringify(res?.data?.profileImageName));
     }).catch((err) => {
       console.log(err);
     })
@@ -58,7 +55,7 @@ function Profile() {
     setValue("email", user?.email);
     setValue("phonenumber", user?.contactNumber);
     setValue("dateofbirth", user?.dateOfBirth);
-    localStorage.setItem("womenuser", JSON.stringify(user?.firstName));
+    localStorage.setItem("user", JSON.stringify(user?.firstName));
 
   }, [user])
   const [show, setShow] = useState(false);

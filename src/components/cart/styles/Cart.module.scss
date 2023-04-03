@@ -2,14 +2,17 @@
 
 .cartsectiontexts {
   font-size: 1.4rem;
-  font-weight: 600;
+  font-weight: 650;
   padding: 2% 0px;
+  z-index:9;
 }
 .cartsection {
   width: 100%;
   display: flex;
   gap: 25px;
   margin-bottom: 10%;
+  position:relative;
+  z-index:9;
 
   @include xsBreakPoint {
     flex-direction: column;
@@ -25,7 +28,7 @@
     font-size: 1.4rem;
     // border: 1px solid #9F9F9F;
     cursor: pointer;
-    background-color: white;
+    // background-color: white;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -99,7 +102,7 @@
     .cartlistsection {
       border-bottom: 1px dashed #9f9f9f;
       padding: 5px 20px;
-      background-color: white;
+      // background-color: white;
 
       display: flex;
       @include xsBreakPoint {
@@ -115,6 +118,7 @@
         display: flex;
         gap: 20px;
         padding-bottom: 2%;
+        // border:1px solid blue;
         @include xsBreakPoint {
           width: 100%;
         }
@@ -122,10 +126,11 @@
           width: 100%;
         }
         .editprofilesection {
-          width: 100px;
-          height: 100px;
+          width: 120px;
+          height: 130px;
           object-fit: contain;
-          border-radius: 5px;
+          border-radius: 10px;
+          border:1px solid #E8E8E8;
         }
       }
       .cartaddsection {
@@ -307,4 +312,47 @@
       font-weight: 600;
     }
   }
+}
+
+
+.leftcolorbg
+{
+  position:absolute;
+  width:10%;
+  height:70%;
+  position:absolute;
+  top:0%;
+  background: #FFF0DF;
+// opacity: 0.36;
+filter: blur(200rem);
+z-index:0;
+}
+
+.rightcolorbg
+{
+  position:absolute;
+  width:15%;
+  height:40%;
+  position:absolute;
+  bottom:0%;
+  background: #DFE9FF;
+// opacity: 0.36;
+filter: blur(200rem);
+z-index:0;
+right:0;
+
+}
+
+.righttopcolorbg
+{
+  position:absolute;
+  width:15%;
+  height:30%;
+  position:absolute;
+  top:0%;
+  background: #FCE5E5;
+// opacity: 0.36;
+filter: blur(200rem);
+z-index:0;
+right:0;
 }

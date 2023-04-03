@@ -18,7 +18,7 @@ function Addressdetail({ state, step, setStep, setName, name }) {
   const [address, setAddress] = useState([]);
   const [topping, setTopping] = useState("");
 
-  const [loading,setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     GetAddressData().then((res) => {
       setAddress(res?.data?.results);
@@ -48,10 +48,10 @@ function Addressdetail({ state, step, setStep, setName, name }) {
     if (selectAddress) {
       setName(selectAddress);
       setLoading(true);
-      setTimeout(()=>{
+      setTimeout(() => {
         setLoading(false);
-      setStep(step + 1);
-      },1000)
+        setStep(step + 1);
+      }, 1000)
     }
   }
   const {
@@ -106,6 +106,8 @@ function Addressdetail({ state, step, setStep, setName, name }) {
 
 
   }
+
+  console.log(address, "address")
   return (
     <Fragment>
       <div className={styles.mainorderpage}>
@@ -122,12 +124,15 @@ function Addressdetail({ state, step, setStep, setName, name }) {
                   <div className={styles.questions__question}>
                     <input type="radio" name={item?.id} value={item?.id} id={item?.id} checked={name == item?.id} onChange={onOptionChange} />
                     <label for={item?.id}>
+                    <div className={styles.shippingtextname}>
+                        {item?.name} <span>{item?.contactNumber}</span>
+                      </div>
                       <div className={styles.shippingtext}>
-                        {item?.cityName} <span>{item?.stateName}</span>
+                        {item?.cityName},<span>{item?.stateName}</span>,<span> {item?.countryName}</span>
                       </div>
-                      <div className={`mt-2 mb-2 ${styles.nameaddress}`}>
+                      {/* <div className={`mt-2 mb-2 ${styles.nameaddress}`}>
                         {item?.countryName}
-                      </div>
+                      </div> */}
                       <div className={`mt-2 mb-2 ${styles.addressorders}`}>
 
                         {item?.fullAddress}
@@ -142,20 +147,19 @@ function Addressdetail({ state, step, setStep, setName, name }) {
         </div>
         <div className="mt-5">
           {address?.length > 0 && <button className={styles.DeliveryHere} onClick={handleDeliverAddress}>
-           {loading?<>
-           
-            <Spinner
-          as="span"
-          animation="border"
-          size="sm"
-          role="status"
-          aria-hidden="true"
-        />
-        <span className="ms-3">Loading...</span>
-           </>:<>
-           Delivery Here
-           
-           </>}
+            {loading ? <>
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+              <span className="ms-3">Loading...</span>
+            </> : <>
+              Delivery Here
+
+            </>}
           </button>}
         </div>
       </div>

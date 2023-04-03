@@ -13,10 +13,6 @@ function Checkoutsuccess() {
     const Transaction_id = searchParams.get('transaction_id');
     const paymentId_id = searchParams.get('paymentId');
     const PayerID_id = searchParams.get('PayerID');
-    console.log({
-        paymentId_id,
-        PayerID_id
-    }, "Transaction_id");
     useEffect(() => {
         if (Transaction_id) {
             CheckoutSuccessUpdate(Transaction_id).then((res) => {
@@ -41,6 +37,12 @@ function Checkoutsuccess() {
             })
         }
         else {
+
+        }
+    }, [Transaction_id]);
+
+    useEffect(() => {
+        if (paymentId_id, PayerID_id) {
             CheckoutSuccessUpdatePaypal(paymentId_id, PayerID_id).then((res) => {
                 if (res?.data?.message == "Order completed successfully") {
                     toast.success(res?.data?.message, {
@@ -62,7 +64,7 @@ function Checkoutsuccess() {
                 console.log(err);
             })
         }
-    }, [Transaction_id,PayerID_id,paymentId_id])
+    }, [PayerID_id, paymentId_id])
     return (
         <div className={styles.success}>
             <LoaderLogo />

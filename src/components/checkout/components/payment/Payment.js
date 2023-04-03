@@ -47,7 +47,7 @@ function Payment({ totalPrice, addressid, couponname }) {
 
   const deliverOrderConfirm = () => {
     setLoading(true);
-    const userName = JSON.parse(localStorage.getItem("womenuser"));
+    const userName = JSON.parse(localStorage.getItem("user"));
     const overAllorders = {
       deliveryAddressId: addressid,
       paymentMethod: paymentType,

@@ -9,9 +9,9 @@ function Oauthcomplete() {
     const history = useRouter();
     useEffect(() => {
         OauthSuccess().then((res) => {
-            localStorage.setItem("womenUserToken", JSON.stringify(res?.data?.tokens?.access?.token));
-            localStorage.setItem("womenUserid", JSON.stringify(res?.data?.user?.id));
-            localStorage.setItem("womenauth", true);
+            localStorage.setItem("userToken", JSON.stringify(res?.data?.tokens?.access?.token));
+            localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
+            localStorage.setItem("auth", true);
             setTimeout(() => {
                 history.push("/");
             }, 1000)

@@ -47,7 +47,7 @@ function Otp() {
         if (otp.length === 0) {
             setError(true);
         }
-        const userIds = localStorage.getItem("womenUserid");
+        const userIds = localStorage.getItem("userid");
         const otpSend = {
             userId: JSON.parse(userIds),
             otpValue: otp
@@ -83,7 +83,7 @@ function Otp() {
     }
 
     const ResendVerifyCheck = () => {
-        const userIds = localStorage.getItem("womenUserid");
+        const userIds = localStorage.getItem("userid");
         const verify = {
             userId: JSON.parse(userIds)
         }
