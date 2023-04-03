@@ -6,9 +6,9 @@ import { CustomerOrders } from '../../../../services/customer-order-service/cust
 import strip from '../../../../assests/cart-logos/Stripe-Logo1.png';
 import paypal from '../../../../assests/cart-logos/PayPal-Logo1.png';
 import Spinner from 'react-bootstrap/Spinner';
-
+import { toast } from 'react-toastify';
 function Payment({ totalPrice, addressid, couponname }) {
-  const [loading,setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
   const { state } = useContext(ContextStore);
   const [orders, setOrders] = useState([]);
   const [paymentType, setPaymentType] = useState("");
@@ -56,15 +56,37 @@ function Payment({ totalPrice, addressid, couponname }) {
       customerName: userName,
       couponName: couponname,
     }
-    CustomerOrders(overAllorders).then((res) => {
-      window.location = res?.data?.url;
-
-      setTimeout(()=>{
-        setLoading(false);
-      },1000)
-    }).catch((err) => {
-      console.log(err);
+    if(paymentType?.length===0)
+    {
+      toast.error("Please select Payment Type!!",{
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
     })
+    setTimeout(()=>{
+      setLoading(false);
+    },500)
+
+    }
+    if(paymentType)
+    {
+      CustomerOrders(overAllorders).then((res) => {
+        window.location = res?.data?.url;
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000)
+      }).catch((err) => {
+        console.log(err);
+    setLoading(false);
+
+      })
+    }
+   
   }
 
   const onOptionChange = (e) => {
@@ -85,21 +107,21 @@ function Payment({ totalPrice, addressid, couponname }) {
         <div className="mt-5">
           <button className={styles.usepayments} onClick={deliverOrderConfirm}>
 
-          {loading?<>
-           
-           <Spinner
-         as="span"
-         animation="border"
-         size="sm"
-         role="status"
-         aria-hidden="true"
-       />
-       <span className="ms-3">Loading...</span>
-          </>:<>
-          Continue Payment
-          
-          </>}
-          
+            {loading ? <>
+
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+              <span className="ms-3">Loading...</span>
+            </> : <>
+              Continue Payment
+
+            </>}
+
           </button>
         </div>
       </div>

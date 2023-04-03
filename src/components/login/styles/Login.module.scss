@@ -6,6 +6,8 @@
         width: 100%;
         height: 100%;
         padding-bottom: 3%;
+        position:relative;
+        z-index:9;
         @include xsBreakPoint {
             padding-top: 5%;
             padding-bottom: 5%;
@@ -265,4 +267,48 @@
             cursor: pointer;
         }
     }
+}
+
+
+.leftsection1
+{
+    z-index:0;
+    position:absolute;
+    
+top:20%;
+    width: 15%;
+    height: 50% !important;
+    background: #FDECD9;
+ 
+    filter: blur(500px);
+    left: 0;
+
+}
+
+.righttopsection1
+{
+    z-index:0;
+    position:absolute;
+    
+top:10%;
+    width: 25%;
+    height: 40% !important;
+    background: #FCE5E5;
+ 
+    filter: blur(500px);
+    right: 0; 
+}
+
+.rightbottomsection1
+{
+    z-index:0;
+    position:absolute;
+    
+bottom:0%;
+    width: 25%;
+    height: 30% !important;
+    background: #DFE9FF;
+ 
+    filter: blur(500px);
+    right: 0;
 }

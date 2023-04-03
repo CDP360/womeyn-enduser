@@ -77,6 +77,7 @@
       .addressorders {
         width: 100%;
         line-height: 1.6;
+        font-weight:550;
       }
       .shippingtext {
         font-size: 1.3rem;
@@ -535,10 +536,9 @@
 }
 
 .questions input[type="radio"]:checked ~ label {
-  background-color: #fce5e5;
+  background-color: #FFF1F1;
   padding: 10px 10px;
-  // color: white;
-  font-weight: 550;
+  
 }
 
 .questions input[type="radio"]:checked ~ label:before {
