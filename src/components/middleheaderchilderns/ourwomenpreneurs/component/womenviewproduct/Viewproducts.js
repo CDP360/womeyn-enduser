@@ -341,10 +341,6 @@ function Viewproducts({ id }) {
         const datas3 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name];
         const datas4 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name, productvariations[4]?.name];
 
-
-
-
-
         if (datas?.length === productvariations?.length) {
             const values = [
                 {
@@ -411,9 +407,6 @@ function Viewproducts({ id }) {
 
             if (datas1) {
                 if (productSize1 && productSize2) {
-
-
-
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
                 }
@@ -577,10 +570,9 @@ function Viewproducts({ id }) {
             }
 
         }
-        else {
+        
             dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
-
-        }
+        
 
 
     }
@@ -1000,7 +992,7 @@ function Viewproducts({ id }) {
                                                     alt: 'Wristwatch by Ted Baker London',
                                                     isFluidWidth: true,
                                                     src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                    borderRadius:"10px"
+                                                    borderRadius: "10px"
                                                 },
                                                 largeImage: {
                                                     src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
@@ -1009,7 +1001,7 @@ function Viewproducts({ id }) {
                                                     backgroundColor: "white",
                                                     // border:"3px solid blue"
                                                     zIndex: "989898988989898989898989",
-                                                    borderRadius:"10px"
+                                                    borderRadius: "10px"
 
 
                                                 },
@@ -1021,7 +1013,7 @@ function Viewproducts({ id }) {
                                                     objectFit: "contain",
                                                     zIndex: "9898989898",
                                                     backgroundColor: "white",
-                                                    borderRadius:"10px"
+                                                    borderRadius: "10px"
 
                                                 },
                                                 // smallImage: {
@@ -1085,7 +1077,7 @@ function Viewproducts({ id }) {
                             <div className={styles.starsection}>
                                 <div className={styles.starsections}>
 
-                                    <Rate defaultValue={parseFloat(averageRatings?.avgRating)} allowHalf style={{ color: "#54BE43",zIndex:0 }}
+                                    <Rate defaultValue={parseFloat(averageRatings?.avgRating)} allowHalf style={{ color: "#54BE43", zIndex: 0 }}
                                         tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
                                         // onChange={(value) => {
                                         //     setStarCount(value)
@@ -1336,7 +1328,7 @@ function Viewproducts({ id }) {
             </div>
             <div className={styles.righttopbg}></div>
 
-            
+
         </Fragment>
     )
 }
