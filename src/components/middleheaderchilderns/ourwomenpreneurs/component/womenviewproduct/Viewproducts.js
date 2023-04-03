@@ -371,10 +371,10 @@ function Viewproducts({ id }) {
 
                 }
             }
-            // else {
-            //     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+            else {
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
-            // }
+            }
 
         }
         else if (datas1?.length === productvariations?.length) {
@@ -411,10 +411,10 @@ function Viewproducts({ id }) {
 
                 }
             }
-            // else {
-            //     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+            else {
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
-            // }
+            }
 
         }
         else if (datas2?.length === productvariations?.length) {
@@ -457,10 +457,10 @@ function Viewproducts({ id }) {
 
                 }
             }
-            // else {
-            //     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+            else {
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
-            // }
+            }
 
 
         }
@@ -506,10 +506,10 @@ function Viewproducts({ id }) {
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
                 }
             }
-            // else {
-            //     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+            else {
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
-            // }
+            }
 
         }
         else if (datas4?.length === productvariations?.length) {
@@ -561,13 +561,13 @@ function Viewproducts({ id }) {
 
                 }
             }
-            // else {
-            //     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+            else {
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
-            // }
+            }
 
         }
-        else if(productvariations?.length===0) {
+        else {
             dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
 
         }
