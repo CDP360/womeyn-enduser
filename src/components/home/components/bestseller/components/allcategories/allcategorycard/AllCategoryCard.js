@@ -62,6 +62,8 @@ function AllCategoryCard({ products, stars }) {
     const categoryPush = (data) => {
         history.push(`/product/${data}`);
     }
+
+
     return (
         <div className={styles.appcard}>
             <Slider {...settings}>
@@ -76,9 +78,9 @@ function AllCategoryCard({ products, stars }) {
                                         </>}
                                     </div>
                                     <div className={styles.cardinsidesection}>
-                                        <Image src={stars} alt="no image" className={styles.stars} />
-                                        <div>
-                                            <span>{item?.productName.length>=10?<>{item?.productName.slice(0,25)}...</>:<>{item?.productName}</>}</span>
+                                        {/* <Image src={stars} alt="no image" className={styles.stars} /> */}
+                                        <div className="mt-3">
+                                            <div className={styles.productname}>{item?.productName.length>=10?<>{item?.productName.slice(0,25)}...</>:<>{item?.productName}</>}</div>
                                         </div>
                                         <div>
                                             <span className='textgrey'>{item?.brand}</span>

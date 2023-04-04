@@ -36,11 +36,13 @@ function Categorycard({ item }) {
            
             <div className={styles.cardinsidesection}>
                 <Image src={stars} alt="no image" className={styles.stars} />
-                <div>
-                    <span>{item?.productName}</span>
+                <div className={styles.productname}>
+                {item?.productName?.length<=10?<> {item?.productName}</>:<> {item?.productName.slice(0,28)}...</>}
+        
                 </div>
-                <div>
-                    <span className={styles.brandnames}>{item?.brandName}</span>
+                <div className={styles.brandnames}>
+                    {item?.brandName?.length<=10?<>{item?.brandName}</>:<>{item?.brandName.slice(0,28)}...</>}
+                    {/* <span className={styles.brandnames}>{item?.brandName}</span> */}
                 </div>
                 <div className={styles.cardsellerborder}>
                     <div className={styles.cardsellerinsideborder}>

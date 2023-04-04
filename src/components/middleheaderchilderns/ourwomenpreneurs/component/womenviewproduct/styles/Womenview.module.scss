@@ -8,7 +8,7 @@
   .insideproductview {
     width: 75%;
     margin: 0 auto;
-  position:relative;
+  // position:relative;
     
     @include xsBreakPoint {
       width: 85%;
@@ -851,10 +851,10 @@
 
 .leftbg
 {
-    width:28%;
+    width:15%;
     height:50%;
     position:absolute;
-    top:40%;
+    top:30%;
     background: #FFF0DF;
 // opacity: 0.36;
 filter: blur(200rem);
@@ -862,7 +862,7 @@ z-index:0;
 }
 .righttopbg
 {
-  width:30%;
+  width:20%;
     height:50%;
     position:absolute;
     top:0%;

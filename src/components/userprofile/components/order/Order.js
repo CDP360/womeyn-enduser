@@ -68,7 +68,7 @@ function Order() {
                 }
                 onClick={() => setStep(2)}
               >
-                Cancelled Byseller
+                Cancelled By Seller
               </p>
               <p
                 className={

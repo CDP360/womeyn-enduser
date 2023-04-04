@@ -54,7 +54,7 @@ function Header() {
         localStorage.removeItem("productid");
         setShowMega(false);
         setTimeout(() => {
-            router.push("/");   
+            router.push("/");
         }, 1000)
 
     };
@@ -119,15 +119,23 @@ function Header() {
     useEffect(() => {
         const auth = localStorage.getItem("auth");
         setUserAuth(auth);
-        Favortscount();
+        if (auth) {
+            Favortscount();
+
+        }
     }, [userauth]);
 
     const Favortscount = () => {
+
         GetFavoritsList().then((res) => {
             setFavortcount(res?.data[0]?.results);
         }).catch((err) => {
             console.log(err);
         })
+    }
+
+    const SellerLogin=()=>{
+        window.open('https://eseller.cdp360.in/')
     }
     return (
         <Fragment>
@@ -149,6 +157,9 @@ function Header() {
                         </div>
                         <div className={styles.rightlogo}>
                             <div className={styles.insiderightlogos}>
+                                <div className={styles.Seller} onClick={SellerLogin}>
+                                    Become a Seller
+                                </div>
                                 <div className={styles.falight} onClick={notificationsPush}>
                                     <Image src={notifications} alt="no image" className={styles.notifications} />
                                 </div>

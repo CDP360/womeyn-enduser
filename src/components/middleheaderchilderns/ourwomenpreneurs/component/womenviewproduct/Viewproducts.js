@@ -620,13 +620,24 @@ function Viewproducts({ id }) {
         //         }).catch((err) => {
         //             console.log(err);
         //         })
-        // const productids = JSON.parse(localStorage.getItem("womenproductid"));
-        ProductLikeandUnlikeCheck(productdata?.id).then((res) => {
-            setLike(res?.data);
-        }).catch((err) => {
-            console.log(err);
-        })
-    }, [productSize, productseller, productnames])
+        const productids = JSON.parse(localStorage.getItem("auth"));
+        if(productids)
+        {
+            ProductLikeandUnlikeCheck(productdata?.id).then((res) => {
+                setLike(res?.data);
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+        
+       
+       
+
+}, [productSize, productseller, productnames,averageRatings]);
+
+
+
+    
 
 
 
@@ -1075,7 +1086,12 @@ function Viewproducts({ id }) {
                             <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
                             <div className={styles.starsection}>
                                 <div className={styles.starsections}>
+                                    <div className="d-none">
+{averageRatings?.avgRating}
 
+                                    </div>
+
+                                    
                                     <Rate defaultValue={parseFloat(averageRatings?.avgRating)} allowHalf style={{ color: "#54BE43", zIndex: 0 }}
                                         tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
                                         // onChange={(value) => {

@@ -84,6 +84,7 @@
     .cardinsidesection {
         width: 90%;
         margin: 0 auto;
+        padding-top:5%;
     }
     .cardsellerborder {
         padding-top: 4%;
@@ -123,4 +124,14 @@
         margin: 0 auto;
         cursor: pointer;
     }
+}
+
+
+.productname:hover
+{
+color:#E95A5A;
+}
+.productname{
+    font-weight:550;
+    font-size:1.1rem;
 }

@@ -56,9 +56,9 @@
         margin: 0 auto;
     }
     .cardsellerborder {
-        padding-top: 4%;
+        padding-top: 7%;
         .cardsellerinsideborder {
-            border-top: 1px solid grey;
+            border-top:1px solid rgba(0, 0, 0, 0.2);;
         }
     }
     .cardpricesection {
@@ -75,4 +75,13 @@
 }
 .slick-slide {
     margin: 0 -10px !important;
+}
+
+.productname
+{
+    font-weight:550;
+}
+.productname:hover
+{
+    color: #E95A5A;
 }

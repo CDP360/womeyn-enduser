@@ -27,11 +27,10 @@ export function ProductLikeWishlistGet() {
 }
 
 export function ProductLikeandUnlikeCheck(id) {
-    console.log("roman", id)
     return instanceBaseurl.get(`/customer/wishlist/${id}`).then((res) => {
         return res;
     }).catch((err) => {
-        return err;
+        // return err;
     })
 }
 

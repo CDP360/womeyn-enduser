@@ -71,7 +71,6 @@
         background: #ffffff;
         // border:2px solid red !important;
         border-radius: 8px;
-     
         border-radius: 4px;
         flex-direction: column;
         position: relative;
@@ -119,6 +118,7 @@
             bottom: 8%;
             color: white;
         }
+
         .womendescription {
             position: absolute;
             bottom: 1.2%;
@@ -126,6 +126,16 @@
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.786rem;
         }
+    }
+    .womentitle:hover
+    {
+        color: #E95A5A !important;
+    }
+    .womendescription:hover
+    {
+        color: #E95A5A !important;
+
+
     }
 }
 
