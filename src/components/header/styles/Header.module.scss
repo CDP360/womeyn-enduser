@@ -27,7 +27,7 @@
             display: flex;
             align-items: center;
             .leftlogo {
-                width: 20%;
+                width: 15%;
                 // border: 2px solid orange;
                 display: flex;
                 justify-content: flex-start;
@@ -40,8 +40,35 @@
                 }
             }
             .middlelogo {
-                width: 57%;
+                width: 65%;
                 // border: 2px solid green;
+                display:flex;
+                align-items:center;
+                // justify-content: space-between;
+                .insidemiddlelogo
+                {
+                    width:100%;
+                  
+                    .boxinside
+                    {
+                        width:100%;
+
+                        display:flex;
+                        gap:5px;  
+                        align-items:center;     
+                    .leftheaderbox
+                {
+                    width:80%;
+                    // margin:0 auto;
+                } 
+                .rightheaderbox
+                {
+                    width:20%;
+                    // border:2px solid red;
+                }           
+             }
+
+                }
                 .inputsearchsection {
                     display: flex;
                     width: auto;
@@ -50,7 +77,7 @@
                     border-radius: 8px;
                     align-items: center;
                     justify-content: center;
-                    width: 70%;
+                    width: 80%;
                     margin: 0 auto;
                     @include lgBreakPoint {
                         width: 40%;
@@ -61,15 +88,6 @@
                         padding: 4px 10px;
                     }
                 }
-            }
-            .rightlogo {
-                width: 30%;
-                // border: 2px solid blue;
-                display: flex;
-                // justify-content: space-between;
-                // padding-left:5%;
-                // padding-right:3%;
-                // align-items:center;
                 .Seller {
                     display: flex;
                     align-items: center;
@@ -77,17 +95,30 @@
                     font-size: 1rem;
                     font-weight: 550;
                     cursor: pointer;
+                    background-color:#E95A5A;
+                    width:100%;
+                    padding:5px;
+                    border-radius:5px;
+                    color:white;
                 }
-                .Seller:hover {
-                    color: #e95a5a;
-                }
+               
+            }
+            .rightlogo {
+                width: 20%;
+                // border: 2px solid blue;
+                display: flex;
+                // justify-content: space-between;
+                // padding-left:5%;
+                // padding-right:3%;
+                // align-items:center;
+               
                 .insiderightlogos {
                     width: 100%;
                     // border:4px solid blue;
                     display: flex;
                     align-items: center;
                     justify-content: flex-end;
-                    gap: 18px;
+                    gap: 27px;
 
                     .insideiconssection {
                         // width:80%;

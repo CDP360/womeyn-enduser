@@ -124,14 +124,7 @@ function Login() {
         );
     }
 
-    useEffect(() => {
-        const EXPIRE_TIME = 1000 * 60 * 60;
-
-        console.log("ex", EXPIRE_TIME)
-        setTimeout(() => {
-            localStorage.removeItem('userid');
-        }, EXPIRE_TIME);
-    }, [])
+   
     return (
         <Fragment>
 
@@ -263,10 +256,10 @@ function Login() {
             </div>
             <div className={styles.righttopsection1}>
 
-</div>
-<div className={styles.rightbottomsection1}>
+            </div>
+            <div className={styles.rightbottomsection1}>
 
-</div>
+            </div>
         </Fragment>
     );
 }

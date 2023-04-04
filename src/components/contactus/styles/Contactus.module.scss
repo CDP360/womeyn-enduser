@@ -2,6 +2,8 @@
 
 .conatctusmainsection {
     width: 100%;
+    position:relative;
+    z-index:9;
     .insidecontactuspage {
         width: 75%;
         margin: 0 auto;
@@ -230,4 +232,47 @@
             flex-direction: column;
         }
     }
+}
+
+
+.leftbgsection
+{
+    z-index:0;
+    position:absolute;
+    
+top:20%;
+    width: 15%;
+    height: 50% !important;
+    background: #FDECD9;
+ 
+    filter: blur(500px);
+    left: 0;
+
+}
+.rightbgtop
+{
+    z-index:0;
+    position:absolute;
+    
+top:10%;
+    width: 25%;
+    height: 40% !important;
+    background: #FCE5E5;
+ 
+    filter: blur(500px);
+    right: 0; 
+}
+
+.rightbgbottom
+{
+    z-index:0;
+    position:absolute;
+    
+bottom:0%;
+    width: 25%;
+    height: 30% !important;
+    background: #DFE9FF;
+ 
+    filter: blur(500px);
+    right: 0;
 }

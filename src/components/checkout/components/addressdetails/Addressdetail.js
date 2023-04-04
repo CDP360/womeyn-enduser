@@ -125,16 +125,17 @@ function Addressdetail({ state, step, setStep, setName, name }) {
                     <input type="radio" name={item?.id} value={item?.id} id={item?.id} checked={name == item?.id} onChange={onOptionChange} />
                     <label for={item?.id}>
                       <div className={styles.shippingtextname}>
-                        {item?.name} <span>{item?.contactNumber}</span>
+                        {item?.name} ,  <span> ContactNo : {item?.contactNumber}</span>
                       </div>
+                      <div className="mb-2 mt-2">
                       <div className={styles.shippingtext}>
-                        {item?.cityName},<span>{item?.stateName}</span>,<span> {item?.countryName}</span>
+                        {item?.cityName},<>{item?.stateName}</>,<> {item?.countryName}</>
+                      </div>
                       </div>
                       {/* <div className={`mt-2 mb-2 ${styles.nameaddress}`}>
                         {item?.countryName}
                       </div> */}
                       <div className={`mt-2 mb-2 ${styles.addressorders}`}>
-
                         {item?.fullAddress}
                       </div>
 

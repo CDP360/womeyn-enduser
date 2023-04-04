@@ -56,9 +56,8 @@ function Payment({ totalPrice, addressid, couponname }) {
       customerName: userName,
       couponName: couponname,
     }
-    if(paymentType?.length===0)
-    {
-      toast.error("Please select Payment Type!!",{
+    if (paymentType?.length === 0) {
+      toast.error("Please select Payment Type!!", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -67,14 +66,13 @@ function Payment({ totalPrice, addressid, couponname }) {
         draggable: true,
         progress: undefined,
         theme: "dark",
-    })
-    setTimeout(()=>{
-      setLoading(false);
-    },500)
+      })
+      setTimeout(() => {
+        setLoading(false);
+      }, 500)
 
     }
-    if(paymentType)
-    {
+    if (paymentType) {
       CustomerOrders(overAllorders).then((res) => {
         window.location = res?.data?.url;
         setTimeout(() => {
@@ -82,11 +80,11 @@ function Payment({ totalPrice, addressid, couponname }) {
         }, 1000)
       }).catch((err) => {
         console.log(err);
-    setLoading(false);
+        setLoading(false);
 
       })
     }
-   
+
   }
 
   const onOptionChange = (e) => {

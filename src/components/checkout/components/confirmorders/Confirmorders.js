@@ -309,7 +309,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
       <div>
 
 
-        {couponsectiontrue ? <>
+        {/* {couponsectiontrue ? <>
           <div className={styles.couponcreatedsection}>
             <div className={styles.insidecouponsdeletesection}>
               <div className={styles.iconandcontentsection}>
@@ -344,7 +344,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
           <div>
             {couponerror && couponscode?.length <= 0 ? <span className="active">Coupon field is reuired!!!</span> : <></>}
           </div>
-        </>}
+        </>} */}
         <div className="mt-4">
           <button className={styles.continuebutton} onClick={deliverOrderConfirm}>
             

@@ -30,7 +30,7 @@ export function ProductLikeandUnlikeCheck(id) {
     return instanceBaseurl.get(`/customer/wishlist/${id}`).then((res) => {
         return res;
     }).catch((err) => {
-        // return err;
+        return err;
     })
 }
 

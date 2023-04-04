@@ -148,18 +148,29 @@ function Header() {
                             </div>
                         </div>
                         <div className={styles.middlelogo}>
-                            <div className={styles.inputsearchsection}>
+                           <div className={styles.insidemiddlelogo}>
+                           <div className={styles.boxinside}>
+                          
+                           
+                                <div className={styles.leftheaderbox}>
+                                <div className={styles.inputsearchsection}>
                                 <input type="text" placeholder='Search here...' className="inputserach" />
                                 <div>
                                     <Image src={serachicon} alt="no image" className='serachicon' />
                                 </div>
                             </div>
-                        </div>
-                        <div className={styles.rightlogo}>
-                            <div className={styles.insiderightlogos}>
+                                </div>
+                                <div className={styles.rightheaderbox}>
                                 <div className={styles.Seller} onClick={SellerLogin}>
                                     Become a Seller
                                 </div>
+                                </div>
+                           </div>
+                           </div>
+                        </div>
+                        <div className={styles.rightlogo}>
+                            <div className={styles.insiderightlogos}>
+                                
                                 <div className={styles.falight} onClick={notificationsPush}>
                                     <Image src={notifications} alt="no image" className={styles.notifications} />
                                 </div>

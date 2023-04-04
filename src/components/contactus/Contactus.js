@@ -10,7 +10,9 @@ import Contactlogo from '../../assests/login-logos/Contactno.png';
 import offcircle from '../../assests/login-logos/arrowcircle.png';
 import circles from '../../assests/login-logos/arrowcircleoff.png';
 import ContactForm from './ContactForm';
+
 function Contactus() {
+
     const Contactdetails = [
         {
             id: 1,
@@ -92,18 +94,29 @@ function Contactus() {
                                     <div className={styles.offcirclessection}>
                                         <Image src={offcircle} alt="no image" />
                                     </div>
-
                                     <div className={styles.offcirclessection1}>
                                         <Image src={circles} alt="no image" />
                                     </div>
                                 </div>
                             </div>
                             <div className={styles.rightcontactsection}>
-                                <ContactForm/>
+                                <ContactForm />
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className={styles.leftbgsection}>
+
+            </div>
+
+            <div className={styles.rightbgtop}>
+
+
+            </div>
+            <div className={styles.rightbgbottom}>
+
+
             </div>
         </Fragment>
     )

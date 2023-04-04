@@ -8,6 +8,7 @@ import { GetOrders } from "../../../../services/customer-order-service/customer-
 import Inprogress from "./components/inprogress/Inprogress";
 import Cancelled from "./components/cancelled/Cancelled";
 import Delivered from "./components/delivered/Delivered";
+import CancelledBySeller from "./components/cancelledbyseller/CancelledBySeller";
 function Order() {
   const history = useRouter();
   const [Orders, setOrders] = useState([]);
@@ -101,7 +102,7 @@ function Order() {
             <Inprogress Orders={Orders} traking={traking} loading={loading}/>
           </div>}
           {step === 2 && <div>
-            No Data Found!!!
+            <CancelledBySeller Orders={Orders} traking={traking} loading={loading}/>
           </div>}
           {step === 3 && <div>
             <Cancelled Orders={Orders} traking={traking} loading={loading}/>

@@ -55,13 +55,28 @@ function Caroselproducts() {
         ]
     };
 
-    useEffect(() => {
-        axios.get("https://dummyjson.com/products").then((res) => {
-            setDatas(res?.data?.products)
-        }).catch((err) => {
-            console.log(err);
-        })
-    }, [])
+  const data=[
+    {
+        id:1,
+        title:"kalai",
+        thumbnail:""
+    },
+    {
+        id:2,
+        title:"kalai",
+        thumbnail:""
+    },
+    {
+        id:3,
+        title:"kalai",
+        thumbnail:""
+    },
+    {
+        id:4,
+        title:"kalai",
+        thumbnail:""
+    }
+  ]
     return (
         <Fragment>
             <>

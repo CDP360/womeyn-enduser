@@ -71,7 +71,7 @@ function Allorders({ Orders, traking, loading }) {
                     {item?.stateId === 2 && <button className={styles.confirmorder}>Confirmed</button>}
                     {item?.stateId === 3 && <button className={styles.confirmorderprogress}>Progress</button>}
                     {item?.stateId === 4 && <button className={styles.confirmordercanceld}>Cancelled </button>}
-                    {item?.stateId === 5 && <button className={styles.confirmordersuccess}>Cancelled  </button>}
+                    {item?.stateId === 5 && <button className={styles.confirmordersuccess}>Cancelled By Seller  </button>}
                     {item?.stateId === 6 && <button className={styles.confirmordersuccess}>Delivered </button>}
 
                   </div>
@@ -170,7 +170,7 @@ function Allorders({ Orders, traking, loading }) {
                                   })}
                                 </div>
                                 <div>
-                                  
+
                                 </div>
                               </div>
 
@@ -184,20 +184,20 @@ function Allorders({ Orders, traking, loading }) {
                             <div className={styles.rightimagesections}>
 
 
-                            
-                            {index===0 ?<>
-                            
-                              {item?.stateId === 4 || item?.stateId === 5 || item?.stateId == 6 ? <></> : <div className={styles.thirdimagesection}>
-                                <div>
-                                  <button className={styles.trackingbuttons} onClick={traking}>Track</button>
-                                </div>
-                                <div className="mt-3">
+
+                              {index === 0 ? <>
+
+                                {item?.stateId === 4 || item?.stateId === 5 || item?.stateId == 6 ? <></> : <div className={styles.thirdimagesection}>
                                   <div>
-                                    <button className={styles.trackingbuttons} onClick={() => handleShow(item?.orderId)}>Cancel</button>
+                                    <button className={styles.trackingbuttons} onClick={traking}>Track</button>
                                   </div>
-                                </div>
-                              </div>}
-                            </>:<></>}
+                                  <div className="mt-3">
+                                    <div>
+                                      <button className={styles.trackingbuttons} onClick={() => handleShow(item?.orderId)}>Cancel</button>
+                                    </div>
+                                  </div>
+                                </div>}
+                              </> : <></>}
 
 
                               {/* {item?.stateId === 4 || item?.stateId === 5 || item?.stateId == 6 ? <></> : <div className={styles.thirdimagesection}>

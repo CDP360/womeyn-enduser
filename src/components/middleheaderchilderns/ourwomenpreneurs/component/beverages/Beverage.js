@@ -27,7 +27,7 @@ function Beverage({ productlist, loading, sellers }) {
     }, [sellers]);
 
 
-    console.log(productlist,"productlist")
+
     return (
         <Fragment>
             <div className={styles.mainbeveragesection}>
@@ -56,7 +56,6 @@ function Beverage({ productlist, loading, sellers }) {
                                     <Image src={star} alt="no image" className={styles.stars} />
                                     <div className={styles.brandname}>
                                         {item?.productName?.length<=10 ?<>{item?.productName}</>:<>    {item?.productName.slice(0,18)}...</>}
-                                    
                                     </div>
                                 
                                     <div className='textgrey'>

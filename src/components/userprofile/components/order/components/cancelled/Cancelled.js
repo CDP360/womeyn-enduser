@@ -18,10 +18,7 @@ function Cancelled({ Orders, traking, loading }) {
     })
   }, [Orders])
 
-  // const NavigateOrderdetails = () => {
-  //   history.push("/order/detail")
-  // }
-
+ 
   const Productview = (data) => {
     history.push(`/product/${data}`)
   }

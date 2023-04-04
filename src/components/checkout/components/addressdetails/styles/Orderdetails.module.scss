@@ -82,6 +82,8 @@
       .shippingtext {
         font-size: 1.3rem;
         font-weight: 650;
+        padding-top:0%;
+        border:2px solid red;
         @include lgBreakPoint {
           font-size: 1rem;
         }
@@ -536,8 +538,9 @@
 }
 
 .questions input[type="radio"]:checked ~ label {
-  background-color: #FFF1F1;
+  background-color: #E95A5A;
   padding: 10px 10px;
+  color:white;
   
 }
 
