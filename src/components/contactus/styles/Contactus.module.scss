@@ -178,6 +178,21 @@
                             
                         }
                     }
+                    .sendformsbuttondisabled
+                    {
+                        border: none;
+                        background-color: #e95a5a;
+                        color: white;
+                        cursor: pointer;
+                        padding: 10px !important;
+                        border-radius: 5px;
+                        width: 100%;
+                        opacity:0.3;
+                        @include xsBreakPoint {
+                            padding-top: 5%;
+                            
+                        }
+                    }
                     .sendformsbutton:hover {
                         background-color: white;
                         color: #e95a5a;
@@ -276,3 +291,5 @@ bottom:0%;
     filter: blur(500px);
     right: 0;
 }
+
+

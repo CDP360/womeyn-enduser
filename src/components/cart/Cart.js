@@ -74,9 +74,6 @@ function Cart() {
     localStorage.setItem("whish", JSON.stringify(PathQuery));
     router.push(`/login?redirect=/cart`)
   }
-
-
-
   return (
     <Fragment>
       <div className='mainsection'>

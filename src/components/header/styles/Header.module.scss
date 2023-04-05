@@ -55,7 +55,11 @@
 
                         display:flex;
                         gap:5px;  
-                        align-items:center;     
+                        align-items:center;   
+                        @include lgBreakPoint
+                        {
+                            gap:0px;
+                        }  
                     .leftheaderbox
                 {
                     width:80%;
@@ -65,6 +69,16 @@
                 {
                     width:20%;
                     // border:2px solid red;
+                    @include lgBreakPoint
+                    {
+                        width:30%;
+                        margin-right:3%;
+                    }
+                    @include xlBreakPoint
+                    {
+                        width:30%;
+                        margin-right:2%;
+                    }
                 }           
              }
 
@@ -80,11 +94,11 @@
                     width: 80%;
                     margin: 0 auto;
                     @include lgBreakPoint {
-                        width: 40%;
+                        width: 80%;
                         padding: 4px 10px;
                     }
                     @include xlBreakPoint {
-                        width: 40%;
+                        width: 80%;
                         padding: 4px 10px;
                     }
                 }
@@ -100,6 +114,12 @@
                     padding:5px;
                     border-radius:5px;
                     color:white;
+                    @include lgBreakPoint
+                    {
+                        width:100%;
+                        font-size:0.989rem;
+                        
+                    }
                 }
                
             }
@@ -119,6 +139,10 @@
                     align-items: center;
                     justify-content: flex-end;
                     gap: 27px;
+                    @include lgBreakPoint
+                    {
+                        gap:19px;
+                    }
 
                     .insideiconssection {
                         // width:80%;

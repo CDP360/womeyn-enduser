@@ -25,6 +25,7 @@ import { toast } from 'react-toastify';
 import heart from '../../assests/homepage-logos/hearticon.png';
 import { ContextStore } from './../../Redux/store/Contextstore';
 import { GetFavoritsList } from './../../services/user-favorits-service/User-favorits-service';
+import { ExploreCategorys } from '../../services/explore-service/explore-service';
 function Header() {
     const { state, dispatch } = useContext(ContextStore);
     const { cart } = state;
@@ -33,6 +34,7 @@ function Header() {
     const [showmega, setShowMega] = useState(false);
     const [userauth, setUserAuth] = useState("");
     const [favortscount, setFavortcount] = useState([]);
+    const [explorecategorys, setCatgorys] = useState([]);
     const logoutHandler = async () => {
         toast.success("Logout Successfull!!",
             {
@@ -123,6 +125,13 @@ function Header() {
             Favortscount();
 
         }
+
+
+        ExploreCategorys().then((res) => {
+            setCatgorys(res?.data);
+        }).catch((err) => {
+            console.log(err);
+        })
     }, [userauth]);
 
     const Favortscount = () => {
@@ -134,9 +143,11 @@ function Header() {
         })
     }
 
-    const SellerLogin=()=>{
+    const SellerLogin = () => {
         window.open('https://eseller.cdp360.in/')
     }
+
+    console.log("explorecategorys", explorecategorys)
     return (
         <Fragment>
             <div className={styles.mainheadersection}>
@@ -148,29 +159,29 @@ function Header() {
                             </div>
                         </div>
                         <div className={styles.middlelogo}>
-                           <div className={styles.insidemiddlelogo}>
-                           <div className={styles.boxinside}>
-                          
-                           
-                                <div className={styles.leftheaderbox}>
-                                <div className={styles.inputsearchsection}>
-                                <input type="text" placeholder='Search here...' className="inputserach" />
-                                <div>
-                                    <Image src={serachicon} alt="no image" className='serachicon' />
+                            <div className={styles.insidemiddlelogo}>
+                                <div className={styles.boxinside}>
+
+
+                                    <div className={styles.leftheaderbox}>
+                                        <div className={styles.inputsearchsection}>
+                                            <input type="text" placeholder='Search here...' className="inputserach" />
+                                            <div>
+                                                <Image src={serachicon} alt="no image" className='serachicon' />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={styles.rightheaderbox}>
+                                        <div className={styles.Seller} onClick={SellerLogin}>
+                                            Become a Seller
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                                </div>
-                                <div className={styles.rightheaderbox}>
-                                <div className={styles.Seller} onClick={SellerLogin}>
-                                    Become a Seller
-                                </div>
-                                </div>
-                           </div>
-                           </div>
                         </div>
                         <div className={styles.rightlogo}>
                             <div className={styles.insiderightlogos}>
-                                
+
                                 <div className={styles.falight} onClick={notificationsPush}>
                                     <Image src={notifications} alt="no image" className={styles.notifications} />
                                 </div>
@@ -263,21 +274,21 @@ function Header() {
                                 <ul className="dropdownmega">
                                     <div className="maindropdown">
                                         <div className="firstsection">
-                                            <li><a className="commontitle">Fashion & Lifestyle</a></li>
+                                            <li><a className="commontitle">{explorecategorys[0]?.categoryName}</a></li>
                                             <div>
 
-                                                {datas?.map((item, index) => {
+                                                {explorecategorys[0]?.subCategories?.map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
-                                                            <li><a className="unactivetext" href="">{item?.name}</a></li>
+                                                            <li><a className="unactivetext">{item?.name}</a></li>
                                                         </div>
                                                     )
                                                 })}
                                             </div>
-                                            <li><a className="commontitle">Educational Services</a></li>
+                                            <li><a className="commontitle">{explorecategorys[1]?.categoryName}</a></li>
                                             <div>
 
-                                                {datas?.slice(0, 2).map((item, index) => {
+                                                {explorecategorys[1]?.subCategories?.map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>
@@ -287,10 +298,10 @@ function Header() {
                                             </div>
                                         </div>
                                         <div className="secondsection">
-                                            <li><a className="commontitle">Consumer Services</a></li>
+                                            <li><a className="commontitle">{explorecategorys[2]?.categoryName}</a></li>
                                             <div>
 
-                                                {datas?.slice(0, 5).map((item, index) => {
+                                                {explorecategorys[2]?.subCategories?.map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>
@@ -298,10 +309,10 @@ function Header() {
                                                     )
                                                 })}
                                             </div>
-                                            <li><a className="commontitle">Consumer Services</a></li>
+                                            <li><a className="commontitle">{explorecategorys[3]?.categoryName}</a></li>
                                             <div>
 
-                                                {datas?.slice(0, 2).map((item, index) => {
+                                                {explorecategorys[3]?.subCategories?.map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>
@@ -311,10 +322,10 @@ function Header() {
                                             </div>
                                         </div>
                                         <div className="thirdsection">
-                                            <li><a className="commontitle">Health & Wellbeing</a></li>
+                                            <li><a className="commontitle">{explorecategorys[4]?.categoryName}</a></li>
                                             <div>
 
-                                                {datas?.map((item, index) => {
+                                                {explorecategorys[4]?.subCategories?.map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>
@@ -324,10 +335,10 @@ function Header() {
                                             </div>
                                         </div>
                                         <div className="fourthsection">
-                                            <li><a className="commontitle">Dance & Fitness</a></li>
+                                            <li><a className="commontitle">{explorecategorys[5]?.categoryName}</a></li>
                                             <div>
 
-                                                {datas?.map((item, index) => {
+                                                {explorecategorys[5]?.subCategories?.map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>
@@ -337,10 +348,10 @@ function Header() {
                                             </div>
                                         </div>
                                         <div className="fifthsection">
-                                            <li><a className="commontitle">Consumer Services</a></li>
+                                            <li><a className="commontitle">{explorecategorys[6]?.categoryName}</a></li>
                                             <div>
 
-                                                {datas?.map((item, index) => {
+                                                {explorecategorys[6]?.subCategories?.map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>

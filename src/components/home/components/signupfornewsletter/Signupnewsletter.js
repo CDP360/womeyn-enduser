@@ -1,7 +1,46 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Button, Form } from 'react-bootstrap';
 import styles from './styles/Signupnewsletter.module.scss';
+import { useEffect } from 'react';
+import { SubscribeUser } from '../../../../services/subscribe-service/subscribe-service';
+import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
+import Spinner from 'react-bootstrap/Spinner';
+
 function Signupnewsletter() {
+
+    const [loading, setLoading] = useState(false);
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        setValue,
+        formState: { errors },
+    } = useForm();
+
+    useEffect(() => {
+
+    }, []);
+
+    const onSubmit = (data) => {
+        setLoading(true);
+
+        const forms = {
+            email: data?.email
+        }
+        SubscribeUser(forms).then((res) => {
+            toast.success("subscribe successfully!!!");
+
+            setTimeout(() => {
+                setLoading(false);
+    setValue("email", "");
+                
+            }, 700)
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     return (
         <Fragment>
             <div className={styles.signupnewmainsection}>
@@ -21,14 +60,35 @@ function Signupnewsletter() {
                                 <div className={styles.formsectionborder}>
                                     <Form.Group className={styles.emailsectionform}>
                                         <Form.Control
-                                            name="lastName"
-                                            type="text"
+                                            name="email"
+                                            type="email"
                                             placeholder='Enter your email here'
                                             className={styles.emailsectionform}
+                                            {...register("email", {
+                                                required: "Please enter email",
+                                                pattern: {
+                                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                    message: "invalid email address"
+                                                },
+                                            })}
                                         />
+                                        {errors.email && <span className="active">{errors.email.message}</span>}
+
                                     </Form.Group>
-                                    <button className='selleractive'>
-                                        SUBSCRIBE
+                                    <button className='selleractive' onClick={handleSubmit(onSubmit)}>
+                                        {loading ? <>
+                                            <Spinner
+                                                as="span"
+                                                animation="grow"
+                                                size="sm"
+                                                role="status"
+                                                aria-hidden="true"
+                                            />
+                                            Loading...
+                                        </> :
+                                            <> SUBSCRIBE</>
+                                        }
+
                                     </button>
                                 </div>
                             </div>
