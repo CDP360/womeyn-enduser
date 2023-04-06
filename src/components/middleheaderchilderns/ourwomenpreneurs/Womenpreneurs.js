@@ -129,7 +129,7 @@ function Womenpreneurs() {
                             Our Womenpreneurs
                         </div>
                         <div className={styles.loreamtextwomen}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Please select to know more about the Womeynpreneur's business, her journey her story and her success against all odds
                         </div>
                     </div>
                     <div className={styles.serachsectionwomen}>

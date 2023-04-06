@@ -10,9 +10,11 @@ import Spinner from 'react-bootstrap/Spinner';
 
 function ContactForm() {
 
+  const [step1,setStep1]=useState(false)
+
   const [checks, setChecks] = useState([]);
 
-  const [loading,setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [contactforms, setContactForms] = useState({
     firstName: "",
@@ -27,7 +29,7 @@ function ContactForm() {
     setContactForms({ ...contactforms, [e.target.name]: e.target.value });
   }
 
-  const [auth,setAuth]=useState(true);
+  const [auth, setAuth] = useState(true);
 
 
   const [error, setError] = useState(false);
@@ -49,7 +51,6 @@ function ContactForm() {
       Tests();
     }
 
-
     if (firstName && lastName && email && message && phone) {
       const forms = {
         firstName: firstName,
@@ -58,12 +59,12 @@ function ContactForm() {
         message: message,
         contactNo: phone,
         contactReasons: checks?.toString()
-
       }
+
       setLoading(true);
 
       ConatctformsUser(forms).then((res) => {
-        toast.success("Thanks for contacting us. We will reach you shortly...",{
+        toast.success("Thanks for contacting us. We will reach you shortly...", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
@@ -73,11 +74,21 @@ function ContactForm() {
           progress: undefined,
           theme: "dark",
         })
-        setTimeout(()=>{
-          setLoading(false);
-        setAuth(false);
 
-        })
+        setContactForms({
+          firstName: "",
+          lastName: "",
+          email: "",
+          message: "",
+          phone: "",
+        });
+        if (res) {
+          setChecks([]);
+        }
+        setAuth(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 500)
       }).catch((err) => {
         console.log(err);
       })
@@ -94,13 +105,12 @@ function ContactForm() {
 
 
 
+
+
   const handleVlaues = (e) => {
     const value = e.target.value;
 
     const checked = e.target.checked;
-
-
-
     if (checked) {
       setChecks([...checks, value]);
     } else {
@@ -108,6 +118,8 @@ function ContactForm() {
     }
   }
 
+
+  console.log(checks, "checks")
 
   return (
     <div className={styles.contactformsections}>
@@ -264,6 +276,7 @@ function ContactForm() {
                 name="message"
                 value={message}
                 onChange={handlechange}
+                as="textarea" rows={3}
               />
 
               {error && message?.length <= 0 ? <span className="active">message is Required!!!</span> : <></>}
@@ -274,29 +287,29 @@ function ContactForm() {
         </div>
 
         <div className={styles.sendbuttoncontact} >
-          {auth?<>
+          {auth ? <>
             <button className={styles.sendformsbutton} onClick={onSubmit}>
-            {loading ? <>
-                                            <Spinner
-                                                as="span"
-                                                animation="grow"
-                                                size="sm"
-                                                role="status"
-                                                aria-hidden="true"
-                                            />
-                                            Loading...
-                                        </> :
-                                            <>SEND</>
-                                        }
+              {loading ? <>
+                <Spinner
+                  as="span"
+                  animation="grow"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+                Loading...
+              </> :
+                <>SEND</>
+              }
 
             </button>
 
-          </>:<>
-          <button className={styles.sendformsbuttondisabled} disabled>SEND</button>
+          </> : <>
+            <button className={styles.sendformsbuttondisabled} disabled>SEND</button>
 
           </>}
 
-        
+
         </div>
       </form>
     </div>

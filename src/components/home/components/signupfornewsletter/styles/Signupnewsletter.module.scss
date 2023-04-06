@@ -61,6 +61,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                flex-direction: column;
                 @include xsBreakPoint {
                     width: 100%;
                     padding-left: 0px;
@@ -77,12 +78,12 @@
                 .formsectionborder {
                     background: #ffffff;
                     // opacity: 0.2;
-                    border: 1px solid #898989;
+                    border: 1px solid #EFEEEE;
                     border-radius: 5px;
                     display: flex;
-                    padding: 6px 10px;
+                    padding: 6px 6px;
                     width: 85%;
-                    gap: 30px;
+                    gap: 20px;
                     @include xsBreakPoint {
                         width: 100%;
                         gap: 10px;
@@ -94,12 +95,12 @@
                     }
                     .emailsectionform {
                         border: none !important;
-                        width: 200px !important;
+                        width: 250px !important;
                         outline: none !important;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        border: 2px solid white !important;
+                        border: 1px solid white !important;
                         @include xsBreakPoint {
                             width: 100% !important;
                         }

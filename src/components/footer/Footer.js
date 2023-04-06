@@ -24,7 +24,7 @@ function Footer() {
                                     <Image src={womeynlogo} alt="no image" />
                                 </div>
                                 <div className='footergreytext'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Womeyn is a new age eCommerce Platform. Please connect, like and follows us via social media.
                                 </div>
                                 <div className={styles.socailfootersection}>
                                     <div className={styles.footeremptysocialsection}>
@@ -96,18 +96,22 @@ function Footer() {
                                     CONTACT
                                 </div>
                                 <div>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                Team Womeyn is open to ideas, suggestions and comments that will help us improve and grow as a community platform. We would love to hear from you
                                 </div>
+                                <div>
+                                        Email : Contactus@womeyn.com
+                                    </div>
                                 <div className={styles.headphonesectionfooter}>
                                     <div>
                                         <Image src={headphone} alt="nmo image" className={styles.headephoneimage} />
                                     </div>
+                                    
                                     <div>
                                         <div>
                                             Have any question?
                                         </div>
                                         <div className='active mb-3'>
-                                            + 123 456 789
+                                        +61434557191
                                         </div>
                                     </div>
                                 </div>

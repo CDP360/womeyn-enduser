@@ -31,11 +31,9 @@ function Signupnewsletter() {
         }
         SubscribeUser(forms).then((res) => {
             toast.success("subscribe successfully!!!");
-
             setTimeout(() => {
                 setLoading(false);
-    setValue("email", "");
-                
+                setValue("email", "");
             }, 700)
         }).catch((err) => {
             console.log(err);
@@ -52,11 +50,12 @@ function Signupnewsletter() {
                                     Sign Up for Newsletter
                                 </div>
                                 <div className='textgreysmall mt-3'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Sign up to know more about Womeynpreneures, their inspiring stories, events, partnerships and exciting products.
                                 </div>
                             </div>
 
                             <div className={styles.rightmainsplitsignup}>
+
                                 <div className={styles.formsectionborder}>
                                     <Form.Group className={styles.emailsectionform}>
                                         <Form.Control
@@ -65,14 +64,13 @@ function Signupnewsletter() {
                                             placeholder='Enter your email here'
                                             className={styles.emailsectionform}
                                             {...register("email", {
-                                                required: "Please enter email",
+                                                required: "Please Enter Email Id",
                                                 pattern: {
                                                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                    message: "invalid email address"
+                                                    message: "Invalid Email Address"
                                                 },
                                             })}
                                         />
-                                        {errors.email && <span className="active">{errors.email.message}</span>}
 
                                     </Form.Group>
                                     <button className='selleractive' onClick={handleSubmit(onSubmit)}>
@@ -90,8 +88,16 @@ function Signupnewsletter() {
                                         }
 
                                     </button>
+
                                 </div>
+
+                                <div className='d-flex justify-content-start mt-2'>
+                                    {errors.email && <span className="active">{errors.email.message}</span>}
+
+                                </div>
+
                             </div>
+
                         </div>
                     </div>
                 </div>

@@ -27,7 +27,6 @@ function Signup() {
         const response = {
             emailOrPhoneNo: data?.email
         }
-
         localStorage.setItem("signupuser", JSON.stringify(data?.email))
         setLoading(true);
         userSignup(response).then((res) => {
