@@ -11,9 +11,13 @@ import { toast } from 'react-toastify';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ContextStore } from '../../../Redux/store/Contextstore';
+import heart from '../../../assests/homepage-logos/hearticon.png';
+import { GetFavoritsList } from './../../../services/user-favorits-service/User-favorits-service';
+
 
 function MobileHeader() {
     const router = useRouter();
+    const [favortscount, setFavortcount] = useState([]);
     const { state, dispatch } = useContext(ContextStore);
     const { cart } = state;
     const [images, setImages] = useState("");
@@ -52,6 +56,29 @@ function MobileHeader() {
 
     const Becomeaseller=()=>{
         window.open('https://eseller.cdp360.in/')
+    }
+
+    const heartpushdata = () => {
+        router.push(`/profile/favorts`);
+
+    }
+
+    useEffect(()=>{
+        const auth = localStorage.getItem("auth");
+        if (auth) {
+            Favortscount();
+
+        }
+    },[])
+
+
+    const Favortscount = () => {
+
+        GetFavoritsList().then((res) => {
+            setFavortcount(res?.data[0]?.results);
+        }).catch((err) => {
+            console.log(err);
+        })
     }
     return (
         <Fragment>
@@ -100,6 +127,11 @@ function MobileHeader() {
                                         <span className='ms-1'>Explore</span>
                                     </Link>
                                 </div>
+                                <div className={router.pathname == "/service" ? "active" : ""} onClick={handleClose}>
+                                    <Link href="/service" className='nav-link'>
+                                    Services
+                                    </Link>
+                                </div>
                                 <div className={router.pathname == "/womenpreneurs" ? "active" : ""} onClick={handleClose}>
                                     <Link href="/womenpreneurs" className='nav-link'>
                                         Our womenpreneurs
@@ -129,7 +161,7 @@ function MobileHeader() {
 
                                         <div className={styles.cartlogolength}>
                                             <div className={styles.cartimageposition}>
-                                                <Image src={cartss} alt="no image" className={"carticons"} />
+                                                <Image src={cartss} alt="no image" className={styles.notifications} />
                                             </div>
 
                                             <div className={styles.cartlengthsection}>
@@ -141,9 +173,23 @@ function MobileHeader() {
 
                                         </div>
                                     </div>
-                                    <div onClick={profilerouter}>
-                                        Profile
+                                   <div className="mt-3 mb-2">
+                                   <div className={styles.falight} >
+                                    <div className={styles.maincartcount} onClick={heartpushdata}>
+                                        <div>
+                                            <Image src={heart} alt="no image" className={styles.notifications} />
+                                        </div>
+                                        {favortscount?.length > 0 ? <div className={styles.cartcountbox}>
+                                            {favortscount?.length}
+                                        </div>
+                                            : <></>}
+
                                     </div>
+                                   </div>
+                                </div>
+                                    {/* <div onClick={profilerouter}>
+                                        Profile
+                                    </div> */}
 
                                 </div>
 

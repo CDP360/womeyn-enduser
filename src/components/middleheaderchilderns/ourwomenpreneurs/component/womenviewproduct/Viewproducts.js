@@ -341,6 +341,7 @@ function Viewproducts({ id }) {
         const datas3 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name];
         const datas4 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name, productvariations[4]?.name];
 
+        
         if (datas?.length === productvariations?.length) {
             const values = [
                 {
@@ -1086,7 +1087,7 @@ function Viewproducts({ id }) {
                             <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
                             <div className={styles.starsection}>
                                 <div className={styles.starsections}>
-                                    <div className="d-none">
+                                    <div>
 {averageRatings?.avgRating}
 
                                     </div>

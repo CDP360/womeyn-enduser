@@ -207,7 +207,7 @@
 // export default Servicebooking;
 
 
-import React, { Fragment,useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import styles from './styles/Servicebooking.module.scss';
 import servicebanner from "../../../../assests/service-logos/servicebanner (2).png";
 import Image from 'next/image';
@@ -218,7 +218,7 @@ import images from '../../../../assests/service-logos/Ovalimages.png';
 import { useRouter } from 'next/router';
 function Servicebooking({ id }) {
 
-    const [loading,setLoading]=useState(false);
+    const [loading, setLoading] = useState(false);
 
     const months = [
         {
@@ -254,7 +254,7 @@ function Servicebooking({ id }) {
 
 
     const history = useRouter();
-    
+
     return (
         <Fragment>
             <div className='mainsection'>

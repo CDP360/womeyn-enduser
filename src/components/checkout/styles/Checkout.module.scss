@@ -7,8 +7,8 @@
   // border: 1px solid #9F9F9F;
   padding-top: 4%;
   padding-bottom: 5%;
-  z-index:9;
-  position:relative;
+  z-index: 9;
+  position: relative;
   @include xsBreakPoint {
     flex-direction: column;
     padding-bottom: 10%;
@@ -22,7 +22,10 @@
   @include lgBreakPoint {
     gap: 10px;
   }
- 
+  @include xlBreakPoint {
+    gap: 10px;
+  }
+
   .leftcartsection {
     width: 65%;
     border: 1px solid #9f9f9f;
@@ -38,6 +41,12 @@
     @include mdBreakPoint {
       width: 100%;
     }
+    @include lgBreakPoint {
+      padding: 20px 15px;
+    }
+    @include xlBreakPoint {
+      padding: 20px 15px;
+    }
     .progressbarcheck {
       width: 100%;
       // border:2px solid red;
@@ -45,6 +54,12 @@
       gap: 20px;
       @include xsBreakPoint {
         flex-direction: column;
+      }
+      @include lgBreakPoint {
+        gap: 5px;
+      }
+      @include xlBreakPoint {
+        gap: 5px;
       }
       .leftbarprogress {
         width: 50%;
@@ -204,6 +219,9 @@
   @include lgBreakPoint {
     font-size: 0.8679rem;
   }
+  @include xlBreakPoint {
+    font-size: 0.8679rem;
+  }
 }
 .setordertextactive {
   font-size: 1rem;
@@ -221,52 +239,45 @@
   // opacity: 0.7;
 }
 
-
-.leftcolorbg
-{
-  position:absolute;
-  width:9%;
-  height:80%;
-  position:absolute;
-  top:0%;
-  background: #FFF0DF;
-// opacity: 0.36;
-filter: blur(200rem);
-z-index:0;
+.leftcolorbg {
+  position: absolute;
+  width: 9%;
+  height: 80%;
+  position: absolute;
+  top: 0%;
+  background: #fff0df;
+  // opacity: 0.36;
+  filter: blur(200rem);
+  z-index: 0;
 }
 
-.rightcolorbg
-{
-  position:absolute;
-  width:15%;
-  height:40%;
-  position:absolute;
-  bottom:0%;
-  background: #DFE9FF;
-// opacity: 0.36;
-filter: blur(200rem);
-z-index:0;
-right:0;
-
+.rightcolorbg {
+  position: absolute;
+  width: 15%;
+  height: 40%;
+  position: absolute;
+  bottom: 0%;
+  background: #dfe9ff;
+  // opacity: 0.36;
+  filter: blur(200rem);
+  z-index: 0;
+  right: 0;
 }
 
-.righttopcolorbg
-{
-  position:absolute;
-  width:15%;
-  height:30%;
-  position:absolute;
-  top:0%;
-  background: #FCE5E5;
-// opacity: 0.36;
-filter: blur(200rem);
-z-index:0;
-right:0;
+.righttopcolorbg {
+  position: absolute;
+  width: 15%;
+  height: 30%;
+  position: absolute;
+  top: 0%;
+  background: #fce5e5;
+  // opacity: 0.36;
+  filter: blur(200rem);
+  z-index: 0;
+  right: 0;
 }
 
-.cartsectiontextss
-{
-
+.cartsectiontextss {
   font-size: 1.4rem;
   font-weight: 650;
 }

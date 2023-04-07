@@ -4,15 +4,15 @@
   font-size: 1.4rem;
   font-weight: 650;
   padding: 2% 0px;
-  z-index:9;
+  z-index: 9;
 }
 .cartsection {
   width: 100%;
   display: flex;
   gap: 25px;
   margin-bottom: 10%;
-  position:relative;
-  z-index:9;
+  position: relative;
+  z-index: 9;
 
   @include xsBreakPoint {
     flex-direction: column;
@@ -21,8 +21,11 @@
   @include smBreakPoint {
     flex-direction: column;
   }
+  @include mdBreakPoint {
+    gap: 10px;
+  }
   .cartemptysection {
-    border: 0.5px solid #9f9f9f;
+    // border: 0.5px solid #9f9f9f;
     margin-top: 5%;
     margin-bottom: 5%;
     font-size: 1.4rem;
@@ -130,7 +133,7 @@
           height: 130px;
           object-fit: contain;
           border-radius: 10px;
-          border:1px solid #E8E8E8;
+          border: 1px solid #e8e8e8;
         }
       }
       .cartaddsection {
@@ -189,18 +192,17 @@
       width: 100%;
     }
     @include mdBreakPoint {
-      width: 100%;
+      width: 80%;
     }
     .insiderigthcartsection {
       border: 1px solid #9f9f9f;
       border-radius: 32px;
       padding: 10px 30px;
-      .pricetextss
-      {
+      .pricetextss {
         font-weight: 600;
         font-size: 1.4rem;
         // color: #9f9f9f;
-        // text-transform: uppercase; 
+        // text-transform: uppercase;
       }
       .pricetexts {
         font-weight: 600;
@@ -314,45 +316,40 @@
   }
 }
 
-
-.leftcolorbg
-{
-  position:absolute;
-  width:10%;
-  height:70%;
-  position:absolute;
-  top:0%;
-  background: #FFF0DF;
-// opacity: 0.36;
-filter: blur(200rem);
-z-index:0;
+.leftcolorbg {
+  position: absolute;
+  width: 10%;
+  height: 70%;
+  position: absolute;
+  top: 0%;
+  background: #fff0df;
+  // opacity: 0.36;
+  filter: blur(200rem);
+  z-index: 0;
 }
 
-.rightcolorbg
-{
-  position:absolute;
-  width:15%;
-  height:40%;
-  position:absolute;
-  bottom:0%;
-  background: #DFE9FF;
-// opacity: 0.36;
-filter: blur(200rem);
-z-index:0;
-right:0;
-
+.rightcolorbg {
+  position: absolute;
+  width: 15%;
+  height: 40%;
+  position: absolute;
+  bottom: 0%;
+  background: #dfe9ff;
+  // opacity: 0.36;
+  filter: blur(200rem);
+  z-index: 0;
+  right: 0;
 }
 
-.righttopcolorbg
-{
-  position:absolute;
-  width:15%;
-  height:30%;
-  position:absolute;
-  top:0%;
-  background: #FCE5E5;
-// opacity: 0.36;
-filter: blur(200rem);
-z-index:0;
-right:0;
+.righttopcolorbg {
+  position: absolute;
+  width: 15%;
+  height: 30%;
+  position: absolute;
+  top: 0%;
+  background: #fce5e5;
+  // opacity: 0.36;
+  filter: blur(200rem);
+  z-index: 0;
+  right: 0;
 }

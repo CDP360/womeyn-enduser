@@ -111,6 +111,8 @@ function Sidebar({ user }) {
 
     return (
         <>
+            <div className="d-none d-lg-block">
+
             <div className={styles.mainsidebarsection}>
                 <div className={styles.insideprofilesection}>
                     <div className={styles.imagesectionprofile} >
@@ -204,11 +206,210 @@ function Sidebar({ user }) {
                     </div>
                 </div>
 
+            </div>
+
+            </div>
+
+            <div className="d-xs-block d-md-none">
+
+            <div className={styles.mainsidebarsection}>
+                <div className={styles.insideprofilesection}>
+                    <div className={styles.imagesectionprofile} >
+                        {user?.profileImageName ? <>
+                            <img
+                                className={styles.editprofilesection}
+                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
+                                alt="profile-pic"
+                            />
+                        </> : <Image src={userprofile} alt="no image" className={styles.profileimage} onClick={handleShow} />}
+                        <div>
+                            <Image src={camera} alt="no image" className={styles.profileimagecamera} onClick={handleShow} />
+                        </div>
+                    </div>
+                    <div className={styles.imagesectioncontent}  >
+                        {user?.firstName}
+                    </div>
+                </div>
+            </div>
+
+            <div className={styles.splitSidebarsewction}>
+
+                <div className={styles.insidesectionsplitsidebarsection}>
+                    <div className={styles.profilecontentinlistsection}>
+                        <div >
+                            <Image src={profile} alt="no image" className={styles.profileicon} />
+                        </div>
+                        <div className={styles.boldtexts}>
+                            Profile
+                        </div>
+                    </div>
+                    <div className={styles.profiletextgapsection}>
+
+                        {routingpath?.map((item, index) => {
+                            return (
+                                <div onClick={() => PathNavigate(item?.name)} className={item?.name == pathname ? styles.activebutton : styles.disablebutton} key={index}>
+                                    {item?.path}
+                                </div>
+                            )
+                        })}
+
+                    </div>
+                    <div className={styles.dashedsectionmain}>
+                        <div className={styles.insidedashedsection}>
+                        </div>
+                    </div>
+                    <div className={pathname == "orders" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("orders")}>
+                        <div>
+                            {pathname == "orders" ? <Image src={orderactive} alt="no image" className={styles.profileicon} /> : <Image src={order} alt="no image" className={styles.profileicon} />}
+                        </div>
+                        <div className={pathname == "orders" ? styles.boldtextactive : styles.boldtexts}>
+                            Orders
+                        </div>
+                    </div>
+
+                    <div className={styles.dashedsectionmain}>
+                        <div className={styles.insidedashedsection}>
+                        </div>
+                    </div>
+                    <div className={pathname == "favorts" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("favorts")}>
+                        <div >
+                            {pathname == "favorts" ? <Image src={favortsactive} alt="no image" className={styles.profileicon} /> : <Image src={favorts} alt="no image" className={styles.profileicon} />}
+                        </div>
+                        <div className={pathname == "favorts" ? styles.boldtextactive : styles.boldtexts}>
+                            Favorites
+                        </div>
+                    </div>
+                    <div className={styles.dashedsectionmain}>
+                        <div className={styles.insidedashedsection}>
+                        </div>
+                    </div>
+                    <div className={pathname == "coupons" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("coupons")}>
+                        <div >
+                            {pathname == "coupons" ? <Image src={couponsactive} alt="no image" className={styles.profileicon} /> : <Image src={coupons} alt="no image" className={styles.profileicon} />}
+                        </div>
+                        <div className={pathname == "coupons" ? styles.boldtextactive : styles.boldtexts}>
+                            Coupons
+                        </div>
+                    </div>
+                    <div className={styles.dashedsectionmain}>
+                        <div className={styles.insidedashedsection}>
+                        </div>
+                    </div>
+                    <div className={styles.profilecontentinlistsection} onClick={LogoutUser}>
+                        <div >
+                            <Image src={logout} alt="no image" className={styles.profileicon} />
+                        </div>
+                        <div className={styles.boldtexts}>
+                            Logout
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+           
+
+            </div>
+
+            <div className="d-none d-md-block d-lg-none">
+
+<div className={styles.profilesidebarmobile}>
+
+<div className={styles.leftsidebarprofile}>
+
+<div className={styles.imagesectionprofiles} >
+                        {user?.profileImageName ? <>
+                            <img
+                                className={styles.editprofilesection}
+                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
+                                alt="profile-pic"
+                            />
+                        </> : <Image src={userprofile} alt="no image" className={styles.profileimage} onClick={handleShow} />}
+                        <div>
+                            <Image src={camera} alt="no image" className={styles.profileimagecamera} onClick={handleShow} />
+                        </div>
+                    </div>
+                    <div className={styles.imagesectioncontent}  >
+                        {user?.firstName}
+                    </div>
+</div>
+
+<div className={styles.middlesidebarprofile}>
 
 
+ <div className={styles.profilecontentinlistsection}>
+                        <div >
+                            <Image src={profile} alt="no image" className={styles.profileicon} />
+                        </div>
+                        <div className={styles.boldtexts}>
+                            Profile
+                        </div>
+                    </div>
+                    <div className={styles.profiletextgapsection}>
+
+                        {routingpath?.map((item, index) => {
+                            return (
+                                <div onClick={() => PathNavigate(item?.name)} className={item?.name == pathname ? styles.activebutton : styles.disablebutton} key={index}>
+                                    {item?.path}
+                                </div>
+                            )
+                        })}
+
+                    </div>
+
+</div>
+
+<div className={styles.rightsidebarprofile}>
+
+<div className={pathname == "orders" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("orders")}>
+                        <div>
+                            {pathname == "orders" ? <Image src={orderactive} alt="no image" className={styles.profileicon} /> : <Image src={order} alt="no image" className={styles.profileicon} />}
+                        </div>
+                        <div className={pathname == "orders" ? styles.boldtextactive : styles.boldtexts}>
+                            Orders
+                        </div>
+                    </div>
+
+                    <div className={styles.dashedsectionmain}>
+                        <div className={styles.insidedashedsection}>
+                        </div>
+                    </div>
+                    <div className={pathname == "favorts" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("favorts")}>
+                        <div >
+                            {pathname == "favorts" ? <Image src={favortsactive} alt="no image" className={styles.profileicon} /> : <Image src={favorts} alt="no image" className={styles.profileicon} />}
+                        </div>
+                        <div className={pathname == "favorts" ? styles.boldtextactive : styles.boldtexts}>
+                            Favorites
+                        </div>
+                    </div>
+                    <div className={styles.dashedsectionmain}>
+                        <div className={styles.insidedashedsection}>
+                        </div>
+                    </div>
+                    <div className={pathname == "coupons" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("coupons")}>
+                        <div >
+                            {pathname == "coupons" ? <Image src={couponsactive} alt="no image" className={styles.profileicon} /> : <Image src={coupons} alt="no image" className={styles.profileicon} />}
+                        </div>
+                        <div className={pathname == "coupons" ? styles.boldtextactive : styles.boldtexts}>
+                            Coupons
+                        </div>
+                    </div>
+                    <div className={styles.dashedsectionmain}>
+                        <div className={styles.insidedashedsection}>
+                        </div>
+                    </div>
+                    <div className={styles.profilecontentinlistsection} onClick={LogoutUser}>
+                        <div >
+                            <Image src={logout} alt="no image" className={styles.profileicon} />
+                        </div>
+                        <div className={styles.boldtexts}>
+                            Logout
+                        </div>
+                    </div>
+</div>
 
 
-
+</div>
             </div>
 
             <>

@@ -48,75 +48,93 @@ function Userprofile({ name, error }) {
             //     localStorage.removeItem("productid");
             // }
 
-            
+
             setUser(res?.data);
-          
+
         }).catch((err) => {
             console.log(err);
         })
     }, [])
     return (
         <>
-        <>
-            {error == "errors" ? <>
-                <div>
-                    no records found!!!
-                </div>
-            </> :
-                <div className='mainsection'>
-                    <div className="insidesection">
-                        <div className={styles.insideprofilesection}>
-                            <div className={styles.leftsidebarprofile}>
-                                <Sidebar user={user} />
-                            </div>
-                            <div className={styles.rightmainprofile}>
-                                {name == "youraccount" && <div>
-                                    <Profile />
-                                </div>}
-                                {name == "edit" && <div>
-                                    <EditProfile />
-                                </div>}
+            <>
+                {error == "errors" ? <>
+                    <div>
+                        no records found!!!
+                    </div>
+                </> :
+                    <div className='mainsection'>
+                        <div className="insidesection">
+                            <div className={styles.insideprofilesection}>
+                                <div className={styles.leftsidebarprofile}>
+                                    <div className='d-none d-lg-block'>
+                                        <Sidebar user={user} />
+                                    </div>
+                                    <div className="d-xs-block d-md-none">
+                                        <Sidebar user={user} />
 
-                                {name == "address" && <div>
+                                    
+                                    </div>
+                                    <div className="d-none d-md-block d-lg-none">
 
-                                    <Manageaddress />
-                                </div>
-                                }
-                                {name == "changepassword" && <div>
-                                    <Changepassword />
-                                </div>
-                                }
-                                {name == "orders" && <div>
-                                    <Orders />
-                                </div>
-                                }
+    <div>
 
-                                {name == "favorts" && <div>
-                                    <Favorts />
+    <Sidebar user={user} />
+
+
+
+
+    </div>
+                                    </div>
                                 </div>
-                                }
-                                {name == "coupons" && <div>
-                                    <Coupon />
+                                <div className={styles.rightmainprofile}>
+                                    {name == "youraccount" && <div>
+                                        <Profile />
+                                    </div>}
+                                    {name == "edit" && <div>
+                                        <EditProfile />
+                                    </div>}
+
+                                    {name == "address" && <div>
+
+                                        <Manageaddress />
+                                    </div>
+                                    }
+                                    {name == "changepassword" && <div>
+                                        <Changepassword />
+                                    </div>
+                                    }
+                                    {name == "orders" && <div>
+                                        <Orders />
+                                    </div>
+                                    }
+
+                                    {name == "favorts" && <div>
+                                        <Favorts />
+                                    </div>
+                                    }
+                                    {name == "coupons" && <div>
+                                        <Coupon />
+                                    </div>
+                                    }
                                 </div>
-                                }
                             </div>
                         </div>
+                        <div className={styles.leftsectionboxcolor}>
+
+                        </div>
+                        <div className={styles.righttopectionboxcolor}>
+
+                        </div>
+                        <div className={styles.rightbottomsectionboxcolor}>
+
+                        </div>
+
                     </div>
-                    <div className={styles.leftsectionboxcolor}>
-            
-            </div>
-            <div className={styles.righttopectionboxcolor}>
-            
-            </div>
-            <div className={styles.rightbottomsectionboxcolor}>
-            
-            </div>
-            
-                </div>
-            }
-        </>
-       
+                }
             </>
+
+        </>
     )
 }
 

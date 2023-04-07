@@ -1,8 +1,28 @@
-import React from 'react'
+import React ,{useState}from 'react'
 import styles from './styles/Servicepayment.module.scss';
 import banners from '../../../../assests/service-logos/servicebanner (2).png';
 import Image from 'next/image';
+import strip from '../../../../assests/cart-logos/Stripe-Logo1.png';
+import paypal from '../../../../assests/cart-logos/PayPal-Logo1.png';
 function Servicepayment() {
+    const paymentMethods = [
+        {
+          id: 1,
+          name: "paypal",
+          image: paypal
+        },
+        {
+          id: 2,
+          name: "stripe",
+          image: strip
+        }
+      ]
+  const [paymentType, setPaymentType] = useState("");
+
+  const onOptionChange = (e) => {
+    setPaymentType(e.target.value);
+  }
+
     return (
         <div className='mainsection'>
             <div className="insidesection">
@@ -16,6 +36,21 @@ function Servicepayment() {
                             <div className={styles.paymentmethod}>
 
                                 Payments method
+                            </div>
+                            <div className="mt-3">
+
+<div>
+
+{paymentMethods?.map((item, index) => {
+          return (
+            <div key={index} className={styles.paymentsection}>
+              <input type="radio" name={item?.name} value={item?.name} checked={paymentType == item?.name} onChange={onOptionChange} id={item?.name} className={styles.radiobuttons} />
+              <label for={item?.name}><img src={item.image.src} alt="no image" className={styles.strips} /></label>
+            </div>
+          )
+        })}
+</div>
+
                             </div>
                         </div>
                         <div className={styles.rightservicepayment}>
@@ -51,14 +86,7 @@ function Servicepayment() {
                                                 A$ 24
                                             </div>
                                         </div>
-                                        <div className={styles.quantity}>
-                                            <div className={styles.price}>
-                                                Estimated tax
-                                            </div>
-                                            <div className={styles.price}>
-                                                A$ 3
-                                            </div>
-                                        </div>
+                                        
 
                                         <div className={styles.bordersections}>
 
@@ -66,18 +94,21 @@ function Servicepayment() {
 
                                     </div>
 
-                                    <div className={styles.totalamount}>
-                                        <div className={styles.amount}>
+                                   <div className="mt-3 mb-3">
+
+                                   <div className={styles.totalamount}>
+                                        <div className={styles.price}>
                                             Total amount
                                         </div>
                                         <div className={styles.totalflex}>
-                                            <div className={styles.totals}>
+                                            <div className={styles.price}>
                                                 A$
                                             </div>
 
                                             <div>
                                                 <span className={styles.total}>27</span>
                                             </div>                                        </div>
+                                    </div>
                                     </div>
 
                                     <div className='mt-4 mb-3'>

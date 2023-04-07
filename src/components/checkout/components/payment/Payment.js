@@ -97,8 +97,8 @@ function Payment({ totalPrice, addressid, couponname }) {
         {paymentMethods?.map((item, index) => {
           return (
             <div key={index} className={styles.paymentsection}>
-              <input type="radio" name={item?.name} value={item?.name} checked={paymentType == item?.name} onChange={onOptionChange} />
-              <span><img src={item.image.src} alt="no image" className={styles.strips} /></span>
+              <input type="radio" name={item?.name} value={item?.name} checked={paymentType == item?.name} onChange={onOptionChange} id={item?.name} className={styles.radiobuttons} />
+              <label for={item?.name}><img src={item.image.src} alt="no image" className={styles.strips} /></label>
             </div>
           )
         })}

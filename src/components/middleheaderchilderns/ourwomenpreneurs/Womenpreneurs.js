@@ -19,7 +19,7 @@ import noimage from '../../../assests/womeynlogos/noimage.png';
 function Womenpreneurs() {
     const router = useRouter();
     const [current, setCurrent] = useState(1);
-    const [limit, setLimit] = useState(current *10);
+    const [limit, setLimit] = useState(current * 10);
 
     const [dataseller, setDataseller] = useState([]);
     const [datacategory, setDataCtagoryies] = useState([]);
@@ -129,7 +129,7 @@ function Womenpreneurs() {
                             Our Womenpreneurs
                         </div>
                         <div className={styles.loreamtextwomen}>
-                        Please select to know more about the Womeynpreneur's business, her journey her story and her success against all odds
+                            Please select to know more about the Womeynpreneur's business, her journey her story and her success against all odds
                         </div>
                     </div>
                     <div className={styles.serachsectionwomen}>

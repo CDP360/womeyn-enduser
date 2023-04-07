@@ -237,14 +237,29 @@ function Cart() {
                     )
                   })}
                 </div> : <>
-                  <div className={styles.cartemptysection}>
-                    Cart Is Empty. <span className={styles.shoppingcartempty} onClick={shopping}>Go Shopping</span>
-                  </div>
+                <div className={styles.cartemptysection}>
+
+<div>
+  <Image src={cartempty} alt="no image" className={styles.cartimage} />
+</div>
+
+<div className={styles.yourcarttexts}>
+
+  Your cart is empty!
+
+</div>
+<div className={styles.yourcarttexts}>
+  Please add your products to the cart
+</div>
+<div className="mt-4 mb-5">
+  <button className={styles.shopbutton} onClick={shopping}>Shop Now</button>
+</div>
+</div>
                 </>}
 
               </div>
             </div>
-            <div className={styles.rightcartsection}>
+            {cart?.cartData?.length > 0?<div className={styles.rightcartsection}>
               <div className={styles.insiderigthcartsection}>
                 <div className={styles.pricetexts}>
                   Price details
@@ -304,7 +319,7 @@ function Cart() {
                   }
                 </div>
               </div>
-            </div>
+            </div>:<></>}
           </div>
         </div>
       </div>
