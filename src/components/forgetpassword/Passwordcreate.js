@@ -16,7 +16,7 @@ import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 function Passwordcreate() {
     const router = useRouter();
-
+    const [emailcheckuser, setEmailCheck] = useState("");
     const [matchcheck1, setMatchCheck1] = useState(false);
     const [matchcheck2, setMatchCheck2] = useState(false);
     const [matchcheck3, setMatchCheck3] = useState(false);
@@ -146,6 +146,7 @@ function Passwordcreate() {
 
     useEffect(() => {
         const emailstypecheck = localStorage.getItem("signupuser");
+        setEmailCheck(JSON.parse(emailstypecheck))
         if (typeof (JSON.parse(emailstypecheck)) == "string") {
             setValue("email", JSON.parse(emailstypecheck))
 
@@ -153,7 +154,7 @@ function Passwordcreate() {
         else {
             setValue("contactno", JSON.parse(emailstypecheck))
         }
-    }, [matchcheck1, matchcheck2, matchcheck3, matchcheck4])
+    }, [matchcheck1, matchcheck2, matchcheck3, matchcheck4, emailcheckuser])
     return (
         <Fragment>
             <div className="mt-3">
@@ -187,7 +188,7 @@ function Passwordcreate() {
 
                                     </div>
                                     <div className='mt-4'>
-                                        {JSON.parse(localStorage.getItem("signupuser")) ? <>
+                                        {emailcheckuser? <>
 
                                             <div className={styles.passwordformsection}>
                                                 <Form.Group className="mb-2" controlId="formBasicEmail">
