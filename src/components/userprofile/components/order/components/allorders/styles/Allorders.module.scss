@@ -103,11 +103,15 @@
   display: flex;
   .firstimagesections {
     width: 100%;
-    // border:1px solid red;
+    
     .firstsectioninsidess {
       display: flex;
       gap: 20px;
       padding: 3% 0px;
+      @include xsBreakPoint
+      {
+        flex-direction:column;
+      }
       .confirmordercanceld {
         background-color: #f9acac;
         padding: 3px 10px;
@@ -123,15 +127,41 @@
         width: 60%;
         display: flex;
         gap: 20px;
+        @include xsBreakPoint
+        {
+          flex-direction:column;
+          width:100%;
+        }
+        @include smBreakPoint
+        {
+          flex-direction:column;
+          width:100%;
+        }
       }
       .secondimagesections {
         width: 20%;
         font-weight: 600;
         font-size: 1.2rem;
+        @include xsBreakPoint
+        {
+          width:100%;
+        }
+        @include smBreakPoint
+        {
+          width:100%;
+        }
       }
       .rightimagesections
       {
         width:20%;
+        @include xsBreakPoint
+        {
+          width:100%;
+        }
+        @include smBreakPoint
+        {
+          width:100%;
+        }
       }
     }
   }

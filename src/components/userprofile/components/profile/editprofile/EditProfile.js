@@ -120,7 +120,7 @@ function EditProfile() {
             </div>
             <div className="mt-4 mb-2">
                 <Row>
-                    <Col>
+                    <Col xs="12" sm="12" md="6">
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>User Name</Form.Label>
                             <Form.Control type="text" placeholder="Enter User Name" className='form-control-profile'
@@ -134,7 +134,7 @@ function EditProfile() {
                             </Form.Text>
                         </Form.Group>
                     </Col>
-                    <Col>
+                    <Col xs="12" sm="12" md="6">
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Gender</Form.Label>
 
@@ -165,7 +165,7 @@ function EditProfile() {
                 </Row>
 
                 <Row>
-                    <Col>
+                    <Col xs="12" sm="12" md="6">
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" placeholder="Enter Email" className='form-control-profile'
@@ -184,7 +184,7 @@ function EditProfile() {
                             </Form.Text>
                         </Form.Group>
                     </Col>
-                    <Col>
+                    <Col xs="12" sm="12" md="6">
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Contact Number</Form.Label>
                             <Form.Control type="text" placeholder="Enter contactno" className='form-control-profile'
@@ -203,7 +203,7 @@ function EditProfile() {
 
                 <Row>
 
-                    <Col lg="6">
+                    <Col xs="12" sm="12" md="6">
 
                         <Form.Group className="mb-3"  >
                             <Form.Label>Date Of Birth</Form.Label>

@@ -41,7 +41,7 @@ function Order() {
           <h5 className={styles.orderstexts}>Orders</h5>
           <div className={styles.subcontainer}>
             <div className={styles.subcontainer1}>
-              <p
+              <div
                 className={
                   step == 0
                     ? `${styles.activeTabText}`
@@ -50,8 +50,8 @@ function Order() {
                 onClick={() => setStep(0)}
               >
                 All
-              </p>
-              <p
+              </div>
+              <div
                 className={
                   step == 1
                     ? `${styles.activeTabText}`
@@ -60,8 +60,8 @@ function Order() {
                 onClick={() => setStep(1)}
               >
                 In Progress
-              </p>
-              <p
+              </div>
+              <div
                 className={
                   step == 2
                     ? `${styles.activeTabText}`
@@ -70,8 +70,8 @@ function Order() {
                 onClick={() => setStep(2)}
               >
                 Cancelled By Seller
-              </p>
-              <p
+              </div>
+              <div
                 className={
                   step == 3
                     ? `${styles.activeTabText}`
@@ -80,9 +80,9 @@ function Order() {
                 onClick={() => setStep(3)}
               >
                 Cancelled
-              </p>
+              </div>
 
-              <p
+              <div
                 className={
                   step == 4
                     ? `${styles.activeTabText}`
@@ -91,7 +91,7 @@ function Order() {
                 onClick={() => setStep(4)}
               >
                 Delivered
-              </p>
+              </div>
             </div>
             <hr className={styles.hrSub} />
           </div>

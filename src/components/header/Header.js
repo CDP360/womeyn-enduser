@@ -147,7 +147,7 @@ function Header() {
         window.open('https://eseller.cdp360.in/')
     }
 
-    console.log("explorecategorys", explorecategorys)
+
     return (
         <Fragment>
             <div className={styles.mainheadersection}>
@@ -279,7 +279,7 @@ function Header() {
 
                                                 {explorecategorys[0]?.subCategories?.map((item, index) => {
                                                     return (
-                                                        <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
+                                                        <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>
                                                         </div>
                                                     )
@@ -290,7 +290,7 @@ function Header() {
 
                                                 {explorecategorys[1]?.subCategories?.map((item, index) => {
                                                     return (
-                                                        <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
+                                                        <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>
                                                         </div>
                                                     )
@@ -303,7 +303,7 @@ function Header() {
 
                                                 {explorecategorys[2]?.subCategories?.map((item, index) => {
                                                     return (
-                                                        <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
+                                                        <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>
                                                         </div>
                                                     )
@@ -314,7 +314,7 @@ function Header() {
 
                                                 {explorecategorys[3]?.subCategories?.map((item, index) => {
                                                     return (
-                                                        <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
+                                                        <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>
                                                         </div>
                                                     )
@@ -327,7 +327,7 @@ function Header() {
 
                                                 {explorecategorys[4]?.subCategories?.map((item, index) => {
                                                     return (
-                                                        <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
+                                                        <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>
                                                         </div>
                                                     )
@@ -340,7 +340,7 @@ function Header() {
 
                                                 {explorecategorys[5]?.subCategories?.map((item, index) => {
                                                     return (
-                                                        <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
+                                                        <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>
                                                         </div>
                                                     )
@@ -353,7 +353,7 @@ function Header() {
 
                                                 {explorecategorys[6]?.subCategories?.map((item, index) => {
                                                     return (
-                                                        <div className="flexdirections" onClick={() => pushCategory(item?.name)} key={index}>
+                                                        <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
                                                             <li><a className="unactivetext">{item?.name}</a></li>
                                                         </div>
                                                     )
@@ -366,6 +366,11 @@ function Header() {
 
                             </li>
                         </ul>
+                    </div>
+                    <div className={router.pathname == "/service" ? "active" : ""}>
+                        <Link href="/service" className='nav-link'>
+                            <span className='ms-2'>Service</span>
+                        </Link>
                     </div>
 
                     <div className={router.pathname == "/womenpreneurs" ? "active" : ""}>

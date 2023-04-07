@@ -21,60 +21,10 @@ function Explore() {
         return <div>hello bar</div>;
     };
 
-    const data = [
-        {
-            label: "foo",
-            key: 1,
-            items: <div>hello foo</div>
-        }
+   
 
-    ];
-
-    const styleConf = {
-        menuProps: {
-            style: {
-                border: "2px solid red",
-                width: "auto",
-                padding: "2px",
-                margin: "0",
-                display: "flex",
-                flexDirection: "row"
-            }
-        },
-        contentProps: {
-            style: {
-                width: "40em",
-                height: "30em",
-                border: "2px solid yellow",
-                padding: "2px"
-            }
-        },
-        menuItemProps: {
-            style: {
-                border: "2px solid green",
-                padding: "2px",
-                height: "2em",
-                width: "auto"
-            }
-        },
-        menuItemSelectedProps: {
-            style: {
-                border: "2px solid purple",
-                padding: "2px",
-                height: "2em",
-                width: "13em",
-                backgroundColor: "grey"
-            }
-        },
-        containerProps: {
-            style: {
-                border: "2px solid pink",
-                padding: "2px",
-                display: "flex",
-                flexDirection: "column"
-            }
-        }
-    };
+    
+    
     return (
         <Fragment>
             <div className={styles.mainexploresection}>

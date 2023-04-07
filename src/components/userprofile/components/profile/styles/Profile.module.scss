@@ -16,6 +16,10 @@
         .buttonsplitsections {
             display: flex;
             gap: 20px;
+            @include xsBreakPoint
+            {
+                flex-direction:column;
+            }
         }
 
         .editbutton {

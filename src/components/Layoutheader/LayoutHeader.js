@@ -113,6 +113,8 @@ function LayoutHeader({ setdark, dark, title, children }) {
             title == "Events" ||
             title == "tracking" ||
             title == "detail" ||
+            title == "Service" ||
+            title=="Payment"||
             title == "passwordcreate" ? (
             <></>
           ) : (
@@ -122,6 +124,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
                   title == "Payment" ||
                   title == "Service" ||
                   title == "tracking" ||
+                  title=="Payment"||
                   title == "tracking" ? (
                   <></>
                 ) : (

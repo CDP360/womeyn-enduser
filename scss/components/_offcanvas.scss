@@ -2,7 +2,7 @@
 
 .offcanvas {
     @include xsBreakPoint {
-        width: 60% !important;
+        width: 80% !important;
     }
     @include mdBreakPoint {
         width: 36% !important;

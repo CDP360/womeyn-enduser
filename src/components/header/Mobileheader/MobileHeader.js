@@ -1,22 +1,23 @@
 import Image from 'next/image';
-import React, { useState, Fragment, useEffect,useContext } from 'react';
+import React, { useState, Fragment, useEffect, useContext } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import styles from './styles/MobileHeader.module.scss';
 import serachicon from '../../../assests/homepage-logos/serachicon.png'
 import womeynlogo from '../../../assests/homepage-logos/Mobileviewlogoshort.png';
 import profile from '../../../assests/homepage-logos/profile.png';
 import closearrow from '../../../assests/homepage-logos/closearrow.png';
-import cart from '../../../assests/homepage-logos/basket.png';
+import cartss from '../../../assests/homepage-logos/basket.png';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { ContextStore } from '../../../Redux/store/Contextstore';
 
 function MobileHeader() {
     const router = useRouter();
-    // const {state,dispatch}=useContext();
-    // const {cart}=state;
+    const { state, dispatch } = useContext(ContextStore);
+    const { cart } = state;
     const [images, setImages] = useState("");
-    const [tokens,setUserToken]=useState("");
+    const [tokens, setUserToken] = useState("");
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -27,12 +28,12 @@ function MobileHeader() {
         router.push("/cart")
     }
     const profilerouter = () => {
-        router.push("/women/profile")
+        router.push("/profile/youraccount")
     }
 
     useEffect(() => {
-            const image = localStorage.getItem("userToken");
-            setUserToken(JSON.parse(image));
+        const image = localStorage.getItem("userToken");
+        setUserToken(JSON.parse(image));
     }, [tokens]);
 
     const logoutHandler = async () => {
@@ -48,6 +49,10 @@ function MobileHeader() {
         }, 400)
 
     };
+
+    const Becomeaseller=()=>{
+        window.open('https://eseller.cdp360.in/')
+    }
     return (
         <Fragment>
             <div className={styles.mainmobilesection}>
@@ -75,7 +80,9 @@ function MobileHeader() {
                                 {/* <Image src={closearrow} alt="no image" className='closearrow' /> */}
                                 <ion-icon name="close-outline" className='closearrow' size="large"></ion-icon>
                             </div>
-                            <div className='profile-section'>
+                           <div className="ms-4">
+
+                           <div className='profile-section' onClick={profilerouter}>
                                 {images ?
                                     <img
                                         className={styles.editprofilesection}
@@ -83,7 +90,8 @@ function MobileHeader() {
                                         alt="profile-pic"
                                     />
                                     :
-                                    <Image src={profile} alt="no image"  className={styles.editprofilesection} />}
+                                    <Image src={profile} alt="no image" className={styles.editprofilesection} />}
+                            </div>
                             </div>
                             <div className='nav-links-section'>
                                 <div className={router.pathname == "/explore" ? "active" : "nav-link"} onClick={handleClose}>
@@ -121,11 +129,14 @@ function MobileHeader() {
 
                                         <div className={styles.cartlogolength}>
                                             <div className={styles.cartimageposition}>
-                                                <Image src={cart} alt="no image" className={"carticons"} />
+                                                <Image src={cartss} alt="no image" className={"carticons"} />
                                             </div>
 
                                             <div className={styles.cartlengthsection}>
-                                                {/* {state?.length} */}
+                                                {cart?.cartData?.length > 0 ? <div className={styles.cartcountbox}>
+                                                    {cart.cartData?.length}
+                                                </div>
+                                                    : <></>}
                                             </div>
 
                                         </div>
@@ -133,23 +144,31 @@ function MobileHeader() {
                                     <div onClick={profilerouter}>
                                         Profile
                                     </div>
-                                   
+
                                 </div>
-                               
+
 
 
                             </div>
+
                             <div>
-                                        <div>
-                                           {tokens?
-                                           <div className={styles.loginbuttons} onClick={logoutHandler}>
-                                           Logout
-                                           </div>
-                                           :<div onClick={Login} className={styles.loginbuttons}>
-                                           Login
-                                           </div>} 
+
+                            <div onClick={Becomeaseller} className={styles.loginbuttons}>
+                                            Become A Seller
                                         </div>
-                                    </div>
+
+                            </div>
+                            <div>
+                                <div>
+                                    {tokens ?
+                                        <div className={styles.loginbuttons} onClick={logoutHandler}>
+                                            Logout
+                                        </div>
+                                        : <div onClick={Login} className={styles.loginbuttons}>
+                                            Login
+                                        </div>}
+                                </div>
+                            </div>
                         </div>
                     </Offcanvas>
                 </div>

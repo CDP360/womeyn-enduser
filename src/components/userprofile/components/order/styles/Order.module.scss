@@ -45,11 +45,12 @@
     gap:30px;
     @include xsBreakPoint {
       flex-direction: column;
-      width: 30%;
+      width: 50%;
     }
     @include mdBreakPoint {
       flex-direction: column;
-      width: 35%;
+      width: 40%;
+
     }
     @include smBreakPoint {
       flex-direction: column;

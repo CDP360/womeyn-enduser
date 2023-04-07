@@ -226,6 +226,11 @@
     font-size:1.2rem;
     display:flex;
     align-items:center;
+    word-break: break-all;
+   @include xsBreakPoint
+   {
+    width:100%;
+   }
 }
 
 .commontitle
@@ -246,6 +251,10 @@
 {
     font-size:1.2rem;
     font-weight:600;
+    @include smBreakPoint
+    {
+        font-size:1rem;
+    }
 }
 
 .dim
