@@ -188,7 +188,7 @@ function Passwordcreate() {
 
                                     </div>
                                     <div className='mt-4'>
-                                        {emailcheckuser? <>
+                                        {emailcheckuser ? <>
 
                                             <div className={styles.passwordformsection}>
                                                 <Form.Group className="mb-2" controlId="formBasicEmail">

@@ -369,28 +369,28 @@ function Header() {
                     </div>
                     <div className={router.pathname == "/service" ? "active" : ""}>
                         <Link href="/service" className='nav-link'>
-                            <span className='ms-2'>Service</span>
+                            <span className='ms-2 hovertexts'>Service</span>
                         </Link>
                     </div>
 
                     <div className={router.pathname == "/womenpreneurs" ? "active" : ""}>
                         <Link href="/womenpreneurs" className='nav-link'>
-                            <span className='ms-2'>Our WomenPreneurs</span>
+                            <span className='ms-2 hovertexts'>Our WomenPreneurs</span>
                         </Link>
                     </div>
                     <div className={router.pathname == "/events" ? "active" : ""}>
                         <Link href="/events" className='nav-link'>
-                            <span className='ms-2'>Events & Updates</span>
+                            <span className='ms-2 hovertexts'>Events & Updates</span>
                         </Link>
                     </div>
                     <div className={router.pathname == "/abouts" ? "active" : ""}>
                         <Link href="/abouts" className='nav-link'>
-                            <span className='ms-2'></span> About Us
+                            <span className='ms-2 hovertexts'>About Us</span> 
                         </Link>
                     </div>
                     <div className={router.pathname == "/getintouch" ? "active" : ""}>
                         <Link href="/getintouch" className='nav-link'>
-                            <span className='ms-2'>Get In Touch</span>
+                            <span className='ms-2 hovertexts'>Get In Touch</span>
                         </Link>
                     </div>
                 </div>
