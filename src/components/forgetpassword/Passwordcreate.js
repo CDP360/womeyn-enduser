@@ -16,7 +16,7 @@ import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 function Passwordcreate() {
     const router = useRouter();
-    // const emailstypecheck = JSON.parse(localStorage.getItem("signupuser"));
+    const emailstypecheck =localStorage.getItem("signupuser");
     const [matchcheck1, setMatchCheck1] = useState(false);
     const [matchcheck2, setMatchCheck2] = useState(false);
     const [matchcheck3, setMatchCheck3] = useState(false);
