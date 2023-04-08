@@ -14,11 +14,13 @@ import Errorboundary from '../src/components/errorboundary/Errorboundary';
 import CartContextProvider from '../src/Redux/store/CartContext';
 function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
+
+  const [sampleCheck, setSamplecheck] = useState(false);
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap");
     import("slick-carousel/slick/slick.css");
     import("slick-carousel/slick/slick-theme.css");
-   
+
     Router.events.on('routeChangeStart', (url) => {
       setLoading(true);
     })
@@ -27,13 +29,14 @@ function App({ Component, pageProps }) {
     })
     Router.events.on('routeChangeError', (url) => {
     });
+
+
   }, []);
   return (
     <div>
       <div className='womeyn-enduser'>
         <StrictMode>
           <StoreProviderContext>
-          
             <Errorboundary>
               <Provider store={store}>
                 <ToastContainer />
@@ -45,7 +48,7 @@ function App({ Component, pageProps }) {
                   </>}
               </Provider>
             </Errorboundary>
-         
+
           </StoreProviderContext>
         </StrictMode>
       </div >

@@ -16,7 +16,7 @@ function Allbestservices({ stars }) {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 2,
+        slidesToShow: 4,
         slidesToScroll: 3,
         // autoplay: true,
         autoplaySpeed: 3500,
@@ -61,7 +61,7 @@ function Allbestservices({ stars }) {
         ]
     };
     const categoryPush = (data) => {
-        history.push(`/category/${data}`);
+        history.push(`/service/${data}`);
     }
 
 
@@ -71,15 +71,47 @@ function Allbestservices({ stars }) {
         }).catch((err) => console.log(err))
     }, [])
 
-
-    const datas=[1,2,3,4];
     return (
         <div className={styles.appcard}>
-            {services?.length > 0 ? <>
+            {services?.length > 4 ? <>
                 <Slider {...settings}>
-                    {services.map((item, index) => {
-                        return (
-                            <div className={styles.cardcategory} onClick={() => categoryPush(item?.serviceName)} key={index}>
+                {services.map((item, index) => {
+                    return (
+                        <div className={styles.cardcategory} key={index}>
+                            <div className={styles.cardsections}>
+                                <div className="cards col-lg-12 mb-5" onClick={() => categoryPush(item?.serviceSlugName)}>
+                                   
+                                <div>
+                                   {item?.image?<img src={item?.image} alt="no image" className={styles.sellerimagesize} />:<>
+                                   
+                                   <Skeleton className={styles.skeltons}/>
+                                   </>}
+                                </div>
+                                <div className={styles.cardinsidesection}>
+                                    <Image src={stars} alt="no image" className={styles.stars} />
+                                    <div>
+                                        <span>{item?.serviceName}</span>
+                                    </div>
+                                    <div className='mb-4'>
+                                        <span className='textgrey'>{item?.serviceDescription}</span>
+                                    </div>
+                                </div>
+                                 
+                                </div>
+                            </div>
+
+                        </div>
+                    )
+                })}
+                </Slider>
+            </> : <div className='row justify-content-center d-flex'>
+
+            {services.map((item, index) => {
+                    return (
+                        <div className={styles.cardcategory} key={index}>
+                            <div className={styles.cardsections}>
+                                <div className="cards col-lg-12 mb-5" onClick={() => categoryPush(item?.productSlugName)}>
+                                   
                                 <div>
                                     <img src={item?.image} alt="no image" className={styles.sellerimagesize} />
                                 </div>
@@ -92,19 +124,13 @@ function Allbestservices({ stars }) {
                                         <span className='textgrey'>{item?.serviceDescription}</span>
                                     </div>
                                 </div>
+                                 
+                                </div>
                             </div>
-                        )
-                    })}
-                </Slider>
-            </> : <div className='row justify-content-center d-flex'>
 
-{datas.map((item,index)=>{
-    return(
-        <div className='col-lg-3' key={index}>
-            <Skeleton className="cardloading"/>
-        </div>
-    )
-})}
+                        </div>
+                    )
+                })}
             </div>}
 
         </div>

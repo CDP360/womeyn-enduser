@@ -47,14 +47,10 @@
       flex-direction: column;
       width: 50%;
     }
-    @include mdBreakPoint {
-      flex-direction: column;
-      width: 40%;
-
-    }
+  
     @include smBreakPoint {
-      flex-direction: column;
-      width: 30%;
+
+      gap:25px;
     }
     .activeTabText {
       border-bottom: 2px solid #e95a5a;

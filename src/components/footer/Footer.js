@@ -12,15 +12,15 @@ import { useRouter } from 'next/router';
 function Footer() {
     const router = useRouter();
 
-    const instagram = () => {
+    const instagrams = () => {
         window.open(`https://www.instagram.com/womeyn/`);
     }
 
-    const facebook = () => {
+    const facebooks = () => {
         window.open(`https://www.facebook.com/Womeyn`);
     }
 
-    const linkedin = () => {
+    const linkedins = () => {
         window.open(`https://www.linkedin.com/company/womeyn/`);
     }
     return (
@@ -42,16 +42,16 @@ function Footer() {
                                         <Image src={youtube} alt="no image" className={styles.footersocialicons} />
                                     </div>
                                     <div className={styles.footeremptysocialsection}>
-                                        <Image src={linkdin} alt="no image" className={styles.footersocialicons} onClick={linkedin} />
+                                        <Image src={linkdin} alt="no image" className={styles.footersocialicons} onClick={linkedins} />
                                     </div>
                                     <div className={styles.footeremptysocialsection}>
                                         <Image src={twitter} alt="no image" className={styles.footersocialicons} />
                                     </div>
                                     <div className={styles.footeremptysocialsection}>
-                                        <Image src={facebook} alt="no image" className={styles.footersocialicons} onClick={facebook} />
+                                        <Image src={facebook} alt="no image" className={styles.footersocialicons} onClick={facebooks} />
                                     </div>
                                     <div className={styles.footeremptysocialsection}>
-                                        <Image src={instagram} alt="no image" className={styles.footersocialicons} onClick={instagram} />
+                                        <Image src={instagram} alt="no image" className={styles.footersocialicons} onClick={instagrams} />
                                     </div>
                                 </div>
                             </div>

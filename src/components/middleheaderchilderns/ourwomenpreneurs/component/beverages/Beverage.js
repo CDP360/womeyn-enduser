@@ -54,11 +54,11 @@ function Beverage({ productlist, loading, sellers }) {
                                 <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
                                     <Image src={star} alt="no image" className={styles.stars} />
                                     <div className={styles.brandname}>
-                                        {item?.productName?.length<=10 ?<>{item?.productName}</>:<>    {item?.productName.slice(0,18)}...</>}
+                                        {item?.productName?.length <= 10 ? <>{item?.productName}</> : <>    {item?.productName.slice(0, 18)}...</>}
                                     </div>
-                                
+
                                     <div className='textgrey'>
-                                       {item?.brandName?.length<=18 ?<>{item?.brandName}</>:<>{item?.brandName.slice(0,18)}...</>}
+                                        {item?.brandName?.length <= 18 ? <>{item?.brandName}</> : <>{item?.brandName.slice(0, 18)}...</>}
                                     </div>
                                     <div className={styles.cardsellerborder}>
                                         <div className={styles.cardsellerinsideborder}>

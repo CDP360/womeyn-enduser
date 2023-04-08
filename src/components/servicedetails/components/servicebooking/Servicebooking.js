@@ -216,9 +216,35 @@ import star from "../../../../assests/service-logos/Star 4.svg";
 import ticket from '../../../../assests/service-logos/tickmark.png';
 import images from '../../../../assests/service-logos/Ovalimages.png';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { ServiceusersGetSingle } from '../../../../services/servicewomeyn/service-womeyn';
+import moment from 'moment';
+import Modal from 'react-bootstrap/Modal';
 function Servicebooking({ id }) {
 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const [loading, setLoading] = useState(false);
+
+    const [serviceBooking, setServiceBooking] = useState([]);
+    const [serviceBookingSingle, setServiceBookingSingle] = useState([]);
+
+
+    const [sellerinformations, setSellerinfo] = useState({});
+
+
+    useEffect(() => {
+        ServiceusersGetSingle(id).then((res) => {
+            // console.log(res?.data,"ko")
+            setServiceBooking(res?.data?.serviceDetails[0]);
+            setSellerinfo(res?.data?.sellerInformation);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, [id])
 
     const months = [
         {
@@ -252,8 +278,30 @@ function Servicebooking({ id }) {
 
     ]
 
+    console.log(serviceBooking, "sellerinformations")
+
 
     const history = useRouter();
+
+
+    const NavigateUsers = (data) => {
+        history.push(`/womenpreneurs/${data}`);
+    }
+
+
+    const FilterModelPopup = (id) => {
+
+        serviceBooking?.serviceVariations?.map((item, index) => {
+            if (item?._id === id) {
+                setServiceBookingSingle(item);
+                handleShow();
+
+            }
+        })
+
+
+
+    }
 
     return (
         <Fragment>
@@ -262,7 +310,18 @@ function Servicebooking({ id }) {
                     <div className={styles.mainservicesetion}>
                         <div className={styles.insidesection}>
                             <div>
-                                <Image src={servicebanner} alt="no image" className={styles.servicebanner} />
+
+                                {/* serviceThumbImage */}
+
+                                {/* <Image src={servicebanner} alt="no image" className={styles.servicebanner} /> */}
+
+                                {serviceBooking?.serviceThumbImage ? <>
+                                    <img
+                                        className={styles.servicebanner}
+                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${serviceBooking?.serviceThumbImage}`}
+                                        alt="profile-pic"
+                                    />
+                                </> : <></>}
                             </div>
                             <div className={styles.classesszumba}>
 
@@ -281,7 +340,7 @@ function Servicebooking({ id }) {
                             </div>
                             <div className={styles.zumbaservices}>
 
-                                {id}
+                                {serviceBooking?.serviceName}
                             </div>
 
                             <div className={styles.servicerating}>
@@ -294,7 +353,7 @@ function Servicebooking({ id }) {
                                     </div>
 
                                 </div>
-                                <div className={styles.leftstar}>
+                                {/* <div className={styles.leftstar}>
 
                                     <div className={styles.activestar}>
                                         offline
@@ -303,7 +362,7 @@ function Servicebooking({ id }) {
                                     <div>
                                         Mumbai,india
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                             <div className={styles.aboustservice}>
                                 <div>
@@ -311,7 +370,7 @@ function Servicebooking({ id }) {
                                         About the experience
                                     </div>
                                     <div className={styles.servicelearn}>
-                                        Learn to play and enjoy the sport of a lifetime. If you are alrea The Instructor for this activity will be Leo B.,a 3rd degree black-belt and long-time and teacher of variatios. Learn to play and enjoy the sport of a lifetime. If you are alrea The Instructor for this activity will be Leo B.,a 3rd degree black-belt and long-time and teacher of variatios
+                                        {serviceBooking?.serviceDescription}
                                     </div>
                                 </div>
                             </div>
@@ -319,15 +378,15 @@ function Servicebooking({ id }) {
 
                                 <div className={styles.booknowrow}>
 
-                                    {months?.map((item, index) => {
+                                    {serviceBooking?.serviceVariations?.map((item, index) => {
                                         return (
                                             <div className={styles.booknowbox}>
                                                 <div className={styles.monthsections}>
                                                     <div className={styles.monthssectionsmonth}>
-                                                        {item?.months}
+                                                        {item?.title}
                                                     </div>
                                                     <div className={styles.countnumber}>
-                                                        {item?.number}
+                                                        A$ {item?.price}
                                                     </div>
                                                     <div>
 
@@ -341,7 +400,9 @@ function Servicebooking({ id }) {
                                                             <Image src={ticket} alt="no image" className={styles.ticket} />
                                                         </div>
                                                         <div>
-                                                            {item?.name}
+
+
+                                                            {item?.serviceTypeId === 1 ? <>Online</> : <>Offline</>}
                                                         </div>
 
                                                     </div>
@@ -350,7 +411,7 @@ function Servicebooking({ id }) {
                                                             <Image src={ticket} alt="no image" className={styles.ticket} />
                                                         </div>
                                                         <div>
-                                                            {item?.name}
+                                                            {moment(item?.startDate).format("MMM Do YY",)} / {moment(item?.endDate).format("MMM Do YY",)}
                                                         </div>
 
                                                     </div>
@@ -359,7 +420,12 @@ function Servicebooking({ id }) {
                                                             <Image src={ticket} alt="no image" className={styles.ticket} />
                                                         </div>
                                                         <div>
-                                                            {item?.name}
+
+                                                            {item?.isCancellationAvailable ? <>
+                                                                CancellationAvailable
+                                                            </> : <>
+                                                                CancellationUnAvailable
+                                                            </>}
                                                         </div>
 
                                                     </div>
@@ -368,15 +434,23 @@ function Servicebooking({ id }) {
                                                             <Image src={ticket} alt="no image" className={styles.ticket} />
                                                         </div>
                                                         <div>
-                                                            {item?.name}
+                                                            {item?.numberOfPeopleAllowed}
                                                         </div>
 
                                                     </div>
                                                 </div>
 
+                                                <div className="mt-2 mb-4 text-center">
+
+                                                    <div className={styles.viewmorebutton} onClick={() => FilterModelPopup(item?._id)}>
+                                                        View More...
+                                                    </div>
+
+                                                </div>
+
 
                                                 <div className="mt-4 mb-4">
-                                                    <button className={styles.booknowbutton} onClick={() => history?.push("/service/payment")}>{item?.button}</button>
+                                                    <button className={styles.booknowbutton} onClick={() => history?.push("/service/payment")}>Book Now</button>
                                                 </div>
                                             </div>
                                         )
@@ -394,22 +468,31 @@ function Servicebooking({ id }) {
                                     <div className={styles.instractionsection}>
                                         <div className={styles.leftimageins}>
 
-                                            <Image src={images} alt="no image" className={styles.personimages} />
+                                            {sellerinformations?.profileImageName ? <>
+                                                <img
+                                                    className={styles.personimages}
+                                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellerinformations?.profileImageName}`}
+                                                    alt="profile-pic"
+                                                />
+                                            </> : <></>}
+
+                                            {/* profileImageName */}
+                                            {/* <Image src={images} alt="no image" className={styles.personimages} /> */}
 
                                         </div>
 
                                         <div className={styles.rightimageins}>
 
                                             <div>
-                                                Cameron Rogers
+                                                {sellerinformations?.firstName}
                                             </div>
                                             <div>
-                                                MBA Finance
+                                                {sellerinformations?.businessName}
                                             </div>
 
 
                                             <div>
-                                                <button className={styles.viewdetailsbutton}>View Details</button>
+                                                <button className={styles.viewdetailsbutton} onClick={() => NavigateUsers(sellerinformations?.businessSlugName)}>View Details</button>
                                             </div>
 
                                         </div>
@@ -427,6 +510,99 @@ function Servicebooking({ id }) {
                     </div>
                 </div>
             </div>
+
+            <>
+
+                <Modal show={show} onHide={handleClose} centered>
+                    <Modal.Header closeButton>
+                        <Modal.Title>
+                            {serviceBookingSingle?.title}
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div>
+
+                            <div className={styles.cancelsection}>
+                                <div className={styles.leftcancelsection}>
+                                Date :
+
+                                </div>
+<div className="ms-2">
+
+{moment(serviceBookingSingle?.startDate).format("MMM Do YY",)} to {moment(serviceBookingSingle?.endDate).format("MMM Do YY",)}
+
+</div>
+                            </div>
+
+                            <div className={styles.cancelsection}>
+                                <div className={styles.leftcancelsection}>
+                                Is this an online/ offline service :
+
+                                </div>
+<div className="ms-2">
+{serviceBookingSingle?.serviceTypeId === 1 ? <>Online</> : <>Offline</>}
+
+</div>
+                            </div>
+
+                            <div className={styles.cancelsection}>
+
+                                <div className={styles.leftcancelsection}>
+
+                                Cancellation :
+                                    </div>
+
+                               <div className="ms-2">
+ {serviceBookingSingle?.isCancellationAvailable ? <>
+                                    CancellationAvailable
+                                </> : <>
+                                    CancellationUnAvailable
+                                </>}
+                                </div>
+                            </div>
+
+                            <div className={styles.cancelsection}>
+                                <div className={styles.leftcancelsection}>
+
+                                Number of people allowed :
+                                </div>
+                                <div className="ms-2">
+
+                                {serviceBookingSingle?.numberOfPeopleAllowed}
+
+                                </div>
+                            </div>
+
+                            <div>
+
+                                <div className={styles.working}>Working Days</div>
+                                {serviceBookingSingle?.workingDays?.map((item, index) => {
+                                    return (
+                                        <div className={styles.workingdays}>
+                                           <div className={styles.leftdays}>
+
+                                           {item?.dayName}
+                                            </div>
+                                            <div>
+
+                                                {item?.workingHours}
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+
+                            </div>
+
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <button variant="secondary" className={styles.closebuttons} onClick={handleClose}>
+                            Close
+                        </button>
+
+                    </Modal.Footer>
+                </Modal>
+            </>
 
         </Fragment>
     )

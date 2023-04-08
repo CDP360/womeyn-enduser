@@ -8,3 +8,13 @@ export function Serviceusers() {
         return err;
     })
 }
+
+
+
+export function ServiceusersGetSingle(data) {
+    return instanceBaseurl.get(`/common/services/${data}`).then((res) => {
+        return res;
+    }).catch((err) => {
+        return err;
+    })
+}

@@ -26,14 +26,24 @@ function Favorts() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    GetFavoritsList().then((res) => {
-      setTimeout(() => {
-        setLoading(false);
-        setFavorts(res?.data[0]?.results);
-      }, 400)
-    }).catch((err) => {
-      console.log(err);
-    })
+
+    const userToken=localStorage.getItem("userToken");
+    if(JSON.parse(userToken))
+    {
+      GetFavoritsList().then((res) => {
+        setTimeout(() => {
+          setLoading(false);
+          setFavorts(res?.data[0]?.results);
+        }, 400)
+      }).catch((err) => {
+        console.log(err);
+      })
+    }
+    else
+    {
+      history.push("/login")
+    }
+ 
   }, [starcount, deleteid])
   const pushProductPage = (data) => {
     history.push(`/product/${data}`)

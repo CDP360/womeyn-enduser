@@ -175,13 +175,13 @@ function Otp() {
             </div>
             <div className={styles.leftsection1}>
 
-</div>
-<div className={styles.righttopsection1}>
+            </div>
+            <div className={styles.righttopsection1}>
 
-</div>
-<div className={styles.rightbottomsection1}>
+            </div>
+            <div className={styles.rightbottomsection1}>
 
-</div>
+            </div>
         </Fragment>
     )
 }

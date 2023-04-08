@@ -30,7 +30,7 @@ function Viewproducts({ id }) {
     const [productreview, setProductReview] = useState([]);
     const [productimages, setProductImage] = useState([]);
     const [productseller, setProductseller] = useState([]);
-    const [averageRatings, setAverageRating] = useState([]);
+    const [averageRatings, setAverageRating] = useState('');
     const [index1, setIndex1] = useState(null);
     const [index2, setIndex2] = useState(null);
     const [index3, setIndex3] = useState(null);
@@ -589,11 +589,13 @@ function Viewproducts({ id }) {
             //     name: res?.data?.productDetails?.productThumbImage
             // });
 
+            console.log(res?.data?.averageRating[0],"res")
+
             setProductImage(productshowimages);
             setProductData(res?.data?.productDetails);
             setProductReview(res?.data?.reviews);
             setRatingcount(res?.data?.totalReviewsCount)
-            setAverageRating(res?.data?.averageRating[0])
+            setAverageRating(res?.data?.averageRating[0]?.avgRating)
             const variationdata = [];
             setProductVariations(variationdata);
             res?.data?.variations.map((item) => {
@@ -613,7 +615,7 @@ function Viewproducts({ id }) {
         });
         const tokencheck = localStorage.getItem("userToken");
         setTokenset(tokencheck)
-    }, [productnames, tokencheck, index1, index2, index3, index4, averageRatings]);
+    }, [productnames, tokencheck, index1, index2, index3, index4, averageRatings?.avgRating]);
 
     useEffect(() => {
         //         ProductLikeWishlistGet().then((res) => {
@@ -634,7 +636,7 @@ function Viewproducts({ id }) {
        
        
 
-}, [productSize, productseller, productnames,averageRatings]);
+}, [productSize, productseller, productnames,averageRatings?.avgRating]);
 
 
 
@@ -964,6 +966,9 @@ function Viewproducts({ id }) {
         }
     }
 
+
+    let groups=averageRatings?.avgRating;
+
     return (
         <Fragment>
             <div className={styles.mainproductviewscreen}>
@@ -1087,20 +1092,13 @@ function Viewproducts({ id }) {
                             <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
                             <div className={styles.starsection}>
                                 <div className={styles.starsections}>
-                                    <div>
-{averageRatings?.avgRating}
-
-                                    </div>
-
-                                    
-                                    <Rate defaultValue={parseFloat(averageRatings?.avgRating)} allowHalf style={{ color: "#54BE43", zIndex: 0 }}
-                                        tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                        // onChange={(value) => {
-                                        //     setStarCount(value)
-                                        // }}
-                                        disabled
-
-                                    />
+                                 
+                                 {averageRatings}
+                                 <Rate defaultValue={parseFloat(averageRatings)} allowHalf style={{ color: "#54BE43" }}
+                                                    tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                    count={5}
+                                                    disabled
+                                                />
                                 </div>
                                 <div>
                                     {ratingcount} Review

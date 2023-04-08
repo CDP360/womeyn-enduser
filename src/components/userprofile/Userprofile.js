@@ -26,6 +26,7 @@ function Userprofile({ name, error }) {
         }
         const userid = localStorage.getItem("userid");
         UserProfileInformation(JSON.parse(userid)).then((res) => {
+
             // if (res == "Please authenticate") {
             //     toast.error("Please Authenticate!!",
             //         {
@@ -52,7 +53,9 @@ function Userprofile({ name, error }) {
             setUser(res?.data);
 
         }).catch((err) => {
-            console.log(err);
+            // console.log(err);
+            console.log(err?.res?.data?.message, "kalaimessage")
+
         })
     }, [])
     return (
@@ -73,18 +76,18 @@ function Userprofile({ name, error }) {
                                     <div className="d-xs-block d-md-none">
                                         <Sidebar user={user} />
 
-                                    
+
                                     </div>
                                     <div className="d-none d-md-block d-lg-none">
 
-    <div>
+                                        <div>
 
-    <Sidebar user={user} />
-
-
+                                            <Sidebar user={user} />
 
 
-    </div>
+
+
+                                        </div>
                                     </div>
                                 </div>
                                 <div className={styles.rightmainprofile}>

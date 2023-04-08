@@ -70,7 +70,7 @@ function Reviewsproduct({ productreview,ratingcount,averageRatings }) {
                         <div className={styles.reviwesectionrating}>
                             <div className={styles.reviewtexts}>Reviews</div>
                             <div className={styles.ratingsection}>
-                                <Image src={redstar} alt="no image" className={styles.redstartreview} />{averageRatings?.avgRating} <span className={styles.dategrey}>({ratingcount} Review)</span></div>
+                                <Image src={redstar} alt="no image" className={styles.redstartreview} />{averageRatings} <span className={styles.dategrey}>({ratingcount} Review)</span></div>
                         </div>
                         <div className='light-active'>See all</div>
                     </div>
