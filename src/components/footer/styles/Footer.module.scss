@@ -5,6 +5,7 @@
     padding-top: 1%;
     cursor: pointer;
     position: relative;
+    z-index:9;
     @include xsBreakPoint {
         padding-bottom: 5%;
     }
@@ -14,18 +15,7 @@
     @include mdBreakPoint {
         padding-bottom: 5%;
     }
-    .footerrightemptybox {
-        background: #e75b5e;
-        opacity: 0.13;
-        filter: blur(199.225px);
-        position: absolute;
-        width: 80%;
-        height: 50%;
-        right: 0;
-        @include xsBreakPoint {
-            top: 5%;
-        }
-    }
+   
     .insidefootersection {
         width: 100%;
         .splitinsidefootersection {
@@ -188,5 +178,27 @@
                 }
             }
         }
+    }
+}
+
+
+.footercontents:hover
+{
+    color:#E95A5A !important;
+}
+
+
+.footerrightemptybox {
+    background: #e75b5e;
+    opacity: 0.3;
+    filter: blur(199.225px);
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    right: 0;
+    z-index:0;
+    bottom:0;
+    @include xsBreakPoint {
+        top: 5%;
     }
 }

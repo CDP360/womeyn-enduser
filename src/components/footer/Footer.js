@@ -8,14 +8,25 @@ import instagram from '../../assests/homepage-logos/newinstagramfooter.png';
 import linkdin from '../../assests/homepage-logos/linkedinfooter.png';
 import twitter from '../../assests/homepage-logos/twitterfooter.png';
 import headphone from '../../assests/homepage-logos/headphonefooter.png';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 function Footer() {
-    const router=useRouter();
+    const router = useRouter();
+
+    const instagram = () => {
+        window.open(`https://www.instagram.com/womeyn/`);
+    }
+
+    const facebook = () => {
+        window.open(`https://www.facebook.com/Womeyn`);
+    }
+
+    const linkedin = () => {
+        window.open(`https://www.linkedin.com/company/womeyn/`);
+    }
     return (
         <Fragment>
             <div className={styles.mainfootersection}>
-                <div className={styles.footerrightemptybox}>
-                </div>
+
                 <div className={styles.insidefootersection}>
                     <div className={styles.splitinsidefootersection}>
                         <div className={styles.splitfootersection}>
@@ -24,23 +35,23 @@ function Footer() {
                                     <Image src={womeynlogo} alt="no image" />
                                 </div>
                                 <div className='footergreytext'>
-                                Womeyn is a new age eCommerce Platform. Please connect, like and follows us via social media.
+                                    Womeyn is a new age eCommerce Platform. Please connect, like and follows us via social media.
                                 </div>
                                 <div className={styles.socailfootersection}>
                                     <div className={styles.footeremptysocialsection}>
                                         <Image src={youtube} alt="no image" className={styles.footersocialicons} />
                                     </div>
                                     <div className={styles.footeremptysocialsection}>
-                                        <Image src={linkdin} alt="no image" className={styles.footersocialicons} />
+                                        <Image src={linkdin} alt="no image" className={styles.footersocialicons} onClick={linkedin} />
                                     </div>
                                     <div className={styles.footeremptysocialsection}>
                                         <Image src={twitter} alt="no image" className={styles.footersocialicons} />
                                     </div>
                                     <div className={styles.footeremptysocialsection}>
-                                        <Image src={facebook} alt="no image" className={styles.footersocialicons} />
+                                        <Image src={facebook} alt="no image" className={styles.footersocialicons} onClick={facebook} />
                                     </div>
                                     <div className={styles.footeremptysocialsection}>
-                                        <Image src={instagram} alt="no image" className={styles.footersocialicons} />
+                                        <Image src={instagram} alt="no image" className={styles.footersocialicons} onClick={instagram} />
                                     </div>
                                 </div>
                             </div>
@@ -49,19 +60,19 @@ function Footer() {
                                     QUICK LINKS
                                 </div>
                                 <div className="gapsectionfooter">
-                                    <div onClick={()=>router.push("/abouts")}>
+                                    <div onClick={() => router.push("/abouts")} className={styles.footercontents}>
                                         About us
                                     </div>
-                                    <div onClick={()=>router.push("/getintouch")}>
+                                    <div onClick={() => router.push("/getintouch")} className={styles.footercontents}>
                                         Contact us
                                     </div>
-                                    <div onClick={()=>router.push("/womenpreneurs")}>
+                                    <div onClick={() => router.push("/womenpreneurs")} className={styles.footercontents}>
                                         Products
                                     </div>
-                                    <div onClick={()=>router.push("/login")}>
+                                    <div onClick={() => router.push("/login")} className={styles.footercontents}>
                                         Login
                                     </div>
-                                    <div onClick={()=>router.push("/signup")}>
+                                    <div onClick={() => router.push("/signup")} className={styles.footercontents}>
                                         Sign Up
                                     </div>
                                 </div>
@@ -71,47 +82,47 @@ function Footer() {
                                     CUSTOMER AREA
                                 </div>
                                 <div className="gapsectionfooter">
-                                    <div>
+                                    <div onClick={() => router.push("/profile/youraccount")} className={styles.footercontents}>
                                         My Account
                                     </div>
-                                    <div>
+                                    <div onClick={() => router.push("/profile/youraccount")} className={styles.footercontents}>
                                         Orders
                                     </div>
-                                    <div>
+                                    <div onClick={() => router.push("/order/tracking")} className={styles.footercontents}>
                                         Tracking List
                                     </div>
-                                    <div>
+                                    <div onClick={() => router.push("/terms-and-conditions")} className={styles.footercontents}>
                                         Terms
                                     </div>
-                                    <div>
+                                    <div className={styles.footercontents}>
                                         Privacy Policy
                                     </div>
-                                    <div>
+                                    <div onClick={() => router.push("/cart")} className={styles.footercontents}>
                                         My Cart
                                     </div>
                                 </div>
                             </div>
                             <div className={styles.footersectionfour}>
-                                <div className='footertext'>
+                                <div className='footertext' onClick={() => router.push("/getintouch")} className={styles.footercontents}>
                                     CONTACT
                                 </div>
                                 <div>
-                                Team Womeyn is open to ideas, suggestions and comments that will help us improve and grow as a community platform. We would love to hear from you
+                                    Team Womeyn is open to ideas, suggestions and comments that will help us improve and grow as a community platform. We would love to hear from you
                                 </div>
                                 <div>
-                                        Email : Contactus@womeyn.com
-                                    </div>
+                                    Email : Contactus@womeyn.com
+                                </div>
                                 <div className={styles.headphonesectionfooter}>
                                     <div>
                                         <Image src={headphone} alt="nmo image" className={styles.headephoneimage} />
                                     </div>
-                                    
+
                                     <div>
                                         <div>
                                             Have any question?
                                         </div>
                                         <div className='active mb-3'>
-                                        +61434557191
+                                            +61434557191
                                         </div>
                                     </div>
                                 </div>
@@ -122,6 +133,8 @@ function Footer() {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className={styles.footerrightemptybox}>
             </div>
         </Fragment>
     )

@@ -47,7 +47,6 @@ function Beverage({ productlist, loading, sellers }) {
                                 <div onClick={() => router.push(`/product/${item?.productSlugName}`)} className={styles.imagebox}>
                                     {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={styles.sellerimagesize} /> :
                                         <>
-
                                             <Skeleton className={styles.loaderskelimage} />
                                         </>
                                     }

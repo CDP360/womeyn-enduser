@@ -503,12 +503,12 @@ function Servicecards() {
                                             </>}
                                         </div>
                                     </div>
-                                    <div className='womentitle'>
+                                    <div className='womentitle mt-5'>
                                         {item?.serviceName}
                                     </div>
-                                    <div className='womendescription'>
+                                    {/* <div className='womendescription'>
                                         {item?.serviceDescription?.length <= 18 ? <>{item?.serviceDescription}</> : <>{item?.serviceDescription.slice(0, 18)}...</>}
-                                    </div>
+                                    </div> */}
                                 </div>
                             )
                         })}

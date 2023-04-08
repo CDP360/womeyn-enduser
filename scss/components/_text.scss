@@ -168,6 +168,10 @@
     padding-bottom: 5%;
     font-weight: 600;
     text-transform: upperCase;
+    @include lgBreakPoint
+    {
+font-size:0.810rem;
+    }
 }
 .womendescription {
     text-transform: upperCase;

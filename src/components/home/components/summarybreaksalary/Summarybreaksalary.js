@@ -103,30 +103,31 @@ function Summarybreaksalary({ bannerimages }) {
         <Fragment>
             <div className={styles.summarymainsection}>
                 <div className={styles.insidesummarysection}>
-                    {bannerimages?.ClientLogos?.length===0 ?<div className={styles.sketonbannes}>
-                       
-                    
-                    {data?.map((item,index)=>{
-                        return(
-                            <div className="col-lg-2">
-<Skeleton className={styles.summaryBreakPoints}/>
+                    {bannerimages?.ClientLogos?.length === 0 ? <div className={styles.sketonbannes}>
 
-                            </div>
-                        )
-                    })}
-                       
-                    
-                    </div>:
-                                        <Slider {...settings}>
-                        {bannerimages?.ClientLogos?.map((item, index) => {
+
+                        {data?.map((item, index) => {
                             return (
-                                <div className={styles.insideslidess}  key={index}>
-                                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.slidesummaryimages1} onClick={() => MovePageData(item.redirectUrl)} />
+                                <div className="col-lg-2">
+                                    <Skeleton className={styles.summaryBreakPoints} />
+                                    {/* kalai */}
+
                                 </div>
                             )
                         })}
-                    </Slider>
-}
+
+
+                    </div> :
+                        <Slider {...settings}>
+                            {bannerimages?.ClientLogos?.map((item, index) => {
+                                return (
+                                    <div className={styles.insideslidess} key={index}>
+                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.slidesummaryimages1} onClick={() => MovePageData(item.redirectUrl)} />
+                                    </div>
+                                )
+                            })}
+                        </Slider>
+                    }
                 </div>
             </div>
         </Fragment>

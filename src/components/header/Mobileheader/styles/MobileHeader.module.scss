@@ -77,7 +77,7 @@
     object-fit: contain;
     border: 3px solid #e95a5a;
     border-radius: 50%;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .cartlogolength {
@@ -109,18 +109,17 @@
     }
 }
 
-.loginbuttons
-{
-    width:60%;
-    border-radius:10px;
-    cursor:pointer;
-    text-align:center;
-    color:white;
+.loginbuttons {
+    width: 60%;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    color: white;
     // padding:10px 40px;
-    padding:8px;
-    background:#E95A5A;
-    margin-left:5%;
-    margin-top:5%;
+    padding: 8px;
+    background: #e95a5a;
+    margin-left: 5%;
+    margin-top: 5%;
 }
 
 .maincartcount {

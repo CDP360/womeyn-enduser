@@ -40,10 +40,11 @@
             width: 85%;
         }
         @include lgBreakPoint {
-            width: 89%;
+            width: 100%;
+            border: 1px solid red;
         }
         @include xlBreakPoint {
-            width: 85%;
+            width: 100%;
         }
 
         .emptyboxcolorright {
@@ -160,11 +161,11 @@
             height: 100%;
         }
         @include lgBreakPoint {
-            height: 100%;
+            height: 240px;
             width: 100%;
         }
         @include xlBreakPoint {
-            height: 100%;
+            height: 270px;
             width: 100%;
         }
     }
