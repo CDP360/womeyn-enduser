@@ -24,7 +24,7 @@ function Profile({ users, error }) {
 
   useEffect(() => {
     setUser(users);
-  }, [error, users]);
+  }, [error, users,user]);
   useEffect(() => {
     setValue("username", user?.firstName);
     setValue("gender", user?.gender);
@@ -32,7 +32,7 @@ function Profile({ users, error }) {
     setValue("phonenumber", user?.contactNumber);
     setValue("dateofbirth", user?.dateOfBirth);
     localStorage.setItem("user", JSON.stringify(user?.firstName));
-  }, [users,error])
+  }, [user])
   const [show, setShow] = useState(false);
   const NavigateRedirect = () => {
     history?.push("/errorboundary")
