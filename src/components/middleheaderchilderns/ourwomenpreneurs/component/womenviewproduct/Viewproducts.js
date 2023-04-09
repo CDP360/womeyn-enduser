@@ -18,7 +18,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import { Rate } from "antd";
 function Viewproducts({ id }) {
     const history = useRouter();
-    const [productnotfound,setProductNotfound]=useState("");
+    const [productnotfound, setProductNotfound] = useState(false);
     const [starcount, setStarCount] = useState(null);
     const [ratingcount, setRatingcount] = useState("");
     const [tokencheck, setTokenset] = useState("");
@@ -339,7 +339,7 @@ function Viewproducts({ id }) {
         const datas3 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name];
         const datas4 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name, productvariations[4]?.name];
 
-        
+
         if (datas?.length === productvariations?.length) {
             const values = [
                 {
@@ -579,8 +579,7 @@ function Viewproducts({ id }) {
     // No Records Found
     useEffect(() => {
         ProductView(productnames).then((res) => {
-            console.log("k",res)
-            setProductNotfound(res?.response?.data?.message)
+
             setProductseller(res?.data?.sellerInformation[0])
             const productshowimages = [];
             res?.data?.productDetails?.productImages?.map((item, index) => {
@@ -611,7 +610,8 @@ function Viewproducts({ id }) {
             });
         }).catch((err) => {
             console.log(err);
-         
+            console.log("k", err)
+
 
         });
         const tokencheck = localStorage.getItem("userToken");
@@ -625,23 +625,22 @@ function Viewproducts({ id }) {
         //             console.log(err);
         //         })
         const productids = JSON.parse(localStorage.getItem("auth"));
-        if(productids)
-        {
+        if (productids) {
             ProductLikeandUnlikeCheck(productdata?.id).then((res) => {
                 setLike(res?.data);
             }).catch((err) => {
                 console.log(err);
             })
         }
-        
-       
-       
-
-}, [productSize, productseller, productnames,averageRatings?.avgRating,productnotfound]);
 
 
 
-    
+
+    }, [productSize, productseller, productnames, averageRatings?.avgRating, productnotfound]);
+
+
+
+
 
 
 
@@ -968,27 +967,24 @@ function Viewproducts({ id }) {
     }
 
 
-    const NavigatePath=()=>{
+    const NavigatePath = () => {
         router?.push("/errorboundary")
     }
 
+    if (false) {
+        return (
+            <div>
 
-    if(productnotfound=="No Records Found")
-    {
-return (
-    <div>
-
-{NavigatePath()}
-    </div>
-)
+                {NavigatePath()}
+            </div>
+        )
     }
-    else
-    {
+    else {
 
         return (
             <Fragment>
 
-                {productnotfound}
+
                 <div className={styles.mainproductviewscreen}>
                     <div className={styles.insideproductview}>
                         <div className={styles.splitproductview}>
@@ -1019,10 +1015,10 @@ return (
                                                     src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
                                                     alt="profile-pic"
                                                 /> */}
-    
+
                                                 <ReactImageMagnify {...{
                                                     smallImage: {
-    
+
                                                         alt: 'Wristwatch by Ted Baker London',
                                                         isFluidWidth: true,
                                                         src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
@@ -1036,8 +1032,8 @@ return (
                                                         // border:"3px solid blue"
                                                         zIndex: "989898988989898989898989",
                                                         borderRadius: "10px"
-    
-    
+
+
                                                     },
                                                     imageStyle: {
                                                         // border:"2px solid red",
@@ -1048,7 +1044,7 @@ return (
                                                         zIndex: "9898989898",
                                                         backgroundColor: "white",
                                                         borderRadius: "10px"
-    
+
                                                     },
                                                     // smallImage: {
                                                     //     src: String, (required)
@@ -1061,14 +1057,14 @@ return (
                                                     //     onLoad: Function,
                                                     //     onError: Function
                                                     // },
-    
-    
+
+
                                                 }}
-    
-    
+
+
                                                 />
                                             </div>
-    
+
                                             {tokencheck ? <div className={styles.heartimagesection}>
                                                 <button className={styles.btn}
                                                     onClick={() => {
@@ -1082,13 +1078,13 @@ return (
                                                 >
                                                     {like ? <>
                                                         <Image src={heartlike} alt="no image" className={styles.heartlikes} />
-    
+
                                                     </> : <>
                                                         <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
-    
-    
+
+
                                                     </>}
-    
+
                                                     {/* {like?"kalai true":"kalai false"} */}
                                                 </button>
                                             </div> :
@@ -1097,7 +1093,7 @@ return (
                                                         CheckLoginUsers(productdata?.productSlugName)
                                                         // LikeWishlist(productdata?.id)
                                                     }}>
-    
+
                                                         <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
                                                     </button>
                                                 </div>
@@ -1110,19 +1106,78 @@ return (
                                 <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
                                 <div className={styles.starsection}>
                                     <div className={styles.starsections}>
-                                     
-                                     {averageRatings}
-                                     <Rate defaultValue={parseFloat(averageRatings)} allowHalf style={{ color: "#54BE43" }}
+
+
+{averageRatings?<>
+    
+    
+{averageRatings === 1 && <Rate defaultValue={1} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
+                                        {averageRatings === 1.5 && <Rate defaultValue={1.5} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
+                                        {averageRatings === 2 && <Rate defaultValue={2} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
+                                        {averageRatings === 2.5 && <Rate defaultValue={2.5} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
+                                        {averageRatings === 3 && <Rate defaultValue={3} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
+                                               {averageRatings===3.5 &&  <Rate defaultValue={3.5} allowHalf style={{ color: "#54BE43" }}
                                                         tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
                                                         count={5}
                                                         disabled
-                                                    />
+                                                    />}
+                                                           {averageRatings===4 &&  <Rate defaultValue={4} allowHalf style={{ color: "#54BE43" }}
+                                                        tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                        count={5}
+                                                        disabled
+                                                    />}
+                                                           {averageRatings===4.5 &&  <Rate defaultValue={4.5} allowHalf style={{ color: "#54BE43" }}
+                                                        tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                        count={5}
+                                                        disabled
+                                                    />}
+                                                           {averageRatings===5 &&  <Rate defaultValue={5} allowHalf style={{ color: "#54BE43" }}
+                                                        tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                        count={5}
+                                                        disabled
+                                                    />}
+
+</>:<>
+
+{<Rate defaultValue={0} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
+
+
+
+
+</>}
+                                      
+                                 
+                                      
                                     </div>
                                     <div>
                                         {ratingcount} Review
                                     </div>
                                 </div>
-    
+
                                 <div className={styles.proceinproduct}>
                                     <div className={styles.offertext}>
                                         {productdata?.offerPercentag == 0 ? <>
@@ -1137,7 +1192,7 @@ return (
                                         {productdata?.offerPercentag == 0 ? <></> : <del className={styles.priceautuals}>A${productdata?.actualPrice}</del>}
                                     </div>
                                 </div>
-    
+
                                 <div className={styles.colorsectionlists}>
                                     {productvariations[0]?.name ? <><div className={styles.sizesectionandcolor}>
                                         <div className={styles.fontweightsizes}> {productvariations[0]?.name}</div>
@@ -1268,7 +1323,7 @@ return (
                                         </div>
                                     </>
                                 }
-    
+
                                 <div className={styles.locationsection}>
                                     <div className={styles.deverisection}>
                                         <div>
@@ -1298,7 +1353,7 @@ return (
                                 </div>
                             </div>
                         </div>
-    
+
                         <div className={styles.descriptionsection}>
                             <div className={styles.additionaldetails}>
                                 Product Description
@@ -1321,7 +1376,7 @@ return (
                                         <div className={styles.leftname}>Model Name</div>
                                         <div className={styles.rightname}>{productdata?.modelName}</div>
                                     </div>
-    
+
                                     <div className={styles.listproductdata}>
                                         <div className={styles.leftname}>Manufacture Name</div>
                                         <div className={styles.rightname}>{productdata?.manufacturerName}</div>
@@ -1356,11 +1411,11 @@ return (
                     </div>
                 </div>
                 <div className={styles.leftbg}>
-    
+
                 </div>
                 <div className={styles.righttopbg}></div>
-    
-    
+
+
             </Fragment>
         )
     }
