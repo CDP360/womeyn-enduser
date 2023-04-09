@@ -1016,7 +1016,9 @@ function Viewproducts({ id }) {
                                                     alt="profile-pic"
                                                 /> */}
 
-                                                <ReactImageMagnify {...{
+                                                <ReactImageMagnify 
+                                                        //  className={styles.serachlargeimages}
+                                                {...{
                                                     smallImage: {
 
                                                         alt: 'Wristwatch by Ted Baker London',
