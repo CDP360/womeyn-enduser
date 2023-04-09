@@ -87,14 +87,17 @@ function Allbestservices({ stars }) {
                                    <Skeleton className={styles.skeltons}/>
                                    </>}
                                 </div>
+                                <div className="mt-3">
+
                                 <div className={styles.cardinsidesection}>
                                     <Image src={stars} alt="no image" className={styles.stars} />
                                     <div>
                                         <span>{item?.serviceName}</span>
                                     </div>
-                                    <div className='mb-4'>
+                                    {/* <div className='mb-4'>
                                         <span className='textgrey'>{item?.serviceDescription}</span>
-                                    </div>
+                                    </div> */}
+                                </div>
                                 </div>
                                  
                                 </div>
@@ -115,14 +118,17 @@ function Allbestservices({ stars }) {
                                 <div>
                                     <img src={item?.image} alt="no image" className={styles.sellerimagesize} />
                                 </div>
+                                <div className="mt-3">
+
                                 <div className={styles.cardinsidesection}>
                                     <Image src={stars} alt="no image" className={styles.stars} />
                                     <div>
                                         <span>{item?.serviceName}</span>
                                     </div>
-                                    <div className='mb-4'>
+                                    {/* <div className='mb-4'>
                                         <span className='textgrey'>{item?.serviceDescription}</span>
-                                    </div>
+                                    </div> */}
+                                </div>
                                 </div>
                                  
                                 </div>

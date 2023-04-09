@@ -6,7 +6,8 @@ export function ProductView(data) {
     return instanceBaseurl.get(`/common/product/${data}`).then((res) => {
         return res;
     }).catch((err) => {
-        return err;
+        // console.log("kalaierror",err?.response?.data?.message)
+        return err?.response?.data?.message;
     })
 }
 
