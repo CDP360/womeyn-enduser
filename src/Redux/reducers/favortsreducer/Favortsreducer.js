@@ -1,22 +1,19 @@
-
-
 const initialState = {
-    logindata: [],
+    favortsdata: [],
     error: false
 }
-const LoginReducer = (state = initialState, action) => {
+const FavortReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "LOGIN_SUCCESS":
+        case "FAVORTS_SUCCESS":
             return {
                 ...state,
-                logindata: action.payload,
+                favortsdata: action.payload,
                 error: ""
             }
-
-        case "LOGIN_ERROR":
+        case "FAVORTS_ERROR":
             return {
                 ...state,
-                logindata: [],
+                favortsdata: [],
                 error: action.payload
             }
 
@@ -25,4 +22,4 @@ const LoginReducer = (state = initialState, action) => {
     }
 }
 
-export default LoginReducer;
+export default FavortReducer;

@@ -10,7 +10,6 @@ import Image from 'next/image';
 import plus from '../../../../../assests/womeynlogos/plus.png';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { Cartactions } from '../../../../../Redux/actions/cart/Cartdata';
 import { useState } from 'react';
 import { ContextStore } from '../../../../../Redux/store/Contextstore';
 import { CART_SUCCESS } from '../../../../../Redux/types';

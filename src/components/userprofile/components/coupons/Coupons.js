@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import styles from "./styles/Coupons.module.scss";
 import { MyCouponList } from '../../../../services/mycoupon-service/mycoupon-service';
 import moment from 'moment';
-function Coupons() {
+import { useRouter } from "next/router";
+function Coupons({error}) {
+  const history=useRouter();
   const [coupons, setCoupons] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -15,7 +17,22 @@ function Coupons() {
     }).catch((err) => {
       console.log(err);
     })
-  }, [])
+  }, [error]);
+
+  const NavigateRedirect = () => {
+    history?.push("/errorboundary")
+}
+
+  if(error)
+  {
+    return (
+      <div>
+          {NavigateRedirect()}
+      </div>
+  )
+  }
+ else
+ {
   return (
     <div className={styles.couponsContainer}>
       <div className="mb-4 mt-3">
@@ -51,6 +68,7 @@ function Coupons() {
 
     </div>
   )
+ }
 }
 
 export default Coupons

@@ -6,9 +6,10 @@ import Col from 'react-bootstrap/Col';
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
-import { CreateProfileuser, UserProfileInformation } from './../../../../services/user-login-service/user-login-services';
-function Profile() {
-
+import { useDispatch, useSelector } from 'react-redux';
+function Profile({ users, error }) {
+  const dispatch = useDispatch();
+  const states = useSelector((state) => state?.loginUser);
   const history = useRouter();
   const {
     register,
@@ -22,39 +23,8 @@ function Profile() {
   const [auths, setAuths] = useState(false);
 
   useEffect(() => {
-    const userid = localStorage.getItem("userid");
-    UserProfileInformation(JSON.parse(userid)).then((res) => {
-      if (res == "Please authenticate") {
-        setAuths(true);
-        // toast.error("Please Authenticate!!",
-        //   {
-        //     position: "top-center",
-        //     autoClose: 3000,
-        //     hideProgressBar: false,
-        //     closeOnClick: true,
-        //     pauseOnHover: true,
-        //     draggable: true,
-        //     progress: undefined,
-        //     theme: "dark",
-        //   }
-        // );
-        localStorage.removeItem("userid");
-        localStorage.removeItem("userToken");
-        localStorage.removeItem("whish");
-        localStorage.removeItem("user");
-        localStorage.removeItem("auth");
-        localStorage.removeItem("productid");
-
-      }
-      setUser(res?.data);
-    }).catch((err) => {
-      console.log(err);
-      // setAuths(false);
-
-    })
-
-  }, [auths]);
-
+    setUser(users);
+  }, [error, users]);
   useEffect(() => {
     setValue("username", user?.firstName);
     setValue("gender", user?.gender);
@@ -62,15 +32,13 @@ function Profile() {
     setValue("phonenumber", user?.contactNumber);
     setValue("dateofbirth", user?.dateOfBirth);
     localStorage.setItem("user", JSON.stringify(user?.firstName));
-
-  }, [user])
+  }, [users,error])
   const [show, setShow] = useState(false);
-
   const NavigateRedirect = () => {
     history?.push("/errorboundary")
   }
 
-  if (auths) {
+  if (error) {
     return (
       <div>
         {NavigateRedirect()}

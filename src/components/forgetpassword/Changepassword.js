@@ -43,13 +43,11 @@ function Changepassword() {
     } = useForm(formOptions);
 
     const onSubmit = async (data) => {
-        const userid = localStorage.getItem("womenUserid");
         const check = {
             password: data?.password,
         }
         var passwordRegex = /(?=^.{8,}$)(?=.{0,}[A-Z])(?=.{0,}[a-z])(?=.{0,}\W)(?=.{0,}\d)/g
         if (passwordRegex.test(check?.password)) {
-            console.log("data", check)
             setMatchCheck1(true);
             setMatchCheck2(false);
             UserResetPassword(search, check).then((res) => {

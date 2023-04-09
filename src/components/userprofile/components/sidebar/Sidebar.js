@@ -21,7 +21,7 @@ import couponsactive from '../../../../assests/profile-logo/ticketactive.png';
 import logout from '../../../../assests/profile-logo/logout.png';
 
 
-function Sidebar({ user }) {
+function Sidebar({ user, errors }) {
     const [imageshowmodel, setImageShowModel] = useState(true);
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
@@ -88,11 +88,9 @@ function Sidebar({ user }) {
     const LogoutUser = () => {
         localStorage.removeItem("userid");
         localStorage.removeItem("userToken");
-        localStorage.removeItem("profile");
         localStorage.removeItem("whish");
         localStorage.removeItem("user");
         localStorage.removeItem("auth");
-
         toast.success("Logout Successfull", {
             position: "top-center",
             autoClose: 3000,
@@ -107,422 +105,434 @@ function Sidebar({ user }) {
             history.push("/");
         }, 300)
     }
-
-
-    return (
-        <>
-            <div className="d-none d-lg-block">
-
-            <div className={styles.mainsidebarsection}>
-                <div className={styles.insideprofilesection}>
-                    <div className={styles.imagesectionprofile} >
-                        {user?.profileImageName ? <>
-                            <img
-                                className={styles.editprofilesection}
-                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
-                                alt="profile-pic"
-                            />
-                        </> : <Image src={userprofile} alt="no image" className={styles.profileimage} onClick={handleShow} />}
-                        <div>
-                            <Image src={camera} alt="no image" className={styles.profileimagecamera} onClick={handleShow} />
-                        </div>
-                    </div>
-                    <div className={styles.imagesectioncontent}  >
-                        {user?.firstName}
-                    </div>
-                </div>
+    const NavigateRedirect = () => {
+        history?.push("/errorboundary")
+    }
+    if (errors) {
+        return (
+            <div>
+                {NavigateRedirect()}
             </div>
-
-            <div className={styles.splitSidebarsewction}>
-
-                <div className={styles.insidesectionsplitsidebarsection}>
-                    <div className={styles.profilecontentinlistsection}>
-                        <div >
-                            <Image src={profile} alt="no image" className={styles.profileicon} />
-                        </div>
-                        <div className={styles.boldtexts}>
-                            Profile
-                        </div>
-                    </div>
-                    <div className={styles.profiletextgapsection}>
-
-                        {routingpath?.map((item, index) => {
-                            return (
-                                <div onClick={() => PathNavigate(item?.name)} className={item?.name == pathname ? styles.activebutton : styles.disablebutton} key={index}>
-                                    {item?.path}
-                                </div>
-                            )
-                        })}
-
-                    </div>
-                    <div className={styles.dashedsectionmain}>
-                        <div className={styles.insidedashedsection}>
-                        </div>
-                    </div>
-                    <div className={pathname == "orders" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("orders")}>
-                        <div>
-                            {pathname == "orders" ? <Image src={orderactive} alt="no image" className={styles.profileicon} /> : <Image src={order} alt="no image" className={styles.profileicon} />}
-                        </div>
-                        <div className={pathname == "orders" ? styles.boldtextactive : styles.boldtexts}>
-                            Orders
-                        </div>
-                    </div>
-
-                    <div className={styles.dashedsectionmain}>
-                        <div className={styles.insidedashedsection}>
-                        </div>
-                    </div>
-                    <div className={pathname == "favorts" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("favorts")}>
-                        <div >
-                            {pathname == "favorts" ? <Image src={favortsactive} alt="no image" className={styles.profileicon} /> : <Image src={favorts} alt="no image" className={styles.profileicon} />}
-                        </div>
-                        <div className={pathname == "favorts" ? styles.boldtextactive : styles.boldtexts}>
-                            Favorites
-                        </div>
-                    </div>
-                    <div className={styles.dashedsectionmain}>
-                        <div className={styles.insidedashedsection}>
-                        </div>
-                    </div>
-                    <div className={pathname == "coupons" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("coupons")}>
-                        <div >
-                            {pathname == "coupons" ? <Image src={couponsactive} alt="no image" className={styles.profileicon} /> : <Image src={coupons} alt="no image" className={styles.profileicon} />}
-                        </div>
-                        <div className={pathname == "coupons" ? styles.boldtextactive : styles.boldtexts}>
-                            Coupons
-                        </div>
-                    </div>
-                    <div className={styles.dashedsectionmain}>
-                        <div className={styles.insidedashedsection}>
-                        </div>
-                    </div>
-                    <div className={styles.profilecontentinlistsection} onClick={LogoutUser}>
-                        <div >
-                            <Image src={logout} alt="no image" className={styles.profileicon} />
-                        </div>
-                        <div className={styles.boldtexts}>
-                            Logout
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            </div>
-
-            <div className="d-xs-block d-md-none">
-
-            <div className={styles.mainsidebarsection}>
-                <div className={styles.insideprofilesection}>
-                    <div className={styles.imagesectionprofile} >
-                        {user?.profileImageName ? <>
-                            <img
-                                className={styles.editprofilesection}
-                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
-                                alt="profile-pic"
-                            />
-                        </> : <Image src={userprofile} alt="no image" className={styles.profileimage} onClick={handleShow} />}
-                        <div>
-                            <Image src={camera} alt="no image" className={styles.profileimagecamera} onClick={handleShow} />
-                        </div>
-                    </div>
-                    <div className={styles.imagesectioncontent}  >
-                        {user?.firstName}
-                    </div>
-                </div>
-            </div>
-
-            <div className={styles.splitSidebarsewction}>
-
-                <div className={styles.insidesectionsplitsidebarsection}>
-                    <div className={styles.profilecontentinlistsection}>
-                        <div >
-                            <Image src={profile} alt="no image" className={styles.profileicon} />
-                        </div>
-                        <div className={styles.boldtexts}>
-                            Profile
-                        </div>
-                    </div>
-                    <div className={styles.profiletextgapsection}>
-
-                        {routingpath?.map((item, index) => {
-                            return (
-                                <div onClick={() => PathNavigate(item?.name)} className={item?.name == pathname ? styles.activebutton : styles.disablebutton} key={index}>
-                                    {item?.path}
-                                </div>
-                            )
-                        })}
-
-                    </div>
-                    <div className={styles.dashedsectionmain}>
-                        <div className={styles.insidedashedsection}>
-                        </div>
-                    </div>
-                    <div className={pathname == "orders" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("orders")}>
-                        <div>
-                            {pathname == "orders" ? <Image src={orderactive} alt="no image" className={styles.profileicon} /> : <Image src={order} alt="no image" className={styles.profileicon} />}
-                        </div>
-                        <div className={pathname == "orders" ? styles.boldtextactive : styles.boldtexts}>
-                            Orders
-                        </div>
-                    </div>
-
-                    <div className={styles.dashedsectionmain}>
-                        <div className={styles.insidedashedsection}>
-                        </div>
-                    </div>
-                    <div className={pathname == "favorts" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("favorts")}>
-                        <div >
-                            {pathname == "favorts" ? <Image src={favortsactive} alt="no image" className={styles.profileicon} /> : <Image src={favorts} alt="no image" className={styles.profileicon} />}
-                        </div>
-                        <div className={pathname == "favorts" ? styles.boldtextactive : styles.boldtexts}>
-                            Favorites
-                        </div>
-                    </div>
-                    <div className={styles.dashedsectionmain}>
-                        <div className={styles.insidedashedsection}>
-                        </div>
-                    </div>
-                    <div className={pathname == "coupons" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("coupons")}>
-                        <div >
-                            {pathname == "coupons" ? <Image src={couponsactive} alt="no image" className={styles.profileicon} /> : <Image src={coupons} alt="no image" className={styles.profileicon} />}
-                        </div>
-                        <div className={pathname == "coupons" ? styles.boldtextactive : styles.boldtexts}>
-                            Coupons
-                        </div>
-                    </div>
-                    <div className={styles.dashedsectionmain}>
-                        <div className={styles.insidedashedsection}>
-                        </div>
-                    </div>
-                    <div className={styles.profilecontentinlistsection} onClick={LogoutUser}>
-                        <div >
-                            <Image src={logout} alt="no image" className={styles.profileicon} />
-                        </div>
-                        <div className={styles.boldtexts}>
-                            Logout
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-           
-
-            </div>
-
-            <div className="d-none d-md-block d-lg-none">
-
-<div className={styles.profilesidebarmobile}>
-
-<div className={styles.leftsidebarprofile}>
-
-<div className={styles.imagesectionprofiles} >
-                        {user?.profileImageName ? <>
-                            <img
-                                className={styles.editprofilesection}
-                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
-                                alt="profile-pic"
-                            />
-                        </> : <Image src={userprofile} alt="no image" className={styles.profileimage} onClick={handleShow} />}
-                        <div>
-                            <Image src={camera} alt="no image" className={styles.profileimagecamera} onClick={handleShow} />
-                        </div>
-                    </div>
-                    <div className={styles.imagesectioncontent}  >
-                        {user?.firstName}
-                    </div>
-</div>
-
-<div className={styles.middlesidebarprofile}>
-
-
- <div className={styles.profilecontentinlistsection}>
-                        <div >
-                            <Image src={profile} alt="no image" className={styles.profileicon} />
-                        </div>
-                        <div className={styles.boldtexts}>
-                            Profile
-                        </div>
-                    </div>
-                    <div className={styles.profiletextgapsection}>
-
-                        {routingpath?.map((item, index) => {
-                            return (
-                                <div onClick={() => PathNavigate(item?.name)} className={item?.name == pathname ? styles.activebutton : styles.disablebutton} key={index}>
-                                    {item?.path}
-                                </div>
-                            )
-                        })}
-
-                    </div>
-
-</div>
-
-<div className={styles.rightsidebarprofile}>
-
-<div className={pathname == "orders" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("orders")}>
-                        <div>
-                            {pathname == "orders" ? <Image src={orderactive} alt="no image" className={styles.profileicon} /> : <Image src={order} alt="no image" className={styles.profileicon} />}
-                        </div>
-                        <div className={pathname == "orders" ? styles.boldtextactive : styles.boldtexts}>
-                            Orders
-                        </div>
-                    </div>
-
-                    <div className={styles.dashedsectionmain}>
-                        <div className={styles.insidedashedsection}>
-                        </div>
-                    </div>
-                    <div className={pathname == "favorts" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("favorts")}>
-                        <div >
-                            {pathname == "favorts" ? <Image src={favortsactive} alt="no image" className={styles.profileicon} /> : <Image src={favorts} alt="no image" className={styles.profileicon} />}
-                        </div>
-                        <div className={pathname == "favorts" ? styles.boldtextactive : styles.boldtexts}>
-                            Favorites
-                        </div>
-                    </div>
-                    <div className={styles.dashedsectionmain}>
-                        <div className={styles.insidedashedsection}>
-                        </div>
-                    </div>
-                    <div className={pathname == "coupons" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("coupons")}>
-                        <div >
-                            {pathname == "coupons" ? <Image src={couponsactive} alt="no image" className={styles.profileicon} /> : <Image src={coupons} alt="no image" className={styles.profileicon} />}
-                        </div>
-                        <div className={pathname == "coupons" ? styles.boldtextactive : styles.boldtexts}>
-                            Coupons
-                        </div>
-                    </div>
-                    <div className={styles.dashedsectionmain}>
-                        <div className={styles.insidedashedsection}>
-                        </div>
-                    </div>
-                    <div className={styles.profilecontentinlistsection} onClick={LogoutUser}>
-                        <div >
-                            <Image src={logout} alt="no image" className={styles.profileicon} />
-                        </div>
-                        <div className={styles.boldtexts}>
-                            Logout
-                        </div>
-                    </div>
-</div>
-
-
-</div>
-            </div>
-
+        )
+    }
+    else {
+        return (
             <>
-                <Modal
-                    show={show}
-                    onHide={handleClose}
-                    backdrop="static"
-                    keyboard={false}
-                    centered
-                >
-                    <Modal.Body>
-                        <div className={styles.cursors} onClick={handleClose}>
-                            <ion-icon name="close-outline" size="large"></ion-icon>
-                        </div>
-                        <div className="mt-3 mb-4">
-                            <div className={styles.changepicturesize}>Change picture </div>
-                        </div>
-                        <div className="text-center">
-
-                            {image ? <label htmlFor="upload-button">
-                                <>
+                <div className="d-none d-lg-block">
+                    <div className={styles.mainsidebarsection}>
+                        <div className={styles.insideprofilesection}>
+                            <div className={styles.imagesectionprofile} >
+                                {user?.profileImageName ? <>
                                     <img
-                                        className={styles.editmodelprofile}
-
-                                        style={{ borderRadius: "50%", cursor: "pointer" }}
-                                        src={URL.createObjectURL(image)}
+                                        className={styles.editprofilesection}
+                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
+                                        alt="profile-pic"
                                     />
-
-                                    {showuploadbutton ? <>
-                                    </> : <>
-                                        <div className="mt-2">
-                                            <Button onClick={uploadImages} className="upload-btn" >Upload</Button>
-                                        </div>
-                                    </>}
-                                </>
-                            </label> : (
-                                <>
-                                    {/* user?.profileImageName  */}
-                                    {user?.profileImageName ? <label htmlFor="upload-button">
-                                        <img
-
-                                            className={styles.editmodelprofile}
-                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
-                                            alt="profile-pic"
-                                        />
-                                    </label> :
-                                        <img
-
-                                            src="https://sialifehospital.com/wp-content/uploads/2021/04/testimonial-1.png"
-                                            alt="profile-pic"
-                                            className={styles.editmodelprofile}
-
-                                        />
-
-
-                                    }
-                                </>)}
+                                </> : <Image src={userprofile} alt="no image" className={styles.profileimage} onClick={handleShow} />}
+                                <div>
+                                    <Image src={camera} alt="no image" className={styles.profileimagecamera} onClick={handleShow} />
+                                </div>
+                            </div>
+                            <div className={styles.imagesectioncontent}  >
+                                {user?.firstName}
+                            </div>
                         </div>
-                        <div className="text-center mt-4 mb-1">
-                            {/* <div>
-                                <span className='active'> Drag & drop</span> an image
-                            </div> */}
-                            <label htmlFor="upload-button">
-                                <span className='active'>Click Here</span> an image
-                            </label>
-                            <input type="file" id="upload-button" style={{ display: 'none' }} onChange={handleImagechange} />
-                        </div>
-                    </Modal.Body>
-                    <div className="text-center mb-4 mt-3">
-                        <Button className={styles.editbuttonssdone} onClick={ImageUploadSuccess}>Done</Button>
                     </div>
-                </Modal>
 
-                <div>
-                    <Modal show={show1}
-                        onHide={handleClose1}
+                    <div className={styles.splitSidebarsewction}>
+
+                        <div className={styles.insidesectionsplitsidebarsection}>
+                            <div className={styles.profilecontentinlistsection}>
+                                <div >
+                                    <Image src={profile} alt="no image" className={styles.profileicon} />
+                                </div>
+                                <div className={styles.boldtexts}>
+                                    Profile
+                                </div>
+                            </div>
+                            <div className={styles.profiletextgapsection}>
+
+                                {routingpath?.map((item, index) => {
+                                    return (
+                                        <div onClick={() => PathNavigate(item?.name)} className={item?.name == pathname ? styles.activebutton : styles.disablebutton} key={index}>
+                                            {item?.path}
+                                        </div>
+                                    )
+                                })}
+
+                            </div>
+                            <div className={styles.dashedsectionmain}>
+                                <div className={styles.insidedashedsection}>
+                                </div>
+                            </div>
+                            <div className={pathname == "orders" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("orders")}>
+                                <div>
+                                    {pathname == "orders" ? <Image src={orderactive} alt="no image" className={styles.profileicon} /> : <Image src={order} alt="no image" className={styles.profileicon} />}
+                                </div>
+                                <div className={pathname == "orders" ? styles.boldtextactive : styles.boldtexts}>
+                                    Orders
+                                </div>
+                            </div>
+
+                            <div className={styles.dashedsectionmain}>
+                                <div className={styles.insidedashedsection}>
+                                </div>
+                            </div>
+                            <div className={pathname == "favorts" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("favorts")}>
+                                <div >
+                                    {pathname == "favorts" ? <Image src={favortsactive} alt="no image" className={styles.profileicon} /> : <Image src={favorts} alt="no image" className={styles.profileicon} />}
+                                </div>
+                                <div className={pathname == "favorts" ? styles.boldtextactive : styles.boldtexts}>
+                                    Favorites
+                                </div>
+                            </div>
+                            <div className={styles.dashedsectionmain}>
+                                <div className={styles.insidedashedsection}>
+                                </div>
+                            </div>
+                            <div className={pathname == "coupons" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("coupons")}>
+                                <div >
+                                    {pathname == "coupons" ? <Image src={couponsactive} alt="no image" className={styles.profileicon} /> : <Image src={coupons} alt="no image" className={styles.profileicon} />}
+                                </div>
+                                <div className={pathname == "coupons" ? styles.boldtextactive : styles.boldtexts}>
+                                    Coupons
+                                </div>
+                            </div>
+                            <div className={styles.dashedsectionmain}>
+                                <div className={styles.insidedashedsection}>
+                                </div>
+                            </div>
+                            <div className={styles.profilecontentinlistsection} onClick={LogoutUser}>
+                                <div >
+                                    <Image src={logout} alt="no image" className={styles.profileicon} />
+                                </div>
+                                <div className={styles.boldtexts}>
+                                    Logout
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div className="d-xs-block d-md-none">
+
+                    <div className={styles.mainsidebarsection}>
+                        <div className={styles.insideprofilesection}>
+                            <div className={styles.imagesectionprofile} >
+                                {user?.profileImageName ? <>
+                                    <img
+                                        className={styles.editprofilesection}
+                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
+                                        alt="profile-pic"
+                                    />
+                                </> : <Image src={userprofile} alt="no image" className={styles.profileimage} onClick={handleShow} />}
+                                <div>
+                                    <Image src={camera} alt="no image" className={styles.profileimagecamera} onClick={handleShow} />
+                                </div>
+                            </div>
+                            <div className={styles.imagesectioncontent}  >
+                                {user?.firstName}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={styles.splitSidebarsewction}>
+
+                        <div className={styles.insidesectionsplitsidebarsection}>
+                            <div className={styles.profilecontentinlistsection}>
+                                <div >
+                                    <Image src={profile} alt="no image" className={styles.profileicon} />
+                                </div>
+                                <div className={styles.boldtexts}>
+                                    Profile
+                                </div>
+                            </div>
+                            <div className={styles.profiletextgapsection}>
+
+                                {routingpath?.map((item, index) => {
+                                    return (
+                                        <div onClick={() => PathNavigate(item?.name)} className={item?.name == pathname ? styles.activebutton : styles.disablebutton} key={index}>
+                                            {item?.path}
+                                        </div>
+                                    )
+                                })}
+
+                            </div>
+                            <div className={styles.dashedsectionmain}>
+                                <div className={styles.insidedashedsection}>
+                                </div>
+                            </div>
+                            <div className={pathname == "orders" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("orders")}>
+                                <div>
+                                    {pathname == "orders" ? <Image src={orderactive} alt="no image" className={styles.profileicon} /> : <Image src={order} alt="no image" className={styles.profileicon} />}
+                                </div>
+                                <div className={pathname == "orders" ? styles.boldtextactive : styles.boldtexts}>
+                                    Orders
+                                </div>
+                            </div>
+
+                            <div className={styles.dashedsectionmain}>
+                                <div className={styles.insidedashedsection}>
+                                </div>
+                            </div>
+                            <div className={pathname == "favorts" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("favorts")}>
+                                <div >
+                                    {pathname == "favorts" ? <Image src={favortsactive} alt="no image" className={styles.profileicon} /> : <Image src={favorts} alt="no image" className={styles.profileicon} />}
+                                </div>
+                                <div className={pathname == "favorts" ? styles.boldtextactive : styles.boldtexts}>
+                                    Favorites
+                                </div>
+                            </div>
+                            <div className={styles.dashedsectionmain}>
+                                <div className={styles.insidedashedsection}>
+                                </div>
+                            </div>
+                            <div className={pathname == "coupons" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("coupons")}>
+                                <div >
+                                    {pathname == "coupons" ? <Image src={couponsactive} alt="no image" className={styles.profileicon} /> : <Image src={coupons} alt="no image" className={styles.profileicon} />}
+                                </div>
+                                <div className={pathname == "coupons" ? styles.boldtextactive : styles.boldtexts}>
+                                    Coupons
+                                </div>
+                            </div>
+                            <div className={styles.dashedsectionmain}>
+                                <div className={styles.insidedashedsection}>
+                                </div>
+                            </div>
+                            <div className={styles.profilecontentinlistsection} onClick={LogoutUser}>
+                                <div >
+                                    <Image src={logout} alt="no image" className={styles.profileicon} />
+                                </div>
+                                <div className={styles.boldtexts}>
+                                    Logout
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+                <div className="d-none d-md-block d-lg-none">
+
+                    <div className={styles.profilesidebarmobile}>
+
+                        <div className={styles.leftsidebarprofile}>
+
+                            <div className={styles.imagesectionprofiles} >
+                                {user?.profileImageName ? <>
+                                    <img
+                                        className={styles.editprofilesection}
+                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
+                                        alt="profile-pic"
+                                    />
+                                </> : <Image src={userprofile} alt="no image" className={styles.profileimage} onClick={handleShow} />}
+                                <div>
+                                    <Image src={camera} alt="no image" className={styles.profileimagecamera} onClick={handleShow} />
+                                </div>
+                            </div>
+                            <div className={styles.imagesectioncontent}  >
+                                {user?.firstName}
+                            </div>
+                        </div>
+
+                        <div className={styles.middlesidebarprofile}>
+
+
+                            <div className={styles.profilecontentinlistsection}>
+                                <div >
+                                    <Image src={profile} alt="no image" className={styles.profileicon} />
+                                </div>
+                                <div className={styles.boldtexts}>
+                                    Profile
+                                </div>
+                            </div>
+                            <div className={styles.profiletextgapsection}>
+
+                                {routingpath?.map((item, index) => {
+                                    return (
+                                        <div onClick={() => PathNavigate(item?.name)} className={item?.name == pathname ? styles.activebutton : styles.disablebutton} key={index}>
+                                            {item?.path}
+                                        </div>
+                                    )
+                                })}
+
+                            </div>
+
+                        </div>
+
+                        <div className={styles.rightsidebarprofile}>
+
+                            <div className={pathname == "orders" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("orders")}>
+                                <div>
+                                    {pathname == "orders" ? <Image src={orderactive} alt="no image" className={styles.profileicon} /> : <Image src={order} alt="no image" className={styles.profileicon} />}
+                                </div>
+                                <div className={pathname == "orders" ? styles.boldtextactive : styles.boldtexts}>
+                                    Orders
+                                </div>
+                            </div>
+
+                            <div className={styles.dashedsectionmain}>
+                                <div className={styles.insidedashedsection}>
+                                </div>
+                            </div>
+                            <div className={pathname == "favorts" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("favorts")}>
+                                <div >
+                                    {pathname == "favorts" ? <Image src={favortsactive} alt="no image" className={styles.profileicon} /> : <Image src={favorts} alt="no image" className={styles.profileicon} />}
+                                </div>
+                                <div className={pathname == "favorts" ? styles.boldtextactive : styles.boldtexts}>
+                                    Favorites
+                                </div>
+                            </div>
+                            <div className={styles.dashedsectionmain}>
+                                <div className={styles.insidedashedsection}>
+                                </div>
+                            </div>
+                            <div className={pathname == "coupons" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("coupons")}>
+                                <div >
+                                    {pathname == "coupons" ? <Image src={couponsactive} alt="no image" className={styles.profileicon} /> : <Image src={coupons} alt="no image" className={styles.profileicon} />}
+                                </div>
+                                <div className={pathname == "coupons" ? styles.boldtextactive : styles.boldtexts}>
+                                    Coupons
+                                </div>
+                            </div>
+                            <div className={styles.dashedsectionmain}>
+                                <div className={styles.insidedashedsection}>
+                                </div>
+                            </div>
+                            <div className={styles.profilecontentinlistsection} onClick={LogoutUser}>
+                                <div >
+                                    <Image src={logout} alt="no image" className={styles.profileicon} />
+                                </div>
+                                <div className={styles.boldtexts}>
+                                    Logout
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <>
+                    <Modal
+                        show={show}
+                        onHide={handleClose}
                         backdrop="static"
                         keyboard={false}
-                        centered>
-
+                        centered
+                    >
                         <Modal.Body>
-                            <div className={styles.cursors} onClick={handleClose1}>
+                            <div className={styles.cursors} onClick={handleClose}>
                                 <ion-icon name="close-outline" size="large"></ion-icon>
                             </div>
-                            <div className={styles.congratus}>
-                                <div className={styles.insidesectioncongratus}>
-                                    <div className="mt-2 mb-3">
-                                        <Image src={congrtsimage} alt="no image" className={styles.congratusimage} />
-                                    </div>
-                                    <div className="mt-2 mb-3">
-                                        <h1 className={styles.congratustext}>Congratulations!</h1>
+                            <div className="mt-3 mb-4">
+                                <div className={styles.changepicturesize}>Change picture </div>
+                            </div>
+                            <div className="text-center">
 
-                                    </div>
-                                    <div className={styles.yourprofilehas}>
-                                        Your profile has been Updated!
-                                    </div>
-                                    <div className='mt-4 mb-4'>
-                                        <Button className={styles.editbuttonssdone} onClick={confirmuploadprofileimage}>Done</Button>
-                                    </div>
-                                </div>
+                                {image ? <label htmlFor="upload-button">
+                                    <>
+                                        <img
+                                            className={styles.editmodelprofile}
+
+                                            style={{ borderRadius: "50%", cursor: "pointer" }}
+                                            src={URL.createObjectURL(image)}
+                                        />
+
+                                        {showuploadbutton ? <>
+                                        </> : <>
+                                            <div className="mt-2">
+                                                <Button onClick={uploadImages} className="upload-btn" >Upload</Button>
+                                            </div>
+                                        </>}
+                                    </>
+                                </label> : (
+                                    <>
+                                        {/* user?.profileImageName  */}
+                                        {user?.profileImageName ? <label htmlFor="upload-button">
+                                            <img
+
+                                                className={styles.editmodelprofile}
+                                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
+                                                alt="profile-pic"
+                                            />
+                                        </label> :
+                                            <img
+
+                                                src="https://sialifehospital.com/wp-content/uploads/2021/04/testimonial-1.png"
+                                                alt="profile-pic"
+                                                className={styles.editmodelprofile}
+
+                                            />
+
+
+                                        }
+                                    </>)}
+                            </div>
+                            <div className="text-center mt-4 mb-1">
+                                {/* <div>
+                                    <span className='active'> Drag & drop</span> an image
+                                </div> */}
+                                <label htmlFor="upload-button">
+                                    <span className='active'>Click Here</span> an image
+                                </label>
+                                <input type="file" id="upload-button" style={{ display: 'none' }} onChange={handleImagechange} />
                             </div>
                         </Modal.Body>
-
+                        <div className="text-center mb-4 mt-3">
+                            <Button className={styles.editbuttonssdone} onClick={ImageUploadSuccess}>Done</Button>
+                        </div>
                     </Modal>
-                </div>
+
+                    <div>
+                        <Modal show={show1}
+                            onHide={handleClose1}
+                            backdrop="static"
+                            keyboard={false}
+                            centered>
+
+                            <Modal.Body>
+                                <div className={styles.cursors} onClick={handleClose1}>
+                                    <ion-icon name="close-outline" size="large"></ion-icon>
+                                </div>
+                                <div className={styles.congratus}>
+                                    <div className={styles.insidesectioncongratus}>
+                                        <div className="mt-2 mb-3">
+                                            <Image src={congrtsimage} alt="no image" className={styles.congratusimage} />
+                                        </div>
+                                        <div className="mt-2 mb-3">
+                                            <h1 className={styles.congratustext}>Congratulations!</h1>
+
+                                        </div>
+                                        <div className={styles.yourprofilehas}>
+                                            Your profile has been Updated!
+                                        </div>
+                                        <div className='mt-4 mb-4'>
+                                            <Button className={styles.editbuttonssdone} onClick={confirmuploadprofileimage}>Done</Button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Modal.Body>
+
+                        </Modal>
+                    </div>
+
+
+                </>
+
 
 
             </>
+        )
+    }
 
 
 
-        </>
-    )
 }
 
 export default Sidebar

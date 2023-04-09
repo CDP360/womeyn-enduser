@@ -2,7 +2,7 @@
 
 .homesectionmain {
   width: 100%;
-  position:relative;
+  position: relative;
 
   .emptyboxrightcolor {
     // background-color: orange;
@@ -55,9 +55,9 @@
         border-radius: 8px;
         cursor: pointer;
         @include xsBreakPoint {
-          height: 120px;
-          // width:100%;
-          object-fit: contain;
+          height: auto;
+          width: 100%;
+          object-fit: cover;
           border-radius: 10px !important;
         }
         @include smBreakPoint {
@@ -161,4 +161,5 @@
   width: 100% !important;
   height: 200px !important;
   background: #f1f1f1;
+  border-radius: 20px;
 }

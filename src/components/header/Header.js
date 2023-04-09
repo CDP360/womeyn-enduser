@@ -7,30 +7,25 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import cartslogo from '../../assests/homepage-logos/basket.png';
 import profile from '../../assests/homepage-logos/profile.png';
-import iconmenu from '../../assests/homepage-logos/iconMenu.png';
-import { useSelector } from 'react-redux';
 import myprofile from '../../assests/login-logos/myprofile.png';
 import logout from '../../assests/login-logos/logout.png';
 import notifications from '../../assests/login-logos/notifications.png';
 import { useContext, useState } from 'react';
-
 import dynamic from 'next/dynamic';
-
-import facebook from '../../assests/homepage-logos/facebookfooter.png';
-import youtube from '../../assests/homepage-logos/youtubered.png';
-import instagram from '../../assests/homepage-logos/newinstagramfooter.png';
-import linkdin from '../../assests/homepage-logos/linkedinfooter.png';
-import twitter from '../../assests/homepage-logos/twitterfooter.png';
 import { toast } from 'react-toastify';
 import heart from '../../assests/homepage-logos/hearticon.png';
 import { ContextStore } from './../../Redux/store/Contextstore';
 import { GetFavoritsList } from './../../services/user-favorits-service/User-favorits-service';
 import { ExploreCategorys } from '../../services/explore-service/explore-service';
+import { useDispatch, useSelector } from 'react-redux';
+import { FavortActions } from '../../Redux/actions/favortactions/Favortactions';
 function Header() {
-    const { state, dispatch } = useContext(ContextStore);
+    const { state } = useContext(ContextStore);
+
+    const dispatch = useDispatch();
+    const favortcountdataredux = useSelector((state) => state);
     const { cart } = state;
     const router = useRouter();
-    const states = useSelector(state => state);
     const [showmega, setShowMega] = useState(false);
     const [userauth, setUserAuth] = useState("");
     const [favortscount, setFavortcount] = useState([]);
@@ -81,72 +76,27 @@ function Header() {
         router.push(`/category/${data}`);
 
     }
-    const datas = [
-        {
-            id: 1,
-            name: "Blazers"
-        },
-        {
-            id: 2,
-            name: "Dresses | Jumpsuits"
-        },
-        {
-            id: 3,
-            name: "Shirts"
-        },
-        {
-            id: 4,
-            name: "Trousers"
-        },
-        {
-            id: 5,
-            name: "Tops | Corsets"
-        },
-        {
-            id: 6,
-            name: "Bodysuits"
-        },
-        {
-            id: 7,
-            name: "Tshirts"
-        },
-
-    ]
 
     const heartpushdata = () => {
         router.push(`/profile/favorts`);
-
     }
-
     useEffect(() => {
         const auth = localStorage.getItem("auth");
         setUserAuth(auth);
-        if (auth) {
-            Favortscount();
-
-        }
-
 
         ExploreCategorys().then((res) => {
             setCatgorys(res?.data);
         }).catch((err) => {
             console.log(err);
         })
+        FavortActions(dispatch)
     }, [userauth]);
 
-    const Favortscount = () => {
 
-        GetFavoritsList().then((res) => {
-            setFavortcount(res?.data[0]?.results);
-        }).catch((err) => {
-            console.log(err);
-        })
-    }
 
     const SellerLogin = () => {
         window.open('https://eseller.cdp360.in/')
     }
-
 
     return (
         <Fragment>
@@ -190,8 +140,8 @@ function Header() {
                                         <div>
                                             <Image src={heart} alt="no image" className={styles.notifications} />
                                         </div>
-                                        {favortscount?.length > 0 ? <div className={styles.cartcountbox}>
-                                            {favortscount?.length}
+                                        {favortcountdataredux?.favorts?.favortsdata?.length > 0 ? <div className={styles.cartcountbox}>
+                                            {favortcountdataredux?.favorts?.favortsdata?.length}
                                         </div>
                                             : <></>}
 
@@ -212,7 +162,17 @@ function Header() {
                                 <div className={styles.dropdownsectionkalai}>
                                     <div onClick={() => setShowMega(!showmega)}>
                                         {userauth ? <>
-                                            <Image src={profile} alt="no image" className={styles.notificationsprofile} />
+                                        {favortcountdataredux?.loginUser?.logindata?.profileImageName?<>
+                                            <img
+                                            className={styles.notificationsprofile}
+                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${favortcountdataredux?.loginUser?.logindata?.profileImageName}`}
+                                            alt="profile-pic"
+                                        />
+                                        
+                                        </>:<>
+                                        <Image src={profile} alt="no image" className={styles.notificationsprofile} />
+                                        
+                                        </>}
 
                                         </> : <div className={styles.logintexts}>Login</div>}
                                     </div>

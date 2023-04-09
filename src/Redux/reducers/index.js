@@ -1,13 +1,11 @@
 import { combineReducers } from "redux";
-import Login_Reducer from "./loginreducer/LoginReducer";
+import LoginReducer from "./loginreducer/LoginReducer";
 import Womenslidercount from "./womeynslide";
-import Theme_Reducer from './themereducer/Themereducer';
-import Cart_Reducer from "./cartreducer/Cartreducer";
+import FavortReducer from "./favortsreducer/Favortsreducer";
 const RootReducers = combineReducers({
     slidercount: Womenslidercount,
-    loginUser: Login_Reducer,
-    themes: Theme_Reducer,
-    cart: Cart_Reducer
+    loginUser: LoginReducer,
+    favorts:FavortReducer
 });
 
 export default RootReducers;

@@ -10,7 +10,9 @@
 }
 .offcanvebodysection {
     z-index: 9898989898989;
-    height: auto;
+    height: 100vh;
+overflow:hidden;
+    overflow-y:auto;
     .arrowend {
         display: flex;
         align-items: center;

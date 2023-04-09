@@ -13,12 +13,15 @@ import { useRouter } from 'next/router';
 import { ContextStore } from '../../../Redux/store/Contextstore';
 import heart from '../../../assests/homepage-logos/hearticon.png';
 import { GetFavoritsList } from './../../../services/user-favorits-service/User-favorits-service';
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { FavortActions } from './../../../Redux/actions/favortactions/Favortactions';
+import { LoginActions } from './../../../Redux/actions/loginactions/Loginaction';
 function MobileHeader() {
     const router = useRouter();
+    const dispatch = useDispatch();
+    const favortcountdataredux = useSelector((state) => state);
     const [favortscount, setFavortcount] = useState([]);
-    const { state, dispatch } = useContext(ContextStore);
+    const { state } = useContext(ContextStore);
     const { cart } = state;
     const [images, setImages] = useState("");
     const [tokens, setUserToken] = useState("");
@@ -54,7 +57,7 @@ function MobileHeader() {
 
     };
 
-    const Becomeaseller=()=>{
+    const Becomeaseller = () => {
         window.open('https://eseller.cdp360.in/')
     }
 
@@ -63,23 +66,13 @@ function MobileHeader() {
 
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         const auth = localStorage.getItem("auth");
-        if (auth) {
-            Favortscount();
+        FavortActions(dispatch);
+        LoginActions(dispatch);
 
-        }
-    },[])
+    }, [])
 
-
-    const Favortscount = () => {
-
-        GetFavoritsList().then((res) => {
-            setFavortcount(res?.data[0]?.results);
-        }).catch((err) => {
-            console.log(err);
-        })
-    }
     return (
         <Fragment>
             <div className={styles.mainmobilesection}>
@@ -98,7 +91,18 @@ function MobileHeader() {
 
                 <div className={styles.mobilerightsection}>
                     <div onClick={handleShow} >
-                        <Image src={profile} alt="no image" className={styles.barsection} />
+
+                        {favortcountdataredux?.loginUser?.logindata?.profileImageName ? <>
+                            <img
+                                className={styles.barsection}
+                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${favortcountdataredux?.loginUser?.logindata?.profileImageName}`}
+                                alt="profile-pic"
+                            />
+                        </> : <>
+                            <Image src={profile} alt="no image" className={styles.barsection} />
+
+                        </>}
+
 
                     </div>
                     <Offcanvas show={show} onHide={handleClose}>
@@ -107,18 +111,31 @@ function MobileHeader() {
                                 {/* <Image src={closearrow} alt="no image" className='closearrow' /> */}
                                 <ion-icon name="close-outline" className='closearrow' size="large"></ion-icon>
                             </div>
-                           <div className="ms-4">
+                            <div className="ms-4">
 
-                           <div className='profile-section' onClick={profilerouter}>
-                                {images ?
-                                    <img
-                                        className={styles.editprofilesection}
-                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${images}`}
-                                        alt="profile-pic"
-                                    />
-                                    :
-                                    <Image src={profile} alt="no image" className={styles.editprofilesection} />}
-                            </div>
+                                <div className='profile-section' onClick={profilerouter}>
+                                    {/* {images ?
+                                        <img
+                                            className={styles.editprofilesection}
+                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${images}`}
+                                            alt="profile-pic"
+                                        />
+                                        :
+                                        <Image src={profile} alt="no image" className={styles.editprofilesection} />} */}
+
+
+
+                                    {favortcountdataredux?.loginUser?.logindata?.profileImageName ? <>
+                                        <img
+                                            className={styles.editprofilesection}
+                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${favortcountdataredux?.loginUser?.logindata?.profileImageName}`}
+                                            alt="profile-pic"
+                                        />
+                                    </> : <>
+                                        <Image src={profile} alt="no image" className={styles.editprofilesection} />
+
+                                    </>}
+                                </div>
                             </div>
                             <div className='nav-links-section'>
                                 <div className={router.pathname == "/explore" ? "active" : "nav-link"} onClick={handleClose}>
@@ -129,7 +146,7 @@ function MobileHeader() {
                                 </div>
                                 <div className={router.pathname == "/service" ? "active" : ""} onClick={handleClose}>
                                     <Link href="/service" className='nav-link'>
-                                    Services
+                                        Services
                                     </Link>
                                 </div>
                                 <div className={router.pathname == "/womenpreneurs" ? "active" : ""} onClick={handleClose}>
@@ -173,23 +190,21 @@ function MobileHeader() {
 
                                         </div>
                                     </div>
-                                   <div className="mt-3 mb-2">
-                                   <div className={styles.falight} >
-                                    <div className={styles.maincartcount} onClick={heartpushdata}>
-                                        <div>
-                                            <Image src={heart} alt="no image" className={styles.notifications} />
-                                        </div>
-                                        {favortscount?.length > 0 ? <div className={styles.cartcountbox}>
-                                            {favortscount?.length}
-                                        </div>
-                                            : <></>}
+                                    <div className="mt-3 mb-2">
+                                        <div className={styles.falight} >
+                                            <div className={styles.maincartcount} onClick={heartpushdata}>
+                                                <div>
+                                                    <Image src={heart} alt="no image" className={styles.notifications} />
+                                                </div>
+                                                {favortcountdataredux?.favorts?.favortsdata?.length > 0 ? <div className={styles.cartcountbox}>
+                                                    {favortcountdataredux?.favorts?.favortsdata?.length}
+                                                </div>
+                                                    : <></>}
 
+                                            </div>
+                                        </div>
                                     </div>
-                                   </div>
-                                </div>
-                                    {/* <div onClick={profilerouter}>
-                                        Profile
-                                    </div> */}
+
 
                                 </div>
 
@@ -199,9 +214,9 @@ function MobileHeader() {
 
                             <div>
 
-                            <div onClick={Becomeaseller} className={styles.loginbuttons}>
-                                            Become A Seller
-                                        </div>
+                                <div onClick={Becomeaseller} className={styles.loginbuttons}>
+                                    Become A Seller
+                                </div>
 
                             </div>
                             <div>

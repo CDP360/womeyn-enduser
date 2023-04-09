@@ -41,6 +41,8 @@
             width: 30px;
             height: 30px;
             cursor: pointer;
+            border-radius: 50%;
+            border:2px solid #E95A5A;
         }
         @include smBreakPoint {
             width: 20%;
@@ -74,10 +76,10 @@
 .editprofilesection {
     width: 100px;
     height: 100px;
-    object-fit: contain;
     border: 3px solid #e95a5a;
     border-radius: 50%;
     cursor: pointer;
+
 }
 
 .cartlogolength {

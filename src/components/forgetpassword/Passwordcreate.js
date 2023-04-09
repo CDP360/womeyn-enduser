@@ -165,9 +165,6 @@ function Passwordcreate() {
                                 Welcome to Womeyn
                             </div>
                             <div>
-
-
-
                             </div>
 
                             <div className='mb-4 mt-2'>

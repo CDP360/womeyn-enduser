@@ -6,8 +6,6 @@ import { useRouter } from 'next/router';
 import Reviewsproduct from './Reviews/Reviewsproduct';
 import Caroselproducts from './carouselproducts/Caroselproducts';
 import { ContextStore } from '../../../../../Redux/store/Contextstore';
-import starstart from '../../../../../assests/category-logos/starstart.png';
-import starend from '../../../../../assests/category-logos/starend.png';
 import { ProductView, ProductLikeWishlist, ProductLikeWishlistGet, ProductLikeandUnlikeCheck } from '../../../../../services/productview-service/productview-services';
 import location from '../../../../../assests/product-logo/locationdelivery.png';
 import heartlike from '../../../../../assests/product-logo/likefullcolor.png';
@@ -20,6 +18,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import { Rate } from "antd";
 function Viewproducts({ id }) {
     const history = useRouter();
+    const [productnotfound,setProductNotfound]=useState("");
     const [starcount, setStarCount] = useState(null);
     const [ratingcount, setRatingcount] = useState("");
     const [tokencheck, setTokenset] = useState("");
@@ -36,7 +35,6 @@ function Viewproducts({ id }) {
     const [index3, setIndex3] = useState(null);
     const [index4, setIndex4] = useState(null);
     const [index5, setIndex5] = useState(null);
-
     const [like, setLike] = useState(false);
     const [error, setError] = useState(false);
     const productnames = id;
@@ -577,8 +575,12 @@ function Viewproducts({ id }) {
 
 
     }
+
+    // No Records Found
     useEffect(() => {
         ProductView(productnames).then((res) => {
+            console.log("k",res)
+            setProductNotfound(res?.response?.data?.message)
             setProductseller(res?.data?.sellerInformation[0])
             const productshowimages = [];
             res?.data?.productDetails?.productImages?.map((item, index) => {
@@ -588,9 +590,6 @@ function Viewproducts({ id }) {
             //     id: 0,
             //     name: res?.data?.productDetails?.productThumbImage
             // });
-
-            console.log(res?.data?.averageRating[0],"res")
-
             setProductImage(productshowimages);
             setProductData(res?.data?.productDetails);
             setProductReview(res?.data?.reviews);
@@ -612,6 +611,8 @@ function Viewproducts({ id }) {
             });
         }).catch((err) => {
             console.log(err);
+         
+
         });
         const tokencheck = localStorage.getItem("userToken");
         setTokenset(tokencheck)
@@ -636,7 +637,7 @@ function Viewproducts({ id }) {
        
        
 
-}, [productSize, productseller, productnames,averageRatings?.avgRating]);
+}, [productSize, productseller, productnames,averageRatings?.avgRating,productnotfound]);
 
 
 
@@ -967,384 +968,405 @@ function Viewproducts({ id }) {
     }
 
 
-    let groups=averageRatings?.avgRating;
-
-    return (
-        <Fragment>
-            <div className={styles.mainproductviewscreen}>
-                <div className={styles.insideproductview}>
-                    <div className={styles.splitproductview}>
-                        <div className={styles.leftproductview}>
-                            <div className={styles.leftmainsectionslide}>
-                                <div className={styles.leftcardimages}>
-                                    <div className={styles.imagerowsection}>
-                                        {productimages?.map((item, index) => {
-                                            return (
-                                                <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)} onMouseOver={() => setIndex(index)} key={index}>
-                                                    {item?.name ? <><img
-                                                        className={styles.imagecards}
-                                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
-                                                        alt="profile-pic"
-                                                    /></> : <>
-                                                        <Skeleton />
-                                                    </>}
-                                                </div>
-                                            )
-                                        })}
-                                    </div>
-                                </div>
-                                <div className={styles.rightcardimagesshow}>
-                                    <div className={styles.leftwomensearchsection}>
-                                        <div className={styles.serachlargeimage}>
-                                            {/* <img
-                                                className={styles.serachlargeimages}
-                                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
-                                                alt="profile-pic"
-                                            /> */}
-
-                                            <ReactImageMagnify {...{
-                                                smallImage: {
-
-                                                    alt: 'Wristwatch by Ted Baker London',
-                                                    isFluidWidth: true,
-                                                    src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                    borderRadius: "10px"
-                                                },
-                                                largeImage: {
-                                                    src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                    width: 1200,
-                                                    height: 1200,
-                                                    backgroundColor: "white",
-                                                    // border:"3px solid blue"
-                                                    zIndex: "989898988989898989898989",
-                                                    borderRadius: "10px"
+    const NavigatePath=()=>{
+        router?.push("/errorboundary")
+    }
 
 
-                                                },
-                                                imageStyle: {
-                                                    // border:"2px solid red",
-                                                    width: "100%",
-                                                    height: "100%",
-                                                    maxHeight: "400px",
-                                                    objectFit: "contain",
-                                                    zIndex: "9898989898",
-                                                    backgroundColor: "white",
-                                                    borderRadius: "10px"
+    if(productnotfound=="No Records Found")
+    {
+return (
+    <div>
 
-                                                },
-                                                // smallImage: {
-                                                //     src: String, (required)
-                                                //     srcSet: String,
-                                                //     sizes: String,
-                                                //     width: Number, (required if isFluidWidth is not set)
-                                                //     height: Number, (required if isFluidWidth is not set)
-                                                //     isFluidWidth: Boolean, (default false)
-                                                //     alt: String,
-                                                //     onLoad: Function,
-                                                //     onError: Function
-                                                // },
+{NavigatePath()}
+    </div>
+)
+    }
+    else
+    {
 
+        return (
+            <Fragment>
 
-                                            }}
-
-
-                                            />
+                {productnotfound}
+                <div className={styles.mainproductviewscreen}>
+                    <div className={styles.insideproductview}>
+                        <div className={styles.splitproductview}>
+                            <div className={styles.leftproductview}>
+                                <div className={styles.leftmainsectionslide}>
+                                    <div className={styles.leftcardimages}>
+                                        <div className={styles.imagerowsection}>
+                                            {productimages?.map((item, index) => {
+                                                return (
+                                                    <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)} onMouseOver={() => setIndex(index)} key={index}>
+                                                        {item?.name ? <><img
+                                                            className={styles.imagecards}
+                                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
+                                                            alt="profile-pic"
+                                                        /></> : <>
+                                                            <Skeleton />
+                                                        </>}
+                                                    </div>
+                                                )
+                                            })}
                                         </div>
-
-                                        {tokencheck ? <div className={styles.heartimagesection}>
-                                            <button className={styles.btn}
-                                                onClick={() => {
-                                                    if (!like) {
-                                                        LikeWishlistlike(productdata?.id)
-                                                    }
-                                                    else {
-                                                        LikeWishlistunlike(productdata?.id)
-                                                    }
+                                    </div>
+                                    <div className={styles.rightcardimagesshow}>
+                                        <div className={styles.leftwomensearchsection}>
+                                            <div className={styles.serachlargeimage}>
+                                                {/* <img
+                                                    className={styles.serachlargeimages}
+                                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
+                                                    alt="profile-pic"
+                                                /> */}
+    
+                                                <ReactImageMagnify {...{
+                                                    smallImage: {
+    
+                                                        alt: 'Wristwatch by Ted Baker London',
+                                                        isFluidWidth: true,
+                                                        src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
+                                                        borderRadius: "10px"
+                                                    },
+                                                    largeImage: {
+                                                        src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
+                                                        width: 1200,
+                                                        height: 1200,
+                                                        backgroundColor: "white",
+                                                        // border:"3px solid blue"
+                                                        zIndex: "989898988989898989898989",
+                                                        borderRadius: "10px"
+    
+    
+                                                    },
+                                                    imageStyle: {
+                                                        // border:"2px solid red",
+                                                        width: "100%",
+                                                        height: "100%",
+                                                        maxHeight: "400px",
+                                                        objectFit: "contain",
+                                                        zIndex: "9898989898",
+                                                        backgroundColor: "white",
+                                                        borderRadius: "10px"
+    
+                                                    },
+                                                    // smallImage: {
+                                                    //     src: String, (required)
+                                                    //     srcSet: String,
+                                                    //     sizes: String,
+                                                    //     width: Number, (required if isFluidWidth is not set)
+                                                    //     height: Number, (required if isFluidWidth is not set)
+                                                    //     isFluidWidth: Boolean, (default false)
+                                                    //     alt: String,
+                                                    //     onLoad: Function,
+                                                    //     onError: Function
+                                                    // },
+    
+    
                                                 }}
-                                            >
-                                                {like ? <>
-                                                    <Image src={heartlike} alt="no image" className={styles.heartlikes} />
-
-                                                </> : <>
-                                                    <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
-
-
-                                                </>}
-
-                                                {/* {like?"kalai true":"kalai false"} */}
-                                            </button>
-                                        </div> :
-                                            <div className={styles.heartimagesection}>
-                                                <button className={styles.btn} onClick={() => {
-                                                    CheckLoginUsers(productdata?.productSlugName)
-                                                    // LikeWishlist(productdata?.id)
-                                                }}>
-
-                                                    <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
-                                                </button>
-                                            </div>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.rightproductview}>
-                            <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
-                            <div className={styles.starsection}>
-                                <div className={styles.starsections}>
-                                 
-                                 {averageRatings}
-                                 <Rate defaultValue={parseFloat(averageRatings)} allowHalf style={{ color: "#54BE43" }}
-                                                    tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                                    count={5}
-                                                    disabled
+    
+    
                                                 />
-                                </div>
-                                <div>
-                                    {ratingcount} Review
+                                            </div>
+    
+                                            {tokencheck ? <div className={styles.heartimagesection}>
+                                                <button className={styles.btn}
+                                                    onClick={() => {
+                                                        if (!like) {
+                                                            LikeWishlistlike(productdata?.id)
+                                                        }
+                                                        else {
+                                                            LikeWishlistunlike(productdata?.id)
+                                                        }
+                                                    }}
+                                                >
+                                                    {like ? <>
+                                                        <Image src={heartlike} alt="no image" className={styles.heartlikes} />
+    
+                                                    </> : <>
+                                                        <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+    
+    
+                                                    </>}
+    
+                                                    {/* {like?"kalai true":"kalai false"} */}
+                                                </button>
+                                            </div> :
+                                                <div className={styles.heartimagesection}>
+                                                    <button className={styles.btn} onClick={() => {
+                                                        CheckLoginUsers(productdata?.productSlugName)
+                                                        // LikeWishlist(productdata?.id)
+                                                    }}>
+    
+                                                        <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+                                                    </button>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div className={styles.proceinproduct}>
-                                <div className={styles.offertext}>
-                                    {productdata?.offerPercentag == 0 ? <>
+                            <div className={styles.rightproductview}>
+                                <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
+                                <div className={styles.starsection}>
+                                    <div className={styles.starsections}>
+                                     
+                                     {averageRatings}
+                                     <Rate defaultValue={parseFloat(averageRatings)} allowHalf style={{ color: "#54BE43" }}
+                                                        tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                        count={5}
+                                                        disabled
+                                                    />
+                                    </div>
+                                    <div>
+                                        {ratingcount} Review
+                                    </div>
+                                </div>
+    
+                                <div className={styles.proceinproduct}>
+                                    <div className={styles.offertext}>
+                                        {productdata?.offerPercentag == 0 ? <>
+                                        </> : <>
+                                            {productdata?.offerPercentag}% off
+                                        </>}
+                                    </div>
+                                    <div className={styles.priceautual}>
+                                        <div className={styles.prices}>A${productdata?.salePrice}</div>
+                                    </div>
+                                    <div className='textpricedashed' >
+                                        {productdata?.offerPercentag == 0 ? <></> : <del className={styles.priceautuals}>A${productdata?.actualPrice}</del>}
+                                    </div>
+                                </div>
+    
+                                <div className={styles.colorsectionlists}>
+                                    {productvariations[0]?.name ? <><div className={styles.sizesectionandcolor}>
+                                        <div className={styles.fontweightsizes}> {productvariations[0]?.name}</div>
+                                        <div className={styles.sizesection}>
+                                            <div className={styles.sizes}>
+                                                {productvariations[0]?.variationValues?.map((item, index) => {
+                                                    return (
+                                                        <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                            setIndex1(index)
+                                                            handleSizeProduct1(item);
+                                                        }} key={index}>
+                                                            {item}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                    </div>
+                                        {/* <div>
+                                       {error && productSize1?.length<=1 ? <span>Please select a {productvariations[0]?.name}</span>:<div></div>}
+                                        </div> */}
+                                    </> : <></>}
+                                    {productvariations[1]?.name ? <div className={styles.sizesectionandcolor}>
+                                        <div className={styles.fontweightsizes}> {productvariations[1]?.name ? <>{productvariations[1]?.name}</> : <></>} </div>
+                                        <div className={styles.sizesection}>
+                                            <div className={styles.sizes}>
+                                                {productvariations[1]?.variationValues?.map((item, index) => {
+                                                    return (
+                                                        <div className={`${index2 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                            setIndex2(index)
+                                                            handleSizeProduct2(item);
+                                                        }} key={index}>
+                                                            {item}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                    </div> : <></>}
+                                    {productvariations[2]?.name ? <div className={styles.sizesectionandcolor}>
+                                        <div className={styles.fontweightsizes}> {productvariations[2]?.name ? <>{productvariations[2]?.name}</> : <></>} </div>
+                                        <div className={styles.sizesection}>
+                                            <div className={styles.sizes}>
+                                                {productvariations[2]?.variationValues?.map((item, index) => {
+                                                    return (
+                                                        <div className={`${index3 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                            setIndex3(index)
+                                                            handleSizeProduct3(item);
+                                                        }} key={index}>
+                                                            {item}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                    </div> : <></>}
+                                    {productvariations[3]?.name ? <div className={styles.sizesectionandcolor}>
+                                        <div className={styles.fontweightsizes}> {productvariations[3]?.name ? <>{productvariations[3]?.name}</> : <></>} </div>
+                                        <div className={styles.sizesection}>
+                                            <div className={styles.sizes}>
+                                                {productvariations[3]?.variationValues?.map((item, index) => {
+                                                    return (
+                                                        <div className={`${index4 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                            setIndex4(index)
+                                                            handleSizeProduct4(item);
+                                                        }} key={index}>
+                                                            {item}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                    </div> : <></>}
+                                    {productvariations[4]?.name ? <div className={styles.sizesectionandcolor}>
+                                        <div className={styles.fontweightsizes}> {productvariations[4]?.name ? <>{productvariations[4]?.name}</> : <></>} </div>
+                                        <div className={styles.sizesection}>
+                                            <div className={styles.sizes}>
+                                                {productvariations[4]?.variationValues?.map((item, index) => {
+                                                    return (
+                                                        <div className={`${index5 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                            setIndex5(index)
+                                                            handleSizeProduct5(item);
+                                                        }} key={index}>
+                                                            {item}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                    </div> : <></>}
+                                </div>
+                                {productdata?.stateId == 1 && productdata?.quantityLeft > 0 ?
+                                    <>
+                                        <div className={styles.buttons}>
+                                            <div>
+                                                {tokencheck ?
+                                                    <Button className={styles.bynowcartbutton} onClick={() => Checkout(productdata, productvariations)}>
+                                                        Buy Now
+                                                    </Button> :
+                                                    <Button className={styles.bynowcartbutton} onClick={() => buyNowPathNavigate(productdata, productvariations)}>
+                                                        Buy Now
+                                                    </Button>
+                                                }
+                                            </div>
+                                            <div>
+                                                <Button className={styles.addcartbutton} onClick={() => handleChange(productdata, productvariations)}>
+                                                    Add To Cart
+                                                </Button>
+                                            </div>
+                                        </div>
                                     </> : <>
-                                        {productdata?.offerPercentag}% off
-                                    </>}
-                                </div>
-                                <div className={styles.priceautual}>
-                                    <div className={styles.prices}>A${productdata?.salePrice}</div>
-                                </div>
-                                <div className='textpricedashed' >
-                                    {productdata?.offerPercentag == 0 ? <></> : <del className={styles.priceautuals}>A${productdata?.actualPrice}</del>}
-                                </div>
-                            </div>
-
-                            <div className={styles.colorsectionlists}>
-                                {productvariations[0]?.name ? <><div className={styles.sizesectionandcolor}>
-                                    <div className={styles.fontweightsizes}> {productvariations[0]?.name}</div>
-                                    <div className={styles.sizesection}>
-                                        <div className={styles.sizes}>
-                                            {productvariations[0]?.variationValues?.map((item, index) => {
-                                                return (
-                                                    <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                        setIndex1(index)
-                                                        handleSizeProduct1(item);
-                                                    }} key={index}>
-                                                        {item}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                </div>
-                                    {/* <div>
-                                   {error && productSize1?.length<=1 ? <span>Please select a {productvariations[0]?.name}</span>:<div></div>}
-                                    </div> */}
-                                </> : <></>}
-                                {productvariations[1]?.name ? <div className={styles.sizesectionandcolor}>
-                                    <div className={styles.fontweightsizes}> {productvariations[1]?.name ? <>{productvariations[1]?.name}</> : <></>} </div>
-                                    <div className={styles.sizesection}>
-                                        <div className={styles.sizes}>
-                                            {productvariations[1]?.variationValues?.map((item, index) => {
-                                                return (
-                                                    <div className={`${index2 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                        setIndex2(index)
-                                                        handleSizeProduct2(item);
-                                                    }} key={index}>
-                                                        {item}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                </div> : <></>}
-                                {productvariations[2]?.name ? <div className={styles.sizesectionandcolor}>
-                                    <div className={styles.fontweightsizes}> {productvariations[2]?.name ? <>{productvariations[2]?.name}</> : <></>} </div>
-                                    <div className={styles.sizesection}>
-                                        <div className={styles.sizes}>
-                                            {productvariations[2]?.variationValues?.map((item, index) => {
-                                                return (
-                                                    <div className={`${index3 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                        setIndex3(index)
-                                                        handleSizeProduct3(item);
-                                                    }} key={index}>
-                                                        {item}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                </div> : <></>}
-                                {productvariations[3]?.name ? <div className={styles.sizesectionandcolor}>
-                                    <div className={styles.fontweightsizes}> {productvariations[3]?.name ? <>{productvariations[3]?.name}</> : <></>} </div>
-                                    <div className={styles.sizesection}>
-                                        <div className={styles.sizes}>
-                                            {productvariations[3]?.variationValues?.map((item, index) => {
-                                                return (
-                                                    <div className={`${index4 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                        setIndex4(index)
-                                                        handleSizeProduct4(item);
-                                                    }} key={index}>
-                                                        {item}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                </div> : <></>}
-                                {productvariations[4]?.name ? <div className={styles.sizesectionandcolor}>
-                                    <div className={styles.fontweightsizes}> {productvariations[4]?.name ? <>{productvariations[4]?.name}</> : <></>} </div>
-                                    <div className={styles.sizesection}>
-                                        <div className={styles.sizes}>
-                                            {productvariations[4]?.variationValues?.map((item, index) => {
-                                                return (
-                                                    <div className={`${index5 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                        setIndex5(index)
-                                                        handleSizeProduct5(item);
-                                                    }} key={index}>
-                                                        {item}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                </div> : <></>}
-                            </div>
-                            {productdata?.stateId == 1 && productdata?.quantityLeft > 0 ?
-                                <>
-                                    <div className={styles.buttons}>
-                                        <div>
-                                            {tokencheck ?
-                                                <Button className={styles.bynowcartbutton} onClick={() => Checkout(productdata, productvariations)}>
-                                                    Buy Now
-                                                </Button> :
-                                                <Button className={styles.bynowcartbutton} onClick={() => buyNowPathNavigate(productdata, productvariations)}>
-                                                    Buy Now
+                                        <div className={styles.buttonss}>
+                                            <div>
+                                                {tokencheck ?
+                                                    <Button className={styles.bynowcartbuttons} >
+                                                        Buy Now
+                                                    </Button> :
+                                                    <Button className={styles.bynowcartbuttons} >
+                                                        Buy Now
+                                                    </Button>
+                                                }
+                                            </div>
+                                            <div>
+                                                <Button className={styles.addcartbuttons} >
+                                                    Add To Cart
                                                 </Button>
-                                            }
+                                            </div>
+                                        </div>
+                                    </>
+                                }
+    
+                                <div className={styles.locationsection}>
+                                    <div className={styles.deverisection}>
+                                        <div>
+                                            <Image src={location} alt="no image" className={styles.deliveryicon} />
+                                        </div>
+                                        <div className={styles.deliverytexts}>Delivery To</div>
+                                    </div>
+                                    <div className={styles.inputlocationfield}>
+                                        <div>
+                                            <input type="text" placeholder='7000' className={styles.location} />
                                         </div>
                                         <div>
-                                            <Button className={styles.addcartbutton} onClick={() => handleChange(productdata, productvariations)}>
-                                                Add To Cart
-                                            </Button>
+                                            <button className={styles.check}>Check</button>
                                         </div>
                                     </div>
-                                </> : <>
-                                    <div className={styles.buttonss}>
-                                        <div>
-                                            {tokencheck ?
-                                                <Button className={styles.bynowcartbuttons} >
-                                                    Buy Now
-                                                </Button> :
-                                                <Button className={styles.bynowcartbuttons} >
-                                                    Buy Now
-                                                </Button>
-                                            }
-                                        </div>
-                                        <div>
-                                            <Button className={styles.addcartbuttons} >
-                                                Add To Cart
-                                            </Button>
-                                        </div>
-                                    </div>
-                                </>
-                            }
-
-                            <div className={styles.locationsection}>
-                                <div className={styles.deverisection}>
-                                    <div>
-                                        <Image src={location} alt="no image" className={styles.deliveryicon} />
-                                    </div>
-                                    <div className={styles.deliverytexts}>Delivery To</div>
-                                </div>
-                                <div className={styles.inputlocationfield}>
-                                    <div>
-                                        <input type="text" placeholder='7000' className={styles.location} />
-                                    </div>
-                                    <div>
-                                        <button className={styles.check}>Check</button>
+                                    <div className='mt-2'>
+                                        Delivery in days Thursday |  <span className={styles.free}>Free</span>  <del> A$ 40</del> is orderd before 3:34pm
                                     </div>
                                 </div>
-                                <div className='mt-2'>
-                                    Delivery in days Thursday |  <span className={styles.free}>Free</span>  <del> A$ 40</del> is orderd before 3:34pm
+                                <div className={styles.sellernames}>
+                                    <div className={styles.sellername}>
+                                        Seller  :
+                                    </div>
+                                    <div className={styles.nameinseller} onClick={() => productSellerPageView(productseller?.businessSlugName)} >
+                                        {productseller?.firstName}
+                                    </div>
                                 </div>
                             </div>
-                            <div className={styles.sellernames}>
-                                <div className={styles.sellername}>
-                                    Seller  :
+                        </div>
+    
+                        <div className={styles.descriptionsection}>
+                            <div className={styles.additionaldetails}>
+                                Product Description
+                            </div>
+                            <div>
+                                {productdata?.productDescription}
+                            </div>
+                        </div>
+                        <div className={styles.productdetailslists}>
+                            <div className={styles.additionaldetails}>
+                                Product Details
+                            </div>
+                            <div className={styles.leftproductdetails}>
+                                <div className={styles.productdetailsleft}>
+                                    <div className={styles.listproductdata}>
+                                        <div className={styles.leftname}>Product Name</div>
+                                        <div className={styles.rightname}>{productdata?.productName}</div>
+                                    </div>
+                                    <div className={styles.listproductdata}>
+                                        <div className={styles.leftname}>Model Name</div>
+                                        <div className={styles.rightname}>{productdata?.modelName}</div>
+                                    </div>
+    
+                                    <div className={styles.listproductdata}>
+                                        <div className={styles.leftname}>Manufacture Name</div>
+                                        <div className={styles.rightname}>{productdata?.manufacturerName}</div>
+                                    </div>
                                 </div>
-                                <div className={styles.nameinseller} onClick={() => productSellerPageView(productseller?.businessSlugName)} >
-                                    {productseller?.firstName}
+                                <div className={styles.productdetailsright}>
+                                    <div className={styles.listproductdata}>
+                                        <div className={styles.leftname}>Brand Name</div>
+                                        <div className={styles.rightname}>{productdata?.brandName}</div>
+                                    </div>
+                                    <div className={styles.listproductdata}>
+                                        <div className={styles.leftname}>Style Name</div>
+                                        <div className={styles.rightname}>{productdata?.styleName}</div>
+                                    </div>
+                                    <div className={styles.listproductdata}>
+                                        <div className={styles.leftname}>Manufacture Name</div>
+                                        <div className={styles.rightname}>{productdata?.manufacturerName}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div className={styles.descriptionsection}>
-                        <div className={styles.additionaldetails}>
-                            Product Description
-                        </div>
+                    {productreview?.length > 0 ? <div className={styles.reviewsection}>
                         <div>
-                            {productdata?.productDescription}
+                            <Reviewsproduct productreview={productreview} ratingcount={ratingcount} averageRatings={averageRatings} />
                         </div>
-                    </div>
-                    <div className={styles.productdetailslists}>
-                        <div className={styles.additionaldetails}>
-                            Product Details
-                        </div>
-                        <div className={styles.leftproductdetails}>
-                            <div className={styles.productdetailsleft}>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Product Name</div>
-                                    <div className={styles.rightname}>{productdata?.productName}</div>
-                                </div>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Model Name</div>
-                                    <div className={styles.rightname}>{productdata?.modelName}</div>
-                                </div>
-
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Manufacture Name</div>
-                                    <div className={styles.rightname}>{productdata?.manufacturerName}</div>
-                                </div>
-                            </div>
-                            <div className={styles.productdetailsright}>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Brand Name</div>
-                                    <div className={styles.rightname}>{productdata?.brandName}</div>
-                                </div>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Style Name</div>
-                                    <div className={styles.rightname}>{productdata?.styleName}</div>
-                                </div>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Manufacture Name</div>
-                                    <div className={styles.rightname}>{productdata?.manufacturerName}</div>
-                                </div>
-                            </div>
+                    </div> : <></>}
+                    <div>
+                        <div>
+                            <Caroselproducts />
                         </div>
                     </div>
                 </div>
-                {productreview?.length > 0 ? <div className={styles.reviewsection}>
-                    <div>
-                        <Reviewsproduct productreview={productreview} ratingcount={ratingcount} averageRatings={averageRatings} />
-                    </div>
-                </div> : <></>}
-                <div>
-                    <div>
-                        <Caroselproducts />
-                    </div>
+                <div className={styles.leftbg}>
+    
                 </div>
-            </div>
-            <div className={styles.leftbg}>
+                <div className={styles.righttopbg}></div>
+    
+    
+            </Fragment>
+        )
+    }
 
-            </div>
-            <div className={styles.righttopbg}></div>
 
 
-        </Fragment>
-    )
 }
 
 export default Viewproducts;

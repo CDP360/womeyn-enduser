@@ -1,12 +1,22 @@
-import instanceBaseurl from "../../../config/Baseurl";
+
+import { UserProfileInformation } from "../../../services/user-login-service/user-login-services";
 
 
-export const LoginActions = (dataresponse) => (dispatch) => {
-    console.log("67", data)
+export const LoginActions = (dispatch) => {
     const userid = localStorage.getItem("userid");
-    const dataresponse = instanceBaseurl.get(`/seller/basicinfo/${JSON.parse(userid)}`);
-    dispatch({
-        type: "LOGIN_SUCCESS",
-        payload: dataresponse
+    UserProfileInformation(JSON.parse(userid)).then((res) => {
+        dispatch({
+            type: "LOGIN_SUCCESS",
+            payload: res?.data
+        })
+    }).catch((err) => {
+        console.log(err);
+        dispatch({
+            type: "LOGIN_ERROR",
+            payload: true,
+
+        })
     })
-}   
+}
+
+

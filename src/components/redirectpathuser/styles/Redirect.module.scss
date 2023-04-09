@@ -1,0 +1,95 @@
+@use '../../../../scss/abstract/' as *;
+.mainpagenot {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    // overflow: hidden;
+    .emptyboxrightsectioncolor {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 60%;
+        height: 45%;
+        background: #e95a5a;
+        opacity: 0.2;
+        filter: blur(329px);
+    }
+    .emptyboxleftsectioncolor {
+        position: absolute;
+        top: 45%;
+        left: 0;
+        width: 50%;
+        height: 45%;
+        background: #fecf9d;
+        opacity: 0.36;
+        filter: blur(239.825px);
+    }
+    .insidenotpage {
+        width: 65%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .notfoundimage {
+            width: 45%;
+            height: auto;
+            @include xsBreakPoint {
+                width: 100%;
+            }
+            @include smBreakPoint {
+                width: 100%;
+            } @include mdBreakPoint {
+                width: 100%;
+            }
+        }
+        .splitpagenotfound {
+            display: flex;
+            gap: 30px;
+           @include xsBreakPoint
+           {
+            flex-direction:column;              
+           }
+            .backtohomenone {
+                color: #e95a5a !important;
+                cursor: pointer !important;
+                border: none;
+                outline: none;
+                border-radius: 3px;
+                font-weight: 600;
+                font-size: 1.2rem;
+                @include xsBreakPoint {
+                    width: 100%;
+                    padding: 3px !important;
+                    font-size: 0.879rem!important;
+                
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                    padding: 3px !important;
+                    font-size: 0.857rem !important;
+                }
+            }
+            .backtohome {
+                background-color: #e95a5a !important;
+                color: white !important;
+                cursor: pointer !important;
+                padding: 10px 20px;
+                border: none;
+                outline: none;
+                border-radius: 3px;
+                @include xsBreakPoint {
+                    width: 100%;
+                    // padding: 3px !important;
+                    font-size: 0.678rem!important;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                    padding: 3px !important;
+                    font-size: 0.857rem !important;
+                }
+            }
+        }
+    }
+}
