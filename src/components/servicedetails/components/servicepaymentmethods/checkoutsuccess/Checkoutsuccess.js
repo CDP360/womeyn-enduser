@@ -42,7 +42,7 @@ function Checkoutsuccess() {
         else {
 
         }
-    }, [Transaction_id, checkoutId]);
+    }, [Transaction_id]);
 
     useEffect(() => {
         if (paymentId_id, PayerID_id) {
@@ -67,7 +67,7 @@ function Checkoutsuccess() {
                 console.log(err);
             })
         }
-    }, [PayerID_id, paymentId_id, checkoutId])
+    }, [PayerID_id, paymentId_id])
 
 
     return (

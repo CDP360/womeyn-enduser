@@ -2,12 +2,12 @@ import React from 'react'
 import Checkoutcancel from './../../../src/components/servicedetails/components/servicepaymentmethods/checkoutcancel/Checkoutcancel';
 
 
-function cancel() {
+function index() {
     return (
         <div>
-            <Checkoutcancel/>
+            <Checkoutcancel />
         </div>
     )
 }
 
-export default cancel
+export default index

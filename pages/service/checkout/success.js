@@ -2,12 +2,12 @@ import React from 'react'
 import Checkoutsuccess from './../../../src/components/servicedetails/components/servicepaymentmethods/checkoutsuccess/Checkoutsuccess';
 
 
-function success() {
+function index() {
   return (
     <div>
-<Checkoutsuccess/>
+      <Checkoutsuccess />
     </div>
   )
 }
 
-export default success
+export default index
