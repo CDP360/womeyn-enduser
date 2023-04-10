@@ -1,6 +1,5 @@
 import React from 'react'
 import { useEffect } from 'react';
-import { CheckoutServicePayment, CheckoutSuccessUpdate, CheckoutSuccessUpdatePaypal } from '../../../../services/checkout-services/checkout-service';
 import { useRouter } from 'next/router';
 import styles from './styles/Checkout.module.scss';
 import { useSearchParams } from 'next/navigation';
@@ -8,7 +7,7 @@ import { useSearchParams } from 'next/navigation';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import LoaderLogo from './../../../../loaderlogo/LoaderLogo';
-import { CheckoutServicePaymentPaypal } from '../../../../../services/checkout-services/checkout-service';
+import { CheckoutServicePaymentPaypal,CheckoutServicePayment } from '../../../../../services/checkout-services/checkout-service';
 function Checkoutsuccess() {
     const history = useRouter();
     const searchParams = useSearchParams();
