@@ -14,10 +14,10 @@ function Servicepayment({ id }) {
     const history = useRouter();
     const [loading, setLoading] = useState(false);
 
-    const [totalvalue,setTotalValue]=useState(0);
+    const [totalvalue, setTotalValue] = useState(0);
     const [payements, setPayments] = useState([]);
     const [tokens, setTokens] = useState("");
-  const [paymentType, setPaymentType] = useState("");
+    const [paymentType, setPaymentType] = useState("");
 
     const [serviceimages, setServiceimages] = useState("");
     const paymentMethods = [
@@ -40,86 +40,85 @@ function Servicepayment({ id }) {
     useEffect(() => {
         const formtoken = localStorage.getItem("userToken");
 
-      
+
         if (formtoken) {
             setTokens(formtoken);
         }
-       
-       
-       
-      
-            ServiceusersGetSingleId(id).then((res) => {
-                console.log("res",res?.data )
-                setPayments(res?.data[0])
-                setServiceimages(res?.data[0]?.serviceImages[0]?.name)
-            }).catch((err) => {
-                console.log(err);
-            })
-        
-    }, [id, serviceimages,tokens,paymentType,totalvalue]);
 
 
-    useEffect(()=>{
+
+
+        ServiceusersGetSingleId(id).then((res) => {
+            console.log("res", res?.data)
+            setPayments(res?.data[0])
+            setServiceimages(res?.data[0]?.serviceImages[0]?.name)
+        }).catch((err) => {
+            console.log(err);
+        })
+
+    }, [id, serviceimages, tokens, paymentType, totalvalue]);
+
+
+    useEffect(() => {
         const values = Math.max(
             0,
             Math.round(
                 payements?.price - (payements?.price) * 10 / 100
             )
-          );
-          setTotalValue(values);
-    },[totalvalue])
-  
-
-    console.log(totalvalue,"total")
-
-    const ServicePaymentMethod = (data) => {
-
-
-        if(paymentType?.length===0)
-        {
-            toast.error("Please Select Payment Type",
-            {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            }
         );
-        }
+        setTotalValue(values);
+    }, [totalvalue, payements?.price])
+
+
+    console.log(totalvalue, "total")
+
+    const ServicePaymentMethod = () => {
 
         setLoading(true);
-        if(paymentType)
-        {
-            const userid=localStorage.getItem("userid");
 
-            const datas={
-                serviceId: 2, 
-                variationId:"12476j", 
-                sellerId: JSON.parse(userid), 
+        if (paymentType?.length === 0) {
+            toast.error("Please Select Payment Type",
+                {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                }
+            );
+        }
+
+        if (paymentType) {
+            const userid = localStorage.getItem("userid");
+            const datas = {
+                serviceId: 2,
+                variationId: "12476j",
+                sellerId: JSON.parse(userid),
                 price: payements?.price,
-                 gstAmount: totalvalue, 
-                 totalOrderAmount: (Number(totalvalue)+(Number(payements?.price))),
-                  serviceName: payements?.serviceName, 
-                  variationName: "service", 
-                  paymentMethod: paymentType
+                gstAmount: totalvalue,
+                totalOrderAmount: (Number(totalvalue) + (Number(payements?.price))),
+                serviceName: payements?.serviceName,
+                variationName: "service",
+                paymentMethod: paymentType
             }
-    
-           
+
+            setLoading(true);
+
             ServiceBooking(datas).then((res) => {
-                window.location = res?.data?.url;
+                // window.location = res?.data?.url;
+                console.log(res, "ko")
                 setTimeout(() => {
                     setLoading(false);
-                  }, 1000)
+                }, 400)
             }).catch((err) => {
                 console.log(err);
                 setLoading(false);
             })
         }
-      
+
     }
 
     const NavigatePath = () => {
@@ -135,15 +134,15 @@ function Servicepayment({ id }) {
         }, 300)
     }
 
-//     if (tokens) {
-//         return (
-//             <div>
-//                 {NavigatePath()};
-//             </div>
-//         )
-//     }
-// else
-// {
+    //     if (tokens) {
+    //         return (
+    //             <div>
+    //                 {NavigatePath()};
+    //             </div>
+    //         )
+    //     }
+    // else
+    // {
     return (
         <div className='mainsection'>
             <div className="insidesection">
@@ -152,7 +151,7 @@ function Servicepayment({ id }) {
                         <div className={styles.leftservicepayment}>
                             <div className={styles.selectpayment}>
 
-                                Select a payment method {tokens?"true":"false"}
+                                Select a payment method {tokens ? "true" : "false"}
                             </div>
                             <div className={styles.paymentmethod}>
 
@@ -243,20 +242,20 @@ function Servicepayment({ id }) {
                                     <div className='mt-4 mb-3'>
                                         {tokens ? <>
                                             <button className={styles.confirmpay} onClick={ServicePaymentMethod}>
-                                            {loading ? <>
+                                                {loading ? <>
 
-<Spinner
-  as="span"
-  animation="border"
-  size="sm"
-  role="status"
-  aria-hidden="true"
-/>
-<span className="ms-3">Loading...</span>
-</> : <>
-Confirm & Pay
+                                                    <Spinner
+                                                        as="span"
+                                                        animation="border"
+                                                        size="sm"
+                                                        role="status"
+                                                        aria-hidden="true"
+                                                    />
+                                                    <span className="ms-3">Loading...</span>
+                                                </> : <>
+                                                    Confirm & Pay
 
-</>}
+                                                </>}
                                             </button>
 
                                         </> : <>
@@ -274,6 +273,6 @@ Confirm & Pay
             </div>
         </div>
     )
-// }
+    // }
 }
 export default Servicepayment

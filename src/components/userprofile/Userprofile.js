@@ -12,6 +12,7 @@ import Favorts from './components/favorts/Favorts';
 import Orders from './components/order/Order';
 import Coupon from './components/coupons/Coupons';
 import { useDispatch, useSelector } from 'react-redux';
+import ServiceMaindetails from './components/servicedetails/ServiceMaindetails';
 function Userprofile({ name, error }) {
     const history = useRouter();
     const [user, setUser] = useState([]);
@@ -90,24 +91,28 @@ function Userprofile({ name, error }) {
 
                                 {name == "address" && <div>
 
-                                    <Manageaddress error={errors}/>
+                                    <Manageaddress error={errors} />
                                 </div>
                                 }
                                 {name == "changepassword" && <div>
-                                    <Changepassword error={errors}/>
+                                    <Changepassword error={errors} />
                                 </div>
                                 }
                                 {name == "orders" && <div>
-                                    <Orders error={errors}/>
+                                    <Orders error={errors} />
                                 </div>
                                 }
 
+                                {name == "services" && <div>
+                                    <ServiceMaindetails error={errors} />
+                                </div>
+                                }
                                 {name == "favorts" && <div>
-                                    <Favorts error={errors}/>
+                                    <Favorts error={errors} />
                                 </div>
                                 }
                                 {name == "coupons" && <div>
-                                    <Coupon error={errors}/>
+                                    <Coupon error={errors} />
                                 </div>
                                 }
                             </div>
