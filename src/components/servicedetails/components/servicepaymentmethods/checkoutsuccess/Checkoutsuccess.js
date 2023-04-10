@@ -7,15 +7,13 @@ import { useSearchParams } from 'next/navigation';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import LoaderLogo from './../../../../loaderlogo/LoaderLogo';
-import { CheckoutServicePaymentPaypal,CheckoutServicePayment } from '../../../../../services/checkout-services/checkout-service';
+import { CheckoutServicePaymentPaypal, CheckoutServicePayment } from '../../../../../services/checkout-services/checkout-service';
 function Checkoutsuccess() {
     const history = useRouter();
     const searchParams = useSearchParams();
     const Transaction_id = searchParams.get('transaction_id');
     const paymentId_id = searchParams.get('paymentId');
     const PayerID_id = searchParams.get('PayerID');
-
-
     useEffect(() => {
         if (Transaction_id) {
             CheckoutServicePayment(Transaction_id).then((res) => {
