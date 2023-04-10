@@ -8,17 +8,18 @@ import { useSearchParams } from 'next/navigation';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import LoaderLogo from './../../../../loaderlogo/LoaderLogo';
+import { CheckoutServicePaymentPaypal } from '../../../../../services/checkout-services/checkout-service';
 function Checkoutsuccess() {
     const history = useRouter();
     const searchParams = useSearchParams();
     const Transaction_id = searchParams.get('transaction_id');
     const paymentId_id = searchParams.get('paymentId');
     const PayerID_id = searchParams.get('PayerID');
-   
+
 
     useEffect(() => {
         if (Transaction_id) {
-            CheckoutSuccessUpdate(Transaction_id).then((res) => {
+            CheckoutServicePayment(Transaction_id).then((res) => {
                 if (res?.data?.message == "Service completed successfully") {
                     toast.success(res?.data?.message, {
                         position: "top-center",
@@ -30,7 +31,7 @@ function Checkoutsuccess() {
                         progress: undefined,
                         theme: "dark",
                     });
-                   
+
                     setTimeout(() => {
                         history.push("/profile/services");
                     }, 500);
@@ -46,7 +47,7 @@ function Checkoutsuccess() {
 
     useEffect(() => {
         if (paymentId_id, PayerID_id) {
-            CheckoutSuccessUpdatePaypal(paymentId_id, PayerID_id).then((res) => {
+            CheckoutServicePaymentPaypal(paymentId_id, PayerID_id).then((res) => {
                 if (res?.data?.message == "Service completed successfully") {
                     toast.success(res?.data?.message, {
                         position: "top-center",
@@ -58,7 +59,7 @@ function Checkoutsuccess() {
                         progress: undefined,
                         theme: "dark",
                     });
-          
+
                     setTimeout(() => {
                         history.push("/profile/services");
                     }, 500);
