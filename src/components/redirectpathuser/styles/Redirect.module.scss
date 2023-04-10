@@ -5,26 +5,8 @@
     display: flex;
     position: relative;
     // overflow: hidden;
-    .emptyboxrightsectioncolor {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 60%;
-        height: 45%;
-        background: #e95a5a;
-        opacity: 0.2;
-        filter: blur(329px);
-    }
-    .emptyboxleftsectioncolor {
-        position: absolute;
-        top: 45%;
-        left: 0;
-        width: 50%;
-        height: 45%;
-        background: #fecf9d;
-        opacity: 0.36;
-        filter: blur(239.825px);
-    }
+    z-index:9;
+   
     .insidenotpage {
         width: 65%;
         margin: 0 auto;
@@ -49,26 +31,63 @@
             gap: 30px;
            @include xsBreakPoint
            {
-            flex-direction:column;              
+            flex-direction:column;   
+            padding-top:6%;
+
+           }
+           @include smBreakPoint
+           {
+            flex-direction:column;   
+            padding-top:6%;
+
+           }
+           @include mdBreakPoint
+           {
+            padding-top:3%;
+           }
+         
+           @include lgBreakPoint
+           {
+            padding-top:3%;
+           }
+         
+           @include xlBreakPoint
+           {
+            padding-top:3%;
            }
             .backtohomenone {
                 color: #e95a5a !important;
                 cursor: pointer !important;
                 border: none;
                 outline: none;
-                border-radius: 3px;
+                border-radius: 10px;
                 font-weight: 600;
                 font-size: 1.2rem;
+                border:1px solid #e95a5a;
+                width:100%;
+                padding:7px 50px;
+                
                 @include xsBreakPoint {
-                    width: 100%;
-                    padding: 3px !important;
-                    font-size: 0.879rem!important;
+                    padding:7px 50px;
+
                 
                 }
+               
                 @include smBreakPoint {
                     width: 100%;
-                    padding: 3px !important;
-                    font-size: 0.857rem !important;
+                    padding:7px 60px !important;
+                }
+                @include mdBreakPoint {
+                    width: 100%;
+                    padding:7px 60px !important;
+                }
+                @include lgBreakPoint {
+                    width: 100%;
+                   padding:7px 70px;
+                }
+                @include xlBreakPoint {
+                    width: 100%;
+                   padding:7px 70px;
                 }
             }
             .backtohome {
@@ -92,4 +111,68 @@
             }
         }
     }
+}
+
+
+.something
+{
+    padding-top: 1%;
+    padding-bottom: 4%;
+    font-size: 2.4rem;
+    font-weight:600;
+    @include xsBreakPoint
+    {
+        font-size:1.5rem;
+        padding-top:5%;
+        padding-bottom:10%;
+    }
+    @include smBreakPoint
+    {
+        font-size:2rem;
+        padding-top:2%;
+        padding-bottom:5%;
+    }
+}
+
+.opps
+{
+    padding-bottom:1%;
+    padding-top:4%;
+    font-size:4rem;
+    font-weight:600;
+    @include xsBreakPoint
+    {
+        font-size:2rem;
+        padding-top:10%;
+        padding-bottom:4%;
+    }
+    @include smBreakPoint
+    {
+        font-size:2.8rem;
+        padding-top:10%;
+        padding-bottom:4%;
+    }
+}
+
+
+
+.emptyboxrightsectioncolor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 45%;
+    background: #e95a5a;
+    opacity: 0.2;
+    filter: blur(329px);
+}
+.emptyboxleftsectioncolor {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 50%;
+    height: 45%;
+    background: #fecf9d;
+    opacity: 0.36;
+    filter: blur(239.825px);
 }

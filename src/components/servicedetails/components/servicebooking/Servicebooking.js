@@ -209,76 +209,40 @@
 
 import React, { Fragment, useState } from 'react'
 import styles from './styles/Servicebooking.module.scss';
-import servicebanner from "../../../../assests/service-logos/servicebanner (2).png";
 import Image from 'next/image';
 import rightarrow from '../../../../assests/service-logos/path rightarrow.png';
 import star from "../../../../assests/service-logos/Star 4.svg";
 import ticket from '../../../../assests/service-logos/tickmark.png';
-import images from '../../../../assests/service-logos/Ovalimages.png';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { ServiceusersGetSingle } from '../../../../services/servicewomeyn/service-womeyn';
 import moment from 'moment';
 import Modal from 'react-bootstrap/Modal';
 function Servicebooking({ id }) {
-
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
     const [loading, setLoading] = useState(false);
-
     const [serviceBooking, setServiceBooking] = useState([]);
     const [serviceBookingSingle, setServiceBookingSingle] = useState([]);
-
-
     const [sellerinformations, setSellerinfo] = useState({});
-
-
     useEffect(() => {
         ServiceusersGetSingle(id).then((res) => {
-            // console.log(res?.data,"ko")
+            // console.log(res,"res");
+            console.log(res,"res");
+
+            
+
             setServiceBooking(res?.data?.serviceDetails[0]);
             setSellerinfo(res?.data?.sellerInformation);
         }).catch((err) => {
-            console.log(err);
+            // console.log(err,"res");
+          
         })
     }, [id])
 
-    const months = [
-        {
-            id: 1,
-            name: "1 session / Day ",
-            button: "Book Now",
-            number: 24,
-            months: "1 Month"
-        },
-        {
-            id: 2,
-            name: "1 session / Day ",
-            button: "Book Now",
-            number: 24,
-            months: "2 Month"
-        },
-        {
-            id: 3,
-            name: "1 session / Day ",
-            button: "Book Now",
-            number: 24,
-            months: "3 Month"
-        },
-        {
-            id: 4,
-            name: "1 session / Day ",
-            button: "Book Now",
-            number: 24,
-            months: "4 Month"
-        },
+ 
 
-    ]
-
-    console.log(serviceBooking, "sellerinformations")
 
 
     const history = useRouter();
@@ -443,14 +407,14 @@ function Servicebooking({ id }) {
                                                 <div className="mt-2 mb-4 text-center">
 
                                                     <div className={styles.viewmorebutton} onClick={() => FilterModelPopup(item?._id)}>
-                                                        View More...
+                                                        View More... 
                                                     </div>
 
                                                 </div>
 
 
                                                 <div className="mt-4 mb-4">
-                                                    <button className={styles.booknowbutton} onClick={() => history?.push("/service/payment")}>Book Now</button>
+                                                    <button className={styles.booknowbutton} onClick={() => history?.push(`/service/payment/${item?._id}`)}>Book Now</button>
                                                 </div>
                                             </div>
                                         )
@@ -524,51 +488,51 @@ function Servicebooking({ id }) {
 
                             <div className={styles.cancelsection}>
                                 <div className={styles.leftcancelsection}>
-                                Date :
+                                    Date :
 
-                                </div>
-<div className="ms-2">
-
-{moment(serviceBookingSingle?.startDate).format("MMM Do YY",)} to {moment(serviceBookingSingle?.endDate).format("MMM Do YY",)}
-
-</div>
-                            </div>
-
-                            <div className={styles.cancelsection}>
-                                <div className={styles.leftcancelsection}>
-                                Is this an online/ offline service :
-
-                                </div>
-<div className="ms-2">
-{serviceBookingSingle?.serviceTypeId === 1 ? <>Online</> : <>Offline</>}
-
-</div>
-                            </div>
-
-                            <div className={styles.cancelsection}>
-
-                                <div className={styles.leftcancelsection}>
-
-                                Cancellation :
-                                    </div>
-
-                               <div className="ms-2">
- {serviceBookingSingle?.isCancellationAvailable ? <>
-                                    CancellationAvailable
-                                </> : <>
-                                    CancellationUnAvailable
-                                </>}
-                                </div>
-                            </div>
-
-                            <div className={styles.cancelsection}>
-                                <div className={styles.leftcancelsection}>
-
-                                Number of people allowed :
                                 </div>
                                 <div className="ms-2">
 
-                                {serviceBookingSingle?.numberOfPeopleAllowed}
+                                    {moment(serviceBookingSingle?.startDate).format("MMM Do YY",)} to {moment(serviceBookingSingle?.endDate).format("MMM Do YY",)}
+
+                                </div>
+                            </div>
+
+                            <div className={styles.cancelsection}>
+                                <div className={styles.leftcancelsection}>
+                                    Is this an online/ offline service :
+
+                                </div>
+                                <div className="ms-2">
+                                    {serviceBookingSingle?.serviceTypeId === 1 ? <>Online</> : <>Offline</>}
+
+                                </div>
+                            </div>
+
+                            <div className={styles.cancelsection}>
+
+                                <div className={styles.leftcancelsection}>
+
+                                    Cancellation :
+                                </div>
+
+                                <div className="ms-2">
+                                    {serviceBookingSingle?.isCancellationAvailable ? <>
+                                        CancellationAvailable
+                                    </> : <>
+                                        CancellationUnAvailable
+                                    </>}
+                                </div>
+                            </div>
+
+                            <div className={styles.cancelsection}>
+                                <div className={styles.leftcancelsection}>
+
+                                    Number of people allowed :
+                                </div>
+                                <div className="ms-2">
+
+                                    {serviceBookingSingle?.numberOfPeopleAllowed}
 
                                 </div>
                             </div>
@@ -579,9 +543,9 @@ function Servicebooking({ id }) {
                                 {serviceBookingSingle?.workingDays?.map((item, index) => {
                                     return (
                                         <div className={styles.workingdays}>
-                                           <div className={styles.leftdays}>
+                                            <div className={styles.leftdays}>
 
-                                           {item?.dayName}
+                                                {item?.dayName}
                                             </div>
                                             <div>
 

@@ -21,26 +21,29 @@ function RedirectPathuser() {
         localStorage.removeItem("productid");
     }
     return (
+        <>
 
         <div className={styles.mainpagenot}>
-            <div className={styles.emptyboxrightsectioncolor}></div>
-            <div className={styles.emptyboxleftsectioncolor}></div>
+            
 
             <div className={styles.insidenotpage}>
                 <Image src={image} alt="no image" className={styles.notfoundimage} />
 
-                <div className="large-text mt-4">
+                <div className={styles.opps}>
                     Oops!
 
                 </div>
-                <div className="small-light-text-grey mt-2 mb-5">
-                    Something's missing.
+                <div className={styles.something}>
+                    Something's Missing
                 </div>
                 <div className={styles.splitpagenotfound}>
                     <Button className={styles.backtohomenone} onClick={NavigatePath}>Go Back</Button>
                 </div>
             </div>
         </div>
+        <div className={styles.emptyboxrightsectioncolor}></div>
+            <div className={styles.emptyboxleftsectioncolor}></div>
+        </>
     )
 }
 
