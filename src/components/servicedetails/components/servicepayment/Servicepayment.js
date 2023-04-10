@@ -66,11 +66,12 @@ function Servicepayment({ id }) {
                 payements?.price - (payements?.price) * 10 / 100
             )
         );
-        setTotalValue(values);
+
+        const Sample= payements?.price-values;
+        setTotalValue(Sample);
     }, [totalvalue, payements?.price])
 
 
-    console.log(totalvalue, "total")
 
     const ServicePaymentMethod = () => {
 
@@ -93,23 +94,27 @@ function Servicepayment({ id }) {
 
         if (paymentType) {
             const userid = localStorage.getItem("userid");
+        setLoading(false);
             const datas = {
-                serviceId: 2,
-                variationId: "12476j",
+                serviceId: payements?.serviceId,
+                variationId: payements?.variationId,
                 sellerId: JSON.parse(userid),
                 price: payements?.price,
                 gstAmount: totalvalue,
                 totalOrderAmount: (Number(totalvalue) + (Number(payements?.price))),
                 serviceName: payements?.serviceName,
-                variationName: "service",
+                variationName: payements?.title,
                 paymentMethod: paymentType
             }
 
-            setLoading(true);
 
+           
+           
+
+    
             ServiceBooking(datas).then((res) => {
-                // window.location = res?.data?.url;
-                console.log(res, "ko")
+
+                window.location = res?.data?.url;
                 setTimeout(() => {
                     setLoading(false);
                 }, 400)
@@ -118,7 +123,6 @@ function Servicepayment({ id }) {
                 setLoading(false);
             })
         }
-
     }
 
     const NavigatePath = () => {

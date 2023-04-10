@@ -100,8 +100,8 @@ function Allorders({ Orders, traking, loading }) {
                                 </>}
                               </div>
                               <div>
-                                <div className='carttextsmall' onClick={() => Productview(item?.productSlugName)}>
-                                  {items?.productName}
+                                <div className='carttextsmall' onClick={() => Productview(items?.productSlugName)}>
+                                  {items?.productName} 
                                 </div>
                                 <div>
                                   {items?.variations?.map((itemss, index) => {

@@ -18,7 +18,7 @@ function Checkoutsuccess() {
     useEffect(() => {
         if (Transaction_id) {
             CheckoutSuccessUpdate(Transaction_id).then((res) => {
-                if (res?.data?.message == "Order completed successfully") {
+                if (res?.data?.message == "Service completed successfully") {
                     toast.success(res?.data?.message, {
                         position: "top-center",
                         autoClose: 3000,
@@ -29,9 +29,9 @@ function Checkoutsuccess() {
                         progress: undefined,
                         theme: "dark",
                     });
-                    Cookies.remove("CartDatas");
+                   
                     setTimeout(() => {
-                        history.push("/profile/orders");
+                        history.push("/profile/services");
                     }, 500);
                 }
             }).catch((err) => {
@@ -46,7 +46,7 @@ function Checkoutsuccess() {
     useEffect(() => {
         if (paymentId_id, PayerID_id) {
             CheckoutSuccessUpdatePaypal(paymentId_id, PayerID_id).then((res) => {
-                if (res?.data?.message == "Order completed successfully") {
+                if (res?.data?.message == "Service completed successfully") {
                     toast.success(res?.data?.message, {
                         position: "top-center",
                         autoClose: 3000,
@@ -57,9 +57,9 @@ function Checkoutsuccess() {
                         progress: undefined,
                         theme: "dark",
                     });
-                    Cookies.remove("CartDatas");
+          
                     setTimeout(() => {
-                        history.push("/profile/orders");
+                        history.push("/profile/services");
                     }, 500);
                 }
             }).catch((err) => {

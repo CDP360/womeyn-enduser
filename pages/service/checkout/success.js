@@ -1,10 +1,11 @@
 import React from 'react'
-import Checkoutsuccess from './../../../src/components/checkout/components/checkoutsuccess/Checkoutsuccess';
+import Checkoutsuccess from './../../../src/components/servicedetails/components/servicepaymentmethods/checkoutsuccess/Checkoutsuccess';
+
 
 function success() {
   return (
     <div>
-        <Checkoutsuccess/>
+<Checkoutsuccess/>
     </div>
   )
 }
