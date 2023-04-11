@@ -26,7 +26,6 @@ export function CheckoutServicePayment(servicepaymentid) {
 }
 
 
-
 export function CheckoutServicePaymentPaypal(paypaldata) {
     return instanceBaseurl.post(`/customer/service/complete-paypal-booking/`, paypaldata).then((res) => {
         return res;

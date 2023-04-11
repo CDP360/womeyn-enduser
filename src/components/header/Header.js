@@ -38,9 +38,9 @@ function Header() {
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
-                draggable: true,
                 progress: undefined,
                 theme: "dark",
+                draggable: false
             }
         );
         localStorage.removeItem("userid");

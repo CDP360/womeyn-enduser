@@ -39,7 +39,10 @@ function App({ Component, pageProps }) {
           <StoreProviderContext>
             <Errorboundary>
               <Provider store={store}>
-                <ToastContainer />
+                <ToastContainer 
+                rtl={false}
+                draggable={false} 
+                />
                 {loading ? <div className="blursectionhome">
                   <LoaderLogo />
                 </div> :
@@ -48,7 +51,6 @@ function App({ Component, pageProps }) {
                   </>}
               </Provider>
             </Errorboundary>
-
           </StoreProviderContext>
         </StrictMode>
       </div >

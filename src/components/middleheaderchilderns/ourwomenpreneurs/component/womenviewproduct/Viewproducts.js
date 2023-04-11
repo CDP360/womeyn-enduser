@@ -18,6 +18,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import { Rate } from "antd";
 function Viewproducts({ id }) {
     const history = useRouter();
+    const [errors, setError] = useState(false);
     const [productnotfound, setProductNotfound] = useState(false);
     const [starcount, setStarCount] = useState(null);
     const [ratingcount, setRatingcount] = useState("");
@@ -36,7 +37,6 @@ function Viewproducts({ id }) {
     const [index4, setIndex4] = useState(null);
     const [index5, setIndex5] = useState(null);
     const [like, setLike] = useState(false);
-    const [error, setError] = useState(false);
     const productnames = id;
     const router = useRouter();
     const [loading, setLoading] = useState(false);
@@ -579,44 +579,56 @@ function Viewproducts({ id }) {
     // No Records Found
     useEffect(() => {
         ProductView(productnames).then((res) => {
+            console.log("kalai",res)
 
-            setProductseller(res?.data?.sellerInformation[0])
-            const productshowimages = [];
-            res?.data?.productDetails?.productImages?.map((item, index) => {
-                productshowimages?.push(item)
-            })
-            // productshowimages?.unshift({
-            //     id: 0,
-            //     name: res?.data?.productDetails?.productThumbImage
-            // });
-            setProductImage(productshowimages);
-            setProductData(res?.data?.productDetails);
-            setProductReview(res?.data?.reviews);
-            setRatingcount(res?.data?.totalReviewsCount)
-            setAverageRating(res?.data?.averageRating[0]?.avgRating)
-            const variationdata = [];
-            setProductVariations(variationdata);
-            res?.data?.variations.map((item) => {
-                const items = item?.variationValues.length;
-                const forms = item?.variationValues.split(",", items);
-                const datas = {
-                    id: item?.id,
-                    name: item?.name,
-                    sellerId: item?.sellerId,
-                    stateId: item?.stateId,
-                    variationValues: forms
-                };
-                variationdata.push(datas);
-            });
+            if (res?.response?.data?.message == "No Records Found") {
+                setError(true);
+                console.log("kalai",res)
+                toast.error("No Records Found");
+            }
+            else {
+                setProductseller(res?.data?.sellerInformation[0])
+                const productshowimages = [];
+                res?.data?.productDetails?.productImages?.map((item, index) => {
+                    productshowimages?.push(item)
+                })
+                // productshowimages?.unshift({
+                //     id: 0,
+                //     name: res?.data?.productDetails?.productThumbImage
+                // });
+                setProductImage(productshowimages);
+                setProductData(res?.data?.productDetails);
+                setProductReview(res?.data?.reviews);
+                setRatingcount(res?.data?.totalReviewsCount)
+                setAverageRating(res?.data?.averageRating[0]?.avgRating)
+                const variationdata = [];
+                setProductVariations(variationdata);
+                res?.data?.variations.map((item) => {
+                    const items = item?.variationValues.length;
+                    const forms = item?.variationValues.split(",", items);
+                    const datas = {
+                        id: item?.id,
+                        name: item?.name,
+                        sellerId: item?.sellerId,
+                        stateId: item?.stateId,
+                        variationValues: forms
+                    };
+                    variationdata.push(datas);
+                });
+            }
         }).catch((err) => {
             console.log(err);
-            console.log("k", err)
+            if (err?.response?.data?.message == "No Records Found") {
+                setError(true);
+                toast.error("No Records Found");
+                console.log("kalai",res?.response?.data?.message)
 
-
+            }
+    
         });
         const tokencheck = localStorage.getItem("userToken");
         setTokenset(tokencheck)
-    }, [productnames, tokencheck, index1, index2, index3, index4, averageRatings?.avgRating]);
+    }, [productnames, tokencheck, index1, index2, index3, index4, averageRatings?.avgRating,errors]);
 
     useEffect(() => {
         //         ProductLikeWishlistGet().then((res) => {
@@ -634,9 +646,7 @@ function Viewproducts({ id }) {
         }
 
 
-
-
-    }, [productSize, productseller, productnames, averageRatings?.avgRating, productnotfound]);
+    }, [productSize, productseller, productnames, averageRatings?.avgRating, productnotfound, errors]);
 
 
 
@@ -971,10 +981,9 @@ function Viewproducts({ id }) {
         router?.push("/errorboundary")
     }
 
-    if (false) {
+    if (errors) {
         return (
             <div>
-
                 {NavigatePath()}
             </div>
         )
@@ -1016,52 +1025,52 @@ function Viewproducts({ id }) {
                                                     alt="profile-pic"
                                                 /> */}
 
-                                                <ReactImageMagnify 
-                                                        //  className={styles.serachlargeimages}
-                                                {...{
-                                                    smallImage: {
+                                                <ReactImageMagnify
+                                                    //  className={styles.serachlargeimages}
+                                                    {...{
+                                                        smallImage: {
 
-                                                        alt: 'Wristwatch by Ted Baker London',
-                                                        isFluidWidth: true,
-                                                        src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                        borderRadius: "10px"
-                                                    },
-                                                    largeImage: {
-                                                        src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                        width: 1200,
-                                                        height: 1200,
-                                                        backgroundColor: "white",
-                                                        // border:"3px solid blue"
-                                                        zIndex: "989898988989898989898989",
-                                                        borderRadius: "10px"
-
-
-                                                    },
-                                                    imageStyle: {
-                                                        // border:"2px solid red",
-                                                        width: "100%",
-                                                        height: "100%",
-                                                        maxHeight: "400px",
-                                                        objectFit: "contain",
-                                                        zIndex: "9898989898",
-                                                        backgroundColor: "white",
-                                                        borderRadius: "10px"
-
-                                                    },
-                                                    // smallImage: {
-                                                    //     src: String, (required)
-                                                    //     srcSet: String,
-                                                    //     sizes: String,
-                                                    //     width: Number, (required if isFluidWidth is not set)
-                                                    //     height: Number, (required if isFluidWidth is not set)
-                                                    //     isFluidWidth: Boolean, (default false)
-                                                    //     alt: String,
-                                                    //     onLoad: Function,
-                                                    //     onError: Function
-                                                    // },
+                                                            alt: 'Wristwatch by Ted Baker London',
+                                                            isFluidWidth: true,
+                                                            src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
+                                                            borderRadius: "10px"
+                                                        },
+                                                        largeImage: {
+                                                            src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
+                                                            width: 1200,
+                                                            height: 1200,
+                                                            backgroundColor: "white",
+                                                            // border:"3px solid blue"
+                                                            zIndex: "989898988989898989898989",
+                                                            borderRadius: "10px"
 
 
-                                                }}
+                                                        },
+                                                        imageStyle: {
+                                                            // border:"2px solid red",
+                                                            width: "100%",
+                                                            height: "100%",
+                                                            maxHeight: "400px",
+                                                            objectFit: "contain",
+                                                            zIndex: "9898989898",
+                                                            backgroundColor: "white",
+                                                            borderRadius: "10px"
+
+                                                        },
+                                                        // smallImage: {
+                                                        //     src: String, (required)
+                                                        //     srcSet: String,
+                                                        //     sizes: String,
+                                                        //     width: Number, (required if isFluidWidth is not set)
+                                                        //     height: Number, (required if isFluidWidth is not set)
+                                                        //     isFluidWidth: Boolean, (default false)
+                                                        //     alt: String,
+                                                        //     onLoad: Function,
+                                                        //     onError: Function
+                                                        // },
+
+
+                                                    }}
 
 
                                                 />
@@ -1110,70 +1119,70 @@ function Viewproducts({ id }) {
                                     <div className={styles.starsections}>
 
 
-{averageRatings?<>
-    
-    
-{averageRatings === 1 && <Rate defaultValue={1} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 1.5 && <Rate defaultValue={1.5} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 2 && <Rate defaultValue={2} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 2.5 && <Rate defaultValue={2.5} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 3 && <Rate defaultValue={3} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                               {averageRatings===3.5 &&  <Rate defaultValue={3.5} allowHalf style={{ color: "#54BE43" }}
-                                                        tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                                        count={5}
-                                                        disabled
-                                                    />}
-                                                           {averageRatings===4 &&  <Rate defaultValue={4} allowHalf style={{ color: "#54BE43" }}
-                                                        tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                                        count={5}
-                                                        disabled
-                                                    />}
-                                                           {averageRatings===4.5 &&  <Rate defaultValue={4.5} allowHalf style={{ color: "#54BE43" }}
-                                                        tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                                        count={5}
-                                                        disabled
-                                                    />}
-                                                           {averageRatings===5 &&  <Rate defaultValue={5} allowHalf style={{ color: "#54BE43" }}
-                                                        tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                                        count={5}
-                                                        disabled
-                                                    />}
-
-</>:<>
-
-{<Rate defaultValue={0} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
+                                        {averageRatings ? <>
 
 
+                                            {averageRatings === 1 && <Rate defaultValue={1} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 1.5 && <Rate defaultValue={1.5} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 2 && <Rate defaultValue={2} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 2.5 && <Rate defaultValue={2.5} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 3 && <Rate defaultValue={3} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 3.5 && <Rate defaultValue={3.5} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 4 && <Rate defaultValue={4} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 4.5 && <Rate defaultValue={4.5} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 5 && <Rate defaultValue={5} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+
+                                        </> : <>
+
+                                            {<Rate defaultValue={0} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
 
 
-</>}
-                                      
-                                 
-                                      
+
+
+                                        </>}
+
+
+
                                     </div>
                                     <div>
                                         {ratingcount} Review

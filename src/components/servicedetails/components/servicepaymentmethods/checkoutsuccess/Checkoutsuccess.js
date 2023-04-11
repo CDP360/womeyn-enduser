@@ -17,7 +17,7 @@ function Checkoutsuccess() {
     useEffect(() => {
         if (Transaction_id) {
             CheckoutServicePayment(Transaction_id).then((res) => {
-                if (res?.data?.message == "Service completed successfully") {
+                if (res?.data?.message == "Booking completed successfully") {
                     toast.success(res?.data?.message, {
                         position: "top-center",
                         autoClose: 3000,
@@ -45,7 +45,7 @@ function Checkoutsuccess() {
     useEffect(() => {
         if (paymentId_id, PayerID_id) {
             CheckoutServicePaymentPaypal(paymentId_id, PayerID_id).then((res) => {
-                if (res?.data?.message == "Service completed successfully") {
+                if (res?.data?.message == "Booking completed successfully") {
                     toast.success(res?.data?.message, {
                         position: "top-center",
                         autoClose: 3000,

@@ -36,7 +36,6 @@ function Userprofile({ name, error }) {
                 localStorage.removeItem("productid");
             }
             setUser(res?.data);
-
         }).catch((err) => {
             setError(false);
 
