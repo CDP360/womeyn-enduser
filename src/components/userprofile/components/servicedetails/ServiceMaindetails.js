@@ -23,6 +23,11 @@ function ServiceMaindetails({ error }) {
     useEffect(() => {
         setLoading(true);
         ServiceBookingUsers().then((res) => {
+
+            if(res?.response?.data?.code===500)
+            {
+                alert("true");
+            }
             console?.log(res, "kalai")
             setServiceusers(res?.data);
             setTimeout(() => {

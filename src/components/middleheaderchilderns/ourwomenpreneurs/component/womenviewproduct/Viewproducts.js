@@ -579,12 +579,17 @@ function Viewproducts({ id }) {
     // No Records Found
     useEffect(() => {
         ProductView(productnames).then((res) => {
-            console.log("kalai",res)
+           
 
-            if (res?.response?.data?.message == "No Records Found") {
+            // if (res?.response?.data?.message == "No Records Found") {
+            //     setError(true);
+            //     console.log("kalai",res)
+            //     toast.error("No Records Found");
+            // }
+            if (res =="No Records Found") {
+        
                 setError(true);
-                console.log("kalai",res)
-                toast.error("No Records Found");
+
             }
             else {
                 setProductseller(res?.data?.sellerInformation[0])
@@ -618,12 +623,7 @@ function Viewproducts({ id }) {
             }
         }).catch((err) => {
             console.log(err);
-            if (err?.response?.data?.message == "No Records Found") {
-                setError(true);
-                toast.error("No Records Found");
-                console.log("kalai",res?.response?.data?.message)
-
-            }
+           
     
         });
         const tokencheck = localStorage.getItem("userToken");
