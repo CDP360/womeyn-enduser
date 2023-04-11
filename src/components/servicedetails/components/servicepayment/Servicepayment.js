@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 
 import { ServiceBooking, ServiceusersGetSingleId } from '../../../../services/servicewomeyn/service-womeyn';
 import Spinner from 'react-bootstrap/Spinner';
+import Skeleton from 'react-loading-skeleton';
 
 function Servicepayment({ id }) {
     const history = useRouter();
@@ -34,6 +35,9 @@ function Servicepayment({ id }) {
 
     const onOptionChange = (e) => {
         setPaymentType(e.target.value);
+     
+            setLoading(false);
+        
     }
 
     useEffect(() => {
@@ -84,11 +88,16 @@ function Servicepayment({ id }) {
                     theme: "dark",
                 }
             );
+
         }
 
+      
         if (paymentType) {
+           
+           
+
             const userid = localStorage.getItem("userid");
-            setLoading(false);
+        
             const datas = {
                 serviceId: payements?.serviceId,
                 variationId: payements?.variationId,
@@ -102,12 +111,10 @@ function Servicepayment({ id }) {
             }
             ServiceBooking(datas).then((res) => {
                 window.location = res?.data?.url;
-                setTimeout(() => {
-                    setLoading(false);
-                }, 400)
+               
             }).catch((err) => {
                 console.log(err);
-                setLoading(false);
+               
             })
         }
     }
@@ -153,7 +160,7 @@ function Servicepayment({ id }) {
                             <div className={styles.leftservicepayment}>
                                 <div className={styles.selectpayment}>
 
-                                    Select a payment method 
+                                    Select a payment method
                                 </div>
                                 <div className={styles.paymentmethod}>
 
@@ -189,7 +196,11 @@ function Servicepayment({ id }) {
                                                     src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${serviceimages}`}
                                                     alt="profile-pic"
                                                 />
-                                            </> : <></>}
+                                            </> : <>
+                                            <Skeleton
+                                             className={styles.bannserpaymentservice}
+                                            />
+                                            </>}
                                         </div>
                                         <div className={styles.servicepayment}>
                                             <div className={styles.quantity}>
@@ -224,7 +235,7 @@ function Servicepayment({ id }) {
 
                                             <div className={styles.quantity}>
                                                 <div className={styles.price}>
-                                                   GST
+                                                    GST
                                                 </div>
                                                 <div className={styles.price}>
                                                     A$ {totalvalue}

@@ -41,6 +41,16 @@ export function ServiceBooking(data) {
 
 
 
+export function ServiceBookingUsers() {
+    return instanceBaseurl.get(`/customer/service/bookings`).then((res) => {
+        return res;
+    }).catch((err) => {
+        return err;
+    })
+}
+
+
+
 
 
 

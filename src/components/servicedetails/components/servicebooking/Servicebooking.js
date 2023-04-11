@@ -218,6 +218,8 @@ import { useEffect } from 'react';
 import { ServiceusersGetSingle } from '../../../../services/servicewomeyn/service-womeyn';
 import moment from 'moment';
 import Modal from 'react-bootstrap/Modal';
+import Skeleton from 'react-loading-skeleton';
+
 function Servicebooking({ id }) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -229,19 +231,19 @@ function Servicebooking({ id }) {
     useEffect(() => {
         ServiceusersGetSingle(id).then((res) => {
             // console.log(res,"res");
-            console.log(res,"res");
+            console.log(res, "res");
 
-            
+
 
             setServiceBooking(res?.data?.serviceDetails[0]);
             setSellerinfo(res?.data?.sellerInformation);
         }).catch((err) => {
             // console.log(err,"res");
-          
+
         })
     }, [id])
 
- 
+
 
 
 
@@ -285,7 +287,11 @@ function Servicebooking({ id }) {
                                         src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${serviceBooking?.serviceThumbImage}`}
                                         alt="profile-pic"
                                     />
-                                </> : <></>}
+                                </> : <>
+                                <Skeleton
+                                             className={styles.servicebanner}
+                                            />
+                                </>}
                             </div>
                             <div className={styles.classesszumba}>
 
@@ -398,7 +404,7 @@ function Servicebooking({ id }) {
                                                             <Image src={ticket} alt="no image" className={styles.ticket} />
                                                         </div>
                                                         <div>
-                                                            {item?.numberOfPeopleAllowed}
+                                                            Total Number of seats available: {item?.numberOfPeopleAllowed}
                                                         </div>
 
                                                     </div>
@@ -407,7 +413,7 @@ function Servicebooking({ id }) {
                                                 <div className="mt-2 mb-4 text-center">
 
                                                     <div className={styles.viewmorebutton} onClick={() => FilterModelPopup(item?._id)}>
-                                                        View More... 
+                                                        View More...
                                                     </div>
 
                                                 </div>

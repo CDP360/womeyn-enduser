@@ -34,7 +34,6 @@ function Login() {
         }
         setLoading(true);
         if (productWhishlist) {
-
             Userlogin(datas).then(async (res) => {
                 if (res) {
                     localStorage.setItem("user", JSON.stringify(res?.data?.user?.firstName));
@@ -48,8 +47,6 @@ function Login() {
                 }
                 else {
                     setError(true);
-
-
                     toast.error("Incorrect email or password",
                         {
                             position: "top-center",
@@ -62,10 +59,14 @@ function Login() {
                             theme: "dark",
                         }
                     );
+                    setLoading(false);
+
                 }
             }).catch((err) => {
                 console.log(err);
                 setError(false);
+                setLoading(false);
+
 
             })
         }
@@ -94,11 +95,12 @@ function Login() {
                             theme: "dark",
                         }
                     );
-
+                    setLoading(false);
                 }
             }).catch((err) => {
                 console.log(err);
                 setError(false);
+                setLoading(false);
 
             })
         }
