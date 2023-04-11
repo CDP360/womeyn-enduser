@@ -31,7 +31,7 @@ function Checkoutsuccess() {
 
                     setTimeout(() => {
                         history.push("/profile/services");
-                    }, 500);
+                    }, 600);
                 }
             }).catch((err) => {
                 console.log(err);
@@ -59,7 +59,7 @@ function Checkoutsuccess() {
 
                     setTimeout(() => {
                         history.push("/profile/services");
-                    }, 500);
+                    }, 600);
                 }
             }).catch((err) => {
                 console.log(err);

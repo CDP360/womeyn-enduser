@@ -44,20 +44,19 @@ function Servicepayment({ id }) {
         ServiceusersGetSingleId(id).then((res) => {
             if (res?.response?.data?.message == "Please authenticate") {
                 setError(true);
-               
+
             }
-           else
-           {
-            setPayments(res?.data[0])
-            setServiceimages(res?.data[0]?.serviceImages[0]?.name)
-           }
+            else {
+                setPayments(res?.data[0])
+                setServiceimages(res?.data[0]?.serviceImages[0]?.name)
+            }
         }).catch((err) => {
             console.log(err);
             setError(false);
 
         })
 
-    }, [id, serviceimages, tokens, paymentType, totalvalue,errors]);
+    }, [id, serviceimages, tokens, paymentType, totalvalue, errors]);
 
     useEffect(() => {
         const values = Math.max(
@@ -113,7 +112,7 @@ function Servicepayment({ id }) {
         }
     }
 
-   
+
 
     const LoginNavigate = () => {
         const pathnames = `/service/payment/${id}`;
@@ -138,15 +137,14 @@ function Servicepayment({ id }) {
     // else
     // {
 
-    if(errors) {
+    if (errors) {
         return (
             <div>
                 {NavigatePathUser()}
             </div>
         )
     }
-    else
-    {
+    else {
         return (
             <div className='mainsection'>
                 <div className="insidesection">
@@ -155,7 +153,7 @@ function Servicepayment({ id }) {
                             <div className={styles.leftservicepayment}>
                                 <div className={styles.selectpayment}>
 
-                                    Select a payment method {tokens ? "true" : "false"}
+                                    Select a payment method 
                                 </div>
                                 <div className={styles.paymentmethod}>
 
@@ -224,6 +222,19 @@ function Servicepayment({ id }) {
 
                                             </div>
 
+                                            <div className={styles.quantity}>
+                                                <div className={styles.price}>
+                                                   GST
+                                                </div>
+                                                <div className={styles.price}>
+                                                    A$ {totalvalue}
+                                                </div>
+                                            </div>
+
+                                            <div className={styles.bordersections}>
+
+                                            </div>
+
                                         </div>
 
                                         <div className="mt-3 mb-3">
@@ -238,7 +249,7 @@ function Servicepayment({ id }) {
                                                     </div>
 
                                                     <div>
-                                                        <span className={styles.total}>27</span>
+                                                        <span className={styles.total}>{(Number(totalvalue)) + (Number(payements?.price))}</span>
                                                     </div>                                        </div>
                                             </div>
                                         </div>

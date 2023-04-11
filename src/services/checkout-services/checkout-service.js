@@ -26,8 +26,8 @@ export function CheckoutServicePayment(servicepaymentid) {
 }
 
 
-export function CheckoutServicePaymentPaypal(paypaldata) {
-    return instanceBaseurl.post(`/customer/service/complete-paypal-booking/`, paypaldata).then((res) => {
+export function CheckoutServicePaymentPaypal(paymentid, payerid) {
+    return instanceBaseurl.post(`/customer/service/complete-paypal-booking?paymentId=${paymentid}&PayerID=${payerid}`).then((res) => {
         return res;
     }).catch((err) => {
         return err;
