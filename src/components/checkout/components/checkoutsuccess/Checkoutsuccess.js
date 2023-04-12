@@ -22,6 +22,8 @@ function Checkoutsuccess() {
     const handleShow = () => setShow(true);
     useEffect(() => {
         if (Transaction_id) {
+            handleShow();
+
             CheckoutSuccessUpdate(Transaction_id).then((res) => {
                 if (res?.data?.message == "Order completed successfully") {
                     // toast.success(res?.data?.message, {
@@ -35,11 +37,10 @@ function Checkoutsuccess() {
                     //     theme: "dark",
                     // });
                     Cookies.remove("CartDatas");
-                    handleShow();
                     setTimeout(() => {
                         history.push("/profile/orders");
                         handleClose();
-                    }, 1000);
+                    }, 2000);
                 }
             }).catch((err) => {
                 console.log(err);
@@ -52,6 +53,8 @@ function Checkoutsuccess() {
 
     useEffect(() => {
         if (paymentId_id, PayerID_id) {
+            handleShow();
+
             CheckoutSuccessUpdatePaypal(paymentId_id, PayerID_id).then((res) => {
                 if (res?.data?.message == "Order completed successfully") {
                     // toast.success(res?.data?.message, {
@@ -65,11 +68,10 @@ function Checkoutsuccess() {
                     //     theme: "dark",
                     // });
                     Cookies.remove("CartDatas");
-                    handleShow();
                     setTimeout(() => {
                         history.push("/profile/orders");
                         handleClose();
-                    }, 1000);
+                    }, 2000);
                 }
             }).catch((err) => {
                 console.log(err);
@@ -82,34 +84,29 @@ function Checkoutsuccess() {
         <>
             <div className={styles.success}>
                 {/* <LoaderLogo /> */}
-                <Modal show={show} onHide={handleClose}>
-
+                
+                <Modal show={show} onHide={handleClose} centered>
+                <Modal.Header closeButton className="modalheader">
+      
+        </Modal.Header>
                     <Modal.Body>
                         <div>
-                            {/* ordercomplete */}
-                            <div>
-                                <Image src={ordercomplete} alt="no image" />
+                            <div className="mb-3">
                             </div>
-
                             <div>
-                                <h3>Order completed successfully !</h3>
+                                <Image src={ordercomplete} alt="no image" className={styles.ordercompleimages} />
                             </div>
-
                             <div>
+                                <h3 className={styles.compleordertexts}>Order completed successfully !</h3>
+                            </div>
+                            <div className={styles.youwill}>
                                 You will be receiving a confirmation email order details.
                             </div>
-
-
+                            <div className="mt-3 mb-5">
+                            </div>
                         </div>
                     </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                        </Button>
-                        <Button variant="primary" onClick={handleClose}>
-                            Save Changes
-                        </Button>
-                    </Modal.Footer>
+
                 </Modal>
             </div>
         </>
