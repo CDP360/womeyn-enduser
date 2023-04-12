@@ -316,6 +316,12 @@ height:300px;
           padding: 5% 4px;
           margin: 0 auto;
         }
+        @include lgBreakPoint {
+          width: 30%;
+          // padding: 5% 4px;
+          margin: 0 auto;
+      
+        }
       }
       .monthsections {
         text-align: center;

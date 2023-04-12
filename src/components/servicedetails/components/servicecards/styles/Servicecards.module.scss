@@ -33,11 +33,11 @@
             padding-top: 6%;
         }
         @include smBreakPoint {
-            width: 85%;
-            padding-top: 6%;
+            width: 100%;
+            // padding-top: 6%;
         }
         @include mdBreakPoint {
-            width: 85%;
+            width: 100%;
         }
         @include lgBreakPoint {
             width: 100%;
@@ -157,8 +157,15 @@
         width: 100%;
         object-fit:contain;
         border-radius: 10px !important;
+        @include xsBreakPoint {
+            height: 320px;
+            width:100%;
+        }
+        @include smBreakPoint {
+            height: 250px;
+        }
         @include mdBreakPoint {
-            height: 100%;
+            height: 250px;
         }
         @include lgBreakPoint {
             height: 240px;

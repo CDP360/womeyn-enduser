@@ -1,4 +1,4 @@
-@use "../../../../../../../../../scss/abstract/" as *;
+@use "../../../../../../../scss/abstract/" as *;
 
 .reviewrating {
   width: 100%;
@@ -43,8 +43,8 @@
   }
 
   .submits {
-    width: 40%;
-    padding: 6px;
+    width: 100%;
+    padding: 6px 30px;
     outline: none;
     border-radius: 5px;
     cursor: pointer;
@@ -113,7 +113,7 @@
     right:-10%;
     width:25px;
     height:25px;
-    dislay:flex;
+    display:flex;
     align-items:center;
     justify-content:center;
     margin:0 auto;

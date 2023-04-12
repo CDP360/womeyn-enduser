@@ -15,6 +15,7 @@
       border-radius: 10px;
       outline: none;
     }
+   
     .searchImg {
       width: 20px;
       height: 20px;
@@ -246,3 +247,22 @@
     object-fit: contain;
   }
   
+
+  .favortsProductprice
+  {
+    color: #0D0C22;
+
+    mix-blend-mode: normal;
+    opacity: 0.4;
+    font-weight:500;
+  }
+
+  .trackingbuttons {
+    width: 100%;
+    outline: none;
+    padding: 9px 40px;
+    border-radius: 10px;
+    color: #e95a5a;
+    border: 1px solid #e95a5a;
+    background-color: white;
+  }

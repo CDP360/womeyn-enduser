@@ -579,17 +579,8 @@ function Viewproducts({ id }) {
     // No Records Found
     useEffect(() => {
         ProductView(productnames).then((res) => {
-           
-
-            // if (res?.response?.data?.message == "No Records Found") {
-            //     setError(true);
-            //     console.log("kalai",res)
-            //     toast.error("No Records Found");
-            // }
             if (res =="No Records Found") {
-        
                 setError(true);
-
             }
             else {
                 setProductseller(res?.data?.sellerInformation[0])

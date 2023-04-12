@@ -4,11 +4,11 @@ import styles from './styles/Reviewmodel.module.scss';
 import { Rate } from "antd";
 import Form from 'react-bootstrap/Form';
 import Image from 'next/image';
-import camera from '../../../../../../../assests/womeynlogos/cameraprofile.png';
+import camera from '../../../../../assests/womeynlogos/cameraprofile.png';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
-import { ProductRatingView } from '../../../../../../../services/product-rating-service/product-rating-service';
-function Reviewmodel({ show1, handleClose1, orderlist }) {
+import { ProductRatingView } from '../../../../../services/product-rating-service/product-rating-service';
+function Reviewmodel({ show1, handleClose1, servicedata }) {
     const {
         register,
         handleSubmit,
@@ -19,25 +19,28 @@ function Reviewmodel({ show1, handleClose1, orderlist }) {
     const [count, setStarCount] = useState(0);
     const [image, setImage] = useState([]);
     useEffect(() => {
+
         const names = JSON.parse(localStorage.getItem("user"));
         setValue("username", names)
     }, [count])
 
     const handleImagechange = (e) => {
         setImage([...image, e.target.files[0]]);
+
     }
+
+    // console.log("servicedata",servicedata?.variationDetails?.serviceId)
     const Ratingproduct = (data) => {
         const formData = new FormData();
         formData.append("name", data?.username)
         formData.append("ratingValue", count)
         formData.append("title", data?.title)
         formData.append("message", data?.description)
-        formData.append("productId", orderlist?.productId)
+        formData.append("serviceId", servicedata?.variationDetails?.serviceId)
         formData.append("upl", image)
         ProductRatingView(formData).then((res) => {
             setTimeout(() => {
                 handleClose1();
-
             }, 300)
         }).catch((err) => {
             console.log(err);
@@ -49,10 +52,8 @@ function Reviewmodel({ show1, handleClose1, orderlist }) {
         })
         setImage(filters);
     }
-
     return (
         <div>
-
             <Modal
                 show={show1}
                 onHide={handleClose1}
@@ -71,7 +72,7 @@ function Reviewmodel({ show1, handleClose1, orderlist }) {
                     </div>
                     <div className="mb-3 mt-3">
                         <div>
-                            Rate this product
+                            Rate this services
                         </div>
                         <div className="mb-3 mt-1">
                             <Rate allowHalf style={{ color: "#54BE43", fontSize: "2rem", cursor: "pointer" }}
@@ -136,7 +137,7 @@ function Reviewmodel({ show1, handleClose1, orderlist }) {
                     </div>
                     <div className="mb-3 mt-3">
                         <div className='mb-2'>
-                            Review this product
+                            Review this services
                         </div>
                         <div>
                             <Form.Control as="textarea" rows={3}
@@ -189,30 +190,20 @@ function Reviewmodel({ show1, handleClose1, orderlist }) {
                             })}
                         </> : <></>}
                     </div>
-                    {/* <div>
-                        <button className={styles.submits} onClick={handleSubmit(Ratingproduct)}>Submit</button>
-
-                        <div>
-
-<button className={styles.submits} onClick={handleClose1}>Cancel</button>
-
-</div>
-                    </div> */}
-
-<div className={styles.reviewbuttons}>
+                    <div className={styles.reviewbuttons}>
 
                         
-<div>
+                        <div>
 
-<button className={styles.submits} onClick={handleClose1}>Cancel</button>
+                        <button className={styles.submits} onClick={handleClose1}>Cancel</button>
 
-</div>
+                        </div>
 
-<div>
-<button className={styles.submits} onClick={handleSubmit(Ratingproduct)}>Submit</button>
+                        <div>
+                        <button className={styles.submits} onClick={handleSubmit(Ratingproduct)}>Submit</button>
 
-</div>
-</div>
+                        </div>
+                    </div>
                 </div>
             </Modal>
         </div>

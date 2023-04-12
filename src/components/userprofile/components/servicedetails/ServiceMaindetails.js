@@ -6,33 +6,29 @@ import { useRouter } from 'next/router';
 import Modal from 'react-bootstrap/Modal';
 import Search from '../../../../assests/homepage-logos/serachicon.png';
 import Image from "next/image";
+import Reviewmodel from './reviewmodel/Reviewmodel';
 
 function ServiceMaindetails({ error }) {
 
     const [serviceusers, setServiceusers] = useState([]);
-  const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false);
 
     const [loading, setLoading] = useState(false);
+
+    const [servicedata, setServiceData] = useState({});
     const handleClose = () => setShow(false);
-    const handleShow = (id) => {
-      setShow(true)
-      setDeleteid(id);
-    };
+    
     const history = useRouter();
 
     useEffect(() => {
         setLoading(true);
         ServiceBookingUsers().then((res) => {
-
-            if(res?.response?.data?.code===500)
-            {
-                alert("true");
-            }
-            console?.log(res, "kalai")
             setServiceusers(res?.data);
             setTimeout(() => {
                 setLoading(false);
             }, 500)
+
+
         }).catch((err) => {
             console.log(err);
             setLoading(false);
@@ -41,6 +37,14 @@ function ServiceMaindetails({ error }) {
     const NavigateRedirect = () => {
         history?.push("/errorboundary")
     }
+
+    const [show1, setShow1] = useState(false);
+    const handleClose1 = () => setShow1(false);
+    const handleShow1 = (data) => {
+        setServiceData(data)
+        setShow1(true)
+
+    };
     if (error) {
         return (
             <div>
@@ -64,23 +68,17 @@ function ServiceMaindetails({ error }) {
 
                         <div>
                             {loading ? <>
-
-
-                             loading...
-
+                                loading...
                             </> : <>
-
-{/* 
                                 {
-                                    favorts.map((data, index) =>
+                                    serviceusers.map((data, index) =>
                                         <div className={styles.favortsInnerContainer} key={index}>
                                             <div className={styles.favortsLeftContainer} onClick={() => pushProductPage(data.productSlugName)}>
                                                 <div className={styles.boximage}>
-
-                                                    {data?.productThumbImage ? <>
+                                                    {data?.serviceThumbImage ? <>
                                                         <img
                                                             className={styles.favortsImg}
-                                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${data?.productThumbImage}`}
+                                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${data?.serviceThumbImage}`}
                                                             alt="profile-pic"
                                                         />
                                                     </> : <>
@@ -88,7 +86,14 @@ function ServiceMaindetails({ error }) {
                                                     </>}
                                                 </div>
                                                 <div className={styles.favortsContentContainer}>
-                                                    <p className={styles.favortsProductName}>{data.productName}</p>
+                                                    <div className={styles.favortsProductName}>{data.serviceName}</div>
+                                                    <div className={styles.favortsProductprice}>Price : {data.price}</div>
+
+                                                    <div className="mt-2">
+                                                        <div className={styles.favortsProductprice}>GST : {data.gstAmount}</div>
+
+                                                    </div>
+
 
                                                     <div className={styles.favortsRatingContainer}>
 
@@ -99,19 +104,24 @@ function ServiceMaindetails({ error }) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className={styles.favortsRightContainer} onClick={() => handleShow(data?._id)}>
-                                                <Image src={Delete} className={styles.removeitems} />
+                                            <div className={styles.favortsRightContainer} >
+                                                {/* <Image src={Delete} className={styles.removeitems} />
                                                 <div className='d-none d-lg-block'>
                                                     <p className={styles.favortsDeleteText}>Remove</p>
+                                                </div> */}
+                                                <div>
+
+                                                    <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button>
                                                 </div>
                                             </div>
                                         </div>
                                     )
-                                } */}
+                                }
+
                             </>}
 
 
-                            {/* {favorts?.length === 0 && <div>No Favorites Data</div>} */}
+                            {serviceusers?.length === 0 && <div>No Favorites Data</div>}
 
 
                         </div>
@@ -119,7 +129,7 @@ function ServiceMaindetails({ error }) {
 
                     </div>
                 </div>
-                <>
+                {/* <>
                     <Modal
                         show={show}
                         onHide={handleClose}
@@ -150,6 +160,13 @@ function ServiceMaindetails({ error }) {
                         </Modal.Body>
 
                     </Modal>
+                </> */}
+
+                <>
+                    <Reviewmodel
+                        show1={show1}
+                        handleClose1={handleClose1} servicedata={servicedata}
+                    />
                 </>
             </>
         )

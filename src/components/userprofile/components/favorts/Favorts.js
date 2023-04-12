@@ -11,7 +11,7 @@ import LoaderLogo from './../../../loaderlogo/LoaderLogo';
 import { Rate } from "antd";
 import { useRouter } from 'next/router';
 import Modal from 'react-bootstrap/Modal';
-function Favorts({error}) {
+function Favorts({ error }) {
   const [show, setShow] = useState(false);
   const [deleteid, setDeleteid] = useState("");
   const handleClose = () => setShow(false);
@@ -25,9 +25,8 @@ function Favorts({error}) {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    const userToken=localStorage.getItem("userToken");
-    if(JSON.parse(userToken))
-    {
+    const userToken = localStorage.getItem("userToken");
+    if (JSON.parse(userToken)) {
       GetFavoritsList().then((res) => {
         setTimeout(() => {
           setLoading(false);
@@ -37,12 +36,11 @@ function Favorts({error}) {
         console.log(err);
       })
     }
-    else
-    {
+    else {
       history.push("/login")
     }
- 
-  }, [starcount, deleteid,error])
+
+  }, [starcount, deleteid, error])
   const pushProductPage = (data) => {
     history.push(`/product/${data}`)
   }
@@ -64,18 +62,16 @@ function Favorts({error}) {
 
   const NavigateRedirect = () => {
     history?.push("/errorboundary")
-}
+  }
 
-  if(error)
-  {
+  if (error) {
     return (
       <div>
-          {NavigateRedirect()}
+        {NavigateRedirect()}
       </div>
-  )
+    )
   }
-  else
-  {
+  else {
     return (
       <>
         <div>
@@ -86,39 +82,39 @@ function Favorts({error}) {
           </div>
           <div className={styles.favortsContainer}>
             <p className={styles.favortsText}>Favorites</p>
-  
-  
-  
+
+
+
             <div>
               {loading ? <>
-  
-  
+
+
                 <LoaderLogo />
-  
+
               </> : <>
-  
-              
+
+
                 {
                   favorts.map((data, index) =>
                     <div className={styles.favortsInnerContainer} key={index}>
                       <div className={styles.favortsLeftContainer} onClick={() => pushProductPage(data.productSlugName)}>
-                       <div className={styles.boximage}>
-  
-                       {data?.productThumbImage ? <>
-                          <img
-                            className={styles.favortsImg}
-                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${data?.productThumbImage}`}
-                            alt="profile-pic"
-                          />
-                        </> : <>
-                          <Skeleton className={styles.favortsImg} />
-                        </>}
+                        <div className={styles.boximage}>
+
+                          {data?.productThumbImage ? <>
+                            <img
+                              className={styles.favortsImg}
+                              src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${data?.productThumbImage}`}
+                              alt="profile-pic"
+                            />
+                          </> : <>
+                            <Skeleton className={styles.favortsImg} />
+                          </>}
                         </div>
                         <div className={styles.favortsContentContainer}>
                           <p className={styles.favortsProductName}>{data.productName}</p>
                           {/* <p className={styles.favortsOfferDetail}>{data.productSlugName}</p> */}
                           <div className={styles.favortsRatingContainer}>
-                           
+
                             {/* <Rate defaultValue={3.5} allowHalf style={{ color: "#54BE43" }}
                               tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
                               onChange={(value) => {
@@ -128,9 +124,9 @@ function Favorts({error}) {
                               disabled
                             /> */}
                             {/* </div> */}
-  
+
                             {data?.salePrice}
-  
+
                           </div>
                         </div>
                       </div>
@@ -144,14 +140,14 @@ function Favorts({error}) {
                   )
                 }
               </>}
-  
-  
+
+
               {favorts?.length === 0 && <div>No Favorites Data</div>}
-  
-  
+
+
             </div>
-  
-  
+
+
           </div>
         </div>
         <>
@@ -162,10 +158,10 @@ function Favorts({error}) {
             keyboard={false}
             centered
           >
-  
+
             <Modal.Body>
               <div className={styles.modelremove}>
-  
+
                 <div className={styles.insidemodelpopup}>
                   <div className={styles.removetexts}>
                     Remove Item
@@ -183,13 +179,13 @@ function Favorts({error}) {
                 </div>
               </div>
             </Modal.Body>
-  
+
           </Modal>
         </>
       </>
     );
   }
- 
+
 }
 
 export default Favorts;

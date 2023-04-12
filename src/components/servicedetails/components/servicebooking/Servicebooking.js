@@ -392,9 +392,9 @@ function Servicebooking({ id }) {
                                                         <div>
 
                                                             {item?.isCancellationAvailable ? <>
-                                                                CancellationAvailable
+                                                                Cancellation Available
                                                             </> : <>
-                                                                CancellationUnAvailable
+                                                                Cancellation UnAvailable
                                                             </>}
                                                         </div>
 
