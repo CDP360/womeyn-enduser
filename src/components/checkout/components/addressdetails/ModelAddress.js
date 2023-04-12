@@ -27,7 +27,7 @@ function ModelAddress({ show, handleClose, register, errors, handleSubmit, Submi
                     <div className={styles.mainmodelsection}>
                         <div className={styles.closesectionmodel}>
                             <div className={styles.addressnew}>
-                                Address new
+                                Add New Address
                             </div>
                             <div className={styles.icons} onClick={handleClose}>
                                 <ion-icon name="close-outline" size="large"></ion-icon>

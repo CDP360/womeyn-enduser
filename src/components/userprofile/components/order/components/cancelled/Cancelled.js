@@ -69,7 +69,7 @@ function Cancelled({ Orders, traking, loading }) {
                                 </>}
                               </div>
                               <div>
-                                <div className='carttextsmall' onClick={() => Productview(item?.productSlugName)}>
+                                <div className='carttextsmall' onClick={() => Productview(items?.productSlugName)}>
                                   {items?.productName}
                                 </div>
                                 <div>

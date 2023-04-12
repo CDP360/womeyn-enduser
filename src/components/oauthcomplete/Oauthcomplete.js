@@ -3,8 +3,6 @@ import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import LoaderLogo from '../loaderlogo/LoaderLogo';
 import { OauthSuccess } from '../../services/user-login-service/user-login-services';
-
-
 function Oauthcomplete() {
     const history = useRouter();
     useEffect(() => {
@@ -12,11 +10,11 @@ function Oauthcomplete() {
             localStorage.setItem("userToken", JSON.stringify(res?.data?.tokens?.access?.token));
             localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
             localStorage.setItem("auth", true);
+            toast.error(res);
             setTimeout(() => {
                 history.push("/");
             }, 1000)
         }).catch((err) => {
-            toast.error("Error !! code!!")
             console.log(err)
         })
     }, [])

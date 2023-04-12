@@ -219,6 +219,7 @@ import { ServiceusersGetSingle } from '../../../../services/servicewomeyn/servic
 import moment from 'moment';
 import Modal from 'react-bootstrap/Modal';
 import Skeleton from 'react-loading-skeleton';
+import Reviewsproduct from '../Reviews/Reviewsproduct';
 
 function Servicebooking({ id }) {
     const [show, setShow] = useState(false);
@@ -228,20 +229,22 @@ function Servicebooking({ id }) {
     const [serviceBooking, setServiceBooking] = useState([]);
     const [serviceBookingSingle, setServiceBookingSingle] = useState([]);
     const [sellerinformations, setSellerinfo] = useState({});
+    const [reviews,setReviews]=useState([]);
+    const [ratingsdata,setRatingData]=useState("");
     useEffect(() => {
         ServiceusersGetSingle(id).then((res) => {
             // console.log(res,"res");
             console.log(res, "res");
-
-
+            setReviews(res?.data?.reviews)
 
             setServiceBooking(res?.data?.serviceDetails[0]);
             setSellerinfo(res?.data?.sellerInformation);
+            setRatingData(res?.data?.averageRating[0]?.avgRating);
         }).catch((err) => {
             // console.log(err,"res");
 
         })
-    }, [id])
+    }, [id,ratingsdata])
 
 
 
@@ -427,6 +430,9 @@ function Servicebooking({ id }) {
                                     })}
 
                                 </div>
+                            </div>
+                            <div className="mt-5 mb-5">
+                                <Reviewsproduct reviews={reviews} averageRatings={ratingsdata}/>
                             </div>
                             <div className={styles.instractions}>
                                 <div>

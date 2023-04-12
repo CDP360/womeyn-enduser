@@ -192,15 +192,15 @@ function Reviewmodel({ show1, handleClose1, servicedata }) {
                     </div>
                     <div className={styles.reviewbuttons}>
 
-                        
+
                         <div>
 
-                        <button className={styles.submits} onClick={handleClose1}>Cancel</button>
+                            <button className={styles.submits} onClick={handleClose1}>Cancel</button>
 
                         </div>
 
                         <div>
-                        <button className={styles.submits} onClick={handleSubmit(Ratingproduct)}>Submit</button>
+                            <button className={styles.submits} onClick={handleSubmit(Ratingproduct)}>Submit</button>
 
                         </div>
                     </div>

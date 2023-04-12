@@ -38,6 +38,12 @@ function ServiceMaindetails({ error }) {
         history?.push("/errorboundary")
     }
 
+
+    const pushProductPage=(data)=>{
+        history?.push(`/service/${data}`);
+
+    }
+
     const [show1, setShow1] = useState(false);
     const handleClose1 = () => setShow1(false);
     const handleShow1 = (data) => {
@@ -45,6 +51,9 @@ function ServiceMaindetails({ error }) {
         setShow1(true)
 
     };
+
+
+    console.log("serviceusers",serviceusers)
     if (error) {
         return (
             <div>
@@ -73,7 +82,7 @@ function ServiceMaindetails({ error }) {
                                 {
                                     serviceusers.map((data, index) =>
                                         <div className={styles.favortsInnerContainer} key={index}>
-                                            <div className={styles.favortsLeftContainer} onClick={() => pushProductPage(data.productSlugName)}>
+                                            <div className={styles.favortsLeftContainer} onClick={() => pushProductPage(data.serviceSlugName)}>
                                                 <div className={styles.boximage}>
                                                     {data?.serviceThumbImage ? <>
                                                         <img
@@ -117,6 +126,7 @@ function ServiceMaindetails({ error }) {
                                         </div>
                                     )
                                 }
+                                
 
                             </>}
 

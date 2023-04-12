@@ -579,6 +579,8 @@ function Viewproducts({ id }) {
     // No Records Found
     useEffect(() => {
         ProductView(productnames).then((res) => {
+
+            console.log(res?.data,"lp")
             if (res =="No Records Found") {
                 setError(true);
             }
@@ -983,8 +985,6 @@ function Viewproducts({ id }) {
 
         return (
             <Fragment>
-
-
                 <div className={styles.mainproductviewscreen}>
                     <div className={styles.insideproductview}>
                         <div className={styles.splitproductview}>
@@ -1108,11 +1108,7 @@ function Viewproducts({ id }) {
                                 <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
                                 <div className={styles.starsection}>
                                     <div className={styles.starsections}>
-
-
                                         {averageRatings ? <>
-
-
                                             {averageRatings === 1 && <Rate defaultValue={1} allowHalf style={{ color: "#54BE43" }}
                                                 tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
                                                 count={5}
@@ -1327,6 +1323,9 @@ function Viewproducts({ id }) {
                                 }
 
                                 <div className={styles.locationsection}>
+                                    <div>
+{/* {productdata?.localDeliveryCharge==null?"kalai":"nazriya kalaiusurya"} */}
+                                    </div>
                                     <div className={styles.deverisection}>
                                         <div>
                                             <Image src={location} alt="no image" className={styles.deliveryicon} />

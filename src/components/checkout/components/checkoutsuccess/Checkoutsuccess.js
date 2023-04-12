@@ -9,6 +9,7 @@ import LoaderLogo from './../../../loaderlogo/LoaderLogo';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import ordercomplete from '../../../../assests/cart-logos/Order complete.gif';
+import Image from 'next/image';
 function Checkoutsuccess() {
     const history = useRouter();
     const searchParams = useSearchParams();
@@ -23,20 +24,21 @@ function Checkoutsuccess() {
         if (Transaction_id) {
             CheckoutSuccessUpdate(Transaction_id).then((res) => {
                 if (res?.data?.message == "Order completed successfully") {
-                    toast.success(res?.data?.message, {
-                        position: "top-center",
-                        autoClose: 3000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
-                    });
+                    // toast.success(res?.data?.message, {
+                    //     position: "top-center",
+                    //     autoClose: 3000,
+                    //     hideProgressBar: false,
+                    //     closeOnClick: true,
+                    //     pauseOnHover: true,
+                    //     draggable: true,
+                    //     progress: undefined,
+                    //     theme: "dark",
+                    // });
                     Cookies.remove("CartDatas");
                     handleShow();
                     setTimeout(() => {
                         history.push("/profile/orders");
+                        handleClose();
                     }, 1000);
                 }
             }).catch((err) => {
@@ -52,20 +54,21 @@ function Checkoutsuccess() {
         if (paymentId_id, PayerID_id) {
             CheckoutSuccessUpdatePaypal(paymentId_id, PayerID_id).then((res) => {
                 if (res?.data?.message == "Order completed successfully") {
-                    toast.success(res?.data?.message, {
-                        position: "top-center",
-                        autoClose: 3000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
-                    });
+                    // toast.success(res?.data?.message, {
+                    //     position: "top-center",
+                    //     autoClose: 3000,
+                    //     hideProgressBar: false,
+                    //     closeOnClick: true,
+                    //     pauseOnHover: true,
+                    //     draggable: true,
+                    //     progress: undefined,
+                    //     theme: "dark",
+                    // });
                     Cookies.remove("CartDatas");
                     handleShow();
                     setTimeout(() => {
                         history.push("/profile/orders");
+                        handleClose();
                     }, 1000);
                 }
             }).catch((err) => {
@@ -80,10 +83,25 @@ function Checkoutsuccess() {
             <div className={styles.success}>
                 {/* <LoaderLogo /> */}
                 <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+
+                    <Modal.Body>
+                        <div>
+                            {/* ordercomplete */}
+                            <div>
+                                <Image src={ordercomplete} alt="no image" />
+                            </div>
+
+                            <div>
+                                <h3>Order completed successfully !</h3>
+                            </div>
+
+                            <div>
+                                You will be receiving a confirmation email order details.
+                            </div>
+
+
+                        </div>
+                    </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
                             Close

@@ -13,7 +13,6 @@ import Confirmorders from './components/confirmorders/Confirmorders';
 import {useRouter} from 'next/router';
 function Checkout() {
   const history=useRouter();
-
   const [tokens,seTokens]=useState();
   const [step, setStep] = useState(0);
   const { state, dispatch } = useContext(ContextStore);
@@ -26,7 +25,19 @@ function Checkout() {
   const [step3, setStep3] = useState('');
   const [couponname, setCouponName] = useState("");
   const totalPrice = cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice + 40, 0);
+  const [totalvalue, setTotalValue] = useState(0);
   useEffect(() => {
+
+
+    const cartpricevaues=state?.cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)
+
+    const values = Math.max(
+      0,
+      Math.round(
+        cartpricevaues - (cartpricevaues) * 10 / 100
+      ));
+      const Sample = cartpricevaues - values;
+      setTotalValue(Sample);
     if (step === 0) {
       setStep1("active")
     }
@@ -47,7 +58,7 @@ function Checkout() {
       seTokens(true);
     }
 
-  }, [width, step1, step2, step3, step]);
+  }, [width, step1, step2, step3, step,totalvalue]);
 
   const NavigatePath=()=>{
     history.push("/login");
@@ -103,7 +114,7 @@ function Checkout() {
                     <Confirmorders name={name} totalPrice={totalPrice} setStep={setStep} step={step} setCouponName={setCouponName} />
                   </div>}
                   {step === 2 && <div>
-                    <Payment addressid={name} totalPrice={totalPrice} couponname={couponname} />
+                    <Payment addressid={name} totalPrice={totalPrice} couponname={couponname} totalvalue={totalvalue} />
                   </div>}
                 </div>
               </div>
@@ -147,6 +158,13 @@ function Checkout() {
                         A$40
                       </div>
                     </div>
+                    <div className={styles.splitcartsections}>
+                    <div>
+                      GST</div>
+                    <div className={styles.textprice}>
+                    A${totalvalue}
+                    </div>
+                  </div>
                   </div>
                   <div className={styles.borderdashedsection}>
                     <div className={styles.insideborderdashedsection}></div>
@@ -155,7 +173,7 @@ function Checkout() {
                     <div className={styles.pricetextss}>
                       Total Payable</div>
                     <div className={styles.textprices}>
-                      A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0) + 40}
+                      A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0) + totalvalue+40}
   
                     </div>
                   </div>

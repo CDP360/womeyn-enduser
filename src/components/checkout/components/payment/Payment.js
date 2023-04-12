@@ -7,7 +7,7 @@ import strip from '../../../../assests/cart-logos/Stripe-Logo1.png';
 import paypal from '../../../../assests/cart-logos/PayPal-Logo1.png';
 import Spinner from 'react-bootstrap/Spinner';
 import { toast } from 'react-toastify';
-function Payment({ totalPrice, addressid, couponname }) {
+function Payment({ totalPrice, addressid, couponname,totalvalue }) {
   const [loading, setLoading] = useState(false);
   const { state } = useContext(ContextStore);
   const [orders, setOrders] = useState([]);
@@ -39,7 +39,8 @@ function Payment({ totalPrice, addressid, couponname }) {
         sellerId: item?.sellerId,
         sellerBusinessName: item?.sellerBusinessName,
         productThumbImage: item?.productThumbImage,
-        productSlugName: item?.productSlugName
+        productSlugName: item?.productSlugName,
+        gst: totalvalue
       })
     })
     setOrders(storesfilter);
