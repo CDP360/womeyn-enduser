@@ -4,7 +4,7 @@ import instanceBaseurl from './../../config/Baseurl';
 
 export function ProductView(data) {
     return instanceBaseurl.get(`/common/product/${data}`).then((res) => {
-        console.log("kalaierror",res?.response?.data?.message)
+
 
         return res;
     }).catch((err) => {

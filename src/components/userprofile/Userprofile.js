@@ -38,7 +38,6 @@ function Userprofile({ name, error }) {
             setUser(res?.data);
         }).catch((err) => {
             setError(false);
-
         })
     }, []);
 

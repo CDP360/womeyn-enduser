@@ -18,7 +18,9 @@ function Login() {
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const [tokenUser,setTokenUser]=useState("");
+    const [tokenUser, setTokenUser] = useState("");
+
+
     const {
         register,
         handleSubmit,
@@ -71,8 +73,10 @@ function Login() {
             })
         }
         else {
+
             Userlogin(datas).then(async (res) => {
                 if (res) {
+
                     localStorage.setItem("user", JSON.stringify(res?.data?.user?.firstName));
                     localStorage.setItem("auth", true);
                     localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
@@ -108,7 +112,10 @@ function Login() {
     };
 
 
-    const NavigateService=()=>{
+   
+
+
+    const NavigateService = () => {
         history.push("/")
     }
     const handlePushForgetpassword = () => {
@@ -134,25 +141,23 @@ function Login() {
 
 
 
-    useEffect(()=>{
-        const TokenCheckUser=localStorage.getItem("userToken");
+    useEffect(() => {
+        const TokenCheckUser = localStorage.getItem("userToken");
         setTokenUser(JSON.parse(TokenCheckUser));
 
-    },[])
-    if(tokenUser)
-    {
- 
-       return (
-        <div>
-{NavigateService()}
-        </div>
-       )
+    }, [])
+    if (tokenUser) {
+
+        return (
+            <div>
+                {NavigateService()}
+            </div>
+        )
     }
-    else
-    {
+    else {
         return (
             <Fragment>
-    
+
                 <div className={styles.mainloginsection}>
                     {/* <div className={styles.endcustomerbutton}>
                         <div className={styles.insidecustomerbutton}>
@@ -168,11 +173,11 @@ function Login() {
                             >{LoginText?.EndConsumer}</button>
                         </div>
                     </div> */}
-    
+
                     <div className={styles.insidesectionlogin}>
                         <div className={styles.insideloginsplit}>
                             <div className={styles.logintext}>{LoginText?.Login}</div>
-    
+
                             <div>
                                 <Form onSubmit={handleSubmit(onSubmit)}>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -187,13 +192,13 @@ function Login() {
                                                     message: "invalid email address"
                                                 },
                                             })}
-    
+
                                         />
                                         {errors.email && <span className="active">{errors.email.message}</span>}
                                     </Form.Group>
                                     <div className={styles.passwordformsection}>
                                         <Form.Group className="mb-2" controlId="formBasicEmail">
-    
+
                                             <div className={"formsectioncommonlogin"}>
                                                 <Form.Control type={show1 ? "text" : "password"} placeholder="Password" className={styles.forms}
                                                     {...register("password", {
@@ -210,17 +215,17 @@ function Login() {
                                             </div>
                                             {errors.password && <span className="active">{errors.password.message}</span>}
                                         </Form.Group>
-    
+
                                     </div>
-    
-    
+
+
                                     <div className={styles.forgetpassword} onClick={handlePushForgetpassword}>{LoginText?.Forgotpassword}</div>
                                     <Button className="loginbutton" type="submit">
-    
+
                                         {error ? <>
                                             {LoginText?.Login}
                                         </> : <>
-    
+
                                             {loading ? <>
                                                 <Spinner
                                                     as="span"
@@ -234,7 +239,7 @@ function Login() {
                                                 <> {LoginText?.Login}</>
                                             }
                                         </>}
-    
+
                                     </Button>
                                 </Form>
                                 <div className="text-center mt-3 mb-4">{LoginText?.orloginwith}</div>
@@ -277,18 +282,18 @@ function Login() {
                     </div>
                 </div>
                 <div className={styles.leftsection1}>
-    
+
                 </div>
                 <div className={styles.righttopsection1}>
-    
+
                 </div>
                 <div className={styles.rightbottomsection1}>
-    
+
                 </div>
             </Fragment>
         );
     }
-  
+
 }
 
 export default Login;

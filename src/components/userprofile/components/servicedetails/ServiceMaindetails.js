@@ -23,6 +23,7 @@ function ServiceMaindetails({ error }) {
     useEffect(() => {
         setLoading(true);
         ServiceBookingUsers().then((res) => {
+            console.log("kalai",res?.data)
             setServiceusers(res?.data);
             setTimeout(() => {
                 setLoading(false);

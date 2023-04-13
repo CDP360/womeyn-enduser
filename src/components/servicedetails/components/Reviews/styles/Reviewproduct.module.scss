@@ -60,10 +60,11 @@
     // border: 3px solid blue;
     .cards {
       // border: 2px solid red;
-      border-radius:10px;
-      background-color:white;
+      border-radius: 10px;
+      background-color: white;
       width: 49% !important;
-      padding:2% 20px;
+      padding: 2% 20px;
+      box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
       @include xsBreakPoint {
         width: 100% !important;
       }

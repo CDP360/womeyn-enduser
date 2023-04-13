@@ -103,7 +103,7 @@ function Footer() {
                                 </div>
                             </div>
                             <div className={styles.footersectionfour}>
-                                <div className='footertext' onClick={() => router.push("/getintouch")} className={styles.footercontents}>
+                                <div className='footertext' onClick={() => router.push("/getintouch")}>
                                     CONTACT
                                 </div>
                                 <div>

@@ -1324,7 +1324,7 @@ function Viewproducts({ id }) {
 
                                 <div className={styles.locationsection}>
                                     <div>
-{/* {productdata?.localDeliveryCharge==null?"kalai":"nazriya kalaiusurya"} */}
+{/* {productdata?.isShippingRequired===1?"kalai":"nazriya kalaiusurya"} */}
                                     </div>
                                     <div className={styles.deverisection}>
                                         <div>

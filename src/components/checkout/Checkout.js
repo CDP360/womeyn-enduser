@@ -26,18 +26,19 @@ function Checkout() {
   const [couponname, setCouponName] = useState("");
   const totalPrice = cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice + 40, 0);
   const [totalvalue, setTotalValue] = useState(0);
+
+  const cartpricevaues=state?.cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)
+  const values = Math.max(
+    0,
+    Math.round(
+      cartpricevaues - (cartpricevaues) * 10 / 100
+    )
+);
+const Sample = cartpricevaues - values;
   useEffect(() => {
 
 
-    const cartpricevaues=state?.cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)
-
-    const values = Math.max(
-      0,
-      Math.round(
-        cartpricevaues - (cartpricevaues) * 10 / 100
-      ));
-      const Sample = cartpricevaues - values;
-      setTotalValue(Sample);
+   
     if (step === 0) {
       setStep1("active")
     }
@@ -162,7 +163,7 @@ function Checkout() {
                     <div>
                       GST</div>
                     <div className={styles.textprice}>
-                    A${totalvalue}
+                    A${Sample}
                     </div>
                   </div>
                   </div>
@@ -173,8 +174,8 @@ function Checkout() {
                     <div className={styles.pricetextss}>
                       Total Payable</div>
                     <div className={styles.textprices}>
-                      A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0) + totalvalue+40}
-  
+                      A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0) + Sample + 40}
+
                     </div>
                   </div>
   

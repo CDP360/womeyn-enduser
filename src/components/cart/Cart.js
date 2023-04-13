@@ -38,19 +38,21 @@ function Cart() {
     const checktoken = localStorage.getItem("userToken");
     setTokens(JSON.parse(checktoken));
     TotalPrice();
-  }, [tokes, price,totalvalue])
+  }, [tokes, price,totalvalue]);
+  const cartpricevaues=state?.cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)
+  const values = Math.max(
+    0,
+    Math.round(
+      cartpricevaues - (cartpricevaues) * 10 / 100
+    )
+);
+const Sample = cartpricevaues - values;
+// setTotalValue(Sample);
+
+
   useEffect(() => {
     setCart(state?.cart?.cartData);
-    const cartpricevaues=state?.cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)
-
-    const values = Math.max(
-      0,
-      Math.round(
-        cartpricevaues - (cartpricevaues) * 10 / 100
-      )
-  );
-  const Sample = cartpricevaues - values;
-  setTotalValue(Sample);
+   
   }, [deleteid,totalvalue])
   const shopping = () => {
     router.push("/womenpreneurs")
@@ -313,7 +315,7 @@ function Cart() {
                     <div>
                       GST</div>
                     <div className={styles.textprice}>
-                    A${totalvalue}
+                    A${Sample}
                     </div>
                   </div>
                 </div>
@@ -324,7 +326,7 @@ function Cart() {
                   <div className={styles.pricetextss}>
                     Total Payable</div>
                   <div className={styles.textprices}>
-                  A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)+totalvalue + 40}
+                  A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)+Sample + 40}
                   </div>
                 </div>
                 <div className={styles.borderdashedsection}>

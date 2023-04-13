@@ -18,7 +18,11 @@ function Checkoutsuccess() {
     const PayerID_id = searchParams.get('PayerID');
 
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false)
+        history.push("/profile/orders");
+
+    };
     const handleShow = () => setShow(true);
     useEffect(() => {
         if (Transaction_id) {
@@ -84,11 +88,11 @@ function Checkoutsuccess() {
         <>
             <div className={styles.success}>
                 {/* <LoaderLogo /> */}
-                
+
                 <Modal show={show} onHide={handleClose} centered>
-                <Modal.Header closeButton className="modalheader">
-      
-        </Modal.Header>
+                    <Modal.Header closeButton className="modalheader">
+
+                    </Modal.Header>
                     <Modal.Body>
                         <div>
                             <div className="mb-3">

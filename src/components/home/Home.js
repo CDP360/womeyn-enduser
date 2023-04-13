@@ -14,6 +14,8 @@ import { useSelector } from 'react-redux';
 import Whatmake from './components/whatmake/Whatmake';
 import { Bannerimage } from '../../services/banner-image-service/banner-image-service';
 import Skeleton from 'react-loading-skeleton';
+import { useRouter } from 'next/router';
+import { UserProfileInformation } from '../../services/user-login-service/user-login-services';
 function Home() {
     const [bannerimages, setBannerImages] = useState([]);
     const settings = {
@@ -68,10 +70,10 @@ function Home() {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
     }
     const state = useSelector(state => state);
+    const history = useRouter();
     useEffect(() => {
-        GetBannerimages()
+        GetBannerimages();
     }, [state]);
-
     const GetBannerimages = () => {
         Bannerimage().then((res) => {
             setBannerImages(res?.data);
@@ -82,8 +84,6 @@ function Home() {
     const MovePageData = (data) => {
         window.open(data);
     }
-
-  
     return (
         <Fragment>
             <div className={styles.homesectionmain}>
