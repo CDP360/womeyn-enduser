@@ -37,20 +37,20 @@ function App({ Component, pageProps }) {
       <div className='womeyn-enduser'>
         <StrictMode>
           <StoreProviderContext>
-            <Errorboundary>
-              <Provider store={store}>
-                <ToastContainer 
+
+            <Provider store={store}>
+              <ToastContainer
                 rtl={false}
-                draggable={false} 
-                />
-                {loading ? <div className="blursectionhome">
-                  <LoaderLogo />
-                </div> :
-                  <>
-                    <Component {...pageProps} />
-                  </>}
-              </Provider>
-            </Errorboundary>
+                draggable={false}
+              />
+              {loading ? <div className="blursectionhome">
+                <LoaderLogo />
+              </div> :
+                <>
+                  <Component {...pageProps} />
+                </>}
+            </Provider>
+
           </StoreProviderContext>
         </StrictMode>
       </div >

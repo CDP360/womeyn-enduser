@@ -95,7 +95,7 @@ function Header() {
 
 
     const SellerLogin = () => {
-        window.open('https://eseller.cdp360.in/')
+        window.open('https://eseller.cdp360.in/sign-up')
     }
 
     return (
@@ -162,17 +162,17 @@ function Header() {
                                 <div className={styles.dropdownsectionkalai}>
                                     <div onClick={() => setShowMega(!showmega)}>
                                         {userauth ? <>
-                                        {favortcountdataredux?.loginUser?.logindata?.profileImageName?<>
-                                            <img
-                                            className={styles.notificationsprofile}
-                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${favortcountdataredux?.loginUser?.logindata?.profileImageName}`}
-                                            alt="profile-pic"
-                                        />
-                                        
-                                        </>:<>
-                                        <Image src={profile} alt="no image" className={styles.notificationsprofile} />
-                                        
-                                        </>}
+                                            {favortcountdataredux?.loginUser?.logindata?.profileImageName ? <>
+                                                <img
+                                                    className={styles.notificationsprofile}
+                                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${favortcountdataredux?.loginUser?.logindata?.profileImageName}`}
+                                                    alt="profile-pic"
+                                                />
+
+                                            </> : <>
+                                                <Image src={profile} alt="no image" className={styles.notificationsprofile} />
+
+                                            </>}
 
                                         </> : <div className={styles.logintexts}>Login</div>}
                                     </div>

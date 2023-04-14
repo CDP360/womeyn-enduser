@@ -9,7 +9,9 @@ import { toast } from 'react-toastify';
 // // Instance.defaults.headers.post['Content-Type'] = 'application/json';
 
 // export default instanceBaseurl;.
+import jwt_decode from "jwt-decode";
 
+import { useRouter } from 'next/router';
 
 axios.interceptors.request.use(
     function (config) {
@@ -39,7 +41,20 @@ axios.interceptors.request.use(
             return config;
         }
         else {
-            const token = localStorage.getItem("userToken");
+            const token = localStorage.getItem("userToken")
+            // const userId = localStorage.getItem("userid");
+            // var decoded = jwt_decode(token);
+
+            // const history=useRouter();
+            // if (Date.now() >= decoded.exp * 1000) {
+            //     localStorage.removeItem("userid");
+            //     localStorage.removeItem("userToken");
+            //     localStorage.removeItem("whish");
+            //     localStorage.removeItem("user");
+            //     localStorage.removeItem("auth");
+            //     localStorage.removeItem("productid");
+            //     history?.push("/");
+            // }
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
             config.headers = {
                 ...config.headers,
@@ -50,8 +65,13 @@ axios.interceptors.request.use(
             return config;
 
         }
+
+
+        
+
     },
     function (error) {
+        
         return Promise.reject(error);
     }
 );
