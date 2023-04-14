@@ -71,66 +71,73 @@ function Allbestservices({ stars }) {
         }).catch((err) => console.log(err))
     }, [])
 
+    console.log(services,"services")
+
     return (
         <div className={styles.appcard}>
             {services?.length > 4 ? <>
                 <Slider {...settings}>
+                    {services.map((item, index) => {
+                        return (
+                            <div className={styles.cardcategory} key={index}>
+                                <div className={styles.cardsections}>
+                                    <div className="cards col-lg-12 mb-5" onClick={() => categoryPush(item?.serviceSlugName)}>
+
+                                    <div>
+                                        {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                        <Skeleton className={styles.skeltons} /> 
+                                                           </>}
+                                    </div>
+                                        <div className="mt-3">
+
+                                            <div className={styles.cardinsidesection}>
+                                                <Image src={stars} alt="no image" className={styles.stars} />
+                                                <div>
+                                                    <span>{item?.serviceName}</span>
+                                                </div>
+                                                {/* <div className='mb-4'>
+                                        <span className='textgrey'>{item?.serviceDescription}</span>
+                                    </div> */}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        )
+                    })}
+                </Slider>
+            </> : <div className='row justify-content-center d-flex'>
+
                 {services.map((item, index) => {
                     return (
                         <div className={styles.cardcategory} key={index}>
                             <div className={styles.cardsections}>
-                                <div className="cards col-lg-12 mb-5" onClick={() => categoryPush(item?.serviceSlugName)}>
-                                   
-                                <div>
-                                   {item?.image?<img src={item?.image} alt="no image" className={styles.sellerimagesize} />:<>
-                                   
-                                   <Skeleton className={styles.skeltons}/>
-                                   </>}
-                                </div>
-                                <div className="mt-3">
-
-                                <div className={styles.cardinsidesection}>
-                                    <Image src={stars} alt="no image" className={styles.stars} />
-                                    <div>
-                                        <span>{item?.serviceName}</span>
-                                    </div>
-                                    {/* <div className='mb-4'>
-                                        <span className='textgrey'>{item?.serviceDescription}</span>
-                                    </div> */}
-                                </div>
-                                </div>
-                                 
-                                </div>
-                            </div>
-
-                        </div>
-                    )
-                })}
-                </Slider>
-            </> : <div className='row justify-content-center d-flex'>
-
-            {services.map((item, index) => {
-                    return (
-                        <div className={styles.cardcategory} key={index}>
-                            <div className={styles.cardsections}>
                                 <div className="cards col-lg-12 mb-5" onClick={() => categoryPush(item?.productSlugName)}>
-                                   
-                                <div>
-                                    <img src={item?.image} alt="no image" className={styles.sellerimagesize} />
-                                </div>
-                                <div className="mt-3">
 
-                                <div className={styles.cardinsidesection}>
-                                    <Image src={stars} alt="no image" className={styles.stars} />
+                                    {/* <div>
+                                        <img src={item?.image} alt="no image" className={styles.sellerimagesize} />
+                                    </div> */}
+
                                     <div>
-                                        <span>{item?.serviceName}</span>
+                                        {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                        <Skeleton className={styles.skeltons} /> 
+                                                           </>}
                                     </div>
-                                    {/* <div className='mb-4'>
+                                    <div className="mt-3">
+
+                                        <div className={styles.cardinsidesection}>
+                                            <Image src={stars} alt="no image" className={styles.stars} />
+                                            <div>
+                                                <span>{item?.serviceName}</span>
+                                            </div>
+                                            {/* <div className='mb-4'>
                                         <span className='textgrey'>{item?.serviceDescription}</span>
                                     </div> */}
-                                </div>
-                                </div>
-                                 
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
 

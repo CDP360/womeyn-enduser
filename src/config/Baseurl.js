@@ -42,7 +42,7 @@ axios.interceptors.request.use(
         }
         else {
             const token = localStorage.getItem("userToken")
-            // const userId = localStorage.getItem("userid");
+            const userId = localStorage.getItem("userid");
             // var decoded = jwt_decode(token);
 
             // const history=useRouter();
@@ -65,13 +65,8 @@ axios.interceptors.request.use(
             return config;
 
         }
-
-
-        
-
     },
     function (error) {
-        
         return Promise.reject(error);
     }
 );

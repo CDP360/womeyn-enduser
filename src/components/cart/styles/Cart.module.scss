@@ -106,8 +106,9 @@
       border-bottom: 1px dashed #9f9f9f;
       padding: 5px 20px;
       // background-color: white;
-
+// border:2px solid red;
       display: flex;
+      position:relative;
       @include xsBreakPoint {
         width: 100%;
         flex-direction: column;
@@ -115,6 +116,25 @@
       @include mdBreakPoint {
         width: 100%;
         flex-direction: column;
+      }
+      .deliverycharge
+      {
+        position:absolute;
+        right:0;
+        top:0;
+        // border:3px solid blue;
+        // width:100%;
+        padding:7px 30px;
+        border-top-left-radius: 1000px;
+        border-bottom-right-radius: 1000px;
+      
+
+        background: rgba(69, 110, 214, 0.1);
+        color: #E95A5A;
+
+        // opacity: 0.10;
+font-weight:600;
+
       }
       .cartimagesection {
         width: 60%;

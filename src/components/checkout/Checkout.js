@@ -34,7 +34,18 @@ function Checkout() {
       cartpricevaues - (cartpricevaues) * 10 / 100
     )
 );
+const deliveryChargeAmount = state?.cart?.cartData?.reduce((acc, current) => acc + current.deliverycharge, 0)
+const DeliveryChargeAmount = Math.max(
+  0,
+  Math.round(
+    deliveryChargeAmount - (deliveryChargeAmount) * 10 / 100
+  )
+);
 const Sample = cartpricevaues - values;
+const chargeDelivery = deliveryChargeAmount - DeliveryChargeAmount;
+const AllchargeCount=Number(cartpricevaues)+Number(deliveryChargeAmount);
+
+  const OverallTotalPrice=Number(Sample)+Number(chargeDelivery);
   useEffect(() => {
 
 
@@ -156,14 +167,14 @@ const Sample = cartpricevaues - values;
                       <div>
                         Delivery Charges</div>
                       <div className={styles.textprice}>
-                        A$40
+                        A${deliveryChargeAmount}
                       </div>
                     </div>
                     <div className={styles.splitcartsections}>
                     <div>
                       GST</div>
                     <div className={styles.textprice}>
-                    A${Sample}
+                    A${Number(Sample) + Number(chargeDelivery)}
                     </div>
                   </div>
                   </div>
@@ -174,7 +185,9 @@ const Sample = cartpricevaues - values;
                     <div className={styles.pricetextss}>
                       Total Payable</div>
                     <div className={styles.textprices}>
-                      A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0) + Sample + 40}
+
+                    A${Number(AllchargeCount) + Number(OverallTotalPrice)}
+                      {/* A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0) + Number(Sample) + Number(deliveryChargeAmount)} */}
 
                     </div>
                   </div>

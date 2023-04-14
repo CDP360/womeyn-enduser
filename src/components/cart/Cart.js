@@ -18,7 +18,6 @@ function Cart() {
     setShow(true)
     setDeleteid(id);
   };
-
   const { state, dispatch } = useContext(ContextStore);
   const { cart } = state;
   const router = useRouter();
@@ -26,7 +25,6 @@ function Cart() {
   const [tokes, setTokens] = useState("");
   const [carts, setCart] = useState([]);
   const [totalvalue, setTotalValue] = useState(0);
-
   const TotalPrice = () => {
     let prices = 0;
     cart?.cartData?.map((item) => {
@@ -38,22 +36,32 @@ function Cart() {
     const checktoken = localStorage.getItem("userToken");
     setTokens(JSON.parse(checktoken));
     TotalPrice();
-  }, [tokes, price,totalvalue]);
-  const cartpricevaues=state?.cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)
+  }, [tokes, price, totalvalue]);
+  const cartpricevaues = state?.cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)
   const values = Math.max(
     0,
     Math.round(
       cartpricevaues - (cartpricevaues) * 10 / 100
     )
-);
-const Sample = cartpricevaues - values;
-// setTotalValue(Sample);
+  );
+  const deliveryChargeAmount = state?.cart?.cartData?.reduce((acc, current) => acc + current.deliverycharge==null?0:current.deliverycharge, 0)
+  const DeliveryChargeAmount = Math.max(
+    0,
+    Math.round(
+      deliveryChargeAmount - (deliveryChargeAmount) * 10 / 100
+    )
+  );
+  const Sample = cartpricevaues - values;
+  const chargeDelivery = deliveryChargeAmount - DeliveryChargeAmount;
 
+  const AllchargeCount=Number(cartpricevaues)+Number(deliveryChargeAmount);
+
+  const OverallTotalPrice=Number(Sample)+Number(chargeDelivery);
 
   useEffect(() => {
     setCart(state?.cart?.cartData);
-   
-  }, [deleteid,totalvalue])
+
+  }, [deleteid, totalvalue])
   const shopping = () => {
     router.push("/womenpreneurs")
   }
@@ -102,8 +110,16 @@ const Sample = cartpricevaues - values;
                   {cart?.cartData?.map((item, index) => {
                     return (
                       <>
+
                         <div className={styles.cartlistsection} key={index}>
+
                           <div className={styles.cartimagesection}>
+                            <div className={styles.deliverycharge}>
+
+                              {item?.deliverycharge ? <>
+                                Delivery Charge : A$ {item?.deliverycharge}
+                              </> : <>FREE Delivery</>}
+                            </div>
                             <div>
                               <img
                                 className={styles.editprofilesection}
@@ -251,29 +267,29 @@ const Sample = cartpricevaues - values;
                     )
                   })}
                 </div> : <>
-                <div className={styles.cartemptysection}>
+                  <div className={styles.cartemptysection}>
 
-<div>
-  <Image src={cartempty} alt="no image" className={styles.cartimage} />
-</div>
+                    <div>
+                      <Image src={cartempty} alt="no image" className={styles.cartimage} />
+                    </div>
 
-<div className={styles.yourcarttexts}>
+                    <div className={styles.yourcarttexts}>
 
-  Your cart is empty!
+                      Your cart is empty!
 
-</div>
-<div className={styles.yourcarttexts}>
-  Please add your products to the cart
-</div>
-<div className="mt-4 mb-5">
-  <button className={styles.shopbutton} onClick={shopping}>Shop Now</button>
-</div>
-</div>
+                    </div>
+                    <div className={styles.yourcarttexts}>
+                      Please add your products to the cart
+                    </div>
+                    <div className="mt-4 mb-5">
+                      <button className={styles.shopbutton} onClick={shopping}>Shop Now</button>
+                    </div>
+                  </div>
                 </>}
 
               </div>
             </div>
-            {cart?.cartData?.length > 0?<div className={styles.rightcartsection}>
+            {cart?.cartData?.length > 0 ? <div className={styles.rightcartsection}>
               <div className={styles.insiderigthcartsection}>
                 <div className={styles.pricetexts}>
                   Price details
@@ -308,14 +324,14 @@ const Sample = cartpricevaues - values;
                     <div>
                       Delivery Charges</div>
                     <div className={styles.textprice}>
-                    A$40
+                      A${deliveryChargeAmount}
                     </div>
                   </div>
                   <div className={styles.splitcartsections}>
                     <div>
                       GST</div>
                     <div className={styles.textprice}>
-                    A${Sample}
+                      A${Number(Sample) + Number(chargeDelivery)}
                     </div>
                   </div>
                 </div>
@@ -324,9 +340,12 @@ const Sample = cartpricevaues - values;
                 </div>
                 <div className={styles.splitcartsections}>
                   <div className={styles.pricetextss}>
-                    Total Payable</div>
+                    Total Payable
+                    {/* {(Number(Sample))+(Number(chargeDelivery))} */}
+                    </div>
                   <div className={styles.textprices}>
-                  A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)+Sample + 40}
+                  A${Number(AllchargeCount)+Number(OverallTotalPrice)}
+                    {/* A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)} */}
                   </div>
                 </div>
                 <div className={styles.borderdashedsection}>
@@ -339,7 +358,7 @@ const Sample = cartpricevaues - values;
                   }
                 </div>
               </div>
-            </div>:<></>}
+            </div> : <></>}
           </div>
         </div>
       </div>
@@ -385,7 +404,7 @@ const Sample = cartpricevaues - values;
       </div>
       <div className={styles.righttopcolorbg}>
 
-</div>
+      </div>
     </Fragment>
   )
 }

@@ -21,31 +21,23 @@ function reducer(state = initialState, action) {
                     item.id === existItem.id ? newItem : item
                 )
                 : [...state.cart.cartData, newItem];
-            Cookies.set('CartDatas', JSON.stringify({ ...state.cart, cartData }), {
-                httpOnly: true
-            });
+            Cookies.set('CartDatas', JSON.stringify({ ...state.cart, cartData }));
             return { ...state, cart: { ...state.cart, cartData } };
         }
         case "ADD_CART": {
             const newItemCart = action.payload;
-            Cookies.set("CartDatas", JSON.stringify({ ...state.cart, cartData: newItemCart }), {
-                httpOnly: true
-            });
+            Cookies.set("CartDatas", JSON.stringify({ ...state.cart, cartData: newItemCart }));
             return { cart: { ...state.cart, cartData: newItemCart } }
 
         }
         case "REMOVE_CART": {
             const newItemCart = action.payload;
-            Cookies.set("CartDatas", JSON.stringify({ ...state.cart, cartData: newItemCart }), {
-                httpOnly: true
-            });
+            Cookies.set("CartDatas", JSON.stringify({ ...state.cart, cartData: newItemCart }));
             return { cart: { ...state.cart, cartData: newItemCart } }
         }
         case "CART_REMOVE": {
             const cartData = state.cart.cartData.filter((item) => item.id !== action.payload.id);
-            Cookies.set("CartDatas", JSON.stringify({ ...state.cart, cartData }), {
-                httpOnly: true
-            });
+            Cookies.set("CartDatas", JSON.stringify({ ...state.cart, cartData }));
             return { ...state, cart: { ...state.cart, cartData } }
         }
         default: {

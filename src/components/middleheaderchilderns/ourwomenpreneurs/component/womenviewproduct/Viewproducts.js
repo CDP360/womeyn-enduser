@@ -75,14 +75,14 @@ function Viewproducts({ id }) {
                 if (productSize1) {
                     router?.push("/checkout")
 
-                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
                 }
             }
             else {
                 router?.push("/checkout")
 
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
             }
 
@@ -121,14 +121,14 @@ function Viewproducts({ id }) {
                     router?.push("/checkout")
 
 
-                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
                 }
             }
             else {
                 router?.push("/checkout")
 
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
             }
 
@@ -173,14 +173,14 @@ function Viewproducts({ id }) {
                     router?.push("/checkout")
 
 
-                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
                 }
             }
             else {
                 router?.push("/checkout")
 
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
             }
 
@@ -227,13 +227,13 @@ function Viewproducts({ id }) {
                 if (productSize1 && productSize2 && productSize3 && productSize4) {
                     router?.push("/checkout")
 
-                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
                 }
             }
             else {
                 router?.push("/checkout")
 
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
             }
 
@@ -284,21 +284,21 @@ function Viewproducts({ id }) {
 
                     router?.push("/checkout")
 
-                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
                 }
             }
             else {
                 router?.push("/checkout")
 
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
             }
 
         }
         else {
             router?.push("/checkout")
-            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
         }
     }
@@ -333,6 +333,12 @@ function Viewproducts({ id }) {
     }
 
     const handleChange = (cartdata, productvariations) => {
+
+
+        const f=cartdata?.localDeliveryCharge===null?0:cartdata?.localDeliveryCharge;
+
+
+
         const datas = [productvariations[0]?.name];
         const datas1 = [productvariations[0]?.name, productvariations[1]?.name];
         const datas2 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name];
@@ -366,12 +372,12 @@ function Viewproducts({ id }) {
 
             if (datas) {
                 if (productSize1) {
-                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge===null?0:cartdata?.localDeliveryCharge } });
 
                 }
             }
             else {
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge===null?0:cartdata?.localDeliveryCharge } });
 
             }
 
@@ -406,12 +412,12 @@ function Viewproducts({ id }) {
 
             if (datas1) {
                 if (productSize1 && productSize2) {
-                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
                 }
             }
             else {
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
             }
 
@@ -452,12 +458,12 @@ function Viewproducts({ id }) {
 
             if (datas2) {
                 if (productSize1 && productSize2 && productSize3) {
-                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
                 }
             }
             else {
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
             }
 
@@ -502,11 +508,11 @@ function Viewproducts({ id }) {
 
             if (datas3) {
                 if (productSize1 && productSize2 && productSize3 && productSize4) {
-                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
                 }
             }
             else {
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
             }
 
@@ -556,18 +562,18 @@ function Viewproducts({ id }) {
                 if (productSize1 && productSize2 && productSize3 && productSize4 && productSize5) {
 
 
-                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge===null?0:cartdata?.localDeliveryCharge } });
 
                 }
             }
             else {
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge===null?0:cartdata?.localDeliveryCharge } });
 
             }
 
         }
         else {
-            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge===null?0:cartdata?.localDeliveryCharge } });
 
         }
 
@@ -580,48 +586,45 @@ function Viewproducts({ id }) {
     useEffect(() => {
         ProductView(productnames).then((res) => {
 
-            console.log(res?.data,"lp")
-            if (res =="No Records Found") {
-                setError(true);
-            }
-            else {
-                setProductseller(res?.data?.sellerInformation[0])
-                const productshowimages = [];
-                res?.data?.productDetails?.productImages?.map((item, index) => {
-                    productshowimages?.push(item)
-                })
-                // productshowimages?.unshift({
-                //     id: 0,
-                //     name: res?.data?.productDetails?.productThumbImage
-                // });
-                setProductImage(productshowimages);
-                setProductData(res?.data?.productDetails);
-                setProductReview(res?.data?.reviews);
-                setRatingcount(res?.data?.totalReviewsCount)
-                setAverageRating(res?.data?.averageRating[0]?.avgRating)
-                const variationdata = [];
-                setProductVariations(variationdata);
-                res?.data?.variations.map((item) => {
-                    const items = item?.variationValues.length;
-                    const forms = item?.variationValues.split(",", items);
-                    const datas = {
-                        id: item?.id,
-                        name: item?.name,
-                        sellerId: item?.sellerId,
-                        stateId: item?.stateId,
-                        variationValues: forms
-                    };
-                    variationdata.push(datas);
-                });
-            }
+            console.log(res?.data, "lp")
+
+            setProductseller(res?.data?.sellerInformation[0])
+            const productshowimages = [];
+            res?.data?.productDetails?.productImages?.map((item, index) => {
+                productshowimages?.push(item)
+            })
+            // productshowimages?.unshift({
+            //     id: 0,
+            //     name: res?.data?.productDetails?.productThumbImage
+            // });
+            setProductImage(productshowimages);
+            setProductData(res?.data?.productDetails);
+            setProductReview(res?.data?.reviews);
+            setRatingcount(res?.data?.totalReviewsCount)
+            setAverageRating(res?.data?.averageRating[0]?.avgRating)
+            const variationdata = [];
+            setProductVariations(variationdata);
+            res?.data?.variations.map((item) => {
+                const items = item?.variationValues.length;
+                const forms = item?.variationValues.split(",", items);
+                const datas = {
+                    id: item?.id,
+                    name: item?.name,
+                    sellerId: item?.sellerId,
+                    stateId: item?.stateId,
+                    variationValues: forms
+                };
+                variationdata.push(datas);
+            });
+
         }).catch((err) => {
             console.log(err);
-           
-    
+
+
         });
         const tokencheck = localStorage.getItem("userToken");
         setTokenset(tokencheck)
-    }, [productnames, tokencheck, index1, index2, index3, index4, averageRatings?.avgRating,errors]);
+    }, [productnames, tokencheck, index1, index2, index3, index4, averageRatings?.avgRating, errors]);
 
     useEffect(() => {
         //         ProductLikeWishlistGet().then((res) => {
@@ -699,6 +702,10 @@ function Viewproducts({ id }) {
     }
 
     const buyNowPathNavigate = (cartdata, productvariations) => {
+
+
+
+
         const pathnames = "/checkout";
         localStorage.setItem("whish", JSON.stringify(pathnames));
 
@@ -742,14 +749,14 @@ function Viewproducts({ id }) {
                 if (productSize1) {
                     router?.push("/login?redirect=/checkout")
 
-                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
                 }
             }
             else {
                 router?.push("/login?redirect=/checkout")
 
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
             }
 
@@ -788,14 +795,14 @@ function Viewproducts({ id }) {
                     router?.push("/login?redirect=/checkout")
 
 
-                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
                 }
             }
             else {
                 router?.push("/login?redirect=/checkout")
 
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
             }
 
@@ -840,14 +847,14 @@ function Viewproducts({ id }) {
                     router?.push("/login?redirect=/checkout")
 
 
-                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
                 }
             }
             else {
                 router?.push("/login?redirect=/checkout")
 
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
             }
 
@@ -894,13 +901,13 @@ function Viewproducts({ id }) {
                 if (productSize1 && productSize2 && productSize3 && productSize4) {
                     router?.push("/login?redirect=/checkout")
 
-                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
                 }
             }
             else {
                 router?.push("/login?redirect=/checkout")
 
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
             }
 
@@ -951,20 +958,20 @@ function Viewproducts({ id }) {
 
                     router?.push("/login?redirect=/checkout")
 
-                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                    dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
                 }
             }
             else {
                 router?.push("/login?redirect=/checkout")
 
-                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+                dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
             }
 
         }
         else {
             router?.push("/login?redirect=/checkout")
-            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName } });
+            dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge } });
 
         }
     }
@@ -974,358 +981,356 @@ function Viewproducts({ id }) {
         router?.push("/errorboundary")
     }
 
-    if (errors) {
-        return (
-            <div>
-                {NavigatePath()}
-            </div>
-        )
-    }
-    else {
 
-        return (
-            <Fragment>
-                <div className={styles.mainproductviewscreen}>
-                    <div className={styles.insideproductview}>
-                        <div className={styles.splitproductview}>
-                            <div className={styles.leftproductview}>
-                                <div className={styles.leftmainsectionslide}>
-                                    <div className={styles.leftcardimages}>
-                                        <div className={styles.imagerowsection}>
-                                            {productimages?.map((item, index) => {
-                                                return (
-                                                    <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)} onMouseOver={() => setIndex(index)} key={index}>
-                                                        {item?.name ? <><img
-                                                            className={styles.imagecards}
-                                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
-                                                            alt="profile-pic"
-                                                        /></> : <>
-                                                            <Skeleton />
-                                                        </>}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
+
+    return (
+        <Fragment>
+            <div className={styles.mainproductviewscreen}>
+                <div className={styles.insideproductview}>
+                    <div className={styles.splitproductview}>
+                        <div className={styles.leftproductview}>
+                            <div className={styles.leftmainsectionslide}>
+                                <div className={styles.leftcardimages}>
+                                    <div className={styles.imagerowsection}>
+                                        {productimages?.map((item, index) => {
+                                            return (
+                                                <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)} onMouseOver={() => setIndex(index)} key={index}>
+                                                    {item?.name ? <><img
+                                                        className={styles.imagecards}
+                                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
+                                                        alt="profile-pic"
+                                                    /></> : <>
+                                                        <Skeleton />
+                                                    </>}
+                                                </div>
+                                            )
+                                        })}
                                     </div>
-                                    <div className={styles.rightcardimagesshow}>
-                                        <div className={styles.leftwomensearchsection}>
-                                            <div className={styles.serachlargeimage}>
-                                                {/* <img
+                                </div>
+                                <div className={styles.rightcardimagesshow}>
+                                    <div className={styles.leftwomensearchsection}>
+                                        <div className={styles.serachlargeimage}>
+                                            {/* <img
                                                     className={styles.serachlargeimages}
                                                     src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
                                                     alt="profile-pic"
                                                 /> */}
 
-                                                <ReactImageMagnify
-                                                    //  className={styles.serachlargeimages}
-                                                    {...{
-                                                        smallImage: {
+                                            <ReactImageMagnify
+                                                //  className={styles.serachlargeimages}
+                                                {...{
+                                                    smallImage: {
 
-                                                            alt: 'Wristwatch by Ted Baker London',
-                                                            isFluidWidth: true,
-                                                            src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                            borderRadius: "10px"
-                                                        },
-                                                        largeImage: {
-                                                            src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                            width: 1200,
-                                                            height: 1200,
-                                                            backgroundColor: "white",
-                                                            // border:"3px solid blue"
-                                                            zIndex: "989898988989898989898989",
-                                                            borderRadius: "10px"
-
-
-                                                        },
-                                                        imageStyle: {
-                                                            // border:"2px solid red",
-                                                            width: "100%",
-                                                            height: "100%",
-                                                            maxHeight: "400px",
-                                                            objectFit: "contain",
-                                                            zIndex: "9898989898",
-                                                            backgroundColor: "white",
-                                                            borderRadius: "10px"
-
-                                                        },
-                                                        // smallImage: {
-                                                        //     src: String, (required)
-                                                        //     srcSet: String,
-                                                        //     sizes: String,
-                                                        //     width: Number, (required if isFluidWidth is not set)
-                                                        //     height: Number, (required if isFluidWidth is not set)
-                                                        //     isFluidWidth: Boolean, (default false)
-                                                        //     alt: String,
-                                                        //     onLoad: Function,
-                                                        //     onError: Function
-                                                        // },
+                                                        alt: 'Wristwatch by Ted Baker London',
+                                                        isFluidWidth: true,
+                                                        src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
+                                                        borderRadius: "10px"
+                                                    },
+                                                    largeImage: {
+                                                        src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
+                                                        width: 1200,
+                                                        height: 1200,
+                                                        backgroundColor: "white",
+                                                        // border:"3px solid blue"
+                                                        zIndex: "989898988989898989898989",
+                                                        borderRadius: "10px"
 
 
-                                                    }}
+                                                    },
+                                                    imageStyle: {
+                                                        // border:"2px solid red",
+                                                        width: "100%",
+                                                        height: "100%",
+                                                        maxHeight: "400px",
+                                                        objectFit: "contain",
+                                                        zIndex: "9898989898",
+                                                        backgroundColor: "white",
+                                                        borderRadius: "10px"
+
+                                                    },
+                                                    // smallImage: {
+                                                    //     src: String, (required)
+                                                    //     srcSet: String,
+                                                    //     sizes: String,
+                                                    //     width: Number, (required if isFluidWidth is not set)
+                                                    //     height: Number, (required if isFluidWidth is not set)
+                                                    //     isFluidWidth: Boolean, (default false)
+                                                    //     alt: String,
+                                                    //     onLoad: Function,
+                                                    //     onError: Function
+                                                    // },
 
 
-                                                />
-                                            </div>
-
-                                            {tokencheck ? <div className={styles.heartimagesection}>
-                                                <button className={styles.btn}
-                                                    onClick={() => {
-                                                        if (!like) {
-                                                            LikeWishlistlike(productdata?.id)
-                                                        }
-                                                        else {
-                                                            LikeWishlistunlike(productdata?.id)
-                                                        }
-                                                    }}
-                                                >
-                                                    {like ? <>
-                                                        <Image src={heartlike} alt="no image" className={styles.heartlikes} />
-
-                                                    </> : <>
-                                                        <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+                                                }}
 
 
-                                                    </>}
-
-                                                    {/* {like?"kalai true":"kalai false"} */}
-                                                </button>
-                                            </div> :
-                                                <div className={styles.heartimagesection}>
-                                                    <button className={styles.btn} onClick={() => {
-                                                        CheckLoginUsers(productdata?.productSlugName)
-                                                        // LikeWishlist(productdata?.id)
-                                                    }}>
-
-                                                        <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
-                                                    </button>
-                                                </div>
-                                            }
+                                            />
                                         </div>
+
+                                        {tokencheck ? <div className={styles.heartimagesection}>
+                                            <button className={styles.btn}
+                                                onClick={() => {
+                                                    if (!like) {
+                                                        LikeWishlistlike(productdata?.id)
+                                                    }
+                                                    else {
+                                                        LikeWishlistunlike(productdata?.id)
+                                                    }
+                                                }}
+                                            >
+                                                {like ? <>
+                                                    <Image src={heartlike} alt="no image" className={styles.heartlikes} />
+
+                                                </> : <>
+                                                    <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+
+
+                                                </>}
+
+                                                {/* {like?"kalai true":"kalai false"} */}
+                                            </button>
+                                        </div> :
+                                            <div className={styles.heartimagesection}>
+                                                <button className={styles.btn} onClick={() => {
+                                                    CheckLoginUsers(productdata?.productSlugName)
+                                                    // LikeWishlist(productdata?.id)
+                                                }}>
+
+                                                    <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+                                                </button>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             </div>
-                            <div className={styles.rightproductview}>
-                                <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
-                                <div className={styles.starsection}>
-                                    <div className={styles.starsections}>
-                                        {averageRatings ? <>
-                                            {averageRatings === 1 && <Rate defaultValue={1} allowHalf style={{ color: "#54BE43" }}
-                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                                count={5}
-                                                disabled
-                                            />}
-                                            {averageRatings === 1.5 && <Rate defaultValue={1.5} allowHalf style={{ color: "#54BE43" }}
-                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                                count={5}
-                                                disabled
-                                            />}
-                                            {averageRatings === 2 && <Rate defaultValue={2} allowHalf style={{ color: "#54BE43" }}
-                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                                count={5}
-                                                disabled
-                                            />}
-                                            {averageRatings === 2.5 && <Rate defaultValue={2.5} allowHalf style={{ color: "#54BE43" }}
-                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                                count={5}
-                                                disabled
-                                            />}
-                                            {averageRatings === 3 && <Rate defaultValue={3} allowHalf style={{ color: "#54BE43" }}
-                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                                count={5}
-                                                disabled
-                                            />}
-                                            {averageRatings === 3.5 && <Rate defaultValue={3.5} allowHalf style={{ color: "#54BE43" }}
-                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                                count={5}
-                                                disabled
-                                            />}
-                                            {averageRatings === 4 && <Rate defaultValue={4} allowHalf style={{ color: "#54BE43" }}
-                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                                count={5}
-                                                disabled
-                                            />}
-                                            {averageRatings === 4.5 && <Rate defaultValue={4.5} allowHalf style={{ color: "#54BE43" }}
-                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                                count={5}
-                                                disabled
-                                            />}
-                                            {averageRatings === 5 && <Rate defaultValue={5} allowHalf style={{ color: "#54BE43" }}
-                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                                count={5}
-                                                disabled
-                                            />}
+                        </div>
+                        <div className={styles.rightproductview}>
+                            <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
+                            <div className={styles.starsection}>
+                                <div className={styles.starsections}>
+                                    {averageRatings ? <>
+                                        {averageRatings === 1 && <Rate defaultValue={1} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
+                                        {averageRatings === 1.5 && <Rate defaultValue={1.5} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
+                                        {averageRatings === 2 && <Rate defaultValue={2} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
+                                        {averageRatings === 2.5 && <Rate defaultValue={2.5} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
+                                        {averageRatings === 3 && <Rate defaultValue={3} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
+                                        {averageRatings === 3.5 && <Rate defaultValue={3.5} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
+                                        {averageRatings === 4 && <Rate defaultValue={4} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
+                                        {averageRatings === 4.5 && <Rate defaultValue={4.5} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
+                                        {averageRatings === 5 && <Rate defaultValue={5} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
 
-                                        </> : <>
+                                    </> : <>
 
-                                            {<Rate defaultValue={0} allowHalf style={{ color: "#54BE43" }}
-                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                                count={5}
-                                                disabled
-                                            />}
-
-
-
-
-                                        </>}
+                                        {<Rate defaultValue={0} allowHalf style={{ color: "#54BE43" }}
+                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                            count={5}
+                                            disabled
+                                        />}
 
 
 
-                                    </div>
-                                    <div>
-                                        {ratingcount} Review
-                                    </div>
+
+                                    </>}
+
+
+
                                 </div>
-
-                                <div className={styles.proceinproduct}>
-                                    <div className={styles.offertext}>
-                                        {productdata?.offerPercentag == 0 ? <>
-                                        </> : <>
-                                            {productdata?.offerPercentag}% off
-                                        </>}
-                                    </div>
-                                    <div className={styles.priceautual}>
-                                        <div className={styles.prices}>A${productdata?.salePrice}</div>
-                                    </div>
-                                    <div className='textpricedashed' >
-                                        {productdata?.offerPercentag == 0 ? <></> : <del className={styles.priceautuals}>A${productdata?.actualPrice}</del>}
-                                    </div>
+                                <div>
+                                    {ratingcount} Review
                                 </div>
+                            </div>
 
-                                <div className={styles.colorsectionlists}>
-                                    {productvariations[0]?.name ? <><div className={styles.sizesectionandcolor}>
-                                        <div className={styles.fontweightsizes}> {productvariations[0]?.name}</div>
-                                        <div className={styles.sizesection}>
-                                            <div className={styles.sizes}>
-                                                {productvariations[0]?.variationValues?.map((item, index) => {
-                                                    return (
-                                                        <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                            setIndex1(index)
-                                                            handleSizeProduct1(item);
-                                                        }} key={index}>
-                                                            {item}
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
+                            <div className={styles.proceinproduct}>
+                                <div className={styles.offertext}>
+                                    {productdata?.offerPercentag == 0 ? <>
+                                    </> : <>
+                                        {productdata?.offerPercentag}% off
+                                    </>}
+                                </div>
+                                <div className={styles.priceautual}>
+                                    <div className={styles.prices}>A${productdata?.salePrice}</div>
+                                </div>
+                                <div className='textpricedashed' >
+                                    {productdata?.offerPercentag == 0 ? <></> : <del className={styles.priceautuals}>A${productdata?.actualPrice}</del>}
+                                </div>
+                            </div>
+
+                            <div className={styles.colorsectionlists}>
+                                {productvariations[0]?.name ? <><div className={styles.sizesectionandcolor}>
+                                    <div className={styles.fontweightsizes}> {productvariations[0]?.name}</div>
+                                    <div className={styles.sizesection}>
+                                        <div className={styles.sizes}>
+                                            {productvariations[0]?.variationValues?.map((item, index) => {
+                                                return (
+                                                    <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                        setIndex1(index)
+                                                        handleSizeProduct1(item);
+                                                    }} key={index}>
+                                                        {item}
+                                                    </div>
+                                                )
+                                            })}
                                         </div>
                                     </div>
-                                        {/* <div>
+                                </div>
+                                    {/* <div>
                                        {error && productSize1?.length<=1 ? <span>Please select a {productvariations[0]?.name}</span>:<div></div>}
                                         </div> */}
-                                    </> : <></>}
-                                    {productvariations[1]?.name ? <div className={styles.sizesectionandcolor}>
-                                        <div className={styles.fontweightsizes}> {productvariations[1]?.name ? <>{productvariations[1]?.name}</> : <></>} </div>
-                                        <div className={styles.sizesection}>
-                                            <div className={styles.sizes}>
-                                                {productvariations[1]?.variationValues?.map((item, index) => {
-                                                    return (
-                                                        <div className={`${index2 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                            setIndex2(index)
-                                                            handleSizeProduct2(item);
-                                                        }} key={index}>
-                                                            {item}
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
+                                </> : <></>}
+                                {productvariations[1]?.name ? <div className={styles.sizesectionandcolor}>
+                                    <div className={styles.fontweightsizes}> {productvariations[1]?.name ? <>{productvariations[1]?.name}</> : <></>} </div>
+                                    <div className={styles.sizesection}>
+                                        <div className={styles.sizes}>
+                                            {productvariations[1]?.variationValues?.map((item, index) => {
+                                                return (
+                                                    <div className={`${index2 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                        setIndex2(index)
+                                                        handleSizeProduct2(item);
+                                                    }} key={index}>
+                                                        {item}
+                                                    </div>
+                                                )
+                                            })}
                                         </div>
-                                    </div> : <></>}
-                                    {productvariations[2]?.name ? <div className={styles.sizesectionandcolor}>
-                                        <div className={styles.fontweightsizes}> {productvariations[2]?.name ? <>{productvariations[2]?.name}</> : <></>} </div>
-                                        <div className={styles.sizesection}>
-                                            <div className={styles.sizes}>
-                                                {productvariations[2]?.variationValues?.map((item, index) => {
-                                                    return (
-                                                        <div className={`${index3 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                            setIndex3(index)
-                                                            handleSizeProduct3(item);
-                                                        }} key={index}>
-                                                            {item}
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
-                                        </div>
-                                    </div> : <></>}
-                                    {productvariations[3]?.name ? <div className={styles.sizesectionandcolor}>
-                                        <div className={styles.fontweightsizes}> {productvariations[3]?.name ? <>{productvariations[3]?.name}</> : <></>} </div>
-                                        <div className={styles.sizesection}>
-                                            <div className={styles.sizes}>
-                                                {productvariations[3]?.variationValues?.map((item, index) => {
-                                                    return (
-                                                        <div className={`${index4 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                            setIndex4(index)
-                                                            handleSizeProduct4(item);
-                                                        }} key={index}>
-                                                            {item}
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
-                                        </div>
-                                    </div> : <></>}
-                                    {productvariations[4]?.name ? <div className={styles.sizesectionandcolor}>
-                                        <div className={styles.fontweightsizes}> {productvariations[4]?.name ? <>{productvariations[4]?.name}</> : <></>} </div>
-                                        <div className={styles.sizesection}>
-                                            <div className={styles.sizes}>
-                                                {productvariations[4]?.variationValues?.map((item, index) => {
-                                                    return (
-                                                        <div className={`${index5 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                            setIndex5(index)
-                                                            handleSizeProduct5(item);
-                                                        }} key={index}>
-                                                            {item}
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
-                                        </div>
-                                    </div> : <></>}
-                                </div>
-                                {productdata?.stateId == 1 && productdata?.quantityLeft > 0 ?
-                                    <>
-                                        <div className={styles.buttons}>
-                                            <div>
-                                                {tokencheck ?
-                                                    <Button className={styles.bynowcartbutton} onClick={() => Checkout(productdata, productvariations)}>
-                                                        Buy Now
-                                                    </Button> :
-                                                    <Button className={styles.bynowcartbutton} onClick={() => buyNowPathNavigate(productdata, productvariations)}>
-                                                        Buy Now
-                                                    </Button>
-                                                }
-                                            </div>
-                                            <div>
-                                                <Button className={styles.addcartbutton} onClick={() => handleChange(productdata, productvariations)}>
-                                                    Add To Cart
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    </> : <>
-                                        <div className={styles.buttonss}>
-                                            <div>
-                                                {tokencheck ?
-                                                    <Button className={styles.bynowcartbuttons} >
-                                                        Buy Now
-                                                    </Button> :
-                                                    <Button className={styles.bynowcartbuttons} >
-                                                        Buy Now
-                                                    </Button>
-                                                }
-                                            </div>
-                                            <div>
-                                                <Button className={styles.addcartbuttons} >
-                                                    Add To Cart
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    </>
-                                }
-
-                                <div className={styles.locationsection}>
-                                    <div>
-{/* {productdata?.isShippingRequired===1?"kalai":"nazriya kalaiusurya"} */}
                                     </div>
+                                </div> : <></>}
+                                {productvariations[2]?.name ? <div className={styles.sizesectionandcolor}>
+                                    <div className={styles.fontweightsizes}> {productvariations[2]?.name ? <>{productvariations[2]?.name}</> : <></>} </div>
+                                    <div className={styles.sizesection}>
+                                        <div className={styles.sizes}>
+                                            {productvariations[2]?.variationValues?.map((item, index) => {
+                                                return (
+                                                    <div className={`${index3 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                        setIndex3(index)
+                                                        handleSizeProduct3(item);
+                                                    }} key={index}>
+                                                        {item}
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                    </div>
+                                </div> : <></>}
+                                {productvariations[3]?.name ? <div className={styles.sizesectionandcolor}>
+                                    <div className={styles.fontweightsizes}> {productvariations[3]?.name ? <>{productvariations[3]?.name}</> : <></>} </div>
+                                    <div className={styles.sizesection}>
+                                        <div className={styles.sizes}>
+                                            {productvariations[3]?.variationValues?.map((item, index) => {
+                                                return (
+                                                    <div className={`${index4 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                        setIndex4(index)
+                                                        handleSizeProduct4(item);
+                                                    }} key={index}>
+                                                        {item}
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                    </div>
+                                </div> : <></>}
+                                {productvariations[4]?.name ? <div className={styles.sizesectionandcolor}>
+                                    <div className={styles.fontweightsizes}> {productvariations[4]?.name ? <>{productvariations[4]?.name}</> : <></>} </div>
+                                    <div className={styles.sizesection}>
+                                        <div className={styles.sizes}>
+                                            {productvariations[4]?.variationValues?.map((item, index) => {
+                                                return (
+                                                    <div className={`${index5 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                        setIndex5(index)
+                                                        handleSizeProduct5(item);
+                                                    }} key={index}>
+                                                        {item}
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                    </div>
+                                </div> : <></>}
+                            </div>
+                            {productdata?.stateId == 1 && productdata?.quantityLeft > 0 ?
+                                <>
+                                    <div className={styles.buttons}>
+                                        <div>
+                                            {tokencheck ?
+                                                <Button className={styles.bynowcartbutton} onClick={() => Checkout(productdata, productvariations)}>
+                                                    Buy Now
+                                                </Button> :
+                                                <Button className={styles.bynowcartbutton} onClick={() => buyNowPathNavigate(productdata, productvariations)}>
+                                                    Buy Now
+                                                </Button>
+                                            }
+                                        </div>
+                                        <div>
+                                            <Button className={styles.addcartbutton} onClick={() => handleChange(productdata, productvariations)}>
+                                                Add To Cart
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </> : <>
+                                    <div className={styles.buttonss}>
+                                        <div>
+                                            {tokencheck ?
+                                                <Button className={styles.bynowcartbuttons} >
+                                                    Buy Now
+                                                </Button> :
+                                                <Button className={styles.bynowcartbuttons} >
+                                                    Buy Now
+                                                </Button>
+                                            }
+                                        </div>
+                                        <div>
+                                            <Button className={styles.addcartbuttons} >
+                                                Add To Cart
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </>
+                            }
+
+                            <div className={styles.locationsection}>
+                                <div>
+                                </div>
+
+                                {productdata?.isShippingRequired === 1 ? <>
+
+
+                                </> : <>
+
                                     <div className={styles.deverisection}>
                                         <div>
                                             <Image src={location} alt="no image" className={styles.deliveryicon} />
@@ -1343,83 +1348,86 @@ function Viewproducts({ id }) {
                                     <div className='mt-2'>
                                         Delivery in days Thursday |  <span className={styles.free}>Free</span>  <del> A$ 40</del> is orderd before 3:34pm
                                     </div>
-                                </div>
-                                <div className={styles.sellernames}>
-                                    <div className={styles.sellername}>
-                                        Seller  :
-                                    </div>
-                                    <div className={styles.nameinseller} onClick={() => productSellerPageView(productseller?.businessSlugName)} >
-                                        {productseller?.firstName}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                </>}
 
-                        <div className={styles.descriptionsection}>
-                            <div className={styles.additionaldetails}>
-                                Product Description
-                            </div>
-                            <div>
-                                {productdata?.productDescription}
-                            </div>
-                        </div>
-                        <div className={styles.productdetailslists}>
-                            <div className={styles.additionaldetails}>
-                                Product Details
-                            </div>
-                            <div className={styles.leftproductdetails}>
-                                <div className={styles.productdetailsleft}>
-                                    <div className={styles.listproductdata}>
-                                        <div className={styles.leftname}>Product Name</div>
-                                        <div className={styles.rightname}>{productdata?.productName}</div>
-                                    </div>
-                                    <div className={styles.listproductdata}>
-                                        <div className={styles.leftname}>Model Name</div>
-                                        <div className={styles.rightname}>{productdata?.modelName}</div>
-                                    </div>
 
-                                    <div className={styles.listproductdata}>
-                                        <div className={styles.leftname}>Manufacture Name</div>
-                                        <div className={styles.rightname}>{productdata?.manufacturerName}</div>
-                                    </div>
+                            </div>
+                            <div className={styles.sellernames}>
+                                <div className={styles.sellername}>
+                                    Seller  :
                                 </div>
-                                <div className={styles.productdetailsright}>
-                                    <div className={styles.listproductdata}>
-                                        <div className={styles.leftname}>Brand Name</div>
-                                        <div className={styles.rightname}>{productdata?.brandName}</div>
-                                    </div>
-                                    <div className={styles.listproductdata}>
-                                        <div className={styles.leftname}>Style Name</div>
-                                        <div className={styles.rightname}>{productdata?.styleName}</div>
-                                    </div>
-                                    <div className={styles.listproductdata}>
-                                        <div className={styles.leftname}>Manufacture Name</div>
-                                        <div className={styles.rightname}>{productdata?.manufacturerName}</div>
-                                    </div>
+                                <div className={styles.nameinseller} onClick={() => productSellerPageView(productseller?.businessSlugName)} >
+                                    {productseller?.firstName}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {productreview?.length > 0 ? <div className={styles.reviewsection}>
-                        <div>
-                            <Reviewsproduct productreview={productreview} ratingcount={ratingcount} averageRatings={averageRatings} />
+
+                    <div className={styles.descriptionsection}>
+                        <div className={styles.additionaldetails}>
+                            Product Description
                         </div>
-                    </div> : <></>}
+                        <div>
+                            {productdata?.productDescription}
+                        </div>
+                    </div>
+                    <div className={styles.productdetailslists}>
+                        <div className={styles.additionaldetails}>
+                            Product Details
+                        </div>
+                        <div className={styles.leftproductdetails}>
+                            <div className={styles.productdetailsleft}>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Product Name</div>
+                                    <div className={styles.rightname}>{productdata?.productName}</div>
+                                </div>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Model Name</div>
+                                    <div className={styles.rightname}>{productdata?.modelName}</div>
+                                </div>
+
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Manufacture Name</div>
+                                    <div className={styles.rightname}>{productdata?.manufacturerName}</div>
+                                </div>
+                            </div>
+                            <div className={styles.productdetailsright}>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Brand Name</div>
+                                    <div className={styles.rightname}>{productdata?.brandName}</div>
+                                </div>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Style Name</div>
+                                    <div className={styles.rightname}>{productdata?.styleName}</div>
+                                </div>
+                                <div className={styles.listproductdata}>
+                                    <div className={styles.leftname}>Manufacture Name</div>
+                                    <div className={styles.rightname}>{productdata?.manufacturerName}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {productreview?.length > 0 ? <div className={styles.reviewsection}>
                     <div>
-                        <div>
-                            <Caroselproducts />
-                        </div>
+                        <Reviewsproduct productreview={productreview} ratingcount={ratingcount} averageRatings={averageRatings} />
+                    </div>
+                </div> : <></>}
+                <div>
+                    <div>
+                        <Caroselproducts />
                     </div>
                 </div>
-                <div className={styles.leftbg}>
+            </div>
+            <div className={styles.leftbg}>
 
-                </div>
-                <div className={styles.righttopbg}></div>
+            </div>
+            <div className={styles.righttopbg}></div>
 
 
-            </Fragment>
-        )
-    }
+        </Fragment>
+    )
+
 
 
 
