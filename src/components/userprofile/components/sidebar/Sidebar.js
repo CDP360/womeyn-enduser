@@ -294,6 +294,20 @@ function Sidebar({ user, errors }) {
                                 <div className={styles.insidedashedsection}>
                                 </div>
                             </div>
+
+                            <div className={pathname == "services" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("services")}>
+                                <div>
+                                    {pathname == "services" ? <Image src={orderactive} alt="no image" className={styles.profileicon} /> : <Image src={order} alt="no image" className={styles.profileicon} />}
+                                </div>
+                                <div className={pathname == "services" ? styles.boldtextactive : styles.boldtexts}>
+                                Services
+                                </div>
+                            </div>
+
+                            <div className={styles.dashedsectionmain}>
+                                <div className={styles.insidedashedsection}>
+                                </div>
+                            </div>
                             <div className={pathname == "favorts" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("favorts")}>
                                 <div >
                                     {pathname == "favorts" ? <Image src={favortsactive} alt="no image" className={styles.profileicon} /> : <Image src={favorts} alt="no image" className={styles.profileicon} />}

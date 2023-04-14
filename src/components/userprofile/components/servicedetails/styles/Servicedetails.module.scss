@@ -53,6 +53,11 @@
     padding-bottom: 2%;
     // mix-blend-mode: normal;
     // opacity: 0.1;
+    @include xsBreakPoint
+    {
+      flex-direction: column;
+      padding-bottom:10%;
+    }
     @include mdBreakPoint {
       margin-bottom: 7%;
     }
@@ -60,6 +65,12 @@
       display: flex;
       width: 100%;
       cursor: pointer;
+      @include xsBreakPoint
+      {
+        flex-direction: column;
+      }
+
+    
 
       .boximage {
         border: 1px solid #d9d9d9;
@@ -73,14 +84,13 @@
         background-color: white;
         object-fit: contain;
         cursor: pointer;
-        @include mdBreakPoint {
-          width: 65px;
-          height: 65px;
+        @include xsBreakPoint
+        {
+          width: 100%;
+          height:100%;
         }
-        @include xsBreakPoint {
-          width: 85px;
-          height: 85px;
-        }
+       
+       
       }
       .favortsImg:hover {
         transform: scale(1.2);
@@ -101,8 +111,9 @@
             margin-bottom: -2%;
           }
           @include xsBreakPoint {
-            font-size: 14px;
-            margin-bottom: 6%;
+            font-size: 1.4rem;
+            margin-bottom: 3%;
+            padding-top:3%;
           }
         }
         .favortsOfferDetail {
@@ -261,4 +272,9 @@
   color: #e95a5a;
   border: 1px solid #e95a5a;
   background-color: white;
+  @include xsBreakPoint
+  {
+    width:100%;
+    padding:7px 50px;
+  }
 }

@@ -61,6 +61,7 @@ function ModelAddress({ show, handleClose, register, errors, handleSubmit, Submi
                                                 required: "Please enter Contact No",
 
                                             })}
+                                            maxLength={9}
                                         />
                                         <Form.Text className="text-muted">
                                             {errors.contactno && <span className="active">{errors.contactno.message}</span>}
@@ -74,6 +75,7 @@ function ModelAddress({ show, handleClose, register, errors, handleSubmit, Submi
                                             {...register("alternatecontactno", {
                                                 required: "Please enter Alternate Contact No",
                                             })}
+                                            maxLength={9}
                                         />
                                         <Form.Text className="text-muted">
                                             {errors.alternatecontactno && <span className="active">{errors.alternatecontactno.message}</span>}
@@ -162,6 +164,8 @@ function ModelAddress({ show, handleClose, register, errors, handleSubmit, Submi
                                             {...register("pincode", {
                                                 required: "Please enter Pincode",
                                             })}
+                                            maxLength={4}
+
                                         />
                                         <Form.Text className="text-muted">
                                             {errors.pincode && <span className="active">{errors.pincode.message}</span>}
