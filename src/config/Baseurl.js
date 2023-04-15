@@ -10,11 +10,29 @@ import { toast } from 'react-toastify';
 
 // export default instanceBaseurl;.
 import jwt_decode from "jwt-decode";
-
+import React,{useEffect} from 'react';
 import { useRouter } from 'next/router';
 
+
+
 axios.interceptors.request.use(
+
+
+   
     function (config) {
+        const token = localStorage.getItem("userToken");
+            const userId = localStorage.getItem("userid");
+                       var decoded = jwt_decode(token);
+                       if (Date.now() >= decoded.exp * 1000) {
+                           localStorage.removeItem("userid");
+                           localStorage.removeItem("userToken");
+                           localStorage.removeItem("whish");
+                           localStorage.removeItem("user");
+                           localStorage.removeItem("auth");
+                           localStorage.removeItem("productid");
+                           history?.push("/");
+                       }
+         
         if (config.url.search("/customer/update-photo") !== -1 || config.url.search("/customer/add-review") !== -1) {
             const token = localStorage.getItem("userToken");
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
@@ -42,10 +60,8 @@ axios.interceptors.request.use(
         }
         else {
             const token = localStorage.getItem("userToken")
-            const userId = localStorage.getItem("userid");
+            // const userId = localStorage.getItem("userid");
             // var decoded = jwt_decode(token);
-
-            // const history=useRouter();
             // if (Date.now() >= decoded.exp * 1000) {
             //     localStorage.removeItem("userid");
             //     localStorage.removeItem("userToken");
@@ -55,6 +71,7 @@ axios.interceptors.request.use(
             //     localStorage.removeItem("productid");
             //     history?.push("/");
             // }
+           
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
             config.headers = {
                 ...config.headers,

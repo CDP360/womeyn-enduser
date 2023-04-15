@@ -75,21 +75,7 @@ function Home() {
     const history = useRouter();
     useEffect(() => {
         GetBannerimages();
-
-        const token = localStorage.getItem("userToken")
-        const userId = localStorage.getItem("userid");
-        var decoded = jwt_decode(token);
-
         // const history=useRouter();
-        if (Date.now() >= decoded.exp * 1000) {
-            localStorage.removeItem("userid");
-            localStorage.removeItem("userToken");
-            localStorage.removeItem("whish");
-            localStorage.removeItem("user");
-            localStorage.removeItem("auth");
-            localStorage.removeItem("productid");
-            history?.push("/login");
-        }
 
     }, [state]);
     const GetBannerimages = () => {
