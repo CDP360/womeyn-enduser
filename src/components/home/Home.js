@@ -73,7 +73,7 @@ function Home() {
     const history = useRouter();
     useEffect(() => {
         GetBannerimages();
-    }, [state, bannerimages]);
+    }, [state]);
     const GetBannerimages = () => {
         Bannerimage().then((res) => {
             setBannerImages(res?.data);
