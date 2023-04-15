@@ -12,26 +12,25 @@ import { toast } from 'react-toastify';
 import jwt_decode from "jwt-decode";
 import React,{useEffect} from 'react';
 import { useRouter } from 'next/router';
-
-
-
 axios.interceptors.request.use(
 
 
    
     function (config) {
-        const token = localStorage.getItem("userToken");
-            const userId = localStorage.getItem("userid");
-                       var decoded = jwt_decode(token);
-                       if (Date.now() >= decoded.exp * 1000) {
-                           localStorage.removeItem("userid");
-                           localStorage.removeItem("userToken");
-                           localStorage.removeItem("whish");
-                           localStorage.removeItem("user");
-                           localStorage.removeItem("auth");
-                           localStorage.removeItem("productid");
-                           history?.push("/");
-                       }
+
+        // const history=useRouter();
+        // const token = localStorage.getItem("userToken");
+        //     const userId = localStorage.getItem("userid");
+        //                var decoded = jwt_decode(token);
+        //                if (Date.now() >= decoded.exp * 1000) {
+        //                    localStorage.removeItem("userid");
+        //                    localStorage.removeItem("userToken");
+        //                    localStorage.removeItem("whish");
+        //                    localStorage.removeItem("user");
+        //                    localStorage.removeItem("auth");
+        //                    localStorage.removeItem("productid");
+        //                    history?.push("/");
+        //                }
          
         if (config.url.search("/customer/update-photo") !== -1 || config.url.search("/customer/add-review") !== -1) {
             const token = localStorage.getItem("userToken");
