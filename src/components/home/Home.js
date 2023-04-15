@@ -77,7 +77,7 @@ function Home() {
         GetBannerimages();
         // const history=useRouter();
 
-    }, [state]);
+    }, [state, bannerimages]);
     const GetBannerimages = () => {
         Bannerimage().then((res) => {
             setBannerImages(res?.data);
