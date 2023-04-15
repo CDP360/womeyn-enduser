@@ -35,9 +35,9 @@ function Servicepayment({ id }) {
 
     const onOptionChange = (e) => {
         setPaymentType(e.target.value);
-     
-            setLoading(false);
-        
+
+        setLoading(false);
+
     }
 
     useEffect(() => {
@@ -90,13 +90,13 @@ function Servicepayment({ id }) {
 
         }
 
-      
+
         if (paymentType) {
-           
-           
+
+
 
             const userid = localStorage.getItem("userid");
-        
+
             const datas = {
                 serviceId: payements?.serviceId,
                 variationId: payements?.variationId,
@@ -110,10 +110,10 @@ function Servicepayment({ id }) {
             }
             ServiceBooking(datas).then((res) => {
                 window.location = res?.data?.url;
-               
+
             }).catch((err) => {
                 console.log(err);
-               
+
             })
         }
     }
@@ -196,9 +196,9 @@ function Servicepayment({ id }) {
                                                     alt="profile-pic"
                                                 />
                                             </> : <>
-                                            <Skeleton
-                                             className={styles.bannserpaymentservice}
-                                            />
+                                                <Skeleton
+                                                    className={styles.bannserpaymentservice}
+                                                />
                                             </>}
                                         </div>
                                         <div className={styles.servicepayment}>

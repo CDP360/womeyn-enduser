@@ -87,7 +87,6 @@ function Allorders({ Orders, traking, loading }) {
                         return (
                           <div className={styles.firstsectioninsidess} key={index}>
                             <div className={styles.leftorderdelivery}>
-
                               <div onClick={NavigateOrderdetails}>
                                 {items?.productThumbImage ? <>
                                   <img

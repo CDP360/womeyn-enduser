@@ -14,11 +14,7 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 axios.interceptors.request.use(
 
-
-
     function (config) {
-
-
 
         if (config.url.search("/customer/update-photo") !== -1 || config.url.search("/customer/add-review") !== -1) {
             const token = localStorage.getItem("userToken");
@@ -71,6 +67,21 @@ axios.interceptors.request.use(
     },
     function (error) {
         return Promise.reject(error);
+    },
+    function(){
+        return
+        const token = localStorage.getItem("userToken")
+        var decoded = jwt_decode(token);
+
+        if (Date.now() >= decoded.exp * 1000) {
+            localStorage.removeItem("userid");
+            localStorage.removeItem("userToken");
+            localStorage.removeItem("whish");
+            localStorage.removeItem("user");
+            localStorage.removeItem("auth");
+            localStorage.removeItem("productid");
+            window.location.assign("/");
+        }
     }
 );
 
