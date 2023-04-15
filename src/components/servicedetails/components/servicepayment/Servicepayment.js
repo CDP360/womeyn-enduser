@@ -48,7 +48,6 @@ function Servicepayment({ id }) {
         ServiceusersGetSingleId(id).then((res) => {
             if (res?.response?.data?.message == "Please authenticate") {
                 setError(true);
-
             }
             else {
                 setPayments(res?.data[0])
@@ -132,7 +131,7 @@ function Servicepayment({ id }) {
 
 
     const NavigatePathUser = () => {
-        history?.push("/errorboundary");
+        history?.push("/");
     }
     //     if (tokens) {
     //         return (

@@ -47,17 +47,17 @@ axios.interceptors.request.use(
         }
         else {
             const token = localStorage.getItem("userToken")
-            var decoded = jwt_decode(token);
+            // var decoded = jwt_decode(token);
 
-            if (Date.now() >= decoded.exp * 1000) {
-                localStorage.removeItem("userid");
-                localStorage.removeItem("userToken");
-                localStorage.removeItem("whish");
-                localStorage.removeItem("user");
-                localStorage.removeItem("auth");
-                localStorage.removeItem("productid");
-                window.location.assign("/");
-            }
+            // if (Date.now() >= decoded.exp * 1000) {
+            //     localStorage.removeItem("userid");
+            //     localStorage.removeItem("userToken");
+            //     localStorage.removeItem("whish");
+            //     localStorage.removeItem("user");
+            //     localStorage.removeItem("auth");
+            //     localStorage.removeItem("productid");
+            //     window.location.assign("/");
+            // }
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
             config.headers = {
                 ...config.headers,

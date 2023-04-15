@@ -44,7 +44,7 @@ function Cart() {
       cartpricevaues - (cartpricevaues) * 10 / 100
     )
   );
-  const deliveryChargeAmount = state?.cart?.cartData?.reduce((acc, current) => acc + current.deliverycharge==null?0:current.deliverycharge, 0)
+  const deliveryChargeAmount = state?.cart?.cartData?.reduce((acc, current) => acc + current.deliverycharge == null ? 0 : current.deliverycharge, 0)
   const DeliveryChargeAmount = Math.max(
     0,
     Math.round(
@@ -54,9 +54,9 @@ function Cart() {
   const Sample = cartpricevaues - values;
   const chargeDelivery = deliveryChargeAmount - DeliveryChargeAmount;
 
-  const AllchargeCount=Number(cartpricevaues)+Number(deliveryChargeAmount);
+  const AllchargeCount = Number(cartpricevaues) + Number(deliveryChargeAmount);
 
-  const OverallTotalPrice=Number(Sample)+Number(chargeDelivery);
+  const OverallTotalPrice = Number(Sample) + Number(chargeDelivery);
 
   useEffect(() => {
     setCart(state?.cart?.cartData);
@@ -342,9 +342,9 @@ function Cart() {
                   <div className={styles.pricetextss}>
                     Total Payable
                     {/* {(Number(Sample))+(Number(chargeDelivery))} */}
-                    </div>
+                  </div>
                   <div className={styles.textprices}>
-                  A${Number(AllchargeCount)+Number(OverallTotalPrice)}
+                    A${Number(AllchargeCount) + Number(OverallTotalPrice)}
                     {/* A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)} */}
                   </div>
                 </div>

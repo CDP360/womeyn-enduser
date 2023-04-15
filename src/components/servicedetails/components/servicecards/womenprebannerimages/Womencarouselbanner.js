@@ -68,18 +68,18 @@ function Womencarouselbanner() {
     const MovePageData = (data) => {
         window.open(data);
     }
-    const dataCarousel=[
+    const dataCarousel = [
         {
-            id:1,
-            name:"no names"
+            id: 1,
+            name: "no names"
         },
         {
-            id:2,
-            name:"no names"
+            id: 2,
+            name: "no names"
         },
         {
-            id:3,
-            name:"no names"
+            id: 3,
+            name: "no names"
         }
     ]
     return (
@@ -87,9 +87,9 @@ function Womencarouselbanner() {
             <div className={styles.imagesectionhome}>
 
                 {banners?.length === 0 ? <>
-                                <div>
-                                    <Skeleton className={styles.womenbanners}/>
-                                </div>
+                    <div>
+                        <Skeleton className={styles.womenbanners} />
+                    </div>
                 </> :
                     <Slider {...settings}>
                         {banners?.map((item, index) => {

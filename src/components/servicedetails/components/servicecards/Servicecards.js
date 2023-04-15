@@ -357,7 +357,6 @@ function Servicecards() {
 
 
         Serviceusers().then((res) => {
-            console.log(res?.data?.results, "kalai")
             setServiceusers(res?.data?.results);
         }).catch((err) => {
             console.log(err);

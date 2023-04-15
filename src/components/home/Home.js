@@ -75,8 +75,6 @@ function Home() {
     const history = useRouter();
     useEffect(() => {
         GetBannerimages();
-        // const history=useRouter();
-
     }, [state, bannerimages]);
     const GetBannerimages = () => {
         Bannerimage().then((res) => {
