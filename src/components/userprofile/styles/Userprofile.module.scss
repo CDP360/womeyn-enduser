@@ -6,7 +6,7 @@
     gap: 30px;
     padding-bottom:8%;
     position:relative;
-    z-index:9;
+    z-index:2;
     @include xsBreakPoint {
         flex-direction: column;
     }
@@ -37,6 +37,7 @@
         border-radius: 15px;
         height: 100%;
         margin-bottom:5%;
+        background-color:white;
         @include xsBreakPoint {
             width: 100%;
         }

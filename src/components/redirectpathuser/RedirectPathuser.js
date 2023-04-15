@@ -4,10 +4,25 @@ import Image from 'next/image';
 import { Button } from 'react-bootstrap';
 import image from '../../../src/assests/homepage-logos/404notfound.png';
 import styles from './styles/Redirect.module.scss';
+import jwt_decode from "jwt-decode";
+
 function RedirectPathuser() {
 
     const history = useRouter();
     useEffect(() => {
+        const token = localStorage.getItem("userToken")
+        var decoded = jwt_decode(token);
+
+        if (Date.now() >= decoded.exp * 1000) {
+            localStorage.removeItem("userid");
+            localStorage.removeItem("userToken");
+            localStorage.removeItem("whish");
+            localStorage.removeItem("user");
+            localStorage.removeItem("auth");
+            localStorage.removeItem("productid");
+            history.push("/");
+  
+        }
     }, [])
 
     const NavigatePath = () => {
@@ -36,9 +51,7 @@ function RedirectPathuser() {
                 <div className={styles.something}>
                     Something's Missing
                 </div>
-                <div className={styles.splitpagenotfound}>
-                    <Button className={styles.backtohomenone} onClick={NavigatePath}>Go Back</Button>
-                </div>
+               
             </div>
         </div>
         <div className={styles.emptyboxrightsectioncolor}></div>

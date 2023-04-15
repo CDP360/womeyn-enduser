@@ -79,7 +79,6 @@ function Allorders({ Orders, traking, loading }) {
                     {moment(item?.orderedDate).format("MMM Do YY",)}
                   </div>
                 </div>
-
                 {item?.stateId === 6 ? <>
                   <div className={styles.ordermapsectionlists}>
                     <div className={styles.firstimagesections}>
@@ -199,7 +198,7 @@ function Allorders({ Orders, traking, loading }) {
                               </> : <></>}
 
 
-                           
+
                             </div>
 
                           </div>
@@ -209,7 +208,7 @@ function Allorders({ Orders, traking, loading }) {
 
                   </div>
 
-                
+
 
                 </>}
 

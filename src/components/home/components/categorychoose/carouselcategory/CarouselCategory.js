@@ -66,7 +66,7 @@ function CarouselCategory() {
     }).catch((err) => {
       console.log(err);
     })
-  }, []);
+  }, [datas]);
 
 
 

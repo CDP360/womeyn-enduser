@@ -15,8 +15,6 @@ import Whatmake from './components/whatmake/Whatmake';
 import { Bannerimage } from '../../services/banner-image-service/banner-image-service';
 import Skeleton from 'react-loading-skeleton';
 import { useRouter } from 'next/router';
-import jwt_decode from "jwt-decode";
-
 import { UserProfileInformation } from '../../services/user-login-service/user-login-services';
 function Home() {
     const [bannerimages, setBannerImages] = useState([]);

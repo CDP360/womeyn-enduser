@@ -17,209 +17,336 @@ import LoaderLogo from '../../../loaderlogo/LoaderLogo';
 import Spinner from 'react-bootstrap/Spinner';
 import { useRouter } from 'next/router';
 // import Autocomplete from "react-google-autocomplete";
+
 import dynamic from 'next/dynamic';
-function Manageaddress({error}) {
-  const router = useRouter();
+import Orderdetails from './../order/components/orderdetails/Orderdetails';
+function Manageaddress({ error }) {
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    setValue,
-    formState: { errors },
-  } = useForm();
-  const [getaddress, setAddress] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [show, setShow] = useState(false);
-  const [showdelete, setShowdelete] = useState(false);
-  const [removeloading, setRemoveloading] = useState(false);
-  const [deleteaddressid, setDeleteId] = useState("");
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const handleClosedelete = () => setShowdelete(false);
-  const handleShowdelete = (id) => {
-    setShowdelete(true);
-    setDeleteId(id);
-  };
-  useEffect(() => {
-    getAddressdata();
-  }, [deleteaddressid,error]);
-  const getAddressdata = () => {
-    setLoading(true);
-    GetAddressData().then((res) => {
-      setAddress(res?.data?.results);
-      setTimeout(() => {
-        setLoading(false);
-      }, 500)
-    }).catch((err) => {
-      console.log(err);
-    })
-  }
-  const onSubmit = (data) => {
-    const address = {
-      name: data?.name,
-      contactNumber: data?.contactno,
-      alternateContactNumber: data?.alternatecontactno,
-      fullAddress: data?.address,
-      pinCode: data?.pincode,
-      landMark: data?.landmark,
-      cityName: data?.city,
-      stateName: data?.state,
-      countryName: "Australia",
+    const [pincodeaus, setPincodeAus] = useState("");
+    const [stateaus, setStateAus] = useState("");
+    const [countryaus, setCountryAus] = useState("");
+    const [overallaus, setOverallAus] = useState("");
+
+    const [query, setQuery] = useState("");
+    const autoCompleteRef = useRef(null);
+
+    let autoComplete;
+
+
+
+
+
+    function handleScriptLoad(updateQuery, autoCompleteRef) {
+        autoComplete = new window.google.maps.places.Autocomplete(
+            autoCompleteRef.current,
+            { types: ["postal_code"], componentRestrictions: { country: "AUS" } }
+        );
+        autoComplete.setFields([
+            "address_components",
+            "formatted_address",
+            "geometry",
+        ]);
+        autoComplete.addListener("place_changed", () =>
+            handlePlaceSelect(updateQuery)
+        );
+
     }
-    Addaddress(address).then((res) => {
-      toast.success("Address Added!!",
-        {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
+
+    const getAddressFromGoogle = (event) => {
+        let value = event.target.value;
+        setQuery(value);
+    };
+    async function handlePlaceSelect(updateQuery) {
+        const addressObject = autoComplete.getPlace();
+
+
+        const query = addressObject;
+        updateQuery(query);
+        setOverallAus(query);
+        // console.log(addressObject);
+    }
+
+    const loadScript = (url, callback) => {
+        let script = document.createElement("script");
+        script.type = "text/javascript";
+
+        if (script.readyState) {
+            script.onreadystatechange = function () {
+                if (
+                    script.readyState === "loaded" ||
+                    script.readyState === "complete"
+                ) {
+                    script.onreadystatechange = null;
+                    callback();
+                }
+            };
+        } else {
+            script.onload = () => callback();
         }
-      );
-      window.location.reload();
-      handleClose();
-    }).catch((err) => {
-      console.log(err);
-    })
-  }
-  const DeleteAddressUser = () => {
-    setRemoveloading(true);
-    DeleteAddress(deleteaddressid).then((res) => {
-      toast.success("Delete Address",
-        {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-      setTimeout(() => {
-        window.location.reload();
-        setRemoveloading(false);
-      }, 400)
-    }).catch((err) => {
-      console.log(err);
-    })
-  }
+
+        script.src = url;
+        document.getElementsByTagName("head")[0].appendChild(script);
+    };
+    useEffect(() => {
+        loadScript(
+            `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places`,
+            () => handleScriptLoad(setQuery, autoCompleteRef)
+        );
+
+        setOverallAus(autoCompleteRef?.current?.value);
+    }, []);
+
+    useEffect(() => {
+        if (query && query.address_components) {
+            for (const component of query.address_components) {
+                const componentType = component.types[0];
+                if (componentType === "locality") {
+                    //   formikPersonalDetails.values.cityName = component.long_name;
+                    setLastName(component.long_name)
+                }
+                if (componentType === "administrative_area_level_1") {
+
+                }
+                if (componentType === "country") {
+                    if (component.long_name === "Australia") {
+                        setFirstName(component.long_name)
+                    }
+                }
+                if (componentType === "postal_code") {
+                    setQuery(component.long_name);
+                }
+            }
+
+        }
+    }, [query]);
 
 
-  const NavigateRedirect = () => {
-    router?.push("/errorboundary")
-}
+
+    const router = useRouter();
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        setValue,
+        formState: { errors },
+    } = useForm();
+    const [getaddress, setAddress] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [show, setShow] = useState(false);
+    const [showdelete, setShowdelete] = useState(false);
+    const [removeloading, setRemoveloading] = useState(false);
+    const [deleteaddressid, setDeleteId] = useState("");
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const handleClosedelete = () => setShowdelete(false);
+    const handleShowdelete = (id) => {
+        setShowdelete(true);
+        setDeleteId(id);
+    };
+    useEffect(() => {
+        getAddressdata();
+    }, [deleteaddressid, error]);
+    const getAddressdata = () => {
+        setLoading(true);
+        GetAddressData().then((res) => {
+            setAddress(res?.data?.results);
+            setTimeout(() => {
+                setLoading(false);
+            }, 500)
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    const onSubmit = (data) => {
+        const address = {
+            name: data?.name,
+            contactNumber: data?.contactno,
+            alternateContactNumber: data?.alternatecontactno,
+            fullAddress: data?.address,
+            pinCode: data?.pincode,
+            landMark: data?.landmark,
+            cityName: data?.city,
+            stateName: data?.state,
+            countryName: "Australia",
+        }
+        Addaddress(address).then((res) => {
+            toast.success("Address Added!!",
+                {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                }
+            );
+            window.location.reload();
+            handleClose();
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    const DeleteAddressUser = () => {
+        setRemoveloading(true);
+        DeleteAddress(deleteaddressid).then((res) => {
+            toast.success("Delete Address",
+                {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+            setTimeout(() => {
+                window.location.reload();
+                setRemoveloading(false);
+            }, 400)
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
+
+    const NavigateRedirect = () => {
+        router?.push("/errorboundary")
+    }
 
 
 
-  if(error)
-  {
-    return (
-      <div>
-          {NavigateRedirect()}
-      </div>
-  )
-  }
-  else
-  {
-    return (
-      <>
-        <div className={styles.mainaddresspage}>
-          <div className={styles.insideaddresspage}>
-            {getaddress?.length > 0 ? <>
-              <div className={styles.topsectionaddress}>
-                <div className={styles.leftaddresssection}>
-                  {/* <input type="text" placeholder='Search address or receiver name' className={styles.serachaddress} />
-                          <div>
-                              <Image src={searchcion} alt="no image" className={styles.searchicon} />
-                          </div> */}
-  
-                  <div className="commonprofiletextsize" >
-                    Manage Address
-                  </div>
-            
-                </div>
-                <div className={styles.rightaddresssection}>
-                  <div>
-                    <button className={styles.addbuttonnew} onClick={handleShow} >Add new address</button>
-                  </div>
-                </div>
-              </div>
-              <div>
-                {loading ? <>
-                  {/* <Loader */}
-                  <LoaderLogo />
-                </> : <>
-                  {getaddress?.map((item, index) => {
-                    return (
-                      <>
-                        <div className={styles.addresslistsection} key={index}>
-                          <div className={styles.addresssplit}>
-                            <div className={styles.leftaddress}>
-                              <Image src={maplocation} alt="no image" className={styles.map} />
+    if (error) {
+        return (
+            <div>
+                {NavigateRedirect()}
+            </div>
+        )
+    }
+    else {
+        return (
+            <>
+                <div className={styles.mainaddresspage}>
+                    <div className={styles.insideaddresspage}>
+                        {getaddress?.length > 0 ? <>
+                            <div className={styles.topsectionaddress}>
+                                <div className={styles.leftaddresssection}>
+
+
+                                    <div className="commonprofiletextsize" >
+                                        Manage Address
+                                    </div>
+
+                                    
+
+                                </div>
+                                <div className={styles.rightaddresssection}>
+                                    <div>
+                                        <button className={styles.addbuttonnew} onClick={handleShow} >Add new address</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div className={styles.rightaddress}>
-                              <div>
-                                {item?.name}
-                              </div>
-                              <div>
-                                {item?.contactNumber}
-                              </div>
-                              <div>
-                                {item?.stateName}
-                              </div>
-                              <div>
-                                {item?.cityName}
-                              </div>
-                              <div>
-                                {item?.fullAddress}
-                              </div>
-                              <div className={styles.splitedits}>
-                                {/* <div className={styles.editaddresss}>
+                            <div>
+                                {loading ? <>
+                                    {/* <Loader */}
+                                    <LoaderLogo />
+                                </> : <>
+                                    {getaddress?.map((item, index) => {
+                                        return (
+                                            <>
+                                                <div className={styles.addresslistsection} key={index}>
+                                                    <div className={styles.addresssplit}>
+                                                        <div className={styles.leftaddress}>
+                                                            <Image src={maplocation} alt="no image" className={styles.map} />
+                                                        </div>
+                                                        <div className={styles.rightaddress}>
+                                                            <div>
+                                                                {item?.name}
+                                                            </div>
+                                                            <div>
+                                                                {item?.contactNumber}
+                                                            </div>
+                                                            <div>
+                                                                {item?.stateName}
+                                                            </div>
+                                                            <div>
+                                                                {item?.cityName}
+                                                            </div>
+                                                            <div>
+                                                                {item?.fullAddress}
+                                                            </div>
+                                                            <div className={styles.splitedits}>
+                                                                {/* <div className={styles.editaddresss}>
                                   Edit Address
                                 </div> */}
-                                <div className={styles.editaddresss}>
-                                  <div className={styles.removebuttonssection} onClick={() => handleShowdelete(item?.id)}>
-                                    <div>
-                                      <Image src={deleteicons} alt="no image" className={styles.mapremove} />
-                                    </div>
-                                    <div>
-                                      Remove
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+                                                                <div className={styles.editaddresss}>
+                                                                    <div className={styles.removebuttonssection} onClick={() => handleShowdelete(item?.id)}>
+                                                                        <div>
+                                                                            <Image src={deleteicons} alt="no image" className={styles.mapremove} />
+                                                                        </div>
+                                                                        <div>
+                                                                            Remove
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )
+                                    })}
+                                </>}
                             </div>
-                          </div>
-                        </div>
-                      </>
-                    )
-                  })}
-                </>}
-              </div>
-            </> : <div>
-              <div>
-                Manage Address
-              </div>
-              <Image src={address} alt="no image" className={styles.notlocation} />
-              <div className="text-center mt-3 mb-4">
-                Please add a delivery address here
-              </div>
-              <div>
-                <div className={styles.rightaddresssection}>
-                  <div>
-                    <button className={styles.addbuttonnew} onClick={handleShow} >Add new address</button>
-                  </div>
+                        </> : <div>
+                            <div>
+                                Manage Address
+                            </div>
+                            <Image src={address} alt="no image" className={styles.notlocation} />
+                            <div className="text-center mt-3 mb-4">
+                                Please add a delivery address here
+                            </div>
+                            <div>
+                                <div className={styles.rightaddresssection}>
+                                    <div>
+                                        <button className={styles.addbuttonnew} onClick={handleShow} >Add new address</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>}
+                    </div>
                 </div>
-              </div>
-            </div>}
-          </div>
-        </div>
-        <>
+
+                <div>
+                    <Modal
+                        show={show}
+                        onHide={handleClose}
+                        backdrop="static"
+                        keyboard={false}
+                        size="lg"
+                        centered
+                    >
+
+                        <div>
+
+
+
+                            <input type="text"
+                                value={query}
+                                ref={autoCompleteRef}
+                                onChange={getAddressFromGoogle}
+                            />
+                        </div>
+                    </Modal>
+
+                </div>
+
+
+
+                <>
           <Modal
             show={show}
             onHide={handleClose}
@@ -239,6 +366,8 @@ function Manageaddress({error}) {
                   </div>
                 </div>
                 <div className="mt-3">
+
+                   
                   <Row>
                     <Col>
                       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -246,7 +375,7 @@ function Manageaddress({error}) {
                         <Form.Control type="text" placeholder="Enter Name" className='form-control-profiles'
                           {...register("name", {
                             required: "Please enter Name",
-  
+
                           })}
                         />
                         <Form.Text className="text-muted">
@@ -264,8 +393,10 @@ function Manageaddress({error}) {
                         <Form.Control type="text" placeholder="Enter Contact No" className='form-control-profiles'
                           {...register("contactno", {
                             required: "Please enter Contact No",
-  
+
                           })}
+                        maxLength={9}
+
                         />
                         <Form.Text className="text-muted">
                           {errors.contactno && <span className="active">{errors.contactno.message}</span>}
@@ -279,6 +410,8 @@ function Manageaddress({error}) {
                           {...register("alternatecontactno", {
                             required: "Please enter Alternate Contact No",
                           })}
+                        maxLength={9}
+
                         />
                         <Form.Text className="text-muted">
                           {errors.alternatecontactno && <span className="active">{errors.alternatecontactno.message}</span>}
@@ -310,21 +443,17 @@ function Manageaddress({error}) {
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="labelname">Address</Form.Label>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-  
+
                           <Form.Control as="textarea" rows={3}
                             className='form-control-profiles'
                             placeholder="Enter Address"
                             {...register("address", {
                               required: "Please enter Address",
-  
+
                             })}
                           />
                         </Form.Group>
-                        {/* <Form.Control type="text" placeholder="Enter Address" className='form-control-profiles'
-                          {...register("address", {
-                            required: "Please enter Address",
-                          })}
-                        /> */}
+                     
                         <Form.Text className="text-muted">
                           {errors.address && <span className="active">{errors.address.message}</span>}
                         </Form.Text>
@@ -364,6 +493,7 @@ function Manageaddress({error}) {
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="labelname">Post code</Form.Label>
                         <Form.Control type="text" placeholder="Enter Pincode" className='form-control-profiles'
+                        maxLength={4}
                           {...register("pincode", {
                             required: "Please enter Pincode",
                           })}
@@ -389,19 +519,14 @@ function Manageaddress({error}) {
                 </div>
               </div>
             </Modal.Body>
-            {/* <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-              <Button variant="primary">Understood</Button>
-            </Modal.Footer> */}
+          
           </Modal>
-  
+
           <div>
-  
-  
-  
-  
+
+
+
+
             <Modal
               show={showdelete}
               onHide={handleClosedelete}
@@ -414,14 +539,14 @@ function Manageaddress({error}) {
               </Modal.Header>
               <Modal.Body>
                 <div>
-                  {/* you want to  */}
+               
                   Are you sure remove this Address?
                 </div>
                 <div className={styles.pathbuttonsplit}>
-  
+
                   <div className={styles.cancelbutton}>Cancel</div>
                   <div className={styles.removebutton} onClick={DeleteAddressUser}>
-  
+
                     {removeloading ? <>
                       <Spinner
                         as="span"
@@ -434,23 +559,23 @@ function Manageaddress({error}) {
                     </> : <>
                       Remove
                     </>}
-  
-  
+
+
                   </div>
-  
-  
+
+
                 </div>
               </Modal.Body>
-  
+
             </Modal>
-  
+
           </div>
         </>
-  
-      </>
-  
-    )
-  }
+
+            </>
+
+        )
+    }
 }
 
-export default dynamic(() => Promise.resolve(Manageaddress), { ssr: false })
+export default Manageaddress;

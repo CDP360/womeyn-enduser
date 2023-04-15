@@ -73,7 +73,6 @@
       .firstsectioninside {
         display: flex;
         gap: 10px;
-
       }
     }
     .secondimagesection {
@@ -104,14 +103,13 @@
   display: flex;
   .firstimagesections {
     width: 100%;
-    
+
     .firstsectioninsidess {
       display: flex;
       gap: 20px;
       padding: 3% 0px;
-      @include xsBreakPoint
-      {
-        flex-direction:column;
+      @include xsBreakPoint {
+        flex-direction: column;
       }
       .confirmordercanceld {
         background-color: #f9acac;
@@ -128,40 +126,33 @@
         width: 60%;
         display: flex;
         gap: 20px;
-        @include xsBreakPoint
-        {
-          flex-direction:column;
-          width:100%;
+        @include xsBreakPoint {
+          flex-direction: column;
+          width: 100%;
         }
-        @include smBreakPoint
-        {
-          flex-direction:column;
-          width:100%;
+        @include smBreakPoint {
+          flex-direction: column;
+          width: 100%;
         }
       }
       .secondimagesections {
         width: 20%;
         font-weight: 600;
         font-size: 1.2rem;
-        @include xsBreakPoint
-        {
-          width:100%;
+        @include xsBreakPoint {
+          width: 100%;
         }
-        @include smBreakPoint
-        {
-          width:100%;
+        @include smBreakPoint {
+          width: 100%;
         }
       }
-      .rightimagesections
-      {
-        width:20%;
-        @include xsBreakPoint
-        {
-          width:100%;
+      .rightimagesections {
+        width: 20%;
+        @include xsBreakPoint {
+          width: 100%;
         }
-        @include smBreakPoint
-        {
-          width:100%;
+        @include smBreakPoint {
+          width: 100%;
         }
       }
     }
@@ -175,8 +166,8 @@
   background: white;
   cursor: pointer;
   border: 1px solid #d9d9d9;
-padding:5px;
-object-fit:contain;
+  padding: 5px;
+  object-fit: contain;
   @include mdBreakPoint {
     width: 80px;
     height: 80px;
@@ -184,13 +175,12 @@ object-fit:contain;
   @include xsBreakPoint {
     width: 100%;
     height: auto;
-    object-fit:contain;
+    object-fit: contain;
   }
 }
 
-.img:hover
-{
-  transform:scale(1.1);
+.img:hover {
+  transform: scale(1.1);
 }
 
 .mobilecartresponsive {
@@ -264,8 +254,6 @@ object-fit:contain;
   background-color: white;
 }
 
-
-
 .orderstatussection {
   display: flex;
   gap: 40px;
@@ -310,4 +298,3 @@ object-fit:contain;
     color: #ff3d00;
   }
 }
-

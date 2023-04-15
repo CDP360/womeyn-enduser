@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 // // Instance.defaults.headers.post['Content-Type'] = 'application/json';
 
 // export default instanceBaseurl;.
-import jwt_decode from "jwt-decode";
+
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 axios.interceptors.request.use(
@@ -30,7 +30,7 @@ axios.interceptors.request.use(
             return config;
         }
         else if ((config.url.search("/customer/oauth/google") !== -1) || (config.url.search("/oauth-success") !== -1)) {
-            console.log("crede called")
+            
             const token = localStorage.getItem("userToken");
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
             config.headers = {
@@ -68,21 +68,7 @@ axios.interceptors.request.use(
     function (error) {
         return Promise.reject(error);
     },
-    function(){
-        return
-        const token = localStorage.getItem("userToken")
-        var decoded = jwt_decode(token);
 
-        if (Date.now() >= decoded.exp * 1000) {
-            localStorage.removeItem("userid");
-            localStorage.removeItem("userToken");
-            localStorage.removeItem("whish");
-            localStorage.removeItem("user");
-            localStorage.removeItem("auth");
-            localStorage.removeItem("productid");
-            window.location.assign("/");
-        }
-    }
 );
 
 
