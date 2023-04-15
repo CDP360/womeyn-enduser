@@ -126,12 +126,17 @@ function Servicepayment({ id }) {
 
         setTimeout(() => {
             history.push("/login");
+            localStorage.removeItem("userid");
+            localStorage.removeItem("userToken");
+            localStorage.removeItem("whish");
+            localStorage.removeItem("user");
+            localStorage.removeItem("auth");
         }, 300)
     }
 
 
     const NavigatePathUser = () => {
-        history?.push("/");
+        history?.push("/login");
     }
     //     if (tokens) {
     //         return (
@@ -143,161 +148,155 @@ function Servicepayment({ id }) {
     // else
     // {
 
-    if (errors) {
-        return (
-            <div>
-                {NavigatePathUser()}
-            </div>
-        )
-    }
-    else {
-        return (
-            <div className='mainsection'>
-                <div className="insidesection">
-                    <div className={styles.mainservicepayment}>
-                        <div className={styles.insideservicepayment}>
-                            <div className={styles.leftservicepayment}>
-                                <div className={styles.selectpayment}>
 
-                                    Select a payment method
+
+    return (
+        <div className='mainsection'>
+            <div className="insidesection">
+                <div className={styles.mainservicepayment}>
+                    <div className={styles.insideservicepayment}>
+                        <div className={styles.leftservicepayment}>
+                            <div className={styles.selectpayment}>
+
+                                Select a payment method
+                            </div>
+                            <div className={styles.paymentmethod}>
+
+                                Payments method
+                            </div>
+                            <div className="mt-3">
+
+                                <div>
+
+                                    {paymentMethods?.map((item, index) => {
+                                        return (
+                                            <div key={index} className={styles.paymentsection}>
+                                                <input type="radio" name={item?.name} value={item?.name} checked={paymentType == item?.name} onChange={onOptionChange} id={item?.name} className={styles.radiobuttons} />
+                                                <label for={item?.name}><img src={item.image.src} alt="no image" className={styles.strips} /></label>
+                                            </div>
+                                        )
+                                    })}
                                 </div>
-                                <div className={styles.paymentmethod}>
 
-                                    Payments method
-                                </div>
-                                <div className="mt-3">
+                            </div>
+                        </div>
+                        <div className={styles.rightservicepayment}>
 
+                            <div className={styles.insideservicepaymentinright}>
+                                <div className={styles.insiderightpaymentcard}>
                                     <div>
 
-                                        {paymentMethods?.map((item, index) => {
-                                            return (
-                                                <div key={index} className={styles.paymentsection}>
-                                                    <input type="radio" name={item?.name} value={item?.name} checked={paymentType == item?.name} onChange={onOptionChange} id={item?.name} className={styles.radiobuttons} />
-                                                    <label for={item?.name}><img src={item.image.src} alt="no image" className={styles.strips} /></label>
-                                                </div>
-                                            )
-                                        })}
+                                        {/* <Image src={banners} alt="no image" className={styles.bannserpaymentservice} /> */}
+
+                                        {serviceimages ? <>
+                                            <img
+                                                className={styles.bannserpaymentservice}
+                                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${serviceimages}`}
+                                                alt="profile-pic"
+                                            />
+                                        </> : <>
+                                            <Skeleton
+                                                className={styles.bannserpaymentservice}
+                                            />
+                                        </>}
+                                    </div>
+                                    <div className={styles.servicepayment}>
+                                        <div className={styles.quantity}>
+
+                                            <div className={styles.price}>
+                                                Quantity
+                                            </div>
+                                            <div className={styles.price}>
+                                                1
+                                            </div>
+                                        </div>
+
+                                        <div className={styles.bordersections}>
+
+                                        </div>
+
+                                    </div>
+                                    <div className={styles.servicepayment}>
+                                        <div className={styles.quantity}>
+                                            <div className={styles.price}>
+                                                Item price
+                                            </div>
+                                            <div className={styles.price}>
+                                                A$ {payements?.price}
+                                            </div>
+                                        </div>
+
+
+                                        <div className={styles.bordersections}>
+
+                                        </div>
+
+                                        <div className={styles.quantity}>
+                                            <div className={styles.price}>
+                                                GST
+                                            </div>
+                                            <div className={styles.price}>
+                                                A$ {totalvalue}
+                                            </div>
+                                        </div>
+
+                                        <div className={styles.bordersections}>
+
+                                        </div>
+
                                     </div>
 
-                                </div>
-                            </div>
-                            <div className={styles.rightservicepayment}>
+                                    <div className="mt-3 mb-3">
 
-                                <div className={styles.insideservicepaymentinright}>
-                                    <div className={styles.insiderightpaymentcard}>
-                                        <div>
+                                        <div className={styles.totalamount}>
+                                            <div className={styles.price}>
+                                                Total amount
+                                            </div>
+                                            <div className={styles.totalflex}>
+                                                <div className={styles.price}>
+                                                    A$
+                                                </div>
 
-                                            {/* <Image src={banners} alt="no image" className={styles.bannserpaymentservice} /> */}
-
-                                            {serviceimages ? <>
-                                                <img
-                                                    className={styles.bannserpaymentservice}
-                                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${serviceimages}`}
-                                                    alt="profile-pic"
-                                                />
-                                            </> : <>
-                                                <Skeleton
-                                                    className={styles.bannserpaymentservice}
-                                                />
-                                            </>}
+                                                <div>
+                                                    <span className={styles.total}>{(Number(totalvalue)) + (Number(payements?.price))}</span>
+                                                </div>                                        </div>
                                         </div>
-                                        <div className={styles.servicepayment}>
-                                            <div className={styles.quantity}>
+                                    </div>
 
-                                                <div className={styles.price}>
-                                                    Quantity
-                                                </div>
-                                                <div className={styles.price}>
-                                                    1
-                                                </div>
-                                            </div>
+                                    <div className='mt-4 mb-3'>
+                                        {tokens ? <>
+                                            <button className={styles.confirmpay} onClick={ServicePaymentMethod}>
+                                                {loading ? <>
 
-                                            <div className={styles.bordersections}>
+                                                    <Spinner
+                                                        as="span"
+                                                        animation="border"
+                                                        size="sm"
+                                                        role="status"
+                                                        aria-hidden="true"
+                                                    />
+                                                    <span className="ms-3">Loading...</span>
+                                                </> : <>
+                                                    Confirm & Pay
 
-                                            </div>
+                                                </>}
+                                            </button>
 
-                                        </div>
-                                        <div className={styles.servicepayment}>
-                                            <div className={styles.quantity}>
-                                                <div className={styles.price}>
-                                                    Item price
-                                                </div>
-                                                <div className={styles.price}>
-                                                    A$ {payements?.price}
-                                                </div>
-                                            </div>
+                                        </> : <>
 
+                                            <button className={styles.confirmpay} onClick={LoginNavigate}>Login</button>
 
-                                            <div className={styles.bordersections}>
-
-                                            </div>
-
-                                            <div className={styles.quantity}>
-                                                <div className={styles.price}>
-                                                    GST
-                                                </div>
-                                                <div className={styles.price}>
-                                                    A$ {totalvalue}
-                                                </div>
-                                            </div>
-
-                                            <div className={styles.bordersections}>
-
-                                            </div>
-
-                                        </div>
-
-                                        <div className="mt-3 mb-3">
-
-                                            <div className={styles.totalamount}>
-                                                <div className={styles.price}>
-                                                    Total amount
-                                                </div>
-                                                <div className={styles.totalflex}>
-                                                    <div className={styles.price}>
-                                                        A$
-                                                    </div>
-
-                                                    <div>
-                                                        <span className={styles.total}>{(Number(totalvalue)) + (Number(payements?.price))}</span>
-                                                    </div>                                        </div>
-                                            </div>
-                                        </div>
-
-                                        <div className='mt-4 mb-3'>
-                                            {tokens ? <>
-                                                <button className={styles.confirmpay} onClick={ServicePaymentMethod}>
-                                                    {loading ? <>
-
-                                                        <Spinner
-                                                            as="span"
-                                                            animation="border"
-                                                            size="sm"
-                                                            role="status"
-                                                            aria-hidden="true"
-                                                        />
-                                                        <span className="ms-3">Loading...</span>
-                                                    </> : <>
-                                                        Confirm & Pay
-
-                                                    </>}
-                                                </button>
-
-                                            </> : <>
-
-                                                <button className={styles.confirmpay} onClick={LoginNavigate}>Login</button>
-
-                                            </>}
-                                        </div>
+                                        </>}
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
+
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
+
 export default Servicepayment
