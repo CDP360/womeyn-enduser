@@ -66,7 +66,7 @@ function CarouselCategory() {
     }).catch((err) => {
       console.log(err);
     })
-  }, [datas]);
+  }, []);
 
 
 
@@ -75,11 +75,11 @@ function CarouselCategory() {
   }
   return (
     <div className={styles.mainslidesection}>
-      {datas?.length <=4 ? <>
-      
-      <div className={styles.insideslidess}>
+      {datas?.length <= 4 ? <>
 
-      {datas.map((item, index) => {
+        <div className={styles.insideslidess}>
+
+          {datas.map((item, index) => {
             return (
               <div className={styles.cardsslide} onClick={() => pushCatgorys(item?.slugName)} key={index}>
                 <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesizes} />
@@ -92,7 +92,7 @@ function CarouselCategory() {
               </div>
             )
           })}
-      </div>
+        </div>
       </> :
         <Slider {...settings}>
           {datas.map((item, index) => {
@@ -103,7 +103,7 @@ function CarouselCategory() {
                   <h6>{item?.name}</h6>
                 </div>
                 <div onClick={() => pushCatgorys(item?.slugName)} >
-                  {item?.description?.length<=10 ?<>{item?.description}</>:<>{item?.description.slice(0,20)}...</>}
+                  {item?.description?.length <= 10 ? <>{item?.description}</> : <>{item?.description.slice(0, 20)}...</>}
                 </div>
               </div>
             )

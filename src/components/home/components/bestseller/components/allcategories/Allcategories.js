@@ -14,12 +14,17 @@ import Allbestservices from './allbestservices/Allbestservices';
 function Allcategories() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
+    MainTopSections();
+  }, []);
+
+
+  const MainTopSections=()=>{
     TopProducts().then((res) => {
       setProducts(res?.data);
     }).catch((err) => {
       console.log(err);
     })
-  }, []);
+  }
 
 
 

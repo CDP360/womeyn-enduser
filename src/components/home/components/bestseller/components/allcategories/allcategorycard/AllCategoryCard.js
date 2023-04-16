@@ -109,10 +109,10 @@ function AllCategoryCard({ products, stars }) {
                 })}
             </Slider>
                 </>:<>
-                
+                <div className='row justify-content-center d-flex gap-3'>
                 {products.map((item, index) => {
                     return (
-                        <div className={styles.cardcategory} key={index}>
+                        <div className={styles.cardcategorys} key={index}>
                             <div className={styles.cardsections}>
                                 <div className="cards col-lg-12 mb-5" onClick={() => categoryPush(item?.productSlugName)}>
                                     <div>
@@ -148,6 +148,7 @@ function AllCategoryCard({ products, stars }) {
                         </div>
                     )
                 })}
+                </div>
                 </>}
            
         </div>

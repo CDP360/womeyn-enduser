@@ -71,7 +71,7 @@ function Allbestservices({ stars }) {
         }).catch((err) => console.log(err))
     }, [])
 
-    console.log(services,"services")
+    console.log(services, "services")
 
     return (
         <div className={styles.appcard}>
@@ -83,11 +83,11 @@ function Allbestservices({ stars }) {
                                 <div className={styles.cardsections}>
                                     <div className="cards col-lg-12 mb-5" onClick={() => categoryPush(item?.serviceSlugName)}>
 
-                                    <div>
-                                        {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                        <Skeleton className={styles.skeltons} /> 
-                                                           </>}
-                                    </div>
+                                        <div>
+                                            {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                                <Skeleton className={styles.skeltons} />
+                                            </>}
+                                        </div>
                                         <div className="mt-3">
 
                                             <div className={styles.cardinsidesection}>
@@ -108,43 +108,44 @@ function Allbestservices({ stars }) {
                         )
                     })}
                 </Slider>
-            </> : <div className='row justify-content-center d-flex'>
+            </> :
+                <div className='row justify-content-center d-flex gap-4'>
 
-                {services.map((item, index) => {
-                    return (
-                        <div className={styles.cardcategory} key={index}>
-                            <div className={styles.cardsections}>
-                                <div className="cards col-lg-12 mb-5" onClick={() => categoryPush(item?.productSlugName)}>
+                    {services.map((item, index) => {
+                        return (
+                            <div className={styles.cardcategorys} key={index}>
+                                <div className={styles.cardsections}>
+                                    <div className="cards col-lg-12 mb-5" onClick={() => categoryPush(item?.productSlugName)}>
 
-                                    {/* <div>
+                                        {/* <div>
                                         <img src={item?.image} alt="no image" className={styles.sellerimagesize} />
                                     </div> */}
 
-                                    <div>
-                                        {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                        <Skeleton className={styles.skeltons} /> 
-                                                           </>}
-                                    </div>
-                                    <div className="mt-3">
+                                        <div>
+                                            {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                                <Skeleton className={styles.skeltons} />
+                                            </>}
+                                        </div>
+                                        <div className="mt-3">
 
-                                        <div className={styles.cardinsidesection}>
-                                            <Image src={stars} alt="no image" className={styles.stars} />
-                                            <div>
-                                                <span>{item?.serviceName}</span>
-                                            </div>
-                                            {/* <div className='mb-4'>
+                                            <div className={styles.cardinsidesection}>
+                                                <Image src={stars} alt="no image" className={styles.stars} />
+                                                <div>
+                                                    <span>{item?.serviceName}</span>
+                                                </div>
+                                                {/* <div className='mb-4'>
                                         <span className='textgrey'>{item?.serviceDescription}</span>
                                     </div> */}
+                                            </div>
                                         </div>
+
                                     </div>
-
                                 </div>
-                            </div>
 
-                        </div>
-                    )
-                })}
-            </div>}
+                            </div>
+                        )
+                    })}
+                </div>}
 
         </div>
     )

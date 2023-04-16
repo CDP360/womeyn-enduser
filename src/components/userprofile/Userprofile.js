@@ -11,7 +11,6 @@ import Changepassword from './components/changepassword/Changepassword';
 import Favorts from './components/favorts/Favorts';
 import Orders from './components/order/Order';
 import Coupon from './components/coupons/Coupons';
-import { useDispatch, useSelector } from 'react-redux';
 import ServiceMaindetails from './components/servicedetails/ServiceMaindetails';
 function Userprofile({ name, error }) {
     const history = useRouter();
@@ -34,6 +33,8 @@ function Userprofile({ name, error }) {
                 localStorage.removeItem("user");
                 localStorage.removeItem("auth");
                 localStorage.removeItem("productid");
+                history.push("/login");
+
             }
             setUser(res?.data);
         }).catch((err) => {

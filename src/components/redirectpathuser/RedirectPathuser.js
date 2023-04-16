@@ -10,19 +10,19 @@ function RedirectPathuser() {
 
     const history = useRouter();
     useEffect(() => {
-        const token = localStorage.getItem("userToken")
-        var decoded = jwt_decode(token);
+        // const token = localStorage.getItem("userToken")
+        // var decoded = jwt_decode(token);
 
-        if (Date.now() >= decoded.exp * 1000) {
-            localStorage.removeItem("userid");
-            localStorage.removeItem("userToken");
-            localStorage.removeItem("whish");
-            localStorage.removeItem("user");
-            localStorage.removeItem("auth");
-            localStorage.removeItem("productid");
-            history.push("/");
-  
-        }
+        // if (Date.now() >= decoded.exp * 1000) {
+        //     localStorage.removeItem("userid");
+        //     localStorage.removeItem("userToken");
+        //     localStorage.removeItem("whish");
+        //     localStorage.removeItem("user");
+        //     localStorage.removeItem("auth");
+        //     localStorage.removeItem("productid");
+        //     history.push("/");
+
+        // }
     }, [])
 
     const NavigatePath = () => {
@@ -38,23 +38,25 @@ function RedirectPathuser() {
     return (
         <>
 
-        <div className={styles.mainpagenot}>
-            
+            <div className={styles.mainpagenot}>
 
-            <div className={styles.insidenotpage}>
-                <Image src={image} alt="no image" className={styles.notfoundimage} />
 
-                <div className={styles.opps}>
-                    Oops!
+                <div className={styles.insidenotpage}>
+                    <Image src={image} alt="no image" className={styles.notfoundimage} />
+
+                    <div className={styles.opps}>
+                        Oops!
+
+                    </div>
+                    <div className={styles.something}>
+                        Something's Missing
+                    </div>
+
+                    <button className={styles.backtohomenone} onClick={NavigatePath}>Go Back..!</button>
 
                 </div>
-                <div className={styles.something}>
-                    Something's Missing
-                </div>
-               
             </div>
-        </div>
-        <div className={styles.emptyboxrightsectioncolor}></div>
+            <div className={styles.emptyboxrightsectioncolor}></div>
             <div className={styles.emptyboxleftsectioncolor}></div>
         </>
     )

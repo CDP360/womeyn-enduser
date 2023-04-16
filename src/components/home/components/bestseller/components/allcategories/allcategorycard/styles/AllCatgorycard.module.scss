@@ -69,6 +69,83 @@
     }
 }
 
+
+
+
+
+
+
+
+.appcard {
+    // border: 2px solid red;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0px;
+    .cardcategorys {
+        // border: 2px solid blue;
+        
+        overflow: hidden;
+        height: 340px;
+        width: 22% !important;
+        background: #ffffff;
+        // box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+        border-radius: 8px;
+        cursor: pointer;
+        @include mdBreakPoint {
+            // height:auto;
+            // border:2px solid red;
+            height: 290px;
+        }
+    }
+    .sellerimagesize {
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+        padding: 3%;
+        @include mdBreakPoint {
+            height: 140px;
+        }
+        @include lgBreakPoint {
+            height: 140px;
+        }
+        @include xlBreakPoint {
+            height: 140px;
+        }
+    }
+    .stars {
+        width: 30%;
+        height: 30px;
+        object-fit: contain;
+        cursor: pointer;
+        @include mdBreakPoint {
+            width: 40%;
+        }
+        @include lgBreakPoint {
+            width: 46%;
+        }
+        @include xlBreakPoint {
+            width: 46%;
+        }
+    }
+    .cardinsidesection {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .cardsellerborder {
+        padding-top: 7%;
+        .cardsellerinsideborder {
+            border-top:1px solid rgba(0, 0, 0, 0.2);;
+        }
+    }
+    .cardpricesection {
+        display: flex;
+        gap: 10%;
+        padding-top: 5%;
+        padding-bottom: 10%;
+    }
+}
+
 .slick-slide,
 .cardcategory {
     margin: 2px 6px !important;

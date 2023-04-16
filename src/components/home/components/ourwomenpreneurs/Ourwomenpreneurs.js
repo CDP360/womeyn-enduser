@@ -109,12 +109,17 @@ function Ourwomenpreneurs() {
 
     ]
     useEffect(() => {
+        MainSectionWomens();
+    }, [counts]);
+
+
+    const MainSectionWomens=()=>{
         Topwomenprenuers().then((res) => {
             setDatas(res?.data);
         }).catch((err) => {
             console.log(err);
         })
-    }, [counts]);
+    }
 
     const SocialIconsOpen = (urldata) => {
         window.open(urldata);
