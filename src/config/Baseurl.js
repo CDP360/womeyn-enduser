@@ -1,21 +1,7 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
-// const instanceBaseurl = axios.create({
-//     baseURL: process.env.NEXT_PUBLIC_URL,
-// });
-
-// // const token=localStorage.getItem("womenUserToken");
-// // Instance.defaults.headers.common['Authorization'] = 'Bearer ';
-// // Instance.defaults.headers.post['Content-Type'] = 'application/json';
-
-// export default instanceBaseurl;.
-
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import jwt_decode from "jwt-decode";
 axios.interceptors.request.use(
-
     function (config) {
-
         if (config.url.search("/customer/update-photo") !== -1 || config.url.search("/customer/add-review") !== -1) {
             const token = localStorage.getItem("userToken");
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
@@ -42,8 +28,10 @@ axios.interceptors.request.use(
             return config;
         }
         else {
-            const token = localStorage.getItem("userToken")
-            // var decoded = jwt_decode(token);
+            const token = localStorage.getItem("userToken");
+            // let decoded = jwt_decode(token);
+            // console.log(decoded, "decoded")
+
 
             // if (Date.now() >= decoded.exp * 1000) {
             //     localStorage.removeItem("userid");
@@ -66,6 +54,7 @@ axios.interceptors.request.use(
         }
     },
     function (error) {
+
         return Promise.reject(error);
     },
 

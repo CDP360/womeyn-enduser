@@ -57,16 +57,13 @@ function MobileHeader() {
         }, 400)
 
     };
-
     const Becomeaseller = () => {
         window.open('https://eseller.cdp360.in/')
     }
-
     const heartpushdata = () => {
         router.push(`/profile/favorts`);
 
     }
-
     useEffect(() => {
         const auth = localStorage.getItem("auth");
         FavortActions(dispatch);
@@ -74,16 +71,12 @@ function MobileHeader() {
         FilterData();
 
     }, [])
-
     const [serachcategory, setSerachCategory] = useState("");
-
     const [serachdata, setSearchData] = useState([]);
-
     const handleChange = (e) => {
         setSerachCategory(e?.target?.value)
         FilterData(e?.target?.value)
     }
-
     const datas = [
         {
             id: 1,
@@ -106,14 +99,10 @@ function MobileHeader() {
             name: "tops",
         }
     ]
-
-
     const FilterData = (value) => {
         const filtersoverall = datas.filter((user) => {
             return value && user && user?.name && user?.name.toLowerCase().includes(value);
-
         });
-
         setSearchData(filtersoverall)
     }
     return (

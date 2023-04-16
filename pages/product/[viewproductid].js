@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import React from 'react'
 import LayoutHeader from '../../src/components/Layoutheader/LayoutHeader';
 import Viewproducts from '../../src/components/middleheaderchilderns/ourwomenpreneurs/component/womenviewproduct/Viewproducts';
+import Head from 'next/head';
 
 function index() {
     const router = useRouter();
@@ -12,6 +13,9 @@ function index() {
                 name="description"
                 content="Meta description for the About page"
             />
+            {/* <Head>
+            <title>Womeyn {viewproductid}</title>
+            </Head> */}
             <Viewproducts id={viewproductid} />
         </LayoutHeader>
     )

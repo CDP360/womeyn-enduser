@@ -10,20 +10,11 @@ function RedirectPathuser() {
 
     const history = useRouter();
     useEffect(() => {
-        // const token = localStorage.getItem("userToken")
-        // var decoded = jwt_decode(token);
+        const token = localStorage.getItem("userToken");
+        var decoded = jwt_decode(token);
+        console.log(decoded, "decoded")
 
-        // if (Date.now() >= decoded.exp * 1000) {
-        //     localStorage.removeItem("userid");
-        //     localStorage.removeItem("userToken");
-        //     localStorage.removeItem("whish");
-        //     localStorage.removeItem("user");
-        //     localStorage.removeItem("auth");
-        //     localStorage.removeItem("productid");
-        //     history.push("/");
-
-        // }
-    }, [])
+    }, []);
 
     const NavigatePath = () => {
         history.push("/");
@@ -52,7 +43,7 @@ function RedirectPathuser() {
                         Something's Missing
                     </div>
 
-                    <button className={styles.backtohomenone} onClick={NavigatePath}>Go Back..!</button>
+                    <button className={styles.backtohomenones} onClick={NavigatePath}>Go Back..!</button>
 
                 </div>
             </div>

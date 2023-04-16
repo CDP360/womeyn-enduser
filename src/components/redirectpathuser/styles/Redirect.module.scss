@@ -49,58 +49,58 @@
             @include xlBreakPoint {
                 padding-top: 3%;
             }
-            .backtohomenone {
-                color: #e95a5a !important;
-                cursor: pointer !important;
-                border: none;
-                outline: none;
-                border-radius: 10px;
-                font-weight: 600;
-                font-size: 1.2rem;
-                border: 1px solid #e95a5a;
-                width: 100%;
-                padding: 7px 50px;
+            // .backtohomenone {
+            //     color: #e95a5a !important;
+            //     cursor: pointer !important;
+            //     border: none;
+            //     outline: none;
+            //     border-radius: 10px;
+            //     font-weight: 600;
+            //     font-size: 1.2rem;
+            //     border: 1px solid #e95a5a;
+            //     width: 100%;
+            //     padding: 7px 50px;
 
-                @include xsBreakPoint {
-                    padding: 7px 50px;
-                }
+            //     @include xsBreakPoint {
+            //      width: 100%;
+            //     }
 
-                @include smBreakPoint {
-                    width: 100%;
-                    padding: 7px 60px !important;
-                }
-                @include mdBreakPoint {
-                    width: 100%;
-                    padding: 7px 60px !important;
-                }
-                @include lgBreakPoint {
-                    width: 100%;
-                    padding: 7px 70px;
-                }
-                @include xlBreakPoint {
-                    width: 100%;
-                    padding: 7px 70px;
-                }
-            }
-            .backtohome {
-                background-color: #e95a5a !important;
-                color: white !important;
-                cursor: pointer !important;
-                padding: 10px 20px;
-                border: none;
-                outline: none;
-                border-radius: 3px;
-                @include xsBreakPoint {
-                    width: 100%;
-                    // padding: 3px !important;
-                    font-size: 0.678rem !important;
-                }
-                @include smBreakPoint {
-                    width: 100%;
-                    padding: 3px !important;
-                    font-size: 0.857rem !important;
-                }
-            }
+            //     @include smBreakPoint {
+            //         width: 100%;
+            //         padding: 7px 60px !important;
+            //     }
+            //     @include mdBreakPoint {
+            //         width: 100%;
+            //         padding: 7px 60px !important;
+            //     }
+            //     @include lgBreakPoint {
+            //         width: 100%;
+            //         padding: 7px 70px;
+            //     }
+            //     @include xlBreakPoint {
+            //         width: 100%;
+            //         padding: 7px 70px;
+            //     }
+            // }
+            // .backtohome {
+            //     background-color: #e95a5a !important;
+            //     color: white !important;
+            //     cursor: pointer !important;
+            //     padding: 10px 20px;
+            //     border: none;
+            //     outline: none;
+            //     border-radius: 3px;
+            //     @include xsBreakPoint {
+            //         width: 100%;
+            //         // padding: 3px !important;
+            //         font-size: 0.678rem !important;
+            //     }
+            //     @include smBreakPoint {
+            //         width: 100%;
+            //         padding: 3px !important;
+            //         font-size: 0.857rem !important;
+            //     }
+            // }
         }
     }
 }
@@ -160,7 +160,7 @@
     filter: blur(239.825px);
 }
 
-.backtohomenone {
+.backtohomenones {
     color: #e95a5a !important;
     cursor: pointer !important;
     border: none;
@@ -169,47 +169,30 @@
     font-weight: 600;
     font-size: 1.2rem;
     border: 1px solid #e95a5a;
-    width: 20%;
+  
     background-color: white;
     padding: 7px 50px;
 
     @include xsBreakPoint {
-        padding: 7px 50px;
+      with:70%;
+   
+
     }
 
     @include smBreakPoint {
-        width: 100%;
-        padding: 7px 60px !important;
+        width: 50%;
+        // padding: 7px 60px !important;
     }
     @include mdBreakPoint {
-        width: 100%;
+        width: 50%;
         padding: 7px 60px !important;
     }
     @include lgBreakPoint {
-        width: 100%;
+        width: 40%;
         padding: 7px 70px;
     }
     @include xlBreakPoint {
-        width: 100%;
+        width: 30%;
         padding: 7px 70px;
-    }
-}
-.backtohome {
-    background-color: #e95a5a !important;
-    color: white !important;
-    cursor: pointer !important;
-    padding: 10px 20px;
-    border: none;
-    outline: none;
-    border-radius: 3px;
-    @include xsBreakPoint {
-        width: 100%;
-        // padding: 3px !important;
-        font-size: 0.678rem !important;
-    }
-    @include smBreakPoint {
-        width: 100%;
-        padding: 3px !important;
-        font-size: 0.857rem !important;
     }
 }
