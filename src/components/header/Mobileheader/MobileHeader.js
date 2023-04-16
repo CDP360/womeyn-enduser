@@ -16,6 +16,7 @@ import { GetFavoritsList } from './../../../services/user-favorits-service/User-
 import { useDispatch, useSelector } from 'react-redux';
 import { FavortActions } from './../../../Redux/actions/favortactions/Favortactions';
 import { LoginActions } from './../../../Redux/actions/loginactions/Loginaction';
+import Searchbar from './../serachcategorys/Searchbar';
 function MobileHeader() {
     const router = useRouter();
     const dispatch = useDispatch();
@@ -70,9 +71,54 @@ function MobileHeader() {
         const auth = localStorage.getItem("auth");
         FavortActions(dispatch);
         LoginActions(dispatch);
+        FilterData();
 
     }, [])
 
+    const [serachcategory, setSerachCategory] = useState("");
+
+    const [serachdata, setSearchData] = useState([]);
+
+    const handleChange = (e) => {
+        setSerachCategory(e?.target?.value)
+        FilterData(e?.target?.value)
+    }
+
+    const datas = [
+        {
+            id: 1,
+            name: "shoes",
+        },
+        {
+            id: 2,
+            name: "mobiles",
+        },
+        {
+            id: 3,
+            name: "bag",
+        },
+        {
+            id: 4,
+            name: "shirts",
+        },
+        {
+            id: 5,
+            name: "tops",
+        }
+    ]
+
+
+    const FilterData = (value) => {
+        const filtersoverall = datas.filter((user) => {
+            return value && user && user?.name && user?.name.toLowerCase().includes(value);
+
+        });
+
+        setSearchData(filtersoverall)
+    }
+
+
+    console.log(serachdata, "serachdata")
     return (
         <Fragment>
             <div className={styles.mainmobilesection}>
@@ -82,10 +128,18 @@ function MobileHeader() {
                 <div className={styles.mobilemiddlesection}>
 
                     <div className={styles.inputsearchsectionss}>
-                        <input type="text" placeholder='Search here...' className="inputserach" />
+                        <input type="text" placeholder='Search for products,brands and more....' className="inputserach" onChange={handleChange} value={serachcategory} />
                         <div>
                             <Image src={serachicon} alt="no image" className='serachicon' />
                         </div>
+
+                    </div>
+
+                    <div>
+
+
+                        {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} /> : <></>}
+
                     </div>
                 </div>
 

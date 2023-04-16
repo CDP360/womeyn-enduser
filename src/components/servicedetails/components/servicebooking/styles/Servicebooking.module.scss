@@ -277,7 +277,7 @@ height:300px;
     .booknowrow {
       width: 100%;
       display: flex;
-      gap: 40px;
+      gap: 10px;
       @include xsBreakPoint {
         flex-direction: column;
       }
@@ -297,7 +297,7 @@ height:300px;
       }
 
       .booknowbox {
-        width: 25%;
+        width: 100%;
         background: #ffffff;
         border: 1px solid #e95a5a;
         border-radius: 10px;
@@ -312,7 +312,7 @@ height:300px;
           margin: 0 auto;
         }
         @include mdBreakPoint {
-          width: 60%;
+          width: 70%;
           padding: 5% 4px;
           margin: 0 auto;
         }
@@ -322,6 +322,15 @@ height:300px;
           margin: 0 auto;
       
         }
+      }
+      .booknowbox:hover
+      {
+        background-color:#FFEFEF;
+      }
+      .reviewcontent
+      {
+        // border:2px solid red;
+        padding:12% 0px;
       }
       .monthsections {
         text-align: center;

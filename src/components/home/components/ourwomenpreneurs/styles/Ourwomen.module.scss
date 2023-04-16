@@ -80,7 +80,7 @@
                 background-image: url("../../../../../assests/homepage-logos/backroundcircle.png");
                 background-position: center;
                 background-repeat: no-repeat;
-                background-size: 250px 250px;
+                background-size: 230px 230px;
                 box-shadow: 0px 12px 124px -40px rgba(0, 0, 0, 0.16);
                 backdrop-filter: blur(66px);
                 @include xsBreakPoint {
@@ -102,13 +102,15 @@
                     background-size: 200px 200px;
                 }
                 .slideimagesize {
-                    width: 220px !important;
+                    width: 230px !important;
                     margin: 0 auto;
-                    height: 220px !important;
-                    z-index: 98;
+                    height: 230px !important;
+                    // z-index: 98;
                     // object-fit: cover;
                     cursor:pointer;
                     border-radius: 50%;
+                    // border:3px solid blue;
+                    padding:5px;
                     @include xsBreakPoint {
                         width: 80%;
                     }

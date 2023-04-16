@@ -366,7 +366,7 @@ function Servicebooking({ id }) {
                                                     </div>
 
                                                 </div>
-                                                <div className='m-4'>
+                                                <div className={styles.reviewcontent}>
 
                                                     <div className={styles.ticksections}>
                                                         <div>

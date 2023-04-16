@@ -124,14 +124,14 @@ function Servicepayment({ id }) {
         const pathnames = `/service/payment/${id}`;
         localStorage.setItem("whish", JSON.stringify(pathnames));
 
-        setTimeout(() => {
+        // setTimeout(() => {
             history.push("/login");
-            localStorage.removeItem("userid");
-            localStorage.removeItem("userToken");
-            localStorage.removeItem("whish");
-            localStorage.removeItem("user");
-            localStorage.removeItem("auth");
-        }, 300)
+        //     localStorage.removeItem("userid");
+        //     localStorage.removeItem("userToken");
+        //     localStorage.removeItem("whish");
+        //     localStorage.removeItem("user");
+        //     localStorage.removeItem("auth");
+        // }, 300)
     }
 
 

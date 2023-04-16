@@ -19,9 +19,9 @@ import { GetFavoritsList } from './../../services/user-favorits-service/User-fav
 import { ExploreCategorys } from '../../services/explore-service/explore-service';
 import { useDispatch, useSelector } from 'react-redux';
 import { FavortActions } from '../../Redux/actions/favortactions/Favortactions';
+import Searchbar from './serachcategorys/Searchbar';
 function Header() {
     const { state } = useContext(ContextStore);
-
     const dispatch = useDispatch();
     const favortcountdataredux = useSelector((state) => state);
     const { cart } = state;
@@ -89,13 +89,61 @@ function Header() {
         }).catch((err) => {
             console.log(err);
         })
-        FavortActions(dispatch)
+        FavortActions(dispatch);
+        FilterData();
     }, [userauth]);
 
 
 
     const SellerLogin = () => {
         window.open('https://eseller.cdp360.in/sign-up')
+    }
+
+
+    const [serachcategory, setSerachCategory] = useState("");
+
+    const [serachdata, setSearchData] = useState([]);
+
+    const handleChange = (e) => {
+        setSerachCategory(e?.target?.value)
+        FilterData(e?.target?.value)
+    }
+
+    const datas = [
+        {
+            id: 1,
+            name: "shoes",
+        },
+        {
+            id: 2,
+            name: "mobiles",
+        },
+        {
+            id: 3,
+            name: "bag",
+        },
+        {
+            id: 4,
+            name: "shirts",
+        },
+        {
+            id: 5,
+            name: "tops",
+        },
+        {
+            id:6,
+            name:"34th"
+        }
+    ]
+
+
+    const FilterData = (value) => {
+        const filtersoverall = datas.filter((user) => {
+            return value && user && user?.name && user?.name.toLowerCase().includes(value);
+
+        });
+
+        setSearchData(filtersoverall)
     }
 
     return (
@@ -115,12 +163,17 @@ function Header() {
 
                                     <div className={styles.leftheaderbox}>
                                         <div className={styles.inputsearchsection}>
-                                            <input type="text" placeholder='Search here...' className="inputserach" />
+                                            <input type="text" placeholder='Search for products,brands and more....' className="inputserach" onChange={handleChange} value={serachcategory} />
                                             <div>
                                                 <Image src={serachicon} alt="no image" className='serachicon' />
                                             </div>
                                         </div>
+                                        <div>
+                                        {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} /> : <></>}
+
+                                        </div>
                                     </div>
+
                                     <div className={styles.rightheaderbox}>
                                         <div className={styles.Seller} onClick={SellerLogin}>
                                             Become a Seller

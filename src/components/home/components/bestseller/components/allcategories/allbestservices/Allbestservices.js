@@ -71,7 +71,7 @@ function Allbestservices({ stars }) {
         }).catch((err) => console.log(err))
     }, [])
 
-    console.log(services, "services")
+  
 
     return (
         <div className={styles.appcard}>
