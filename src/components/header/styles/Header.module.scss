@@ -42,47 +42,39 @@
             .middlelogo {
                 width: 65%;
                 // border: 2px solid green;
-                display:flex;
-                align-items:center;
+                display: flex;
+                align-items: center;
                 // justify-content: space-between;
-                .insidemiddlelogo
-                {
-                    width:100%;
-                  
-                    .boxinside
-                    {
-                        width:100%;
+                .insidemiddlelogo {
+                    width: 100%;
 
-                        display:flex;
-                        gap:5px;  
-                        align-items:center;   
-                        @include lgBreakPoint
-                        {
-                            gap:0px;
-                        }  
-                    .leftheaderbox
-                {
-                    width:80%;
-                    // margin:0 auto;
-                    position: relative;
-                } 
-                .rightheaderbox
-                {
-                    width:20%;
-                    // border:2px solid red;
-                    @include lgBreakPoint
-                    {
-                        width:30%;
-                        margin-right:3%;
-                    }
-                    @include xlBreakPoint
-                    {
-                        width:30%;
-                        margin-right:2%;
-                    }
-                }           
-             }
+                    .boxinside {
+                        width: 100%;
 
+                        display: flex;
+                        gap: 5px;
+                        align-items: center;
+                        @include lgBreakPoint {
+                            gap: 0px;
+                        }
+                        .leftheaderbox {
+                            width: 80%;
+                            // margin:0 auto;
+                            position: relative;
+                        }
+                        .rightheaderbox {
+                            width: 20%;
+                            // border:2px solid red;
+                            @include lgBreakPoint {
+                                width: 30%;
+                                margin-right: 3%;
+                            }
+                            @include xlBreakPoint {
+                                width: 30%;
+                                margin-right: 2%;
+                            }
+                        }
+                    }
                 }
                 .inputsearchsection {
                     display: flex;
@@ -110,19 +102,16 @@
                     font-size: 1rem;
                     font-weight: 550;
                     cursor: pointer;
-                    background-color:#E95A5A;
-                    width:100%;
-                    padding:5px;
-                    border-radius:5px;
-                    color:white;
-                    @include lgBreakPoint
-                    {
-                        width:100%;
-                        font-size:0.989rem;
-                        
+                    background-color: #e95a5a;
+                    width: 100%;
+                    padding: 5px;
+                    border-radius: 5px;
+                    color: white;
+                    @include lgBreakPoint {
+                        width: 100%;
+                        font-size: 0.989rem;
                     }
                 }
-               
             }
             .rightlogo {
                 width: 20%;
@@ -132,7 +121,7 @@
                 // padding-left:5%;
                 // padding-right:3%;
                 // align-items:center;
-               
+
                 .insiderightlogos {
                     width: 100%;
                     // border:4px solid blue;
@@ -140,9 +129,8 @@
                     align-items: center;
                     justify-content: flex-end;
                     gap: 27px;
-                    @include lgBreakPoint
-                    {
-                        gap:19px;
+                    @include lgBreakPoint {
+                        gap: 19px;
                     }
 
                     .insideiconssection {
@@ -160,8 +148,8 @@
                     width: 40px;
                     height: 40px;
                     cursor: pointer;
-                    border-radius:50%;
-                    border:2px solid #E95A5A;
+                    border-radius: 50%;
+                    border: 2px solid #e95a5a;
                     // object-fit: contain;
                 }
                 .logintextsize {
@@ -274,7 +262,9 @@
     padding: 15px 0px;
     // z-index: 98989898;
     // border-radius: 0px 0px 4px 4px;
-    z-index: 9898;
+    z-index: 87;
+    position: relative;
+
     .insidemiddlesections {
         width: 60%;
         margin: 0 auto;
