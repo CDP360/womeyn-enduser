@@ -168,7 +168,7 @@ function Header() {
                                                 <Image src={serachicon} alt="no image" className='serachicon' />
                                             </div>
                                         </div>
-                                        <div>
+                                        <div className={styles.barsectiontop}>
                                         {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} /> : <></>}
 
                                         </div>

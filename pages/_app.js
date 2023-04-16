@@ -12,6 +12,7 @@ import { StoreProviderContext } from '../src/Redux/store/Contextstore';
 import LoaderLogo from '../src/components/loaderlogo/LoaderLogo';
 import Errorboundary from '../src/components/errorboundary/Errorboundary';
 import CartContextProvider from '../src/Redux/store/CartContext';
+import jwt_decode from "jwt-decode";
 function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
 
@@ -29,6 +30,8 @@ function App({ Component, pageProps }) {
     })
     Router.events.on('routeChangeError', (url) => {
     });
+
+   
 
 
   }, []);

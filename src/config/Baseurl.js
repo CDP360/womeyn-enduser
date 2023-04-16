@@ -30,7 +30,7 @@ axios.interceptors.request.use(
             return config;
         }
         else if ((config.url.search("/customer/oauth/google") !== -1) || (config.url.search("/oauth-success") !== -1)) {
-            
+
             const token = localStorage.getItem("userToken");
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
             config.headers = {
