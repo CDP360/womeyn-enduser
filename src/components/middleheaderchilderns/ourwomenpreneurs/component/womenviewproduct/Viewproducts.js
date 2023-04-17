@@ -581,7 +581,6 @@ function Viewproducts({ id }) {
     useEffect(() => {
         ProductView(productnames).then((res) => {
 
-            console.log(res?.data, "lp")
 
             setProductseller(res?.data?.sellerInformation[0])
             const productshowimages = [];
