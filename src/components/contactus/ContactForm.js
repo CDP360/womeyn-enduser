@@ -10,7 +10,7 @@ import Spinner from 'react-bootstrap/Spinner';
 
 function ContactForm() {
 
-  const [step1,setStep1]=useState(false)
+  const [step1, setStep1] = useState(false)
 
   const [checks, setChecks] = useState([]);
 
@@ -242,10 +242,10 @@ function ContactForm() {
                 onChange={handleVlaues}
 
 
-                value="Patnership & Collabration"
+                value="Partnership & Collabration"
 
               />
-              <span className="ms-2">Patnership & Collabration</span>
+              <span className="ms-2">Partnership & Collabration</span>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <input
