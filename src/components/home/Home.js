@@ -73,6 +73,22 @@ function Home() {
     const history = useRouter();
     useEffect(() => {
         GetBannerimages();
+
+        const userid = localStorage.getItem("userid");
+        UserProfileInformation(JSON.parse(userid)).then((res) => {
+            if (res == "Please authenticate") {
+                localStorage.removeItem("userid");
+                localStorage.removeItem("userToken");
+                localStorage.removeItem("whish");
+                localStorage.removeItem("user");
+                localStorage.removeItem("auth");
+                localStorage.removeItem("productid");
+            }
+
+        }).catch((err) => {
+            console.log(err);
+        })
+
     }, [state]);
     const GetBannerimages = () => {
         Bannerimage().then((res) => {
