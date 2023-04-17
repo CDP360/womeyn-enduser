@@ -67,13 +67,13 @@ function Footer() {
                                         Contact us
                                     </div>
                                     <div onClick={() => router.push("/womenpreneurs")} className={styles.footercontents}>
-                                        Products
+                                        Products & Services
                                     </div>
                                     <div onClick={() => router.push("/login")} className={styles.footercontents}>
                                         Login
                                     </div>
                                     <div onClick={() => router.push("/signup")} className={styles.footercontents}>
-                                        Sign Up
+                                        Join Us
                                     </div>
                                 </div>
                             </div>
@@ -89,17 +89,17 @@ function Footer() {
                                         Orders
                                     </div>
                                     <div onClick={() => router.push("/order/tracking")} className={styles.footercontents}>
-                                        Tracking List
+                                        Tracking 
                                     </div>
                                     <div onClick={() => router.push("/terms-and-conditions")} className={styles.footercontents}>
-                                        Terms
+                                        Terms & Conditions
                                     </div>
                                     <div className={styles.footercontents}>
                                         Privacy Policy
                                     </div>
-                                    <div onClick={() => router.push("/cart")} className={styles.footercontents}>
+                                    {/* <div onClick={() => router.push("/cart")} className={styles.footercontents}>
                                         My Cart
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                             <div className={styles.footersectionfour}>

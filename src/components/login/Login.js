@@ -223,7 +223,9 @@ function Login() {
                                     <Button className="loginbutton" type="submit">
 
                                         {error ? <>
-                                            {LoginText?.Login}
+                                            {/* {LoginText?.Login} */}
+                                            Login
+
                                         </> : <>
 
                                             {loading ? <>
@@ -236,7 +238,12 @@ function Login() {
                                                 />
                                                 Loading...
                                             </> :
-                                                <> {LoginText?.Login}</>
+                                                <> 
+                                                
+                                                Login
+                                                {/* {LoginText?.Login} */}
+                                                
+                                                </>
                                             }
                                         </>}
 

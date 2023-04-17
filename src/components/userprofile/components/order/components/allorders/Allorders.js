@@ -44,14 +44,14 @@ function Allorders({ Orders, traking, loading }) {
     history.push(`/product/${data}`)
   }
   useEffect(() => {
-  }, [deleteid, Orders])
+  }, [deleteid, Orders]);
 
 
   useEffect(() => {
 
   }, [orderlist])
 
-  console.log(Orders, "Orderslists")
+
   return (
     <div className={styles.allordermainsection}>
 

@@ -36,10 +36,14 @@ function Searchbar({ serachdata, serachicon }) {
 
                         )
                     })}
+                {serachdata?.length === 0 && <div>No Result..!!!</div>}
+
 
                 </div> : <>
                     {serachdata?.length === 0 && <div>No Result..!!!</div>}
                 </>}
+
+
 
             </div>
         </div>

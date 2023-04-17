@@ -140,9 +140,7 @@ function Header() {
     const FilterData = (value) => {
         const filtersoverall = datas.filter((user) => {
             return value && user && user?.name && user?.name.toLowerCase().includes(value);
-
         });
-
         setSearchData(filtersoverall)
     }
 
@@ -176,7 +174,7 @@ function Header() {
 
                                     <div className={styles.rightheaderbox}>
                                         <div className={styles.Seller} onClick={SellerLogin}>
-                                            Become a Seller
+                                            Become a WomenPreneurs
                                         </div>
                                     </div>
                                 </div>

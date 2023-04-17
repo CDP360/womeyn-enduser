@@ -131,7 +131,7 @@ function Womenpreneusdetails({ id }) {
                             </div>
                             <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
                                 {sellers?.productDescription}
-                             
+
                             </div>
                         </div>
                         <div className={styles.rightdetailpage}>
@@ -145,7 +145,7 @@ function Womenpreneusdetails({ id }) {
                     </div>
                     <div className={styles.middleheaderpage}>
                         <div className={styles.insidemiddleheader}>
-                            {categorys?.length==0 && <div>No Categorys</div>}
+                            {categorys?.length == 0 && <div>No Categorys</div>}
                             {categorys?.map((item, index) => {
                                 return (
                                     <div className={`${indexs === index ? styles.actives : styles.detailpage}`} onClick={() => {
@@ -153,7 +153,7 @@ function Womenpreneusdetails({ id }) {
                                         productListData(item?.id);
                                     }
                                     }>
-                                    {item?.name}
+                                        {item?.name}
                                     </div>
                                 )
                             })}
@@ -161,7 +161,7 @@ function Womenpreneusdetails({ id }) {
                     </div>
 
                     <div className={styles.contentsetiondetails}>
-                        <Beverage productlist={productlist} productlistshow={productlistshow} loading={loading} sellers={sellers?.businessSlugName}/>
+                        <Beverage productlist={productlist} productlistshow={productlistshow} loading={loading} sellers={sellers?.businessSlugName} />
                         {productlist?.length > 8 &&
                             <div className='d-flex justify-content-center mt-4'>
                                 <Pagination

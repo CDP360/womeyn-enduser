@@ -34,7 +34,6 @@ function Userprofile({ name, error }) {
                 localStorage.removeItem("auth");
                 localStorage.removeItem("productid");
                 history.push("/login");
-
             }
             setUser(res?.data);
         }).catch((err) => {
@@ -43,7 +42,7 @@ function Userprofile({ name, error }) {
     }, []);
 
     const NavigateRedirect = () => {
-        history?.push("/errorboundary")
+        history.push("/errorboundary")
     }
     if (errors) {
         return (

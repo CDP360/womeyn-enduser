@@ -242,10 +242,10 @@ function ContactForm() {
                 onChange={handleVlaues}
 
 
-                value="Both Service & Product"
+                value="Patnership & Collabration"
 
               />
-              <span className="ms-2">Both Service & Product</span>
+              <span className="ms-2">Patnership & Collabration</span>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <input

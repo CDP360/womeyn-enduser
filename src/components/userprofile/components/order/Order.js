@@ -9,6 +9,7 @@ import Inprogress from "./components/inprogress/Inprogress";
 import Cancelled from "./components/cancelled/Cancelled";
 import Delivered from "./components/delivered/Delivered";
 import CancelledBySeller from "./components/cancelledbyseller/CancelledBySeller";
+import Ordertarcking from './components/ordertracking/Ordertarcking';
 function Order({error}) {
   const history = useRouter();
   const [Orders, setOrders] = useState([]);
@@ -125,8 +126,9 @@ console.log("Orders",Orders)
             </div>} 
             {step===4 && <div>
               <Delivered Orders={Orders} traking={traking} loading={loading}/>
-              
               </div>}
+
+             
           </div>
         </div>
       </div>

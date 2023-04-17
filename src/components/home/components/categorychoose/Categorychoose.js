@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import styles from './styles/Categorychoose.module.scss';
 import tropy from '../../../../assests/homepage-logos/trophy.png';
 import shipping from '../../../../assests/homepage-logos/shipping.png';
@@ -8,13 +8,101 @@ import Image from 'next/image';
 import { Col, Row } from 'react-bootstrap';
 import CarouselCategory from './carouselcategory/CarouselCategory';
 import Skeleton from 'react-loading-skeleton';
+import Slider from "react-slick";
+import SlideNextArrow from './../../../middleheaderchilderns/ourwomenpreneurs/component/womenviewproduct/carouselproducts/slidenextarrow/SlideNextArrow';
+import SlidePreArrow from './carouselcategory/slideprearrow/SlidePreArrow';
+import { MyCouponList } from './../../../../services/mycoupon-service/mycoupon-service';
+import couponoffers from '../../../../assests/homepage-logos/couponoffers.png';
 function Categorychoose() {
+    const [datas, setDatas] = useState([]);
+
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        // autoplay: true,
+        autoplaySpeed: 3500,
+        pauseOnHover: true,
+        nextArrow: <SlideNextArrow />,
+        prevArrow: <SlidePreArrow />,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 2,
+                    infinite: true,
+                    dots: false,
+
+                }
+            },
+            {
+                breakpoint: 800,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 1
+                }
+            }
+        ]
+    };
+
+    const pushCatgorys = () => {
+        history.push(`/profile/coupons`)
+    }
+
+    useEffect(() => {
+
+        MyCouponList().then((res) => {
+            setDatas(res?.data?.results);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, [])
     return (
         <Fragment>
             <div className={styles.categoryhomesection}>
                 <div className={styles.insidecategorysection}>
                     <div className={styles.supportcategorysection}>
-                        <Row>
+
+
+                        <Slider {...settings}>
+                            {datas.map((item, index) => {
+                                return (
+                                    <div className={styles.insideslides} onClick={pushCatgorys} key={index}>
+                                        <Image src={couponoffers} alt="no image" className={styles.slideimagesizes} />
+                                        {/* <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesize} /> */}
+                                        <div className='mt-4' onClick={() => pushCatgorys(item?.slugName)} >
+                                            <h6>{item?.title}</h6>
+                                        </div>
+                                        {/* <div onClick={() => pushCatgorys(item?.slugName)} >
+                                            {item?.description?.length <= 10 ? <>{item?.description}</> : <>{item?.description.slice(0, 20)}...</>}
+                                        </div> */}
+                                    </div>
+                                )
+                            })}
+                        </Slider>
+
+
+                        {/* <Row>
                             <Col lg="3" xs="12" sm="6" className='mt-3 mb-4'>
                                 <div className={styles.boxsection}>
                                     <div className={styles.imagesectioncategory}>
@@ -32,9 +120,9 @@ function Categorychoose() {
 
 
                                 </div>
-                                {/* <div>
+                                <div>
                                     <Skeleton className={styles.sketons} />
-                                </div> */}
+                                </div>
                             </Col>
                             <Col lg="3" xs="12" sm="6" className='mt-3 mb-4'>
                                 <div className={styles.boxsection}>
@@ -52,9 +140,9 @@ function Categorychoose() {
                                     </div>
 
                                 </div>
-                                {/* <div>
+                                <div>
                                     <Skeleton className={styles.sketons} />
-                                </div> */}
+                                </div>
                             </Col>
                             <Col lg="3" xs="12" sm="6" className='mt-3 mb-4'>
                                 <div className={styles.boxsection}>
@@ -73,7 +161,7 @@ function Categorychoose() {
 
                                 </div>
                                 <div>
-                                    {/* <Skeleton className={styles.sketons} /> */}
+                                    <Skeleton className={styles.sketons} />
                                 </div>
                             </Col>
                             <Col lg="3" xs="12" sm="6" className='mt-3 mb-4'>
@@ -93,10 +181,10 @@ function Categorychoose() {
 
                                 </div>
                                 <div>
-                                    {/* <Skeleton className={styles.sketons} /> */}
+                                    <Skeleton className={styles.sketons} />
                                 </div>
                             </Col>
-                        </Row>
+                        </Row> */}
                     </div>
                     <div className={styles.categorybodysection}>
                         <div className='large-text mt-5 text-center'>

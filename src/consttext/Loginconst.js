@@ -1,5 +1,5 @@
 export const LoginText = {
-    Login: "Login",
+    Login: "Customer Login",
     Google: "Google",
     Facebook: "Facebook",
     Donthaveanaccount: "Don’t have an account ?  ",

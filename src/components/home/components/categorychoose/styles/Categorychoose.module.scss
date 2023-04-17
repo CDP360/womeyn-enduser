@@ -57,3 +57,21 @@
   cursor: pointer;
   background: #f1f1f1;
 }
+
+.slideimagesizes {
+  width: 150px;
+  height: 100px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 6px;
+  // border:3px solid red;
+  object-fit:cover;
+  @include smBreakPoint {
+    width: 170px;
+    height: 170px;
+  }
+  @include mdBreakPoint {
+    width: 170px;
+    height: 170px;
+  }
+}

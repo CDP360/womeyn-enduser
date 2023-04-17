@@ -58,20 +58,17 @@
                             gap: 0px;
                         }
                         .leftheaderbox {
-                            width: 80%;
+                            width: 70%;
                             // margin:0 auto;
                             position: relative;
                         }
                         .rightheaderbox {
-                            width: 20%;
-                            // border:2px solid red;
+                            width: 30%;
                             @include lgBreakPoint {
-                                width: 30%;
-                                margin-right: 3%;
+                                width: 40%;
                             }
                             @include xlBreakPoint {
-                                width: 30%;
-                                margin-right: 2%;
+                                width: 33%;
                             }
                         }
                     }
