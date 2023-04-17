@@ -5,10 +5,7 @@ import Explore from './../../src/components/middleheaderchilderns/explore/Explor
 function index({ dark, setdark }) {
     return (
         <LayoutHeader setdark={setdark} dark={dark} title="Explore">
-            <meta
-                name="description"
-                content="Meta description for the About page"
-            />
+            
             <Explore />
         </LayoutHeader>
 

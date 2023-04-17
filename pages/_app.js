@@ -21,7 +21,7 @@ function App({ Component, pageProps }) {
     import("bootstrap/dist/js/bootstrap");
     import("slick-carousel/slick/slick.css");
     import("slick-carousel/slick/slick-theme.css");
-import ("react-step-progress-bar/styles.css")
+    import("react-step-progress-bar/styles.css")
     Router.events.on('routeChangeStart', (url) => {
       setLoading(true);
     })
@@ -36,19 +36,19 @@ import ("react-step-progress-bar/styles.css")
       <div className='womeyn-enduser'>
         <StrictMode>
           <StoreProviderContext>
-<Errorboundary>
-            <Provider store={store}>
-              <ToastContainer
-                rtl={false}
-                draggable={false}
-              />
-              {loading ? <div className="blursectionhome">
-                <LoaderLogo />
-              </div> :
-                <>
-                  <Component {...pageProps} />
-                </>}
-            </Provider>
+            <Errorboundary>
+              <Provider store={store}>
+                <ToastContainer
+                  rtl={false}
+                  draggable={false}
+                />
+                {loading ? <div className="blursectionhome">
+                  <LoaderLogo />
+                </div> :
+                  <>
+                    <Component {...pageProps} />
+                  </>}
+              </Provider>
             </Errorboundary>
           </StoreProviderContext>
         </StrictMode>

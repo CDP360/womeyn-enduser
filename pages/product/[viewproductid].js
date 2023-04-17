@@ -44,10 +44,7 @@ function index() {
 
     return (
         <LayoutHeader title="product-view">
-            <meta
-                name="description"
-                content={productdata?.productDescription}
-            />
+
             <Head>
                 <title>{viewproductid}</title>
                 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />

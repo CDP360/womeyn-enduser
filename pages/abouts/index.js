@@ -7,14 +7,11 @@ import Aboutus from '../../src/components/middleheaderchilderns/abouts/Aboutus'
 
 function index() {
     return (
-        <LayoutHeader  title="Aboutus">
-            <meta
-          name="description"
-          content="Meta description for the About page"
-        />
+        <LayoutHeader title="Aboutus">
+
             <Aboutus />
         </LayoutHeader>
-    
+
     )
 }
 

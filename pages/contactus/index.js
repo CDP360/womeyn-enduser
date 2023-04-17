@@ -5,10 +5,7 @@ import LayoutHeader from './../../src/components/Layoutheader/LayoutHeader';
 function index() {
   return (
     <LayoutHeader title="Contactus">
-      <meta
-        name="description"
-        content="Meta description for the About page"
-      />
+     
       <Contactus />
     </LayoutHeader>
   )
