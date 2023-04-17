@@ -32,10 +32,20 @@ function Profile({ users, error }) {
     setValue("phonenumber", user?.contactNumber);
     setValue("dateofbirth", user?.dateOfBirth);
     localStorage.setItem("user", JSON.stringify(user?.firstName));
-  }, [user])
+    if(error)
+    {
+        localStorage.removeItem("userid");
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("whish");
+        localStorage.removeItem("user");
+        localStorage.removeItem("auth");
+        localStorage.removeItem("productid");
+        history.push("/login");
+    }
+  }, [user,error])
   const [show, setShow] = useState(false);
   const NavigateRedirect = () => {
-    history?.push("/errorboundary")
+    history?.push("/login")
   }
 
   if (error) {

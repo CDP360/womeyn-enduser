@@ -16,6 +16,47 @@
         z-index: 989 !important;
         left: 8%;
         top: 5.5vh;
+
+        @include xsBreakPoint
+        {
+            width:86%;
+            margin:0 auto;
+            display:flex;
+            align-items: center;
+        left: 8%;
+        top: 7vh;
+
+
+            justify-content: center;
+            
+        }
+       
+        @include smBreakPoint
+        {
+            width:65%;
+            margin:0 auto;
+            display:flex;
+            align-items: center;
+        left: 18%;
+        top: 7.5vh;
+
+
+            justify-content: center;
+            
+        }
+        @include mdBreakPoint
+        {
+            width:65%;
+            margin:0 auto;
+            display:flex;
+            align-items: center;
+        left: 18%;
+        top: 8vh;
+
+
+            justify-content: center;
+            
+        }
         .backgroundwhites {
             width: 100%;
             height: 300px;
@@ -30,6 +71,8 @@
             gap: 5px;
             flex-direction: column;
             box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+            -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none
         }
         .serachboxtexts {
             display: flex;
@@ -43,5 +86,21 @@
             background-color: #ffd8d8;
             border-radius: 10px;
         }
+    }
+}
+
+
+.nodataimage
+{
+    width:300px;
+    height:300px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto;
+    object-fit:contain;
+    @include xsBreakPoint
+    {
+        width:200px;
     }
 }

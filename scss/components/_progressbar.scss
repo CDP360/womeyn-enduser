@@ -1,0 +1,61 @@
+@use "../abstract/" as *;
+.ant-steps .ant-steps-item-process .ant-steps-item-icon > .ant-steps-icon .ant-steps-icon-dot {
+    background-color: green !important;
+    font-size: 2rem !important;
+    animation:kalai 5s ease-in-out infinite;
+}
+.ant-steps-icon
+{
+    position:relative !important;
+
+}
+
+// .ant-steps-icon::before
+// {
+//     border:2px solid blue !important;
+//     width:20px !important;
+//     border-radius:50% !important;
+//     height:20px !important;
+//   position:absolute !important;
+// right:-6px;
+// display:flex;
+// align-items:center;
+// justify-content:center;
+// top:50%;
+//     content:"",
+   
+// }
+
+// :where(.css-dev-only-do-not-override-mxhywb).ant-steps
+//     .ant-steps-item-finish
+//     .ant-steps-item-icon
+//     > .ant-steps-icon
+//     .ant-steps-icon-dot {
+//     background: #e95a5a !important;
+//     background-color: #e95a5a !important;
+//     background-position-x: 0%;
+//     background-position-y: 0%;
+//     background-repeat: repeat;
+//     background-attachment: scroll;
+//     background-image: none;
+//     background-size: auto;
+//     background-origin: padding-box;
+//     background-clip: border-box;
+
+
+
+// }
+
+
+@keyframes kalai
+{
+    50%
+    {
+        transform:scale(1.2);
+    }
+    100%
+    {
+        transform:scale(1.6);
+
+    }
+}

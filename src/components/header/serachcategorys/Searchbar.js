@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './styles/Search.module.scss';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import nodata from '../../../assests/login-logos/No data-amico.png';
 
 function Searchbar({ serachdata, serachicon }) {
 
@@ -28,7 +29,9 @@ function Searchbar({ serachdata, serachicon }) {
                                     </div>
                                     <div className={styles.textsbrands} onClick={()=>CategoryNavigatepath(item?.name)}>
 
-                                        {item.name ? item.name : <>No Results...!!!</>}
+                                        {item.name ? item.name : <>
+                                        <Image src={nodata} alt="no image"/>
+                                        </>}
                                     </div>
                                 </div>
                             </div>
@@ -36,7 +39,9 @@ function Searchbar({ serachdata, serachicon }) {
 
                         )
                     })}
-                {serachdata?.length === 0 && <div>No Result..!!!</div>}
+                {serachdata?.length === 0 && <div>
+                    <Image src={nodata} alt="no image" className={styles.nodataimage}/>
+                    </div>}
 
 
                 </div> : <>

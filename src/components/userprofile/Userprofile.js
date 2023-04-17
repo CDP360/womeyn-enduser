@@ -42,7 +42,7 @@ function Userprofile({ name, error }) {
     }, []);
 
     const NavigateRedirect = () => {
-        history.push("/errorboundary")
+        history.push("/login")
     }
     if (errors) {
         return (
@@ -60,10 +60,10 @@ function Userprofile({ name, error }) {
                         <div className={styles.insideprofilesection}>
                             <div className={styles.leftsidebarprofile}>
                                 <div className='d-none d-lg-block'>
-                                    <Sidebar user={user} />
+                                    <Sidebar user={user} error={errors} />
                                 </div>
                                 <div className="d-xs-block d-md-none">
-                                    <Sidebar user={user} />
+                                    <Sidebar user={user} error={errors}/>
 
 
                                 </div>
@@ -71,7 +71,7 @@ function Userprofile({ name, error }) {
 
                                     <div>
 
-                                        <Sidebar user={user} />
+                                        <Sidebar user={user} error={errors}/>
 
 
 

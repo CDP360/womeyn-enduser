@@ -23,7 +23,7 @@ function ServiceMaindetails({ error }) {
     useEffect(() => {
         setLoading(true);
         ServiceBookingUsers().then((res) => {
-            console.log("kalai",res?.data)
+
             setServiceusers(res?.data);
             setTimeout(() => {
                 setLoading(false);
@@ -34,9 +34,21 @@ function ServiceMaindetails({ error }) {
             console.log(err);
             setLoading(false);
         })
-    }, [])
+
+
+        if(error)
+        {
+            localStorage.removeItem("userid");
+            localStorage.removeItem("userToken");
+            localStorage.removeItem("whish");
+            localStorage.removeItem("user");
+            localStorage.removeItem("auth");
+            localStorage.removeItem("productid");
+            history.push("/login");
+        }
+    }, [error])
     const NavigateRedirect = () => {
-        history?.push("/errorboundary")
+        history?.push("/login")
     }
 
 
@@ -53,8 +65,6 @@ function ServiceMaindetails({ error }) {
 
     };
 
-
-    console.log("serviceusers",serviceusers)
     if (error) {
         return (
             <div>

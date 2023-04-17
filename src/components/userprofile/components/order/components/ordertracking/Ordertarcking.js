@@ -4,7 +4,7 @@ import { ProgressBar, Step } from "react-step-progress-bar";
 import { Divider, Steps } from 'antd';
 import { GetOrders } from "../../../../../../services/customer-order-service/customer-order-service";
 function Ordertarcking({ Orders }) {
-  const [step, setIndex] = useState(1);
+  const [step, setIndex] = useState(2);
   const dataes="Fri ,7th Apr 23"
   const data = [
     {
@@ -36,26 +36,27 @@ function Ordertarcking({ Orders }) {
     }).catch((err) => {
       console.log(err);
     })
-    data.map((item, index) => {
-      if (item?.stateId === 1) {
-        setIndex(item?.stateId);
-      }
-      else if (item?.stateId === 2) {
-        setIndex(item?.stateId);
-      }
-      else if (item?.stateId === 3) {
-        setIndex(item?.stateId);
-      }
-      else if (item?.stateId === 4) {
-        setIndex(item?.stateId);
-      }
-      else {
-        setIndex(item?.stateId);
-      }
-    })
+    // data.map((item, index) => {
+    //   if (item?.stateId === 1) {
+    //     setIndex(item?.stateId);
+    //   }
+    //   else if (item?.stateId === 2) {
+    //     setIndex(item?.stateId);
+    //   }
+    //   else if (item?.stateId === 3) {
+    //     setIndex(item?.stateId);
+    //   }
+    //   else if (item?.stateId === 4) {
+    //     setIndex(item?.stateId);
+    //   }
+    //   else {
+    //     setIndex(item?.stateId);
+    //   }
+    // })
 
   }, [])
 
+  const description = 'This is a description.';
   return (
     <div className="mainsection">
       <div className="insidesection">
@@ -79,26 +80,42 @@ function Ordertarcking({ Orders }) {
                 progressDot
                 current={step}
                 direction="vertical"
+                // className={style.kalai}
+                size="large"
                 items={[
                   {
                     title: `Order Confirmed  ${dataes}`,
-                    description: 'Parcel menuju ke Staging SS Kab. Sleman - Sardonoharjo.',
+                    description,
+                    subTitle:"",
+               
                   },
                   {
                     title: 'Shipped',
                     description: 'Parcel menuju ke Staging SS Kab. Sleman - Sardonoharjo.',
+                    subTitle:"",
+                   
+                    // status:"process"
+
                   },
                   {
                     title: 'In Progress',
                     description: 'Parcel menuju ke Hub Karanganyar (proses transit).',
+                    subTitle:"",
+                   
+                    // status:"error"
                   },
                   {
                     title: 'Out For Delivery',
                     description: 'Parcel sudah tiba di SS Kota Surabaya - Sawahan untuk menuju ke hub.',
+                    // icon:"no image",
+                    // status:"process"
                   },
                   {
                     title: 'Delivered',
                     description: 'Parcel menuju ke Staging SS Kab. Sleman - Sardonoharjo.',
+                    subTitle:"",
+                    // icon:"no image",
+                    // status:"process"
                   },
                 ]}
               />

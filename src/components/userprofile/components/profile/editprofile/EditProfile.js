@@ -23,6 +23,16 @@ function EditProfile({ users, error }) {
 
     useEffect(() => {
         setUser(users);
+        if(error)
+        {
+            localStorage.removeItem("userid");
+            localStorage.removeItem("userToken");
+            localStorage.removeItem("whish");
+            localStorage.removeItem("user");
+            localStorage.removeItem("auth");
+            localStorage.removeItem("productid");
+            history.push("/login");
+        }
     }, [users,error]);
 
     useEffect(() => {
@@ -32,7 +42,7 @@ function EditProfile({ users, error }) {
         setValue("phonenumber", user?.contactNumber);
         setValue("dateofbirth", user?.dateOfBirth);
 
-    }, [user,users,errors])
+    }, [user,users,error])
     const [show, setShow] = useState(false);
     const EditProfile = () => {
         setShow(true);
@@ -71,7 +81,7 @@ function EditProfile({ users, error }) {
 
 
     const NavigateRedirect = () => {
-        history?.push("/errorboundary")
+        history?.push("/login")
       }
 
     if(error)

@@ -146,6 +146,16 @@ function Manageaddress({ error }) {
     };
     useEffect(() => {
         getAddressdata();
+        if(error)
+        {
+            localStorage.removeItem("userid");
+            localStorage.removeItem("userToken");
+            localStorage.removeItem("whish");
+            localStorage.removeItem("user");
+            localStorage.removeItem("auth");
+            localStorage.removeItem("productid");
+            router.push("/login");
+        }
     }, [deleteaddressid, error]);
     const getAddressdata = () => {
         setLoading(true);
@@ -214,7 +224,7 @@ function Manageaddress({ error }) {
 
 
     const NavigateRedirect = () => {
-        router?.push("/errorboundary")
+        router?.push("/login")
     }
 
 

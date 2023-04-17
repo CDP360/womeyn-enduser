@@ -77,10 +77,11 @@
 
 
 .appcard {
-    // border: 2px solid red;
+
     width: 100%;
     margin: 0 auto;
     padding: 20px 0px;
+   
     .cardcategorys {
         // border: 2px solid blue;
         
@@ -92,11 +93,20 @@
         box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
         border-radius: 8px;
         cursor: pointer;
-        @include mdBreakPoint {
-            // height:auto;
-            // border:2px solid red;
-            height: 290px;
-        }
+       @include xsBreakPoint
+       {
+        width: 90% !important;
+        display:flex;
+        flex-direction:column;
+   
+       }
+       @include smBreakPoint
+       {
+        width: 90% !important;
+        display:flex;
+        flex-direction:column;
+   
+       }
     }
     .sellerimagesize {
         width: 100%;

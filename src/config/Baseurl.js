@@ -33,15 +33,22 @@ axios.interceptors.request.use(
             // console.log(decoded, "decoded")
 
 
-            // if (Date.now() >= decoded.exp * 1000) {
-            //     localStorage.removeItem("userid");
-            //     localStorage.removeItem("userToken");
-            //     localStorage.removeItem("whish");
-            //     localStorage.removeItem("user");
-            //     localStorage.removeItem("auth");
-            //     localStorage.removeItem("productid");
-            //     window.location.assign("/");
-            // }
+
+        //     const token = 1681778582;
+
+        //     const userId=localStorage.getItem('userid');
+        
+        
+        //     if (Date.now() >= token.exp * 1000 || userId) {
+        //       localStorage.removeItem("userid");
+        //       localStorage.removeItem("userToken");
+        //       localStorage.removeItem("whish");
+        //       localStorage.removeItem("user");
+        //       localStorage.removeItem("auth");
+        //       localStorage.removeItem("productid");
+             
+        //   }
+
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
             config.headers = {
                 ...config.headers,

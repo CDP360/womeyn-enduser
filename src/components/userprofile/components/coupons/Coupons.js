@@ -17,10 +17,20 @@ function Coupons({ error }) {
     }).catch((err) => {
       console.log(err);
     })
+    if(error)
+    {
+        localStorage.removeItem("userid");
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("whish");
+        localStorage.removeItem("user");
+        localStorage.removeItem("auth");
+        localStorage.removeItem("productid");
+        history.push("/login");
+    }
   }, [error]);
 
   const NavigateRedirect = () => {
-    history?.push("/errorboundary")
+    history?.push("/login")
   }
 
   if (error) {

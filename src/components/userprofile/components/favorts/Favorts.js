@@ -40,6 +40,17 @@ function Favorts({ error }) {
       history.push("/login")
     }
 
+    if(error)
+    {
+        localStorage.removeItem("userid");
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("whish");
+        localStorage.removeItem("user");
+        localStorage.removeItem("auth");
+        localStorage.removeItem("productid");
+        history.push("/login");
+    }
+
   }, [starcount, deleteid, error])
   const pushProductPage = (data) => {
     history.push(`/product/${data}`)
@@ -61,7 +72,7 @@ function Favorts({ error }) {
   }
 
   const NavigateRedirect = () => {
-    history?.push("/errorboundary")
+    history?.push("/login")
   }
 
   if (error) {

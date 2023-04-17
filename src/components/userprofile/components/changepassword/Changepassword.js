@@ -117,12 +117,22 @@ function Changepassword({error}) {
                 localStorage.removeItem("productid");
     }
     useEffect(() => {
+        if(error)
+        {
+            localStorage.removeItem("userid");
+            localStorage.removeItem("userToken");
+            localStorage.removeItem("whish");
+            localStorage.removeItem("user");
+            localStorage.removeItem("auth");
+            localStorage.removeItem("productid");
+            router.push("/login");
+        }
     }, [matchcheck1, matchcheck2, matchcheck3, matchcheck4,error]);
 
 
 
     const NavigateRedirect = () => {
-        router?.push("/errorboundary")
+        router?.push("/login")
     }
 
     

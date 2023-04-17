@@ -354,7 +354,7 @@ function Cart() {
                 <div className="mt-3 mb-3">
                   {tokes ?
                     <Button className={styles.checkoutbutton} onClick={() => router.push("/checkout")}>Place Order</Button> :
-                    <Button className={styles.checkoutbutton} onClick={handleLoginUser}>Place Order</Button>
+                    <Button className={styles.checkoutbutton} onClick={handleLoginUser}>Login</Button>
                   }
                 </div>
               </div>

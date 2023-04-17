@@ -12,7 +12,7 @@ import { StoreProviderContext } from '../src/Redux/store/Contextstore';
 import LoaderLogo from '../src/components/loaderlogo/LoaderLogo';
 import Errorboundary from '../src/components/errorboundary/Errorboundary';
 import CartContextProvider from '../src/Redux/store/CartContext';
-import jwt_decode from "jwt-decode";
+
 function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
 
@@ -30,17 +30,13 @@ import ("react-step-progress-bar/styles.css")
     })
     Router.events.on('routeChangeError', (url) => {
     });
-
-   
-
-
   }, []);
   return (
     <div>
       <div className='womeyn-enduser'>
         <StrictMode>
           <StoreProviderContext>
-
+<Errorboundary>
             <Provider store={store}>
               <ToastContainer
                 rtl={false}
@@ -53,7 +49,7 @@ import ("react-step-progress-bar/styles.css")
                   <Component {...pageProps} />
                 </>}
             </Provider>
-
+            </Errorboundary>
           </StoreProviderContext>
         </StrictMode>
       </div >

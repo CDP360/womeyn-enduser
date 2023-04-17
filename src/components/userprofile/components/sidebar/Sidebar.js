@@ -21,7 +21,7 @@ import couponsactive from '../../../../assests/profile-logo/ticketactive.png';
 import logout from '../../../../assests/profile-logo/logout.png';
 
 
-function Sidebar({ user, errors }) {
+function Sidebar({ user, error }) {
     const [imageshowmodel, setImageShowModel] = useState(true);
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
@@ -81,8 +81,17 @@ function Sidebar({ user, errors }) {
         setIndexs(index);
     }
     useEffect(() => {
-
-    }, [indexs])
+        if(error)
+        {
+            localStorage.removeItem("userid");
+            localStorage.removeItem("userToken");
+            localStorage.removeItem("whish");
+            localStorage.removeItem("user");
+            localStorage.removeItem("auth");
+            localStorage.removeItem("productid");
+            history.push("/login");
+        }
+    }, [indexs,error])
 
 
     const LogoutUser = () => {
@@ -106,9 +115,9 @@ function Sidebar({ user, errors }) {
         }, 300)
     }
     const NavigateRedirect = () => {
-        history?.push("/errorboundary")
+        history?.push("/login")
     }
-    if (errors) {
+    if (error) {
         return (
             <div>
                 {NavigateRedirect()}

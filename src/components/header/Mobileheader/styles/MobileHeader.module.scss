@@ -12,18 +12,18 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
         rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
     background-color: white;
-    position: relative;
+    
 z-index:0;
     .mobileleftsection {
         width: 18%;
         display: flex;
         align-items: center;
         justify-content: center;
-    position: relative;
+ 
 
         .logomobilewomwyn {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             object-fit: contain;
             cursor: pointer;
         }

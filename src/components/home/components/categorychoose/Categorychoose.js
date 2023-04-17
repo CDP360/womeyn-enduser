@@ -13,8 +13,11 @@ import SlideNextArrow from './../../../middleheaderchilderns/ourwomenpreneurs/co
 import SlidePreArrow from './carouselcategory/slideprearrow/SlidePreArrow';
 import { MyCouponList } from './../../../../services/mycoupon-service/mycoupon-service';
 import couponoffers from '../../../../assests/homepage-logos/couponoffers.png';
+import { useRouter } from 'next/router';
 function Categorychoose() {
     const [datas, setDatas] = useState([]);
+
+    const history=useRouter();
 
     const settings = {
         dots: false,
