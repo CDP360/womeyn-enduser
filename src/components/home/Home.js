@@ -70,10 +70,8 @@ function Home() {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
     }
     const state = useSelector(state => state);
-    const history = useRouter();
     useEffect(() => {
         GetBannerimages();
-
         const userid = localStorage.getItem("userid");
         UserProfileInformation(JSON.parse(userid)).then((res) => {
             if (res == "Please authenticate") {

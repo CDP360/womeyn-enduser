@@ -1,10 +1,12 @@
-import React, { Fragment,useState,useEffect } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import Slider from "react-slick";
 import SlideNextArrow from './slidenextarrow/SlideNextArrow';
 import SlidePreArrow from './slideprearrow/SlidePreArrow';
 import axios from 'axios';
 import styles from './styles/Carouselproduct.module.scss';
-function Caroselproducts() {
+import Skeleton from 'react-loading-skeleton';
+
+function Caroselproducts({ productimages }) {
     const [datas, setDatas] = useState([]);
     const settings = {
         dots: false,
@@ -55,49 +57,74 @@ function Caroselproducts() {
         ]
     };
 
-  const data=[
-    {
-        id:1,
-        title:"kalai",
-        thumbnail:""
-    },
-    {
-        id:2,
-        title:"kalai",
-        thumbnail:""
-    },
-    {
-        id:3,
-        title:"kalai",
-        thumbnail:""
-    },
-    {
-        id:4,
-        title:"kalai",
-        thumbnail:""
-    }
-  ]
+    const data = [
+        {
+            id: 1,
+            title: "kalai",
+            thumbnail: ""
+        },
+        {
+            id: 2,
+            title: "kalai",
+            thumbnail: ""
+        },
+        {
+            id: 3,
+            title: "kalai",
+            thumbnail: ""
+        },
+        {
+            id: 4,
+            title: "kalai",
+            thumbnail: ""
+        }
+    ]
     return (
         <Fragment>
             <>
-                <div className={styles.carouselsectionrelatedproduct}>
+                {productimages?.length > 4 ? <>
+                    <div className={styles.carouselsectionrelatedproduct}>
+                        <div className={styles.mainslidesection}>
+                            <Slider {...settings}>
+                                {productimages.map((item, index) => {
+                                    return (
+                                        <div className={styles.insideslides}>
+                                            {item?.name ? <><img
+                                                className={styles.slideimagesize}
+                                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
+                                                alt="profile-pic"
+                                            /></> : <>
+                                                <Skeleton />
+                                            </>}
 
-                    <div className={styles.mainslidesection}>
-                        <Slider {...settings}>
-                            {datas.map((item, index) => {
-                                return (
-                                    <div className={styles.insideslides}>
-                                        <img src={item?.thumbnail} alt="no image" className={styles.slideimagesize} />
-                                        <div className='mt-4'>
-                                            <h6>{item?.title}</h6>
                                         </div>
-                                    </div>
-                                )
-                            })}
-                        </Slider>
-                    </div>
+                                    )
+                                })}
+                            </Slider>
+                        </div>
 
-                </div>
+                    </div>
+                </> : <>
+<div className={styles.fourthdatass}>
+    <div className={styles.middledata}>
+{productimages.map((item, index) => {
+                                    return (
+                                        <div className={styles.insideslidess}>
+                                            {item?.name ? <><img
+                                                className={styles.slideimagesizes}
+                                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
+                                                alt="profile-pic"
+                                            /></> : <>
+                                                <Skeleton />
+                                            </>}
+
+                                        </div>
+                                    )
+                                })}
+                                </div>
+</div>
+                </>}
+
             </>
         </Fragment>
     )

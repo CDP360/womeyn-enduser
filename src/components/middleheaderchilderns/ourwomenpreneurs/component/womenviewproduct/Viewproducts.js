@@ -1004,11 +1004,18 @@ function Viewproducts({ id }) {
                                 <div className={styles.rightcardimagesshow}>
                                     <div className={styles.leftwomensearchsection}>
                                         <div className={styles.serachlargeimage}>
-                                            {/* <img
+
+                                            <div className="d-block d-lg-none">
+
+                                                
+
+<img
                                                     className={styles.serachlargeimages}
                                                     src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
                                                     alt="profile-pic"
-                                                /> */}
+                                                />
+                                            </div>
+                                            <div className="d-none d-lg-block">
 
                                             <ReactImageMagnify
                                                 //  className={styles.serachlargeimages}
@@ -1059,6 +1066,10 @@ function Viewproducts({ id }) {
 
 
                                             />
+                                            </div>
+                                            
+
+                                            
                                         </div>
 
                                         {tokencheck ? <div className={styles.heartimagesection}>
@@ -1409,7 +1420,7 @@ function Viewproducts({ id }) {
                 </div> : <></>}
                 <div>
                     <div>
-                        <Caroselproducts />
+                        <Caroselproducts productimages={productimages}/>
                     </div>
                 </div>
             </div>

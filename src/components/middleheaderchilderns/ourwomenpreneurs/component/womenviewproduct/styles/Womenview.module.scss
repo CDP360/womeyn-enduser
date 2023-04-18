@@ -9,6 +9,7 @@
     width: 75%;
     margin: 0 auto;
   // position:relative;
+  overflow:hidden;
     
     @include xsBreakPoint {
       width: 85%;
@@ -269,18 +270,7 @@
               height: 400px;
               object-fit: contain;
               z-index: 9898989;
-              @include xsBreakPoint {
-                height: 300px;
-                width: 100%;
-              }
-              @include smBreakPoint {
-                height: auto;
-                width: 300px;
-              }
-              @include lgBreakPoint {
-                height: 300px;
-                width: 300px;
-              }
+             
               @include xlBreakPoint {
                 height: 300px;
                 width: 300px;
