@@ -33,6 +33,8 @@ function Userprofile({ name, error }) {
                 localStorage.removeItem("user");
                 localStorage.removeItem("auth");
                 localStorage.removeItem("productid");
+                localStorage.removeItem('signupuser');
+
                 history.push("/login");
             }
             setUser(res?.data);
@@ -63,7 +65,7 @@ function Userprofile({ name, error }) {
                                     <Sidebar user={user} error={errors} />
                                 </div>
                                 <div className="d-xs-block d-md-none">
-                                    <Sidebar user={user} error={errors}/>
+                                    <Sidebar user={user} error={errors} />
 
 
                                 </div>
@@ -71,7 +73,7 @@ function Userprofile({ name, error }) {
 
                                     <div>
 
-                                        <Sidebar user={user} error={errors}/>
+                                        <Sidebar user={user} error={errors} />
 
 
 

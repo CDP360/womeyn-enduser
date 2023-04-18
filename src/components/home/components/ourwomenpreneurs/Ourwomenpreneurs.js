@@ -15,6 +15,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Topwomenprenuers } from '../../../../services/banner-image-service/banner-image-service';
 import users from '../../../../assests/homepage-logos/usersimageprofile.png';
+import roundscircles from '../../../../assests/homepage-logos/backgroundrounds.png';
 function Ourwomenpreneurs() {
     const [count, setCount] = useState("");
     const [datas, setDatas] = useState([]);
@@ -113,7 +114,7 @@ function Ourwomenpreneurs() {
     }, [counts]);
 
 
-    const MainSectionWomens=()=>{
+    const MainSectionWomens = () => {
         Topwomenprenuers().then((res) => {
             setDatas(res?.data);
         }).catch((err) => {
@@ -145,17 +146,40 @@ function Ourwomenpreneurs() {
                                     {datas.map((item, index) => {
                                         return (
                                             <div className={styles.insideslides} key={index}>
-                                                <div className={styles.backgroundslidewomen}>
+                                                {/* <div className={styles.backgroundslidewomen}>
                                                 </div>
                                                 {item.profileImageName ? <>
                                                     <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.profileImageName}`} alt="no image" className={styles.slideimagesize} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)} />
                                                 </> :
                                                     <Image src={users} alt="no image" className={styles.slideimagesize} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)} />
+                                                } */}
+
+
+                                                <div className={styles.backgroundslidewomen}>
+                                                </div>
+
+
+                                              <div className={styles.imageboxsections}>
+                                              {item.profileImageName ? <>
+                                                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.profileImageName}`} alt="no image" className={styles.slideimagesize} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)} />
+                                                </> :
+                                                    <Image src={users} alt="no image" className={styles.slideimagesize} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)} />
                                                 }
+                                                </div>
                                             </div>
                                         )
                                     })}
                                 </Slider>
+
+                                <div className={styles.dummydots}>
+
+                                </div>
+                                <div className={styles.dummydots1}>
+
+                                </div>
+                                <div>
+<Image src={roundscircles} alt="no image" className={styles.roundscirclesimage}/>
+                                </div>
                             </div>
                             <div className={styles.rightwomeynsection}>
                                 <div className={styles.rightinsidewomentext}>
@@ -172,7 +196,7 @@ function Ourwomenpreneurs() {
                                     <div className={styles.womenactiveprofiletext}>
                                         <div>
                                             <button className={styles.selleractives} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)}>VISIT HER STORE!
-                               
+
                                             </button>
                                         </div>
                                         <div className={styles.socialspacewomen}>

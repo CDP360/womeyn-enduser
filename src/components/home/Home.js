@@ -81,6 +81,8 @@ function Home() {
                 localStorage.removeItem("user");
                 localStorage.removeItem("auth");
                 localStorage.removeItem("productid");
+                localStorage.removeItem('signupuser');
+
             }
         }).catch((err) => {
             console.log(err);

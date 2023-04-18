@@ -276,7 +276,7 @@ function ContactForm() {
                 name="message"
                 value={message}
                 onChange={handlechange}
-                as="textarea" rows={3}
+                as="textarea" rows={4}
               />
 
               {error && message?.length <= 0 ? <span className="active">message is Required!!!</span> : <></>}

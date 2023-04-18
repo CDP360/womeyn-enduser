@@ -125,6 +125,8 @@ function Changepassword({error}) {
             localStorage.removeItem("user");
             localStorage.removeItem("auth");
             localStorage.removeItem("productid");
+        localStorage.removeItem('signupuser');
+
             router.push("/login");
         }
     }, [matchcheck1, matchcheck2, matchcheck3, matchcheck4,error]);

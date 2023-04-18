@@ -154,6 +154,8 @@ function Manageaddress({ error }) {
             localStorage.removeItem("user");
             localStorage.removeItem("auth");
             localStorage.removeItem("productid");
+        localStorage.removeItem('signupuser');
+
             router.push("/login");
         }
     }, [deleteaddressid, error]);

@@ -105,24 +105,24 @@ function Caroselproducts({ productimages }) {
 
                     </div>
                 </> : <>
-<div className={styles.fourthdatass}>
-    <div className={styles.middledata}>
-{productimages.map((item, index) => {
-                                    return (
-                                        <div className={styles.insideslidess}>
-                                            {item?.name ? <><img
-                                                className={styles.slideimagesizes}
-                                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
-                                                alt="profile-pic"
-                                            /></> : <>
-                                                <Skeleton />
-                                            </>}
+                    <div className={styles.fourthdatass}>
+                        <div className={styles.middledata}>
+                            {productimages.map((item, index) => {
+                                return (
+                                    <div className={styles.insideslidess}>
+                                        {item?.name ? <><img
+                                            className={styles.slideimagesizes}
+                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
+                                            alt="profile-pic"
+                                        /></> : <>
+                                            <Skeleton />
+                                        </>}
 
-                                        </div>
-                                    )
-                                })}
-                                </div>
-</div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
                 </>}
 
             </>

@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FavortActions } from './../../../Redux/actions/favortactions/Favortactions';
 import { LoginActions } from './../../../Redux/actions/loginactions/Loginaction';
 import Searchbar from './../serachcategorys/Searchbar';
+import dummyimagess from '../../../assests/homepage-logos/backgroundrounds.png';
 function MobileHeader() {
     const router = useRouter();
     const dispatch = useDispatch();
@@ -52,6 +53,8 @@ function MobileHeader() {
         localStorage.removeItem("user");
         localStorage.removeItem("auth");
         localStorage.removeItem("productid");
+        localStorage.removeItem('signupuser');
+
         setTimeout(() => {
             router.push("/login");
         }, 400)
@@ -147,6 +150,18 @@ function MobileHeader() {
                     </div>
                     <Offcanvas show={show} onHide={handleClose}>
                         <div className="offcanvebodysection">
+                            <div className={styles.dummyimages}>
+<Image src={dummyimagess} alt="no image" className={styles.imagemobilessections}/>
+
+                            </div>
+                            <div className={styles.dummyimages1}>
+<Image src={dummyimagess} alt="no image" className={styles.imagemobilessections1}/>
+
+                            </div>
+                            <div className={styles.dummyimages2}>
+<Image src={dummyimagess} alt="no image" className={styles.imagemobilessections2}/>
+
+                            </div>
                             <div className='arrowend mt-2 p-2' onClick={handleClose}>
                                 {/* <Image src={closearrow} alt="no image" className='closearrow' /> */}
                                 <ion-icon name="close-outline" className='closearrow' size="large"></ion-icon>

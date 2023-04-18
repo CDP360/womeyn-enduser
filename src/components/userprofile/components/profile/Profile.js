@@ -40,6 +40,8 @@ function Profile({ users, error }) {
         localStorage.removeItem("user");
         localStorage.removeItem("auth");
         localStorage.removeItem("productid");
+        localStorage.removeItem('signupuser');
+
         history.push("/login");
     }
   }, [user,error])

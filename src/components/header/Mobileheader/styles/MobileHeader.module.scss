@@ -14,6 +14,9 @@
     background-color: white;
     
 z-index:0;
+position:relative;
+
+
     .mobileleftsection {
         width: 18%;
         display: flex;
@@ -156,4 +159,30 @@ z-index:0;
     height: 27px;
     cursor: pointer;
     object-fit: contain;
+}
+
+
+.imagemobilessections
+{
+    position:absolute;
+    width:60px;
+    height:60px;
+}
+
+.imagemobilessections1
+{
+    position:absolute;
+    width:60px;
+    height:60px;
+    right:2%;
+    top:25%;
+}
+
+.imagemobilessections2
+{
+    position:absolute;
+    width:60px;
+    height:60px;
+    left:0;
+    bottom:0%;
 }

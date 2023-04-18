@@ -49,6 +49,7 @@ function Header() {
         localStorage.removeItem("user");
         localStorage.removeItem("auth");
         localStorage.removeItem("productid");
+        localStorage.removeItem('signupuser');
         setShowMega(false);
         setTimeout(() => {
             router.push("/");
@@ -131,8 +132,8 @@ function Header() {
             name: "tops",
         },
         {
-            id:6,
-            name:"34th"
+            id: 6,
+            name: "34th"
         }
     ]
 
@@ -167,14 +168,14 @@ function Header() {
                                             </div>
                                         </div>
                                         <div className={styles.barsectiontop}>
-                                        {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} /> : <></>}
+                                            {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} /> : <></>}
 
                                         </div>
                                     </div>
 
                                     <div className={styles.rightheaderbox}>
                                         <div className={styles.Seller} onClick={SellerLogin}>
-                                            Become a WomenPreneurs
+                                            Become a WomenPreneur
                                         </div>
                                     </div>
                                 </div>
@@ -386,7 +387,7 @@ function Header() {
 
                     <div className={router.pathname == "/womenpreneurs" ? "active" : ""}>
                         <Link href="/womenpreneurs" className='nav-link'>
-                            <span className='ms-2 hovertexts'>Our WomenPreneurs</span>
+                            <span className='ms-2 hovertexts'>Our WomenPreneur</span>
                         </Link>
                     </div>
                     <div className={router.pathname == "/events" ? "active" : ""}>

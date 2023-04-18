@@ -38,6 +38,8 @@ function Order({error}) {
         localStorage.removeItem("user");
         localStorage.removeItem("auth");
         localStorage.removeItem("productid");
+        localStorage.removeItem('signupuser');
+
         history.push("/login");
     }
   }, [error]);
