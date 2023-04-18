@@ -17,9 +17,9 @@ function LayoutHeader({ setdark, dark, title, children }) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-      
-       
-     
+
+
+
         {/* <link rel="icon" href="/favicon.ico" /> */}
         <link
           rel="icon"
@@ -102,8 +102,8 @@ function LayoutHeader({ setdark, dark, title, children }) {
             title == "tracking" ||
             title == "detail" ||
             title == "Service" ||
-            title=="Payment"||
-            title=="service-booking"||
+            title == "Payment" ||
+            title == "service-booking" ||
             title == "passwordcreate" ? (
             <></>
           ) : (
@@ -113,8 +113,8 @@ function LayoutHeader({ setdark, dark, title, children }) {
                   title == "Payment" ||
                   title == "Service" ||
                   title == "tracking" ||
-                  title=="Payment"||
-                  title=="service-booking"||
+                  title == "Payment" ||
+                  title == "service-booking" ||
                   title == "tracking" ? (
                   <></>
                 ) : (

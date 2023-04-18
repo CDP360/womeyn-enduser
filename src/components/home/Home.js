@@ -84,7 +84,6 @@ function Home() {
                 localStorage.removeItem("auth");
                 localStorage.removeItem("productid");
             }
-
         }).catch((err) => {
             console.log(err);
         })
