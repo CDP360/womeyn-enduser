@@ -159,12 +159,12 @@ function Ourwomenpreneurs() {
                                                 </div>
 
 
-                                              <div className={styles.imageboxsections}>
-                                              {item.profileImageName ? <>
-                                                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.profileImageName}`} alt="no image" className={styles.slideimagesize} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)} />
-                                                </> :
-                                                    <Image src={users} alt="no image" className={styles.slideimagesize} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)} />
-                                                }
+                                                <div className={styles.imageboxsections}>
+                                                    {item.profileImageName ? <>
+                                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.profileImageName}`} alt="no image" className={styles.slideimagesize} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)} />
+                                                    </> :
+                                                        <Image src={users} alt="no image" className={styles.slideimagesize} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)} />
+                                                    }
                                                 </div>
                                             </div>
                                         )
@@ -178,7 +178,7 @@ function Ourwomenpreneurs() {
 
                                 </div>
                                 <div>
-<Image src={roundscircles} alt="no image" className={styles.roundscirclesimage}/>
+                                    <Image src={roundscircles} alt="no image" className={styles.roundscirclesimage} />
                                 </div>
                             </div>
                             <div className={styles.rightwomeynsection}>

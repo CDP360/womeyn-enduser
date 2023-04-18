@@ -2,8 +2,8 @@
 
 .conatctusmainsection {
     width: 100%;
-    position:relative;
-    z-index:9;
+    position: relative;
+    z-index: 9;
     .insidecontactuspage {
         width: 75%;
         margin: 0 auto;
@@ -49,7 +49,8 @@
                 }
                 @include smBreakPoint {
                     flex-direction: column;
-                }  @include mdBreakPoint {
+                }
+                @include mdBreakPoint {
                     flex-direction: column;
                 }
                 .leftcontactsection {
@@ -73,17 +74,15 @@
                     .contactNumberinfor {
                         font-size: 1.4rem;
                         font-weight: 600;
-                        @include smBreakPoint
-                        {
-                            padding-top:4%;
+                        @include smBreakPoint {
+                            padding-top: 4%;
                         }
                     }
                     .filename {
                         color: rgba(255, 255, 255, 0.6);
                         padding-top: 3%;
-                        @include smBreakPoint
-                        {
-                            padding-top:4%;
+                        @include smBreakPoint {
+                            padding-top: 4%;
                         }
                     }
                     .contactbox {
@@ -139,15 +138,15 @@
                     height: 600px;
                     @include xsBreakPoint {
                         width: 100%;
-                        height:auto;
+                        height: auto;
                     }
                     @include smBreakPoint {
                         width: 100%;
-                        height:470px;
+                        height: 470px;
                     }
                     @include mdBreakPoint {
                         width: 100%;
-                        height:470px;
+                        height: 470px;
                     }
                     .sendbuttoncontact {
                         // border: 2px solid blue;
@@ -157,11 +156,11 @@
                         right: 0;
                         @include xsBreakPoint {
                             bottom: -6%;
-                            width:60%;
+                            width: 60%;
                         }
-                         @include smBreakPoint {
+                        @include smBreakPoint {
                             bottom: 0%;
-                            width:50%;
+                            width: 50%;
                         }
                     }
                     .sendformsbutton {
@@ -174,11 +173,9 @@
                         width: 100%;
                         @include xsBreakPoint {
                             padding-top: 5%;
-                            
                         }
                     }
-                    .sendformsbuttondisabled
-                    {
+                    .sendformsbuttondisabled {
                         border: none;
                         background-color: #e95a5a;
                         color: white;
@@ -186,10 +183,9 @@
                         padding: 10px !important;
                         border-radius: 5px;
                         width: 100%;
-                        opacity:0.3;
+                        opacity: 0.3;
                         @include xsBreakPoint {
                             padding-top: 5%;
-                            
                         }
                     }
                     .sendformsbutton:hover {
@@ -219,10 +215,10 @@
     }
     .contactformtextfield {
         border: 1px solid #f1f0f0 !important;
-        border:1px solid ;
+        border: 1px solid;
         border-radius: 10px !important;
         width: 100% !important;
-        padding:10px !important;
+        padding: 10px !important;
         // color:#E95A5A !important;
     }
     .firstNametexts {
@@ -251,48 +247,40 @@
     }
 }
 
+.leftbgsection {
+    z-index: 0;
+    position: absolute;
 
-.leftbgsection
-{
-    z-index:0;
-    position:absolute;
-    
-top:20%;
+    top: 20%;
     width: 15%;
     height: 50% !important;
-    background: #FDECD9;
- 
+    background: #fdecd9;
+
     filter: blur(500px);
     left: 0;
-
 }
-.rightbgtop
-{
-    z-index:0;
-    position:absolute;
-    
-top:10%;
+.rightbgtop {
+    z-index: 0;
+    position: absolute;
+
+    top: 10%;
     width: 25%;
     height: 40% !important;
-    background: #FCE5E5;
- 
-    filter: blur(500px);
-    right: 0; 
-}
+    background: #fce5e5;
 
-.rightbgbottom
-{
-    z-index:0;
-    position:absolute;
-    
-bottom:0%;
-    width: 25%;
-    height: 30% !important;
-    background: #DFE9FF;
- 
     filter: blur(500px);
     right: 0;
 }
 
+.rightbgbottom {
+    z-index: 0;
+    position: absolute;
 
+    bottom: 0%;
+    width: 25%;
+    height: 30% !important;
+    background: #dfe9ff;
 
+    filter: blur(500px);
+    right: 0;
+}

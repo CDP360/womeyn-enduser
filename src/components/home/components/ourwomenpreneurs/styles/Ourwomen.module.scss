@@ -104,6 +104,9 @@
                 }
                 @include xlBreakPoint {
                     background-size: 200px 200px;
+                    width: 30%;
+                    margin: 0 auto;
+                    height: 390px;
                 }
                 // .dummydots {
                 //     width: 60px;
@@ -150,8 +153,8 @@
                     @include xlBreakPoint {
                         width: 290px;
                         height: 290px;
-                        left: 2.5%;
-                        top: 8%;
+                        left: 2%;
+                        // top: 8%;
                     }
                 }
                 // .dummydots1 {
@@ -224,7 +227,7 @@
                         padding: 11.2% 0px;
                     }
                     @include xlBreakPoint {
-                        padding: 11% 0px;
+                        padding: 10% 0px;
                     }
                 }
             }

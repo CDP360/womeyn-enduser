@@ -1,7 +1,6 @@
 @use "../../../../../../../scss/abstract/" as *;
 @import "https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css";
 
-
 .slidenextcarouselwomeyn:hover {
     background-color: #e95a5a;
     color: white;
@@ -35,7 +34,6 @@
         height: 30px !important;
         right: 4%;
         bottom: -108%;
-
     }
     @include smBreakPoint {
         width: 30px !important;
@@ -55,7 +53,6 @@
     }
     @include xlBreakPoint {
         right: -220%;
-        bottom: -38%;
-
+        bottom: -24%;
     }
 }
