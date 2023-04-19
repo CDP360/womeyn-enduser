@@ -77,14 +77,17 @@
                 padding-top: 5%;
                 padding-bottom: 5%;
                 margin: 0 auto;
-                // background-image: url("../../../../../assests/homepage-logos/backgroundrounds");
+                background-image: url("../../../../../assests/homepage-logos/backgroundrounds.png");
                 background-position: center;
                 background-repeat: no-repeat;
-                background-size: 230px 230px;
-                box-shadow: 0px 12px 124px -40px rgba(0, 0, 0, 0.16);
+                background-size: 300px 300px;
+                // box-shadow: 0px 12px 124px -40px rgba(0, 0, 0, 0.16);
+                // box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+                box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
                 backdrop-filter: blur(66px);
                 position: relative;
                 z-index: 0 !important;
+                border-radius: 20px !important;
                 @include xsBreakPoint {
                     background-size: 230px 230px;
                     width: 100%;
@@ -100,10 +103,10 @@
                     width: 80%;
                 }
                 @include lgBreakPoint {
-                    background-size: 180px 180px;
+                    background-size: 250px 250px;
                 }
                 @include xlBreakPoint {
-                    background-size: 200px 200px;
+                    // background-size: 300px 200px;
                     width: 30%;
                     margin: 0 auto;
                     height: 390px;
@@ -130,6 +133,7 @@
                     justify-content: center;
                     z-index: 0 !important;
                     // position:absolute;
+                    // border:3px solid blue;
                     @include xsBreakPoint {
                         width: 290px;
                         height: 290px;
@@ -179,11 +183,12 @@
                     border-radius: 50%;
                     // border:3px solid blue;
                     padding: 5px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+                    // display: flex;
+                    // align-items: center;
+                    // justify-content: center;
                     // position:relative !important;
                     z-index: 99 !important;
+                    margin-top: 6.8%;
 
                     @include xsBreakPoint {
                         width: 180px !important;
@@ -201,34 +206,39 @@
                         z-index: 9898989;
                     }
                     @include lgBreakPoint {
-                        width: 160px !important;
-                        height: 160px !important;
+                        width: 150px !important;
+                        height: 150px !important;
+                        // padding-top:5%;
+                        margin-top: 21.5%;
                     }
                     @include xlBreakPoint {
                         width: 175px !important;
                         height: 175px !important;
+                        margin-top: 18.5%;
+
                     }
                 }
                 .imageboxsections {
                     width: 100%;
                     height: 100%;
-                    // border:4px solid blue;
-                    padding: 7.5% 0px;
-                    @include xsBreakPoint {
-                        padding: 20.6% 0px;
-                    }
-                    @include smBreakPoint {
-                        padding: 17.6% 0px;
-                    }
-                    @include mdBreakPoint {
-                        padding: 11.6% 0px;
-                    }
-                    @include lgBreakPoint {
-                        padding: 11.2% 0px;
-                    }
-                    @include xlBreakPoint {
-                        padding: 10% 0px;
-                    }
+                    // // border:4px solid blue;
+                    // // padding: 7.5% 0px;
+
+                    // @include xsBreakPoint {
+                    //     padding: 20.6% 0px;
+                    // }
+                    // @include smBreakPoint {
+                    //     padding: 17.6% 0px;
+                    // }
+                    // @include mdBreakPoint {
+                    //     padding: 11.6% 0px;
+                    // }
+                    // @include lgBreakPoint {
+                    //     // padding: 22% 0px;
+                    // }
+                    // @include xlBreakPoint {
+                    //     padding: 18% 0px;
+                    // }
                 }
             }
             .rightwomeynsection {

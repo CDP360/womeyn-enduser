@@ -32,7 +32,7 @@
     cursor: pointer;
     color: black;
     justify-content: center;
-    bottom: -23%;
+    bottom: -38%;
     @include xsBreakPoint {
         width: 30px !important;
         height: 30px !important;
@@ -56,12 +56,12 @@
     }
     @include lgBreakPoint {
         right: -200%;
-        bottom: -38%;
+        bottom: -42%;
 
     }
     @include xlBreakPoint {
         right: -200%;
-        bottom: -24%;
+        bottom: -30%;
     }
 }
 

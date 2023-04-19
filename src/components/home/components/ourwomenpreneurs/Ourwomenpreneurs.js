@@ -177,9 +177,9 @@ function Ourwomenpreneurs() {
                                 <div className={styles.dummydots1}>
 
                                 </div>
-                                <div>
+                                {/* <div>
                                     <Image src={roundscircles} alt="no image" className={styles.roundscirclesimage} />
-                                </div>
+                                </div> */}
                             </div>
                             <div className={styles.rightwomeynsection}>
                                 <div className={styles.rightinsidewomentext}>
