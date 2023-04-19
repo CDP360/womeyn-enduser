@@ -44,7 +44,7 @@ function ProductCategorys() {
         }).catch((err) => {
             console.log(err);
         })
-        
+
     }, [categoryid])
 
     const WomenSellercategories = () => {
@@ -128,81 +128,81 @@ function ProductCategorys() {
     return (
         <Fragment>
             <div className='mainsection'>
-            <div className="insidesection">
-            <div className={styles.womeynmainsectionpre}>
-                <div className={styles.emptyboxcolorright}>
-                </div>
-                <div className={styles.emptyboxcolorleft}>
-                </div>
-                <div className={styles.bodysectionwomeynpre}>
+                <div className="insidesection">
+                    <div className={styles.womeynmainsectionpre}>
+                        <div className={styles.emptyboxcolorright}>
+                        </div>
+                        <div className={styles.emptyboxcolorleft}>
+                        </div>
+                        <div className={styles.bodysectionwomeynpre}>
 
-                    <div className={styles.imagesectionwomeyn}>
-                        <Womencarouselbanner />
-                    </div>
-                    <div className={styles.ourwomenpreneurs}>
-                        <div className='large-text'>
-                            Services
-                        </div>
-                        <div className={styles.loreamtextwomen}>
-                            Please select to know more about the Womeynpreneur's business, her journey her story and her success against all odds
-                        </div>
-                    </div>
-                    <div className={styles.serachsectionwomen}>
-                        <div className={styles.serachwomenpresection}>
-                            <div>
-                                <input type='text' placeholder="Search by Name or Brand" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
+                            <div className={styles.imagesectionwomeyn}>
+                                <Womencarouselbanner />
                             </div>
-                            <div>
-                                <Image src={serachicon} alt="no image" className={styles.serachiconwomen} onClick={GetSearchdata} />
+                            <div className={styles.ourwomenpreneurs}>
+                                <div className='large-text'>
+                                    Products
+                                </div>
+                                <div className={styles.loreamtextwomen}>
+                                    Please select to know more about the Womeynpreneur's business, her journey her story and her success against all odds
+                                </div>
                             </div>
-                        </div>
-                        <div className='col-lg-3 col-xs-6 col-sm-5'>
-
-                            <Select
-                                placeholder={"Filter Category ..."}
-                                value={filterdata}
-                                onChange={(e) => handleFilterCategory(e)}
-                                options={datacategory}
-                            />
-
-                        </div>
-                    </div>
-
-
-
-                    <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
-                        <div>
-                            {servicesusers.length === 0 && <div>No Data Found!!!!</div>}
-                        </div>
-                        {loadingset ? <>
-                            <div>
-                                <LoaderLogo />
-                            </div>
-                        </> : servicesusers?.map((item, index) => {
-                            return (
-                                <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.serviceSlugName)}>
-                                    <div className={styles.sellerimagebox}>
-                                        <div className={styles.insidebox}>
-                                            {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                                <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
-                                            </>}
-                                        </div>
+                            <div className={styles.serachsectionwomen}>
+                                <div className={styles.serachwomenpresection}>
+                                    <div>
+                                        <input type='text' placeholder="Search by Name or Brand" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
                                     </div>
-                                    <div className='womentitle mt-5'>
-                                        {item?.name}
+                                    <div>
+                                        <Image src={serachicon} alt="no image" className={styles.serachiconwomen} onClick={GetSearchdata} />
                                     </div>
-                                    {/* <div className='womendescription'>
+                                </div>
+                                <div className='col-lg-3 col-xs-6 col-sm-5'>
+
+                                    <Select
+                                        placeholder={"Filter Category ..."}
+                                        value={filterdata}
+                                        onChange={(e) => handleFilterCategory(e)}
+                                        options={datacategory}
+                                    />
+
+                                </div>
+                            </div>
+
+
+
+                            <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
+                                <div>
+                                    {servicesusers.length === 0 && <div>No Data Found!!!!</div>}
+                                </div>
+                                {loadingset ? <>
+                                    <div>
+                                        <LoaderLogo />
+                                    </div>
+                                </> : servicesusers?.map((item, index) => {
+                                    return (
+                                        <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.serviceSlugName)}>
+                                            <div className={styles.sellerimagebox}>
+                                                <div className={styles.insidebox}>
+                                                    {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                                        <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
+                                                    </>}
+                                                </div>
+                                            </div>
+                                            <div className='womentitle mt-5'>
+                                                {item?.name}
+                                            </div>
+                                            {/* <div className='womendescription'>
                                         {item?.serviceDescription?.length <= 18 ? <>{item?.serviceDescription}</> : <>{item?.serviceDescription.slice(0, 18)}...</>}
                                     </div> */}
-                                </div>
-                            )
-                        })}
-                    </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
 
 
-                    <div>
+                            <div>
 
-                        {/* {dataseller?.length > 8 &&
+                                {/* {dataseller?.length > 8 &&
                                 <div className='d-flex justify-content-center mt-4'>
                                     <Pagination
                                         className="pagination-data"
@@ -214,12 +214,12 @@ function ProductCategorys() {
                                     />
                                 </div>
                             } */}
+                            </div>
+                        </div>
+
                     </div>
+
                 </div>
-
-            </div>
-
-            </div>
             </div>
         </Fragment>
     )
