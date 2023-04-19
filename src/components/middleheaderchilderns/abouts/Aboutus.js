@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useRef, useEffect } from 'react';
 import styles from './styles/Abouts.module.scss';
 import qua1 from '../../../assests/womeynlogos/qutation1.png';
 import qua2 from '../../../assests/womeynlogos/quation2.png';
@@ -16,32 +16,40 @@ import first from '../../../assests/abouts-logos/FIRST.gif';
 import second from '../../../assests/abouts-logos/SECOND.gif';
 
 import third from '../../../assests/abouts-logos/THIRD.gif';
-
+import { useSelector } from 'react-redux';
+import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
+import wba from '../../../assests/abouts-logos/wb1.png';
+import wba1 from '../../../assests/abouts-logos/wb2.png';
+import womenlogo from '../../../assests/homepage-logos/womeyn_logo.png';
 function Aboutus() {
-
+    const state = useSelector((state) => state?.aboutcountdata?.about);
     const data = [
         {
             id: 1,
-            name: "Customer value is our fuel",
+            name: "Purpose-driven",
             title: "Value is making a difference for our customers each and every day. That's what powers our business and energizes us.",
             image: first,
             colorbg: " #F0F8F3"
         },
         {
             id: 2,
-            name: "Experience is a superpower",
+            name: "Social impact",
             title: "We are a team of experts who know how to work together to tackle real challenges and create success.",
             image: second,
             colorbg: " #ECF2FB"
         },
         {
             id: 3,
-            name: "Actions speak louder than words",
+            name: "Advocacy based",
             title: "When challenges arise, we rise to the occasion. We roll up our sleeves, get to work, and get the job done",
             image: third,
             colorbg: " #FDF0F0"
         }
     ]
+
+
+
+
 
     return (
         <Fragment>
@@ -67,7 +75,7 @@ function Aboutus() {
                                             We aspire to see women entrepreneurs scale up their business locally and nationwide.
                                         </div>
                                         <div className={`text-grey text-center mt-2 , ${styles.ceotext}`}>
-                                            Anu Kulkarni, Founder & CEO
+                                            Anu Kulkarni, Founder & CEO {state}
                                         </div>
                                         <Image src={qua1} alt="no image" className={styles.qua2} />
                                     </div>
@@ -75,24 +83,27 @@ function Aboutus() {
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div className={styles.anecommercetext}>An E-Commerce Platform for Women by Womeyn.</div>
-                        <div>
-                            <div className={styles.womeynpurpose}>
-                                Womeyn is a purpose-driven social impact advocacy-based initiative that aims to empower women by providing economic support by means of an eCommerce platform for Women by Womeyn.
-                            </div>
 
-                            <div className={styles.througth}>
-                                Through the platform, we aim to empower women entrepreneurs by building, nurturing and thereby growing a Women Entrepreneur community. Womeyn further seeks to transcend all barriers that are commonly faced with women entrepreneurs. We aspire to see women entrepreneurs scale up their business locally and nationwide.
-                            </div>
+
+
+                    <div>
+
+
+                        <div className='large-text text-center'>The Story Behind Womeyn</div>
+
+                        <div className={styles.creationabout}>§ The creation of “Womeyn” as a concept has a direct correlation to Anu, Founder and Director of Womeyn. It is her experiences and struggles in life as a woman and as a woman entrepreneur that gave birth to the concept. “Womeyn” is her way of creating a community of women and bring about a positive change by providing a platform that makes it easy for women of our communities to express themselves, be financially self-reliant and not be restricted due to lack of knowledge in technology, availability of equal opportunity or marginalized in any shape or form She has an Inspirational Story and is the heart and soul of the initiative “Womeyn”.
+
                         </div>
-                    </div>
-                    <div className={styles.ourcontentsection}>
-                        <div className={styles.anecommercetexts}>Our core values </div>
-                        <div className={styles.alltexts}>All the latest news, stories, events & workshops from our experts & influencers.</div>
+
+
                     </div>
 
-                    <div>
+
+                    <div id={state} >
+                        <div className='large-text text-center'>
+
+                            What is Womeyn
+                        </div>
                         <div className="abouts-cards row d-flex justify-content-center mt-4 gap-4">
                             {data?.map((item, index) => {
                                 return (
@@ -102,30 +113,47 @@ function Aboutus() {
                                         </div>
                                         <div className='ms-4'>
                                             <div className='mt-2'>
-                                                <div className="mt-2 aboutus-text">
+                                                <div className="mt-2 aboutus-text text-center">
                                                     {item?.name}
                                                 </div>
                                             </div>
-                                            <div className="smalltextgrey mt-2">
+                                            {/* <div className="smalltextgrey mt-2">
                                                 {item?.title}
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 )
                             })}
                         </div>
+
+                        <div className={styles.creationabouts}>
+
+                            Initiative that will empower women of our community by providing an eCommerce platform to achieve their dreams of self-reliance by establishing an online business in a most cost effective manner. Platform aggregates and brings communities together through social media, online platforms and collaborations with like minded organizations. We are driven by the concept of creating communities transcending all barriers that are commonly seen with women entrepreneurs.
+                        </div>
                     </div>
                     <div>
                         <Ourvision />
                     </div>
+
+                    <div className={styles.standsections}>
+                        <div className="mt-5">
+                            <div className='large-text text-center'>The Logo Significance</div>
+                            <div className="text-center mt-4">
+                                <Image src={womenlogo} alt="no image" className={styles.abss} />
+                            </div>
+                            <div className={styles.stands}>
+                                <span><Image src={wba} alt="no image" className={styles.abs} /></span>stands for “You” being the women out there.<br />
+                                Womeyn is a platform for “You” by “ You”. <span>
+                                    <Image src={wba1} alt="no image" className={styles.abs} />
+                                </span>     beneath signifies the core founding principle of Womeyn. “Uplifting and Empowering”. Combined together it means “Uplifting and Empowering You“.
+                            </div>
+                        </div>
+                    </div>
                     <div>
                         <Ourteam />
                     </div>
-
                     <div>
-                        
-                        <Ourclutures/>
-
+                        <Ourclutures />
                     </div>
 
                 </div>

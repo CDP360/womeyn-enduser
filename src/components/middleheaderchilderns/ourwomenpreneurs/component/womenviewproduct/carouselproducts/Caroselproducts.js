@@ -81,7 +81,7 @@ function Caroselproducts({ productimages }) {
     ]
     return (
         <Fragment>
-            <>
+            <div className={styles.mainproducts}>
                 {productimages?.length > 4 ? <>
                     <div className={styles.carouselsectionrelatedproduct}>
                         <div className={styles.mainslidesection}>
@@ -125,7 +125,7 @@ function Caroselproducts({ productimages }) {
                     </div>
                 </>}
 
-            </>
+            </div>
         </Fragment>
     )
 }

@@ -20,6 +20,12 @@ import { ExploreCategorys } from '../../services/explore-service/explore-service
 import { useDispatch, useSelector } from 'react-redux';
 import { FavortActions } from '../../Redux/actions/favortactions/Favortactions';
 import Searchbar from './serachcategorys/Searchbar';
+import Dropdown from 'react-bootstrap/Dropdown';
+import aroepath from '../../assests/homepage-logos/path.png';
+import * as Scroll from 'react-scroll';
+// import { Link, Button, Element, Events, animateScroll } from 'react-scroll'
+import GetAboutusCount from '../../Redux/actions/aboutuscounts/Aboutuscounts';
+import { SearchProductCategorys } from '../../services/category-services/category-service';
 function Header() {
     const { state } = useContext(ContextStore);
     const dispatch = useDispatch();
@@ -30,6 +36,8 @@ function Header() {
     const [userauth, setUserAuth] = useState("");
     const [favortscount, setFavortcount] = useState([]);
     const [explorecategorys, setCatgorys] = useState([]);
+
+    const [searchDatacategory, setSearchDataCategory] = useState([]);
     const logoutHandler = async () => {
         toast.success("Logout Successfull!!",
             {
@@ -70,8 +78,9 @@ function Header() {
     const notificationsPush = () => {
         router.push("/notifications")
     }
-    const NaigateHover = () => {
-        setHovers(true);
+    const NaigateHoverAboutus = () => {
+        router.push(`/abouts`);
+
     }
     const pushCategory = (data) => {
         router.push(`/category/${data}`);
@@ -92,6 +101,14 @@ function Header() {
         })
         FavortActions(dispatch);
         FilterData();
+
+
+        SearchProductCategorys().then((res) => {
+          
+            setSearchDataCategory(res?.data);
+        }).catch((err) => {
+            console.log(err);
+        })
     }, [userauth]);
 
 
@@ -110,39 +127,20 @@ function Header() {
         FilterData(e?.target?.value)
     }
 
-    const datas = [
-        {
-            id: 1,
-            name: "shoes",
-        },
-        {
-            id: 2,
-            name: "mobiles",
-        },
-        {
-            id: 3,
-            name: "bag",
-        },
-        {
-            id: 4,
-            name: "shirts",
-        },
-        {
-            id: 5,
-            name: "tops",
-        },
-        {
-            id: 6,
-            name: "34th"
-        }
-    ]
+    
 
 
     const FilterData = (value) => {
-        const filtersoverall = datas.filter((user) => {
+        const filtersoverall = searchDatacategory.filter((user) => {
             return value && user && user?.name && user?.name.toLowerCase().includes(value);
         });
         setSearchData(filtersoverall)
+    }
+
+
+
+    const AboutusCountName = (data) => {
+        dispatch(GetAboutusCount(data));
     }
 
     return (
@@ -158,8 +156,6 @@ function Header() {
                         <div className={styles.middlelogo}>
                             <div className={styles.insidemiddlelogo}>
                                 <div className={styles.boxinside}>
-
-
                                     <div className={styles.leftheaderbox}>
                                         <div className={styles.inputsearchsection}>
                                             <input type="text" placeholder='Search for products,brands and more....' className="inputserach" onChange={handleChange} value={serachcategory} />
@@ -175,7 +171,7 @@ function Header() {
 
                                     <div className={styles.rightheaderbox}>
                                         <div className={styles.Seller} onClick={SellerLogin}>
-                                            Become a WomenPreneur
+                                            Become a WomeynPreneur
                                         </div>
                                     </div>
                                 </div>
@@ -379,26 +375,63 @@ function Header() {
                             </li>
                         </ul>
                     </div>
+                    <div className={router.pathname == "/products" ? "active" : ""}>
+                        <div className='nav-link' onClick={() => router?.push("/products")}>
+                            <span className='ms-2 hovertexts'>Products</span>
+                        </div>
+                    </div>
                     <div className={router.pathname == "/service" ? "active" : ""}>
-                        <Link href="/service" className='nav-link'>
+                        <div className='nav-link' onClick={() => router?.push("/service")}>
                             <span className='ms-2 hovertexts'>Services</span>
-                        </Link>
+                        </div>
                     </div>
 
                     <div className={router.pathname == "/womenpreneurs" ? "active" : ""}>
-                        <Link href="/womenpreneurs" className='nav-link'>
+                        <div className='nav-link' onClick={() => router?.push("/womenpreneurs")}>
                             <span className='ms-2 hovertexts'>Our WomenPreneur</span>
-                        </Link>
+                        </div>
                     </div>
                     <div className={router.pathname == "/events" ? "active" : ""}>
-                        <Link href="/events" className='nav-link'>
+                        <div className='nav-link' onClick={() => router?.push("/events")}>
                             <span className='ms-2 hovertexts'>Events & Updates</span>
-                        </Link>
+                        </div>
                     </div>
                     <div className={router.pathname == "/abouts" ? "active" : ""}>
-                        <Link href="/abouts" className='nav-link'>
+
+                        <div class="dropdownabout" onClick={NaigateHoverAboutus}>
+                            <button class="dropbtnabout">Dropdown <span><Image src={aroepath} alt="no image" className="patharrow" /></span></button>
+                            <div class="dropdown-contentabut">
+                                {/* <Link to="firstInsideContainer" onClick={() => AboutusCountName("firstInsideContainer")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>
+                                    The Story Behind Womeyn
+                                </Link>
+                                <Link to="secondInsideContainer" onClick={() => AboutusCountName("secondInsideContainer")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>What is Womeyn</Link>
+                                <Link to="c" onClick={() => AboutusCountName("c")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Our Mission & Vision</Link>
+                                <Link to="d" onClick={() => AboutusCountName("d")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>The Logo Significance</Link>
+                                <Link to="e" onClick={() => AboutusCountName("e")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>The Team</Link>
+                                <Link to="g" onClick={() => AboutusCountName("g")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Partners & Collaborations</Link>
+                                <Link to="h" onClick={() => AboutusCountName("h")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Join Womeyn</Link> */}
+
+                                {/* <Link href="/about#the-team">
+      <a>The Team</a>
+    </Link> */}
+                            </div>
+                        </div>
+                        {/* <Link href="/abouts" className='nav-link'>
                             <span className='ms-2 hovertexts'>About Us</span>
-                        </Link>
+                        </Link> */}
+                        {/* <Dropdown>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic" className="kalais">
+                                About Us
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown> */}
+
+
                     </div>
                     <div className={router.pathname == "/getintouch" ? "active" : ""}>
                         <Link href="/getintouch" className='nav-link'>

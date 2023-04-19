@@ -32,3 +32,11 @@ export const CART_DELETE = "CART_DELETE";
 export const CART_ALL_DELETE="CART_ALL_DELETE";
 
 // LOGIN TYPES END
+
+
+// aboutus count sections
+
+
+export const LOADING_WOMEN_SLIDER1 = "LOADING_WOMEN_SLIDER1";
+export const GETDATA_WOMEN_SLIDER1 = "GETDATA_WOMEN_SLIDER1";
+export const ERROR_WOMEN_SLIDER1 = "ERROR_WOMEN_SLIDER1";

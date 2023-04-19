@@ -105,8 +105,6 @@ function ContactForm() {
 
 
 
-
-
   const handleVlaues = (e) => {
     const value = e.target.value;
 
@@ -119,7 +117,7 @@ function ContactForm() {
   }
 
 
-  console.log(checks, "checks")
+
 
   return (
     <div className={styles.contactformsections}>
@@ -132,7 +130,7 @@ function ContactForm() {
               </Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter First Name"
+                placeholder="Enter First Name..."
                 className={styles.contactformtextfield}
                 name="firstName"
                 value={firstName}
@@ -149,7 +147,7 @@ function ContactForm() {
               </Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter Last Name"
+                placeholder="Enter Last Name..."
                 className={styles.contactformtextfield}
                 name="lastName"
                 value={lastName}
@@ -169,7 +167,7 @@ function ContactForm() {
                 <Form.Label className={styles.firstNametexts}>Mail</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter Mail"
+                  placeholder="Enter Mail..."
                   className={styles.contactformtextfield}
                   name="email"
                   value={email}
@@ -185,7 +183,7 @@ function ContactForm() {
                 <Form.Label className={styles.firstNametexts}>Phone</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter Phone"
+                  placeholder="Enter Phone..."
                   className={styles.contactformtextfield}
                   name="phone"
                   value={phone}
@@ -205,20 +203,21 @@ function ContactForm() {
               What do you want help with?
             </Form.Label>
           </div>
+          <div>
           <div className={styles.checkboxs}>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              {/* <input {...register("gender", { required: true })} type="radio" value="Female" /> <span>Female</span> */}
+           
 
               <input
                 type='checkbox'
 
                 className={styles.checkboxtext}
-                // {...register("help", { required: true })}
+                
                 onChange={handleVlaues}
 
-                value="Product"
+                value="Products"
 
-              />    <span className="ms-2">Product</span>
+              />    <span className="ms-2">Products</span>
 
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -226,44 +225,84 @@ function ContactForm() {
                 type='checkbox'
 
                 className={styles.checkboxtext}
-                // {...register("help", { required: true 
+            
                 onChange={handleVlaues}
+                value="Services"
 
-                value="Service"
-
-              />     <span className="ms-2">Service</span>
+              />     <span className="ms-2">Services</span>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <input
                 type='checkbox'
 
                 className={styles.checkboxtext}
-                // {...register("help", { required: true })} 
+               
                 onChange={handleVlaues}
 
 
-                value="Partnership & Collabration"
+                value="Partnership / Collaboration"
 
               />
-              <span className="ms-2">Partnership & Collabration</span>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <input
-                type='checkbox'
+              <span className="ms-2">Partnership / Collaboration</span>
+              </Form.Group>
 
-                className={styles.checkboxtext}
-                // {...register("help", { required: true })}
-                value="Registrations"
-                onChange={handleVlaues}
-
-              />
-              <span className="ms-2">Registrations</span>
-            </Form.Group>
 
           </div>
 
+          <div className={styles.checkboxs}>
+
+
+<Form.Group className="mb-3" controlId="formBasicCheckbox">
+    <input
+      type='checkbox'
+
+      className={styles.checkboxtext}
+  
+      value="Volunteers"
+      onChange={handleVlaues}
+
+    />
+    <span className="ms-2">Volunteers</span>
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formBasicCheckbox">
+    <input
+      type='checkbox'
+
+      className={styles.checkboxtext}
+     
+      value="Trainees"
+      onChange={handleVlaues}
+
+    />
+    <span className="ms-2">Trainees</span>
+  </Form.Group>
+  <Form.Group className="mb-3" controlId="formBasicCheckbox">
+    <input
+      type='checkbox'
+
+      className={styles.checkboxtext}
+    
+      value="Others"
+      onChange={handleVlaues}
+
+    />
+    <span className="ms-2">Others</span>
+  </Form.Group>
+</div>
+          </div>
+          
+
+
+         
+
           {errorhelp && checks?.length <= 0 ? <span className="active">Help is Required!!!</span> : <></>}
         </div>
+
+
+
+
+
 
         <div className="mt-3">
           <div className="col-lg-12">

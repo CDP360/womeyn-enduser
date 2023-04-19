@@ -12,6 +12,7 @@ import Image from 'next/image';
 
 import styles from './styles/Maincategory.module.scss';
 import { ProductCatgorylist } from '../../../services/category-services/category-service';
+import LoaderLogo from './../../loaderlogo/LoaderLogo';
 
 function Maincategorylist({ name, searchnamevalue }) {
     const [product, setProducts] = useState([]);
@@ -25,46 +26,46 @@ function Maincategorylist({ name, searchnamevalue }) {
         {
             id: 1,
             name: "sample",
-           
+
 
         },
         {
             id: 2,
             name: "sample",
-           
+
         },
         {
             id: 3,
             name: "s",
-           
+
         }, {
             id: 4,
             name: "s1",
-           
+
         }, {
             id: 5,
             name: "s2",
-           
+
         }, {
             id: 6,
             name: "s3",
-          
+
         }, {
             id: 7,
             name: "s4",
-          
+
         }, {
             id: 8,
             name: "s5",
-          
+
         }, {
             id: 9,
             name: "s6",
-          
+
         }, {
             id: 10,
             name: "s7",
-           
+
         },
 
     ]
@@ -110,7 +111,8 @@ function Maincategorylist({ name, searchnamevalue }) {
         <div>
             <div>
                 {loading ? <>
-                    Loading...
+
+                    <LoaderLogo />
 
                 </> : <div className='row justify-content-center gap-5'>
                     {product?.length === 0 ? <>
@@ -134,7 +136,7 @@ function Maincategorylist({ name, searchnamevalue }) {
                 </div>}
             </div>
 
-            {product?.length > 9 && <div className='d-flex justify-content-center mt-4'>
+            {product?.length > 0 && <div className='d-flex justify-content-center mt-4'>
                 <Pagination
                     className="pagination-data"
                     total={limit?.totalPages * 10}

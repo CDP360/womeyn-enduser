@@ -18,6 +18,7 @@ import { FavortActions } from './../../../Redux/actions/favortactions/Favortacti
 import { LoginActions } from './../../../Redux/actions/loginactions/Loginaction';
 import Searchbar from './../serachcategorys/Searchbar';
 import dummyimagess from '../../../assests/homepage-logos/backgroundrounds.png';
+import { SearchProductCategorys } from '../../../services/category-services/category-service';
 function MobileHeader() {
     const router = useRouter();
     const dispatch = useDispatch();
@@ -27,6 +28,8 @@ function MobileHeader() {
     const { cart } = state;
     const [images, setImages] = useState("");
     const [tokens, setUserToken] = useState("");
+    const [searchDatacategory, setSearchDataCategory] = useState([]);
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -72,7 +75,11 @@ function MobileHeader() {
         FavortActions(dispatch);
         LoginActions(dispatch);
         FilterData();
-
+        SearchProductCategorys().then((res) => {
+            setSearchDataCategory(res?.data);
+        }).catch((err) => {
+            console.log(err);
+        })
     }, [])
     const [serachcategory, setSerachCategory] = useState("");
     const [serachdata, setSearchData] = useState([]);
@@ -80,34 +87,15 @@ function MobileHeader() {
         setSerachCategory(e?.target?.value)
         FilterData(e?.target?.value)
     }
-    const datas = [
-        {
-            id: 1,
-            name: "shoes",
-        },
-        {
-            id: 2,
-            name: "mobiles",
-        },
-        {
-            id: 3,
-            name: "bag",
-        },
-        {
-            id: 4,
-            name: "shirts",
-        },
-        {
-            id: 5,
-            name: "tops",
-        }
-    ]
+
     const FilterData = (value) => {
-        const filtersoverall = datas.filter((user) => {
+        const filtersoverall = searchDatacategory.filter((user) => {
             return value && user && user?.name && user?.name.toLowerCase().includes(value);
         });
         setSearchData(filtersoverall)
     }
+
+    console.log(searchDatacategory, "serachdata")
     return (
         <Fragment>
             <div className={styles.mainmobilesection}>
@@ -121,12 +109,8 @@ function MobileHeader() {
                         <div>
                             <Image src={serachicon} alt="no image" className='serachicon' />
                         </div>
-
                     </div>
-
                     <div>
-
-
                         {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} /> : <></>}
 
                     </div>
@@ -134,7 +118,6 @@ function MobileHeader() {
 
                 <div className={styles.mobilerightsection}>
                     <div onClick={handleShow} >
-
                         {favortcountdataredux?.loginUser?.logindata?.profileImageName ? <>
                             <img
                                 className={styles.barsection}
@@ -151,15 +134,15 @@ function MobileHeader() {
                     <Offcanvas show={show} onHide={handleClose}>
                         <div className="offcanvebodysection">
                             <div className={styles.dummyimages}>
-<Image src={dummyimagess} alt="no image" className={styles.imagemobilessections}/>
+                                <Image src={dummyimagess} alt="no image" className={styles.imagemobilessections} />
 
                             </div>
                             <div className={styles.dummyimages1}>
-<Image src={dummyimagess} alt="no image" className={styles.imagemobilessections1}/>
+                                <Image src={dummyimagess} alt="no image" className={styles.imagemobilessections1} />
 
                             </div>
                             <div className={styles.dummyimages2}>
-<Image src={dummyimagess} alt="no image" className={styles.imagemobilessections2}/>
+                                <Image src={dummyimagess} alt="no image" className={styles.imagemobilessections2} />
 
                             </div>
                             <div className='arrowend mt-2 p-2' onClick={handleClose}>
@@ -197,6 +180,11 @@ function MobileHeader() {
                                     <Link href="/explore" className='nav-link'>
                                         {/* <Image src={iconmenu} alt="no image" className="menuicons" /> */}
                                         <span className='ms-1'>Explore</span>
+                                    </Link>
+                                </div>
+                                <div className={router.pathname == "/products" ? "active" : ""} onClick={handleClose}>
+                                    <Link href="/products" className='nav-link'>
+                                        Products
                                     </Link>
                                 </div>
                                 <div className={router.pathname == "/service" ? "active" : ""} onClick={handleClose}>

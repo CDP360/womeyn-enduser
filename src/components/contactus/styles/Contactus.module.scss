@@ -60,7 +60,7 @@
                     border-radius: 20px;
                     color: white;
                     padding: 2% 3%;
-                    height: 600px;
+                    height: auto;
                     position: relative;
                     @include xsBreakPoint {
                         width: 100%;
@@ -135,7 +135,10 @@
                     height: 100%;
                     border-radius: 8px;
                     position: relative;
-                    height: 600px;
+                    // height: 600px;
+                    height: auto;
+                    // border:2px solid red;
+                    padding-bottom:7%;
                     @include xsBreakPoint {
                         width: 100%;
                         height: auto;
@@ -214,7 +217,7 @@
         }
     }
     .contactformtextfield {
-        border: 1px solid #f1f0f0 !important;
+        border: 2px solid #f1f0f0 !important;
         border: 1px solid;
         border-radius: 10px !important;
         width: 100% !important;
@@ -239,7 +242,9 @@
     }
     .checkboxs {
         display: flex;
-        gap: 30px;
+        gap: 50px;
+        padding-bottom: 0.5%;
+        padding-top: 3%;
         @include xsBreakPoint {
             gap: 5px;
             flex-direction: column;

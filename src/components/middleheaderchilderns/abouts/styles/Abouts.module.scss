@@ -84,13 +84,12 @@
                 @include xlBreakPoint {
                     height: 500px;
                 }
-.bannerimageabout
-{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    border-radius:30px;
-}
+                .bannerimageabout {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    border-radius: 30px;
+                }
                 .bannercontentsectionimage {
                     width: 70%;
                     margin: 0 auto;
@@ -327,4 +326,62 @@
             object-fit: contain;
         }
     }
+}
+
+.aboutuskalai {
+    height: 100vh;
+}
+
+.creationabout {
+    width: 73%;
+    font-size: 1.2rem;
+    margin: 0 auto;
+    text-align: center;
+    /* Black/Black Grey 2 */
+    color: #898989;
+    padding-top: 3%;
+    line-height: 1.6;
+    padding-bottom: 5%;
+}
+
+.creationabouts {
+    width: 76%;
+    font-size: 1.2rem;
+    margin: 0 auto;
+    text-align: center;
+    /* Black/Black Grey 2 */
+    color: #898989;
+    padding-top: 3%;
+    line-height: 1.6;
+    padding-bottom: 5%;
+}
+
+
+.standsections
+{
+    padding-top:5%;
+    padding-bottom:2%;
+    .abs
+{
+    width:23px;
+    object-fit:contain;
+    height:23px;
+}
+
+.stands
+{
+    width:60%;
+    margin:0 auto;
+    color: #898989;
+    text-align:center;
+    line-height:1.6;
+    padding-top:2%;
+}
+}
+
+.abss
+{
+    width:150px;
+    // height:140px;
+    object-fit:contain;
 }

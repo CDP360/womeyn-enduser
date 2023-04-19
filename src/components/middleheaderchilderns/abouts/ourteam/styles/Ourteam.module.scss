@@ -55,22 +55,71 @@
 
         .nameshadowsection {
             // border: 3px solid red;
-            height:90px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            flex-direction:column;
-            padding:15px 0px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 15px 0px;
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-            .namecustomers
-            {
-                font-size:1.1rem;
-                font-weight:400;
+            .namecustomers {
+                font-size: 1.1rem;
+                font-weight: 400;
             }
-            .desc{
-                color:#898989;
-                
+            .desc {
+                color: #898989;
             }
         }
     }
+}
+
+.ourimageteams {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    .teamanu {
+        width: 300px;
+        height: 300px;
+        object-fit: contain;
+    }
+    .anutexts {
+        color: #524545;
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        padding-top: 7%;
+    }
+
+    .insidetexts {
+        color: #524545;
+
+        opacity: 0.9;
+        // font-size:1rem;
+        letter-spacing: 0.05em;
+        // font-weight:400;
+        padding-top: 2%;
+    }
+}
+
+.kulkarinexts {
+    color: #898989;
+    width: 73%;
+    letter-spacing: 0.02em;
+    line-height: 1.9;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: 0 auto;
+}
+
+.kulkarinextss {
+    color: #898989;
+    width: 66%;
+    letter-spacing: 0.02em;
+    line-height: 1.9;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: 0 auto;
 }

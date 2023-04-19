@@ -19,3 +19,16 @@ export function ProductCatgorylist(data, current) {
 
     })
 }
+
+
+
+
+export function SearchProductCategorys() {
+    return instanceBaseurl.get(`/common/all-categories`).then((res) => {
+        return res;
+    }).catch((err) => {
+        return err;
+
+    })
+}
+

@@ -44,7 +44,7 @@ function Cart() {
       cartpricevaues - (cartpricevaues) * 10 / 100
     )
   );
-  const deliveryChargeAmount = state?.cart?.cartData?.reduce((acc, current) => acc + current.deliverycharge == null ? 0 : current.deliverycharge, 0)
+  const deliveryChargeAmount = state?.cart?.cartData?.reduce((acc, current) => acc + current.deliverycharge, 0)
   const DeliveryChargeAmount = Math.max(
     0,
     Math.round(

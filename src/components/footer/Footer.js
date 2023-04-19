@@ -85,11 +85,11 @@ function Footer() {
                                     <div onClick={() => router.push("/profile/youraccount")} className={styles.footercontents}>
                                         My Account
                                     </div>
-                                    <div onClick={() => router.push("/profile/youraccount")} className={styles.footercontents}>
-                                        Orders
-                                    </div>
+                                    {/* <div onClick={() => router.push("/profile/youraccount")} className={styles.footercontents}>
+                                        Order Tracking 
+                                    </div> */}
                                     <div onClick={() => router.push("/order/tracking")} className={styles.footercontents}>
-                                        Tracking 
+                                        Order Tracking
                                     </div>
                                     <div onClick={() => router.push("/terms-and-conditions")} className={styles.footercontents}>
                                         Terms & Conditions
@@ -110,7 +110,7 @@ function Footer() {
                                     Team Womeyn is open to ideas, suggestions and comments that will help us improve and grow as a community platform. We would love to hear from you
                                 </div>
                                 <div>
-                                    Email : Contactus@womeyn.com
+                                    Email : contactus@womeyn.com
                                 </div>
                                 <div className={styles.headphonesectionfooter}>
                                     <div>

@@ -38,5 +38,17 @@ export function ProductLikeandUnlikeCheck(id) {
 }
 
 
+export function AllProductCategorys() {
+    return instanceBaseurl.get(`/common/search/products?search=shoe&page=0&limit=10`).then((res) => {
+        return res;
+    }).catch((err) => {
+        return err;
+    })
+}
+
+
+
+
+
 
 

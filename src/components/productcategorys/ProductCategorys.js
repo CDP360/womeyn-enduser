@@ -1,24 +1,27 @@
-import LoaderLogo from '../../../loaderlogo/LoaderLogo';
-import { Serviceusers } from '../../../../services/servicewomeyn/service-womeyn';
+
+import { Serviceusers } from '../../services/servicewomeyn/service-womeyn';
 import React, { Fragment, useEffect, useState } from 'react'
 import styles from './styles/Servicecards.module.scss';
-import Womeynbanner from '../../../../assests/homepage-logos/woymenbanner.png';
+import Womeynbanner from '../../assests/homepage-logos/woymenbanner.png';
 import Image from 'next/image';
 import Form from 'react-bootstrap/Form';
-import serachicon from '../../../../assests/homepage-logos/serachicon.png';
+import serachicon from '../../assests/homepage-logos/serachicon.png';
 import { useRouter } from 'next/router';
-import girl from '../../../../assests/womeynlogos/girl4.png';
+import girl from '../../assests/womeynlogos/girl4.png';
 import Womencarouselbanner from './womenprebannerimages/Womencarouselbanner';
-import { WomenpreneursCommoncategories, WomenpreneursSellers } from '../../../../services/womenpreneurs-services/womenpreneurs-services';
-import users from '../../../../assests/homepage-logos/usersimageprofile.png';
+import { WomenpreneursCommoncategories, WomenpreneursSellers } from '../../services/womenpreneurs-services/womenpreneurs-services';
+import users from '../../assests/homepage-logos/usersimageprofile.png';
 import Select from 'react-select';
-import { WomenpreneursFilter, WomenpreneursSearch } from '../../../../services/womenpreneurs-services/womenpreneurs-services';
+import { WomenpreneursFilter, WomenpreneursSearch } from '../../services/womenpreneurs-services/womenpreneurs-services';
 
 import Pagination from 'rc-pagination';
-import rightarrow from '../../../../assests/category-logos/leftcategoryarrow.png';
-import leftarrow from '../../../../assests/category-logos/rightcategoryarrow.png';
-import noimage from '../../../../assests/womeynlogos/noimage.png';
-function Servicecards() {
+import rightarrow from '../../assests/category-logos/leftcategoryarrow.png';
+import leftarrow from '../../assests/category-logos/rightcategoryarrow.png';
+import noimage from '../../assests/womeynlogos/noimage.png';
+import LoaderLogo from '../loaderlogo/LoaderLogo';
+import { AllProductCategorys } from '../../services/productview-service/productview-services';
+
+function ProductCategorys() {
     const router = useRouter();
     const [current, setCurrent] = useState(1);
     const [limit, setLimit] = useState(current * 10);
@@ -36,7 +39,7 @@ function Servicecards() {
     useEffect(() => {
 
 
-        Serviceusers().then((res) => {
+        AllProductCategorys().then((res) => {
             setServiceusers(res?.data?.results);
         }).catch((err) => {
             console.log(err);
@@ -124,6 +127,8 @@ function Servicecards() {
 
     return (
         <Fragment>
+            <div className='mainsection'>
+            <div className="insidesection">
             <div className={styles.womeynmainsectionpre}>
                 <div className={styles.emptyboxcolorright}>
                 </div>
@@ -184,7 +189,7 @@ function Servicecards() {
                                         </div>
                                     </div>
                                     <div className='womentitle mt-5'>
-                                        {item?.serviceName}
+                                        {item?.name}
                                     </div>
                                     {/* <div className='womendescription'>
                                         {item?.serviceDescription?.length <= 18 ? <>{item?.serviceDescription}</> : <>{item?.serviceDescription.slice(0, 18)}...</>}
@@ -214,12 +219,13 @@ function Servicecards() {
 
             </div>
 
-
+            </div>
+            </div>
         </Fragment>
     )
 }
 
-export default Servicecards;
+export default ProductCategorys;
 
 
 

@@ -33,7 +33,6 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-
 }
 .dropdowncontent a:hover {
   background-color: #f1f1f1;
@@ -100,7 +99,6 @@ nav {
   font-family: monospace;
 }
 
-
 // first section
 
 .dropdownmegamain {
@@ -124,17 +122,16 @@ li {
 li a {
   color: black !important;
   text-decoration: none !important;
-  transition: transform .4s;
+  transition: transform 0.4s;
 }
 
 li a:hover {
-    // background: #E75B5E;
+  // background: #E75B5E;
   color: #e75b5e !important;
   cursor: pointer;
   transform: scale(1) !important;
-  -ms-transform: scale(1) !important;  /* IE 9 */
-  -webkit-transform: scale(1)!important;
-
+  -ms-transform: scale(1) !important; /* IE 9 */
+  -webkit-transform: scale(1) !important;
 }
 
 .dropdownmegamain li ul {
@@ -147,20 +144,17 @@ li a:hover {
   position: absolute;
   transition: all 0.5s ease;
   // margin-top: 0.278rem;
-  left: -195%;
+  left: -65%;
   display: none;
   border-radius: 10px;
-  border:1px solid  #D8E5F6;
+  border: 1px solid #d8e5f6;
 
-  @include lgBreakPoint
-  {
-    width:93vw !important;
+  @include lgBreakPoint {
+    width: 93vw !important;
   }
 
-  
-  @include xlBreakPoint
-  {
-    width:85vw !important;
+  @include xlBreakPoint {
+    width: 85vw !important;
   }
 }
 
@@ -188,11 +182,7 @@ li a:hover {
   color: black !important;
 }
 
-
-
 // section section
-
-
 
 .dropdownmegamainss {
   // background: darkorange;
@@ -236,7 +226,6 @@ li a {
   left: -60%;
   display: none;
   border-radius: 10px;
-
 }
 
 .dropdownmegamainss li:hover > ul,
@@ -268,131 +257,166 @@ li a {
   font-weight: 650 !important;
 }
 
-
-.maindropdown
-{
+.maindropdown {
   // border:2px solid red;
-  height:100%;
-  border-radius:10px;
-  display:flex;
-  padding-top:0%;
+  height: 100%;
+  border-radius: 10px;
+  display: flex;
+  padding-top: 0%;
   // gap:20px;
-  .firstsection
-  {
+  .firstsection {
     // border:2px solid red;
-    width:20%;
-    display:flex;
-    flex-direction:column;
-    gap:10px !important;
-padding-top:2%;
-    .flexdirections
-    {
-      display:flex;
-      flex-direction:column;
-    .unactivetext
-    {
-      margin:2% 0px !important;
-    }
-    
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px !important;
+    padding-top: 2%;
+    .flexdirections {
+      display: flex;
+      flex-direction: column;
+      .unactivetext {
+        margin: 2% 0px !important;
+      }
     }
   }
-  .secondsection
-  {
+  .secondsection {
     // border:2px solid red;
-    width:20%;
-    background-color:#F7F6F6;
-    display:flex;
-    flex-direction:column;
-    gap:10px !important;
-padding-top:2%;
+    width: 20%;
+    background-color: #f7f6f6;
+    display: flex;
+    flex-direction: column;
+    gap: 10px !important;
+    padding-top: 2%;
 
-    .flexdirections
-    {
-      display:flex;
-      flex-direction:column;
-    .unactivetext
-    {
-      margin:2% 0px !important;
-    }
-    
+    .flexdirections {
+      display: flex;
+      flex-direction: column;
+      .unactivetext {
+        margin: 2% 0px !important;
+      }
     }
   }
-  .thirdsection
-  {
+  .thirdsection {
     // border:2px solid red;
-    width:20%;
-    display:flex;
-    flex-direction:column;
-    gap:10px !important;
-padding-top:2%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px !important;
+    padding-top: 2%;
 
-    .flexdirections
-    {
-      display:flex;
-      flex-direction:column;
-    .unactivetext
-    {
-      margin:2% 0px !important;
-    }
-    
+    .flexdirections {
+      display: flex;
+      flex-direction: column;
+      .unactivetext {
+        margin: 2% 0px !important;
+      }
     }
   }
-  .fourthsection
-  {
+  .fourthsection {
     // border:2px solid red;
-    width:20%;
-    background-color:#F7F6F6;
-    display:flex;
-    flex-direction:column;
-    gap:10px !important;
-padding-top:2%;
+    width: 20%;
+    background-color: #f7f6f6;
+    display: flex;
+    flex-direction: column;
+    gap: 10px !important;
+    padding-top: 2%;
 
-    .flexdirections
-    {
-      display:flex;
-      flex-direction:column;
-    .unactivetext
-    {
-      margin:2% 0px !important;
+    .flexdirections {
+      display: flex;
+      flex-direction: column;
+      .unactivetext {
+        margin: 2% 0px !important;
+      }
     }
-    
-    }
-
   }
-  .fifthsection
-  {
+  .fifthsection {
     // border:2px solid red;
-    width:20%;
-    display:flex;
-    flex-direction:column;
-    gap:10px !important;
-padding-top:2%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px !important;
+    padding-top: 2%;
 
-    .flexdirections
-    {
-      display:flex;
-      flex-direction:column;
-    .unactivetext
-    {
-      margin:2% 0px !important;
-    }
-    
+    .flexdirections {
+      display: flex;
+      flex-direction: column;
+      .unactivetext {
+        margin: 2% 0px !important;
+      }
     }
   }
 }
-.commontitle
-{
-  color: #E95A5A !important;
-  font-weight:600;
-  font-size:0.889rem;
-padding-left:5%;
-margin-top:5% !important;
-
+.commontitle {
+  color: #e95a5a !important;
+  font-weight: 600;
+  font-size: 0.889rem;
+  padding-left: 5%;
+  margin-top: 5% !important;
 }
-.unactivetext
-{
-  display:flex;
-gap:4px !important;
-padding-left:5%;
-font-size:13.5px !important;
+.unactivetext {
+  display: flex;
+  gap: 4px !important;
+  padding-left: 5%;
+  font-size: 13.5px !important;
+}
+
+// aboutus page
+
+.dropbtnabout {
+  background: none !important;
+
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdownabout {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-contentabut {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  min-width: 160px;
+  // box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 10px;
+  width: 15vw !important;
+  // border:1px solid red;
+}
+
+.dropdown-contentabut a {
+  color: black !important;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-contentabut a:hover {
+  background: #fff1f1;
+  color: #e95a5a !important;
+  border-radius: 10px;
+}
+
+.dropdownabout:hover .dropdown-contentabut {
+  display: block;
+  color: #e95a5a;
+}
+
+.dropdownabout:hover .dropbtnabout {
+  color: #e95a5a;
+}
+
+.patharrow {
+  width: 10px;
+  height: 10px;
+  object-fit: contain;
+}
+
+.hovertexts {
+  cursor: pointer;
 }

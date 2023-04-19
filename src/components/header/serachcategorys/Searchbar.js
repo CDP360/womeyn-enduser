@@ -25,9 +25,17 @@ function Searchbar({ serachdata, serachicon }) {
                                 <div className={styles.serachboxtexts}>
 
                                     <div>
+                                        {item?.imageName?<>
+                                            <img
+                                                    className={styles.serachshoeimages}
+                                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`}
+                                                    alt="profile-pic"
+                                                />
+                                        </>:<>
                                         <Image src={serachicon} alt="no image" className='serachicon' />
+                                        </>}
                                     </div>
-                                    <div className={styles.textsbrands} onClick={()=>CategoryNavigatepath(item?.name)}>
+                                    <div className={styles.textsbrands} onClick={()=>CategoryNavigatepath(item?.slugName)}>
 
                                         {item.name ? item.name : <>
                                         <Image src={nodata} alt="no image"/>

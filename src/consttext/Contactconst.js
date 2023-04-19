@@ -3,7 +3,7 @@ export const ContactText = {
     ContactInformation: "Contact Information",
     Fillup: "Fill up the form and our Team will get back to you within 24 hours.",
     contactno: "+61434557191",
-    contactemail: "Contactus@womeyn.com",
+    contactemail: "contactus@womeyn.com",
     url: "www.womeyn.com",
     Location: "Sydney / Australia",
     FirstName: "First Name",

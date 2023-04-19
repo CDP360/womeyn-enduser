@@ -7,7 +7,7 @@ import Aboutus from '../../src/components/middleheaderchilderns/abouts/Aboutus'
 
 function index() {
     return (
-        <LayoutHeader title="Aboutus">
+        <LayoutHeader title="Aboutus" >
 
             <Aboutus />
         </LayoutHeader>
