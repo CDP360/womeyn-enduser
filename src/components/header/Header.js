@@ -4,7 +4,7 @@ import serachicon from '../../assests/homepage-logos/serachicon.png';
 import Image from 'next/image';
 import womeynlogo from '../../assests/homepage-logos/womeyn_logo.png';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+// import Link from 'next/link';
 import cartslogo from '../../assests/homepage-logos/basket.png';
 import profile from '../../assests/homepage-logos/profile.png';
 import myprofile from '../../assests/login-logos/myprofile.png';
@@ -23,7 +23,7 @@ import Searchbar from './serachcategorys/Searchbar';
 import Dropdown from 'react-bootstrap/Dropdown';
 import aroepath from '../../assests/homepage-logos/path.png';
 import * as Scroll from 'react-scroll';
-// import { Link, Button, Element, Events, animateScroll } from 'react-scroll'
+import { Link, Button, Element, Events, animateScroll } from 'react-scroll'
 import GetAboutusCount from '../../Redux/actions/aboutuscounts/Aboutuscounts';
 import { SearchProductCategorys } from '../../services/category-services/category-service';
 function Header() {
@@ -104,7 +104,7 @@ function Header() {
 
 
         SearchProductCategorys().then((res) => {
-          
+
             setSearchDataCategory(res?.data);
         }).catch((err) => {
             console.log(err);
@@ -127,7 +127,7 @@ function Header() {
         FilterData(e?.target?.value)
     }
 
-    
+
 
 
     const FilterData = (value) => {
@@ -399,9 +399,9 @@ function Header() {
                     <div className={router.pathname == "/abouts" ? "active" : ""}>
 
                         <div class="dropdownabout" onClick={NaigateHoverAboutus}>
-                            <button class="dropbtnabout">Dropdown <span><Image src={aroepath} alt="no image" className="patharrow" /></span></button>
+                            <button class="dropbtnabout">About Us <span><Image src={aroepath} alt="no image" className="patharrow" /></span></button>
                             <div class="dropdown-contentabut">
-                                {/* <Link to="firstInsideContainer" onClick={() => AboutusCountName("firstInsideContainer")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>
+                                <Link to="firstInsideContainer" onClick={() => AboutusCountName("firstInsideContainer")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>
                                     The Story Behind Womeyn
                                 </Link>
                                 <Link to="secondInsideContainer" onClick={() => AboutusCountName("secondInsideContainer")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>What is Womeyn</Link>
@@ -409,7 +409,7 @@ function Header() {
                                 <Link to="d" onClick={() => AboutusCountName("d")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>The Logo Significance</Link>
                                 <Link to="e" onClick={() => AboutusCountName("e")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>The Team</Link>
                                 <Link to="g" onClick={() => AboutusCountName("g")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Partners & Collaborations</Link>
-                                <Link to="h" onClick={() => AboutusCountName("h")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Join Womeyn</Link> */}
+                                <Link to="h" onClick={() => AboutusCountName("h")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Join Womeyn</Link>
 
                                 {/* <Link href="/about#the-team">
       <a>The Team</a>

@@ -95,7 +95,7 @@ function MobileHeader() {
         setSearchData(filtersoverall)
     }
 
-    console.log(searchDatacategory, "serachdata")
+
     return (
         <Fragment>
             <div className={styles.mainmobilesection}>

@@ -109,12 +109,12 @@ function AllCategoryCard({ products, stars }) {
                 })}
             </Slider>
                 </>:<>
-                <div className='row justify-content-center d-flex gap-3'>
+                <div className='row justify-content-center d-flex gap-2'>
                 {products.map((item, index) => {
                     return (
                         <div className={styles.cardcategorys} key={index}>
-                            <div className={styles.cardsections}>
-                                <div className="cardss colxs-12 col-sm-12 col-md-12" onClick={() => categoryPush(item?.productSlugName)}>
+                          
+                                <div onClick={() => categoryPush(item?.productSlugName)}>
                                     <div>
                                         {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
                                             <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
@@ -123,7 +123,7 @@ function AllCategoryCard({ products, stars }) {
                                     <div className={styles.cardinsidesection}>
                                         {/* <Image src={stars} alt="no image" className={styles.stars} /> */}
                                         <div className="mt-3">
-                                            <div className={styles.productname}>{item?.productName.length>=10?<>{item?.productName.slice(0,25)}...</>:<>{item?.productName}</>}</div>
+                                            <div className={styles.productname}>{item?.productName.length>=10?<>{item?.productName.slice(0,17)}...</>:<>{item?.productName}</>}</div>
                                         </div>
                                         <div>
                                             <span className='textgrey'>{item?.brand}</span>
@@ -143,7 +143,7 @@ function AllCategoryCard({ products, stars }) {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                          
 
                         </div>
                     )

@@ -41,8 +41,12 @@ function Categorycard({ item }) {
         
                 </div>
                 <div className={styles.brandnames}>
-                    {item?.brandName?.length<=10?<>{item?.brandName}</>:<>{item?.brandName.slice(0,28)}...</>}
+                    {item?.brandName?.length<=10?<>{item?.brandName?<>{item?.brandName}</>:<>
+                    
+                    <Skeleton className={styles.skeltonbrands}/>
+                    </>}</>:<>{item?.brandName.slice(0,28)}...</>}
                     {/* <span className={styles.brandnames}>{item?.brandName}</span> */}
+                    
                 </div>
                 <div className={styles.cardsellerborder}>
                     <div className={styles.cardsellerinsideborder}>

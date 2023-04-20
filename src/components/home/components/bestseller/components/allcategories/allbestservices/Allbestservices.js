@@ -109,13 +109,13 @@ function Allbestservices({ stars }) {
                     })}
                 </Slider>
             </> :
-                <div className='row justify-content-center d-flex gap-4'>
+                <div className='row justify-content-center d-flex gap-2'>
 
                     {services.map((item, index) => {
                         return (
                             <div className={styles.cardcategorys} key={index}>
-                                <div className={styles.cardsections}>
-                                    <div className="cards col-lg-12 mb-5" onClick={() => categoryPush(item?.productSlugName)}>
+                               
+                                    <div  onClick={() => categoryPush(item?.productSlugName)}>
 
                                         {/* <div>
                                         <img src={item?.image} alt="no image" className={styles.sellerimagesize} />
@@ -140,7 +140,7 @@ function Allbestservices({ stars }) {
                                         </div>
 
                                     </div>
-                                </div>
+                               
 
                             </div>
                         )

@@ -387,6 +387,16 @@ li a {
   border-radius: 10px;
   width: 15vw !important;
   // border:1px solid red;
+  @include lgBreakPoint
+  {
+    width: 30vh !important;
+  }
+
+  @include xlBreakPoint
+  {
+    width: 30vh !important;
+  }
+  
 }
 
 .dropdown-contentabut a {
@@ -400,15 +410,20 @@ li a {
   background: #fff1f1;
   color: #e95a5a !important;
   border-radius: 10px;
+  cursor: pointer;
+
 }
 
 .dropdownabout:hover .dropdown-contentabut {
   display: block;
   color: #e95a5a;
+  cursor: pointer;
+
 }
 
 .dropdownabout:hover .dropbtnabout {
   color: #e95a5a;
+  cursor: pointer;
 }
 
 .patharrow {

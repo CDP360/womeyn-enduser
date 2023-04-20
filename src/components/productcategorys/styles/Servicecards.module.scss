@@ -210,3 +210,132 @@
     height: 15px;
     object-fit: contain;
 }
+
+// card product categorys
+
+
+    .star {
+        width: 30%;
+        height: auto;
+    }
+
+    .imagebox {
+        height: 100%;
+    }
+    // ion-icon {
+    //     font-size: 22px;
+    //     font-weight: 700 !important;
+    // }
+    .ionicicons {
+        color: red !important;
+    }
+
+    .loaderskelimage {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
+
+    .sellerimagesize {
+        width: 100%;
+        height: 170px;
+        // object-fit: contain;
+        border-radius:10px;
+
+        @include mdBreakPoint {
+            height: 160px;
+        }
+        @include lgBreakPoint {
+            height: 120px;
+        }
+        @include xlBreakPoint {
+            height: 100px;
+        }
+    }
+    .sellerimagesize:hover {
+        transform: scale(1.2);
+    }
+    .plussection {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        position: absolute;
+        background: white;
+        right: 8%;
+        top: 5%;
+        z-index: 989989898898989898989889898989889898999;
+        cursor: pointer;
+    }
+    .plus {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        cursor: pointer;
+        padding-top: 2%;
+    }
+    .stars {
+        width: 30%;
+        height: 30px;
+        object-fit: contain;
+        cursor: pointer;
+        @include mdBreakPoint {
+            width: 40%;
+        }
+        @include lgBreakPoint {
+            width: 46%;
+        }
+        @include xlBreakPoint {
+            width: 46%;
+        }
+    }
+    .cardinsidesection {
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 6%;
+        @include xsBreakPoint {
+            padding-top: 4%;
+        }
+        @include smBreakPoint {
+            padding-top: 4%;
+        }
+        @include mdBreakPoint {
+            padding-top: 4%;
+        }
+        @include lgBreakPoint {
+            padding-top: 4%;
+        }
+        @include xlBreakPoint {
+            padding-top: 4%;
+        }
+    }
+    .cardsellerborder {
+        padding-top: 4%;
+        .cardsellerinsideborder {
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+        }
+    }
+    .cardpricesection {
+        display: flex;
+        gap: 10%;
+        padding-top: 5%;
+        padding-bottom: 10%;
+        @include lgBreakPoint {
+            width: 100%;
+            gap: 10px;
+        }
+    }
+    .splitoffers {
+        display: flex;
+    }
+
+.brandname:hover {
+    color: #e95a5a !important;
+}

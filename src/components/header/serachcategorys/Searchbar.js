@@ -14,6 +14,9 @@ function Searchbar({ serachdata, serachicon }) {
     }
 
 
+
+
+
     return (
         <div className={styles.mainserachbarsection}>
             <div className={styles.searchbarcontents}>
@@ -21,9 +24,7 @@ function Searchbar({ serachdata, serachicon }) {
                     {serachdata?.map((item, index) => {
                         return (
                             <div>
-
-                                <div className={styles.serachboxtexts}>
-
+                                <div className={styles.serachboxtexts} onClick={()=>CategoryNavigatepath(item?.slugName)}>
                                     <div>
                                         {item?.imageName?<>
                                             <img
@@ -37,21 +38,17 @@ function Searchbar({ serachdata, serachicon }) {
                                     </div>
                                     <div className={styles.textsbrands} onClick={()=>CategoryNavigatepath(item?.slugName)}>
 
-                                        {item.name ? item.name : <>
+                                        {item.path ? item.path : <>
                                         <Image src={nodata} alt="no image"/>
                                         </>}
                                     </div>
                                 </div>
                             </div>
-
-
                         )
                     })}
                 {serachdata?.length === 0 && <div>
                     <Image src={nodata} alt="no image" className={styles.nodataimage}/>
                     </div>}
-
-
                 </div> : <>
                     {serachdata?.length === 0 && <div>No Result..!!!</div>}
                 </>}

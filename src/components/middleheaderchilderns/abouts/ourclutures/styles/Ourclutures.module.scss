@@ -1,1 +1,69 @@
 @use "../../../../../../scss/abstract/" as *;
+
+.aboutimagelogo {
+    width: 100px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    @include xsBreakPoint {
+        flex-direction: column;
+        margin: 0 auto;
+        gap: 0;
+    }
+    @include smBreakPoint {
+        flex-direction: column;
+        margin: 0 auto;
+        gap: 0;
+    }
+    .aboutlogo {
+        width: 275px;
+        height: 275px;
+        object-fit: contain;
+        @include xsBreakPoint {
+            width: 240px;
+            height: 240px;
+        }
+        @include mdBreakPoint {
+            width: 160px;
+            height: 160px;
+        }
+        @include lgBreakPoint {
+            width: 210px;
+            height: 210px;
+        }
+        @include xlBreakPoint {
+            width: 240px;
+            height: 240px;
+        }
+    }
+}
+
+.ifyou {
+    color: #898989;
+    width: 75%;
+    letter-spacing: 0.02em;
+    line-height: 1.9;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: 0 auto;
+    font-size: 1.3rem;
+    @include xsBreakPoint {
+        font-size: 1rem;
+        width: 100%;
+    }
+    @include smBreakPoint {
+        font-size: 1rem;
+        width: 100%;
+    }
+    @include mdBreakPoint {
+        font-size: 1rem;
+        width: 100%;
+    }
+    @include lgBreakPoint {
+        width: 90%;
+    }
+    @include xlBreakPoint {
+        width: 90%;
+    }
+}

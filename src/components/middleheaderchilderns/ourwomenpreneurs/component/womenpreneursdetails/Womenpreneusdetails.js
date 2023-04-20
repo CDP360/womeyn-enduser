@@ -105,7 +105,11 @@ function Womenpreneusdetails({ id }) {
             </button>;
         }
         return originalElement;
+    
     }
+
+
+  
     return (
         <Fragment >
             <div className={styles.maindetailpage}>
@@ -130,7 +134,7 @@ function Womenpreneusdetails({ id }) {
                                 </div>
                             </div>
                             <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
-                                {sellers?.productDescription}
+                                {sellers?.profileDescription}
 
                             </div>
                         </div>

@@ -1,4 +1,3 @@
-
 import React, { useEffect, Fragment, useState } from 'react'
 import styles from './styles/Home.module.scss';
 import Slider from "react-slick";

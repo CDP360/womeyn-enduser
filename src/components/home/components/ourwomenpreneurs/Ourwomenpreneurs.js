@@ -157,8 +157,6 @@ function Ourwomenpreneurs() {
 
                                                 <div className={styles.backgroundslidewomen}>
                                                 </div>
-
-
                                                 <div className={styles.imageboxsections}>
                                                     {item.profileImageName ? <>
                                                         <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.profileImageName}`} alt="no image" className={styles.slideimagesize} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)} />
@@ -177,6 +175,7 @@ function Ourwomenpreneurs() {
                                 <div className={styles.dummydots1}>
 
                                 </div>
+                                
                                 {/* <div>
                                     <Image src={roundscircles} alt="no image" className={styles.roundscirclesimage} />
                                 </div> */}
@@ -191,12 +190,15 @@ function Ourwomenpreneurs() {
                                         {datas[counts - 1]?.email}
                                     </div> */}
                                     <div className={styles.descriptioninwomeyn}>
-                                        {datas[counts - 1]?.profileDescription}
+
+                                        {datas[counts - 1]?.profileDescription.length >= 10 ? <>{datas[counts - 1]?.profileDescription.slice(0, 65)}...</> : <>
+
+                                            {datas[counts - 1]?.profileDescription}
+                                        </>}
                                     </div>
                                     <div className={styles.womenactiveprofiletext}>
                                         <div>
                                             <button className={styles.selleractives} onClick={() => handleProductSeller(datas[counts - 1]?.businessSlugName)}>VISIT HER STORE!
-
                                             </button>
                                         </div>
                                         <div className={styles.socialspacewomen}>

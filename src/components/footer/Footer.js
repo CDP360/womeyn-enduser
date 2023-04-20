@@ -15,36 +15,43 @@ function Footer() {
     const instagrams = () => {
         window.open(`https://www.instagram.com/womeyn/`);
     }
-
     const facebooks = () => {
         window.open(`https://www.facebook.com/Womeyn`);
     }
-
     const linkedins = () => {
         window.open(`https://www.linkedin.com/company/womeyn/`);
+    }
+    const youtubelink = () => {
+        window.open(`https://www.youtube.com/@Womeyn`);
+
+    }
+    const twitterlink = () => {
+        window.open(`https://twitter.com/womeyn/`);
+    }
+    const homePage = () => {
+        router.push("/");
     }
     return (
         <Fragment>
             <div className={styles.mainfootersection}>
-
                 <div className={styles.insidefootersection}>
                     <div className={styles.splitinsidefootersection}>
                         <div className={styles.splitfootersection}>
                             <div className={styles.footersectionone}>
-                                <div>
+                                <div onClick={homePage}>
                                     <Image src={womeynlogo} alt="no image" />
                                 </div>
                                 <div className='footergreytext'>
                                     Womeyn is a new age eCommerce Platform. Please connect, like and follows us via social media.
                                 </div>
                                 <div className={styles.socailfootersection}>
-                                    <div className={styles.footeremptysocialsection}>
+                                    <div className={styles.footeremptysocialsection} onClick={youtubelink}>
                                         <Image src={youtube} alt="no image" className={styles.footersocialicons} />
                                     </div>
                                     <div className={styles.footeremptysocialsection}>
                                         <Image src={linkdin} alt="no image" className={styles.footersocialicons} onClick={linkedins} />
                                     </div>
-                                    <div className={styles.footeremptysocialsection}>
+                                    <div className={styles.footeremptysocialsection} onClick={twitterlink}>
                                         <Image src={twitter} alt="no image" className={styles.footersocialicons} />
                                     </div>
                                     <div className={styles.footeremptysocialsection}>
@@ -91,15 +98,16 @@ function Footer() {
                                     <div onClick={() => router.push("/order/tracking")} className={styles.footercontents}>
                                         Order Tracking
                                     </div>
+                                    <div onClick={() => router.push("/profile/favorts")} className={styles.footercontents}>
+                                        Favorts
+                                    </div>
                                     <div onClick={() => router.push("/terms-and-conditions")} className={styles.footercontents}>
                                         Terms & Conditions
                                     </div>
                                     <div className={styles.footercontents}>
                                         Privacy Policy
                                     </div>
-                                    {/* <div onClick={() => router.push("/cart")} className={styles.footercontents}>
-                                        My Cart
-                                    </div> */}
+
                                 </div>
                             </div>
                             <div className={styles.footersectionfour}>

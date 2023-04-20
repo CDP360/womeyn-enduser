@@ -37,26 +37,28 @@
         width: 30px !important;
         height: 30px !important;
         right: 20%;
-        bottom: -108%;
+        bottom: -216%;
 
     }
     @include smBreakPoint {
         width: 30px !important;
         height: 30px !important;
         right: 10%;
-        bottom: -115%;
+        bottom: -193%;
+
 
     }
     @include mdBreakPoint {
         width: 30px !important;
         height: 30px !important;
         right: 6%;
-        bottom: -117%;
+        bottom: -137%;
+
 
     }
     @include lgBreakPoint {
         right: -200%;
-        bottom: -42%;
+        bottom: -47%;
 
     }
     @include xlBreakPoint {

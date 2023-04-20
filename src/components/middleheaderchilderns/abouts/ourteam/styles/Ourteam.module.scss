@@ -78,6 +78,16 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    @include lgBreakPoint {
+        // border: 3px solid red;
+        padding-bottom: 6%;
+        padding-top: 5%;
+    }
+    @include xlBreakPoint {
+        // border: 3px solid red;
+        padding-bottom: 6%;
+        padding-top: 5%;
+    }
     .teamanu {
         width: 300px;
         height: 300px;
@@ -104,22 +114,68 @@
 
 .kulkarinexts {
     color: #898989;
-    width: 73%;
+    width: 82%;
     letter-spacing: 0.02em;
     line-height: 1.9;
     text-align: center;
     padding-top: 2%;
     padding-bottom: 2%;
     margin: 0 auto;
+    font-size: 1.3rem;
+
+    @include xsBreakPoint {
+        width: 100%;
+        font-size: 1rem;
+        padding-top: 10%;
+    }
+    @include smBreakPoint {
+        width: 100%;
+        font-size: 1.1rem;
+        padding-top: 6%;
+    }
+    @include mdBreakPoint {
+        width: 100%;
+        font-size: 1.3rem;
+        padding-top: 6%;
+    }
+    @include lgBreakPoint {
+        width: 95%;
+    }
+    @include xlBreakPoint {
+        width: 90%;
+    }
 }
 
 .kulkarinextss {
     color: #898989;
-    width: 66%;
+    width: 75%;
     letter-spacing: 0.02em;
     line-height: 1.9;
     text-align: center;
     padding-top: 2%;
     padding-bottom: 2%;
     margin: 0 auto;
+    font-size: 1.3rem;
+
+    @include xsBreakPoint {
+        width: 100%;
+        font-size: 1rem;
+        padding-top: 10%;
+    }
+    @include smBreakPoint {
+        width: 100%;
+        font-size: 1.1rem;
+        padding-top: 6%;
+    }
+    @include mdBreakPoint {
+        width: 100%;
+        font-size: 1.3rem;
+        padding-top: 6%;
+    }
+    @include lgBreakPoint {
+        width: 95%;
+    }
+    @include xlBreakPoint {
+        width: 90%;
+    }
 }

@@ -11,18 +11,21 @@ import Ourvision from './ourvision/Ourvision';
 import Ourteam from './ourteam/Ourteam';
 import Whatmake from '../../home/components/whatmake/Whatmake';
 import Ourclutures from './ourclutures/Ourclutures';
-
 import first from '../../../assests/abouts-logos/FIRST.gif';
 import second from '../../../assests/abouts-logos/SECOND.gif';
-
 import third from '../../../assests/abouts-logos/THIRD.gif';
 import { useSelector } from 'react-redux';
 import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 import wba from '../../../assests/abouts-logos/wb1.png';
 import wba1 from '../../../assests/abouts-logos/wb2.png';
 import womenlogo from '../../../assests/homepage-logos/womeyn_logo.png';
+import AboutusSubscribe from './Aboutussubscribe/AboutusSubscribe';
 function Aboutus() {
     const state = useSelector((state) => state?.aboutcountdata?.about);
+
+
+
+
     const data = [
         {
             id: 1,
@@ -46,9 +49,6 @@ function Aboutus() {
             colorbg: " #FDF0F0"
         }
     ]
-
-
-
 
 
     return (
@@ -84,20 +84,11 @@ function Aboutus() {
                         </div>
                     </div>
 
-
-
                     <div>
-
-
                         <div className='large-text text-center'>The Story Behind Womeyn</div>
-
                         <div className={styles.creationabout}>§ The creation of “Womeyn” as a concept has a direct correlation to Anu, Founder and Director of Womeyn. It is her experiences and struggles in life as a woman and as a woman entrepreneur that gave birth to the concept. “Womeyn” is her way of creating a community of women and bring about a positive change by providing a platform that makes it easy for women of our communities to express themselves, be financially self-reliant and not be restricted due to lack of knowledge in technology, availability of equal opportunity or marginalized in any shape or form She has an Inspirational Story and is the heart and soul of the initiative “Womeyn”.
-
                         </div>
-
-
                     </div>
-
 
                     <div id={state} >
                         <div className='large-text text-center'>
@@ -155,11 +146,14 @@ function Aboutus() {
                     <div>
                         <Ourclutures />
                     </div>
+                    <div>
 
+                        <AboutusSubscribe />
+                    </div>
                 </div>
-                <div>
+                {/* <div>
                     <Whatmake />
-                </div>
+                </div> */}
             </div>
         </Fragment>
     )

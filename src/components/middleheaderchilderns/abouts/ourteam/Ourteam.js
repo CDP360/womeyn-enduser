@@ -15,6 +15,8 @@ import h5 from '../../../../assests/abouts-logos/g5-removebg-preview.png';
 
 import anu from '../../../../assests/abouts-logos/anu.png';
 import anu1 from '../../../../assests/abouts-logos/na.png';
+import anu2 from '../../../../assests/abouts-logos/tanu.png';
+
 
 
 function Ourteam() {
@@ -174,6 +176,48 @@ function Ourteam() {
                 <div className={styles.kulkarinexts}>
                     As a migrant she had her struggles, it’s been a long journey. But today she stands tall with her head held high. She has come a long way, she has participated in many events and beauty pageants and was the runners up at Curves and Curls International and winner of Fitness Icon award, she also starred in an hour-long ABC documentary “Doctors at the door – Kulkarni” that was aired nationally. She was also the finalist in the Hills District Local Business Award, Australian Ladies In Business Initiative awards (Alibi) and also awarded the “Woman Of Inspiration” award by Wonders of Womanhood. Her aim is to inspire as many women as far as possible to never give up. Womeyn is a platform for women entrepreneurs and if you are one then please connect with her through the contact us page or by clicking “Become a WomeynPreneur”
                 </div>
+
+
+            </div>
+
+
+
+
+
+            
+            <div className={styles.ourimageteams}>
+
+                <div className={styles.insideimageteams}>
+
+                    <div>
+                        <Image src={anu2} alt="no image" className={styles.teamanu} />
+                    </div>
+
+                    <div className={styles.anutexts}>
+
+                    TANUSHKA KULKARNI
+                    </div>
+
+                    <div className={styles.insidetexts}>
+                    CO - FOUNDER & LEGAL
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+
+                <div className={styles.kulkarinextss}>
+
+                A vibrant and energetic young Lawyer who is making her mark in the corporate world and at the same time working towards being an active member of the core founding team. She takes on the role of all legal matters and is the backbone in ensuring that the business is in compliance with law of the land. Tanushka specializes in corporate & commercial law and is on embarking on her masters.
+
+
+                </div>
+
+
 
 
             </div>
