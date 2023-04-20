@@ -99,19 +99,13 @@
             height: auto;
             padding: 2% 0px;
         }
-        @include lgBreakPoint
-        {
+        @include lgBreakPoint {
             height: auto;
-            padding-bottom:2%;
-           
-
+            padding-bottom: 2%;
         }
-        @include xlBreakPoint
-        {
+        @include xlBreakPoint {
             height: auto;
-            padding-bottom:2.4%;
-       
-
+            padding-bottom: 2.4%;
         }
     }
     .sellerimagesize {
@@ -119,8 +113,7 @@
         height: 200px;
         @include mdBreakPoint {
             height: 140px;
-            border-radius:10px;
-            
+            border-radius: 10px;
         }
         @include lgBreakPoint {
             height: 140px;
