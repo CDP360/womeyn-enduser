@@ -114,11 +114,11 @@ function Maincategorylist({ name, searchnamevalue }) {
 
                     <LoaderLogo />
 
-                </> : <div className='row justify-content-center gap-5'>
+                </> : <div className='row justify-content-center gap-2 mb-5'>
                     {product?.length === 0 ? <>
                         {CartDataProduct?.map((item, index) => {
                             return (
-                                <div key={index} className="col-lg-3 col-md-6 col-sm-6 col-xs-6 ">
+                                <div key={index}>
                                     <Skeleton className={styles.skeltons} />
                                 </div>
                             )

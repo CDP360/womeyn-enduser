@@ -1,7 +1,7 @@
 @use "../../../../../../scss/abstract/" as *;
 
 .cards {
-    width: 29%;
+    width: 32%;
     padding: 0% 0px;
     background: rgba(255, 255, 255, 0.8);
     box-shadow: 48px 53px 112px rgba(0, 0, 0, 0.08);
@@ -11,6 +11,7 @@
     height: auto;
     // border:2px solid red;
     cursor: pointer;
+    margin-bottom:3%;
     @include xsBreakPoint {
         width: 90%;
     }
@@ -26,7 +27,7 @@
     .categoryimage {
         width: 100%;
         height: 180px;
-        object-fit: contain;
+    object-fit: contain;
         border-radius: 10px;
     }
     .categoryimages {
