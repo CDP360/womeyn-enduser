@@ -25,7 +25,7 @@ import aroepath from '../../assests/homepage-logos/path.png';
 import * as Scroll from 'react-scroll';
 import { Link, Button, Element, Events, animateScroll } from 'react-scroll'
 import GetAboutusCount from '../../Redux/actions/aboutuscounts/Aboutuscounts';
-import { SearchProductCategorys } from '../../services/category-services/category-service';
+import { SearchProductCategorys, SearchProductUser } from '../../services/category-services/category-service';
 function Header() {
     const { state } = useContext(ContextStore);
     const dispatch = useDispatch();
@@ -124,7 +124,8 @@ function Header() {
 
     const handleChange = (e) => {
         setSerachCategory(e?.target?.value)
-        FilterData(e?.target?.value)
+        FilterData(e?.target?.value);
+        SearchUserData(e?.target.value)
     }
 
 
@@ -138,11 +139,26 @@ function Header() {
     }
 
 
+    const SearchUserData = (data) => {
+        //         SearchProductUser(data).then((res) => {
+
+
+        // setSearchDataCategory(res?.data?.results)
+
+
+        //         }).catch((err) => {
+        //             console.log(err);
+        //         })
+    }
+
+
 
     const AboutusCountName = (data) => {
         dispatch(GetAboutusCount(data));
     }
 
+
+    console.log(serachdata, "serachdata")
     return (
         <Fragment>
             <div className={styles.mainheadersection}>
@@ -160,7 +176,7 @@ function Header() {
                                         <div className={styles.inputsearchsection}>
                                             <input type="text" placeholder='Search for products,brands and more....' className="inputserach" onChange={handleChange} value={serachcategory} />
                                             <div>
-                                                <Image src={serachicon} alt="no image" className='serachicon' />
+                                                <Image src={serachicon} alt="no image" className='serachicon' onClick={SearchUserData} />
                                             </div>
                                         </div>
                                         <div className={styles.barsectiontop}>

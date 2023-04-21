@@ -99,7 +99,7 @@ function Footer() {
                                         Order Tracking
                                     </div>
                                     <div onClick={() => router.push("/profile/favorts")} className={styles.footercontents}>
-                                        Favorts
+                                        Favorites
                                     </div>
                                     <div onClick={() => router.push("/terms-and-conditions")} className={styles.footercontents}>
                                         Terms & Conditions

@@ -175,6 +175,10 @@ function Ourwomenpreneurs() {
                                 <div className={styles.dummydots1}>
 
                                 </div>
+
+                                <div className={styles.dummybg}>
+
+                                </div>
                                 
                                 {/* <div>
                                     <Image src={roundscircles} alt="no image" className={styles.roundscirclesimage} />

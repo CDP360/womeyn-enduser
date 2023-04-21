@@ -32,3 +32,13 @@ export function SearchProductCategorys() {
     })
 }
 
+
+export function SearchProductUser(data) {
+    return instanceBaseurl.get(`/common/search/products?search=${data}`).then((res) => {
+        return res;
+    }).catch((err) => {
+        return err;
+
+    })
+}
+
