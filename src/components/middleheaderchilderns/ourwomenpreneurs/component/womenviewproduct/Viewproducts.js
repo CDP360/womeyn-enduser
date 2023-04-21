@@ -15,7 +15,10 @@ import Skeleton from 'react-loading-skeleton';
 import ReactImageMagnify from 'react-image-magnify';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import Head from "next/head";
+
 import { Rate } from "antd";
+
 function Viewproducts({ id }) {
     const history = useRouter();
     const [errors, setError] = useState(false);
@@ -41,7 +44,7 @@ function Viewproducts({ id }) {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
 
-  
+
     const Checkout = (cartdata, productvariations) => {
         const datas = [productvariations[0]?.name];
         const datas1 = [productvariations[0]?.name, productvariations[1]?.name];
@@ -369,19 +372,19 @@ function Viewproducts({ id }) {
 
             if (datas) {
                 if (productSize1) {
-setTimeout(()=>{
-    router?.push("/cart")
+                    setTimeout(() => {
+                        router?.push("/cart")
 
-},400)
+                    }, 400)
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
 
                 }
             }
             else {
-                setTimeout(()=>{
+                setTimeout(() => {
                     router?.push("/cart")
-                
-                },400)
+
+                }, 400)
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee === null ? 0 : cartdata?.localDeliveryCharge === null ? 0 : cartdata?.localDeliveryChargeee } });
 
             }
@@ -417,19 +420,19 @@ setTimeout(()=>{
 
             if (datas1) {
                 if (productSize1 && productSize2) {
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         router?.push("/cart")
-                    
-                    },400)
+
+                    }, 400)
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee === null ? 0 : cartdata?.localDeliveryCharge === null ? 0 : cartdata?.localDeliveryChargeee } });
 
                 }
             }
             else {
-                setTimeout(()=>{
+                setTimeout(() => {
                     router?.push("/cart")
-                
-                },400)
+
+                }, 400)
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee === null ? 0 : cartdata?.localDeliveryCharge === null ? 0 : cartdata?.localDeliveryChargeee } });
 
             }
@@ -471,19 +474,19 @@ setTimeout(()=>{
 
             if (datas2) {
                 if (productSize1 && productSize2 && productSize3) {
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         router?.push("/cart")
-                    
-                    },400)
+
+                    }, 400)
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee === null ? 0 : cartdata?.localDeliveryCharge === null ? 0 : cartdata?.localDeliveryChargeee } });
 
                 }
             }
             else {
-                setTimeout(()=>{
+                setTimeout(() => {
                     router?.push("/cart")
-                
-                },400)
+
+                }, 400)
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
 
             }
@@ -529,18 +532,18 @@ setTimeout(()=>{
 
             if (datas3) {
                 if (productSize1 && productSize2 && productSize3 && productSize4) {
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         router?.push("/cart")
-                    
-                    },400)
+
+                    }, 400)
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
                 }
             }
             else {
-                setTimeout(()=>{
+                setTimeout(() => {
                     router?.push("/cart")
-                
-                },400)
+
+                }, 400)
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
 
             }
@@ -589,29 +592,29 @@ setTimeout(()=>{
 
             if (datas4) {
                 if (productSize1 && productSize2 && productSize3 && productSize4 && productSize5) {
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         router?.push("/cart")
-                    
-                    },400)
+
+                    }, 400)
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
 
                 }
             }
             else {
-                setTimeout(()=>{
+                setTimeout(() => {
                     router?.push("/cart")
-                
-                },400)
+
+                }, 400)
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
 
             }
 
         }
         else {
-            setTimeout(()=>{
+            setTimeout(() => {
                 router?.push("/cart")
-            
-            },400)
+
+            }, 400)
             dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
 
         }
@@ -1020,9 +1023,58 @@ setTimeout(()=>{
     }
 
 
+    const [pathurl, setPathUrl] = useState("");
+
+    useEffect(() => {
+        const origin =
+            typeof window !== 'undefined' && window.location.origin
+                ? window.location.origin
+                : '';
+
+        const URL = `${origin}${router?.asPath}`;
+        setPathUrl(URL);
+    }, [])
+
+
+
+
+
 
     return (
         <Fragment>
+            <>
+
+                <Head>
+
+                    <title>{id}</title>
+                    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+                    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+                    <meta property="fb:page_id" content="102988293558" />
+                    <meta name="robots" content="index" />
+                    <meta property="og:type" content="website" />
+                    <meta name="og_site_name" property="og:site_name" content="Womeyn.com" />
+                    <link rel="apple-touch-icon" sizes="57x57" href={pathurl} />
+                    <link rel="apple-touch-icon" sizes="72x72" href={pathurl} />
+                    <link rel="apple-touch-icon" sizes="114x114" href={pathurl} />
+                    <link rel="apple-touch-icon" sizes="144x144" href={pathurl} />
+                    <link rel="apple-touch-icon" href="/apple-touch-icon-57x57.png" />
+                    <meta name="twitter:card" content="app" />
+                    <meta name="twitter:site" content="@womeyn" />
+                    <meta name="twitter:creator" content="@womeyn" />
+                    <meta name="twitter:title" content={id} />
+                    <meta name="twitter:description" content={productdata?.productDescription} />
+                    <meta property="twitter:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`} />
+                    <meta property="og:image:width" content="1200" />
+                    <meta property="og:image:height" content="630" />
+                    <meta name="og_title" property="og:title" content={id} />
+                    <meta name="keywords" content={productdata?.productDescription} />
+                    <meta name="description" content={productdata?.productDescription} />
+                    <meta property="og:description" content={productdata?.productDescription} />
+                    <link rel="canonical" href={pathurl} />
+                    <meta name="og_image" property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`} />
+                    <meta name="og_url" property="og:url" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`} />
+                </Head>
+            </>
             <div className={styles.mainproductviewscreen}>
                 <div className={styles.insideproductview}>
                     <div className={styles.splitproductview}>
@@ -1032,7 +1084,8 @@ setTimeout(()=>{
                                     <div className={styles.imagerowsection}>
                                         {productimages?.map((item, index) => {
                                             return (
-                                                <div className={`${indexs === index ? styles.activewomen : styles.borderimages}`} onClick={() => setIndex(index)} onMouseOver={() => setIndex(index)} key={index}>
+                                                <div className={`${indexs === index ? styles.activewomen : styles.borderimages
+                                                    } `} onClick={() => setIndex(index)} onMouseOver={() => setIndex(index)} key={index}>
                                                     {item?.name ? <><img
                                                         className={styles.imagecards}
                                                         src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
@@ -1040,20 +1093,20 @@ setTimeout(()=>{
                                                     /></> : <>
                                                         <Skeleton />
                                                     </>}
-                                                </div>
+                                                </div >
                                             )
                                         })}
-                                    </div>
-                                </div>
+                                    </div >
+                                </div >
                                 <div className={styles.rightcardimagesshow}>
                                     <div className={styles.leftwomensearchsection}>
                                         <div className={styles.serachlargeimage}>
 
                                             <div className="d-block d-lg-none">
 
-                                                
 
-<img
+
+                                                <img
                                                     className={styles.serachlargeimages}
                                                     src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
                                                     alt="profile-pic"
@@ -1061,59 +1114,59 @@ setTimeout(()=>{
                                             </div>
                                             <div className="d-none d-lg-block">
 
-                                            <ReactImageMagnify
-                                                //  className={styles.serachlargeimages}
-                                                {...{
-                                                    smallImage: {
+                                                <ReactImageMagnify
+                                                    //  className={styles.serachlargeimages}
+                                                    {...{
+                                                        smallImage: {
 
-                                                        alt: 'Wristwatch by Ted Baker London',
-                                                        isFluidWidth: true,
-                                                        src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                        borderRadius: "10px"
-                                                    },
-                                                    largeImage: {
-                                                        src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                        width: 1200,
-                                                        height: 1200,
-                                                        backgroundColor: "white",
-                                                        // border:"3px solid blue"
-                                                        zIndex: "989898988989898989898989",
-                                                        borderRadius: "10px"
-
-
-                                                    },
-                                                    imageStyle: {
-                                                        // border:"2px solid red",
-                                                        width: "100%",
-                                                        height: "100%",
-                                                        maxHeight: "400px",
-                                                        objectFit: "contain",
-                                                        zIndex: "9898989898",
-                                                        backgroundColor: "white",
-                                                        borderRadius: "10px"
-
-                                                    },
-                                                    // smallImage: {
-                                                    //     src: String, (required)
-                                                    //     srcSet: String,
-                                                    //     sizes: String,
-                                                    //     width: Number, (required if isFluidWidth is not set)
-                                                    //     height: Number, (required if isFluidWidth is not set)
-                                                    //     isFluidWidth: Boolean, (default false)
-                                                    //     alt: String,
-                                                    //     onLoad: Function,
-                                                    //     onError: Function
-                                                    // },
+                                                            alt: 'Wristwatch by Ted Baker London',
+                                                            isFluidWidth: true,
+                                                            src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
+                                                            borderRadius: "10px"
+                                                        },
+                                                        largeImage: {
+                                                            src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
+                                                            width: 1200,
+                                                            height: 1200,
+                                                            backgroundColor: "white",
+                                                            // border:"3px solid blue"
+                                                            zIndex: "989898988989898989898989",
+                                                            borderRadius: "10px"
 
 
-                                                }}
+                                                        },
+                                                        imageStyle: {
+                                                            // border:"2px solid red",
+                                                            width: "100%",
+                                                            height: "100%",
+                                                            maxHeight: "400px",
+                                                            objectFit: "contain",
+                                                            zIndex: "9898989898",
+                                                            backgroundColor: "white",
+                                                            borderRadius: "10px"
+
+                                                        },
+                                                        // smallImage: {
+                                                        //     src: String, (required)
+                                                        //     srcSet: String,
+                                                        //     sizes: String,
+                                                        //     width: Number, (required if isFluidWidth is not set)
+                                                        //     height: Number, (required if isFluidWidth is not set)
+                                                        //     isFluidWidth: Boolean, (default false)
+                                                        //     alt: String,
+                                                        //     onLoad: Function,
+                                                        //     onError: Function
+                                                        // },
 
 
-                                            />
+                                                    }}
+
+
+                                                />
                                             </div>
-                                            
 
-                                            
+
+
                                         </div>
 
                                         {tokencheck ? <div className={styles.heartimagesection}>
@@ -1151,8 +1204,8 @@ setTimeout(()=>{
                                         }
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div >
+                        </div >
                         <div className={styles.rightproductview}>
                             <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
                             <div className={styles.starsection}>
@@ -1410,7 +1463,7 @@ setTimeout(()=>{
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div >
 
                     <div className={styles.descriptionsection}>
                         <div className={styles.additionaldetails}>
@@ -1456,7 +1509,7 @@ setTimeout(()=>{
                             </div>
                         </div>
                     </div>
-                </div>
+                </div >
                 {productreview?.length > 0 ? <div className={styles.reviewsection}>
                     <div>
                         <Reviewsproduct productreview={productreview} ratingcount={ratingcount} averageRatings={averageRatings} />
@@ -1464,17 +1517,17 @@ setTimeout(()=>{
                 </div> : <></>}
                 <div>
                     <div>
-                        <Caroselproducts productimages={productimages}/>
+                        <Caroselproducts productimages={productimages} />
                     </div>
                 </div>
-            </div>
+            </div >
             <div className={styles.leftbg}>
 
             </div>
             <div className={styles.righttopbg}></div>
 
 
-        </Fragment>
+        </Fragment >
     )
 
 

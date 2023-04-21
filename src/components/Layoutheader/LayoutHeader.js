@@ -115,19 +115,19 @@ function LayoutHeader({ setdark, dark, title, children }) {
                   title == "tracking" ||
                   title == "Payment" ||
                   title == "service-booking" ||
-                  title == "tracking"||
-                  title=="Aboutus"
+                  title == "tracking" ||
+                  title == "Aboutus"
                   ?
                   (
-                  <>
-                  
-                  
-                  
-                  
-                  </>
-                ) : (
-                  <Signupnewsletter />
-                )}
+                    <>
+
+
+
+
+                    </>
+                  ) : (
+                    <Signupnewsletter />
+                  )}
               </div>
               <div>
                 <footer>
