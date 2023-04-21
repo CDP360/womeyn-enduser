@@ -69,71 +69,60 @@
     object-fit: contain;
   }
   .borderimage {
- 
     cursor: pointer;
-    width:70px;
-    height:70px;
-    object-fit:contain;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border:1px dashed #e95a5a;
-    padding:8px;
-    border-radius:10px;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #e95a5a;
+    padding: 8px;
+    border-radius: 10px;
   }
-  .imageflex
-  {
-    display:flex;
+  .imageflex {
+    display: flex;
     // border:2px solid red;
-    gap:20px;
-    padding-top:4%;
-
+    gap: 20px;
+    padding-top: 4%;
   }
-  .insideboximage
-  {
-    position:relative;
-    .editmodelprofile
-    {
-      width:70px;
-      height:70px;
-      object-fit:contain;
-      display:flex;
-      border:1px solid #08B1BA;
-      padding:8px;
-      border-radius:10px;
-    
-  
+  .insideboximage {
+    position: relative;
+    .editmodelprofile {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      display: flex;
+      border: 1px solid #08b1ba;
+      padding: 8px;
+      border-radius: 10px;
     }
   }
- 
-  .deletebuttonimage
-  {
-    position:absolute;
-    top:-13%;
-    right:-10%;
-    width:25px;
-    height:25px;
-    dislay:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto;
-    border:none;
-    outline:none;
-    background-color:#E95A5A;
-    padding:3px;
-    border-radius:50%;
-    color:white;
+
+  .deletebuttonimage {
+    position: absolute;
+    top: -13%;
+    right: -10%;
+    width: 25px;
+    height: 25px;
+    dislay: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: none;
+    outline: none;
+    background-color: #e95a5a;
+    padding: 3px;
+    border-radius: 50%;
+    color: white;
   }
 }
 
-
-.reviewbuttons
-{
-  width:100%;
-  display:flex;
-  gap:20px;
-  margin:0 auto;
-  align-items:center;
-  justify-content:center;
-
+.reviewbuttons {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
 }

@@ -73,7 +73,7 @@ function Home() {
         GetBannerimages();
         const userid = localStorage.getItem("userid");
         UserProfileInformation(JSON.parse(userid)).then((res) => {
-            if (res == "Please authenticate") {
+            if (res == "Please authenticate" || res=="Forbidden") {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("whish");

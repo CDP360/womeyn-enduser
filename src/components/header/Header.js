@@ -36,7 +36,6 @@ function Header() {
     const [userauth, setUserAuth] = useState("");
     const [favortscount, setFavortcount] = useState([]);
     const [explorecategorys, setCatgorys] = useState([]);
-
     const [searchDatacategory, setSearchDataCategory] = useState([]);
     const logoutHandler = async () => {
         toast.success("Logout Successfull!!",
@@ -93,7 +92,6 @@ function Header() {
     useEffect(() => {
         const auth = localStorage.getItem("auth");
         setUserAuth(auth);
-
         ExploreCategorys().then((res) => {
             setCatgorys(res?.data);
         }).catch((err) => {
@@ -101,10 +99,7 @@ function Header() {
         })
         FavortActions(dispatch);
         FilterData();
-
-
         SearchProductCategorys().then((res) => {
-
             setSearchDataCategory(res?.data);
         }).catch((err) => {
             console.log(err);
