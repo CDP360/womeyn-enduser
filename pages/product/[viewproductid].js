@@ -70,7 +70,7 @@ function index() {
       res?.data?.productDetails?.productImages?.map((item, index) => {
         productshowimages?.push(item)
       })
-    
+
       setProductImage(productshowimages[0]?.name);
     }).catch((err) => {
       console.log(err);
@@ -98,17 +98,6 @@ function index() {
 
       <Head>
 
-        <title>{viewproductid}</title>
-        <meta
-          name="description"
-          content="Super product with free shipping."
-          key="desc"
-        />
-        {/* <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={addProductJsonLd()}
-          key="product-jsonld"
-        /> */}
         <title>{viewproductid}</title>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
