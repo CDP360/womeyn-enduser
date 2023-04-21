@@ -629,6 +629,8 @@ function Viewproducts({ id }) {
         ProductView(productnames).then((res) => {
 
 
+            console.log(res?.data,"res")
+
             setProductseller(res?.data?.sellerInformation[0])
             const productshowimages = [];
             res?.data?.productDetails?.productImages?.map((item, index) => {
@@ -1034,45 +1036,31 @@ function Viewproducts({ id }) {
         const URL = `${origin}${router?.asPath}`;
         setPathUrl(URL);
     }, [])
-
-
-
-
-
-
     return (
         <Fragment>
             <>
-
                 <Head>
-
-                    <title>{id}</title>
+                    <title>{productdata?.productName}</title>
                     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
                     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-                    <meta property="fb:page_id" content="102988293558" />
                     <meta name="robots" content="index" />
                     <meta property="og:type" content="website" />
                     <meta name="og_site_name" property="og:site_name" content="Womeyn.com" />
-                    <link rel="apple-touch-icon" sizes="57x57" href={pathurl} />
-                    <link rel="apple-touch-icon" sizes="72x72" href={pathurl} />
-                    <link rel="apple-touch-icon" sizes="114x114" href={pathurl} />
-                    <link rel="apple-touch-icon" sizes="144x144" href={pathurl} />
-                    <link rel="apple-touch-icon" href="/apple-touch-icon-57x57.png" />
                     <meta name="twitter:card" content="app" />
                     <meta name="twitter:site" content="@womeyn" />
                     <meta name="twitter:creator" content="@womeyn" />
-                    <meta name="twitter:title" content={id} />
+                    <meta name="twitter:title" content={productdata?.productName} />
                     <meta name="twitter:description" content={productdata?.productDescription} />
-                    <meta property="twitter:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`} />
+                    <meta property="twitter:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
                     <meta property="og:image:width" content="1200" />
                     <meta property="og:image:height" content="630" />
-                    <meta name="og_title" property="og:title" content={id} />
+                    <meta name="og_title" property="og:title" content={productdata?.productName} />
                     <meta name="keywords" content={productdata?.productDescription} />
                     <meta name="description" content={productdata?.productDescription} />
                     <meta property="og:description" content={productdata?.productDescription} />
                     <link rel="canonical" href={pathurl} />
-                    <meta name="og_image" property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`} />
-                    <meta name="og_url" property="og:url" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`} />
+                    <meta name="og_image" property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
+                    <meta name="og_url" property="og:url" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
                 </Head>
             </>
             <div className={styles.mainproductviewscreen}>

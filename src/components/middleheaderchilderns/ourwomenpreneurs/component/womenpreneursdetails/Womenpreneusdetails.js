@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import React, { Fragment, useEffect, useState } from 'react'
 import axios from 'axios';
 import styles from './styles/Womenpredetails.module.scss';
-import logowomen from '../../../../../assests/womeynlogos/logowomeyn.png';
+import logowomen from '../../../../../assests/homepage-logos/Mobileviewlogoshort.png';
 import Image from 'next/image';
 import girl1 from '../../../../../assests/womeynlogos/womenlogo.png';
 import Beverage from '../beverages/Beverage';
@@ -16,6 +16,7 @@ import Pagination from 'rc-pagination';
 import rightarrow from '../../../../../assests/category-logos/leftcategoryarrow.png';
 import leftarrow from '../../../../../assests/category-logos/rightcategoryarrow.png';
 import users from '../../../../../assests/womeynlogos/noimage.png';
+
 function Womenpreneusdetails({ id }) {
     const [limit, setLimit] = useState([]);
     const [current, setCurrent] = useState(1);
