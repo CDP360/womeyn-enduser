@@ -685,7 +685,7 @@ function Viewproducts({ id }) {
         }
 
 
-    }, [productSize, productseller, productnames, averageRatings?.avgRating, productnotfound, errors]);
+    }, [productSize, productseller, productnames, averageRatings?.avgRating, productnotfound, errors,productdata]);
 
 
 
@@ -1041,8 +1041,8 @@ function Viewproducts({ id }) {
             <>
 
                 <DefaultSeo
-                    title="ammaappa"
-                    description="kalaisiurya"
+                    title={productdata?.productName}
+                    description={productdata?.productDescription}
                     openGraph={{
                         type: 'website',
                         locale: 'en_IE',
@@ -1086,7 +1086,7 @@ function Viewproducts({ id }) {
                     description="Next SEO packages simplifies the SEO management in Next Apps with less configurations"
                 /> */}
 
-                <NextSeo
+                {/* <NextSeo
                     robotsProps={{
                         nosnippet: true,
                         notranslate: true,
@@ -1122,7 +1122,7 @@ function Viewproducts({ id }) {
                     <meta itemprop="image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
                     <meta name="og_image" property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
                     <meta name="og_url" property="og:url" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
-                </Head>
+                </Head> */}
             </>
             <div className={styles.mainproductviewscreen}>
                 <div className={styles.insideproductview}>
