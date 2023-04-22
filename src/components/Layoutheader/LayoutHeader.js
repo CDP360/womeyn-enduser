@@ -13,12 +13,12 @@ function LayoutHeader({ setdark, dark, title, children }) {
       <Head>
         <title>{title ? title + "- Womeyn" : "Womeyn"}</title>
         {/* <meta charSet="utf-8" /> */}
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
         />
-
-
 
         {/* <link rel="icon" href="/favicon.ico" /> */}
         <link
