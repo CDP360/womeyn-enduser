@@ -119,9 +119,15 @@ function Womenpreneusdetails({ id }) {
                 <div className={styles.insidedetailpage}>
                     <div className={styles.splitsectiondetails}>
                         <div className={styles.leftdetailpage}>
-                            <div className={styles.splitleftdetails}>
+                            {/* <div className={styles.splitleftdetails}>
                                 <div>
                                     <Image src={logowomen} alt="no image" className={styles.detailimage} />
+
+                                    {sellers?.profileImageName ? <>
+                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
+                            </> : <>
+                                <Image src={users} alt="no image" className={styles.womenlogo} />
+                            </>}
                                 </div>
                                 <div>
                                     <div className="large-text">
@@ -132,21 +138,58 @@ function Womenpreneusdetails({ id }) {
                                     <div className="fs-4 capitalfirstletter">
                                         {id}
                                     </div>
-                                </div>
-                            </div>
-                            <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
-                                {sellers?.profileDescription}
+                                </div> */}
 
-                            </div>
-                        </div>
-                        <div className={styles.rightdetailpage}>
-                            {sellers?.profileImageName ? <>
+                                <div className={styles.insidesplitwomeyn}>
+<div className={styles.imagewomenleft}>
+{sellers?.profileImageName ? <>
                                 <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
                             </> : <>
                                 <Image src={users} alt="no image" className={styles.womenlogo} />
                             </>}
 
+</div>
+<div className={styles.imagewomenright}>
+
+<div className="large-text">
+                                        <div className="capital">
+                                            {sellers?.firstName}
+                                        </div>
+                                    </div>
+                                
+                                       <div className={styles.idsellers}>
+                                       {id}
+                                       </div>
+                                    
+
+</div>
+                                </div>
+                            {/* </div> */}
+                            {/* <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
+                                {sellers?.profileDescription}
+
+                            </div> */}
                         </div>
+                        <div className={styles.rightdetailpage}>
+                            {/* {sellers?.profileImageName ? <>
+                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
+                            </> : <>
+                                <Image src={users} alt="no image" className={styles.womenlogo} />
+                            </>} */}
+
+<div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
+                                {sellers?.profileDescription}
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div>
+
+<div className={styles.wehave}>
+    We have loads of <br/> products to choose from
+</div>
                     </div>
                     <div className={styles.middleheaderpage}>
                         <div className={styles.insidemiddleheader}>

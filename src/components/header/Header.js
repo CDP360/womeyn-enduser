@@ -445,9 +445,12 @@ function Header() {
 
                     </div>
                     <div className={router.pathname == "/getintouch" ? "active" : ""}>
-                        <Link href="/getintouch" className='nav-link'>
+                        {/* <Link href="/getintouch" className='nav-link'>
                             <span className='ms-2 hovertexts'>Get In Touch</span>
-                        </Link>
+                        </Link> */}
+                         <div className='nav-link' onClick={() => router?.push("/getintouch")}>
+                            <span className='ms-2 hovertexts'>Get In Touch</span>
+                        </div>
                     </div>
                 </div>
             </div>

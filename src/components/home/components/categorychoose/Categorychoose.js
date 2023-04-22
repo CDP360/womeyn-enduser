@@ -103,6 +103,8 @@ function Categorychoose() {
                                             {index + 1 === 2 && <Image src={coup2} alt="no image" className={styles.slideimagesizes}/>}
                                             {index + 1 === 3 && <Image src={coup3} alt="no image" className={styles.slideimagesizes}/>}
                                             {index + 1 === 4 && <Image src={coup4} alt="no image" className={styles.slideimagesizes}/>}
+                                            {index + 1 === 5&& <Image src={coup4} alt="no image" className={styles.slideimagesizes}/>}
+
                                             {/* <Image src={couponoffers} alt="no image" className={styles.slideimagesizes} /> */}
                                             {/* <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesize} /> */}
                                             <div className='mt-4' onClick={() => pushCatgorys(item?.slugName)} >
