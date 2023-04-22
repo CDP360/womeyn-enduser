@@ -75,7 +75,7 @@ function Carouselseller({ bannerimages, MovePageData }) {
                 </div>
             </> :
                 <>
-                                        <Skeleton className={styles.loadingsection}/>
+                    <Skeleton className={styles.loadingsection} />
 
                 </>
             }

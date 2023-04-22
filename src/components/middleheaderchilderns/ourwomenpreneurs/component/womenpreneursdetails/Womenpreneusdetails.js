@@ -106,11 +106,11 @@ function Womenpreneusdetails({ id }) {
             </button>;
         }
         return originalElement;
-    
+
     }
 
 
-  
+
     return (
         <Fragment >
             <div className={styles.maindetailpage}>
@@ -140,30 +140,30 @@ function Womenpreneusdetails({ id }) {
                                     </div>
                                 </div> */}
 
-                                <div className={styles.insidesplitwomeyn}>
-<div className={styles.imagewomenleft}>
-{sellers?.profileImageName ? <>
-                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
-                            </> : <>
-                                <Image src={users} alt="no image" className={styles.womenlogo} />
-                            </>}
+                            <div className={styles.insidesplitwomeyn}>
+                                <div className={styles.imagewomenleft}>
+                                    {sellers?.profileImageName ? <>
+                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
+                                    </> : <>
+                                        <Image src={users} alt="no image" className={styles.womenlogo} />
+                                    </>}
 
-</div>
-<div className={styles.imagewomenright}>
+                                </div>
+                                <div className={styles.imagewomenright}>
 
-<div className="large-text">
+                                    <div className="large-text">
                                         <div className="capital">
                                             {sellers?.firstName}
                                         </div>
                                     </div>
-                                
-                                       <div className={styles.idsellers}>
-                                       {id}
-                                       </div>
-                                    
 
-</div>
+                                    <div className={styles.idsellers}>
+                                        {id}
+                                    </div>
+
+
                                 </div>
+                            </div>
                             {/* </div> */}
                             {/* <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
                                 {sellers?.profileDescription}
@@ -177,7 +177,7 @@ function Womenpreneusdetails({ id }) {
                                 <Image src={users} alt="no image" className={styles.womenlogo} />
                             </>} */}
 
-<div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
+                            <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
                                 {sellers?.profileDescription}
 
                             </div>
@@ -187,9 +187,9 @@ function Womenpreneusdetails({ id }) {
 
                     <div>
 
-<div className={styles.wehave}>
-    We have loads of <br/> products to choose from
-</div>
+                        <div className={styles.wehave}>
+                            We have loads of <br /> products to choose from
+                        </div>
                     </div>
                     <div className={styles.middleheaderpage}>
                         <div className={styles.insidemiddleheader}>
