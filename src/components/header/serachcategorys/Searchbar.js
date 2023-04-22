@@ -47,7 +47,14 @@ function Searchbar({ serachdata, serachicon }) {
                         )
                     })}
                 {serachdata?.length === 0 && <div>
-                    <Image src={nodata} alt="no image" className={styles.nodataimage}/>
+                    {/* <Image src={nodata} alt="no image" className={styles.nodataimage}/> */}
+
+                    <div>
+
+<div>
+    Popular Searches
+</div>
+                    </div>
                     </div>}
                 </div> : <>
                     {serachdata?.length === 0 && <div>No Result..!!!</div>}
