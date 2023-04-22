@@ -1123,24 +1123,24 @@ function Viewproducts({ id }) {
                     <meta name="og_image" property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
                     <meta name="og_url" property="og:url" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} /> */}
 
-{productdata?.productName && <title>{productdata?.productName}</title>}
+                    {productdata?.productName && <title>{productdata?.productName}</title>}
 
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <meta name="title" content={productdata?.productName} />
 
+                    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta charSet="utf-8" />
                     <meta name="twitter:site" content="@womeyn" />
                     <meta name="twitter:creator" content="@womeyn" />
                     {productdata?.productDescription && <meta name="description" content={productdata?.productDescription} key="description" />}
-
                     <meta property="og:type" content="website" />
                     <meta property="og:title" content={productdata?.productName} key="og:title" />
                     {productdata?.productDescription && <meta property="og:description" content={productdata?.productDescription} key="og:description" />}
                     {productimages?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} key="og:image" />}
                     {pathurl && <meta property="og:url" content={pathurl} key="og:url" />}
                     <meta name="twitter:card" content={productdata?.productDescription} key="twitter:card" />
-
                     <meta property="og:site_name" content="Energici, l'info bien être" key="og:site_name" />
-
                     {pathurl && <meta
                         property="twitter:url"
                         content={pathurl}
