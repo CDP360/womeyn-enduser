@@ -685,7 +685,7 @@ function Viewproducts({ id }) {
         }
 
 
-    }, [productSize, productseller, productnames, averageRatings?.avgRating, productnotfound, errors,productdata]);
+    }, [productSize, productseller, productnames, averageRatings?.avgRating, productnotfound, errors, productdata]);
 
 
 
@@ -1040,7 +1040,7 @@ function Viewproducts({ id }) {
         <Fragment>
             <>
 
-                <DefaultSeo
+                {/* <DefaultSeo
                     title={productdata?.productName}
                     description={productdata?.productDescription}
                     openGraph={{
@@ -1069,7 +1069,7 @@ function Viewproducts({ id }) {
                         site: '@site',
                         cardType: 'summary_large_image',
                     }}
-                />
+                /> */}
 
                 {/* <ArticleJsonLd
                     type="BlogPosting"
@@ -1085,8 +1085,8 @@ function Viewproducts({ id }) {
                     authorName="Author Name"
                     description="Next SEO packages simplifies the SEO management in Next Apps with less configurations"
                 /> */}
-
-                {/* <NextSeo
+                {/* 
+                <NextSeo
                     robotsProps={{
                         nosnippet: true,
                         notranslate: true,
@@ -1096,11 +1096,11 @@ function Viewproducts({ id }) {
                         maxImagePreview: 'none',
                         maxVideoPreview: -1,
                     }}
-                />
+                /> */}
                 <Head>
                     <meta name="robots" content="max-snippet:0" />
                     <meta name="robots" content="max-snippet:20, max-image-preview:large"></meta>
-                    <title>kalaisurya</title>
+                    {productdata?.productName && <title>{productdata?.productName}</title>}
                     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
                     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
                     <meta name="robots" content="index" />
@@ -1109,20 +1109,20 @@ function Viewproducts({ id }) {
                     <meta name="twitter:card" content="app" />
                     <meta name="twitter:site" content="@womeyn" />
                     <meta name="twitter:creator" content="@womeyn" />
-                    <meta name="twitter:title" content={productdata?.productName} />
-                    <meta name="twitter:description" content={productdata?.productDescription} />
-                    <meta property="twitter:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
+                    {productdata?.productName && <meta name="twitter:title" content={productdata?.productName} />}
+                    {productdata?.productDescription && <meta name="twitter:description" content={productdata?.productDescription} />}
+                    {productimages?.productThumbImage && <meta property="twitter:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />}
                     <meta property="og:image:width" content="1200" />
                     <meta property="og:image:height" content="630" />
-                    <meta name="og_title" property="og:title" content={productdata?.productName} />
-                    <meta name="keywords" content={productdata?.productDescription} />
-                    <meta name="description" content={productdata?.productDescription} />
-                    <meta property="og:description" content={productdata?.productDescription} />
-                    <link rel="canonical" href={pathurl} />
+                    {productdata?.productName && <meta name="og_title" property="og:title" content={productdata?.productName} />}
+                    {productdata?.productDescription && <meta name="keywords" content={productdata?.productDescription} />}
+                    {productdata?.productDescription && <meta name="description" content={productdata?.productDescription} />}
+                    {productdata?.productDescription && <meta property="og:description" content={productdata?.productDescription} />}
+                    {pathurl && <link rel="canonical" href={pathurl} />}
                     <meta itemprop="image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
                     <meta name="og_image" property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
                     <meta name="og_url" property="og:url" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
-                </Head> */}
+                </Head>
             </>
             <div className={styles.mainproductviewscreen}>
                 <div className={styles.insideproductview}>
