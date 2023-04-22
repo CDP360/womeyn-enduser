@@ -1098,7 +1098,9 @@ function Viewproducts({ id }) {
                     }}
                 />
                 <Head>
-                    <title>{productdata?.productName}</title>
+                    <meta name="robots" content="max-snippet:0" />
+                    <meta name="robots" content="max-snippet:20, max-image-preview:large"></meta>
+                    <title>kalaisurya</title>
                     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
                     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
                     <meta name="robots" content="index" />
