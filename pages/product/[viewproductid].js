@@ -38,8 +38,7 @@ function index() {
   // }, [pathurl]);
 
   return (
-    <LayoutHeader title="product-view">
-      
+    <LayoutHeader title={viewproductid}>
       <Viewproducts id={viewproductid} />
     </LayoutHeader>
   )

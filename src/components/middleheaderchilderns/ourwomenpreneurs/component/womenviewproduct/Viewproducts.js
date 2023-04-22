@@ -1040,7 +1040,7 @@ function Viewproducts({ id }) {
         <Fragment>
             <>
 
-                {/* <DefaultSeo
+                <DefaultSeo
                     title={productdata?.productName}
                     description={productdata?.productDescription}
                     openGraph={{
@@ -1071,7 +1071,7 @@ function Viewproducts({ id }) {
                     }}
                 />
 
-                <ArticleJsonLd
+                {/* <ArticleJsonLd
                     type="BlogPosting"
                     url="https://example.com/blog"
                     title="Manage SEO in NextJS with Next SEO"
@@ -1086,18 +1086,18 @@ function Viewproducts({ id }) {
                     description="Next SEO packages simplifies the SEO management in Next Apps with less configurations"
                 /> */}
 
-<NextSeo
-      robotsProps={{
-        nosnippet: true,
-        notranslate: true,
-        noimageindex: true,
-        noarchive: true,
-        maxSnippet: -1,
-        maxImagePreview: 'none',
-        maxVideoPreview: -1,
-      }}
-    />
-                <Head>
+                <NextSeo
+                    robotsProps={{
+                        nosnippet: true,
+                        notranslate: true,
+                        noimageindex: true,
+                        noarchive: true,
+                        maxSnippet: -1,
+                        maxImagePreview: 'none',
+                        maxVideoPreview: -1,
+                    }}
+                />
+                {/* <Head>
                     <title>{productdata?.productName}</title>
                     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
                     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
@@ -1120,7 +1120,7 @@ function Viewproducts({ id }) {
                     <meta itemprop="image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
                     <meta name="og_image" property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
                     <meta name="og_url" property="og:url" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
-                </Head>
+                </Head> */}
             </>
             <div className={styles.mainproductviewscreen}>
                 <div className={styles.insideproductview}>
