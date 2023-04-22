@@ -16,7 +16,7 @@ import ReactImageMagnify from 'react-image-magnify';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import Head from "next/head";
-
+import { DefaultSeo, NextSeo, ArticleJsonLd } from 'next-seo';
 import { Rate } from "antd";
 
 function Viewproducts({ id }) {
@@ -629,7 +629,7 @@ function Viewproducts({ id }) {
         ProductView(productnames).then((res) => {
 
 
-            console.log(res?.data,"res")
+            console.log(res?.data, "res")
 
             setProductseller(res?.data?.sellerInformation[0])
             const productshowimages = [];
@@ -1039,7 +1039,53 @@ function Viewproducts({ id }) {
     return (
         <Fragment>
             <>
-                <Head>
+
+                <DefaultSeo
+                    title={productdata?.productName}
+                    description={productdata?.productDescription}
+                    openGraph={{
+                        type: 'website',
+                        locale: 'en_IE',
+                        url: pathurl,
+                        siteName: `Womeyn.com`,
+                        images: {
+                            url: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`,
+                            width: 850,
+                            height: 650,
+                            alt: 'Womeyn Image..!!',
+                        },
+                        article: {
+                            publishedTime: '2022-06-21T23:04:13Z',
+                            modifiedTime: '2022-01-21T18:04:43Z',
+                            authors: [
+                                'https://www.example.com/authors/@firstnameA-lastnameA',
+                                'https://www.example.com/authors/@firstnameB-lastnameB',
+                            ],
+                            tags: ['Tag A', 'Tag B', 'Tag C'],
+                        },
+                    }}
+                    twitter={{
+                        handle: '@handle',
+                        site: '@site',
+                        cardType: 'summary_large_image',
+                    }}
+                />
+
+                <ArticleJsonLd
+                    type="BlogPosting"
+                    url="https://example.com/blog"
+                    title="Manage SEO in NextJS with Next SEO"
+                    images={[
+                        'https://example.com/photos/1x1/photo.jpg',
+                        'https://example.com/photos/4x3/photo.jpg',
+                        'https://example.com/photos/16x9/photo.jpg',
+                    ]}
+                    datePublished="2022-06-21T23:04:13Z"
+                    dateModified="2022-06-21T23:04:13Z"
+                    authorName="Author Name"
+                    description="Next SEO packages simplifies the SEO management in Next Apps with less configurations"
+                />
+                {/* <Head>
                     <title>{productdata?.productName}</title>
                     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
                     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
@@ -1059,9 +1105,10 @@ function Viewproducts({ id }) {
                     <meta name="description" content={productdata?.productDescription} />
                     <meta property="og:description" content={productdata?.productDescription} />
                     <link rel="canonical" href={pathurl} />
+                    <meta itemprop="image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
                     <meta name="og_image" property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
                     <meta name="og_url" property="og:url" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
-                </Head>
+                </Head> */}
             </>
             <div className={styles.mainproductviewscreen}>
                 <div className={styles.insideproductview}>
