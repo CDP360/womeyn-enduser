@@ -1041,8 +1041,8 @@ function Viewproducts({ id }) {
             <>
 
                 <DefaultSeo
-                    title={productdata?.productName}
-                    description={productdata?.productDescription}
+                    title="ammaappa"
+                    description="kalaisiurya"
                     openGraph={{
                         type: 'website',
                         locale: 'en_IE',
@@ -1097,7 +1097,7 @@ function Viewproducts({ id }) {
                         maxVideoPreview: -1,
                     }}
                 />
-                {/* <Head>
+                <Head>
                     <title>{productdata?.productName}</title>
                     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
                     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
@@ -1120,7 +1120,7 @@ function Viewproducts({ id }) {
                     <meta itemprop="image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
                     <meta name="og_image" property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
                     <meta name="og_url" property="og:url" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
-                </Head> */}
+                </Head>
             </>
             <div className={styles.mainproductviewscreen}>
                 <div className={styles.insideproductview}>
