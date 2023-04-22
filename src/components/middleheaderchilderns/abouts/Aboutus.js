@@ -140,13 +140,13 @@ function Aboutus() {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div id="c">
                         <Ourteam />
                     </div>
-                    <div>
+                    <div id="d">
                         <Ourclutures />
                     </div>
-                    <div>
+                    <div id="e">
 
                         <AboutusSubscribe />
                     </div>

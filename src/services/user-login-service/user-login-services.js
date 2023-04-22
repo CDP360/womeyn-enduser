@@ -67,10 +67,11 @@ export function UserProfileImageupload(userid, data) {
     })
 }
 export function UserProfileInformation(userid) {
+    console.log("t",userid)
     return instanceBaseurl.get(`/customer/basicinfo/${userid}`).then((res) => {
         return res;
     }).catch((err) => {
-        return err?.response?.data?.message
+        return err?.response;
     })
 }
 export function UserForgetPassword(data) {

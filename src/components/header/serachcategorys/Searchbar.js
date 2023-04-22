@@ -5,17 +5,10 @@ import { useRouter } from 'next/router';
 import nodata from '../../../assests/login-logos/No data-amico.png';
 
 function Searchbar({ serachdata, serachicon }) {
-
-
     const history=useRouter();
-    
     const CategoryNavigatepath=(data)=>{
         history.push(`/category/${data}`)
     }
-
-
-
-
 
     return (
         <div className={styles.mainserachbarsection}>
