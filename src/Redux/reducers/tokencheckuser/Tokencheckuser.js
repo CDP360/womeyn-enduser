@@ -1,22 +1,22 @@
 
 
 const initialState = {
-    logindata: [],
-    error: ""
+    Tokens: "",
+    error: false
 }
-const LoginReducer = (state = initialState, action) => {
+const TokenReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "LOGIN_SUCCESS":
+        case "TOKEN_SUCCESS":
             return {
                 ...state,
-                logindata: action.payload,
+                Tokens: action.payload,
                 error: ""
             }
 
-        case "LOGIN_ERROR":
+        case "TOKEN_ERROR":
             return {
                 ...state,
-                logindata: [],
+                Tokens: "",
                 error: action.payload
             }
 
@@ -25,4 +25,4 @@ const LoginReducer = (state = initialState, action) => {
     }
 }
 
-export default LoginReducer;
+export default TokenReducer;

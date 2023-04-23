@@ -4,14 +4,27 @@ import styles from '../allcategories/styles/Allcategories.module.scss';
 import stars from '../../../../../../assests/homepage-logos/stars.png';
 import Image from 'next/image';
 function Electronics() {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    axios.get('https://fakestoreapi.com/products').then((res) => {
-      setProducts(res?.data)
-    }).catch((err) => {
-      console.log(err);
-    })
-  }, []);
+ 
+  const Products=[
+    {
+      id:1,
+      image:"no image",
+      title:"kalai",
+      price:400
+    },
+    {
+      id:2,
+      image:"no image",
+      title:"kalai",
+      price:400
+    },
+    {
+      id:3,
+      image:"no image",
+      title:"kalai",
+      price:400
+    },
+  ]
   return (
     <Fragment>
       <>
@@ -20,7 +33,7 @@ function Electronics() {
             Our bestselling Electronics
           </div>
           <div className='cardsection row justify-content-center  w-100 mt-4 mb-3 ms-1 '>
-            {products?.slice(10, 14).map((item, index) => {
+            {Products?.slice(10, 14).map((item, index) => {
               return (
                 <div className='card col-lg-3 col-sm-10 col-xs-10 col-md-10 ' key={index}>
                   <div>

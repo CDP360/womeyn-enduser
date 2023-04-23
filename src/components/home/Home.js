@@ -17,6 +17,7 @@ import { useRouter } from 'next/router';
 import { UserProfileInformation } from '../../services/user-login-service/user-login-services';
 function Home() {
     const [bannerimages, setBannerImages] = useState([]);
+
     const settings = {
         dots: false,
         infinite: true,
@@ -69,11 +70,15 @@ function Home() {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
     }
     const state = useSelector(state => state);
+
+    console.log(state?.loginUser?.error,"state")
     useEffect(() => {
         GetBannerimages();
         const userid = localStorage.getItem("userid");
         UserProfileInformation(JSON.parse(userid)).then((res) => {
-            if (res == "Please authenticate" || res=="Forbidden") {
+
+            console.log("k", res?.response?.data?.message)
+            if (res == "Please authenticate" || state?.loginUser?.error===true) {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("whish");
@@ -83,8 +88,8 @@ function Home() {
                 localStorage.removeItem('signupuser');
 
             }
-        }).catch((err) => {
-            console.log(err);
+        }).catch(err => {
+            console.log(err?.response?.data?.message, "amma");
         })
 
     }, [state]);

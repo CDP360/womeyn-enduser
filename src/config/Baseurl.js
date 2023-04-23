@@ -2,6 +2,8 @@ import axios from 'axios';
 import jwt_decode from "jwt-decode";
 
 import useRouter from 'next/router';
+import { useDispatch } from 'react-redux';
+import TokenErrorCheck from '../Redux/actions/tokencheck/Tokencheck';
 axios.interceptors.request.use(
     function (config) {
         if (config.url.search("/customer/update-photo") !== -1 || config.url.search("/customer/add-review") !== -1) {
@@ -63,6 +65,8 @@ axios.interceptors.request.use(
         }
     },
     function (error) {
+        console.log("kalais", error?.response?.data?.message)
+
 
         return Promise.reject(error);
     },
@@ -77,24 +81,29 @@ axios.interceptors.response.use(
     function (error) {
 
 
-        console.log(error.response.status,"status")
+        const dispacth=useDispatch();
 
-        const history=useRouter();
 
-        if (error.response.status === 401) {
-            // toast.error("Logout user!!");
-            const token = localStorage.getItem("userToken");
-            let decoded = jwt_decode(token);
-            if (Date.now() >= decoded.exp * 1000 || error.response.status === 401) {
-                localStorage.removeItem("userid");
-                localStorage.removeItem("userToken");
-                localStorage.removeItem("whish");
-                localStorage.removeItem("user");
-                localStorage.removeItem("auth");
-                localStorage.removeItem("productid");
-                history.push("/login");
+        console.log("kalai", error?.response?.data?.message)
 
-            }
+
+        dispacth(TokenErrorCheck(error?.response?.data?.message || error?.response?.status))
+
+
+
+
+        const history = useRouter();
+
+        if (error.response.data.status === 401 || error?.response?.data?.message=="Please authenticate") {
+           
+
+            localStorage.removeItem("userid");
+            localStorage.removeItem("userToken");
+            localStorage.removeItem("whish");
+            localStorage.removeItem("user");
+            localStorage.removeItem("auth");
+            localStorage.removeItem("productid");
+
         }
         return Promise.reject(error);
     }

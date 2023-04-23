@@ -5,15 +5,28 @@ import { UserProfileInformation } from "../../../services/user-login-service/use
 export const LoginActions = (dispatch) => {
     const userid = localStorage.getItem("userid");
     UserProfileInformation(JSON.parse(userid)).then((res) => {
-        dispatch({
-            type: "LOGIN_SUCCESS",
-            payload: res?.data
-        })
+
+        if(res?.data==undefined)
+        {
+            dispatch({
+                type: "LOGIN_ERROR",
+                payload: true,
+    
+            })
+        }
+        else
+        {
+            dispatch({
+                type: "LOGIN_SUCCESS",
+                payload: res?.data
+            })
+        }
+      
     }).catch((err) => {
         console.log(err);
         dispatch({
             type: "LOGIN_ERROR",
-            payload: true,
+            payload: err,
 
         })
     })
