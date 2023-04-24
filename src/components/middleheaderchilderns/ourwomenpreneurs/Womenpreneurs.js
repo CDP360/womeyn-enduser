@@ -234,6 +234,15 @@ function Womenpreneurs() {
             </div>
 
 
+
+            <div className={styles.emptyboxrightcolor}>
+                </div>
+                <div className={styles.emptyboxleftcolor}>
+                </div>
+
+            
+
+
         </Fragment>
     )
 }

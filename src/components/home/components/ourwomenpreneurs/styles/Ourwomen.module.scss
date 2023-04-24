@@ -84,7 +84,8 @@
                 box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
                 backdrop-filter: blur(66px);
                 position: relative;
-                z-index: 0 !important;
+                // z-index: 9898 !important;
+                background-color:white;
                 border-radius: 20px !important;
                 @include xsBreakPoint {
                     background-size: 230px 230px;
@@ -111,9 +112,9 @@
                     position: absolute;
                     border-radius: 50%;
                     background: linear-gradient(213.22deg, rgba(255, 179, 179, 0) -9.01%, #ffb3b3 139.42%);
-                    top: 0;
-                    left: 10%;
-                    animation: rounds 3s ease-in-out infinite;
+                    top: 5%;
+                    left: 15%;
+                    animation: rounds 5s ease-in-out infinite;
                 }
                 .roundscirclesimage {
                     width: 300px;
@@ -353,7 +354,7 @@
 
 @keyframes rounds {
     50% {
-        transform: translateY(20px);
+        transform: translateY(50px);
     }
     100% {
         transform: translateY(0px);
@@ -362,7 +363,7 @@
 
 @keyframes roundss {
     50% {
-        transform: translateY(-20px);
+        transform: translateY(-40px);
     }
     100% {
         transform: translateY(0px);

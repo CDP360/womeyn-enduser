@@ -77,7 +77,7 @@ function Login() {
 
             Userlogin(datas).then(async (res) => {
                 if (res) {
-                    console.log("kalai", res?.data?.user?.id)
+          
                     localStorage.setItem("user", JSON.stringify(res?.data?.user?.firstName));
                     localStorage.setItem("auth", true);
                     localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));

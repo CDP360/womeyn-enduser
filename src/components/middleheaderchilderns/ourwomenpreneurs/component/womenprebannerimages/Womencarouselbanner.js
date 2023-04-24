@@ -5,6 +5,14 @@ import { Getwomenpreneursbanner } from './../../../../../services/womenpreneurs-
 import SlideNextArrow from '../../../../home/slidenextarrow/SlideNextArrow';
 import SlidePreArrow from '../../../../home/slideprearrow/SlidePreArrow';
 import Skeleton from 'react-loading-skeleton';
+import w1 from '../../../../../assests/sellerbanners/w1.jpg';
+import w2 from '../../../../../assests/sellerbanners/w2.jpg';
+import w3 from '../../../../../assests/sellerbanners/w3.jpg';
+import w4 from '../../../../../assests/sellerbanners/w4.jpg';
+import w5 from '../../../../../assests/sellerbanners/w5.jpg';
+import w6 from '../../../../../assests/sellerbanners/w6.jpg';
+import w7 from '../../../../../assests/sellerbanners/w7.jpg';
+
 function Womencarouselbanner() {
     const [banners, setBanners] = useState([]);
     const settings = {
@@ -68,28 +76,71 @@ function Womencarouselbanner() {
     const MovePageData = (data) => {
         window.open(data);
     }
-    const dataCarousel=[
+    const dataCarousel = [
         {
-            id:1,
-            name:"no names"
+            id: 1,
+            name: "no names"
         },
         {
-            id:2,
-            name:"no names"
+            id: 2,
+            name: "no names"
         },
         {
-            id:3,
-            name:"no names"
+            id: 3,
+            name: "no names"
         }
+    ]
+
+
+    const ImageSellers = [
+        {
+            id: 1,
+            image: w5
+        },
+        {
+            id: 2,
+            image: w3
+        },
+        {
+            id: 3,
+            image: w4
+        },
+        {
+            id: 4,
+            image: w6
+        },
+        {
+            id: 5,
+            image: w1
+        },
+        {
+            id: 6,
+            image: w7
+        },
+        {
+            id: 7,
+            image: w2
+        },
+
     ]
     return (
         <div>
             <div className={styles.imagesectionhome}>
 
                 {banners?.length === 0 ? <>
-                                <div>
-                                    <Skeleton className={styles.womenbanners}/>
-                                </div>
+                    <div>
+                    <Slider {...settings}>
+                            {ImageSellers?.map((item, index) => {
+                                return (
+                                    <div key={index}>
+                                        {item.image ? <img src={item?.image?.src} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
+                                            <Skeleton className={styles.homebanner} />
+                                        </>}
+                                    </div>
+                                )
+                            })}
+                        </Slider>
+                    </div>
                 </> :
                     <Slider {...settings}>
                         {banners?.map((item, index) => {

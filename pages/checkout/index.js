@@ -2,10 +2,9 @@ import React from 'react'
 import Checkout from '../../src/components/checkout/Checkout'
 import LayoutHeader from './../../src/components/Layoutheader/LayoutHeader';
 
-function index({ dark, setdark }) {
+function index() {
     return (
-        <LayoutHeader title="Checkout" dark={dark} setdark={setdark}>
-
+        <LayoutHeader title="Checkout">
             <Checkout />
         </LayoutHeader>
     )

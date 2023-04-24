@@ -3,9 +3,9 @@ import Signup from '../../src/components/signup/Signup';
 
 import LayoutHeader from '../../src/components/Layoutheader/LayoutHeader';
 
-function index({ dark, setdark }) {
+function index() {
     return (
-        <LayoutHeader title="Women-signup" setdark={setdark} dark={dark}>
+        <LayoutHeader title="Women-signup">
             <meta
                 name="description"
                 content="Meta description for the About page"

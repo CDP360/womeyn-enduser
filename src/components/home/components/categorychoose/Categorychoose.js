@@ -99,11 +99,11 @@ function Categorychoose() {
                                 {datas.map((item, index) => {
                                     return (
                                         <div className={styles.insideslides} onClick={pushCatgorys} key={index}>
-                                                {index + 1 === 1 && <Image src={coup1} alt="no image" className={styles.slideimagesizes}/>}
-                                            {index + 1 === 2 && <Image src={coup2} alt="no image" className={styles.slideimagesizes}/>}
-                                            {index + 1 === 3 && <Image src={coup3} alt="no image" className={styles.slideimagesizes}/>}
-                                            {index + 1 === 4 && <Image src={coup4} alt="no image" className={styles.slideimagesizes}/>}
-                                            {index + 1 === 5&& <Image src={coup4} alt="no image" className={styles.slideimagesizes}/>}
+                                            {index + 1 === 1 && <Image src={coup1} alt="no image" className={styles.slideimagesizes} />}
+                                            {index + 1 === 2 && <Image src={coup2} alt="no image" className={styles.slideimagesizes} />}
+                                            {index + 1 === 3 && <Image src={coup3} alt="no image" className={styles.slideimagesizes} />}
+                                            {index + 1 === 4 && <Image src={coup4} alt="no image" className={styles.slideimagesizes} />}
+                                            {index + 1 === 5 && <Image src={coup5} alt="no image" className={styles.slideimagesizes} />}
 
                                             {/* <Image src={couponoffers} alt="no image" className={styles.slideimagesizes} /> */}
                                             {/* <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesize} /> */}
@@ -123,10 +123,12 @@ function Categorychoose() {
                                 {datas?.map((item, index) => {
                                     return (
                                         <div className={styles.couponcardssection}>
-                                            {index + 1 === 1 && <Image src={coup1} alt="no image" className={styles.slideimagesizes}/>}
-                                            {index + 1 === 2 && <Image src={coup2} alt="no image" className={styles.slideimagesizes}/>}
-                                            {index + 1 === 3 && <Image src={coup3} alt="no image" className={styles.slideimagesizes}/>}
-                                            {index + 1 === 4 && <Image src={coup4} alt="no image" className={styles.slideimagesizes}/>}
+                                            {index + 1 === 1 && <Image src={coup1} alt="no image" className={styles.slideimagesizes} />}
+                                            {index + 1 === 2 && <Image src={coup2} alt="no image" className={styles.slideimagesizes} />}
+                                            {index + 1 === 3 && <Image src={coup3} alt="no image" className={styles.slideimagesizes} />}
+                                            {index + 1 === 4 && <Image src={coup4} alt="no image" className={styles.slideimagesizes} />}
+                                            {index + 1 === 5 && <Image src={coup5} alt="no image" className={styles.slideimagesizes} />}
+
 
                                             <div className='mt-4' onClick={() => pushCatgorys(item?.slugName)} >
                                                 <h6>{item?.title}</h6>

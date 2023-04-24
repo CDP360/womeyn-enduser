@@ -257,7 +257,20 @@ function ProductCategorys() {
                             </div>
                         </div>
 
+
                     </div>
+
+
+
+                    
+                    <div className={styles.emptyboxrightcolor}>
+                </div>
+                <div className={styles.emptyboxleftcolor}>
+                </div>
+
+
+
+                    
 
                 </div>
             </div>

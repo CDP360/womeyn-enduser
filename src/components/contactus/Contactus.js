@@ -12,7 +12,6 @@ import circles from '../../assests/login-logos/arrowcircleoff.png';
 import ContactForm from './ContactForm';
 
 function Contactus() {
-
     const Contactdetails = [
         {
             id: 1,
@@ -106,18 +105,16 @@ function Contactus() {
                     </div>
                 </div>
             </div>
-            <div className={styles.leftbgsection}>
-
-            </div>
-
-            <div className={styles.rightbgtop}>
+           
 
 
-            </div>
-            <div className={styles.rightbgbottom}>
 
+            
+            <div className={styles.emptyboxrightcolor}>
+                </div>
+                <div className={styles.emptyboxleftcolor}>
+                </div>
 
-            </div>
         </Fragment>
     )
 }

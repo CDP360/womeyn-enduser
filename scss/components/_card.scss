@@ -5,7 +5,9 @@
     // align-items: center;
     // justify-content: center;
     position: relative;
-    background-color: white !important;
+    // background-color: white !important;
+    background-color:none !important;
+
     @include xlBreakPoint {
         gap: 30px;
     }

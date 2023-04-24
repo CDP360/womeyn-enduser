@@ -24,6 +24,9 @@
     width: 100%;
     height: 100%;
     padding-bottom: 5%;
+    position:relative;
+    z-index:9 !important;
+    background-color:none;
     .bodysectionwomeynpre {
         width: 100%;
         margin: 0 auto;
@@ -331,3 +334,31 @@
 .brandname:hover {
     color: #e95a5a !important;
 }
+
+
+
+.emptyboxrightcolor {
+    // background-color: orange;
+    position: absolute;
+    width: 12%;
+    height: 100% !important;
+    background: #fecf9d;
+    opacity: 0.4;
+    filter: blur(100px);
+    left: 0;
+    top:1%;
+    z-index: 0;
+  }
+  .emptyboxleftcolor {
+    position: absolute;
+    width: 10%;
+    height: 100% !important;
+  
+    background: #e95a5a;
+    opacity: 0.4;
+    filter: blur(100px);
+    right: 5%;
+    top: -5%;
+    z-index: 0;
+  }
+  

@@ -3,14 +3,13 @@
 .homesectionmain {
   width: 100%;
   position: relative;
-  z-index:9 !important;
-
+  z-index: 9 !important;
 
   .insidesectionhome {
     width: 75%;
     margin: 0 auto;
     // position: relative;
-  z-index:9 !important;
+    z-index: 9 !important;
 
     @include xsBreakPoint {
       width: 85%;
@@ -59,7 +58,7 @@
       display: flex;
       gap: 20px;
       padding-top: 2%;
-  z-index:9 !important;
+      z-index: 9 !important;
 
       padding-bottom: 2%;
       .addimagessectionleft {
@@ -151,29 +150,27 @@
   border-radius: 20px;
 }
 
-
 .emptyboxrightcolor {
   // background-color: orange;
   position: absolute;
-  width: 15%;
-  height: 15% !important;
-  background: #FECF9D;
+  width: 12%;
+  height: 100% !important;
+  background: #fecf9d;
   opacity: 0.4;
   filter: blur(100px);
   left: 0;
-  top:8%;
-  z-index:0;
+  top:1%;
+  z-index: 0;
 }
 .emptyboxleftcolor {
   position: absolute;
-  width: 14%;
-  height: 10% !important;
-  
-background: #E95A5A;
-opacity: 0.4;
-filter: blur(100px);
+  width: 10%;
+  height: 100% !important;
+
+  background: #e95a5a;
+  opacity: 0.4;
+  filter: blur(100px);
   right: 5%;
   top: -5%;
-  z-index:0;
-
+  z-index: 0;
 }

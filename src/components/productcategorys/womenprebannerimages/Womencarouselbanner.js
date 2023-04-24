@@ -5,6 +5,14 @@ import SlideNextArrow from '../../home/slidenextarrow/SlideNextArrow';
 import SlidePreArrow from '../../home/slideprearrow/SlidePreArrow';
 import Skeleton from 'react-loading-skeleton';
 import { Getwomenpreneursbanner } from '../../../services/womenpreneurs-services/womenpreneurs-services';
+import w1 from '../../../assests/sellerbanners/w1.jpg';
+import w2 from '../../../assests/sellerbanners/w2.jpg';
+import w3 from '../../../assests/sellerbanners/w3.jpg';
+import w4 from '../../../assests/sellerbanners/w4.jpg';
+import w5 from '../../../assests/sellerbanners/w5.jpg';
+import w6 from '../../../assests/sellerbanners/w6.jpg';
+import w7 from '../../../assests/sellerbanners/w7.jpg';
+
 function Womencarouselbanner() {
     const [banners, setBanners] = useState([]);
     const settings = {
@@ -56,6 +64,39 @@ function Womencarouselbanner() {
         ]
     };
 
+
+    const ImageSellers = [
+        {
+            id: 1,
+            image: w7
+        },
+        {
+            id: 2,
+            image: w6
+        },
+        {
+            id: 3,
+            image: w5
+        },
+        {
+            id: 4,
+            image: w4
+        },
+        {
+            id: 5,
+            image: w3
+        },
+        {
+            id: 6,
+            image: w2
+        },
+        {
+            id: 7,
+            image: w1
+        },
+
+    ]
+
     useEffect(() => {
         Getwomenpreneursbanner().then((res) => {
             setBanners(res?.data);
@@ -88,7 +129,17 @@ function Womencarouselbanner() {
 
                 {banners?.length === 0 ? <>
                     <div>
-                        <Skeleton className={styles.womenbanners} />
+                        <Slider {...settings}>
+                            {ImageSellers?.map((item, index) => {
+                                return (
+                                    <div key={index}>
+                                        {item.image ? <img src={item?.image?.src} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
+                                            <Skeleton className={styles.homebanner} />
+                                        </>}
+                                    </div>
+                                )
+                            })}
+                        </Slider>
                     </div>
                 </> :
                     <Slider {...settings}>

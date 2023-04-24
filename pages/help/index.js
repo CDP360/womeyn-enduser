@@ -5,7 +5,6 @@ import LayoutHeader from './../../src/components/Layoutheader/LayoutHeader';
 function index() {
   return (
     <LayoutHeader title="Help">
-      
         <Help/>
     </LayoutHeader>
   )

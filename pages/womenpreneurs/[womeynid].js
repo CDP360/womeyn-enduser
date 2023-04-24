@@ -4,11 +4,11 @@ import LayoutHeader from '../../src/components/Layoutheader/LayoutHeader';
 import Womenpreneusdetails from '../../src/components/middleheaderchilderns/ourwomenpreneurs/component/womenpreneursdetails/Womenpreneusdetails';
 
 
-function index({ setdark, dark }) {
+function index() {
     const router = useRouter();
     const womeynid = router?.query?.womeynid;
     return (
-        <LayoutHeader title="product" setdark={setdark} dark={dark}>
+        <LayoutHeader title="product">
             <meta
                 name="description"
                 content="Meta description for the About page"

@@ -5,23 +5,25 @@ import Servicecards from './components/servicecards/Servicecards';
 function Mainservice() {
     return (
         <>
-        <div className={styles.mainservices}>
+            <div className={styles.mainservices}>
 
-        <div className='mainsection'>
-            <div className="insidesection">
-                {/* <Servicebooking /> */}
-                <Servicecards />
+                <div className='mainsection'>
+                    <div className="insidesection">
+                        {/* <Servicebooking /> */}
+                        <Servicecards />
+                    </div>
+                </div>
+
+
+                
             </div>
-        </div>
-        </div>
-        <div className={styles.leftbgcolorservice}>
+            
 
-
-</div>
-<div className={styles.rightbgcolorservice}>
-
-
-</div>
+               
+            <div className={styles.emptyboxrightcolor}>
+                </div>
+                <div className={styles.emptyboxleftcolor}>
+                </div>
         </>
     )
 }

@@ -6,7 +6,6 @@ import Eventsdetails from './../../../src/components/middleheaderchilderns/event
 function index() {
     return (
         <LayoutHeader title="eventsdetails">
-           
             <Eventsdetails />
         </LayoutHeader>
 

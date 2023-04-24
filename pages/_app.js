@@ -11,12 +11,10 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { StoreProviderContext } from '../src/Redux/store/Contextstore';
 import LoaderLogo from '../src/components/loaderlogo/LoaderLogo';
 import Errorboundary from '../src/components/errorboundary/Errorboundary';
-import CartContextProvider from '../src/Redux/store/CartContext';
+
 
 function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
-
-  const [sampleCheck, setSamplecheck] = useState(false);
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap");
     import("slick-carousel/slick/slick.css");

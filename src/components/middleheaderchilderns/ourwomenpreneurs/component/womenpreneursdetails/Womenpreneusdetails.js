@@ -16,6 +16,17 @@ import Pagination from 'rc-pagination';
 import rightarrow from '../../../../../assests/category-logos/leftcategoryarrow.png';
 import leftarrow from '../../../../../assests/category-logos/rightcategoryarrow.png';
 import users from '../../../../../assests/womeynlogos/noimage.png';
+import Slider from "react-slick";
+import SlideNextArrow from './slidenextarrow/SlideNextArrow';
+import SlidePreArrow from './slideprearrow/SlidePreArrow';
+
+import w1 from '../../../../../assests/sellerbanners/w1.jpg';
+import w2 from '../../../../../assests/sellerbanners/w2.jpg';
+import w3 from '../../../../../assests/sellerbanners/w3.jpg';
+import w4 from '../../../../../assests/sellerbanners/w4.jpg';
+
+
+
 
 function Womenpreneusdetails({ id }) {
     const [limit, setLimit] = useState([]);
@@ -110,35 +121,110 @@ function Womenpreneusdetails({ id }) {
     }
 
 
+    const [show, setShow] = useState(false);
+
+
+
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        // autoplay: true,
+        autoplaySpeed: 3500,
+        pauseOnHover: true,
+        nextArrow: <SlideNextArrow />,
+        prevArrow: <SlidePreArrow />,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 2,
+                    infinite: true,
+                    dots: false,
+
+                }
+            },
+            {
+                breakpoint: 800,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 1
+                }
+            }
+        ]
+    };
+
+
+    const ImageSellers = [
+        {
+            id: 1,
+            image: w1
+        },
+        {
+            id: 2,
+            image: w2
+        },
+        {
+            id: 3,
+            image: w3
+        },
+        {
+            id: 4,
+            image: w4
+        },
+
+    ]
+
 
     return (
         <Fragment >
             <div className={styles.maindetailpage}>
-                <div className="emptyboxrightcolor">
-                </div>
+
                 <div className={styles.insidedetailpage}>
+
+                    <div className='mb-5'>
+
+                        {/* <Slider {...settings}>
+                            {ImageSellers?.map((item, index) => {
+                                return (
+                                    <div key={index}>
+                                        {item.image ? <img src={item?.image?.src} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
+                                            <Skeleton className={styles.homebanner} />
+                                        </>}
+                                    </div>
+                                )
+                            })}
+                        </Slider> */}
+
+                        {w3? <img src={w3?.src} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
+                            <Skeleton className={styles.homebanner} />
+                        </>}
+
+                    </div>
+
                     <div className={styles.splitsectiondetails}>
                         <div className={styles.leftdetailpage}>
-                            {/* <div className={styles.splitleftdetails}>
-                                <div>
-                                    <Image src={logowomen} alt="no image" className={styles.detailimage} />
 
-                                    {sellers?.profileImageName ? <>
-                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
-                            </> : <>
-                                <Image src={users} alt="no image" className={styles.womenlogo} />
-                            </>}
-                                </div>
-                                <div>
-                                    <div className="large-text">
-                                        <div className="capital">
-                                            {sellers?.firstName}
-                                        </div>
-                                    </div>
-                                    <div className="fs-4 capitalfirstletter">
-                                        {id}
-                                    </div>
-                                </div> */}
 
                             <div className={styles.insidesplitwomeyn}>
                                 <div className={styles.imagewomenleft}>
@@ -156,32 +242,34 @@ function Womenpreneusdetails({ id }) {
                                             {sellers?.firstName}
                                         </div>
                                     </div>
-
                                     <div className={styles.idsellers}>
                                         {id}
                                     </div>
-
-
                                 </div>
                             </div>
-                            {/* </div> */}
-                            {/* <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
-                                {sellers?.profileDescription}
 
-                            </div> */}
                         </div>
                         <div className={styles.rightdetailpage}>
-                            {/* {sellers?.profileImageName ? <>
-                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
-                            </> : <>
-                                <Image src={users} alt="no image" className={styles.womenlogo} />
-                            </>} */}
-
                             <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
-                                {sellers?.profileDescription}
 
+                                {show ? <>
+                                    {sellers?.profileDescription}<span onClick={() => setShow(!show)} className={styles.lessmore}>Less More...</span>
+
+                                </> : <div >
+
+                                    {sellers?.profileDescription?.length <= 100 ? <>
+
+                                        {sellers?.profileDescription?.slice(0, 500)}
+
+                                    </> : <>
+
+                                        {sellers?.profileDescription?.slice(0, 500)}<span onClick={() => setShow(!show)} className={styles.readmore}>Read More...</span>
+
+                                    </>}
+
+
+                                </div>}
                             </div>
-
                         </div>
                     </div>
 

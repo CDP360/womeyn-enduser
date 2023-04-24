@@ -5,6 +5,11 @@ import { Getwomenpreneursbanner } from './../../../../../services/womenpreneurs-
 import SlideNextArrow from '../../../../home/slidenextarrow/SlideNextArrow';
 import SlidePreArrow from '../../../../home/slideprearrow/SlidePreArrow';
 import Skeleton from 'react-loading-skeleton';
+import w1 from '../../../../../assests/sellerbanners/w1.jpg';
+import w2 from '../../../../../assests/sellerbanners/w2.jpg';
+import w3 from '../../../../../assests/sellerbanners/w3.jpg';
+import w4 from '../../../../../assests/sellerbanners/w4.jpg';
+
 function Womencarouselbanner() {
     const [banners, setBanners] = useState([]);
     const settings = {
@@ -68,19 +73,24 @@ function Womencarouselbanner() {
     const MovePageData = (data) => {
         window.open(data);
     }
-    const dataCarousel = [
+    const ImageSellers = [
         {
             id: 1,
-            name: "no names"
+            image: w4
         },
         {
             id: 2,
-            name: "no names"
+            image: w3
         },
         {
             id: 3,
-            name: "no names"
-        }
+            image: w1
+        },
+        {
+            id: 4,
+            image: w2
+        },
+
     ]
     return (
         <div>
@@ -88,7 +98,17 @@ function Womencarouselbanner() {
 
                 {banners?.length === 0 ? <>
                     <div>
-                        <Skeleton className={styles.womenbanners} />
+                        <Slider {...settings}>
+                            {ImageSellers?.map((item, index) => {
+                                return (
+                                    <div key={index}>
+                                        {item.image ? <img src={item?.image?.src} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
+                                            <Skeleton className={styles.homebanner} />
+                                        </>}
+                                    </div>
+                                )
+                            })}
+                        </Slider>
                     </div>
                 </> :
                     <Slider {...settings}>

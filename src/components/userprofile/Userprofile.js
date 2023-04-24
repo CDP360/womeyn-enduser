@@ -12,10 +12,12 @@ import Favorts from './components/favorts/Favorts';
 import Orders from './components/order/Order';
 import Coupon from './components/coupons/Coupons';
 import ServiceMaindetails from './components/servicedetails/ServiceMaindetails';
+import { useSelector } from 'react-redux';
 function Userprofile({ name, error }) {
     const history = useRouter();
     const [user, setUser] = useState([]);
     const [errors, setError] = useState(false);
+    const state=useSelector((state)=>state);
     useEffect(() => {
         const womentoken = localStorage.getItem("userToken");
         if (JSON.parse(womentoken)) {
