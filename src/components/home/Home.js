@@ -75,7 +75,7 @@ function Home() {
         GetBannerimages();
         const userid = localStorage.getItem("userid");
         UserProfileInformation(JSON.parse(userid)).then((res) => {
-            if (res == "Please authenticate" || state?.loginUser?.logindata == []) {
+            if (res == "Please authenticate" || state?.loginUser?.logindata === [] || state?.loginUser?.logindata?.length === 0) {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("whish");
@@ -87,6 +87,16 @@ function Home() {
         }).catch(err => {
             console.log(err);
         })
+
+        if (state?.loginUser?.logindata === [] || undefined || state?.loginUser?.logindata?.length === 0) {
+            localStorage.removeItem("userid");
+            localStorage.removeItem("userToken");
+            localStorage.removeItem("whish");
+            localStorage.removeItem("user");
+            localStorage.removeItem("auth");
+            localStorage.removeItem("productid");
+            localStorage.removeItem('signupuser');
+        }
 
     }, [state]);
     const GetBannerimages = () => {
