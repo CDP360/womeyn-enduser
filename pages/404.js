@@ -9,7 +9,7 @@ function ErrorPage() {
 
     const router = useRouter();
     return (
-        <LayoutHeader title={"404 NotFound"} dark={dark} setdark={setdark}>
+        <LayoutHeader title={"404 NotFound"}>
             <div className={styles.mainpagenot}>
                 <div className={styles.emptyboxrightsectioncolor}></div>
                 <div className={styles.emptyboxleftsectioncolor}></div>
