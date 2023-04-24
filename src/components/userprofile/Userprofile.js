@@ -34,7 +34,6 @@ function Userprofile({ name, error }) {
                 localStorage.removeItem("auth");
                 localStorage.removeItem("productid");
                 localStorage.removeItem('signupuser');
-
                 history.push("/login");
             }
             setUser(res?.data);

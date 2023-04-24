@@ -71,14 +71,12 @@ function Home() {
     }
     const state = useSelector(state => state);
 
-    console.log(state?.loginUser?.error,"state")
+    console.log(state?.loginUser?.error, "state")
     useEffect(() => {
         GetBannerimages();
         const userid = localStorage.getItem("userid");
         UserProfileInformation(JSON.parse(userid)).then((res) => {
-
-            console.log("k", res?.response?.data?.message)
-            if (res == "Please authenticate" || state?.loginUser?.error===true) {
+            if (res == "Please authenticate" || state?.loginUser?.logindata==undefined) {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("whish");
@@ -103,6 +101,7 @@ function Home() {
     const MovePageData = (data) => {
         window.open(data);
     }
+
     return (
         <Fragment>
             <div className={styles.homesectionmain}>

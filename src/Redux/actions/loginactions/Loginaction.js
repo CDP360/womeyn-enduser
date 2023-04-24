@@ -6,24 +6,15 @@ export const LoginActions = (dispatch) => {
     const userid = localStorage.getItem("userid");
     UserProfileInformation(JSON.parse(userid)).then((res) => {
 
-        if(res?.data==undefined)
-        {
-            dispatch({
-                type: "LOGIN_ERROR",
-                payload: true,
-    
-            })
-        }
-        else
-        {
+        if (res?.data) {
             dispatch({
                 type: "LOGIN_SUCCESS",
                 payload: res?.data
             })
         }
-      
+       
     }).catch((err) => {
-        console.log(err);
+      
         dispatch({
             type: "LOGIN_ERROR",
             payload: err,
