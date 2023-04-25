@@ -216,7 +216,7 @@ function Womenpreneusdetails({ id }) {
                             })}
                         </Slider> */}
 
-                        {w3? <img src={w3?.src} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
+                        {w3 ? <img src={w3?.src} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
                             <Skeleton className={styles.homebanner} />
                         </>}
 

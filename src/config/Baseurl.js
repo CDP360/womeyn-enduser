@@ -81,21 +81,21 @@ axios.interceptors.response.use(
     function (error) {
 
 
-        const dispacth=useDispatch();
+        const dispacth = useDispatch();
 
 
         console.log("kalai", error?.response?.data?.message)
 
 
-        dispacth(TokenErrorCheck(error?.response?.data?.message || error?.response?.status))
+        dispacth(TokenErrorCheck(error?.response?.data?.message || error?.response?.status || "kalai"))
 
 
 
 
         const history = useRouter();
 
-        if (error.response.data.status === 401 || error?.response?.data?.message=="Please authenticate") {
-           
+        if (error.response.data.status === 401 || error?.response?.data?.message == "Please authenticate") {
+
 
             localStorage.removeItem("userid");
             localStorage.removeItem("userToken");

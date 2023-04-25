@@ -16,8 +16,8 @@ const TokenReducer = (state = initialState, action) => {
         case "TOKEN_ERROR":
             return {
                 ...state,
-                Tokens: "",
-                error: action.payload
+                Tokens: action.payload,
+                error: ""
             }
 
         default:

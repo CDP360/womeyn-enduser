@@ -57,6 +57,8 @@ function Header() {
         localStorage.removeItem("auth");
         localStorage.removeItem("productid");
         localStorage.removeItem('signupuser');
+        localStorage.removeItem("userTokens");
+
         setShowMega(false);
         setTimeout(() => {
             router.push("/");
@@ -106,25 +108,16 @@ function Header() {
         })
     }, [userauth]);
 
-
-
     const SellerLogin = () => {
         window.open('https://eseller.cdp360.in/sign-up')
     }
-
-
     const [serachcategory, setSerachCategory] = useState("");
-
     const [serachdata, setSearchData] = useState([]);
-
     const handleChange = (e) => {
         setSerachCategory(e?.target?.value)
         FilterData(e?.target?.value);
         SearchUserData(e?.target.value)
     }
-
-
-
 
     const FilterData = (value) => {
         const filtersoverall = searchDatacategory.filter((user) => {
@@ -152,8 +145,6 @@ function Header() {
         dispatch(GetAboutusCount(data));
     }
 
-
-    console.log(serachdata, "serachdata")
     return (
         <Fragment>
             <div className={styles.mainheadersection}>
@@ -399,7 +390,7 @@ function Header() {
 
                     <div className={router.pathname == "/womenpreneurs" ? "active" : ""}>
                         <div className='nav-link' onClick={() => router?.push("/womenpreneurs")}>
-                            <span className='ms-2 hovertexts'>Our WomeynPreneur</span>
+                            <span className='ms-2 hovertexts'>Our WomenPreneur</span>
                         </div>
                     </div>
                     <div className={router.pathname == "/events" ? "active" : ""}>
@@ -448,7 +439,7 @@ function Header() {
                         {/* <Link href="/getintouch" className='nav-link'>
                             <span className='ms-2 hovertexts'>Get In Touch</span>
                         </Link> */}
-                         <div className='nav-link' onClick={() => router?.push("/getintouch")}>
+                        <div className='nav-link' onClick={() => router?.push("/getintouch")}>
                             <span className='ms-2 hovertexts'>Get In Touch</span>
                         </div>
                     </div>

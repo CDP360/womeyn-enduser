@@ -72,7 +72,7 @@ export function UserProfileInformation(userid) {
         return res;
     }).catch((err) => {
 
-        // console.log(err, "k")
+        console.log(err, "k")
         return err;
     })
 }

@@ -57,6 +57,8 @@ function MobileHeader() {
         localStorage.removeItem("auth");
         localStorage.removeItem("productid");
         localStorage.removeItem('signupuser');
+        localStorage.removeItem("userTokens");
+
 
         setTimeout(() => {
             router.push("/login");

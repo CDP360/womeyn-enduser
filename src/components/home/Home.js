@@ -15,6 +15,7 @@ import { Bannerimage } from '../../services/banner-image-service/banner-image-se
 import Skeleton from 'react-loading-skeleton';
 import { useRouter } from 'next/router';
 import { UserProfileInformation } from '../../services/user-login-service/user-login-services';
+import jwt from 'jsonwebtoken';
 function Home() {
     const [bannerimages, setBannerImages] = useState([]);
     const settings = {
@@ -70,14 +71,30 @@ function Home() {
     }
     const state = useSelector(state => state);
 
-    console.log(state, "state")
+
+
     useEffect(() => {
         GetBannerimages();
         const userid = localStorage.getItem("userid");
+        const token = localStorage.getItem("userTokens");
+      
+        if (Date.now() >= JSON.parse(token)?.exp * 1000) {
+            localStorage.removeItem("userid");
+            localStorage.removeItem("userToken");
+            localStorage.removeItem("whish");
+            localStorage.removeItem("user");
+            localStorage.removeItem("auth");
+            localStorage.removeItem("productid");
+            localStorage.removeItem('signupuser');
+            router.push("/");
+        }
+
+
         UserProfileInformation(JSON.parse(userid)).then((res) => {
-            if (res == "Please authenticate" || state?.loginUser?.logindata === [] || state?.loginUser?.logindata?.length === 0) {
+            if (res == "Please authenticate" || state?.loginUser?.logindata == []) {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
+                localStorage.removeItem("userTokens");
                 localStorage.removeItem("whish");
                 localStorage.removeItem("user");
                 localStorage.removeItem("auth");
@@ -88,15 +105,7 @@ function Home() {
             console.log(err);
         })
 
-        if (state?.loginUser?.logindata === [] || undefined || state?.loginUser?.logindata?.length === 0) {
-            localStorage.removeItem("userid");
-            localStorage.removeItem("userToken");
-            localStorage.removeItem("whish");
-            localStorage.removeItem("user");
-            localStorage.removeItem("auth");
-            localStorage.removeItem("productid");
-            localStorage.removeItem('signupuser');
-        }
+
 
     }, [state]);
     const GetBannerimages = () => {
