@@ -12,17 +12,12 @@ import { Userlogin } from "../../services/user-login-service/user-login-services
 import eye from '../../assests/login-logos/Eye.png';
 import eyeoff from '../../assests/login-logos/Eye Off.png';
 import Spinner from 'react-bootstrap/Spinner';
-import jwt from 'jsonwebtoken';
-
 function Login() {
     const [show1, setShow1] = useState(false);
     const history = useRouter();
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
-
     const [tokenUser, setTokenUser] = useState("");
-
-
     const {
         register,
         handleSubmit,
@@ -76,26 +71,12 @@ function Login() {
             })
         }
         else {
-
             Userlogin(datas).then(async (res) => {
                 if (res) {
-
-
-                    const g = jwt.decode(res?.data?.tokens?.access?.token);
-
-                    console.log(g, "g")
                     localStorage.setItem("user", JSON.stringify(res?.data?.user?.firstName));
                     localStorage.setItem("auth", true);
                     localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
                     localStorage.setItem("userToken", JSON.stringify(res?.data?.tokens?.access?.token));
-                    localStorage.setItem("userTokens", jwt.decode(res?.data?.tokens?.access?.token));
-
-
-                    // const u=jwt.sign({
-                    //     data: res?.data?.tokens?.access?.token,
-                    // }, 'secret', { expiresIn: 60 * 60 });
-
-                    // console.log(u,"u");
                     setTimeout(() => {
                         history.push("/");
                         setLoading(false);
@@ -125,11 +106,6 @@ function Login() {
         }
 
     };
-
-
-
-
-
     const NavigateService = () => {
         history.push("/")
     }
@@ -154,15 +130,12 @@ function Login() {
         );
     }
 
-
-
     useEffect(() => {
         const TokenCheckUser = localStorage.getItem("userToken");
         setTokenUser(JSON.parse(TokenCheckUser));
 
     }, [])
     if (tokenUser) {
-
         return (
             <div>
                 {NavigateService()}

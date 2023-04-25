@@ -70,15 +70,12 @@ function Home() {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
     }
     const state = useSelector(state => state);
-
-
-
     useEffect(() => {
         GetBannerimages();
         const userid = localStorage.getItem("userid");
         const token = localStorage.getItem("userTokens");
-      
-        if (Date.now() >= JSON.parse(token)?.exp * 1000) {
+
+        if (Date.now() >= token?.exp * 1000) {
             localStorage.removeItem("userid");
             localStorage.removeItem("userToken");
             localStorage.removeItem("whish");

@@ -13,6 +13,10 @@ function Otp() {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
 
+    const [tokenUser, setTokenUser] = useState("");
+
+
+
 
     const [otp, setOtp] = useState("");
     const [minutes, setMinutes] = useState(1);
@@ -104,90 +108,124 @@ function Otp() {
         setSeconds(59);
         ResendVerifyCheck();
     };
-    return (
-        <Fragment>
-            <div className={styles.mainloginsection}>
-                <div className={styles.insidesectionlogin}>
-                    <div className={styles.insideloginsplit}>
-                        <div className={styles.verifytexts}>
-                            Verify account using OTP
-                        </div>
-                        <div className={styles["loraemlogin"]}>
-                            <div className="mb-5">
-                                Lorem ipsum sit dolor ametLorem ipsum sit dolor ametLorem ipsum sit dolor ametLorem ipsum sit dolor ametLorem ipsum sit dolor amet
-                            </div>
-                        </div>
-                        <div>
-                            <div className='otp-box-inputss'>
-                                <OtpInput
-                                    value={otp}
-                                    onChange={handleChange}
-                                    numInputs={4}
-                                    separator={<div className="inputgap"></div>}
-                                    inputStyle="inputStyles"
-                                    focusStyle="focusStyle"
-                                    shouldAutoFocus={true}
-                                />
 
-                                {error && otp?.length <= 0 ? <div className="text-danger mt-3">Otp Filed Is Empty</div> : <>{otp?.length >= 4 ? <div className="text-success text-center mt-3">
 
-                                </div> : <></>}</>}
+
+    useEffect(() => {
+        const TokenCheckUser = localStorage.getItem("userToken");
+        setTokenUser(JSON.parse(TokenCheckUser));
+
+    }, [])
+
+
+    const NavigateService = () => {
+        router.push("/")
+    }
+
+
+
+    if (tokenUser) {
+        return (
+            <div>
+                {NavigateService()}
+            </div>
+        )
+    }
+
+
+    else
+    {
+
+
+        return (
+            <Fragment>
+                <div className={styles.mainloginsection}>
+                    <div className={styles.insidesectionlogin}>
+                        <div className={styles.insideloginsplit}>
+                            <div className={styles.verifytexts}>
+                                Verify account using OTP
                             </div>
-                            <div>
-                                <div className='mt-3 text-center'>
-                                    {seconds > 0 || minutes > 0 ? (
-                                        <span className='minutes-section'>
-                                            {minutes < 10 ? `0${minutes}` : minutes}:
-                                            {seconds < 10 ? `0${seconds}` : seconds}
-                                        </span>
-                                    ) : (
-                                        <p style={{ color: "#121E49" }}>Didn't recieve code?</p>
-                                    )}
+                            <div className={styles["loraemlogin"]}>
+                                <div className="mb-5">
+                                    Lorem ipsum sit dolor ametLorem ipsum sit dolor ametLorem ipsum sit dolor ametLorem ipsum sit dolor ametLorem ipsum sit dolor amet
                                 </div>
                             </div>
-                            <div className={styles.verifyotpsection}>
-                                <button onClick={SummitOtp} className="loginbutton mt-2 mb-3">
-                                    {loading ? <>
-
-                                        <Spinner
-                                            as="span"
-                                            animation="grow"
-                                            size="sm"
-                                            role="status"
-                                            aria-hidden="true"
-                                        />
-                                        Loading...
-                                    </> : <>
-                                        Verify
-                                    </>}
-
-                                </button>
-                                <button className={`${seconds > 0 || minutes > 0 ? "resendbuttondisable" : "resendbutton"}`} disabled={seconds > 0 || minutes > 0}
-                                    style={{
-                                        color: seconds > 0 || minutes > 0 ? "#e75b5e" : "#e75b5e",
-                                        // backgroundColor: seconds > 0 || minutes > 0 ? "red" : "orange",
-                                        border: "2px solid #e75b5e",
-                                        outline: "none",
-                                    }}
-                                    onClick={resendOTP}>
-                                    Resend OTP
-                                </button>
+                            <div>
+                                <div className='otp-box-inputss'>
+                                    <OtpInput
+                                        value={otp}
+                                        onChange={handleChange}
+                                        numInputs={4}
+                                        separator={<div className="inputgap"></div>}
+                                        inputStyle="inputStyles"
+                                        focusStyle="focusStyle"
+                                        shouldAutoFocus={true}
+                                    />
+    
+                                    {error && otp?.length <= 0 ? <div className="text-danger mt-3">Otp Filed Is Empty</div> : <>{otp?.length >= 4 ? <div className="text-success text-center mt-3">
+    
+                                    </div> : <></>}</>}
+                                </div>
+                                <div>
+                                    <div className='mt-3 text-center'>
+                                        {seconds > 0 || minutes > 0 ? (
+                                            <span className='minutes-section'>
+                                                {minutes < 10 ? `0${minutes}` : minutes}:
+                                                {seconds < 10 ? `0${seconds}` : seconds}
+                                            </span>
+                                        ) : (
+                                            <p style={{ color: "#121E49" }}>Didn't recieve code?</p>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className={styles.verifyotpsection}>
+                                    <button onClick={SummitOtp} className="loginbutton mt-2 mb-3">
+                                        {loading ? <>
+    
+                                            <Spinner
+                                                as="span"
+                                                animation="grow"
+                                                size="sm"
+                                                role="status"
+                                                aria-hidden="true"
+                                            />
+                                            Loading...
+                                        </> : <>
+                                            Verify
+                                        </>}
+    
+                                    </button>
+                                    <button className={`${seconds > 0 || minutes > 0 ? "resendbuttondisable" : "resendbutton"}`} disabled={seconds > 0 || minutes > 0}
+                                        style={{
+                                            color: seconds > 0 || minutes > 0 ? "#e75b5e" : "#e75b5e",
+                                            // backgroundColor: seconds > 0 || minutes > 0 ? "red" : "orange",
+                                            border: "2px solid #e75b5e",
+                                            outline: "none",
+                                        }}
+                                        onClick={resendOTP}>
+                                        Resend OTP
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className={styles.leftsection1}>
+                <div className={styles.leftsection1}>
+    
+                </div>
+                <div className={styles.righttopsection1}>
+    
+                </div>
+                <div className={styles.rightbottomsection1}>
+    
+                </div>
+            </Fragment>
+        )
 
-            </div>
-            <div className={styles.righttopsection1}>
+    }
 
-            </div>
-            <div className={styles.rightbottomsection1}>
 
-            </div>
-        </Fragment>
-    )
+   
 }
 
 export default Otp;

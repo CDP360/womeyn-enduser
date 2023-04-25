@@ -128,15 +128,17 @@ function Header() {
 
 
     const SearchUserData = (data) => {
-        //         SearchProductUser(data).then((res) => {
+        SearchProductUser(data).then((res) => {
+
+            console.log(res?.data,"data")
 
 
-        // setSearchDataCategory(res?.data?.results)
+            // setSearchDataCategory(res?.data?.results)
 
 
-        //         }).catch((err) => {
-        //             console.log(err);
-        //         })
+        }).catch((err) => {
+            console.log(err);
+        })
     }
 
 

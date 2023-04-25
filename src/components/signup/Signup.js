@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState,useEffect } from 'react'
 import { Form } from 'react-bootstrap';
 import styles from '../../components/login/styles/Login.module.scss';
 import google from '../../assests/homepage-logos/google.png';
@@ -23,6 +23,9 @@ function Signup() {
 
     const url = process?.env?.NEXT_PUBLIC_URL;
     const [loading, setLoading] = useState(false);
+
+    const [tokenUser, setTokenUser] = useState("");
+
     const onSubmit = async (data) => {
         const response = {
             emailOrPhoneNo: data?.email
@@ -68,6 +71,18 @@ function Signup() {
         })
     };
 
+    useEffect(() => {
+        const TokenCheckUser = localStorage.getItem("userToken");
+        setTokenUser(JSON.parse(TokenCheckUser));
+
+    }, [])
+
+
+    const NavigateService = () => {
+        router.push("/")
+    }
+
+
     const handlePushTerms = () => {
         router.push("/terms-and-conditions")
     }
@@ -100,110 +115,121 @@ function Signup() {
     const [indexs, setIndexs] = useState(0);
 
 
+    if (tokenUser) {
+        return (
+            <div>
+                {NavigateService()}
+            </div>
+        )
+    }
+    else {
+        return (
+            <Fragment>
 
-    return (
-        <Fragment>
 
-
-            <div className={styles.mainloginsection}>
-                {/* <div className={styles.endcustomerbutton}>
-                    <div className={styles.insidecustomerbutton}>
-                        <button className={`${indexs === 0 ? "endconsumerbuttons" : "womenprebutton"}`}
-                            onClick={() => {
-                                setIndexs(0);
-                            }}
-                        >{LoginText?.Womenpreneur}</button>
-                        <button className={`${indexs === 1 ? "endconsumerbuttons" : "womenprebutton"}`}
-                            onClick={() => {
-                                setIndexs(1);
-                            }}
-                        >{LoginText?.EndConsumer}</button>
-                    </div>
-                </div> */}
-                <div className={styles.insidesectionlogin}>
-                    <div className={styles.insideloginsplit}>
-                        <div className={styles.logintext}>
-                            {LoginText?.Signup}
+                <div className={styles.mainloginsection}>
+                    {/* <div className={styles.endcustomerbutton}>
+                        <div className={styles.insidecustomerbutton}>
+                            <button className={`${indexs === 0 ? "endconsumerbuttons" : "womenprebutton"}`}
+                                onClick={() => {
+                                    setIndexs(0);
+                                }}
+                            >{LoginText?.Womenpreneur}</button>
+                            <button className={`${indexs === 1 ? "endconsumerbuttons" : "womenprebutton"}`}
+                                onClick={() => {
+                                    setIndexs(1);
+                                }}
+                            >{LoginText?.EndConsumer}</button>
                         </div>
-                        <div className="mt-3 mb-5">
-                            <Form onSubmit={handleSubmit(onSubmit)}>
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Control type={"text"} placeholder="Email / Phone Number" className={styles.forms}
-                                        {...register("email", {
-                                            required: "Please enter email / Phone Number",
-                                            pattern: {
-                                                // value: /\S+@\S+\.\S+/ || /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                // value: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
-                                                message: "invalid email address"
-                                            },
-                                        })}
-                                    />
-                                    {errors.email && <span className="active">{errors.email.message}</span>}
-                                </Form.Group>
-
-                                <button variant="primary" type="submit" className="loginbutton mt-2 mb-2">
-                                    {loading ? <>
-                                        <Spinner
-                                            as="span"
-                                            animation="grow"
-                                            size="sm"
-                                            role="status"
-                                            aria-hidden="true"
+                    </div> */}
+                    <div className={styles.insidesectionlogin}>
+                        <div className={styles.insideloginsplit}>
+                            <div className={styles.logintext}>
+                                {LoginText?.Signup}
+                            </div>
+                            <div className="mt-3 mb-5">
+                                <Form onSubmit={handleSubmit(onSubmit)}>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                                        <Form.Control type={"text"} placeholder="Email / Phone Number" className={styles.forms}
+                                            {...register("email", {
+                                                required: "Please enter email / Phone Number",
+                                                pattern: {
+                                                    // value: /\S+@\S+\.\S+/ || /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                    // value: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
+                                                    message: "invalid email address"
+                                                },
+                                            })}
                                         />
-                                        Loading...
-                                    </> : <>
-                                        {LoginText?.Signup}
+                                        {errors.email && <span className="active">{errors.email.message}</span>}
+                                    </Form.Group>
 
-                                    </>}
-                                </button>
-                            </Form>
-                            <div className="text-center mt-2 mb-3">
-                                {LoginText?.oryoucanuse}
-                            </div>
-                            <div className={styles.socialloginbutton} onClick={Googleoauth}>
-                                <div>
-                                    <Image src={google} alt="no image" className={styles.googleiconsectionlogin} />
+                                    <button variant="primary" type="submit" className="loginbutton mt-2 mb-2">
+                                        {loading ? <>
+                                            <Spinner
+                                                as="span"
+                                                animation="grow"
+                                                size="sm"
+                                                role="status"
+                                                aria-hidden="true"
+                                            />
+                                            Loading...
+                                        </> : <>
+                                            {LoginText?.Signup}
+
+                                        </>}
+                                    </button>
+                                </Form>
+                                <div className="text-center mt-2 mb-3">
+                                    {LoginText?.oryoucanuse}
                                 </div>
-                                <div>
-                                    {LoginText?.Google}
+                                <div className={styles.socialloginbutton} onClick={Googleoauth}>
+                                    <div>
+                                        <Image src={google} alt="no image" className={styles.googleiconsectionlogin} />
+                                    </div>
+                                    <div>
+                                        {LoginText?.Google}
+                                    </div>
                                 </div>
-                            </div>
-                            <div className={styles.socialloginbutton} onClick={FacebookAuth}>
-                                <div>
-                                    <Image src={facebook} alt="no image" className={styles.googleiconsectionlogin} />
+                                <div className={styles.socialloginbutton} onClick={FacebookAuth}>
+                                    <div>
+                                        <Image src={facebook} alt="no image" className={styles.googleiconsectionlogin} />
+                                    </div>
+                                    <div>
+                                        {LoginText?.Facebook}
+                                    </div>
                                 </div>
-                                <div>
-                                    {LoginText?.Facebook}
+                                <div className='text-center mb-3'>
+                                    {LoginText?.Alreadyhaveanaccount}  <span className='active' onClick={() => router.push("/login")}>{LoginText?.Login}</span>
                                 </div>
-                            </div>
-                            <div className='text-center mb-3'>
-                                {LoginText?.Alreadyhaveanaccount}  <span className='active' onClick={() => router.push("/login")}>{LoginText?.Login}</span>
                             </div>
                         </div>
-                    </div>
-                    <div className={styles.termsconditions}>
-                        <div className={styles.insideterms}>
-                            <div className={styles.toourtext}>
-                                {LoginText?.Bysigningupyouagreetoour}
-                            </div>
-                            <div className={styles.termsactivetext} onClick={handlePushTerms}>
-                                {LoginText?.termsandconditions}
+                        <div className={styles.termsconditions}>
+                            <div className={styles.insideterms}>
+                                <div className={styles.toourtext}>
+                                    {LoginText?.Bysigningupyouagreetoour}
+                                </div>
+                                <div className={styles.termsactivetext} onClick={handlePushTerms}>
+                                    {LoginText?.termsandconditions}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className={styles.leftsection1}>
+                <div className={styles.leftsection1}>
 
-            </div>
-            <div className={styles.righttopsection1}>
+                </div>
+                <div className={styles.righttopsection1}>
 
-            </div>
-            <div className={styles.rightbottomsection1}>
+                </div>
+                <div className={styles.rightbottomsection1}>
 
-            </div>
-        </Fragment>
-    )
+                </div>
+            </Fragment>
+        )
+    }
+
+
+
 }
 
 export default Signup

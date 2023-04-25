@@ -23,6 +23,8 @@ function Passwordcreate() {
     const [matchcheck4, setMatchCheck4] = useState(false);
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
+    const [tokenUser, setTokenUser] = useState("");
+
     const formSchema = Yup.object().shape({
         name: Yup.string()
             .required('Name is Required!'),
@@ -154,188 +156,216 @@ function Passwordcreate() {
         else {
             setValue("contactno", JSON.parse(emailstypecheck))
         }
-    }, [matchcheck1, matchcheck2, matchcheck3, matchcheck4, emailcheckuser])
-    return (
-        <Fragment>
-            <div className="mt-3">
-                <div className={styles.Mainforgetpassword}>
-                    <div className={styles.insidesectionforget}>
-                        <div className={styles.insideforgetsplit}>
-                            <div className={styles.logintext}>
-                                Welcome to Womeyn
-                            </div>
-                            <div>
-                            </div>
-
-                            <div className='mb-4 mt-2'>
-                                <Form onSubmit={handleSubmit(onSubmit)}>
-                                    <div className={styles.passwordformsection}>
-                                        <Form.Group className="mb-2" controlId="formBasicEmail">
-                                            <Form.Label>Name</Form.Label>
-                                            <div className={"formsectioncommonlogin"}>
-                                                <Form.Control type="text" placeholder="Name" className={styles.forms}
-                                                    {...register('name', {
-                                                        required: "Please enter name",
-
-                                                    })}
-                                                />
-                                            </div>
-                                            {errors.name && <span className="active">{errors.name.message}</span>}
-                                        </Form.Group>
-
-                                    </div>
-                                    <div className='mt-4'>
-                                        {emailcheckuser ? <>
-
-                                            <div className={styles.passwordformsection}>
-                                                <Form.Group className="mb-2" controlId="formBasicEmail">
-                                                    <Form.Label>Email </Form.Label>
-                                                    <div className={"formsectioncommonlogin"}>
-                                                        <Form.Control type="email" placeholder="Email" className={styles.forms}
-                                                            {...register('email', {
-                                                                required: "Please enter email",
-                                                                pattern: /^\S+@\S+$/i
-                                                            })}
-                                                            disabled
-
-                                                        />
+    }, [matchcheck1, matchcheck2, matchcheck3, matchcheck4, emailcheckuser]);
 
 
-                                                    </div>
-                                                    {errors.email && <span className="active">{errors.email.message}</span>}
-                                                </Form.Group>
+    useEffect(() => {
+        const TokenCheckUser = localStorage.getItem("userToken");
+        setTokenUser(JSON.parse(TokenCheckUser));
 
-                                            </div>
-                                        </> : <>
-                                            <div className={styles.passwordformsection}>
-                                                <Form.Group className="mb-2" controlId="formBasicEmail">
-                                                    <Form.Label>Email</Form.Label>
-                                                    <div className={"formsectioncommonlogin"}>
-                                                        <Form.Control type="email" placeholder="Email" className={styles.forms}
-                                                            {...register('email', {
-                                                                required: "Please enter email",
-                                                                pattern: /^\S+@\S+$/i
-                                                            })}
-                                                        />
+    }, [])
 
 
-                                                    </div>
-                                                    {errors.email && <span className="active">{errors.email.message}</span>}
-                                                </Form.Group>
+    const NavigateService = () => {
+        router.push("/")
+    }
 
-                                            </div>
-                                        </>}
 
-                                    </div>
-                                    <div className='mt-4'>
+
+    if (tokenUser) {
+        return (
+            <div>
+                {NavigateService()}
+            </div>
+        )
+    }
+
+    else
+    {
+        return (
+            <Fragment>
+                <div className="mt-3">
+                    <div className={styles.Mainforgetpassword}>
+                        <div className={styles.insidesectionforget}>
+                            <div className={styles.insideforgetsplit}>
+                                <div className={styles.logintext}>
+                                    Welcome to Womeyn
+                                </div>
+                                <div>
+                                </div>
+    
+                                <div className='mb-4 mt-2'>
+                                    <Form onSubmit={handleSubmit(onSubmit)}>
                                         <div className={styles.passwordformsection}>
                                             <Form.Group className="mb-2" controlId="formBasicEmail">
-                                                <Form.Label>Mobile no</Form.Label>
+                                                <Form.Label>Name</Form.Label>
                                                 <div className={"formsectioncommonlogin"}>
-                                                    <Form.Control type="text" placeholder="Mobile no" className={styles.forms}
-                                                        {...register('contactno', {
-                                                            required: "Please enter mobile no",
-
+                                                    <Form.Control type="text" placeholder="Name" className={styles.forms}
+                                                        {...register('name', {
+                                                            required: "Please enter name",
+    
                                                         })}
                                                     />
-
-
                                                 </div>
-                                                {errors.contactno && <span className="active">{errors.contactno.message}</span>}
+                                                {errors.name && <span className="active">{errors.name.message}</span>}
                                             </Form.Group>
-
+    
                                         </div>
-                                    </div>
-                                    <div className='mt-4'>
-                                        <div className={styles.passwordformsection}>
-                                            <Form.Group className="mb-2" controlId="formBasicEmail">
-                                                <Form.Label>Password</Form.Label>
-                                                <div className={"formsectioncommonlogin"}>
-                                                    <Form.Control type={show ? "text" : "password"} placeholder="Password" className={styles.forms}
-                                                        {...register('password', {
-                                                            pattern: {
-                                                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                                message: "invalid email address"
-                                                            },
-                                                        })}
-                                                    />
-
-                                                    <div className={styles.passwordicons}>
-                                                        {show ? <div className='mt-2' onClick={() => setShow(!show)}><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow(!show)}><Image src={eyeoff} alt="no image" /></div>}
+                                        <div className='mt-4'>
+                                            {emailcheckuser ? <>
+    
+                                                <div className={styles.passwordformsection}>
+                                                    <Form.Group className="mb-2" controlId="formBasicEmail">
+                                                        <Form.Label>Email </Form.Label>
+                                                        <div className={"formsectioncommonlogin"}>
+                                                            <Form.Control type="email" placeholder="Email" className={styles.forms}
+                                                                {...register('email', {
+                                                                    required: "Please enter email",
+                                                                    pattern: /^\S+@\S+$/i
+                                                                })}
+                                                                disabled
+    
+                                                            />
+    
+    
+                                                        </div>
+                                                        {errors.email && <span className="active">{errors.email.message}</span>}
+                                                    </Form.Group>
+    
+                                                </div>
+                                            </> : <>
+                                                <div className={styles.passwordformsection}>
+                                                    <Form.Group className="mb-2" controlId="formBasicEmail">
+                                                        <Form.Label>Email</Form.Label>
+                                                        <div className={"formsectioncommonlogin"}>
+                                                            <Form.Control type="email" placeholder="Email" className={styles.forms}
+                                                                {...register('email', {
+                                                                    required: "Please enter email",
+                                                                    pattern: /^\S+@\S+$/i
+                                                                })}
+                                                            />
+    
+    
+                                                        </div>
+                                                        {errors.email && <span className="active">{errors.email.message}</span>}
+                                                    </Form.Group>
+    
+                                                </div>
+                                            </>}
+    
+                                        </div>
+                                        <div className='mt-4'>
+                                            <div className={styles.passwordformsection}>
+                                                <Form.Group className="mb-2" controlId="formBasicEmail">
+                                                    <Form.Label>Mobile no</Form.Label>
+                                                    <div className={"formsectioncommonlogin"}>
+                                                        <Form.Control type="text" placeholder="Mobile no" className={styles.forms}
+                                                            {...register('contactno', {
+                                                                required: "Please enter mobile no",
+    
+                                                            })}
+                                                        />
+    
+    
                                                     </div>
-                                                </div>
-                                                {errors.password && <span className="active">{errors.password.message}</span>}
-                                            </Form.Group>
-
+                                                    {errors.contactno && <span className="active">{errors.contactno.message}</span>}
+                                                </Form.Group>
+    
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className='mt-4'>
-                                        <div className={styles.passwordformsection}>
-                                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                <Form.Label>Confirm Password</Form.Label>
-                                                <div className={"formsectioncommonlogin"}>
-                                                    <Form.Control type={show1 ? "text" : "password"} placeholder="Confirm Password" className={styles.forms}
-                                                        {...register('confirmPwd')}
-                                                    />
-                                                    <div className={styles.passwordicons}>
-                                                        {show1 ? <div onClick={() => setShow1(!show1)} className="mt-2 ms-4"><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow1(!show1)}><Image src={eyeoff} alt="no image" /></div>}
+                                        <div className='mt-4'>
+                                            <div className={styles.passwordformsection}>
+                                                <Form.Group className="mb-2" controlId="formBasicEmail">
+                                                    <Form.Label>Password</Form.Label>
+                                                    <div className={"formsectioncommonlogin"}>
+                                                        <Form.Control type={show ? "text" : "password"} placeholder="Password" className={styles.forms}
+                                                            {...register('password', {
+                                                                pattern: {
+                                                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                                    message: "invalid email address"
+                                                                },
+                                                            })}
+                                                        />
+    
+                                                        <div className={styles.passwordicons}>
+                                                            {show ? <div className='mt-2' onClick={() => setShow(!show)}><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow(!show)}><Image src={eyeoff} alt="no image" /></div>}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                {errors.confirmPwd && <span className="active">{errors.confirmPwd.message}</span>}
-                                            </Form.Group>
+                                                    {errors.password && <span className="active">{errors.password.message}</span>}
+                                                </Form.Group>
+    
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        {matchcheck1 ? <div className='text-success'>
-                                            Password Matched!
-                                        </div> : <>
-                                        </>}
-                                        {matchcheck2 && <div className='text-danger shorttexts'>
-                                            At least one letter,
-                                            one capital letter,
-                                            one number,
-                                            one special character,
-                                        </div>}
-                                    </div>
-                                    <div className='mt-4'>
-                                        <div className="mb-2">   Gender:</div>
-                                        <div className='d-flex gap-2'>
-                                            <input {...register("gender", { required: true })} type="radio" value="female" /> <span>Female</span>
-                                            <input {...register("gender", { required: true })} type="radio" value="male" /><span>Male</span>
+                                        <div className='mt-4'>
+                                            <div className={styles.passwordformsection}>
+                                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                                    <Form.Label>Confirm Password</Form.Label>
+                                                    <div className={"formsectioncommonlogin"}>
+                                                        <Form.Control type={show1 ? "text" : "password"} placeholder="Confirm Password" className={styles.forms}
+                                                            {...register('confirmPwd')}
+                                                        />
+                                                        <div className={styles.passwordicons}>
+                                                            {show1 ? <div onClick={() => setShow1(!show1)} className="mt-2 ms-4"><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow1(!show1)}><Image src={eyeoff} alt="no image" /></div>}
+                                                        </div>
+                                                    </div>
+                                                    {errors.confirmPwd && <span className="active">{errors.confirmPwd.message}</span>}
+                                                </Form.Group>
+                                            </div>
                                         </div>
-
-                                        {errors.gender && <span className="active">{errors.gender.message}</span>}
-                                    </div>
-                                    <button variant="primary" type="submit" className="loginbutton mt-4">
-                                        Submit
-                                    </button>
-
-                                </Form>
-                                {/* 
-                                <button variant="primary" type="submit" className="cancelbutton mt-4 mb-3">
-                                    Cancel
-                                </button> */}
-
-                                {/* <div className='text-center mb-5 mt-5'>
-                                Already have an account?  <span className='active' onClick={() => router.push("/login")}>Sign up</span>
-                            </div> */}
+                                        <div>
+                                            {matchcheck1 ? <div className='text-success'>
+                                                Password Matched!
+                                            </div> : <>
+                                            </>}
+                                            {matchcheck2 && <div className='text-danger shorttexts'>
+                                                At least one letter,
+                                                one capital letter,
+                                                one number,
+                                                one special character,
+                                            </div>}
+                                        </div>
+                                        <div className='mt-4'>
+                                            <div className="mb-2">   Gender:</div>
+                                            <div className='d-flex gap-2'>
+                                                <input {...register("gender", { required: true })} type="radio" value="female" /> <span>Female</span>
+                                                <input {...register("gender", { required: true })} type="radio" value="male" /><span>Male</span>
+                                            </div>
+    
+                                            {errors.gender && <span className="active">{errors.gender.message}</span>}
+                                        </div>
+                                        <button variant="primary" type="submit" className="loginbutton mt-4">
+                                            Submit
+                                        </button>
+    
+                                    </Form>
+                                    {/* 
+                                    <button variant="primary" type="submit" className="cancelbutton mt-4 mb-3">
+                                        Cancel
+                                    </button> */}
+    
+                                    {/* <div className='text-center mb-5 mt-5'>
+                                    Already have an account?  <span className='active' onClick={() => router.push("/login")}>Sign up</span>
+                                </div> */}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+    
+                <div className={styles.leftsection1}>
+    
+                </div>
+                <div className={styles.righttopsection1}>
+    
+                </div>
+                <div className={styles.rightbottomsection1}>
+    
+                </div>
+            </Fragment >
+        )
+    }
 
-            <div className={styles.leftsection1}>
-
-            </div>
-            <div className={styles.righttopsection1}>
-
-            </div>
-            <div className={styles.rightbottomsection1}>
-
-            </div>
-        </Fragment >
-    )
+    
 }
 
 export default Passwordcreate;
