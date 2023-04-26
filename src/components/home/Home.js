@@ -73,27 +73,9 @@ function Home() {
         GetBannerimages();
         CheckTokens();
 
-        if (state?.loginUser?.error?.message == "Please authenticate") {
-            localStorage.removeItem("userid");
-            localStorage.removeItem("userToken");
-            localStorage.removeItem("userTokens");
-            localStorage.removeItem("whish");
-            localStorage.removeItem("user");
-            localStorage.removeItem("auth");
-            localStorage.removeItem("productid");
-            localStorage.removeItem('signupuser');
-        }
+      
 
-        if (state?.loginUser?.error?.code === 401) {
-            localStorage.removeItem("userid");
-            localStorage.removeItem("userToken");
-            localStorage.removeItem("userTokens");
-            localStorage.removeItem("whish");
-            localStorage.removeItem("user");
-            localStorage.removeItem("auth");
-            localStorage.removeItem("productid");
-            localStorage.removeItem('signupuser');
-        }
+        
     }, [state]);
     const CheckTokens = async () => {
         try {
@@ -111,6 +93,29 @@ function Home() {
                 localStorage.removeItem("productid");
                 localStorage.removeItem('signupuser');
             }
+
+            if (state?.loginUser?.error?.code === 401) {
+                localStorage.removeItem("userid");
+                localStorage.removeItem("userToken");
+                localStorage.removeItem("userTokens");
+                localStorage.removeItem("whish");
+                localStorage.removeItem("user");
+                localStorage.removeItem("auth");
+                localStorage.removeItem("productid");
+                localStorage.removeItem('signupuser');
+            }
+
+
+              if (state?.loginUser?.error?.message == "Please authenticate") {
+            localStorage.removeItem("userid");
+            localStorage.removeItem("userToken");
+            localStorage.removeItem("userTokens");
+            localStorage.removeItem("whish");
+            localStorage.removeItem("user");
+            localStorage.removeItem("auth");
+            localStorage.removeItem("productid");
+            localStorage.removeItem('signupuser');
+        }
         }
     }
 
