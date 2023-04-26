@@ -10,35 +10,11 @@ function index() {
 
   const router = useRouter();
 
-  // const [productimages, setProductImage] = useState([]);
-  // const [productdata, setProductData] = useState([]);
   const viewproductid = router?.query?.viewproductid;
-  // const [pathurl, setPathUrl] = useState("");
-  // useEffect(() => {
-  //   ProductView(viewproductid).then((res) => {
-  //     setProductData(res?.data?.productDetails);
 
-  //     const productshowimages = [];
-  //     res?.data?.productDetails?.productImages?.map((item, index) => {
-  //       productshowimages?.push(item)
-  //     })
-
-  //     setProductImage(productshowimages[0]?.name);
-  //   }).catch((err) => {
-  //     console.log(err);
-  //   })
-
-  //   const origin =
-  //     typeof window !== 'undefined' && window.location.origin
-  //       ? window.location.origin
-  //       : '';
-
-  //   const URL = `${origin}${router?.asPath}`;
-  //   setPathUrl(URL);
-  // }, [pathurl]);
 
   return (
-    <LayoutHeader title={viewproductid} description={"kalaisurya amma appa welcome to new company!!!!"}>
+    <LayoutHeader>
       <Viewproducts id={viewproductid} />
     </LayoutHeader>
   )

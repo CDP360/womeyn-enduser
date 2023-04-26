@@ -1018,23 +1018,29 @@ function Viewproducts({ id }) {
 
                 <Head>
 
-                    <title>{productdata?.productName}</title>
+                    <title>{productdata?.productName>10?<>{productdata?.productName}</>:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."}</title>
                     <meta name="title" content={`Womeyn ${productdata?.productName}`} />
                     <meta name="description" content={productdata?.productDescription} />
 
 
                     <meta property="og:type" content="@Womeyn" />
-                    <meta property="og:url" content="https://metatags.io/" />
+                    <meta property="og:url" content="https://www.womeyn.cdp360.in/" />
                     <meta property="og:title" content={productdata?.productName} />
                     <meta property="og:description" content={productdata?.productDescription} />
                     <meta property="og:image" content={imaged} />
 
 
+                    <meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="https://www.womeyn.cdp360.in/" />
+<meta name="twitter:creator" content="https://www.womeyn.cdp360.in/" />
+{/* <meta property="og:url" content="http://bits.blogs.nytimes.com/2011/12/08/a-twitter-for-my-sister/" /> */}
                     <meta property="twitter:card" content="summary_large_image" />
-                    <meta property="twitter:url" content="https://metatags.io/" />
+                    <meta property="twitter:url" content="https://www.womeyn.cdp360.in/" />
                     <meta property="twitter:title" content="Meta Tags — Preview, Edit and Generate" />
-                    <meta property="twitter:description" content="kalai amma appa" />
-                    <meta property="twitter:image" content={`http://www.suntiros.com/wp-content/uploads/2018/01/Nazriya-Nazim-Sweet-Smile-Images.jpg`} />
+                    <meta property="twitter:description" content={productdata?.productDescription} />
+                    {/* <meta property="twitter:image" content={imaged} /> */}
+                    <meta property="twitter:image" content='https://wallpapers.com/images/high/happy-short-haired-nazriya-hd-02755x2836g2gpm0.webp' />
+
                 </Head>
 
                 {/* <DefaultSeo
