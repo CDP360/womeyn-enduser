@@ -1004,11 +1004,11 @@ function Viewproducts({ id }) {
 
         const URL = `${origin}${router?.asPath}`;
         setPathUrl(URL);
-    }, [])
+    }, [productdata?.productThumbImage])
 
     const imaged=`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`;
 
-
+console.log("p",imaged)
     return (
         <Fragment>
             <>
@@ -1016,14 +1016,16 @@ function Viewproducts({ id }) {
 
 
 
-                <Head>
+                <Head >
 
-                    <title>{productdata?.productName>10?<>{productdata?.productName}</>:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."}</title>
+                    
+
+                    <title>{productdata?.productName>10?<>{productdata?.productName}</>:<>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.</>}</title>
                     <meta name="title" content={`Womeyn ${productdata?.productName}`} />
-                    <meta name="description" content={productdata?.productDescription} />
-
-
-                    <meta property="og:type" content="@Womeyn" />
+                    {/* <meta name="description" content={productdata?.productDescription} /> */}
+                    <meta property="og:locale" content="en_US" />
+                    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+                    <meta property="og:type" content="women" />
                     <meta property="og:url" content="https://www.womeyn.cdp360.in/" />
                     <meta property="og:title" content={productdata?.productName} />
                     <meta property="og:description" content={productdata?.productDescription} />
@@ -1039,7 +1041,7 @@ function Viewproducts({ id }) {
                     <meta property="twitter:title" content="Meta Tags — Preview, Edit and Generate" />
                     <meta property="twitter:description" content={productdata?.productDescription} />
                     {/* <meta property="twitter:image" content={imaged} /> */}
-                    <meta property="twitter:image" content='https://wallpapers.com/images/high/happy-short-haired-nazriya-hd-02755x2836g2gpm0.webp' />
+                    <meta property="twitter:image" content={imaged} />
 
                 </Head>
 
