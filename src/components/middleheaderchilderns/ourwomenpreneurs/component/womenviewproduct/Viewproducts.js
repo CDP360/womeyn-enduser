@@ -1064,8 +1064,8 @@ function Viewproducts({ id }) {
                         maxVideoPreview: -1,
                     }}
                 /> */}
-                <Head>
-                    {/* <meta name="robots" content="max-snippet:0" />
+                {/* <Head>
+                    <meta name="robots" content="max-snippet:0" />
                     <meta name="robots" content="max-snippet:20, max-image-preview:large"></meta>
                     {productdata?.productName && <title>{productdata?.productName}</title>}
                     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -1088,7 +1088,7 @@ function Viewproducts({ id }) {
                     {pathurl && <link rel="canonical" href={pathurl} />}
                     <meta itemprop="image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
                     <meta name="og_image" property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
-                    <meta name="og_url" property="og:url" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} /> */}
+                    <meta name="og_url" property="og:url" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
 
                     {productdata?.productName && <title>{productdata?.productName}</title>}
 
@@ -1119,7 +1119,7 @@ function Viewproducts({ id }) {
                         key="twitter:image:alt"
                     />
                     <meta property="twitter:domain" content="energici.fr" />
-                </Head>
+                </Head> */}
             </>
             <div className={styles.mainproductviewscreen}>
                 <div className={styles.insideproductview}>
