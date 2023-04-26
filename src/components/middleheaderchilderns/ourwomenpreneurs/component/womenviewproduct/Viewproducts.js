@@ -51,14 +51,12 @@ function Viewproducts({ id }) {
         const datas2 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name];
         const datas3 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name];
         const datas4 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name, productvariations[4]?.name];
-
         if (datas?.length === productvariations?.length) {
             const values = [
                 {
                     name: datas[0],
                     value: productSize1
                 }
-
             ]
 
             if (productSize1.length === 0) {
@@ -79,14 +77,12 @@ function Viewproducts({ id }) {
             if (datas) {
                 if (productSize1) {
                     router?.push("/checkout")
-
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
 
                 }
             }
             else {
                 router?.push("/checkout")
-
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
 
             }
@@ -122,24 +118,17 @@ function Viewproducts({ id }) {
 
             if (datas1) {
                 if (productSize1 && productSize2) {
-
                     router?.push("/checkout")
-
-
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
-
                 }
             }
             else {
                 router?.push("/checkout")
-
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
-
             }
 
         }
         else if (datas2?.length === productvariations?.length) {
-
             const values = [
                 {
                     name: datas2[0],
@@ -154,9 +143,6 @@ function Viewproducts({ id }) {
                     value: productSize3
                 }
             ]
-
-
-
             if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0) {
                 toast.error(`Please select a ${datas2[0]} and ${datas2[1]} and ${datas2[2]} `,
                     {
@@ -174,19 +160,14 @@ function Viewproducts({ id }) {
 
             if (datas2) {
                 if (productSize1 && productSize2 && productSize3) {
-
                     router?.push("/checkout")
-
-
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
 
                 }
             }
             else {
                 router?.push("/checkout")
-
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
-
             }
 
 
@@ -211,8 +192,6 @@ function Viewproducts({ id }) {
                 }
             ]
 
-
-
             if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0 || productSize4?.length === 0) {
                 toast.error(`Please select a ${datas3[0]} and ${datas3[1]} and ${datas3[2]} and ${datas3[3]}`,
                     {
@@ -231,7 +210,6 @@ function Viewproducts({ id }) {
             if (datas3) {
                 if (productSize1 && productSize2 && productSize3 && productSize4) {
                     router?.push("/checkout")
-
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
                 }
             }
@@ -239,7 +217,6 @@ function Viewproducts({ id }) {
                 router?.push("/checkout")
 
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
-
             }
 
         }
@@ -267,8 +244,6 @@ function Viewproducts({ id }) {
                 }
             ]
 
-
-
             if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0 || productSize4?.length === 0 || productSize5?.length === 0) {
                 toast.error(`Please select a ${datas4[0]} and ${datas4[1]} and ${datas4[2]} and ${datas4[3]} and ${datas4[4]}`,
                     {
@@ -286,25 +261,19 @@ function Viewproducts({ id }) {
 
             if (datas4) {
                 if (productSize1 && productSize2 && productSize3 && productSize4 && productSize5) {
-
                     router?.push("/checkout")
-
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
-
                 }
             }
             else {
                 router?.push("/checkout")
-
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
-
             }
 
         }
         else {
             router?.push("/checkout")
             dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryChargee } });
-
         }
     }
     const CheckLoginUsers = (data) => {

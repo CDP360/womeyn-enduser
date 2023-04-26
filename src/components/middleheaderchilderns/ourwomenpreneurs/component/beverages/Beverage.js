@@ -51,7 +51,7 @@ function Beverage({ productlist, loading, sellers }) {
                                     }
                                 </div>
                                 <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
-                                    <Image src={star} alt="no image" className={styles.stars} />
+                                    {/* <Image src={star} alt="no image" className={styles.stars} /> */}
                                     <div className={styles.brandname}>
                                         {item?.productName?.length <= 10 ? <>{item?.productName}</> : <>    {item?.productName.slice(0, 18)}...</>}
                                     </div>

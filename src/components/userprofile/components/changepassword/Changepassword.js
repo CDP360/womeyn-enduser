@@ -133,21 +133,7 @@ function Changepassword({error}) {
 
 
 
-    const NavigateRedirect = () => {
-        router?.push("/login")
-    }
-
-    
-    if(error)
-    {
-        return (
-            <div>
-                {NavigateRedirect()}
-            </div>
-        )
-    }
-    else
-    {
+ 
         return (
             <div className={styles.mainchnagespasswordsection}>
                 <div className={styles.topsectionaddress}>
@@ -281,7 +267,7 @@ function Changepassword({error}) {
                 </div>
             </div>
         )
-    }
+
 
 }
 

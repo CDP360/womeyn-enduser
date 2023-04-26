@@ -44,20 +44,9 @@ function Order({error}) {
     }
   }, [error]);
 
-  const NavigateRedirect = () => {
-    history?.push("/login")
-}
 
-  if(error)
-  {
-    return (
-      <div>
-          {NavigateRedirect()}
-      </div>
-  )
-  }
-  else
-  {
+
+ 
     return (
       <div>
         <div className={styles.couponsInputContainer}>
@@ -147,6 +136,6 @@ function Order({error}) {
     );
   }
   
-}
+
 
 export default Order;

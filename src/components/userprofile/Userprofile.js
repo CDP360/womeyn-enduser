@@ -25,38 +25,37 @@ function Userprofile({ name, error }) {
         else {
             history.push("/login");
         }
+
+
+        // if (state?.loginUser?.logindata?.error?.code === 401 || state?.loginUser?.logindata?.error?.message == "Please authenticate") {
+        //     localStorage.removeItem("userid");
+        //     localStorage.removeItem("userToken");
+        //     localStorage.removeItem("userTokens");
+        //     localStorage.removeItem("whish");
+        //     localStorage.removeItem("user");
+        //     localStorage.removeItem("auth");
+        //     localStorage.removeItem("productid");
+        //     localStorage.removeItem('signupuser');
+        //     setError(true);
+        // }
         const userid = localStorage.getItem("userid");
         UserProfileInformation(JSON.parse(userid)).then((res) => {
-            if (res == "Please authenticate") {
-                setError(true);
-                localStorage.removeItem("userid");
-                localStorage.removeItem("userToken");
-                localStorage.removeItem("whish");
-                localStorage.removeItem("user");
-                localStorage.removeItem("auth");
-                localStorage.removeItem("productid");
-                localStorage.removeItem('signupuser');
-                localStorage.removeItem("userTokens");
-
-                history.push("/login");
-            }
             setUser(res?.data);
         }).catch((err) => {
             setError(false);
         })
     }, []);
-
     const NavigateRedirect = () => {
         history.push("/login")
     }
-    if (errors) {
-        return (
-            <div>
-                {NavigateRedirect()}
-            </div>
-        )
-    }
-    else {
+    // if (errors) {
+    //     return (
+    //         <div>
+    //             {NavigateRedirect()}
+    //         </div>
+    //     )
+    // }
+    // else {
         return (
             <>
 
@@ -137,7 +136,7 @@ function Userprofile({ name, error }) {
 
             </>
         )
-    }
+    // }
 }
 
 export default Userprofile

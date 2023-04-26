@@ -73,18 +73,9 @@ function Favorts({ error }) {
 
   }
 
-  const NavigateRedirect = () => {
-    history?.push("/login")
-  }
 
-  if (error) {
-    return (
-      <div>
-        {NavigateRedirect()}
-      </div>
-    )
-  }
-  else {
+
+
     return (
       <>
         <div>
@@ -199,6 +190,6 @@ function Favorts({ error }) {
     );
   }
 
-}
+
 
 export default Favorts;

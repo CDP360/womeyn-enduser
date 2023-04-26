@@ -31,18 +31,7 @@ function Coupons({ error }) {
     }
   }, [error]);
 
-  const NavigateRedirect = () => {
-    history?.push("/login")
-  }
-
-  if (error) {
-    return (
-      <div>
-        {NavigateRedirect()}
-      </div>
-    )
-  }
-  else {
+ 
     return (
       <div className={styles.couponsContainer}>
         <div className="mb-4 mt-3">
@@ -79,6 +68,6 @@ function Coupons({ error }) {
       </div>
     )
   }
-}
+
 
 export default Coupons

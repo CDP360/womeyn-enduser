@@ -140,9 +140,6 @@ function Categorychoose({HomeTexts}) {
 
                         </>}
 
-
-
-
                         {/* <Row>
                             <Col lg="3" xs="12" sm="6" className='mt-3 mb-4'>
                                 <div className={styles.boxsection}>
@@ -157,9 +154,6 @@ function Categorychoose({HomeTexts}) {
                                             crafted from top materials
                                         </div>
                                     </div>
-
-
-
                                 </div>
                                 <div>
                                     <Skeleton className={styles.sketons} />
@@ -226,6 +220,8 @@ function Categorychoose({HomeTexts}) {
                                 </div>
                             </Col>
                         </Row> */}
+
+                        
                     </div>
                     <div className={styles.categorybodysection}>
                         <div className='large-text mt-5 text-center'>

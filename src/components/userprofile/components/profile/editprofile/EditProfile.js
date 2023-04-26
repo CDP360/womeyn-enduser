@@ -82,21 +82,7 @@ function EditProfile({ users, error }) {
     }
 
 
-    const NavigateRedirect = () => {
-        history?.push("/login")
-      }
 
-    if(error)
-    {
-return(
-    <div>
-
-{NavigateRedirect()}
-    </div>
-)
-    }
-    else
-    {
         return (
             <div className={styles.profileformssection}>
                 <div className={styles.personalinformation}>
@@ -225,7 +211,7 @@ return(
                 </div>
             </div>
         )
-    }
+    
   
 }
 

@@ -13,10 +13,8 @@ import { useSelector } from 'react-redux';
 import Whatmake from './components/whatmake/Whatmake';
 import { Bannerimage } from '../../services/banner-image-service/banner-image-service';
 import Skeleton from 'react-loading-skeleton';
-import { useRouter } from 'next/router';
 import { UserProfileInformation } from '../../services/user-login-service/user-login-services';
 import { HomeTexts } from '../../consttext/Homeconst';
-
 function Home() {
     const [bannerimages, setBannerImages] = useState([]);
     const settings = {
@@ -83,7 +81,7 @@ function Home() {
             await UserProfileInformation(JSON.parse(userid));
         }
         catch (err) {
-              if (err?.response?.data?.message=="Please authenticate" || err?.response?.data?.code===401) {
+            if (err?.response?.data?.message == "Please authenticate" || err?.response?.data?.code === 401) {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("userTokens");
@@ -96,6 +94,7 @@ function Home() {
         }
     }
 
+
     const GetBannerimages = () => {
         Bannerimage().then((res) => {
             setBannerImages(res?.data);
@@ -106,9 +105,6 @@ function Home() {
     const MovePageData = (data) => {
         window.open(data);
     }
-
-
-
 
     return (
         <Fragment>

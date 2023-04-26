@@ -46,18 +46,10 @@ function Profile({ users, error }) {
     }
   }, [user,error])
   const [show, setShow] = useState(false);
-  const NavigateRedirect = () => {
-    history?.push("/login")
-  }
 
-  if (error) {
-    return (
-      <div>
-        {NavigateRedirect()}
-      </div>
-    )
-  }
-  else {
+
+
+
     return (
       <div className={styles.profileformssection}>
         <div className={styles.personalinformation}>
@@ -173,7 +165,7 @@ function Profile({ users, error }) {
         </div>
       </div>
     )
-  }
+
 
 }
 

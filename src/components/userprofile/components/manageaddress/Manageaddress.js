@@ -225,20 +225,11 @@ function Manageaddress({ error }) {
     }
 
 
-    const NavigateRedirect = () => {
-        router?.push("/login")
-    }
 
 
 
-    if (error) {
-        return (
-            <div>
-                {NavigateRedirect()}
-            </div>
-        )
-    }
-    else {
+ 
+
         return (
             <>
                 <div className={styles.mainaddresspage}>
@@ -587,7 +578,7 @@ function Manageaddress({ error }) {
             </>
 
         )
-    }
+
 }
 
 export default Manageaddress;

@@ -1,7 +1,4 @@
 import axios from 'axios';
-
-
-
 axios.interceptors.request.use(
     function (config) {
         if (config.url.search("/customer/update-photo") !== -1 || config.url.search("/customer/add-review") !== -1) {
@@ -18,7 +15,6 @@ axios.interceptors.request.use(
             return config;
         }
         else if ((config.url.search("/customer/oauth/google") !== -1) || (config.url.search("/oauth-success") !== -1)) {
-
             const token = localStorage.getItem("userToken");
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
             config.headers = {
@@ -31,18 +27,6 @@ axios.interceptors.request.use(
         }
         else {
             const token = localStorage.getItem("userToken");
-            // let decoded = jwt_decode(token);
-            // console.log(decoded, "decoded")
-            //     const token = 1681778582;
-            //     const userId=localStorage.getItem('userid');
-            //     if (Date.now() >= token.exp * 1000 || userId) {
-            //       localStorage.removeItem("userid");
-            //       localStorage.removeItem("userToken");
-            //       localStorage.removeItem("whish");
-            //       localStorage.removeItem("user");
-            //       localStorage.removeItem("auth");
-            //       localStorage.removeItem("productid");
-            //   }
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
             config.headers = {
                 ...config.headers,
@@ -54,7 +38,7 @@ axios.interceptors.request.use(
         }
     },
     function (error) {
-    
+
         return Promise.reject(error);
     },
 
@@ -65,8 +49,6 @@ axios.interceptors.response.use(
         return response;
     },
     function (error) {
-    
-      
         return Promise.reject(error);
     }
 );

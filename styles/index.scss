@@ -7,7 +7,7 @@
 .womeyn-enduser {
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow: auto;
     background: white;
 }
 
@@ -50,7 +50,4 @@
     justify-content: center;
 }
 
-html {
-    overflow: -moz-scrollbars-vertical;
-    overflow-y: scroll;
-}
+

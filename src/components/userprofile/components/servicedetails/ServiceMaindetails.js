@@ -49,9 +49,7 @@ function ServiceMaindetails({ error }) {
             history.push("/login");
         }
     }, [error])
-    const NavigateRedirect = () => {
-        history?.push("/login")
-    }
+   
 
 
     const pushProductPage=(data)=>{
@@ -67,14 +65,7 @@ function ServiceMaindetails({ error }) {
 
     };
 
-    if (error) {
-        return (
-            <div>
-                {NavigateRedirect()}
-            </div>
-        )
-    }
-    else {
+   
         return (
             <>
                 <div>
@@ -193,7 +184,7 @@ function ServiceMaindetails({ error }) {
                 </>
             </>
         )
-    }
+
 
 }
 

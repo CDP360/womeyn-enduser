@@ -114,17 +114,8 @@ function Sidebar({ user, error }) {
             history.push("/");
         }, 300)
     }
-    const NavigateRedirect = () => {
-        history?.push("/login")
-    }
-    if (error) {
-        return (
-            <div>
-                {NavigateRedirect()}
-            </div>
-        )
-    }
-    else {
+  
+ 
         return (
             <>
                 <div className="d-none d-lg-block">
@@ -569,7 +560,7 @@ function Sidebar({ user, error }) {
 
             </>
         )
-    }
+
 
 
 
