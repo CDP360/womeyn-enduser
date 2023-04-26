@@ -4,15 +4,14 @@ import Image from 'next/image';
 import { Button } from 'react-bootstrap';
 import image from '../../../src/assests/homepage-logos/404notfound.png';
 import styles from './styles/Redirect.module.scss';
-import jwt_decode from "jwt-decode";
+
 
 function RedirectPathuser() {
 
     const history = useRouter();
     useEffect(() => {
         const token = localStorage.getItem("userToken");
-        var decoded = jwt_decode(token);
-        console.log(decoded, "decoded")
+   
 
     }, []);
 

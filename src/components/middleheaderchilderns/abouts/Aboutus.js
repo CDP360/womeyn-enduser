@@ -20,7 +20,11 @@ import wba from '../../../assests/abouts-logos/wb1.png';
 import wba1 from '../../../assests/abouts-logos/wb2.png';
 import womenlogo from '../../../assests/homepage-logos/womeyn_logo.png';
 import AboutusSubscribe from './Aboutussubscribe/AboutusSubscribe';
-function Aboutus() {
+import * as Scroll from 'react-scroll';
+
+
+
+function Aboutus({ id }) {
     const state = useSelector((state) => state?.aboutcountdata?.about);
 
 
@@ -51,6 +55,8 @@ function Aboutus() {
     ]
 
 
+
+
     return (
         <Fragment>
             <div className={styles.mainboutus}>
@@ -63,34 +69,57 @@ function Aboutus() {
                 <div className={styles.exptyboxleftblue}>
 
                 </div>
+
+
+
+
+                {/* <div className={styles.boxfirsts}>
+                    <div className={styles.homebox}>
+                        <a href="#home"
+
+                        >
+                            H
+                        </a>
+                    </div>
+
+                    <div className={styles.homebox}>
+                        <a href="#home"
+
+                        >
+                            H
+                        </a>
+                    </div>
+
+                </div> */}
                 <div className={styles.mainaboutsection}>
-                    <div className={styles.mainimageabout}>
-                        <div className={styles.bannersectionabout}>
-                            <Image src={maskup} alt="no image" className={styles.bannerimageabout} />
-                            <div className={styles.bannercontentsectionimage}>
-                                <div className={styles.bannerinsidesection}>
-                                    <div className={styles.isidelogoproduct}>
-                                        <Image src={qua2} alt="no image" className={styles.qua1} />
-                                        <div className={styles.we}>
-                                            We aspire to see women entrepreneurs scale up their business locally and nationwide.
+                    <section >
+                        <div className={styles.mainimageabout}>
+                            <div className={styles.bannersectionabout}>
+                                <Image src={maskup} alt="no image" className={styles.bannerimageabout} />
+                                <div className={styles.bannercontentsectionimage}>
+                                    <div className={styles.bannerinsidesection}>
+                                        <div className={styles.isidelogoproduct}>
+                                            <Image src={qua2} alt="no image" className={styles.qua1} />
+                                            <div className={styles.we}>
+                                                We aspire to see women entrepreneurs scale up their business locally and nationwide.
+                                            </div>
+                                            <div className={`text-grey text-center mt-2 , ${styles.ceotext}`}>
+                                                Anu Kulkarni, Founder & CEO {state}
+                                            </div>
+                                            <Image src={qua1} alt="no image" className={styles.qua2} />
                                         </div>
-                                        <div className={`text-grey text-center mt-2 , ${styles.ceotext}`}>
-                                            Anu Kulkarni, Founder & CEO {state}
-                                        </div>
-                                        <Image src={qua1} alt="no image" className={styles.qua2} />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div>
+                    </section >
+                    <div id="home" >
                         <div className='large-text text-center'>The Story Behind Womeyn</div>
                         <div className={styles.creationabout}>§ The creation of “Womeyn” as a concept has a direct correlation to Anu, Founder and Director of Womeyn. It is her experiences and struggles in life as a woman and as a woman entrepreneur that gave birth to the concept. “Womeyn” is her way of creating a community of women and bring about a positive change by providing a platform that makes it easy for women of our communities to express themselves, be financially self-reliant and not be restricted due to lack of knowledge in technology, availability of equal opportunity or marginalized in any shape or form She has an Inspirational Story and is the heart and soul of the initiative “Womeyn”.
                         </div>
                     </div>
 
-                    <div id={state} >
+                    <div >
                         <div className='large-text text-center'>
 
                             What is Womeyn
@@ -151,6 +180,8 @@ function Aboutus() {
                         <AboutusSubscribe />
                     </div>
                 </div>
+
+                <button >Top Section</button>
                 {/* <div>
                     <Whatmake />
                 </div> */}

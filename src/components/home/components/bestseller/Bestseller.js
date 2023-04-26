@@ -7,7 +7,7 @@ import Electronics from './components/electronics/Electronics';
 import Healthcare from './components/healthcare/Healthcare';
 import Healthfitness from './healthfitness/Healthfitness';
 import Carouselseller from './carouselseller/Carouselseller';
-function Bestseller({bannerimages,MovePageData}) {
+function Bestseller({bannerimages,MovePageData,HomeTexts}) {
     const [index, setIndex] = useState(0);
     return (
         <Fragment>
@@ -17,13 +17,13 @@ function Bestseller({bannerimages,MovePageData}) {
                         <Carouselseller bannerimages={bannerimages} MovePageData={MovePageData}/>
                     </div>
                     <div className='large-text mb-5 mt-3 text-center'>
-                        Bestsellers to cheer you up!
+                        {HomeTexts?.Bestsellerstocheeryouup}
                     </div>
                     <div className={styles.buttonsellersection}>
-                        <button className={index === 0 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(0)}>All Categories</button>
-                        <button className={index === 1 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(1)}>Electronics</button>     
-                        <button className={index === 2 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(2)}>Health & Care</button>     
-                        <button className={index === 3 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(3)}>Health & fitness</button>      
+                        <button className={index === 0 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(0)}>{HomeTexts?.AllCategories}</button>
+                        <button className={index === 1 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(1)}>{HomeTexts?.Electronics}</button>     
+                        <button className={index === 2 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(2)}>{HomeTexts?.HealthCare}</button>     
+                        <button className={index === 3 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(3)}>{HomeTexts?.Healthfitness}</button>      
                     </div>
                     <div className={styles.borderseller}>
                         <div className={styles.insideborderseller}>

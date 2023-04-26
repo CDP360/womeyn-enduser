@@ -21,12 +21,14 @@ function LayoutHeader({ setdark, dark, title, children }) {
         />
 
         {/* <link rel="icon" href="/favicon.ico" /> */}
+
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
           href="/Mobileviewlogoshort.png"
         ></link>
+
         {/* <link rel="icon" type="images/png" href="/Mobileviewlogoshort.png" sizes='100x100' /> */}
         <link
           rel="stylesheet"

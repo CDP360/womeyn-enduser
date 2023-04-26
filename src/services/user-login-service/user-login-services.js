@@ -68,12 +68,23 @@ export function UserProfileImageupload(userid, data) {
 }
 export function UserProfileInformation(userid) {
 
-    return instanceBaseurl.get(`/customer/basicinfo/${userid}`).then((res) => {
-        return res;
-    }).catch((err) => {
+    // return instanceBaseurl.get(`/customer/basicinfo/${userid}`).then((res) => {
+    //     return res;
+    // }).catch((err) => {
+    //     console.log(err,"kalai");
+    // })
 
-        console.log(err, "k")
-        return err;
+
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.get(`/customer/basicinfo/${userid}`).then(response => {
+            resolve(response)
+            console.log("kalai",response?.code)
+
+        }).catch(err => {
+
+            // console.log("kalai",err?.code)
+            reject(err)
+        })
     })
 }
 export function UserForgetPassword(data) {

@@ -23,7 +23,7 @@ import Searchbar from './serachcategorys/Searchbar';
 import Dropdown from 'react-bootstrap/Dropdown';
 import aroepath from '../../assests/homepage-logos/path.png';
 import * as Scroll from 'react-scroll';
-import { Link, Button, Element, Events, animateScroll } from 'react-scroll'
+import { Link } from 'react-scroll'
 import GetAboutusCount from '../../Redux/actions/aboutuscounts/Aboutuscounts';
 import { SearchProductCategorys, SearchProductUser } from '../../services/category-services/category-service';
 function Header() {
@@ -130,7 +130,7 @@ function Header() {
     const SearchUserData = (data) => {
         SearchProductUser(data).then((res) => {
 
-            console.log(res?.data,"data")
+
 
 
             // setSearchDataCategory(res?.data?.results)
@@ -262,17 +262,12 @@ function Header() {
                                                 </div>}
                                         </div>
                                     }
-
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
-
             <div className={styles.middleheadersection}>
                 <div className={styles.emptyboxleftcolor}>
                 </div>
@@ -288,7 +283,6 @@ function Header() {
                                         <div className="firstsection">
                                             <li><a className="commontitle">{explorecategorys[0]?.categoryName}</a></li>
                                             <div>
-
                                                 {explorecategorys[0]?.subCategories?.map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
@@ -299,7 +293,6 @@ function Header() {
                                             </div>
                                             <li><a className="commontitle">{explorecategorys[1]?.categoryName}</a></li>
                                             <div>
-
                                                 {explorecategorys[1]?.subCategories?.map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
@@ -312,7 +305,6 @@ function Header() {
                                         <div className="secondsection">
                                             <li><a className="commontitle">{explorecategorys[2]?.categoryName}</a></li>
                                             <div>
-
                                                 {explorecategorys[2]?.subCategories?.map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
@@ -323,7 +315,6 @@ function Header() {
                                             </div>
                                             <li><a className="commontitle">{explorecategorys[3]?.categoryName}</a></li>
                                             <div>
-
                                                 {explorecategorys[3]?.subCategories?.map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
@@ -336,7 +327,6 @@ function Header() {
                                         <div className="thirdsection">
                                             <li><a className="commontitle">{explorecategorys[4]?.categoryName}</a></li>
                                             <div>
-
                                                 {explorecategorys[4]?.subCategories?.map((item, index) => {
                                                     return (
                                                         <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
@@ -401,19 +391,102 @@ function Header() {
                         </div>
                     </div>
                     <div className={router.pathname == "/abouts" ? "active" : ""}>
-
                         <div class="dropdownabout" onClick={NaigateHoverAboutus}>
-                            <button class="dropbtnabout">About Us <span><Image src={aroepath} alt="no image" className="patharrow" /></span></button>
+                            <button class="dropbtnabout" ><span className={router?.pathname == "/abouts" ? "active" : ""}>About Us</span> <span><Image src={aroepath} alt="no image" className="patharrow" /></span></button>
                             <div class="dropdown-contentabut">
-                                <Link to="firstInsideContainer" onClick={() => AboutusCountName("firstInsideContainer")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>
-                                    The Story Behind Womeyn
-                                </Link>
-                                <Link to="secondInsideContainer" onClick={() => AboutusCountName("secondInsideContainer")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>What is Womeyn</Link>
-                                <Link to="c" onClick={() => AboutusCountName("c")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Our Mission & Vision</Link>
-                                <Link to="d" onClick={() => AboutusCountName("d")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>The Logo Significance</Link>
-                                <Link to="e" onClick={() => AboutusCountName("e")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>The Team</Link>
-                                <Link to="g" onClick={() => AboutusCountName("g")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Partners & Collaborations</Link>
-                                <Link to="h" onClick={() => AboutusCountName("h")} activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Join Womeyn</Link>
+                                {/* <Scrolllink
+                                    onClick={() => router.push('/abouts/home')}
+                                    to="DayCare"
+                                    spy={true}
+                                    smooth={true}
+                                    hashSpy={true}
+                                    isDynamic={true}
+
+
+                                >
+                                    Home
+                                </Scrolllink> */}
+
+                                <a href="/abouts"
+                                    target='black'
+
+                                    onClick={e => {
+                                        let home = document.getElementById("#home");
+                                        e.preventDefault();  // Stop Page Reloading
+                                        home && home.scrollIntoView();
+                                    }}
+                                >What is Womeyn
+                                </a>
+                                <a href="/abouts"
+                                    target='black'
+
+                                    onClick={e => {
+                                        let home = document.getElementById("#home");
+                                        e.preventDefault();  // Stop Page Reloading
+                                        home && home.scrollIntoView();
+                                    }}
+                                >
+                                    Our Mission & Vision
+                                </a>
+
+
+                                <a href="/abouts"
+                                    target='black'
+
+                                    onClick={e => {
+                                        let home = document.getElementById("#home");
+                                        e.preventDefault();  // Stop Page Reloading
+                                        home && home.scrollIntoView();
+                                    }}
+                                >
+                                    The Logo Significance
+                                </a>
+
+
+                                <a href="/abouts"
+                                    target='black'
+
+                                    onClick={e => {
+                                        let home = document.getElementById("#home");
+                                        e.preventDefault();  // Stop Page Reloading
+                                        home && home.scrollIntoView();
+                                    }}
+                                >
+                                    The Team
+                                </a>
+
+
+                                <a href="/abouts"
+                                    target='black'
+
+                                    onClick={e => {
+                                        let home = document.getElementById("#home");
+                                        e.preventDefault();  // Stop Page Reloading
+                                        home && home.scrollIntoView();
+                                    }}
+                                >
+                                    Partners & Collaborations
+                                </a>
+
+
+                                <a href="/abouts"
+                                    target='black'
+
+                                    onClick={e => {
+                                        let home = document.getElementById("#home");
+                                        e.preventDefault();  // Stop Page Reloading
+                                        home && home.scrollIntoView();
+                                    }}
+                                >
+                                    Join Womeyn
+                                </a>
+
+                                {/* <Link to="a" activeClass="active" spy={true} smooth={true} offset={50} duration={500}>What is Womeyn</Link>
+                                <Link to="c" activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Our Mission & Vision</Link>
+                                <Link to="d" activeClass="active" spy={true} smooth={true} offset={50} duration={500}>The Logo Significance</Link>
+                                <Link to="e" activeClass="active" spy={true} smooth={true} offset={50} duration={500}>The Team</Link>
+                                <Link to="g" activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Partners & Collaborations</Link>
+                                <Link to="h"  activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Join Womeyn</Link> */}
 
                                 {/* <Link href="/about#the-team">
       <a>The Team</a>

@@ -49,3 +49,8 @@
     align-items: center;
     justify-content: center;
 }
+
+html {
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+}

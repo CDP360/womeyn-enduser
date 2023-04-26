@@ -17,7 +17,7 @@ function Userprofile({ name, error }) {
     const history = useRouter();
     const [user, setUser] = useState([]);
     const [errors, setError] = useState(false);
-    const state=useSelector((state)=>state);
+    const state = useSelector((state) => state);
     useEffect(() => {
         const womentoken = localStorage.getItem("userToken");
         if (JSON.parse(womentoken)) {
@@ -36,7 +36,7 @@ function Userprofile({ name, error }) {
                 localStorage.removeItem("auth");
                 localStorage.removeItem("productid");
                 localStorage.removeItem('signupuser');
-        localStorage.removeItem("userTokens");
+                localStorage.removeItem("userTokens");
 
                 history.push("/login");
             }

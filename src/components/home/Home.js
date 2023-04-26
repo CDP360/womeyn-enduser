@@ -15,6 +15,7 @@ import { Bannerimage } from '../../services/banner-image-service/banner-image-se
 import Skeleton from 'react-loading-skeleton';
 import { useRouter } from 'next/router';
 import { UserProfileInformation } from '../../services/user-login-service/user-login-services';
+import { HomeTexts } from '../../consttext/Homeconst';
 import jwt from 'jsonwebtoken';
 function Home() {
     const [bannerimages, setBannerImages] = useState([]);
@@ -72,23 +73,35 @@ function Home() {
     const state = useSelector(state => state);
     useEffect(() => {
         GetBannerimages();
-        const userid = localStorage.getItem("userid");
-        const token = localStorage.getItem("userTokens");
 
-        if (Date.now() >= token?.exp * 1000) {
+
+
+        CheckTokens();
+
+
+
+
+        if (state?.loginUser?.logindata?.length === 0 || state?.loginUser?.logindata == []) {
             localStorage.removeItem("userid");
             localStorage.removeItem("userToken");
+            localStorage.removeItem("userTokens");
             localStorage.removeItem("whish");
             localStorage.removeItem("user");
             localStorage.removeItem("auth");
             localStorage.removeItem("productid");
             localStorage.removeItem('signupuser');
-            router.push("/");
         }
 
 
-        UserProfileInformation(JSON.parse(userid)).then((res) => {
-            if (res == "Please authenticate" || state?.loginUser?.logindata == []) {
+    }, [state]);
+
+
+    const CheckTokens = async () => {
+        try {
+            const userid = localStorage.getItem("userid");
+            await UserProfileInformation(JSON.parse(userid));
+
+            if (state?.loginUser?.logindata?.length === 0 || state?.loginUser?.logindata == []) {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("userTokens");
@@ -98,13 +111,15 @@ function Home() {
                 localStorage.removeItem("productid");
                 localStorage.removeItem('signupuser');
             }
-        }).catch(err => {
+
+
+
+        }
+        catch (err) {
             console.log(err);
-        })
+        }
+    }
 
-
-
-    }, [state]);
     const GetBannerimages = () => {
         Bannerimage().then((res) => {
             setBannerImages(res?.data);
@@ -118,6 +133,7 @@ function Home() {
 
     return (
         <Fragment>
+
             <div className={styles.homesectionmain}>
                 <div className={styles.emptyboxrightcolor}>
                 </div>
@@ -159,14 +175,14 @@ function Home() {
                         </div>
                     </div>
                     <div>
-                        <Categorychoose />
+                        <Categorychoose HomeTexts={HomeTexts} />
                     </div>
                 </div>
                 <div>
                     <Summarybreaksalary bannerimages={bannerimages[4]} />
                 </div>
                 <div>
-                    <Bestseller bannerimages={bannerimages[3]} MovePageData={MovePageData} />
+                    <Bestseller bannerimages={bannerimages[3]} MovePageData={MovePageData} HomeTexts={HomeTexts} />
                 </div>
                 <div>
                     <Ourwomenpreneurs />

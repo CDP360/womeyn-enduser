@@ -20,7 +20,7 @@ import coup3 from '../../../../assests/COUPONS/cou3.png';
 import coup4 from '../../../../assests/COUPONS/cou4.png';
 import coup5 from '../../../../assests/COUPONS/cou5.png';
 
-function Categorychoose() {
+function Categorychoose({HomeTexts}) {
     const [datas, setDatas] = useState([]);
 
     const history = useRouter();
@@ -229,7 +229,7 @@ function Categorychoose() {
                     </div>
                     <div className={styles.categorybodysection}>
                         <div className='large-text mt-5 text-center'>
-                            A lot of categories to choose from
+                            {HomeTexts?.Alotofcategoriestochoosefrom}
                         </div>
                         <div>
                             <CarouselCategory />
