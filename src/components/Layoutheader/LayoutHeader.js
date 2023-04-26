@@ -6,26 +6,12 @@ import styles from "./styles/Layoutheader.module.scss";
 import Footer from "./../footer/Footer";
 import Signupnewsletter from "../home/components/signupfornewsletter/Signupnewsletter";
 import Childfooter from "./../footer/Childfooter";
-function LayoutHeader({ setdark, dark, title, children, description }) {
-  useEffect(() => { }, [title, description]);
+function LayoutHeader({ setdark, dark, title, children }) {
+  useEffect(() => { }, []);
   return (
     <>
       <Head>
-        <title>{title ? title + "- Womeyn" : "Womeyn"}</title>
 
-
-        {/* <meta charSet="utf-8" /> */}
-        <meta charSet="utf-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-        />
-
-
-        <meta name="twitter:description" content={description} />
-
-        {/* <link rel="icon" href="/favicon.ico" /> */}
 
         <link
           rel="icon"

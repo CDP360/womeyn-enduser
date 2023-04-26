@@ -597,6 +597,8 @@ function Viewproducts({ id }) {
     useEffect(() => {
         ProductView(productnames).then((res) => {
 
+            console.log("kalai",res?.data)
+
 
             setProductseller(res?.data?.sellerInformation[0])
             const productshowimages = [];
@@ -1003,9 +1005,37 @@ function Viewproducts({ id }) {
         const URL = `${origin}${router?.asPath}`;
         setPathUrl(URL);
     }, [])
+
+    const imaged=`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`;
+
+
     return (
         <Fragment>
             <>
+
+
+
+
+                <Head>
+
+                    <title>{productdata?.productName}</title>
+                    <meta name="title" content={`Womeyn ${productdata?.productName}`} />
+                    <meta name="description" content={productdata?.productDescription} />
+
+
+                    <meta property="og:type" content="@Womeyn" />
+                    <meta property="og:url" content="https://metatags.io/" />
+                    <meta property="og:title" content={productdata?.productName} />
+                    <meta property="og:description" content={productdata?.productDescription} />
+                    <meta property="og:image" content={imaged} />
+
+
+                    <meta property="twitter:card" content="summary_large_image" />
+                    <meta property="twitter:url" content="https://metatags.io/" />
+                    <meta property="twitter:title" content="Meta Tags — Preview, Edit and Generate" />
+                    <meta property="twitter:description" content="kalai amma appa" />
+                    <meta property="twitter:image" content={`http://www.suntiros.com/wp-content/uploads/2018/01/Nazriya-Nazim-Sweet-Smile-Images.jpg`} />
+                </Head>
 
                 {/* <DefaultSeo
                     title={productdata?.productName}
