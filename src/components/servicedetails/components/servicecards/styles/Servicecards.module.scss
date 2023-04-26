@@ -21,9 +21,27 @@
 }
 
 .womeynmainsectionpre {
-    width: 100%;
+    width: 75%;
     height: 100%;
     padding-bottom:5%;
+    margin:0 auto;
+    @include xsBreakPoint {
+        width: 85%;
+        padding-top: 6%;
+    }
+    @include smBreakPoint {
+        width: 85%;
+        padding-top: 6%;
+    }
+    @include mdBreakPoint {
+        width: 85%;
+    }
+    @include lgBreakPoint {
+        width: 89%;
+    }
+    @include xlBreakPoint {
+        width: 85%;
+    }
     .bodysectionwomeynpre {
         width: 100%;
         margin: 0 auto;

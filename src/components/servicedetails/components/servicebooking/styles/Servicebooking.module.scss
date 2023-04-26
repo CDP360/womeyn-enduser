@@ -194,8 +194,8 @@
 .mainservicesetion {
   width: 100%;
   height: 100%;
-  position:relative;
-  z-index:9;
+  position: relative;
+  z-index: 9;
   .insidesection {
     width: 100%;
     padding-bottom: 5%;
@@ -212,13 +212,11 @@
         width: 100%;
         height: auto;
       }
-      @include lgBreakPoint
-      {
-        height:300px;
+      @include lgBreakPoint {
+        height: 300px;
       }
-      @include xlBreakPoint
-      {
-height:300px;
+      @include xlBreakPoint {
+        height: 300px;
       }
     }
     .classesszumba {
@@ -283,11 +281,11 @@ height:300px;
       }
       @include smBreakPoint {
         flex-direction: column;
-        padding-bottom:7%;
+        padding-bottom: 7%;
       }
       @include mdBreakPoint {
- flex-direction:column;
-        padding-bottom:7%;
+        flex-direction: column;
+        padding-bottom: 7%;
       }
       @include lgBreakPoint {
         gap: 7px;
@@ -297,11 +295,12 @@ height:300px;
       }
 
       .booknowbox {
-        width: 100%;
+        width: 25%;
         background: #ffffff;
         border: 1px solid #e95a5a;
         border-radius: 10px;
         padding: 2% 10px;
+        cursor: pointer;
         @include xsBreakPoint {
           width: 100%;
           padding: 5% 4px;
@@ -317,20 +316,17 @@ height:300px;
           margin: 0 auto;
         }
         @include lgBreakPoint {
-          width: 30%;
+          // width: 30%;
           // padding: 5% 4px;
-          margin: 0 auto;
-      
+          // margin: 0 auto;
         }
       }
-      .booknowbox:hover
-      {
-        background-color:#FFEFEF;
+      .booknowbox:hover {
+        background-color: #ffefef;
       }
-      .reviewcontent
-      {
+      .reviewcontent {
         // border:2px solid red;
-        padding:12% 0px;
+        padding: 12% 0px;
       }
       .monthsections {
         text-align: center;
@@ -341,9 +337,9 @@ height:300px;
           font-size: 1.245rem;
         }
         .countnumber {
-          font-size:2rem;
+          font-size: 2rem;
           font-weight: 700;
-          padding-top:3%;
+          padding-top: 3%;
         }
       }
       .booknowbutton {
@@ -414,8 +410,8 @@ height:300px;
           align-items: center;
           justify-content: center;
           // padding: 10px;
-          border-radius:50%;
-          border:3px solid #E95A5A;
+          border-radius: 50%;
+          border: 3px solid #e95a5a;
           @include xsBreakPoint {
             width: 90px;
             height: 90px;
@@ -448,113 +444,99 @@ height:300px;
   color: #e95a5a;
 }
 
-
-.leftsectionservicebg
-{
-  position:absolute;
-  top:0;
-  left:0;
-  width:30%;
-  height:40%;
-  z-index:0;
-  background: #FECF9D;
-opacity: 0.36;
-filter: blur(239.825px);
+.leftsectionservicebg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 40%;
+  z-index: 0;
+  background: #fecf9d;
+  opacity: 0.36;
+  filter: blur(239.825px);
 }
 
-.rightsectionservicebg
-{
-  position:absolute;
-  top:0;
-  right:0;
-  width:30%;
-  height:40%;
-  z-index:0;
-  background: #E95A5A;
-opacity: 0.36;
-filter: blur(239.825px);
+.rightsectionservicebg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 40%;
+  z-index: 0;
+  background: #e95a5a;
+  opacity: 0.36;
+  filter: blur(239.825px);
 }
 
-.viewmorebutton
-{
-  color:#4681FD;
-  border-bottom:1px solid #4681FD;
-  cursor:pointer;
-  width:50%;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:1.1rem;
+.viewmorebutton {
+  color: #4681fd;
+  border-bottom: 1px solid #4681fd;
+  cursor: pointer;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
 }
 
-.viewmorebutton:hover
-{
-  color:#E95A5A;
-  font-weight:500;
-  border-bottom:1px solid #E95A5A;
-
+.viewmorebutton:hover {
+  color: #e95a5a;
+  font-weight: 500;
+  border-bottom: 1px solid #e95a5a;
 }
 
-.closebuttons
-{
-  border:none;
-  outline:none;
-  cursor:pointer;
-  padding:3px;
-  border-radius:10px;
-  background-color:#E95A5A;
-  color:white;
+.closebuttons {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 10px;
+  background-color: #e95a5a;
+  color: white;
   font-weight: 550;
-  width:18%;
-  font-size:1.2rem;
+  width: 18%;
+  font-size: 1.2rem;
 }
 
-
-.workingdays
-{
-  display:flex;
-  border:1px solid #EFEEEE;
-margin:2% 0px;
-border-radius:5px;
-padding:10px;
-  align-items:center;
-  cursor:pointer;
-  .leftdays
-  {
-    width:30%;
+.workingdays {
+  display: flex;
+  border: 1px solid #efeeee;
+  margin: 2% 0px;
+  border-radius: 5px;
+  padding: 10px;
+  align-items: center;
+  cursor: pointer;
+  .leftdays {
+    width: 30%;
   }
 }
-.workingdays:hover
-{
-  background-color:#EFEEEE;
+.workingdays:hover {
+  background-color: #efeeee;
 }
 
-.cancelsection
-{
-  display:flex;
-  padding-bottom:3%;
-  .leftcancelsection
-  {
-    width:50%;
+.cancelsection {
+  display: flex;
+  padding-bottom: 3%;
+  .leftcancelsection {
+    width: 50%;
 
     color: #000000;
-    font-weight:500;
-    font-size:1rem;
+    font-weight: 500;
+    font-size: 1rem;
 
-mix-blend-mode: normal;
-opacity: 0.4;
+    mix-blend-mode: normal;
+    opacity: 0.4;
   }
 }
 
-.working
-{
+.working {
   color: #000000;
-  font-weight:500;
-  font-size:1rem;
+  font-weight: 500;
+  font-size: 1rem;
 
-mix-blend-mode: normal;
-opacity: 0.4;
-padding-top:2%;
-padding-bottom:2%;
+  mix-blend-mode: normal;
+  opacity: 0.4;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }

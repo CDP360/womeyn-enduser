@@ -72,16 +72,36 @@ function Home() {
     useEffect(() => {
         GetBannerimages();
         CheckTokens();
+
+        if (state?.loginUser?.error?.message == "Please authenticate") {
+            localStorage.removeItem("userid");
+            localStorage.removeItem("userToken");
+            localStorage.removeItem("userTokens");
+            localStorage.removeItem("whish");
+            localStorage.removeItem("user");
+            localStorage.removeItem("auth");
+            localStorage.removeItem("productid");
+            localStorage.removeItem('signupuser');
+        }
+
+        if (state?.loginUser?.error?.code === 401) {
+            localStorage.removeItem("userid");
+            localStorage.removeItem("userToken");
+            localStorage.removeItem("userTokens");
+            localStorage.removeItem("whish");
+            localStorage.removeItem("user");
+            localStorage.removeItem("auth");
+            localStorage.removeItem("productid");
+            localStorage.removeItem('signupuser');
+        }
     }, [state]);
-
-
     const CheckTokens = async () => {
         try {
             const userid = localStorage.getItem("userid");
             await UserProfileInformation(JSON.parse(userid));
         }
         catch (err) {
-            if (err?.response?.data?.message == "Please authenticate" || err?.response?.data?.code === 401) {
+            if (err?.response?.data?.message == "Please authenticate") {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("userTokens");
@@ -106,6 +126,10 @@ function Home() {
         window.open(data);
     }
 
+
+
+    console.log(state?.loginUser?.error?.message, "state")
+
     return (
         <Fragment>
 
@@ -114,6 +138,15 @@ function Home() {
                 </div>
                 <div className={styles.emptyboxleftcolor}>
                 </div>
+                <div className={styles.emptyboxleftcolor1}>
+                </div>
+                <div className={styles.emptyboxleftcolor2}>
+                </div>
+                <div className={styles.emptyboxleftcolor3}>
+                </div>
+                <div className={styles.emptyboxleftcolor4}>
+                </div>
+
                 <div>
                 </div>
                 <div className={styles.insidesectionhome}>

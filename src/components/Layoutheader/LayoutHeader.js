@@ -103,7 +103,6 @@ function LayoutHeader({ setdark, dark, title, children }) {
             title == "Events" ||
             title == "tracking" ||
             title == "detail" ||
-            title == "Service" ||
             title == "Payment" ||
             title == "service-booking" ||
             title == "passwordcreate" ? (
@@ -113,7 +112,6 @@ function LayoutHeader({ setdark, dark, title, children }) {
               <div className="mb-5">
                 {title == "product-view" ||
                   title == "Payment" ||
-                  title == "Service" ||
                   title == "tracking" ||
                   title == "Payment" ||
                   title == "service-booking" ||

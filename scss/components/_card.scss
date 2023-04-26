@@ -6,7 +6,7 @@
     // justify-content: center;
     position: relative;
     // background-color: white !important;
-    background-color:none !important;
+    background-color: none !important;
 
     @include xlBreakPoint {
         gap: 30px;
@@ -28,15 +28,12 @@
         }
         @include xsBreakPoint {
             width: 100% !important;
-        
         }
         @include smBreakPoint {
             width: 50% !important;
-          
         }
         @include mdBreakPoint {
             width: 45% !important;
-        
         }
         @include lgBreakPoint {
             width: 23.3% !important;
@@ -44,13 +41,14 @@
         }
         @include xlBreakPoint {
             width: 22.3% !important;
-          
+
             height: 300px;
             // display: flex;
             // align-items: center;
             // justify-content: center;
         }
     }
+  
 }
 // womenpreneurs card section start
 .cardsections {
@@ -60,7 +58,6 @@
     justify-content: center;
     width: 100%;
 
-    
     @include lgBreakPoint {
         // border:2px solid blue !important;
         gap: 5px;
@@ -71,7 +68,7 @@
         display: flex !important;
         // gap: 20px;
         height: auto;
-     
+
         // border:2px solid red !important;
         border-radius: 8px;
         border-radius: 4px;
@@ -98,7 +95,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height:auto;
+            height: auto;
             // border:2px solid orange !important;
         }
         @include lgBreakPoint {
@@ -130,15 +127,11 @@
             font-size: 0.786rem;
         }
     }
-    .womentitle:hover
-    {
-        color: #E95A5A !important;
+    .womentitle:hover {
+        color: #e95a5a !important;
     }
-    .womendescription:hover
-    {
-        color: #E95A5A !important;
-
-
+    .womendescription:hover {
+        color: #e95a5a !important;
     }
 }
 

@@ -3,7 +3,7 @@
 .maincardservices {
     width: 100%;
     height: 100%;
-    padding-bottom: 5%;
+    // padding-bottom: 5%;
     position: relative;
     z-index: 9;
     .insideservicecards {
@@ -21,12 +21,30 @@
 }
 
 .womeynmainsectionpre {
-    width: 100%;
+    width: 75%;
     height: 100%;
-    padding-bottom: 5%;
+    // padding-bottom: 5%;
     position:relative;
     z-index:9 !important;
     background-color:none;
+    margin:0 auto;
+    @include xsBreakPoint {
+        width: 85%;
+        padding-top: 6%;
+    }
+    @include smBreakPoint {
+        width: 85%;
+        padding-top: 6%;
+    }
+    @include mdBreakPoint {
+        width: 85%;
+    }
+    @include lgBreakPoint {
+        width: 89%;
+    }
+    @include xlBreakPoint {
+        width: 85%;
+    }
     .bodysectionwomeynpre {
         width: 100%;
         margin: 0 auto;
@@ -362,3 +380,14 @@
     z-index: 0;
   }
   
+  .emptyboxleftcolor1 {
+    position: absolute;
+    width: 10%;
+    height: 100% !important;
+    background: #415B91;
+    opacity: 0.4;
+    filter: blur(100px);
+    right: 0%;
+    top: 30%;
+    z-index: 0;
+  }

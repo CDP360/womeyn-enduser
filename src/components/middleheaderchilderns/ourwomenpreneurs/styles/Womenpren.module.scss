@@ -1,12 +1,14 @@
 @use "../../../../../scss/abstract/" as *;
 
-.womeynmainsectionpre {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    z-index: 9 !important;
+// .womeynmainsectionpre {
+//     width: 100%;
+//     height: 100%;
+//     position: relative;
+//     z-index: 9 !important;
+//     border:3px solid blue;
     .bodysectionwomeynpre {
         width: 75%;
+        height:100%;
         margin: 0 auto;
         position: relative;
         @include xsBreakPoint {
@@ -126,7 +128,7 @@
             }
         }
     }
-}
+// }
 
 .sellerimagebox {
     width: 100%;

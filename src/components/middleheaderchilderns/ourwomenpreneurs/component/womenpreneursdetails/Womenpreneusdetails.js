@@ -197,6 +197,7 @@ function Womenpreneusdetails({ id }) {
 
 
 
+    
 
 
     return (
@@ -260,14 +261,10 @@ function Womenpreneusdetails({ id }) {
 
                                 </> : <div >
 
-                                    {sellers?.profileDescription?.length <= 100 ? <>
-
-
-                                        {sellers?.profileDescription?.slice(0, 400)}
-
+                                    {sellers?.profileDescription?.length <= 500 ? <>
+                                        {sellers?.profileDescription?.slice(0, 500)}
                                     </> : <>
-
-                                        {sellers?.profileDescription?.slice(0, 300)}<span onClick={() => setShow(!show)} className={styles.readmore}>Read More...</span>
+                                        {sellers?.profileDescription?.slice(0, 500)}<span onClick={() => setShow(!show)} className={styles.readmore}>Read More...</span>
 
                                     </>}
 

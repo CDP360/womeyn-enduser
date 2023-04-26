@@ -598,8 +598,6 @@ function Viewproducts({ id }) {
         ProductView(productnames).then((res) => {
 
 
-            console.log(res?.data, "res")
-
             setProductseller(res?.data?.sellerInformation[0])
             const productshowimages = [];
             res?.data?.productDetails?.productImages?.map((item, index) => {
