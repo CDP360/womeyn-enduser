@@ -15,7 +15,7 @@ function CarouselCategory() {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     // autoplay: true,
     autoplaySpeed: 3500,
@@ -99,12 +99,12 @@ function CarouselCategory() {
                 <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesize} />
                 <div className='mt-4' onClick={() => pushCatgorys(item?.slugName)} >
                   {/* <h6>{item?.name}</h6> */}
-                  <h5>{item?.name?.length <= 10 ? <>{item?.name}</> : <>{item?.name.slice(0, 20)}...</>}</h5>
+                  <span>{item?.name?.length <= 10 ? <>{item?.name}</> : <>{item?.name.slice(0, 20)}...</>}</span>
 
                 </div>
-                <div onClick={() => pushCatgorys(item?.slugName)} >
+                {/* <div onClick={() => pushCatgorys(item?.slugName)} >
                   {item?.description?.length <= 10 ? <>{item?.description}</> : <>{item?.description.slice(0, 20)}...</>}
-                </div>
+                </div> */}
               </div>
             )
           })}
