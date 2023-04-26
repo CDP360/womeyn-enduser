@@ -1038,7 +1038,7 @@ console.log("p",imaged)
 {/* <meta property="og:url" content="http://bits.blogs.nytimes.com/2011/12/08/a-twitter-for-my-sister/" /> */}
                     <meta property="twitter:card" content="summary_large_image" />
                     <meta property="twitter:url" content="https://www.womeyn.cdp360.in/" />
-                    <meta property="twitter:title" content="Meta Tags — Preview, Edit and Generate" />
+                    <meta property="twitter:title" content={productdata?.productName} />
                     <meta property="twitter:description" content={productdata?.productDescription} />
                     {/* <meta property="twitter:image" content={imaged} /> */}
                     <meta property="twitter:image" content={imaged} />
