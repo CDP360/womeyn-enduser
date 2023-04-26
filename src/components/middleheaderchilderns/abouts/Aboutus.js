@@ -181,7 +181,7 @@ function Aboutus({ id }) {
                     </div>
                 </div>
 
-                <button >Top Section</button>
+
                 {/* <div>
                     <Whatmake />
                 </div> */}

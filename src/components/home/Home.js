@@ -16,7 +16,7 @@ import Skeleton from 'react-loading-skeleton';
 import { useRouter } from 'next/router';
 import { UserProfileInformation } from '../../services/user-login-service/user-login-services';
 import { HomeTexts } from '../../consttext/Homeconst';
-import jwt from 'jsonwebtoken';
+
 function Home() {
     const [bannerimages, setBannerImages] = useState([]);
     const settings = {
@@ -73,26 +73,7 @@ function Home() {
     const state = useSelector(state => state);
     useEffect(() => {
         GetBannerimages();
-
-
-
         CheckTokens();
-
-
-
-
-        if (state?.loginUser?.logindata?.length === 0 || state?.loginUser?.logindata == []) {
-            localStorage.removeItem("userid");
-            localStorage.removeItem("userToken");
-            localStorage.removeItem("userTokens");
-            localStorage.removeItem("whish");
-            localStorage.removeItem("user");
-            localStorage.removeItem("auth");
-            localStorage.removeItem("productid");
-            localStorage.removeItem('signupuser');
-        }
-
-
     }, [state]);
 
 
@@ -100,8 +81,9 @@ function Home() {
         try {
             const userid = localStorage.getItem("userid");
             await UserProfileInformation(JSON.parse(userid));
-
-            if (state?.loginUser?.logindata?.length === 0 || state?.loginUser?.logindata == []) {
+        }
+        catch (err) {
+              if (err?.response?.data?.message=="Please authenticate" || err?.response?.data?.code===401) {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("userTokens");
@@ -111,12 +93,6 @@ function Home() {
                 localStorage.removeItem("productid");
                 localStorage.removeItem('signupuser');
             }
-
-
-
-        }
-        catch (err) {
-            console.log(err);
         }
     }
 
@@ -130,6 +106,9 @@ function Home() {
     const MovePageData = (data) => {
         window.open(data);
     }
+
+
+
 
     return (
         <Fragment>
