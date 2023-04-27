@@ -53,10 +53,19 @@ export function GoogleOauth() {
     })
 }
 export function OauthSuccess() {
-    return instanceBaseurl.get('/customer/oauth/success').then(res => {
-        return res;
-    }).catch(err => {
-        return err;
+    // return instanceBaseurl.get('/customer/oauth/success').then(res => {
+    //     return res;
+    // }).catch(err => {
+    //     return err;
+    // })
+
+
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.get(`/customer/oauth/success`).then(response => {
+            resolve(response)
+        }).catch(err => {
+            reject(err)
+        })
     })
 }
 export function UserProfileImageupload(userid, data) {
@@ -78,11 +87,7 @@ export function UserProfileInformation(userid) {
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/customer/basicinfo/${userid}`).then(response => {
             resolve(response)
-            console.log("kalai",response?.code)
-
         }).catch(err => {
-
-            // console.log("kalai",err?.code)
             reject(err)
         })
     })

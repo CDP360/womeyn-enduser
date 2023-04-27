@@ -18,15 +18,12 @@ function Oauthcomplete() {
             localStorage.setItem("userToken", JSON.stringify(res?.data?.tokens?.access?.token));
             localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
             localStorage.setItem("auth", true);
-
             setTimeout(() => {
                 history.push("/");
             }, 1000)
         }
         catch (err) {
             console.log(err?.response?.data?.message, "kalaiauth");
-
-
         }
 
 
