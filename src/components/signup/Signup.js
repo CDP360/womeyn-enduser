@@ -1,4 +1,4 @@
-import React, { Fragment, useState,useEffect } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { Form } from 'react-bootstrap';
 import styles from '../../components/login/styles/Login.module.scss';
 import google from '../../assests/homepage-logos/google.png';
@@ -72,7 +72,7 @@ function Signup() {
     };
 
     useEffect(() => {
-        const TokenCheckUser = localStorage.getItem("userToken");
+        const TokenCheckUser = localStorage.getItem("auth");
         setTokenUser(JSON.parse(TokenCheckUser));
 
     }, [])

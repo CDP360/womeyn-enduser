@@ -112,7 +112,7 @@ function Otp() {
 
 
     useEffect(() => {
-        const TokenCheckUser = localStorage.getItem("userToken");
+        const TokenCheckUser = localStorage.getItem("auth");
         setTokenUser(JSON.parse(TokenCheckUser));
 
     }, [])
