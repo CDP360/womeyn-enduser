@@ -33,6 +33,9 @@ function Oauthcomplete() {
             if (err?.response?.data?.message || err?.response?.data?.code) {
                 handleShow();
                 setEmailExists(err?.response?.data?.message);
+
+                history.push("/");
+
             }
         }
 
