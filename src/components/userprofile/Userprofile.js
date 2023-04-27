@@ -28,123 +28,120 @@ function Userprofile({ name, error }) {
 
         CheckTokenUser();
 
-     
+
     }, [state]);
-  
 
-    const CheckTokenUser=async()=>
 
-    {
+    const CheckTokenUser = async () => {
         const userid = localStorage.getItem("userid");
-        try
-        {
+        try {
             await UserProfileInformation(JSON.parse(userid)).then((res) => {
                 setUser(res?.data);
             })
         }
-      catch((err) => {
-        if (err?.response?.data?.message == "Please authenticate") {
-            localStorage.removeItem("userid");
-            localStorage.removeItem("userToken");
-            localStorage.removeItem("userTokens");
-            localStorage.removeItem("whish");
-            localStorage.removeItem("user");
-            localStorage.removeItem("auth");
-            localStorage.removeItem("productid");
-            localStorage.removeItem('signupuser');
-        }
+        catch (err) {
+            if (err?.response?.data?.message == "Please authenticate") {
+                localStorage.removeItem("userid");
+                localStorage.removeItem("userToken");
+                localStorage.removeItem("userTokens");
+                localStorage.removeItem("whish");
+                localStorage.removeItem("user");
+                localStorage.removeItem("auth");
+                localStorage.removeItem("productid");
+                localStorage.removeItem('signupuser');
+            }
 
-        if (state?.loginUser?.error?.code === 401) {
-            localStorage.removeItem("userid");
-            localStorage.removeItem("userToken");
-            localStorage.removeItem("userTokens");
-            localStorage.removeItem("whish");
-            localStorage.removeItem("user");
-            localStorage.removeItem("auth");
-            localStorage.removeItem("productid");
-            localStorage.removeItem('signupuser');
-        }
+            if (state?.loginUser?.error?.code === 401) {
+                localStorage.removeItem("userid");
+                localStorage.removeItem("userToken");
+                localStorage.removeItem("userTokens");
+                localStorage.removeItem("whish");
+                localStorage.removeItem("user");
+                localStorage.removeItem("auth");
+                localStorage.removeItem("productid");
+                localStorage.removeItem('signupuser');
+            }
 
 
-        if (state?.loginUser?.error?.message == "Please authenticate") {
-            localStorage.removeItem("userid");
-            localStorage.removeItem("userToken");
-            localStorage.removeItem("userTokens");
-            localStorage.removeItem("whish");
-            localStorage.removeItem("user");
-            localStorage.removeItem("auth");
-            localStorage.removeItem("productid");
-            localStorage.removeItem('signupuser');
-        }
+            if (state?.loginUser?.error?.message == "Please authenticate") {
+                localStorage.removeItem("userid");
+                localStorage.removeItem("userToken");
+                localStorage.removeItem("userTokens");
+                localStorage.removeItem("whish");
+                localStorage.removeItem("user");
+                localStorage.removeItem("auth");
+                localStorage.removeItem("productid");
+                localStorage.removeItem('signupuser');
+            }
         })
     }
-        return (
-            <>
+    return (
+        <>
 
-                <div className='mainsection'>
-                    <div className="insidesection">
-                        <div className={styles.insideprofilesection}>
-                            <div className={styles.leftsidebarprofile}>
-                                <div className='d-none d-lg-block'>
-                                    <Sidebar user={user} error={errors} />
-                                </div>
-                                <div className="d-xs-block d-md-none">
-                                    <Sidebar user={user} error={errors} />
-
-
-                                </div>
-                                <div className="d-none d-md-block d-lg-none">
-
-                                    <div>
-
-                                        <Sidebar user={user} error={errors} />
-
-
-
-
-                                    </div>
-                                </div>
+            <div className='mainsection'>
+                <div className="insidesection">
+                    <div className={styles.insideprofilesection}>
+                        <div className={styles.leftsidebarprofile}>
+                            <div className='d-none d-lg-block'>
+                                <Sidebar user={user} error={errors} />
                             </div>
-                            <div className={styles.rightmainprofile}>
-                                {name == "youraccount" && <div>
-                                    <Profile users={user} error={errors} />
-                                </div>}
-                                {name == "edit" && <div>
-                                    <EditProfile users={user} error={errors} />
-                                </div>}
+                            <div className="d-xs-block d-md-none">
+                                <Sidebar user={user} error={errors} />
 
-                                {name == "address" && <div>
 
-                                    <Manageaddress error={errors} />
-                                </div>
-                                }
-                                {name == "changepassword" && <div>
-                                    <Changepassword error={errors} />
-                                </div>
-                                }
-                                {name == "orders" && <div>
-                                    <Orders error={errors} />
-                                </div>
-                                }
+                            </div>
+                            <div className="d-none d-md-block d-lg-none">
 
-                                {name == "services" && <div>
-                                    <ServiceMaindetails error={errors} />
+                                <div>
+
+                                    <Sidebar user={user} error={errors} />
+
+
+
+
                                 </div>
-                                }
-                                {name == "favorts" && <div>
-                                    <Favorts error={errors} />
-                                </div>
-                                }
-                                {name == "coupons" && <div>
-                                    <Coupon error={errors} />
-                                </div>
-                                }
                             </div>
                         </div>
-                    </div>
-                   
+                        <div className={styles.rightmainprofile}>
+                            {name == "youraccount" && <div>
+                                <Profile users={user} error={errors} />
+                            </div>}
+                            {name == "edit" && <div>
+                                <EditProfile users={user} error={errors} />
+                            </div>}
 
-                    <div className={styles.emptyboxrightcolor}>
+                            {name == "address" && <div>
+
+                                <Manageaddress error={errors} />
+                            </div>
+                            }
+                            {name == "changepassword" && <div>
+                                <Changepassword error={errors} />
+                            </div>
+                            }
+                            {name == "orders" && <div>
+                                <Orders error={errors} />
+                            </div>
+                            }
+
+                            {name == "services" && <div>
+                                <ServiceMaindetails error={errors} />
+                            </div>
+                            }
+                            {name == "favorts" && <div>
+                                <Favorts error={errors} />
+                            </div>
+                            }
+                            {name == "coupons" && <div>
+                                <Coupon error={errors} />
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className={styles.emptyboxrightcolor}>
                 </div>
                 <div className={styles.emptyboxleftcolor}>
                 </div>
@@ -157,12 +154,12 @@ function Userprofile({ name, error }) {
                 <div className={styles.emptyboxleftcolor4}>
                 </div>
 
-                </div>
+            </div>
 
 
 
-            </>
-        )
+        </>
+    )
 
 }
 
