@@ -73,7 +73,7 @@ function Userprofile({ name, error }) {
                 localStorage.removeItem("productid");
                 localStorage.removeItem('signupuser');
             }
-        })
+        }
     }
     return (
         <>
