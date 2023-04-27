@@ -15,14 +15,14 @@ import first from '../../../assests/abouts-logos/FIRST.gif';
 import second from '../../../assests/abouts-logos/SECOND.gif';
 import third from '../../../assests/abouts-logos/THIRD.gif';
 import { useSelector } from 'react-redux';
-import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
+
 import wba from '../../../assests/abouts-logos/wb1.png';
 import wba1 from '../../../assests/abouts-logos/wb2.png';
 import womenlogo from '../../../assests/homepage-logos/womeyn_logo.png';
 import AboutusSubscribe from './Aboutussubscribe/AboutusSubscribe';
-import * as Scroll from 'react-scroll';
 
 
+import ScrollToTop from "react-scroll-to-top";
 
 function Aboutus({ id }) {
     const state = useSelector((state) => state?.aboutcountdata?.about);
@@ -59,7 +59,10 @@ function Aboutus({ id }) {
 
     return (
         <Fragment>
-            <div className={styles.mainboutus}>
+
+{/* <ScrollToTop smooth color="#6f00ff" top="0"/> */}
+
+            <div className={styles.mainboutus}>home
                 <div className={styles.exptyboxleft}>
 
                 </div>
@@ -70,27 +73,6 @@ function Aboutus({ id }) {
 
                 </div>
 
-
-
-
-                {/* <div className={styles.boxfirsts}>
-                    <div className={styles.homebox}>
-                        <a href="#home"
-
-                        >
-                            H
-                        </a>
-                    </div>
-
-                    <div className={styles.homebox}>
-                        <a href="#home"
-
-                        >
-                            H
-                        </a>
-                    </div>
-
-                </div> */}
                 <div className={styles.mainaboutsection}>
                     <section >
                         <div className={styles.mainimageabout}>
@@ -113,9 +95,9 @@ function Aboutus({ id }) {
                             </div>
                         </div>
                     </section >
-                    <div id="home" >
+                    <div  >
                         <div className='large-text text-center'>The Story Behind Womeyn</div>
-                        <div className={styles.creationabout}>§ The creation of “Womeyn” as a concept has a direct correlation to Anu, Founder and Director of Womeyn. It is her experiences and struggles in life as a woman and as a woman entrepreneur that gave birth to the concept. “Womeyn” is her way of creating a community of women and bring about a positive change by providing a platform that makes it easy for women of our communities to express themselves, be financially self-reliant and not be restricted due to lack of knowledge in technology, availability of equal opportunity or marginalized in any shape or form She has an Inspirational Story and is the heart and soul of the initiative “Womeyn”.
+                        <div className={styles.creationabout} id="WhatisWomeyn">§ The creation of “Womeyn” as a concept has a direct correlation to Anu, Founder and Director of Womeyn. It is her experiences and struggles in life as a woman and as a woman entrepreneur that gave birth to the concept. “Womeyn” is her way of creating a community of women and bring about a positive change by providing a platform that makes it easy for women of our communities to express themselves, be financially self-reliant and not be restricted due to lack of knowledge in technology, availability of equal opportunity or marginalized in any shape or form She has an Inspirational Story and is the heart and soul of the initiative “Womeyn”.
                         </div>
                     </div>
 
@@ -146,22 +128,29 @@ function Aboutus({ id }) {
                             })}
                         </div>
 
-                        <div className={styles.creationabouts}>
+                        <div className={styles.creationabouts} id="OurMission&Vision">
 
                             Initiative that will empower women of our community by providing an eCommerce platform to achieve their dreams of self-reliance by establishing an online business in a most cost effective manner. Platform aggregates and brings communities together through social media, online platforms and collaborations with like minded organizations. We are driven by the concept of creating communities transcending all barriers that are commonly seen with women entrepreneurs.
                         </div>
                     </div>
                     <div>
                         <Ourvision />
+
+                        <div id="TheLogoSignificance">
+
+
+</div>
                     </div>
 
-                    <div className={styles.standsections}>
+                  
+
+                    <div className={styles.standsections} >
                         <div className="mt-5">
                             <div className='large-text text-center'>The Logo Significance</div>
                             <div className="text-center mt-4">
                                 <Image src={womenlogo} alt="no image" className={styles.abss} />
                             </div>
-                            <div className={styles.stands}>
+                            <div className={styles.stands} id="TheTeam">
                                 <span><Image src={wba} alt="no image" className={styles.abs} /></span>stands for “You” being the women out there.<br />
                                 Womeyn is a platform for “You” by “ You”. <span>
                                     <Image src={wba1} alt="no image" className={styles.abs} />
@@ -169,22 +158,28 @@ function Aboutus({ id }) {
                             </div>
                         </div>
                     </div>
-                    <div id="c">
+                    <div >
                         <Ourteam />
                     </div>
-                    <div id="d">
+            
+
+                    
+                    <div >
                         <Ourclutures />
                     </div>
-                    <div id="e">
+                    <div >
 
                         <AboutusSubscribe />
                     </div>
                 </div>
 
+              
+
 
                 {/* <div>
                     <Whatmake />
                 </div> */}
+
             </div>
         </Fragment>
     )

@@ -4,7 +4,7 @@ import serachicon from '../../assests/homepage-logos/serachicon.png';
 import Image from 'next/image';
 import womeynlogo from '../../assests/homepage-logos/womeyn_logo.png';
 import { useRouter } from 'next/router';
-// import Link from 'next/link';
+import Link from 'next/link';
 import cartslogo from '../../assests/homepage-logos/basket.png';
 import profile from '../../assests/homepage-logos/profile.png';
 import myprofile from '../../assests/login-logos/myprofile.png';
@@ -22,8 +22,7 @@ import { FavortActions } from '../../Redux/actions/favortactions/Favortactions';
 import Searchbar from './serachcategorys/Searchbar';
 import Dropdown from 'react-bootstrap/Dropdown';
 import aroepath from '../../assests/homepage-logos/path.png';
-import * as Scroll from 'react-scroll';
-import { Link } from 'react-scroll'
+
 import GetAboutusCount from '../../Redux/actions/aboutuscounts/Aboutuscounts';
 import { SearchProductCategorys, SearchProductUser } from '../../services/category-services/category-service';
 function Header() {
@@ -391,95 +390,40 @@ function Header() {
                         </div>
                     </div>
                     <div className={router.pathname == "/abouts" ? "active" : ""}>
-                        <div class="dropdownabout" onClick={NaigateHoverAboutus}>
+                        <div class="dropdownabout" >
                             <button class="dropbtnabout" ><span className={router?.pathname == "/abouts" ? "active" : ""}>About Us</span> <span><Image src={aroepath} alt="no image" className="patharrow" /></span></button>
                             <div class="dropdown-contentabut">
-                                {/* <Scrolllink
-                                    onClick={() => router.push('/abouts/home')}
-                                    to="DayCare"
-                                    spy={true}
-                                    smooth={true}
-                                    hashSpy={true}
-                                    isDynamic={true}
+                              
+
+                               
 
 
-                                >
-                                    Home
-                                </Scrolllink> */}
-
-                                <a href="/abouts"
-                                    target='black'
-
-                                    onClick={e => {
-                                        let home = document.getElementById("#home");
-                                        e.preventDefault();  // Stop Page Reloading
-                                        home && home.scrollIntoView();
-                                    }}
-                                >What is Womeyn
-                                </a>
-                                <a href="/abouts"
-                                    target='black'
-
-                                    onClick={e => {
-                                        let home = document.getElementById("#home");
-                                        e.preventDefault();  // Stop Page Reloading
-                                        home && home.scrollIntoView();
-                                    }}
-                                >
-                                    Our Mission & Vision
-                                </a>
+                                <Link href="/abouts#WhatisWomeyn" scroll={false} >
+                                What is Womeyn
+                                </Link>
+                                <Link href="/abouts#OurMission&Vision" scroll={false} >
+                                Our Mission & Vision
+                                </Link>
+                                <Link href="/abouts#TheLogoSignificance" scroll={false} >
+                                The Logo Significance
+                                </Link>
 
 
-                                <a href="/abouts"
-                                    target='black'
-
-                                    onClick={e => {
-                                        let home = document.getElementById("#home");
-                                        e.preventDefault();  // Stop Page Reloading
-                                        home && home.scrollIntoView();
-                                    }}
-                                >
-                                    The Logo Significance
-                                </a>
+                                <Link href="/abouts#TheTeam" scroll={false} >
+                                The Team
+                                </Link>
 
 
-                                <a href="/abouts"
-                                    target='black'
+                                <Link href="/abouts#PartnersCollaborations" scroll={false} >
+                                Partners & Collaborations
+                                </Link>
+                            
 
-                                    onClick={e => {
-                                        let home = document.getElementById("#home");
-                                        e.preventDefault();  // Stop Page Reloading
-                                        home && home.scrollIntoView();
-                                    }}
-                                >
-                                    The Team
-                                </a>
+                                <Link href="/abouts#JoinWomeyn" scroll={false} >
+                                Join Womeyn
+                                </Link>
+                             
 
-
-                                <a href="/abouts"
-                                    target='black'
-
-                                    onClick={e => {
-                                        let home = document.getElementById("#home");
-                                        e.preventDefault();  // Stop Page Reloading
-                                        home && home.scrollIntoView();
-                                    }}
-                                >
-                                    Partners & Collaborations
-                                </a>
-
-
-                                <a href="/abouts"
-                                    target='black'
-
-                                    onClick={e => {
-                                        let home = document.getElementById("#home");
-                                        e.preventDefault();  // Stop Page Reloading
-                                        home && home.scrollIntoView();
-                                    }}
-                                >
-                                    Join Womeyn
-                                </a>
 
                                 {/* <Link to="a" activeClass="active" spy={true} smooth={true} offset={50} duration={500}>What is Womeyn</Link>
                                 <Link to="c" activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Our Mission & Vision</Link>

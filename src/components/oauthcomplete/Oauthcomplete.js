@@ -13,7 +13,7 @@ function Oauthcomplete() {
     const [show, setShow] = useState(false);
     const handleClose = () => {
         setShow(false)
-        history.push("/");
+        history.push("/login");
     };
     const handleShow = () => setShow(true);
     const [emailexists, setEmailExists] = useState("");

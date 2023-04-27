@@ -137,6 +137,8 @@ function Home() {
     }
 
 
+  
+
 
 
     return (
@@ -153,7 +155,7 @@ function Home() {
                 <meta property="og:description" content="Team Womeyn is open to ideas, suggestions and comments that will help us improve and grow as a community platform. We would love to hear from you" />
                 <meta property="og:image" content="https://www.womeyn.cdp360.in/Mobileviewlogoshort.png" />
                 <meta property="og:image:width" content="100" />
-<meta property="og:image:height" content="100" />
+                <meta property="og:image:height" content="100" />
                 <meta property="twitter:card" content="https://www.womeyn.cdp360.in/" />
                 <meta property="twitter:url" content="https://www.womeyn.cdp360.in/" />
                 <meta property="twitter:title" content="Womeyn Home" />
@@ -232,6 +234,8 @@ function Home() {
                 <div>
                     <Whatmake />
                 </div>
+
+                
 
             </div>
         </Fragment >

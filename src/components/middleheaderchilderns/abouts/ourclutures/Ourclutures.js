@@ -97,10 +97,9 @@ function Ourclutures() {
 
             </div>
 
-            <div className={styles.ifyou}>
+            <div className={styles.ifyou} id="JoinWomeyn">
                 We help nurture and grow talented women who would like to learn and become entrepreneurs. Whatever your skill sets, feel free to connect and we will always try to find you the right pathway in empowering your journey in becoming a WomeynPreneur
             </div>
-
 
         </div>
     )

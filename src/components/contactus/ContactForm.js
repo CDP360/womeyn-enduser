@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { ConatctformsUser } from "../../services/contact-service/contact-service";
 import Spinner from 'react-bootstrap/Spinner';
 
+import { Element, Link } from 'react-scroll'
 
 function ContactForm() {
 
@@ -121,6 +122,11 @@ function ContactForm() {
 
   return (
     <div className={styles.contactformsections}>
+
+
+      <div className={styles.element} id="skills" >
+        Section one
+      </div>
       <form>
         <div className={styles.insidecontactforms}>
           <div className="col-lg-5">
@@ -204,97 +210,97 @@ function ContactForm() {
             </Form.Label>
           </div>
           <div>
-          <div className={styles.checkboxs}>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-           
-
-              <input
-                type='checkbox'
-
-                className={styles.checkboxtext}
-                
-                onChange={handleVlaues}
-
-                value="Products"
-
-              />    <span className="ms-2">Products</span>
-
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <input
-                type='checkbox'
-
-                className={styles.checkboxtext}
-            
-                onChange={handleVlaues}
-                value="Services"
-
-              />     <span className="ms-2">Services</span>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <input
-                type='checkbox'
-
-                className={styles.checkboxtext}
-               
-                onChange={handleVlaues}
+            <div className={styles.checkboxs}>
+              <Form.Group className="mb-3" controlId="formBasicCheckbox">
 
 
-                value="Partnership / Collaboration"
+                <input
+                  type='checkbox'
 
-              />
-              <span className="ms-2">Partnership / Collaboration</span>
+                  className={styles.checkboxtext}
+
+                  onChange={handleVlaues}
+
+                  value="Products"
+
+                />    <span className="ms-2">Products</span>
+
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <input
+                  type='checkbox'
+
+                  className={styles.checkboxtext}
+
+                  onChange={handleVlaues}
+                  value="Services"
+
+                />     <span className="ms-2">Services</span>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <input
+                  type='checkbox'
+
+                  className={styles.checkboxtext}
+
+                  onChange={handleVlaues}
+
+
+                  value="Partnership / Collaboration"
+
+                />
+                <span className="ms-2">Partnership / Collaboration</span>
               </Form.Group>
 
 
+            </div>
+
+            <div className={styles.checkboxs}>
+
+
+              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <input
+                  type='checkbox'
+
+                  className={styles.checkboxtext}
+
+                  value="Volunteers"
+                  onChange={handleVlaues}
+
+                />
+                <span className="ms-2">Volunteers</span>
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <input
+                  type='checkbox'
+
+                  className={styles.checkboxtext}
+
+                  value="Trainees"
+                  onChange={handleVlaues}
+
+                />
+                <span className="ms-2">Trainees</span>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <input
+                  type='checkbox'
+
+                  className={styles.checkboxtext}
+
+                  value="Others"
+                  onChange={handleVlaues}
+
+                />
+                <span className="ms-2">Others</span>
+              </Form.Group>
+            </div>
           </div>
 
-          <div className={styles.checkboxs}>
 
 
-<Form.Group className="mb-3" controlId="formBasicCheckbox">
-    <input
-      type='checkbox'
 
-      className={styles.checkboxtext}
-  
-      value="Volunteers"
-      onChange={handleVlaues}
-
-    />
-    <span className="ms-2">Volunteers</span>
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formBasicCheckbox">
-    <input
-      type='checkbox'
-
-      className={styles.checkboxtext}
-     
-      value="Trainees"
-      onChange={handleVlaues}
-
-    />
-    <span className="ms-2">Trainees</span>
-  </Form.Group>
-  <Form.Group className="mb-3" controlId="formBasicCheckbox">
-    <input
-      type='checkbox'
-
-      className={styles.checkboxtext}
-    
-      value="Others"
-      onChange={handleVlaues}
-
-    />
-    <span className="ms-2">Others</span>
-  </Form.Group>
-</div>
-          </div>
-          
-
-
-         
 
           {errorhelp && checks?.length <= 0 ? <span className="active">Help is Required!!!</span> : <></>}
         </div>

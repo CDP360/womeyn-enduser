@@ -255,7 +255,7 @@ function Ourteam() {
             <div>
 
 
-                <div className={styles.kulkarinextss}>
+                <div className={styles.kulkarinextss} id="PartnersCollaborations">
 
                     Over 35 years of Sales / Marketing and Business Development experience in the Information Technology domain. Double Master’s in Commerce and Business Administration, Narendra comes with a lot of business experience across the Middle East , Asia & South Pacific region. He has also worked and help establish starts-ups during the dotcom boom in 2001. His role in Womeyn is to mentor the team and help setup the infrastructure and help operationalise the platform, including road mapping the future platform iterations and business relationships
 
