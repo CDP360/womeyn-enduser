@@ -597,7 +597,7 @@ function Viewproducts({ id }) {
     useEffect(() => {
         ProductView(productnames).then((res) => {
 
-            console.log("kalai",res?.data)
+            console.log("kalai", res?.data)
 
 
             setProductseller(res?.data?.sellerInformation[0])
@@ -1006,7 +1006,15 @@ function Viewproducts({ id }) {
         setPathUrl(URL);
     }, [productdata?.productThumbImage])
 
-    const imaged=`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`;
+ 
+
+    const [actions,setAction]=useState(false);
+
+    useEffect(()=>{
+setTimeout(()=>{
+setAction(true);
+},10000)
+    },[])
 
 
     return (
@@ -1014,41 +1022,40 @@ function Viewproducts({ id }) {
             <>
 
 
-{productdata?<>
+                {actions && <>
 
 
-    <Head >
-
-                    
-
-{productdata?.productName && <title>{productdata?.productName>10?<>{productdata?.productName}</>:<>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.</>}</title>}
-{productdata?.productName  && <meta name="title" content={`Womeyn ${productdata?.productName}`} />}
-{/* <meta name="description" content={productdata?.productDescription} /> */}
-<meta property="og:locale" content="en_US" />
-<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
-<meta property="og:type" content="women" />
-<meta property="og:url" content="https://www.womeyn.cdp360.in/" />
-{productdata?.productName && <meta property="og:title" content={productdata?.productName} />}
-{productdata?.productDescription &&  <meta property="og:description" content={productdata?.productDescription} />}
-{imaged && <meta property="og:image" content={imaged} />}
+                    <Head >
 
 
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:site" content="https://www.womeyn.cdp360.in/" />
-<meta name="twitter:creator" content="https://www.womeyn.cdp360.in/" />
-{/* <meta property="og:url" content="http://bits.blogs.nytimes.com/2011/12/08/a-twitter-for-my-sister/" /> */}
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://www.womeyn.cdp360.in/" />
-{productdata?.productName && <meta property="twitter:title" content={productdata?.productName} />}
-{productdata?.productDescription && <meta property="twitter:description" content={productdata?.productDescription} />}
-{/* <meta property="twitter:image" content={imaged} /> */}
-{imaged && <meta property="twitter:image" content={imaged} />}
 
-</Head>
-</>:<>
-</>}
+                        {productdata?.productName && <title>{productdata?.productName > 10 ? <>{productdata?.productName}</> : <>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.</>}</title>}
+                        {productdata?.productName && <meta name="title" content={`Womeyn ${productdata?.productName}`} />}
+                        {/* <meta name="description" content={productdata?.productDescription} /> */}
+                        <meta property="og:locale" content="en_US" />
+                        <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+                        <meta property="og:type" content="women" />
+                        <meta property="og:url" content="https://www.womeyn.cdp360.in/" />
+                        {productdata?.productName && <meta property="og:title" content={productdata?.productName} />}
+                        {productdata?.productDescription && <meta property="og:description" content={productdata?.productDescription} />}
+                        {productdata?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}
 
-                
+
+                        <meta name="twitter:card" content="summary" />
+                        <meta name="twitter:site" content="https://www.womeyn.cdp360.in/" />
+                        <meta name="twitter:creator" content="https://www.womeyn.cdp360.in/" />
+                        {/* <meta property="og:url" content="http://bits.blogs.nytimes.com/2011/12/08/a-twitter-for-my-sister/" /> */}
+                        <meta property="twitter:card" content="summary_large_image" />
+                        <meta property="twitter:url" content="https://www.womeyn.cdp360.in/" />
+                        {productdata?.productName && <meta property="twitter:title" content={productdata?.productName} />}
+                        {productdata?.productDescription && <meta property="twitter:description" content={productdata?.productDescription} />}
+                        {/* <meta property="twitter:image" content={imaged} /> */}
+                        {productdata?.productThumbImage && <meta property="twitter:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}
+
+                    </Head>
+                </>}
+
+
 
                 {/* <DefaultSeo
                     title={productdata?.productName}
