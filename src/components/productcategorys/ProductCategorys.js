@@ -237,7 +237,7 @@ function ProductCategorys() {
                             </div>
 
 
-                            <div>
+                            {/* <div>
 
                                 {dataseller?.length > 8 &&
                                 <div className='d-flex justify-content-center mt-4'>
@@ -251,154 +251,25 @@ function ProductCategorys() {
                                     />
                                 </div>
                             }
-                            </div>
+                            </div> */}
                         </div>
 
 
                     </div>
 
-
-
-
-
-
-
-
-
-
-            {/* <div className='mainsection'>
-                <div className="insidesection">
-                    <div className={styles.womeynmainsectionpre}>
-                        <div className={styles.emptyboxcolorright}>
-                        </div>
-                        <div className={styles.emptyboxcolorleft}>
-                        </div>
-                        <div className={styles.bodysectionwomeynpre}>
-
-                            <div className={styles.imagesectionwomeyn}>
-                                <Womencarouselbanner />
-                            </div>
-                            <div className={styles.ourwomenpreneurs}>
-                                <div className='large-text'>
-                                    Products
-                                </div>
-                                <div className={styles.loreamtextwomen}>
-                                    Please select to know more about the Womeynpreneur's business, her journey her story and her success against all odds
-                                </div>
-                            </div>
-                            <div className={styles.serachsectionwomen}>
-                                <div className={styles.serachwomenpresection}>
-                                    <div>
-                                        <input type='text' placeholder="Search by Name or Brand" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
-                                    </div>
-                                    <div>
-                                        <Image src={serachicon} alt="no image" className={styles.serachiconwomen} onClick={GetSearchdata} />
-                                    </div>
-                                </div>
-                                <div className='col-lg-3 col-xs-6 col-sm-5'>
-
-                                    <Select
-                                        placeholder={"Filter Category ..."}
-                                        value={filterdata}
-                                        onChange={(e) => handleFilterCategory(e)}
-                                        options={datacategory}
-                                    />
-
-                                </div>
-                            </div>
-
-
-                            <div className='cardsection row mb-3 ms-1 mt-5'>
-                                {loading ? <>
-                                    <LoaderLogo />
-                                </> : <>{servicesusers?.map((item, index) => {
-                                    return (
-                                        <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 ' key={index} >
-                                            
-                                            <div onClick={() => router.push(`/product/${item?.productSlugName}`)} className={styles.imagebox}>
-                                                {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={styles.sellerimagesize} /> :
-                                                    <>
-                                                        <Skeleton className={styles.loaderskelimage} />
-                                                    </>
-                                                }
-                                            </div>
-                                            <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
-                                                <Image src={star} alt="no image" className={styles.stars} />
-
-
-                                                <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
-                                                    tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
-
-                                                    disabled
-
-                                                />
-
-                                                <div className={styles.brandname}>
-                                                    {item?.productName?.length <= 10 ? <>{item?.productName}</> : <>    {item?.productName.slice(0, 18)}...</>}
-                                                </div>
-
-                                                <div className='textgrey'>
-                                                    {item?.brandName?.length <= 18 ? <>{item?.brandName}</> : <>{item?.brandName.slice(0, 18)}...</>}
-                                                </div>
-                                                <div className={styles.cardsellerborder}>
-                                                    <div className={styles.cardsellerinsideborder}>
-                                                    </div>
-                                                </div>
-                                                <div className={styles.cardpricesection}>
-                                                    <div className='textprice'>
-                                                        <span>A${item?.salePrice}</span>
-                                                    </div>
-                                                    <div className={styles.splitoffers}>
-                                                        {item?.offerPercentag == 0 ? <></> : <span className='textpricedashedgreen'> <del>A${item?.actualPrice}</del></span>}
-                                                        <span className='textpricedashedgreen ms-2'>
-                                                            {item?.offerPercentag == 0 ? <></> : <>
-                                                                ({item?.offerPercentag} off)
-                                                            </>}
-                                                        </span>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )
-                                })}</>}
-                            </div>
-
-
-                            <div>
-
-                                {dataseller?.length > 8 &&
-                                <div className='d-flex justify-content-center mt-4'>
-                                    <Pagination
-                                        className="pagination-data"
-                                        total={limit?.totalPages * 10}
-                                        onChange={handleChangePagecount}
-                                        current={current}
-                                        itemRender={PrevNextArrow}
-                                        breakLabel="..."
-                                    />
-                                </div>
-                            }
-                            </div>
-                        </div>
-
-
-                    </div>
-
-
-
-                    
                     <div className={styles.emptyboxrightcolor}>
                 </div>
                 <div className={styles.emptyboxleftcolor}>
                 </div>
-
-
-
-                    
-
+                <div className={styles.emptyboxleftcolor1}>
                 </div>
-            </div> */}
+                <div className={styles.emptyboxleftcolor2}>
+                </div>
+                <div className={styles.emptyboxleftcolor3}>
+                </div>
+                <div className={styles.emptyboxleftcolor4}>
+                </div>
+
         </Fragment>
     )
 }

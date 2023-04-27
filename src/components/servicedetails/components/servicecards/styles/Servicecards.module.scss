@@ -5,7 +5,7 @@
     height: 100%;
     padding-bottom: 5%;
     position: relative;
-    z-index: 9;
+    z-index: 9 !important;
     .insideservicecards {
         width: 100%;
         .images {
@@ -25,6 +25,8 @@
     height: 100%;
     padding-bottom:5%;
     margin:0 auto;
+    z-index: 9 !important;
+
     @include xsBreakPoint {
         width: 85%;
         padding-top: 6%;
@@ -229,3 +231,87 @@
     height: 15px;
     object-fit: contain;
 }
+
+
+
+
+
+
+
+.emptyboxrightcolor {
+    // background-color: orange;
+    position: absolute;
+    width: 12%;
+    height: 40% !important;
+    background: #fecf9d;
+    opacity: 0.4;
+    filter: blur(100px);
+    left: 0;
+    top:0%;
+    z-index: 0 !important;
+  }
+  .emptyboxleftcolor {
+    position: absolute;
+    width: 10%;
+    height: 30% !important;
+    background: #e95a5a;
+    opacity: 0.4;
+    filter: blur(100px);
+    right: 5%;
+    top: -5%;
+    z-index: 0;
+  }
+  
+  
+  .emptyboxleftcolor1
+  {
+    position: absolute;
+    width: 18%;
+    height: 20% !important;
+    background: #415B91;
+    opacity: 0.4;
+    filter: blur(100px);
+    right: 0%;
+    top: 30%;
+    z-index: 0;
+  }
+  
+  .emptyboxleftcolor2
+  {
+    position: absolute;
+    width: 15%;
+    height: 25% !important;
+    background: #E95A5A;
+    opacity: 0.4;
+    filter: blur(100px);
+    left: 0%;
+    top: 50%;
+    z-index: 0;
+  }
+  
+  
+  .emptyboxleftcolor3
+  {
+    position: absolute;
+    width: 25%;
+    height: 30% !important;
+    background: #FFE7CD;
+    opacity: 0.6;
+    filter: blur(100px);
+    right: 0%;
+    top: 70%;
+    z-index: 0;
+  }
+  
+  .emptyboxleftcolor4
+  {
+    position: absolute;
+    width: 15%;
+    height: 10% !important;
+    background: #FFE7CD;
+    opacity: 0.6;
+    filter: blur(100px);
+    left: 0%;
+    bottom: 0%;
+    z-index: 0;
+  }

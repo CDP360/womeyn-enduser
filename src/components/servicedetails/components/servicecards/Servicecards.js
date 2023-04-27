@@ -215,6 +215,20 @@ function Servicecards() {
             </div>
 
 
+            <div className={styles.emptyboxrightcolor}>
+                </div>
+                <div className={styles.emptyboxleftcolor}>
+                </div>
+                <div className={styles.emptyboxleftcolor1}>
+                </div>
+                <div className={styles.emptyboxleftcolor2}>
+                </div>
+                <div className={styles.emptyboxleftcolor3}>
+                </div>
+                <div className={styles.emptyboxleftcolor4}>
+                </div>
+
+
         </Fragment>
     )
 }

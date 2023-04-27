@@ -157,7 +157,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
                             className={styles.editprofilesection}
                             src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
                             alt="profile-pic"
-                          />
+                          />  
                         </div>
                         <div>
                           <div className="carttext">{item?.productName}

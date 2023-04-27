@@ -23,6 +23,9 @@
         padding: 0px 0px;
         cursor: pointer;
         // border:2px solid blue !important;
+    background-color: none !important;
+    
+
         @include themed() {
             background: t($card);
         }

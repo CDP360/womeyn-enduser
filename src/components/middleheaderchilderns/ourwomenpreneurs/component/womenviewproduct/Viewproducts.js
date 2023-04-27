@@ -1007,14 +1007,7 @@ function Viewproducts({ id }) {
     }, [productdata?.productThumbImage])
 
  
-
-    const [actions,setAction]=useState(false);
-
-    useEffect(()=>{
-setTimeout(()=>{
-setAction(true);
-},10000)
-    },[])
+    
 
 
     return (
@@ -1022,7 +1015,7 @@ setAction(true);
             <>
 
 
-                {actions && <>
+                {productdata ? <>
 
 
                     <Head >
@@ -1053,6 +1046,7 @@ setAction(true);
                         {productdata?.productThumbImage && <meta property="twitter:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}
 
                     </Head>
+                </> : <>
                 </>}
 
 
