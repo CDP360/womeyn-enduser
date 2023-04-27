@@ -7,11 +7,16 @@ import Modal from 'react-bootstrap/Modal';
 import womenlog from '../../assests/homepage-logos/womeyn_logo.png';
 import styles from './styles/Oauthcomplete.module.scss';
 function Oauthcomplete() {
+
+    const history = useRouter();
+
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false)
+        history.push("/");
+    };
     const handleShow = () => setShow(true);
     const [emailexists, setEmailExists] = useState("");
-    const history = useRouter();
     useEffect(() => {
         GoogleAuthComplete();
     }, [emailexists]);
@@ -33,9 +38,6 @@ function Oauthcomplete() {
             if (err?.response?.data?.message || err?.response?.data?.code) {
                 handleShow();
                 setEmailExists(err?.response?.data?.message);
-
-                history.push("/");
-
             }
         }
 
