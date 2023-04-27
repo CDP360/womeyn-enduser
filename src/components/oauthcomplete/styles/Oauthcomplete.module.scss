@@ -1,9 +1,9 @@
 @use "../../../../scss/abstract/" as *;
 
 .womenlogo {
-    width: 140px;
+    width: 180px;
     object-fit: contain;
-    height: 140px;
+    height: 180px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -21,7 +21,7 @@
 }
 
 .authlogin {
-    width: 30%;
+    width: 40%;
     border-radius: 10px;
     padding: 10px;
     color: white;
@@ -50,5 +50,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5% 0px;
+    padding: 3% 0px;
 }

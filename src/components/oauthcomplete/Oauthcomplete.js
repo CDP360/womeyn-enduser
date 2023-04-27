@@ -20,7 +20,7 @@ function Oauthcomplete() {
     const GoogleAuthComplete = async () => {
         try {
             const res = await OauthSuccess();
-            console.log(res?.data, "kalaitoken")
+            console.log(res?.data, "kalaitoken");
             localStorage.setItem("userToken", JSON.stringify(res?.data?.tokens?.access?.token));
             localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
             localStorage.setItem("auth", true);
@@ -56,7 +56,6 @@ function Oauthcomplete() {
             <div className='d-flex align-content-center justify-content-center authsuccess'>
                 <LoaderLogo />
             </div>
-
             <Modal show={show} onHide={handleClose} centered>
                 <Modal.Header closeButton>
                     <Modal.Title>
@@ -78,7 +77,6 @@ function Oauthcomplete() {
                         </div>
                     </div>
                 </Modal.Body>
-
             </Modal>
         </Fragment>
     )
