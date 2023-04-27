@@ -35,7 +35,7 @@ function Login() {
         if (productWhishlist) {
             Userlogin(datas).then(async (res) => {
                 if (res) {
-                    console.log("kalai", res?.data)
+                  
                     localStorage.setItem("user", JSON.stringify(res?.data?.user?.firstName));
                     localStorage.setItem("auth", true);
                     localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
@@ -45,25 +45,20 @@ function Login() {
                         setLoading(false);
                     }, 400)
                 }
-                else {
-                    setError(true);
-                    toast.error("Incorrect email or password",
-                        {
-                            position: "top-center",
-                            autoClose: 3300,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: "dark",
-                        }
-                    );
-                    setLoading(false);
-
-                }
+               
             }).catch((err) => {
-                console.log(err);
+                toast.error(err?.response?.data,
+                    {
+                        position: "top-center",
+                        autoClose: 3300,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
                 setError(false);
                 setLoading(false);
 
@@ -82,8 +77,9 @@ function Login() {
                         setLoading(false);
                     }, 600);
                 }
-                else {
-                    toast.error("Incorrect email or password",
+               
+            }).catch((err) => {
+                toast.error(err?.response?.data?.message || err?.response?.data,
                         {
                             position: "top-center",
                             autoClose: 3300,
@@ -95,10 +91,6 @@ function Login() {
                             theme: "dark",
                         }
                     );
-                    setLoading(false);
-                }
-            }).catch((err) => {
-                console.log(err);
                 setError(false);
                 setLoading(false);
 

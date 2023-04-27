@@ -18,7 +18,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import Head from "next/head";
 import { DefaultSeo, NextSeo, ArticleJsonLd } from 'next-seo';
 import { Rate } from "antd";
-
+import womenlogo from '../../../../../assests/homepage-logos/new womeyn logo.png';
 function Viewproducts({ id }) {
     const history = useRouter();
     const [errors, setError] = useState(false);
@@ -594,49 +594,69 @@ function Viewproducts({ id }) {
     }
 
     // No Records Found
+
+
+    const [errorpage,setNotPage]=useState(false);
+
+
+    
     useEffect(() => {
-        ProductView(productnames).then((res) => {
-
-            console.log("kalai", res?.data)
-
-
-            setProductseller(res?.data?.sellerInformation[0])
-            const productshowimages = [];
-            res?.data?.productDetails?.productImages?.map((item, index) => {
-                productshowimages?.push(item)
-            })
-            // productshowimages?.unshift({
-            //     id: 0,
-            //     name: res?.data?.productDetails?.productThumbImage
-            // });
-            setProductImage(productshowimages);
-            setProductData(res?.data?.productDetails);
-            setProductReview(res?.data?.reviews);
-            setRatingcount(res?.data?.totalReviewsCount)
-            setAverageRating(res?.data?.averageRating[0]?.avgRating)
-            const variationdata = [];
-            setProductVariations(variationdata);
-            res?.data?.variations.map((item) => {
-                const items = item?.variationValues.length;
-                const forms = item?.variationValues.split(",", items);
-                const datas = {
-                    id: item?.id,
-                    name: item?.name,
-                    sellerId: item?.sellerId,
-                    stateId: item?.stateId,
-                    variationValues: forms
-                };
-                variationdata.push(datas);
-            });
-
-        }).catch((err) => {
-            console.log(err);
-
-
-        });
+       
         const tokencheck = localStorage.getItem("userToken");
-        setTokenset(tokencheck)
+        setTokenset(tokencheck);
+        ProductDataView();
     }, [productnames, tokencheck, index1, index2, index3, index4, averageRatings?.avgRating, errors]);
+
+
+    const ProductDataView=async()=>
+    {
+        try
+        {
+            await ProductView(productnames).then((res) => {
+
+
+               
+    
+    
+                setProductseller(res?.data?.sellerInformation[0])
+                const productshowimages = [];
+                res?.data?.productDetails?.productImages?.map((item, index) => {
+                    productshowimages?.push(item)
+                })
+                // productshowimages?.unshift({
+                //     id: 0,
+                //     name: res?.data?.productDetails?.productThumbImage
+                // });
+                setProductImage(productshowimages);
+                setProductData(res?.data?.productDetails);
+                setProductReview(res?.data?.reviews);
+                setRatingcount(res?.data?.totalReviewsCount)
+                setAverageRating(res?.data?.averageRating[0]?.avgRating)
+                const variationdata = [];
+                setProductVariations(variationdata);
+                res?.data?.variations.map((item) => {
+                    const items = item?.variationValues.length;
+                    const forms = item?.variationValues.split(",", items);
+                    const datas = {
+                        id: item?.id,
+                        name: item?.name,
+                        sellerId: item?.sellerId,
+                        stateId: item?.stateId,
+                        variationValues: forms
+                    };
+                    variationdata.push(datas);
+                });
+    
+            })
+        }
+        catch(err)
+        {
+if(err?.response?.data?.message)
+{
+    setNotPage(true);
+}
+        }
+    }
 
     useEffect(() => {
         //         ProductLikeWishlistGet().then((res) => {
@@ -989,9 +1009,6 @@ function Viewproducts({ id }) {
     }
 
 
-    const NavigatePath = () => {
-        router?.push("/errorboundary")
-    }
 
 
     const [pathurl, setPathUrl] = useState("");
@@ -1007,618 +1024,533 @@ function Viewproducts({ id }) {
     }, [productdata?.productThumbImage])
 
  
+
+    console.log(router,"router")
     
 
+    if(errorpage)
+    {
+return(
+    <div>
 
-    return (
-        <Fragment>
-            <>
+<div>
+    <img src={womenlogo?.src} alt="no image" className={styles.womelogo}/>
+</div>
+<div className={styles.sorry}>
+Sorry , No Record Found
+    </div>
 
+    <div>
 
-                {productdata ? <>
-
-
-                    <Head >
-
-
-
-                        {productdata?.productName && <title>{productdata?.productName > 10 ? <>{productdata?.productName}</> : <>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.</>}</title>}
-                        {productdata?.productName && <meta name="title" content={`Womeyn ${productdata?.productName}`} />}
-                        {/* <meta name="description" content={productdata?.productDescription} /> */}
-                        <meta property="og:locale" content="en_US" />
-                        <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
-                        <meta property="og:type" content="women" />
-                        <meta property="og:url" content="https://www.womeyn.cdp360.in/" />
-                        {productdata?.productName && <meta property="og:title" content={productdata?.productName} />}
-                        {productdata?.productDescription && <meta property="og:description" content={productdata?.productDescription} />}
-                        {productdata?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}
-
-
-                        <meta name="twitter:card" content="summary" />
-                        <meta name="twitter:site" content="https://www.womeyn.cdp360.in/" />
-                        <meta name="twitter:creator" content="https://www.womeyn.cdp360.in/" />
-                        {/* <meta property="og:url" content="http://bits.blogs.nytimes.com/2011/12/08/a-twitter-for-my-sister/" /> */}
-                        <meta property="twitter:card" content="summary_large_image" />
-                        <meta property="twitter:url" content="https://www.womeyn.cdp360.in/" />
-                        {productdata?.productName && <meta property="twitter:title" content={productdata?.productName} />}
-                        {productdata?.productDescription && <meta property="twitter:description" content={productdata?.productDescription} />}
-                        {/* <meta property="twitter:image" content={imaged} /> */}
-                        {productdata?.productThumbImage && <meta property="twitter:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}
-
-                    </Head>
-                </> : <>
-                </>}
+        <button className={styles.goback} onClick={()=>router.back()}>Go Back</button>
 
 
 
-                {/* <DefaultSeo
-                    title={productdata?.productName}
-                    description={productdata?.productDescription}
-                    openGraph={{
-                        type: 'website',
-                        locale: 'en_IE',
-                        url: pathurl,
-                        siteName: `Womeyn.com`,
-                        images: {
-                            url: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`,
-                            width: 850,
-                            height: 650,
-                            alt: 'Womeyn Image..!!',
-                        },
-                        article: {
-                            publishedTime: '2022-06-21T23:04:13Z',
-                            modifiedTime: '2022-01-21T18:04:43Z',
-                            authors: [
-                                'https://www.example.com/authors/@firstnameA-lastnameA',
-                                'https://www.example.com/authors/@firstnameB-lastnameB',
-                            ],
-                            tags: ['Tag A', 'Tag B', 'Tag C'],
-                        },
-                    }}
-                    twitter={{
-                        handle: '@handle',
-                        site: '@site',
-                        cardType: 'summary_large_image',
-                    }}
-                /> */}
-
-                {/* <ArticleJsonLd
-                    type="BlogPosting"
-                    url="https://example.com/blog"
-                    title="Manage SEO in NextJS with Next SEO"
-                    images={[
-                        'https://example.com/photos/1x1/photo.jpg',
-                        'https://example.com/photos/4x3/photo.jpg',
-                        'https://example.com/photos/16x9/photo.jpg',
-                    ]}
-                    datePublished="2022-06-21T23:04:13Z"
-                    dateModified="2022-06-21T23:04:13Z"
-                    authorName="Author Name"
-                    description="Next SEO packages simplifies the SEO management in Next Apps with less configurations"
-                /> */}
-                {/* 
-                <NextSeo
-                    robotsProps={{
-                        nosnippet: true,
-                        notranslate: true,
-                        noimageindex: true,
-                        noarchive: true,
-                        maxSnippet: -1,
-                        maxImagePreview: 'none',
-                        maxVideoPreview: -1,
-                    }}
-                /> */}
-                {/* <Head>
-                    <meta name="robots" content="max-snippet:0" />
-                    <meta name="robots" content="max-snippet:20, max-image-preview:large"></meta>
-                    {productdata?.productName && <title>{productdata?.productName}</title>}
-                    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-                    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-                    <meta name="robots" content="index" />
-                    <meta property="og:type" content="website" />
-                    <meta name="og_site_name" property="og:site_name" content="Womeyn.com" />
-                    <meta name="twitter:card" content="app" />
-                    <meta name="twitter:site" content="@womeyn" />
-                    <meta name="twitter:creator" content="@womeyn" />
-                    {productdata?.productName && <meta name="twitter:title" content={productdata?.productName} />}
-                    {productdata?.productDescription && <meta name="twitter:description" content={productdata?.productDescription} />}
-                    {productimages?.productThumbImage && <meta property="twitter:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />}
-                    <meta property="og:image:width" content="1200" />
-                    <meta property="og:image:height" content="630" />
-                    {productdata?.productName && <meta name="og_title" property="og:title" content={productdata?.productName} />}
-                    {productdata?.productDescription && <meta name="keywords" content={productdata?.productDescription} />}
-                    {productdata?.productDescription && <meta name="description" content={productdata?.productDescription} />}
-                    {productdata?.productDescription && <meta property="og:description" content={productdata?.productDescription} />}
-                    {pathurl && <link rel="canonical" href={pathurl} />}
-                    <meta itemprop="image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
-                    <meta name="og_image" property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
-                    <meta name="og_url" property="og:url" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} />
-
-                    {productdata?.productName && <title>{productdata?.productName}</title>}
-
-                    <meta name="viewport" content="width=device-width, initial-scale=1" />
-                    <meta name="title" content={productdata?.productName} />
-
-                    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                    <meta name="viewport" content="width=device-width, initial-scale=1" />
-                    <meta charSet="utf-8" />
-                    <meta name="twitter:site" content="@womeyn" />
-                    <meta name="twitter:creator" content="@womeyn" />
-                    {productdata?.productDescription && <meta name="description" content={productdata?.productDescription} key="description" />}
-                    <meta property="og:type" content="website" />
-                    <meta property="og:title" content={productdata?.productName} key="og:title" />
-                    {productdata?.productDescription && <meta property="og:description" content={productdata?.productDescription} key="og:description" />}
-                    {productimages?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages?.productThumbImage}`} key="og:image" />}
-                    {pathurl && <meta property="og:url" content={pathurl} key="og:url" />}
-                    <meta name="twitter:card" content={productdata?.productDescription} key="twitter:card" />
-                    <meta property="og:site_name" content="Energici, l'info bien être" key="og:site_name" />
-                    {pathurl && <meta
-                        property="twitter:url"
-                        content={pathurl}
-                        key="twitter:url"
-                    />}
-                    <meta
-                        name="twitter:image:alt"
-                        content="Energici la plateforme du bien être"
-                        key="twitter:image:alt"
-                    />
-                    <meta property="twitter:domain" content="energici.fr" />
-                </Head> */}
-            </>
-            <div className={styles.mainproductviewscreen}>
-                <div className={styles.insideproductview}>
-                    <div className={styles.splitproductview}>
-                        <div className={styles.leftproductview}>
-                            <div className={styles.leftmainsectionslide}>
-                                <div className={styles.leftcardimages}>
-                                    <div className={styles.imagerowsection}>
-                                        {productimages?.map((item, index) => {
-                                            return (
-                                                <div className={`${indexs === index ? styles.activewomen : styles.borderimages
-                                                    } `} onClick={() => setIndex(index)} onMouseOver={() => setIndex(index)} key={index}>
-                                                    {item?.name ? <><img
-                                                        className={styles.imagecards}
-                                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
-                                                        alt="profile-pic"
-                                                    /></> : <>
-                                                        <Skeleton />
-                                                    </>}
-                                                </div >
-                                            )
-                                        })}
+    </div>
+    </div>
+)
+    }
+    else{
+        return (
+            <Fragment>
+                <>
+    
+    
+                    {productdata ? <>
+    
+    
+                        <Head >
+    
+    
+    
+                            {productdata?.productName && <title>{productdata?.productName > 10 ? <>{productdata?.productName}</> : <>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.</>}</title>}
+                            {productdata?.productName && <meta name="title" content={`Womeyn ${productdata?.productName}`} />}
+                            {/* <meta name="description" content={productdata?.productDescription} /> */}
+                            <meta property="og:locale" content="en_US" />
+                            <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+                            <meta property="og:type" content="women" />
+                            <meta property="og:url" content="https://www.womeyn.cdp360.in/" />
+                            {productdata?.productName && <meta property="og:title" content={productdata?.productName} />}
+                            {productdata?.productDescription && <meta property="og:description" content={productdata?.productDescription} />}
+                            {productdata?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}
+    
+    
+                            <meta name="twitter:card" content="summary" />
+                            <meta name="twitter:site" content="https://www.womeyn.cdp360.in/" />
+                            <meta name="twitter:creator" content="https://www.womeyn.cdp360.in/" />
+                            {/* <meta property="og:url" content="http://bits.blogs.nytimes.com/2011/12/08/a-twitter-for-my-sister/" /> */}
+                            <meta property="twitter:card" content="summary_large_image" />
+                            <meta property="twitter:url" content="https://www.womeyn.cdp360.in/" />
+                            {productdata?.productName && <meta property="twitter:title" content={productdata?.productName} />}
+                            {productdata?.productDescription && <meta property="twitter:description" content={productdata?.productDescription} />}
+                            {/* <meta property="twitter:image" content={imaged} /> */}
+                            {productdata?.productThumbImage && <meta property="twitter:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}
+    
+                        </Head>
+                    </> : <>
+                    </>}
+    
+    
+    
+                </>
+                <div className={styles.mainproductviewscreen}>
+                    <div className={styles.insideproductview}>
+                        <div className={styles.splitproductview}>
+                            <div className={styles.leftproductview}>
+                                <div className={styles.leftmainsectionslide}>
+                                    <div className={styles.leftcardimages}>
+                                        <div className={styles.imagerowsection}>
+                                            {productimages?.map((item, index) => {
+                                                return (
+                                                    <div className={`${indexs === index ? styles.activewomen : styles.borderimages
+                                                        } `} onClick={() => setIndex(index)} onMouseOver={() => setIndex(index)} key={index}>
+                                                        {item?.name ? <><img
+                                                            className={styles.imagecards}
+                                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
+                                                            alt="profile-pic"
+                                                        /></> : <>
+                                                            <Skeleton />
+                                                        </>}
+                                                    </div >
+                                                )
+                                            })}
+                                        </div >
                                     </div >
-                                </div >
-                                <div className={styles.rightcardimagesshow}>
-                                    <div className={styles.leftwomensearchsection}>
-                                        <div className={styles.serachlargeimage}>
-
-                                            <div className="d-block d-lg-none">
-
-
-
-                                                <img
-                                                    className={styles.serachlargeimages}
-                                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
-                                                    alt="profile-pic"
-                                                />
+                                    <div className={styles.rightcardimagesshow}>
+                                        <div className={styles.leftwomensearchsection}>
+                                            <div className={styles.serachlargeimage}>
+    
+                                                <div className="d-block d-lg-none">
+    
+    
+    
+                                                    <img
+                                                        className={styles.serachlargeimages}
+                                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
+                                                        alt="profile-pic"
+                                                    />
+                                                </div>
+                                                <div className="d-none d-lg-block">
+    
+                                                    <ReactImageMagnify
+                                                        //  className={styles.serachlargeimages}
+                                                        {...{
+                                                            smallImage: {
+    
+                                                                alt: 'Wristwatch by Ted Baker London',
+                                                                isFluidWidth: true,
+                                                                src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
+                                                                borderRadius: "10px"
+                                                            },
+                                                            largeImage: {
+                                                                src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
+                                                                width: 1200,
+                                                                height: 1200,
+                                                                backgroundColor: "white",
+                                                                // border:"3px solid blue"
+                                                                zIndex: "989898988989898989898989",
+                                                                borderRadius: "10px"
+    
+    
+                                                            },
+                                                            imageStyle: {
+                                                                // border:"2px solid red",
+                                                                width: "100%",
+                                                                height: "100%",
+                                                                maxHeight: "400px",
+                                                                objectFit: "contain",
+                                                                zIndex: "9898989898",
+                                                                backgroundColor: "white",
+                                                                borderRadius: "10px"
+    
+                                                            },
+                                                            // smallImage: {
+                                                            //     src: String, (required)
+                                                            //     srcSet: String,
+                                                            //     sizes: String,
+                                                            //     width: Number, (required if isFluidWidth is not set)
+                                                            //     height: Number, (required if isFluidWidth is not set)
+                                                            //     isFluidWidth: Boolean, (default false)
+                                                            //     alt: String,
+                                                            //     onLoad: Function,
+                                                            //     onError: Function
+                                                            // },
+    
+    
+                                                        }}
+    
+    
+                                                    />
+                                                </div>
+    
+    
+    
                                             </div>
-                                            <div className="d-none d-lg-block">
-
-                                                <ReactImageMagnify
-                                                    //  className={styles.serachlargeimages}
-                                                    {...{
-                                                        smallImage: {
-
-                                                            alt: 'Wristwatch by Ted Baker London',
-                                                            isFluidWidth: true,
-                                                            src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                            borderRadius: "10px"
-                                                        },
-                                                        largeImage: {
-                                                            src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                            width: 1200,
-                                                            height: 1200,
-                                                            backgroundColor: "white",
-                                                            // border:"3px solid blue"
-                                                            zIndex: "989898988989898989898989",
-                                                            borderRadius: "10px"
-
-
-                                                        },
-                                                        imageStyle: {
-                                                            // border:"2px solid red",
-                                                            width: "100%",
-                                                            height: "100%",
-                                                            maxHeight: "400px",
-                                                            objectFit: "contain",
-                                                            zIndex: "9898989898",
-                                                            backgroundColor: "white",
-                                                            borderRadius: "10px"
-
-                                                        },
-                                                        // smallImage: {
-                                                        //     src: String, (required)
-                                                        //     srcSet: String,
-                                                        //     sizes: String,
-                                                        //     width: Number, (required if isFluidWidth is not set)
-                                                        //     height: Number, (required if isFluidWidth is not set)
-                                                        //     isFluidWidth: Boolean, (default false)
-                                                        //     alt: String,
-                                                        //     onLoad: Function,
-                                                        //     onError: Function
-                                                        // },
-
-
+    
+                                            {tokencheck ? <div className={styles.heartimagesection}>
+                                                <button className={styles.btn}
+                                                    onClick={() => {
+                                                        if (!like) {
+                                                            LikeWishlistlike(productdata?.id)
+                                                        }
+                                                        else {
+                                                            LikeWishlistunlike(productdata?.id)
+                                                        }
                                                     }}
-
-
-                                                />
-                                            </div>
-
-
-
-                                        </div>
-
-                                        {tokencheck ? <div className={styles.heartimagesection}>
-                                            <button className={styles.btn}
-                                                onClick={() => {
-                                                    if (!like) {
-                                                        LikeWishlistlike(productdata?.id)
-                                                    }
-                                                    else {
-                                                        LikeWishlistunlike(productdata?.id)
-                                                    }
-                                                }}
-                                            >
-                                                {like ? <>
-                                                    <Image src={heartlike} alt="no image" className={styles.heartlikes} />
-
-                                                </> : <>
-                                                    <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
-
-
-                                                </>}
-
-                                                {/* {like?"kalai true":"kalai false"} */}
-                                            </button>
-                                        </div> :
-                                            <div className={styles.heartimagesection}>
-                                                <button className={styles.btn} onClick={() => {
-                                                    CheckLoginUsers(productdata?.productSlugName)
-                                                    // LikeWishlist(productdata?.id)
-                                                }}>
-
-                                                    <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+                                                >
+                                                    {like ? <>
+                                                        <Image src={heartlike} alt="no image" className={styles.heartlikes} />
+    
+                                                    </> : <>
+                                                        <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+    
+    
+                                                    </>}
+    
+                                                    {/* {like?"kalai true":"kalai false"} */}
                                                 </button>
-                                            </div>
-                                        }
+                                            </div> :
+                                                <div className={styles.heartimagesection}>
+                                                    <button className={styles.btn} onClick={() => {
+                                                        CheckLoginUsers(productdata?.productSlugName)
+                                                        // LikeWishlist(productdata?.id)
+                                                    }}>
+    
+                                                        <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+                                                    </button>
+                                                </div>
+                                            }
+                                        </div>
                                     </div>
-                                </div>
+                                </div >
                             </div >
+                            <div className={styles.rightproductview}>
+                                <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
+                                <div className={styles.starsection}>
+                                    <div className={styles.starsections}>
+                                        {averageRatings ? <>
+                                            {averageRatings === 1 && <Rate defaultValue={1} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 1.5 && <Rate defaultValue={1.5} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 2 && <Rate defaultValue={2} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 2.5 && <Rate defaultValue={2.5} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 3 && <Rate defaultValue={3} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 3.5 && <Rate defaultValue={3.5} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 4 && <Rate defaultValue={4} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 4.5 && <Rate defaultValue={4.5} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+                                            {averageRatings === 5 && <Rate defaultValue={5} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+    
+                                        </> : <>
+    
+                                            {<Rate defaultValue={0} allowHalf style={{ color: "#54BE43" }}
+                                                tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                count={5}
+                                                disabled
+                                            />}
+    
+    
+    
+    
+                                        </>}
+    
+    
+    
+                                    </div>
+                                    <div>
+                                        {ratingcount} Review
+                                    </div>
+                                </div>
+    
+                                <div className={styles.proceinproduct}>
+                                    <div className={styles.offertext}>
+                                        {productdata?.offerPercentag == 0 ? <>
+                                        </> : <>
+                                            {productdata?.offerPercentag}% off
+                                        </>}
+                                    </div>
+                                    <div className={styles.priceautual}>
+                                        <div className={styles.prices}>A${productdata?.salePrice}</div>
+                                    </div>
+                                    <div className='textpricedashed' >
+                                        {productdata?.offerPercentag == 0 ? <></> : <del className={styles.priceautuals}>A${productdata?.actualPrice}</del>}
+                                    </div>
+                                </div>
+    
+                                <div className={styles.colorsectionlists}>
+                                    {productvariations[0]?.name ? <><div className={styles.sizesectionandcolor}>
+                                        <div className={styles.fontweightsizes}> {productvariations[0]?.name}</div>
+                                        <div className={styles.sizesection}>
+                                            <div className={styles.sizes}>
+                                                {productvariations[0]?.variationValues?.map((item, index) => {
+                                                    return (
+                                                        <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                            setIndex1(index)
+                                                            handleSizeProduct1(item);
+                                                        }} key={index}>
+                                                            {item}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                    </div>
+                                        {/* <div>
+                                           {error && productSize1?.length<=1 ? <span>Please select a {productvariations[0]?.name}</span>:<div></div>}
+                                            </div> */}
+                                    </> : <></>}
+                                    {productvariations[1]?.name ? <div className={styles.sizesectionandcolor}>
+                                        <div className={styles.fontweightsizes}> {productvariations[1]?.name ? <>{productvariations[1]?.name}</> : <></>} </div>
+                                        <div className={styles.sizesection}>
+                                            <div className={styles.sizes}>
+                                                {productvariations[1]?.variationValues?.map((item, index) => {
+                                                    return (
+                                                        <div className={`${index2 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                            setIndex2(index)
+                                                            handleSizeProduct2(item);
+                                                        }} key={index}>
+                                                            {item}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                    </div> : <></>}
+                                    {productvariations[2]?.name ? <div className={styles.sizesectionandcolor}>
+                                        <div className={styles.fontweightsizes}> {productvariations[2]?.name ? <>{productvariations[2]?.name}</> : <></>} </div>
+                                        <div className={styles.sizesection}>
+                                            <div className={styles.sizes}>
+                                                {productvariations[2]?.variationValues?.map((item, index) => {
+                                                    return (
+                                                        <div className={`${index3 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                            setIndex3(index)
+                                                            handleSizeProduct3(item);
+                                                        }} key={index}>
+                                                            {item}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                    </div> : <></>}
+                                    {productvariations[3]?.name ? <div className={styles.sizesectionandcolor}>
+                                        <div className={styles.fontweightsizes}> {productvariations[3]?.name ? <>{productvariations[3]?.name}</> : <></>} </div>
+                                        <div className={styles.sizesection}>
+                                            <div className={styles.sizes}>
+                                                {productvariations[3]?.variationValues?.map((item, index) => {
+                                                    return (
+                                                        <div className={`${index4 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                            setIndex4(index)
+                                                            handleSizeProduct4(item);
+                                                        }} key={index}>
+                                                            {item}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                    </div> : <></>}
+                                    {productvariations[4]?.name ? <div className={styles.sizesectionandcolor}>
+                                        <div className={styles.fontweightsizes}> {productvariations[4]?.name ? <>{productvariations[4]?.name}</> : <></>} </div>
+                                        <div className={styles.sizesection}>
+                                            <div className={styles.sizes}>
+                                                {productvariations[4]?.variationValues?.map((item, index) => {
+                                                    return (
+                                                        <div className={`${index5 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                            setIndex5(index)
+                                                            handleSizeProduct5(item);
+                                                        }} key={index}>
+                                                            {item}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                    </div> : <></>}
+                                </div>
+                                {productdata?.stateId == 1 && productdata?.quantityLeft > 0 ?
+                                    <>
+                                        <div className={styles.buttons}>
+                                            <div>
+                                                {tokencheck ?
+                                                    <Button className={styles.bynowcartbutton} onClick={() => Checkout(productdata, productvariations)}>
+                                                        Buy Now
+                                                    </Button> :
+                                                    <Button className={styles.bynowcartbutton} onClick={() => buyNowPathNavigate(productdata, productvariations)}>
+                                                        Buy Now
+                                                    </Button>
+                                                }
+                                            </div>
+                                            <div>
+                                                <Button className={styles.addcartbutton} onClick={() => handleChange(productdata, productvariations)}>
+                                                    Add To Cart
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    </> : <>
+                                        <div className={styles.buttonss}>
+                                            <div>
+                                                {tokencheck ?
+                                                    <Button className={styles.bynowcartbuttons} >
+                                                        Buy Now
+                                                    </Button> :
+                                                    <Button className={styles.bynowcartbuttons} >
+                                                        Buy Now
+                                                    </Button>
+                                                }
+                                            </div>
+                                            <div>
+                                                <Button className={styles.addcartbuttons} >
+                                                    Add To Cart
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    </>
+                                }
+    
+                                <div className={styles.locationsection}>
+                                    <div>
+                                    </div>
+    
+                                    {productdata?.isShippingRequired === 1 ? <>
+    
+    
+                                    </> : <>
+    
+                                        <div className={styles.deverisection}>
+                                            <div>
+                                                <Image src={location} alt="no image" className={styles.deliveryicon} />
+                                            </div>
+                                            <div className={styles.deliverytexts}>Delivery To</div>
+                                        </div>
+                                        <div className={styles.inputlocationfield}>
+                                            <div>
+                                                <input type="text" placeholder='7000' className={styles.location} />
+                                            </div>
+                                            <div>
+                                                <button className={styles.check}>Check</button>
+                                            </div>
+                                        </div>
+                                        <div className='mt-2'>
+                                            Delivery in days Thursday |  <span className={styles.free}>Free</span>  <del> A$ 40</del> is orderd before 3:34pm
+                                        </div>
+                                    </>}
+    
+    
+                                </div>
+                                <div className={styles.sellernames}>
+                                    <div className={styles.sellername}>
+                                        Seller  :
+                                    </div>
+                                    <div className={styles.nameinseller} onClick={() => productSellerPageView(productseller?.businessSlugName)} >
+                                        {productseller?.firstName}
+                                    </div>
+                                </div>
+                            </div>
                         </div >
-                        <div className={styles.rightproductview}>
-                            <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
-                            <div className={styles.starsection}>
-                                <div className={styles.starsections}>
-                                    {averageRatings ? <>
-                                        {averageRatings === 1 && <Rate defaultValue={1} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 1.5 && <Rate defaultValue={1.5} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 2 && <Rate defaultValue={2} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 2.5 && <Rate defaultValue={2.5} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 3 && <Rate defaultValue={3} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 3.5 && <Rate defaultValue={3.5} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 4 && <Rate defaultValue={4} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 4.5 && <Rate defaultValue={4.5} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 5 && <Rate defaultValue={5} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-
-                                    </> : <>
-
-                                        {<Rate defaultValue={0} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-
-
-
-
-                                    </>}
-
-
-
-                                </div>
-                                <div>
-                                    {ratingcount} Review
-                                </div>
+    
+                        <div className={styles.descriptionsection}>
+                            <div className={styles.additionaldetails}>
+                                Product Description
                             </div>
-
-                            <div className={styles.proceinproduct}>
-                                <div className={styles.offertext}>
-                                    {productdata?.offerPercentag == 0 ? <>
-                                    </> : <>
-                                        {productdata?.offerPercentag}% off
-                                    </>}
-                                </div>
-                                <div className={styles.priceautual}>
-                                    <div className={styles.prices}>A${productdata?.salePrice}</div>
-                                </div>
-                                <div className='textpricedashed' >
-                                    {productdata?.offerPercentag == 0 ? <></> : <del className={styles.priceautuals}>A${productdata?.actualPrice}</del>}
-                                </div>
+                            <div>
+                                {productdata?.productDescription}
                             </div>
-
-                            <div className={styles.colorsectionlists}>
-                                {productvariations[0]?.name ? <><div className={styles.sizesectionandcolor}>
-                                    <div className={styles.fontweightsizes}> {productvariations[0]?.name}</div>
-                                    <div className={styles.sizesection}>
-                                        <div className={styles.sizes}>
-                                            {productvariations[0]?.variationValues?.map((item, index) => {
-                                                return (
-                                                    <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                        setIndex1(index)
-                                                        handleSizeProduct1(item);
-                                                    }} key={index}>
-                                                        {item}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                </div>
-                                    {/* <div>
-                                       {error && productSize1?.length<=1 ? <span>Please select a {productvariations[0]?.name}</span>:<div></div>}
-                                        </div> */}
-                                </> : <></>}
-                                {productvariations[1]?.name ? <div className={styles.sizesectionandcolor}>
-                                    <div className={styles.fontweightsizes}> {productvariations[1]?.name ? <>{productvariations[1]?.name}</> : <></>} </div>
-                                    <div className={styles.sizesection}>
-                                        <div className={styles.sizes}>
-                                            {productvariations[1]?.variationValues?.map((item, index) => {
-                                                return (
-                                                    <div className={`${index2 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                        setIndex2(index)
-                                                        handleSizeProduct2(item);
-                                                    }} key={index}>
-                                                        {item}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                </div> : <></>}
-                                {productvariations[2]?.name ? <div className={styles.sizesectionandcolor}>
-                                    <div className={styles.fontweightsizes}> {productvariations[2]?.name ? <>{productvariations[2]?.name}</> : <></>} </div>
-                                    <div className={styles.sizesection}>
-                                        <div className={styles.sizes}>
-                                            {productvariations[2]?.variationValues?.map((item, index) => {
-                                                return (
-                                                    <div className={`${index3 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                        setIndex3(index)
-                                                        handleSizeProduct3(item);
-                                                    }} key={index}>
-                                                        {item}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                </div> : <></>}
-                                {productvariations[3]?.name ? <div className={styles.sizesectionandcolor}>
-                                    <div className={styles.fontweightsizes}> {productvariations[3]?.name ? <>{productvariations[3]?.name}</> : <></>} </div>
-                                    <div className={styles.sizesection}>
-                                        <div className={styles.sizes}>
-                                            {productvariations[3]?.variationValues?.map((item, index) => {
-                                                return (
-                                                    <div className={`${index4 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                        setIndex4(index)
-                                                        handleSizeProduct4(item);
-                                                    }} key={index}>
-                                                        {item}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                </div> : <></>}
-                                {productvariations[4]?.name ? <div className={styles.sizesectionandcolor}>
-                                    <div className={styles.fontweightsizes}> {productvariations[4]?.name ? <>{productvariations[4]?.name}</> : <></>} </div>
-                                    <div className={styles.sizesection}>
-                                        <div className={styles.sizes}>
-                                            {productvariations[4]?.variationValues?.map((item, index) => {
-                                                return (
-                                                    <div className={`${index5 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                        setIndex5(index)
-                                                        handleSizeProduct5(item);
-                                                    }} key={index}>
-                                                        {item}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                </div> : <></>}
+                        </div>
+                        <div className={styles.productdetailslists}>
+                            <div className={styles.additionaldetails}>
+                                Product Details
                             </div>
-                            {productdata?.stateId == 1 && productdata?.quantityLeft > 0 ?
-                                <>
-                                    <div className={styles.buttons}>
-                                        <div>
-                                            {tokencheck ?
-                                                <Button className={styles.bynowcartbutton} onClick={() => Checkout(productdata, productvariations)}>
-                                                    Buy Now
-                                                </Button> :
-                                                <Button className={styles.bynowcartbutton} onClick={() => buyNowPathNavigate(productdata, productvariations)}>
-                                                    Buy Now
-                                                </Button>
-                                            }
-                                        </div>
-                                        <div>
-                                            <Button className={styles.addcartbutton} onClick={() => handleChange(productdata, productvariations)}>
-                                                Add To Cart
-                                            </Button>
-                                        </div>
+                            <div className={styles.leftproductdetails}>
+                                <div className={styles.productdetailsleft}>
+                                    <div className={styles.listproductdata}>
+                                        <div className={styles.leftname}>Product Name</div>
+                                        <div className={styles.rightname}>{productdata?.productName}</div>
                                     </div>
-                                </> : <>
-                                    <div className={styles.buttonss}>
-                                        <div>
-                                            {tokencheck ?
-                                                <Button className={styles.bynowcartbuttons} >
-                                                    Buy Now
-                                                </Button> :
-                                                <Button className={styles.bynowcartbuttons} >
-                                                    Buy Now
-                                                </Button>
-                                            }
-                                        </div>
-                                        <div>
-                                            <Button className={styles.addcartbuttons} >
-                                                Add To Cart
-                                            </Button>
-                                        </div>
+                                    <div className={styles.listproductdata}>
+                                        <div className={styles.leftname}>Model Name</div>
+                                        <div className={styles.rightname}>{productdata?.modelName}</div>
                                     </div>
-                                </>
-                            }
-
-                            <div className={styles.locationsection}>
-                                <div>
+    
+                                    <div className={styles.listproductdata}>
+                                        <div className={styles.leftname}>Manufacture Name</div>
+                                        <div className={styles.rightname}>{productdata?.manufacturerName}</div>
+                                    </div>
                                 </div>
-
-                                {productdata?.isShippingRequired === 1 ? <>
-
-
-                                </> : <>
-
-                                    <div className={styles.deverisection}>
-                                        <div>
-                                            <Image src={location} alt="no image" className={styles.deliveryicon} />
-                                        </div>
-                                        <div className={styles.deliverytexts}>Delivery To</div>
+                                <div className={styles.productdetailsright}>
+                                    <div className={styles.listproductdata}>
+                                        <div className={styles.leftname}>Brand Name</div>
+                                        <div className={styles.rightname}>{productdata?.brandName}</div>
                                     </div>
-                                    <div className={styles.inputlocationfield}>
-                                        <div>
-                                            <input type="text" placeholder='7000' className={styles.location} />
-                                        </div>
-                                        <div>
-                                            <button className={styles.check}>Check</button>
-                                        </div>
+                                    <div className={styles.listproductdata}>
+                                        <div className={styles.leftname}>Style Name</div>
+                                        <div className={styles.rightname}>{productdata?.styleName}</div>
                                     </div>
-                                    <div className='mt-2'>
-                                        Delivery in days Thursday |  <span className={styles.free}>Free</span>  <del> A$ 40</del> is orderd before 3:34pm
+                                    <div className={styles.listproductdata}>
+                                        <div className={styles.leftname}>Manufacture Name</div>
+                                        <div className={styles.rightname}>{productdata?.manufacturerName}</div>
                                     </div>
-                                </>}
-
-
-                            </div>
-                            <div className={styles.sellernames}>
-                                <div className={styles.sellername}>
-                                    Seller  :
-                                </div>
-                                <div className={styles.nameinseller} onClick={() => productSellerPageView(productseller?.businessSlugName)} >
-                                    {productseller?.firstName}
                                 </div>
                             </div>
                         </div>
                     </div >
-
-                    <div className={styles.descriptionsection}>
-                        <div className={styles.additionaldetails}>
-                            Product Description
-                        </div>
+                    {productreview?.length > 0 ? <div className={styles.reviewsection}>
                         <div>
-                            {productdata?.productDescription}
+                            <Reviewsproduct productreview={productreview} ratingcount={ratingcount} averageRatings={averageRatings} />
                         </div>
-                    </div>
-                    <div className={styles.productdetailslists}>
-                        <div className={styles.additionaldetails}>
-                            Product Details
-                        </div>
-                        <div className={styles.leftproductdetails}>
-                            <div className={styles.productdetailsleft}>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Product Name</div>
-                                    <div className={styles.rightname}>{productdata?.productName}</div>
-                                </div>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Model Name</div>
-                                    <div className={styles.rightname}>{productdata?.modelName}</div>
-                                </div>
-
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Manufacture Name</div>
-                                    <div className={styles.rightname}>{productdata?.manufacturerName}</div>
-                                </div>
-                            </div>
-                            <div className={styles.productdetailsright}>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Brand Name</div>
-                                    <div className={styles.rightname}>{productdata?.brandName}</div>
-                                </div>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Style Name</div>
-                                    <div className={styles.rightname}>{productdata?.styleName}</div>
-                                </div>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Manufacture Name</div>
-                                    <div className={styles.rightname}>{productdata?.manufacturerName}</div>
-                                </div>
-                            </div>
+                    </div> : <></>}
+                    <div>
+                        <div>
+                            <Caroselproducts productimages={productimages} />
                         </div>
                     </div>
                 </div >
-                {productreview?.length > 0 ? <div className={styles.reviewsection}>
-                    <div>
-                        <Reviewsproduct productreview={productreview} ratingcount={ratingcount} averageRatings={averageRatings} />
-                    </div>
-                </div> : <></>}
-                <div>
-                    <div>
-                        <Caroselproducts productimages={productimages} />
-                    </div>
+                <div className={styles.leftbg}>
+    
                 </div>
-            </div >
-            <div className={styles.leftbg}>
+                <div className={styles.righttopbg}></div>
+    
+    
+            </Fragment >
+        )
+    }
 
-            </div>
-            <div className={styles.righttopbg}></div>
 
-
-        </Fragment >
-    )
+ 
 
 
 

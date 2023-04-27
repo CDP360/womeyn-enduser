@@ -60,9 +60,9 @@ function Aboutus({ id }) {
     return (
         <Fragment>
 
-{/* <ScrollToTop smooth color="#6f00ff" top="0"/> */}
 
-            <div className={styles.mainboutus}>home
+
+            <div className={styles.mainboutus}>
                 <div className={styles.exptyboxleft}>
 
                 </div>

@@ -865,3 +865,53 @@ filter: blur(200rem);
 z-index:0;
 right:0;
 }
+
+
+.womelogo
+{
+  width:200px;
+  height:200px;
+  object-fit:contain;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto;
+  animation:kalai 4s ease-in-out infinite;
+}
+
+.goback
+{
+  width:15%;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background-color:#E95A5A;
+  color:white;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  
+}
+
+.sorry
+{
+  text-align:center;
+  font-size:2rem;
+  font-weight:600;
+  padding:4% 0px;
+}
+
+@keyframes kalai
+{
+  50%
+  {
+ 
+    transform: translate(20px);
+
+  }
+  100%
+  {
+    transform:translateY(0px);
+  }
+}

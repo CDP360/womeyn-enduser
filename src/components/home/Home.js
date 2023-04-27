@@ -136,11 +136,6 @@ function Home() {
         window.open(data);
     }
 
-
-  
-
-
-
     return (
         <Fragment>
             <Head>
@@ -162,7 +157,6 @@ function Home() {
                 <meta property="twitter:description" content="Team Womeyn is open to ideas, suggestions and comments that will help us improve and grow as a community platform. We would love to hear from you" />
                 <meta property="twitter:image" content="https://www.womeyn.cdp360.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fwomeyn_logo.72a6530c.png&w=384&q=75" />
             </Head>
-
             <div className={styles.homesectionmain}>
                 <div className={styles.emptyboxrightcolor}>
                 </div>
@@ -234,9 +228,6 @@ function Home() {
                 <div>
                     <Whatmake />
                 </div>
-
-                
-
             </div>
         </Fragment >
 

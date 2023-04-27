@@ -124,9 +124,7 @@ function ContactForm() {
     <div className={styles.contactformsections}>
 
 
-      <div className={styles.element} id="skills" >
-        Section one
-      </div>
+    
       <form>
         <div className={styles.insidecontactforms}>
           <div className="col-lg-5">
