@@ -6,18 +6,40 @@ import { OauthSuccess } from '../../services/user-login-service/user-login-servi
 function Oauthcomplete() {
     const history = useRouter();
     useEffect(() => {
-        OauthSuccess().then((res) => {
+        GoogleAuthComplete();
+    }, []);
+
+
+    const GoogleAuthComplete = async () => {
+        try {
+            const res = await OauthSuccess();
             localStorage.setItem("userToken", JSON.stringify(res?.data?.tokens?.access?.token));
             localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
             localStorage.setItem("auth", true);
-            toast.error(res);
-            setTimeout(() => {
-                history.push("/");
-            }, 1000)
-        }).catch((err) => {
-            console.log(err)
-        })
-    }, [])
+        }
+        catch (err) {
+            console.log(err?.response?.data?.message,"kalaiauth");
+
+
+
+
+
+
+        }
+
+
+        // OauthSuccess().then((res) => {
+        //     localStorage.setItem("userToken", JSON.stringify(res?.data?.tokens?.access?.token));
+        //     localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
+        //     localStorage.setItem("auth", true);
+
+        //     setTimeout(() => {
+        //         history.push("/");
+        //     }, 1000)
+        // }).catch((err) => {
+
+        // })
+    }
 
 
     return (

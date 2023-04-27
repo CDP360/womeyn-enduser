@@ -191,7 +191,7 @@ function Allorders({ Orders, traking, loading }) {
                                   </div>
                                   <div className="mt-3">
                                     <div>
-                                      <button className={styles.trackingbuttons} onClick={() => handleShow(item?.orderId)}>Cancel</button>
+                                      <button className={styles.trackingbuttonss} onClick={() => handleShow(item?.orderId)}>Cancel</button>
                                     </div>
                                   </div>
                                 </div>}
