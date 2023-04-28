@@ -10,6 +10,7 @@
         color: #303a42;
         font-weight: 650;
         font-size: 1.4rem;
+        padding-bottom:3%;
     }
 
     .did
@@ -30,7 +31,7 @@
     {
         width:20%;
         padding:8px;
-        border-radius:10px;
+        border-radius:5px;
         background-color:#E95A5A;;
         color:white;
         outline:none;
@@ -42,6 +43,7 @@
         display:flex;
         align-items:center;
         justify-content:center;
+        margin-top:5%;
     }
 
     .send:hover
@@ -60,6 +62,7 @@
         // background: #ffffff;
         border: 1px solid rgba(0, 0, 0, 0.2);
         border-radius: 5px;
+        cursor:pointer;
         .ordersslice {
             // border:2px solid red;
             padding: 10px 20px;
@@ -88,7 +91,6 @@
             }
             .yours {
                 color: #303a42;
-
                 font-weight: 700;
             }
         }
@@ -100,11 +102,40 @@
             justify-content: center;
         }
     }
+
+    .helpboximage
+    {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+  
+
+        gap:40px;
+        margin-top:5%;
+        .commonboximage
+        {
+            display:flex;
+         
+            gap:10px;
+        }
+        .comtexts
+        {
+            font-size:1.2rem;
+            font-weight:600;
+        }
+        .logbox
+        {
+            width:35px;
+            height:35px;
+            object-fit:contain;
+          
+        }
+    }
 }
 
 
 .sendmessagebox
     {
-        background-color:white;
+        background-color:none !important;
         border: 1px solid rgba(0, 0, 0, 0.2) !important;
     }

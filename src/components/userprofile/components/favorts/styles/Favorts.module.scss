@@ -5,7 +5,7 @@
   border: 1px solid #9f9f9f;
   border-radius: 10px;
   margin-bottom: 2%;
-  background-color:white;
+  background-color: white;
 
   .favortsSearch {
     width: 100%;
@@ -57,11 +57,9 @@
       width: 100%;
       cursor: pointer;
 
-      .boximage
-      {
+      .boximage {
         border: 1px solid #d9d9d9;
-        border-radius:10px;
-
+        border-radius: 10px;
       }
       .favortsImg {
         width: 130px;
@@ -72,20 +70,17 @@
         object-fit: contain;
         cursor: pointer;
         @include mdBreakPoint {
-          width: 65px;
-          height: 65px;
+          width: 120px;
+          height: 120px;
         }
         @include xsBreakPoint {
           width: 85px;
           height: 85px;
         }
       }
-      .favortsImg:hover
-      {
+      .favortsImg:hover {
         transform: scale(1.2);
-      border: 1px solid #d9d9d9;
-      
-
+        border: 1px solid #d9d9d9;
       }
       .favortsContentContainer {
         margin-left: 5%;

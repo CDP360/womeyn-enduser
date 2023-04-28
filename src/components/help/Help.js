@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import styles from './styles/Help.module.scss';
 import helpimage from '../../assests/category-logos/helpimage.png';
+import messagebox from '../../assests/category-logos/messagebox.png';
+import phone from '../../assests/category-logos/phone.png';
+
 import Image from 'next/image';
 import Form from 'react-bootstrap/Form';
 import { useForm } from "react-hook-form";
@@ -25,7 +28,7 @@ function Help() {
                 Hello? How Can we help you.
             </div>
             <div className={styles.borderboxhelp}>
-                <div className={styles.ordersslice}>
+                <div className={styles.ordersslice} onClick={() => setDropdown1(!dropdown1)}>
                     <div className={styles.imagesectionhelp}>
                         <div>
                             <Image src={helpimage} alt="no image" className={styles.imagehelp} />
@@ -47,7 +50,7 @@ function Help() {
                 </div>}
             </div>
             <div className={styles.borderboxhelp}>
-                <div className={styles.ordersslice}>
+                <div className={styles.ordersslice} onClick={() => setDropdown2(!dropdown2)}>
                     <div className={styles.imagesectionhelp}>
                         <div>
                             <Image src={helpimage} alt="no image" className={styles.imagehelp} />
@@ -69,7 +72,7 @@ function Help() {
             </div>
 
             <div className={styles.borderboxhelp}>
-                <div className={styles.ordersslice}>
+                <div className={styles.ordersslice} onClick={() => setDropdown3(!dropdown3)}>
                     <div className={styles.imagesectionhelp}>
                         <div>
                             <Image src={helpimage} alt="no image" className={styles.imagehelp} />
@@ -104,7 +107,7 @@ function Help() {
                 <div>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                        
-                        <Form.Control type="text" placeholder="Type your problem here" className={styles.sendmessagebox}
+                        <Form.Control as="textarea" type="text" rows={2} placeholder="Type your problem here" className={styles.sendmessagebox}
                             {...register("help", {
                                 required: "Please Enter Type your problem here",
 
@@ -122,6 +125,27 @@ function Help() {
                 <div>
 
                     <button className={styles.send} onClick={handleSubmit(onSubmit)}>Send</button>
+                </div>
+
+
+                <div className={styles.helpboximage}>
+<div className={styles.commonboximage}>
+<div>
+    <Image src={messagebox} alt="no image" className={styles.logbox}/>
+</div>
+<div className={styles.comtexts}>Help@womeyn.com</div>
+
+</div>
+<div className={styles.commonboximage}>
+   
+<div>
+<Image src={phone} alt="no image" className={styles.logbox}/>
+</div>
+<div  className={styles.comtexts}>+1800-989-0999</div>
+
+</div>
+
+
                 </div>
 
             </div>

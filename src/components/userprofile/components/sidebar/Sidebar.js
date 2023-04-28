@@ -20,6 +20,14 @@ import favortsactive from '../../../../assests/profile-logo/favortsactive.png';
 import couponsactive from '../../../../assests/profile-logo/ticketactive.png';
 import logout from '../../../../assests/profile-logo/logout.png';
 
+import serviceinactive from '../../../../assests/profile-logo/service.png';
+import serviceactive from '../../../../assests/profile-logo/service_c.png';
+import helps from '../../../../assests/profile-logo/help.png';
+import helpss from '../../../../assests/profile-logo/help_c.png';
+import profiles from '../../../../assests/profile-logo/Profile_w.png';
+
+
+
 
 function Sidebar({ user, error }) {
     const [imageshowmodel, setImageShowModel] = useState(true);
@@ -143,7 +151,10 @@ function Sidebar({ user, error }) {
                     <div className={styles.insidesectionsplitsidebarsection}>
                         <div className={styles.profilecontentinlistsection}>
                             <div >
-                                <Image src={profile} alt="no image" className={styles.profileicon} />
+                            {pathname == "orders" ?
+                                <Image src={profiles} alt="no image" className={styles.profileicon}/>
+                            
+                            :<Image src={profile} alt="no image" className={styles.profileicon} />}
                             </div>
                             <div className={styles.boldtexts}>
                                 Profile
@@ -181,7 +192,7 @@ function Sidebar({ user, error }) {
 
                         <div className={pathname == "services" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("services")}>
                             <div>
-                                {pathname == "services" ? <Image src={orderactive} alt="no image" className={styles.profileicon} /> : <Image src={order} alt="no image" className={styles.profileicon} />}
+                                {pathname == "services" ? <Image src={serviceactive} alt="no image" className={styles.profileicon} /> : <Image src={serviceinactive} alt="no image" className={styles.profileicon} />}
                             </div>
                             <div className={pathname == "services" ? styles.boldtextactive : styles.boldtexts}>
                                 Services
@@ -222,7 +233,7 @@ function Sidebar({ user, error }) {
 
                         <div className={pathname == "help" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("help")}>
                             <div >
-                                {pathname == "help" ? <Image src={couponsactive} alt="no image" className={styles.profileicon} /> : <Image src={coupons} alt="no image" className={styles.profileicon} />}
+                                {pathname == "help" ? <Image src={helpss} alt="no image" className={styles.profileicon} /> : <Image src={helps} alt="no image" className={styles.profileicon} />}
                             </div>
                             <div className={pathname == "help" ? styles.boldtextactive : styles.boldtexts}>
                                 Help
@@ -343,7 +354,7 @@ function Sidebar({ user, error }) {
                         </div>
                         <div className={pathname == "help" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("help")}>
                             <div >
-                                {pathname == "help" ? <Image src={couponsactive} alt="no image" className={styles.profileicon} /> : <Image src={coupons} alt="no image" className={styles.profileicon} />}
+                                {pathname == "help" ? <Image src={helpss} alt="no image" className={styles.profileicon} /> : <Image src={helps} alt="no image" className={styles.profileicon} />}
                             </div>
                             <div className={pathname == "help" ? styles.boldtextactive : styles.boldtexts}>
                                 Help
@@ -452,6 +463,21 @@ function Sidebar({ user, error }) {
                                 Coupons
                             </div>
                         </div>
+                        <div className={styles.dashedsectionmain}>
+                            <div className={styles.insidedashedsection}>
+                            </div>
+                        </div>
+
+
+                        <div className={pathname == "help" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("help")}>
+                            <div >
+                                {pathname == "help" ? <Image src={helpss} alt="no image" className={styles.profileicon} /> : <Image src={helps} alt="no image" className={styles.profileicon} />}
+                            </div>
+                            <div className={pathname == "help" ? styles.boldtextactive : styles.boldtexts}>
+                                Help
+                            </div>
+                        </div>
+
                         <div className={styles.dashedsectionmain}>
                             <div className={styles.insidedashedsection}>
                             </div>
