@@ -2,40 +2,79 @@
 
 .mainsectionhelp {
     width: 100%;
+    border: 1px solid #9f9f9f;
+    border-radius: 15px;
+    padding: 3%;
+    height:100%;
     .howcanhelp {
         color: #303a42;
         font-weight: 650;
         font-size: 1.4rem;
     }
+
+    .did
+    {
+        font-size:1.3rem;
+        font-weight:600;
+        padding-bottom:2%;
+    }
+
+    .loream
+    {
+        padding-bottom:4%;
+        font-size:1rem;
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    .send
+    {
+        width:20%;
+        padding:8px;
+        border-radius:10px;
+        background-color:#E95A5A;;
+        color:white;
+        outline:none;
+        border:none;
+        cursor:pointer;
+        font-weight:700;
+        font-size:1.1rem;
+        margin:0 auto;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .send:hover
+    {
+        background-color:white;
+        border:1px solid #E95A5A;
+        color:#E95A5A;
+    }
+    
     .borderboxhelp {
         display: flex;
-      flex-direction:column;
-        
+        flex-direction: column;
+
         margin-top: 1.4%;
         width: 100%;
-        background: #ffffff;
+        // background: #ffffff;
         border: 1px solid rgba(0, 0, 0, 0.2);
         border-radius: 5px;
-        .ordersslice
-        {
+        .ordersslice {
             // border:2px solid red;
-        padding: 10px 20px;
+            padding: 10px 20px;
 
-            display:flex;
-            justify-content:space-between;
+            display: flex;
+            justify-content: space-between;
         }
-        .bordertopsection
-        {
-        
-// background: #FFFFFF;
-border-top: 1px solid rgba(0, 0, 0, 0.2);
+        .bordertopsection {
+            // background: #FFFFFF;
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
             // padding-top:3%;
-            margin-top:0.589%;
-            width:100%;
-        padding: 7px 25px;
-        line-height:1.8;
-
-
+            margin-top: 0.589%;
+            width: 100%;
+            padding: 7px 25px;
+            line-height: 1.8;
         }
         .imagesectionhelp {
             display: flex;
@@ -43,8 +82,8 @@ border-top: 1px solid rgba(0, 0, 0, 0.2);
             align-items: center;
 
             .imagehelp {
-                width: 50px;
-                height: 50px;
+                width: 40px;
+                height: 40px;
                 object-fit: contain;
             }
             .yours {
@@ -62,3 +101,10 @@ border-top: 1px solid rgba(0, 0, 0, 0.2);
         }
     }
 }
+
+
+.sendmessagebox
+    {
+        background-color:white;
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    }

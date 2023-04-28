@@ -13,6 +13,7 @@ import Orders from './components/order/Order';
 import Coupon from './components/coupons/Coupons';
 import ServiceMaindetails from './components/servicedetails/ServiceMaindetails';
 import { useSelector } from 'react-redux';
+import Help from '../help/Help';
 function Userprofile({ name, error }) {
     const history = useRouter();
     const [user, setUser] = useState([]);
@@ -96,9 +97,6 @@ function Userprofile({ name, error }) {
 
                                     <Sidebar user={user} error={errors} />
 
-
-
-
                                 </div>
                             </div>
                         </div>
@@ -134,6 +132,11 @@ function Userprofile({ name, error }) {
                             }
                             {name == "coupons" && <div>
                                 <Coupon error={errors} />
+                            </div>
+                            }
+                             {name == "help" && <div>
+                             {/* <Help */}
+                             <Help/>
                             </div>
                             }
                         </div>
