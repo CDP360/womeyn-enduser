@@ -151,10 +151,10 @@ function Sidebar({ user, error }) {
                     <div className={styles.insidesectionsplitsidebarsection}>
                         <div className={styles.profilecontentinlistsection}>
                             <div >
-                            {pathname == "orders" ?
-                                <Image src={profiles} alt="no image" className={styles.profileicon}/>
+                            {pathname == "youraccount" || pathname=="address" || pathname=="changepassword" ?
+                                <Image src={profile} alt="no image" className={styles.profileicon}/>
                             
-                            :<Image src={profile} alt="no image" className={styles.profileicon} />}
+                            :<Image src={profiles} alt="no image" className={styles.profileicon} />}
                             </div>
                             <div className={styles.boldtexts}>
                                 Profile

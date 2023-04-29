@@ -34,13 +34,13 @@ function Sidebarcateogrys() {
             <div className={styles.filterbytext}>
               Filter by
             </div>
-            <div>
+            {/* <div>
               4 applied.
-            </div>
+            </div> */}
           </div>
-          <div className={styles.rightfilter}>
+          {/* <div className={styles.rightfilter}>
             Clear all
-          </div>
+          </div> */}
         </div>
       </div>
       <div className='mt-2'>
@@ -80,7 +80,7 @@ function Sidebarcateogrys() {
         // }}
         >
           <div className={styles.transactionsize}>
-            Category
+            Categories
           </div>
           {dropdown1 ? <ion-icon name="chevron-up-outline" className="ion-icon" onClick={() => setDropdown1(!dropdown1)}></ion-icon> : <ion-icon name="chevron-down-outline" className="ion-icon" onClick={() => setDropdown1(!dropdown1)}></ion-icon>}
         </div>

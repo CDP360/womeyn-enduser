@@ -275,10 +275,13 @@ function Womenpreneusdetails({ id }) {
                     </div>
 
                     <div>
-
+                        {categorys?.length == 0 ?<></>:<>
                         <div className={styles.wehave}>
                             We have loads of <br /> products to choose from
                         </div>
+                        </>}
+
+                      
                     </div>
                     <div className={styles.middleheaderpage}>
                         <div className={styles.insidemiddleheader}>

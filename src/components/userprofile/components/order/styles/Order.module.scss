@@ -6,7 +6,7 @@
     display: flex;
     width: auto;
     padding: 0px 2px;
-    background: none;
+    background: none !important;
     border-radius: 8px;
     align-items: center;
     justify-content: center;
@@ -251,7 +251,7 @@
   border: 1px solid #9f9f9f;
   border-radius: 10px;
   margin-bottom: 2%;
-  background-color:white;
+  background-color:transparent !important;
   .couponsSearch {
     width: 100%;
     padding: 1.5%;
@@ -259,6 +259,8 @@
     padding-left: 4%;
     border-radius: 10px;
     outline: none;
+  background-color:transparent !important;
+
   }
   .searchImg {
     width: 20px;

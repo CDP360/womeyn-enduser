@@ -96,12 +96,20 @@ function Cart() {
     localStorage.setItem("whish", JSON.stringify(PathQuery));
     router.push(`/login?redirect=/cart`)
   }
+
+
+  console.log(state?.cart?.cartData,"kalaia")
+
+
+  const CartNavigateProductView=(productSlugName)=>{
+    router.push(`/product/${productSlugName}`)
+  }
   return (
     <Fragment>
       <div className='mainsection'>
         <div className="insidesection">
           <div className={styles.cartsectiontexts}>
-            Carts
+            Cart
           </div>
           <div className={styles.cartsection}>
             <div className={styles.leftcartsection}>
@@ -120,7 +128,7 @@ function Cart() {
                                 Delivery Charge : A$ {item?.deliverycharge}
                               </> : <>FREE Delivery</>}
                             </div>
-                            <div>
+                            <div onClick={()=>CartNavigateProductView(item?.productSlugName)}>
                               <img
                                 className={styles.editprofilesection}
                                 src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
@@ -128,7 +136,7 @@ function Cart() {
                               />
                             </div>
                             <div>
-                              <div className="carttext">{item?.productName}
+                              <div className="carttext"  onClick={()=>CartNavigateProductView(item?.productSlugName)}>{item?.productName}
                               </div>
                               <div>
                                 <span className="saleprice"> A${item?.salePrice}</span> <span>
@@ -140,7 +148,7 @@ function Cart() {
                                   {item?.offerPercentag == 0 ? <></> : <span className="offersection"> ( {item?.offerPercentag} off )</span>}
                                 </span>
                               </div>
-                              <div>
+                              <div className="mt-2">
                                 {/* {item?.productDescription} */}
                                 {item?.variations?.map((items, index) => {
                                   return (

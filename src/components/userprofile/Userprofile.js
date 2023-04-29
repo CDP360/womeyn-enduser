@@ -79,8 +79,7 @@ function Userprofile({ name, error }) {
     return (
         <>
 
-            <div className='mainsection'>
-                <div className="insidesection">
+          
                     <div className={styles.insideprofilesection}>
                         <div className={styles.leftsidebarprofile}>
                             <div className='d-none d-lg-block'>
@@ -141,7 +140,7 @@ function Userprofile({ name, error }) {
                             }
                         </div>
                     </div>
-                </div>
+         
 
 
                 <div className={styles.emptyboxrightcolor}>
@@ -157,7 +156,7 @@ function Userprofile({ name, error }) {
                 <div className={styles.emptyboxleftcolor4}>
                 </div>
 
-            </div>
+          
 
 
 

@@ -1,28 +1,40 @@
 @use "../../../../scss/abstract/" as *;
 
 .insideprofilesection {
-    width: 100%;
+    width: 75%;
     display: flex;
     gap: 30px;
     padding-bottom:8%;
     position:relative;
     z-index:2;
     overflow:hidden;
+    margin:0 auto;
+
     @include xsBreakPoint {
+        width: 90%;
+        padding-top: 6%;
         flex-direction: column;
-    }
-    @include smBreakPoint {
-        flex-direction: column;
-    }
-    @include mdBreakPoint {
-        flex-direction: column;
-    }
 
-    @include xlBreakPoint
-    {
-    overflow-y:hidden;
+      }
+      @include smBreakPoint {
+        width: 90%;
+        padding-top: 6%;
+        flex-direction: column;
 
-    }
+      }
+      @include mdBreakPoint {
+        width: 85%;
+        flex-direction: column;
+
+      }
+      @include lgBreakPoint {
+        width: 89%;
+      }
+      @include xlBreakPoint {
+        width: 85%;
+      }
+   
+
   
     .leftsidebarprofile {
         width: 30%;
@@ -30,9 +42,13 @@
         height: 100%;
         @include xsBreakPoint {
             width: 100%;
+            margin:0 auto;
+        
         }
         @include smBreakPoint {
             width: 100%;
+            margin:0 auto;
+
         }
         @include mdBreakPoint {
             width: 100%;
@@ -47,9 +63,11 @@
         background-color:none;
         @include xsBreakPoint {
             width: 100%;
+            margin:0 auto;
         }
         @include smBreakPoint {
             width: 100%;
+            margin:0 auto;
         }
         @include mdBreakPoint {
             width: 100%;

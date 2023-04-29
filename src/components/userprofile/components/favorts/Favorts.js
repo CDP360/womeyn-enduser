@@ -40,17 +40,16 @@ function Favorts({ error }) {
       history.push("/login")
     }
 
-    if(error)
-    {
-        localStorage.removeItem("userid");
-        localStorage.removeItem("userToken");
-        localStorage.removeItem("whish");
-        localStorage.removeItem("user");
-        localStorage.removeItem("auth");
-        localStorage.removeItem("productid");
-        localStorage.removeItem('signupuser');
+    if (error) {
+      localStorage.removeItem("userid");
+      localStorage.removeItem("userToken");
+      localStorage.removeItem("whish");
+      localStorage.removeItem("user");
+      localStorage.removeItem("auth");
+      localStorage.removeItem("productid");
+      localStorage.removeItem('signupuser');
 
-        history.push("/login");
+      history.push("/login");
     }
 
   }, [starcount, deleteid, error])
@@ -76,20 +75,75 @@ function Favorts({ error }) {
 
 
 
-    return (
-      <>
-        <div>
-          <div className={styles.favortsInputContainer}>
-            <input className={styles.favortsSearch}
-              placeholder="Search your favorites" />
-            <Image src={Search} className={styles.searchImg} />
+  return (
+    <>
+      <div>
+        <div className={styles.favortsInputContainer}>
+          <input className={styles.favortsSearch}
+            placeholder="Search your favorites" />
+          <Image src={Search} className={styles.searchImg} />
+        </div>
+
+
+
+        <div className={styles.favortsContainer}>
+          <p className={styles.favortsText}>Favorites</p>
+
+
+
+          <div className="row d-flex gap-3">
+
+            {favorts?.map((data, index) => {
+              return (
+                <div className={styles.cartbox}>
+                  <div className={styles.splitfavorts}>
+
+                    <div className={styles.leftfavorts}>
+
+                      {data?.productThumbImage ? <div onClick={() => pushProductPage(data.productSlugName)}>
+                        <img
+                          className={styles.favortsImg}
+                          src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${data?.productThumbImage}`}
+                          alt="profile-pic"
+                        />
+                      </div> : <>
+                        <Skeleton className={styles.favortsImg} />
+                      </>}
+                    </div>
+                    <div className={styles.rightfavortscontent}>
+                      <div>
+                        {/* {data.productName.slice(0,22)} */}
+                        {data?.productName > 10 ? <>{data?.productName}</> : <>{data?.productName.slice(0, 22)}</>}
+                      </div>
+
+                      <div className={styles.carticonsection}>
+
+                        <div className={styles.boxicons} onClick={() => pushProductPage(data.productSlugName)}>
+                          {/* <Image src={Delete} className={styles.removeitems} /> */}
+
+                          {/* <ion-icon name="cart-outline" size="large"></ion-icon> */}
+                          <ion-icon name="eye-outline"></ion-icon>
+
+                        </div>
+
+                        <div className={styles.boxicons} onClick={() => handleShow(data?._id)}>
+                          {/* <Image src={Delete} className={styles.removeitems} /> */}
+                          <ion-icon name="trash-outline"></ion-icon>
+
+
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              )
+            })}
           </div>
-          <div className={styles.favortsContainer}>
-            <p className={styles.favortsText}>Favorites</p>
 
 
-
-            <div>
+          {/* <div>
               {loading ? <>
 
 
@@ -116,18 +170,10 @@ function Favorts({ error }) {
                         </div>
                         <div className={styles.favortsContentContainer}>
                           <p className={styles.favortsProductName}>{data.productName}</p>
-                          {/* <p className={styles.favortsOfferDetail}>{data.productSlugName}</p> */}
+            
                           <div className={styles.favortsRatingContainer}>
 
-                            {/* <Rate defaultValue={3.5} allowHalf style={{ color: "#54BE43" }}
-                              tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                              onChange={(value) => {
-                                setStarCount(value)
-  
-                              }}
-                              disabled
-                            /> */}
-                            {/* </div> */}
+                           
 
                             {data?.salePrice}
 
@@ -149,46 +195,46 @@ function Favorts({ error }) {
               {favorts?.length === 0 && <div>No Favorites Data</div>}
 
 
-            </div>
+            </div> */}
 
 
-          </div>
         </div>
-        <>
-          <Modal
-            show={show}
-            onHide={handleClose}
-            backdrop="static"
-            keyboard={false}
-            centered
-          >
+      </div>
+      <>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+          centered
+        >
 
-            <Modal.Body>
-              <div className={styles.modelremove}>
+          <Modal.Body>
+            <div className={styles.modelremove}>
 
-                <div className={styles.insidemodelpopup}>
-                  <div className={styles.removetexts}>
-                    Remove Item
-                  </div>
-                  <div onClick={handleClose}>
-                    <ion-icon name="close-outline" size="large"></ion-icon>
-                  </div>
+              <div className={styles.insidemodelpopup}>
+                <div className={styles.removetexts}>
+                  Remove Item
                 </div>
-                <div className={styles.removeitemname}>
-                  Are you sure want to remove this item from your Wish List?
-                </div>
-                <div className={styles.buttonsections}>
-                  <button className={styles.buttonscancel} onClick={handleClose}>Cancel</button>
-                  <button className={styles.buttonsremove} onClick={() => handleDelete(deleteid)}>Remove</button>
+                <div onClick={handleClose}>
+                  <ion-icon name="close-outline" size="large"></ion-icon>
                 </div>
               </div>
-            </Modal.Body>
+              <div className={styles.removeitemname}>
+                Are you sure want to remove this item from your Wish List?
+              </div>
+              <div className={styles.buttonsections}>
+                <button className={styles.buttonscancel} onClick={handleClose}>Cancel</button>
+                <button className={styles.buttonsremove} onClick={() => handleDelete(deleteid)}>Remove</button>
+              </div>
+            </div>
+          </Modal.Body>
 
-          </Modal>
-        </>
+        </Modal>
       </>
-    );
-  }
+    </>
+  );
+}
 
 
 
