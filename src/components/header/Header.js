@@ -22,9 +22,15 @@ import { FavortActions } from '../../Redux/actions/favortactions/Favortactions';
 import Searchbar from './serachcategorys/Searchbar';
 import Dropdown from 'react-bootstrap/Dropdown';
 import aroepath from '../../assests/homepage-logos/path.png';
-
 import GetAboutusCount from '../../Redux/actions/aboutuscounts/Aboutuscounts';
 import { SearchProductCategorys, SearchProductUser } from '../../services/category-services/category-service';
+import serviceactive from '../../assests/profile-logo/service_c.png';
+import helpss from '../../assests/profile-logo/help_c.png';
+import profiles from '../../assests/profile-logo/Profile_w.png';
+import couponsactive from '../../assests/profile-logo/ticketactive.png';
+import favortsactive from '../../assests/profile-logo/favortsactive.png';
+import orderactive from '../../assests/profile-logo/orderactive.png';
+
 function Header() {
     const { state } = useContext(ContextStore);
     const dispatch = useDispatch();
@@ -146,6 +152,37 @@ function Header() {
         dispatch(GetAboutusCount(data));
     }
 
+
+    const Orders=(data)=>{
+        router.push(`/profile/orders`);
+
+    }
+
+
+    
+    const Services=(data)=>{
+        router.push(`/profile/services`);
+    }
+
+    const Whishlists=(data)=>{
+        router.push(`/profile/favorts`);
+    }
+
+
+    const Coupons=(data)=>{
+        router.push(`/profile/coupons`);
+    }
+
+
+
+    const HelpPage=()=>{
+        router.push(`/profile/help`);
+
+        
+    }
+
+    
+
     return (
         <Fragment>
             <div className={styles.mainheadersection}>
@@ -241,7 +278,56 @@ function Header() {
                                                                 My Profile
                                                             </div>
                                                         </div>
-                                                        <hr />
+                                                  
+                                                        <div className={styles.headerprofile} onClick={Orders}>
+                                                            <div>
+                                                                <Image src={orderactive} alt="no image" className={styles.profileimageover} />
+                                                            </div>
+                                                            <div className={styles.logouttexts}>
+                                                                Orders
+                                                            </div>
+                                                        </div>
+                                               
+                                                        <div className={styles.headerprofile} onClick={Whishlists}>
+                                                            <div>
+                                                                <Image src={favortsactive} alt="no image" className={styles.profileimageover} />
+                                                            </div>
+                                                            <div className={styles.logouttexts}>
+                                                                Whishlist
+                                                            </div>
+                                                        </div>
+                                                      
+
+                                                        <div className={styles.headerprofile} onClick={Services}>
+                                                            <div>
+                                                                <Image src={serviceactive} alt="no image" className={styles.profileimageover} />
+                                                            </div>
+                                                            <div className={styles.logouttexts}>
+                                                                Services
+                                                            </div>
+                                                        </div>
+                                                     
+
+                                                        <div className={styles.headerprofile} onClick={Coupons}>
+                                                            <div>
+                                                                <Image src={couponsactive} alt="no image" className={styles.profileimageover} />
+                                                            </div>
+                                                            <div className={styles.logouttexts}>
+                                                                Coupons
+                                                            </div>
+                                                        </div>
+                                                       
+
+                                                        <div className={styles.headerprofile} onClick={HelpPage}>
+                                                            <div>
+                                                                <Image src={helpss} alt="no image" className={styles.profileimageover} />
+                                                            </div>
+                                                            <div className={styles.logouttexts}>
+                                                                Help
+                                                            </div>
+                                                        </div>
+                                                       
+
                                                         <div className={styles.headerprofile} onClick={logoutHandler}>
                                                             <div>
                                                                 <Image src={logout} alt="no image" className={styles.profileimageover} />
@@ -252,7 +338,7 @@ function Header() {
                                                         </div>
                                                     </div>
                                                 </> : <div className="dropdowncontents">
-                                                    <div>
+                                                    <div className='p-2'>
                                                         Create account / LogIn
                                                         <button className='active mt-3 loginbuttonhome' onClick={Login}>
                                                             LogIn/SignUp
@@ -393,36 +479,36 @@ function Header() {
                         <div class="dropdownabout" >
                             <button class="dropbtnabout" ><span className={router?.pathname == "/abouts" ? "active" : ""}>About Us</span> <span><Image src={aroepath} alt="no image" className="patharrow" /></span></button>
                             <div class="dropdown-contentabut">
-                              
 
-                               
+
+
 
 
                                 <Link href="/abouts#WhatisWomeyn" scroll={false} >
-                                What is Womeyn
+                                    What is Womeyn
                                 </Link>
                                 <Link href="/abouts#OurMission&Vision" scroll={false} >
-                                Our Mission & Vision
+                                    Our Mission & Vision
                                 </Link>
                                 <Link href="/abouts#TheLogoSignificance" scroll={false} >
-                                The Logo Significance
+                                    The Logo Significance
                                 </Link>
 
 
                                 <Link href="/abouts#TheTeam" scroll={false} >
-                                The Team
+                                    The Team
                                 </Link>
 
 
                                 <Link href="/abouts#PartnersCollaborations" scroll={false} >
-                                Partners & Collaborations
+                                    Partners & Collaborations
                                 </Link>
-                            
+
 
                                 <Link href="/abouts#JoinWomeyn" scroll={false} >
-                                Join Womeyn
+                                    Join Womeyn
                                 </Link>
-                             
+
 
 
                                 {/* <Link to="a" activeClass="active" spy={true} smooth={true} offset={50} duration={500}>What is Womeyn</Link>

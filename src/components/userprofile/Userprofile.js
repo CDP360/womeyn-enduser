@@ -41,7 +41,7 @@ function Userprofile({ name, error }) {
             })
         }
         catch (err) {
-            if (err?.response?.data?.message == "Please authenticate") {
+            if (err?.response?.data?.message == "Please authenticate" || err?.response?.data?.message == "Forbidden") {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("userTokens");
@@ -52,7 +52,7 @@ function Userprofile({ name, error }) {
                 localStorage.removeItem('signupuser');
             }
 
-            if (state?.loginUser?.error?.code === 401) {
+            if (state?.loginUser?.error?.code === 401 || state?.loginUser?.error?.code === 403 ) {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("userTokens");

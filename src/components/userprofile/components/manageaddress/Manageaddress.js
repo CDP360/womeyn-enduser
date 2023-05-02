@@ -27,98 +27,7 @@ function Manageaddress({ error }) {
     const [countryaus, setCountryAus] = useState("");
     const [overallaus, setOverallAus] = useState("");
 
-    const [query, setQuery] = useState("");
-    const autoCompleteRef = useRef(null);
-
-    let autoComplete;
-
-
-
-
-
-    function handleScriptLoad(updateQuery, autoCompleteRef) {
-        autoComplete = new window.google.maps.places.Autocomplete(
-            autoCompleteRef.current,
-            { types: ["postal_code"], componentRestrictions: { country: "AUS" } }
-        );
-        autoComplete.setFields([
-            "address_components",
-            "formatted_address",
-            "geometry",
-        ]);
-        autoComplete.addListener("place_changed", () =>
-            handlePlaceSelect(updateQuery)
-        );
-
-    }
-
-    const getAddressFromGoogle = (event) => {
-        let value = event.target.value;
-        setQuery(value);
-    };
-    async function handlePlaceSelect(updateQuery) {
-        const addressObject = autoComplete.getPlace();
-
-
-        const query = addressObject;
-        updateQuery(query);
-        setOverallAus(query);
-        // console.log(addressObject);
-    }
-
-    const loadScript = (url, callback) => {
-        let script = document.createElement("script");
-        script.type = "text/javascript";
-
-        if (script.readyState) {
-            script.onreadystatechange = function () {
-                if (
-                    script.readyState === "loaded" ||
-                    script.readyState === "complete"
-                ) {
-                    script.onreadystatechange = null;
-                    callback();
-                }
-            };
-        } else {
-            script.onload = () => callback();
-        }
-
-        script.src = url;
-        document.getElementsByTagName("head")[0].appendChild(script);
-    };
-    useEffect(() => {
-        loadScript(
-            `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places`,
-            () => handleScriptLoad(setQuery, autoCompleteRef)
-        );
-
-        setOverallAus(autoCompleteRef?.current?.value);
-    }, []);
-
-    useEffect(() => {
-        if (query && query.address_components) {
-            for (const component of query.address_components) {
-                const componentType = component.types[0];
-                if (componentType === "locality") {
-                    //   formikPersonalDetails.values.cityName = component.long_name;
-                    setLastName(component.long_name)
-                }
-                if (componentType === "administrative_area_level_1") {
-
-                }
-                if (componentType === "country") {
-                    if (component.long_name === "Australia") {
-                        setFirstName(component.long_name)
-                    }
-                }
-                if (componentType === "postal_code") {
-                    setQuery(component.long_name);
-                }
-            }
-
-        }
-    }, [query]);
+   
 
 
 
@@ -333,16 +242,7 @@ function Manageaddress({ error }) {
                         centered
                     >
 
-                        <div>
-
-
-
-                            <input type="text"
-                                value={query}
-                                ref={autoCompleteRef}
-                                onChange={getAddressFromGoogle}
-                            />
-                        </div>
+                       
                     </Modal>
 
                 </div>

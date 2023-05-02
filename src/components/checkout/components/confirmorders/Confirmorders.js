@@ -10,6 +10,10 @@ import Image from 'next/image';
 import coupons from '../../../../assests/cart-logos/couponicon.png';
 import Spinner from 'react-bootstrap/Spinner';
 
+
+import cartempty from '../../../../assests/cart-logos/emptycartlogo.png';
+
+
 function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
   const { state, dispatch } = useContext(ContextStore);
   const [carts, setCart] = useState([]);
@@ -22,6 +26,8 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
     setDeleteid(id);
   };
 
+ 
+
   const history = useRouter()
   const { cart } = state;
   const deliverOrderConfirm = () => {
@@ -32,6 +38,11 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
     },1000)
   }
 
+
+  const shopping = () => {
+    history.push("/")
+  }
+  
   const handlePush = (path) => {
     history.push(`/product/${path}`)
   }
@@ -66,7 +77,12 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
 
   useEffect(() => {
     setCart(state?.cart?.cartData);
+
+   
   }, [deleteid]);
+
+
+
 
 
   const [couponscode, setCouponcode] = useState("");
@@ -94,55 +110,8 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
 
 
   return (
-    // <div className={styles.mainconfirmorders}>
-    //     <div className={styles.insideconfirmorrders}>
-    //         {cart?.cartData?.length > 0 ? <>
-    //             {cart?.cartData?.map((item, index) => {
-    //                 return (
-    //                     <div className={styles.splitorderconfirm} >
-    //                         <div className={styles.boxsectionimage} onClick={()=>handlePush(item?.productSlugName)}>
-    //                             <img
-    //                                 className={styles.editprofilesection}
-    //                                 src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
-    //                                 alt="profile-pic"
-    //                             />
-    //                         </div>
-    //                         <div>
-    //                             <div className={styles.productNamesize} onClick={()=>handlePush(item?.productSlugName)}>
-    //                                 {item?.productName}
-    //                             </div>
-    //                             <div>
-    //                                 Rs.{item?.salePrice} <span>
-    //                                     {item?.offerPercentag == 0 ? <span></span> : <>
-    //                                         <del>
-    //                                             <span>{item?.actualPrice}</span>
-    //                                         </del>
-    //                                     </>}
-    //                                     {item?.offerPercentag == 0 ? <></> : <> {item?.offerPercentag} off</>}
-    //                                 </span>
-    //                             </div>
-    //                             <div>
-    //                                 {item?.productDescription}
-    //                             </div>
-    //                         </div>
-
-    //                     </div>
-
-    //                 )
-    //             })}
-    //             <div className="mt-4">
-    //                 <button className={styles.continuebutton} onClick={deliverOrderConfirm}>Continue</button>
-    //             </div>
-    //         </> : <>
-    //         </>}
-    //     </div>
-    // </div>
-
 
     <Fragment>
-
-
-
       <div className={styles.cartsection}>
         <div className={styles.leftcartsection}>
           <div className="d-none d-lg-block">
@@ -217,12 +186,12 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
 
                 <div className={styles.yourcarttexts}>
 
-                  Your cart is empty!
+                  No Item to checkout please explore
 
                 </div>
-                <div className={styles.yourcarttexts}>
+                {/* <div className={styles.yourcarttexts}>
                   Please add your products to the cart
-                </div>
+                </div> */}
                 <div className="mt-4 mb-5">
                   <button className={styles.shopbutton} onClick={shopping}>Shop Now</button>
                 </div>
@@ -345,28 +314,33 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
             {couponerror && couponscode?.length <= 0 ? <span className="active">Coupon field is reuired!!!</span> : <></>}
           </div>
         </>} */}
+
+        {cart?.cartData?.length > 0 &&
+        
         <div className="mt-4">
-          <button className={styles.continuebutton} onClick={deliverOrderConfirm}>
-            
-            
-            
+        <button className={styles.continuebutton} onClick={deliverOrderConfirm}>
+          
+          
+          
 
 
-            {loading?<>
-           
-           <Spinner
-         as="span"
-         animation="border"
-         size="sm"
-         role="status"
-         aria-hidden="true"
-       />
-       <span className="ms-3">Loading...</span>
-          </>:<>
-          Continue
-          </>}
-            </button>
-        </div>
+          {loading?<>
+         
+         <Spinner
+       as="span"
+       animation="border"
+       size="sm"
+       role="status"
+       aria-hidden="true"
+     />
+     <span className="ms-3">Loading...</span>
+        </>:<>
+        Continue
+        </>}
+          </button>
+      </div>
+        }
+      
 
       </div>
 

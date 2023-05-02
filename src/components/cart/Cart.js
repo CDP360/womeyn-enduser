@@ -63,7 +63,7 @@ function Cart() {
 
   }, [deleteid, totalvalue])
   const shopping = () => {
-    router.push("/womenpreneurs")
+    router.push("/")
   }
   const handleDelete = (e) => {
     setTimeout(() => {
@@ -98,7 +98,7 @@ function Cart() {
   }
 
 
-  console.log(state?.cart?.cartData,"kalaia")
+
 
 
   const CartNavigateProductView=(productSlugName)=>{

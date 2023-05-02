@@ -88,7 +88,7 @@ function Home() {
             await UserProfileInformation(JSON.parse(userid));
         }
         catch (err) {
-            if (err?.response?.data?.message == "Please authenticate") {
+            if (err?.response?.data?.message == "Please authenticate" || err?.response?.data?.message == "Forbidden") {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("userTokens");
@@ -99,7 +99,7 @@ function Home() {
                 localStorage.removeItem('signupuser');
             }
 
-            if (state?.loginUser?.error?.code === 401) {
+            if (state?.loginUser?.error?.code === 401 || state?.loginUser?.error?.code===403) {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("userTokens");
