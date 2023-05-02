@@ -88,8 +88,14 @@
         }
 
         .profileimage {
-            width: 40px;
-            height: 40px;
+            width: 90px;
+            height: 90px;
+            @include mdBreakPoint
+            {
+                border:5px solid red;
+                display:none;
+            }
+          
         }
         .profileimagecamera {
             position: absolute;
@@ -182,6 +188,7 @@
     object-fit: cover;
     // padding: 5px;
     border: 3px solid #e95a5a;
+  
 }
 .editmodelprofile {
     width: 160px;

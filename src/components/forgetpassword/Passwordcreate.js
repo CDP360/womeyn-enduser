@@ -14,6 +14,8 @@ import { useState } from 'react';
 import { CreatePassword, CreateProfileuser } from '../../services/user-login-service/user-login-services';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
+import Col from 'react-bootstrap/Col';
+
 function Passwordcreate() {
     const router = useRouter();
     const [emailcheckuser, setEmailCheck] = useState("");
@@ -27,18 +29,19 @@ function Passwordcreate() {
 
     const formSchema = Yup.object().shape({
         name: Yup.string()
-            .required('Name is Required!'),
+            .required('Name is Required.'),
         email: Yup.string()
-            .required('Email is Required!'),
-        contactno: Yup.string()
-            .required('contactno is Required!'),
-        gender: Yup.string().required("Gender is Required!!"),
+            .required('Email is Required.'),
+            phonenumber: Yup.string()
+            .required('Contact No is Required.'),
+        gender: Yup.string().required("Gender is Required."),
         password: Yup.string()
-            .required('Password is must ')
+            .required('Password must be atleast 8 characters long')
             .min(8, 'Password must be atleast 8 characters long'),
         confirmPwd: Yup.string()
-            .required('Password is mendatory')
+            .required('Password is mandatory')
             .oneOf([Yup.ref('password')], 'Passwords does not match'),
+        dateofbirth:Yup.string().required("Date Of Birth is Required.")
     })
     const formOptions = { resolver: yupResolver(formSchema) }
     const {
@@ -56,7 +59,8 @@ function Passwordcreate() {
             firstName: data?.name,
             gender: data?.gender,
             email: data?.email,
-            contactNumber: data?.contactno
+            contactNumber: data?.phonenumber,
+            dateOfBirth:data?.dateofbirth
         }
         var passwordRegex = /(?=^.{8,}$)(?=.{0,}[A-Z])(?=.{0,}[a-z])(?=.{0,}\W)(?=.{0,}\d)/;
         if (productWhishlist) {
@@ -266,9 +270,11 @@ function Passwordcreate() {
 
                                                 <div className={styles.passwordformsection}>
                                                     <Form.Group className="mb-2" controlId="formBasicEmail">
-                                                        <Form.Label>Mobile no</Form.Label>
-                                                        <div className={"formsectioncommonlogin"}>
+                                                        <Form.Label>Contact Number</Form.Label>
+                                                       
+                                                        {/* <div className={"formsectioncommonlogin"}>
                                                             <Form.Control type="text" placeholder="Mobile no" className={styles.forms}
+                                                            maxLength={9}
                                                                 {...register('contactno', {
                                                                     required: "Please enter mobile no",
 
@@ -276,9 +282,25 @@ function Passwordcreate() {
 
                                                                 disabled
                                                             />
+                                                        </div> */}
 
 
-                                                        </div>
+<div className={styles.formcontrolscontact}>
+<div className={styles.numbercontactsections}>
+    +61
+</div>
+<div className="col-lg-11">
+<input type="text" placeholder="Enter contactno" className={styles.contactformbox   }
+                                    {...register("phonenumber", {
+                                        required: "Please enter contactno",
+    
+                                    })}
+                                    maxLength={9}
+disabled
+                                />
+</div>
+
+                                </div>
                                                         {errors.contactno && <span className="active">{errors.contactno.message}</span>}
                                                     </Form.Group>
 
@@ -289,8 +311,25 @@ function Passwordcreate() {
 
                                                 <div className={styles.passwordformsection}>
                                                     <Form.Group className="mb-2" controlId="formBasicEmail">
-                                                        <Form.Label>Mobile no</Form.Label>
-                                                        <div className={"formsectioncommonlogin"}>
+                                                        <Form.Label>Contact no</Form.Label>
+
+                                                        <div className={styles.formcontrolscontact}>
+<div className={styles.numbercontactsections}>
+    +61
+</div>
+<div className="col-lg-11">
+<input type="text" placeholder="Enter contactno" className={styles.contactformbox   }
+                                    {...register("phonenumber", {
+                                        required: "Please enter Contact No",
+    
+                                    })}
+                                    maxLength={9}
+
+                                />
+</div>
+
+                                </div>
+                                                        {/* <div className={"formsectioncommonlogin"}>
                                                             <Form.Control type="text" placeholder="Mobile no" className={styles.forms}
                                                                 {...register('contactno', {
                                                                     required: "Please enter mobile no",
@@ -299,8 +338,8 @@ function Passwordcreate() {
                                                             />
 
 
-                                                        </div>
-                                                        {errors.contactno && <span className="active">{errors.contactno.message}</span>}
+                                                        </div> */}
+                                                        {errors.phonenumber && <span className="active">{errors.phonenumber.message}</span>}
                                                     </Form.Group>
 
                                                 </div>
@@ -366,6 +405,21 @@ function Passwordcreate() {
                                             </div>
 
                                             {errors.gender && <span className="active">{errors.gender.message}</span>}
+                                        </div>
+                                        <div className="mt-3 mb-3">
+                                        <Col xs="12" sm="12" md="6" lg="12">
+    
+    <Form.Group className="mb-3"  >
+        <Form.Label>Date Of Birth</Form.Label>
+        <Form.Control type="date" placeholder="Date Of Birth" className='form-control-profile'
+            {...register("dateofbirth", {
+                required: "Please enter dateofbirth",
+
+            })}
+        />
+        {errors.dateofbirth && <span className="active">{errors.dateofbirth.message}</span>}
+    </Form.Group>
+</Col>
                                         </div>
                                         <button variant="primary" type="submit" className="loginbutton mt-4">
                                             Submit

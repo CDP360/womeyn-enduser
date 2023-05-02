@@ -177,12 +177,23 @@ function EditProfile({ users, error }) {
                         <Col xs="12" sm="12" md="6">
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Contact Number</Form.Label>
-                                <Form.Control type="text" placeholder="Enter contactno" className='form-control-profile'
+                                <div className={styles.formcontrolscontact}>
+<div className={styles.numbercontactsections}>
+    +61
+</div>
+<div className="col-lg-11">
+<input type="text" placeholder="Enter contactno" className={styles.contactformbox   }
                                     {...register("phonenumber", {
                                         required: "Please enter contactno",
     
                                     })}
+                                    maxLength={9}
+
                                 />
+</div>
+
+                                </div>
+                               
                                 <Form.Text className="text-muted">
                                     {errors.phonenumber && <span className="active">{errors.phonenumber.message}</span>}
                                 </Form.Text>

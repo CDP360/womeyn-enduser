@@ -268,7 +268,8 @@ function Sidebar({ user, error }) {
                                     src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
                                     alt="profile-pic"
                                 />
-                            </> : <Image src={userprofile} alt="no image" className={styles.profileimage} onClick={handleShow} />}
+                            </> :
+                             <Image src={userprofile} alt="no image" className={styles.profileimage} onClick={handleShow} />}
                             <div>
                                 <Image src={camera} alt="no image" className={styles.profileimagecamera} onClick={handleShow} />
                             </div>
@@ -350,6 +351,10 @@ function Sidebar({ user, error }) {
                             </div>
                             <div className={pathname == "coupons" ? styles.boldtextactive : styles.boldtexts}>
                                 Coupons
+                            </div>
+                        </div>
+                        <div className={styles.dashedsectionmain}>
+                            <div className={styles.insidedashedsection}>
                             </div>
                         </div>
                         <div className={pathname == "help" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("help")}>

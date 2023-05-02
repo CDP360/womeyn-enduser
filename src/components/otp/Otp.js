@@ -66,25 +66,11 @@ function Otp() {
                         setLoading(false);
                     }, 1000)
                 }
-                else {
-                    toast.error("OTP Not Matched",
-                        {
-                            position: "top-center",
-                            autoClose: 3000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: "dark",
-                        }
-                    );
-                    setLoading(false);
-
-                }
+                
             }).catch((err) => {
                 console.log(err);
                 setLoading(false);
+                toast.error(err?.response?.data?.message);
 
             })
         }
@@ -100,6 +86,7 @@ function Otp() {
             toast.success("Resend OTP Success Check Your Mail");
         }).catch((err) => {
             console.log(err);
+            toast.error(err?.response?.data?.message);
         })
     }
 

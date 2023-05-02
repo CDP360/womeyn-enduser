@@ -24,38 +24,29 @@ function Signup() {
     const url = process?.env?.NEXT_PUBLIC_URL;
     const [loading, setLoading] = useState(false);
 
+    const [UserEmaiorphone, setUserEmailOrPhone] = useState("");
+    const [errromessage, setErrorMessage] = useState("");
+
     const [tokenUser, setTokenUser] = useState("");
 
-    const onSubmit = async (data) => {
-        const response = {
-            emailOrPhoneNo: data?.email
-        }
-        localStorage.setItem("signupuser", JSON.stringify(data?.email))
-        setLoading(true);
-        userSignup(response).then((res) => {
-            if (res) {
-                toast.success(OTP, {
-                    position: "top-center",
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-                localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
-                localStorage.setItem("userToken", JSON.stringify(res?.data?.tokens?.access?.token));
-                setTimeout(() => {
-                    router.push("/otp");
-                    setLoading(false);
-                }, 600)
-            }
 
-        }).catch((err) => {
-            if (err?.response?.data?.message == LoginText?.YouarealreadyregisteredPleaselogin) {
-                toast.error(err?.response?.data?.message,
-                    {
+    const handleChange = (e) => {
+        setUserEmailOrPhone(e.target.value);
+    }
+
+
+    const SubmitUserCheck = (e) => {
+        e.preventDefault();
+        let check = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})|([0-9]{10})+$/;
+        if (check.test(UserEmaiorphone)) {
+            const response = {
+                emailOrPhoneNo: UserEmaiorphone
+            }
+            localStorage.setItem("signupuser", JSON.stringify(UserEmaiorphone))
+            setLoading(true);
+            userSignup(response).then((res) => {
+                if (res) {
+                    toast.success(OTP, {
                         position: "top-center",
                         autoClose: 3000,
                         hideProgressBar: false,
@@ -65,11 +56,85 @@ function Signup() {
                         progress: undefined,
                         theme: "dark",
                     });
-            }
-            setLoading(false);
+                    localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
+                    localStorage.setItem("userToken", JSON.stringify(res?.data?.tokens?.access?.token));
+                    setTimeout(() => {
+                        router.push("/otp");
+                        setLoading(false);
+                    }, 600)
+                }
 
-        })
-    };
+            }).catch((err) => {
+                if (err?.response?.data?.message == LoginText?.YouarealreadyregisteredPleaselogin) {
+                    toast.error(err?.response?.data?.message,
+                        {
+                            position: "top-center",
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "dark",
+                        });
+                }
+                setLoading(false);
+
+            })
+        }
+        else {
+            setErrorMessage("Please enter valid Email ID / Mobile Number")
+        }
+    }
+
+
+    // const onSubmit = async (data) => {
+
+    //     let check = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})|([0-9]{10})+$/;
+
+    //     const response = {
+    //         emailOrPhoneNo: data?.email
+    //     }
+    //     localStorage.setItem("signupuser", JSON.stringify(data?.email))
+    //     setLoading(true);
+    //     userSignup(response).then((res) => {
+    //         if (res) {
+    //             toast.success(OTP, {
+    //                 position: "top-center",
+    //                 autoClose: 3000,
+    //                 hideProgressBar: false,
+    //                 closeOnClick: true,
+    //                 pauseOnHover: true,
+    //                 draggable: true,
+    //                 progress: undefined,
+    //                 theme: "dark",
+    //             });
+    //             localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
+    //             localStorage.setItem("userToken", JSON.stringify(res?.data?.tokens?.access?.token));
+    //             setTimeout(() => {
+    //                 router.push("/otp");
+    //                 setLoading(false);
+    //             }, 600)
+    //         }
+
+    //     }).catch((err) => {
+    //         if (err?.response?.data?.message == LoginText?.YouarealreadyregisteredPleaselogin) {
+    //             toast.error(err?.response?.data?.message,
+    //                 {
+    //                     position: "top-center",
+    //                     autoClose: 3000,
+    //                     hideProgressBar: false,
+    //                     closeOnClick: true,
+    //                     pauseOnHover: true,
+    //                     draggable: true,
+    //                     progress: undefined,
+    //                     theme: "dark",
+    //                 });
+    //         }
+    //         setLoading(false);
+
+    //     })
+    // };
 
     useEffect(() => {
         const TokenCheckUser = localStorage.getItem("auth");
@@ -148,37 +213,32 @@ function Signup() {
                                 {LoginText?.Signup}
                             </div>
                             <div className="mt-3 mb-5">
-                                <Form onSubmit={handleSubmit(onSubmit)}>
-                                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Control type={"text"} placeholder="Email / Phone Number" className={styles.forms}
-                                            {...register("email", {
-                                                required: "Please enter email / Phone Number",
-                                                pattern: {
-                                                    // value: /\S+@\S+\.\S+/ || /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                    // value: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
-                                                    message: "invalid email address"
-                                                },
-                                            })}
+
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Control type={"text"} placeholder="Email / Phone Number" className={styles.forms}
+
+                                        onChange={handleChange} value={UserEmaiorphone} name="emailorphone"
+
+                                    />
+                                    {errromessage && <span className="active">{errromessage}</span>}
+                                </Form.Group>
+
+                                <button variant="primary" onClick={SubmitUserCheck} className="loginbutton mt-2 mb-2">
+                                    {loading ? <>
+                                        <Spinner
+                                            as="span"
+                                            animation="grow"
+                                            size="sm"
+                                            role="status"
+                                            aria-hidden="true"
                                         />
-                                        {errors.email && <span className="active">{errors.email.message}</span>}
-                                    </Form.Group>
+                                        Loading...
+                                    </> : <>
+                                        {LoginText?.Signup}
 
-                                    <button variant="primary" type="submit" className="loginbutton mt-2 mb-2">
-                                        {loading ? <>
-                                            <Spinner
-                                                as="span"
-                                                animation="grow"
-                                                size="sm"
-                                                role="status"
-                                                aria-hidden="true"
-                                            />
-                                            Loading...
-                                        </> : <>
-                                            {LoginText?.Signup}
+                                    </>}
+                                </button>
 
-                                        </>}
-                                    </button>
-                                </Form>
                                 <div className="text-center mt-2 mb-3">
                                     {LoginText?.oryoucanuse}
                                 </div>
