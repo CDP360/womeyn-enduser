@@ -23,30 +23,30 @@ function Categorycard({ item }) {
             {/* <div className={styles.plussection}>
                 <Image src={plus} alt="no image" className={styles.plus} onClick={() => Carthandleproduct(item)} />
             </div> */}
-            {item?.productThumbImage?<>
+            {item?.productThumbImage ? <>
                 <img
-                className={styles.categoryimage}
-                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
-                alt="profile-pic"
-                onClick={() => ProductView(item?.productSlugName)}
-            />
-            </>:<>
-            <Skeleton className={styles.categoryimages} />
+                    className={styles.categoryimage}
+                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
+                    alt="profile-pic"
+                    onClick={() => ProductView(item?.productSlugName)}
+                />
+            </> : <>
+                <Skeleton className={styles.categoryimages} />
             </>}
-           
+
             <div className={styles.cardinsidesection}>
                 <Image src={stars} alt="no image" className={styles.stars} />
                 <div className={styles.productname}>
-                {item?.productName?.length<=10?<> {item?.productName}</>:<> {item?.productName.slice(0,28)}...</>}
-        
+                    {item?.productName?.length <= 10 ? <> {item?.productName}</> : <> {item?.productName.slice(0, 28)}...</>}
+
                 </div>
                 <div className={styles.brandnames}>
-                    {item?.brandName?.length<=10?<>{item?.brandName?<>{item?.brandName}</>:<>
-                    
-                    <Skeleton className={styles.skeltonbrands}/>
-                    </>}</>:<>{item?.brandName.slice(0,28)}...</>}
+                    {item?.brandName?.length <= 10 ? <>{item?.brandName ? <>{item?.brandName}</> : <>
+
+                        <Skeleton className={styles.skeltonbrands} />
+                    </>}</> : <>{item?.brandName.slice(0, 28)}...</>}
                     {/* <span className={styles.brandnames}>{item?.brandName}</span> */}
-                    
+
                 </div>
                 <div className={styles.cardsellerborder}>
                     <div className={styles.cardsellerinsideborder}>

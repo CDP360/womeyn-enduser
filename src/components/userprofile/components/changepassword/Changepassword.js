@@ -14,9 +14,9 @@ import { useSearchParams } from 'next/navigation';
 import { Changepassworduser } from '../../../../services/user-login-service/user-login-services';
 import Spinner from 'react-bootstrap/Spinner';
 
-function Changepassword({error}) {
+function Changepassword({ error }) {
 
-    const [loading,setLoading]=useState(false);
+    const [loading, setLoading] = useState(false);
 
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -110,163 +110,162 @@ function Changepassword({error}) {
             router.push("/login")
         }, 600);
         localStorage.removeItem("userid");
-                localStorage.removeItem("userToken");
-                localStorage.removeItem("whish");
-                localStorage.removeItem("user");
-                localStorage.removeItem("auth");
-                localStorage.removeItem("productid");
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("whish");
+        localStorage.removeItem("user");
+        localStorage.removeItem("auth");
+        localStorage.removeItem("productid");
     }
     useEffect(() => {
-        if(error)
-        {
+        if (error) {
             localStorage.removeItem("userid");
             localStorage.removeItem("userToken");
             localStorage.removeItem("whish");
             localStorage.removeItem("user");
             localStorage.removeItem("auth");
             localStorage.removeItem("productid");
-        localStorage.removeItem('signupuser');
+            localStorage.removeItem('signupuser');
 
             router.push("/login");
         }
-    }, [matchcheck1, matchcheck2, matchcheck3, matchcheck4,error]);
+    }, [matchcheck1, matchcheck2, matchcheck3, matchcheck4, error]);
 
 
 
- 
-        return (
-            <div className={styles.mainchnagespasswordsection}>
-                <div className={styles.topsectionaddress}>
-                    <div className={styles.leftaddresssection}>
-                        {/* <input type="text" placeholder='Search address or receiver name' className={styles.serachaddress} />
+
+    return (
+        <div className={styles.mainchnagespasswordsection}>
+            <div className={styles.topsectionaddress}>
+                <div className={styles.leftaddresssection}>
+                    {/* <input type="text" placeholder='Search address or receiver name' className={styles.serachaddress} />
                             <div>
                                 <Image src={searchcion} alt="no image" className={styles.searchicon} />
                             </div> */}
-                        <div className="commonprofiletextsize">
-                            Change Password
-                        </div>
-    
+                    <div className="commonprofiletextsize">
+                        Change Password
                     </div>
-                    <div className={styles.rightaddresssection}>
-                        <div>
-                            <button className={styles.addbuttonnew} onClick={handleSubmit(onSubmit)}>
-                                
-                                {loading?<>
-                                    <Spinner
-              as="span"
-              animation="grow"
-              size="sm"
-              role="status"
-              aria-hidden="true"
-            />
-            Loading...
-                                </>:<>
-                                
-                                Save
-                                </>}
-                                </button>
-                        </div>
-                        <div>
-                            <button className={styles.addbuttonnewcancel}>Cancel</button>
-                        </div>
-                    </div>
+
                 </div>
-    
-                <div className="mt-1">
-                    <div className={styles.Mainforgetpassword}>
-                        <div className={styles.insidesectionforget}>
-                            <div className={styles.insideforgetsplit}>
-                                {/* <div className={styles.logintext}>
+                <div className={styles.rightaddresssection}>
+                    <div>
+                        <button className={styles.addbuttonnew} onClick={handleSubmit(onSubmit)}>
+
+                            {loading ? <>
+                                <Spinner
+                                    as="span"
+                                    animation="grow"
+                                    size="sm"
+                                    role="status"
+                                    aria-hidden="true"
+                                />
+                                Loading...
+                            </> : <>
+
+                                Save
+                            </>}
+                        </button>
+                    </div>
+                    {/* <div>
+                        <button className={styles.addbuttonnewcancel}>Cancel</button>
+                    </div> */}
+                </div>
+            </div>
+
+            <div className="mt-1">
+                <div className={styles.Mainforgetpassword}>
+                    <div className={styles.insidesectionforget}>
+                        <div className={styles.insideforgetsplit}>
+                            {/* <div className={styles.logintext}>
                                     Change Password
                                 </div> */}
-                                <div>
-                                    {matchcheck1 ? <div className='text-success fw-1 fs-4'>
-                                        Password Matched!
-                                    </div> : <>
-                                    </>}
-                                    {matchcheck2 && <div className='text-danger shorttexts'>
-                                        At least one letter,
-                                        one capital letter,
-                                        one number,
-                                        one special character,
-                                    </div>}
-                                </div>
-                                <div className='mb-4 mt-2'>
-    
-    
-                                    <Form className="forms-bg">
-                                        <div className={styles.passwordformsection}>
-                                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                <Form.Label>Old Password</Form.Label>
-                                                <div className={"formsectioncommon"}>
-                                                    <Form.Control type={show1 ? "text" : "password"} placeholder="Old Password" className={styles.forms}
-                                                        {...register('oldPassword', {
-                                                            pattern: {
-                                                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                                message: "invalid email address"
-                                                            },
-                                                        })}
-                                                    />
-                                                    <div className={"passwordicons"}>
-                                                        {show1 ? <div className='mt-2' onClick={() => setShow1(!show1)}><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow1(!show1)}><Image src={eyeoff} alt="no image" /></div>}
-                                                    </div>
+                            <div>
+                                {matchcheck1 ? <div className='text-success fw-1 fs-4'>
+                                    Password Matched!
+                                </div> : <>
+                                </>}
+                                {matchcheck2 && <div className='text-danger shorttexts'>
+                                    At least one letter,
+                                    one capital letter,
+                                    one number,
+                                    one special character,
+                                </div>}
+                            </div>
+                            <div className='mb-4 mt-2'>
+
+
+                                <Form className="forms-bg">
+                                    <div className={styles.passwordformsection}>
+                                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                                            <Form.Label>Old Password</Form.Label>
+                                            <div className={"formsectioncommon"}>
+                                                <Form.Control type={show1 ? "text" : "password"} placeholder="Old Password" className={styles.forms}
+                                                    {...register('oldPassword', {
+                                                        pattern: {
+                                                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                            message: "invalid email address"
+                                                        },
+                                                    })}
+                                                />
+                                                <div className={"passwordicons"}>
+                                                    {show1 ? <div className='mt-2' onClick={() => setShow1(!show1)}><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow1(!show1)}><Image src={eyeoff} alt="no image" /></div>}
                                                 </div>
-                                                {errors.oldPassword && <span className="active">{errors.oldPassword.message}</span>}
-                                            </Form.Group>
-    
-                                        </div>
-    
-                                        <div className={styles.passwordformsection}>
-                                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                <Form.Label>New Password</Form.Label>
-                                                <div className={"formsectioncommon"}>
-                                                    <Form.Control type={show2 ? "text" : "password"} placeholder="New Password" className={styles.forms}
-                                                        {...register('newPassword', {
-                                                            pattern: {
-                                                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                                message: "invalid email address"
-                                                            },
-                                                        })}
-                                                    />
-    
-                                                    <div className={"passwordicons"}>
-                                                        {show2 ? <div className='mt-2' onClick={() => setShow2(!show2)}><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow2(!show2)}><Image src={eyeoff} alt="no image" /></div>}
-                                                    </div>
-                                                </div>
-                                                {errors.newPassword && <span className="active">{errors.newPassword.message}</span>}
-                                            </Form.Group>
-    
-                                        </div>
-                                        <div className='mt-4'>
-                                            <div className={styles.passwordformsection}>
-                                                <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                    <Form.Label>Confirm New Password</Form.Label>
-                                                    <div className={"formsectioncommon"}>
-                                                        <Form.Control type={show3 ? "text" : "password"} placeholder="Confirm New Password" className={styles.forms}
-                                                            {...register('confirmNewPassword')}
-    
-                                                        />
-                                                        <div className={"passwordicons"}>
-                                                            {show3 ? <div onClick={() => setShow3(!show3)} className="mt-2 ms-4"><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow3(!show3)}><Image src={eyeoff} alt="no image" /></div>}
-                                                        </div>
-                                                    </div>
-                                                </Form.Group>
-                                                {errors.confirmNewPassword && <span className="active">{errors.confirmNewPassword.message}</span>}
-    
                                             </div>
+                                            {errors.oldPassword && <span className="active">{errors.oldPassword.message}</span>}
+                                        </Form.Group>
+
+                                    </div>
+
+                                    <div className={styles.passwordformsection}>
+                                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                                            <Form.Label>New Password</Form.Label>
+                                            <div className={"formsectioncommon"}>
+                                                <Form.Control type={show2 ? "text" : "password"} placeholder="New Password" className={styles.forms}
+                                                    {...register('newPassword', {
+                                                        pattern: {
+                                                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                            message: "invalid email address"
+                                                        },
+                                                    })}
+                                                />
+
+                                                <div className={"passwordicons"}>
+                                                    {show2 ? <div className='mt-2' onClick={() => setShow2(!show2)}><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow2(!show2)}><Image src={eyeoff} alt="no image" /></div>}
+                                                </div>
+                                            </div>
+                                            {errors.newPassword && <span className="active">{errors.newPassword.message}</span>}
+                                        </Form.Group>
+
+                                    </div>
+                                    <div className='mt-4'>
+                                        <div className={styles.passwordformsection}>
+                                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                                <Form.Label>Confirm New Password</Form.Label>
+                                                <div className={"formsectioncommon"}>
+                                                    <Form.Control type={show3 ? "text" : "password"} placeholder="Confirm New Password" className={styles.forms}
+                                                        {...register('confirmNewPassword')}
+
+                                                    />
+                                                    <div className={"passwordicons"}>
+                                                        {show3 ? <div onClick={() => setShow3(!show3)} className="mt-2 ms-4"><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow3(!show3)}><Image src={eyeoff} alt="no image" /></div>}
+                                                    </div>
+                                                </div>
+                                            </Form.Group>
+                                            {errors.confirmNewPassword && <span className="active">{errors.confirmNewPassword.message}</span>}
+
                                         </div>
-    
-    
-                                    </Form>
-    
-    
-                                </div>
+                                    </div>
+
+
+                                </Form>
+
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        )
+        </div>
+    )
 
 
 }

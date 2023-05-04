@@ -134,7 +134,7 @@ function Userprofile({ name, error }) {
                             </div>
                             }
                              {name == "help" && <div>
-                             {/* <Help */}
+                  
                              <Help/>
                             </div>
                             }

@@ -199,20 +199,20 @@ function Reviewmodel({ show1, handleClose1, orderlist }) {
 </div>
                     </div> */}
 
-                    <div className={styles.reviewbuttons}>
+<div className={styles.reviewbuttons}>
 
+                        
+<div>
 
-                        <div>
+<button className={styles.submits} onClick={handleClose1}>Cancel</button>
 
-                            <button className={styles.submits} onClick={handleClose1}>Cancel</button>
+</div>
 
-                        </div>
+<div>
+<button className={styles.submits} onClick={handleSubmit(Ratingproduct)}>Submit</button>
 
-                        <div>
-                            <button className={styles.submits} onClick={handleSubmit(Ratingproduct)}>Submit</button>
-
-                        </div>
-                    </div>
+</div>
+</div>
                 </div>
             </Modal>
         </div>

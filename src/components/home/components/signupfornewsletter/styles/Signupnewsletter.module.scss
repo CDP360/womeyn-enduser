@@ -59,9 +59,10 @@
                 width: 60%;
                 padding-left: 10%;
                 display: flex;
-                align-items: center;
-                justify-content: center;
+                // align-items: center;
+                // justify-content: center;
                 flex-direction: column;
+                // border:2px solid blue;
                 @include xsBreakPoint {
                     width: 100%;
                     padding-left: 0px;

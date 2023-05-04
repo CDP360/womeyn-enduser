@@ -138,15 +138,7 @@ function Servicepayment({ id }) {
     const NavigatePathUser = () => {
         history?.push("/login");
     }
-    //     if (tokens) {
-    //         return (
-    //             <div>
-    //                 {NavigatePath()};
-    //             </div>
-    //         )
-    //     }
-    // else
-    // {
+   
 
 
 
@@ -200,7 +192,8 @@ function Servicepayment({ id }) {
                                             />
                                         </>}
                                     </div>
-                                    <div className={styles.servicepayment}>
+                                {tokens?<div>
+                                <div className={styles.servicepayment}>
                                         <div className={styles.quantity}>
 
                                             <div className={styles.price}>
@@ -246,7 +239,7 @@ function Servicepayment({ id }) {
 
                                     </div>
 
-                                    <div className="mt-3 mb-3">
+                                    <div className="mt-3 mb-5">
 
                                         <div className={styles.totalamount}>
                                             <div className={styles.price}>
@@ -262,6 +255,8 @@ function Servicepayment({ id }) {
                                                 </div>                                        </div>
                                         </div>
                                     </div>
+                                </div>:<div></div>}
+                                    
 
                                     <div className='mt-4 mb-3'>
                                         {tokens ? <>

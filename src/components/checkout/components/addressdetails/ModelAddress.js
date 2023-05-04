@@ -159,10 +159,10 @@ function ModelAddress({ show, handleClose, register, errors, handleSubmit, Submi
                                 </Col>
                                 <Col>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label className="labelname">Pincode</Form.Label>
-                                        <Form.Control type="text" placeholder="Enter Pincode" className='form-control-profiles'
+                                        <Form.Label className="labelname">Post Code</Form.Label>
+                                        <Form.Control type="text" placeholder="Enter Post Code" className='form-control-profiles'
                                             {...register("pincode", {
-                                                required: "Please enter Pincode",
+                                                required: "Please enter Post Code",
                                             })}
                                             maxLength={4}
 

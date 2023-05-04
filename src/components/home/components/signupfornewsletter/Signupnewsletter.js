@@ -91,12 +91,14 @@ function Signupnewsletter() {
 
                                 </div>
 
-                                <div className='d-flex justify-content-start mt-2'>
+                                <div className='d-flex mt-2'>
                                     {errors.email && <span className="active">{errors.email.message}</span>}
 
                                 </div>
+                              
 
                             </div>
+
 
                         </div>
                     </div>

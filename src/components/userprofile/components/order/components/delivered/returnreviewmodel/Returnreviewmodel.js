@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import Modal from 'react-bootstrap/Modal';
-import styles from './styles/Reviewmodel.module.scss';
-import { Rate } from "antd";
-import Form from 'react-bootstrap/Form';
-import Image from 'next/image';
-import camera from '../../../../../../../assests/womeynlogos/cameraprofile.png';
+import React ,{useState,useEffect} from 'react'
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
-import { ProductRatingView } from '../../../../../../../services/product-rating-service/product-rating-service';
-function Reviewmodel({ show1, handleClose1, orderlist }) {
+import Modal from 'react-bootstrap/Modal';
+import styles from './styles/Returnviewmodel.module.scss';
+import Form from 'react-bootstrap/Form';
+import Image from 'next/image';
+
+import moment from 'moment';
+import camera from '../../../../../../../assests/womeynlogos/cameraprofile.png';
+
+function Returnreviewmodel({show2, handleClose2, orderlist}) {
     const {
         register,
         handleSubmit,
@@ -20,7 +21,26 @@ function Reviewmodel({ show1, handleClose1, orderlist }) {
     const [image, setImage] = useState([]);
     useEffect(() => {
         const names = JSON.parse(localStorage.getItem("user"));
-        setValue("username", names)
+        setValue("username", names);
+
+
+        // const datas=moment('2023-05-04').isAfter('2023-05-03');
+        const datas=!moment("2023-05-04").isBefore(moment('2023-05-06'), "day");
+
+        console.log(datas,"datas")
+
+        // pickedDate = Date.parse("04-Apri-2012".replace(/-/g, " "));
+        // todaysDate = new Date();
+        // todaysDate.setHours(0, 0, 0, 0);
+        // dateDifference = Math.abs(Number(todaysDate) - pickedDate);
+        // //7 Days=604800000ms
+        // if (dateDifference > 604800000) {
+        //     return false;
+        // } else {
+        //     return true;
+        // }
+
+       
     }, [count])
 
     const handleImagechange = (e) => {
@@ -49,55 +69,163 @@ function Reviewmodel({ show1, handleClose1, orderlist }) {
         })
         setImage(filters);
     }
-
     return (
         <div>
-
             <Modal
-                show={show1}
-                onHide={handleClose1}
+                show={show2}
+                onHide={handleClose2}
                 backdrop="static"
                 keyboard={false}
                 centered
+                size="lg"
             >
                 <div className={styles.reviewrating}>
                     <div className={styles.insidemodelpopup}>
                         <div className={styles.removetexts}>
-                            Review and Rating
+                         Return Product
                         </div>
-                        <div onClick={handleClose1}>
+                        <div onClick={handleClose2}>
                             <ion-icon name="close-outline" size="large"></ion-icon>
                         </div>
                     </div>
-                    <div className="mb-3 mt-3">
-                        <div>
-                            Rate this product
-                        </div>
-                        <div className="mb-3 mt-1">
-                            <Rate allowHalf style={{ color: "#54BE43", fontSize: "2rem", cursor: "pointer" }}
-                                tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
-                                onChange={(value) => {
-                                    setStarCount(value)
 
-                                }}
+                    <div>
 
-                            // {...register("rating", {
-                            //     required: "Please select rating",
+                        <div>Reason</div>
 
-                            // })}
 
-                            />
+                  <div className="mt-2 ">
+                  <label htmlFor="field-rain1">
+                    <input
+                        {...register("weather")}
+                        type="radio"
+                        value="Expected delivery time is very long
+                        "
+                        id="field-rain1"
+                    />
+                  <span className="ms-2">
+                  Expected delivery time is very long
+                  </span>
+                </label>
+                  </div>
+               <div className="mt-2 mb-2">
+               <label htmlFor="field-rain2">
+                    <input
+                        {...register("weather")}
+                        type="radio"
+                        value="
+                    I will not available at home on delivery day
+                        "
+                        id="field-rain2"
+                    />
+                <span className="ms-2">
+I will not available at home on delivery day
+</span>
+                </label>
+                </div>
 
-                            <div>
+                <div className="mt-2 mb-2">
+               <label htmlFor="field-rain3">
+                    <input
+                        {...register("weather")}
+                        type="radio"
+                        value="
+                        Have purchased the product elsewhere
+                        "
+                        id="field-rain3"
+                    />
+                <span className="ms-2">
+               Have purchased the product elsewhere
+</span>
+                </label>
+                </div>
 
-                                <Form.Text className="text-muted">
-                                    {errors.rating && <span className="active">{errors.rating.message}</span>}
-                                </Form.Text>
-                            </div>
+                <div className="mt-2 mb-2">
+               <label htmlFor="field-rain4">
+                    <input
+                        {...register("weather")}
+                        type="radio"
+                        value="
+                        I want cancel due to product quality issues
+                        "
+                        id="field-rain4"
+                    />
+                     <span className="ms-2">
+        I want cancel due to product quality issues
+</span>
+                </label>
+                </div>
 
-                        </div>
+
+                <div className="mt-2 mb-2">
+               <label htmlFor="field-rain5">
+                    <input
+                        {...register("weather")}
+                        type="radio"
+                        value="
+                        I want to change address for the order
+                        "
+                        id="field-rain5"
+                    />
+                     <span className="ms-2">
+I want to change address for the order
+</span>
+                </label>
+                </div>
+
+                <div className="mt-2 mb-2">
+               <label htmlFor="field-rain6">
+                    <input
+                        {...register("weather")}
+                        type="radio"
+                        value="
+                        Price for the product has decreased
+                        "
+                        id="field-rain6"
+                    />
+                     <span className="ms-2">
+Price for the product has decreased
+</span>
+                </label>
+                </div>
+
+
+                <div className="mt-2 mb-2">
+               <label htmlFor="field-rain7">
+                    <input
+                        {...register("weather")}
+                        type="radio"
+                        value="
+                        I have changed my mind
+                        "
+                        id="field-rain7"
+                    />
+                     <span className="ms-2">
+I have changed my mind
+</span>
+
+                </label>
+                </div>
+
+                <div>
+               <label htmlFor="field-rain8">
+                    <input
+                        {...register("weather")}
+                        type="radio"
+                        value="
+                        I want to change my phone number
+                        "
+                        id="field-rain8"
+                    />
+                     <span className="ms-2">
+I want to change my phone number
+</span>
+
+                </label>
+                </div>
                     </div>
-                    <div className="mb-3 mt-3">
+                   
+                    {/* <div className="mb-3 mt-3">
                         <div className='mb-2'>
                             Name
                         </div>
@@ -115,7 +243,7 @@ function Reviewmodel({ show1, handleClose1, orderlist }) {
                                 {errors.username && <span className="active">{errors.username.message}</span>}
                             </Form.Text>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="mb-3 mt-3">
                         <div className='mb-2'>
                             Title
@@ -123,7 +251,7 @@ function Reviewmodel({ show1, handleClose1, orderlist }) {
                         <div>
                             <Form.Control
                                 className='form-control-profiles'
-                                placeholder="Enter Review title..."
+                                placeholder="Enter  title..."
                                 {...register("title", {
                                     required: "Please enter title",
 
@@ -136,7 +264,7 @@ function Reviewmodel({ show1, handleClose1, orderlist }) {
                     </div>
                     <div className="mb-3 mt-3">
                         <div className='mb-2'>
-                            Review this product
+                            Description
                         </div>
                         <div>
                             <Form.Control as="textarea" rows={3}
@@ -204,7 +332,7 @@ function Reviewmodel({ show1, handleClose1, orderlist }) {
 
                         <div>
 
-                            <button className={styles.submits} onClick={handleClose1}>Cancel</button>
+                            <button className={styles.submits} onClick={handleClose2}>Cancel</button>
 
                         </div>
 
@@ -219,4 +347,4 @@ function Reviewmodel({ show1, handleClose1, orderlist }) {
     )
 }
 
-export default Reviewmodel
+export default Returnreviewmodel

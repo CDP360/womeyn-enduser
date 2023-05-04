@@ -165,7 +165,7 @@ function Servicecards() {
 
 
 
-                    <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
+                    <div className='cardsections row  w-100 mt-5 mb-3 ms-1'>
                         <div>
                             {servicesusers.length === 0 && <div>No Data Found!!!!</div>}
                         </div>

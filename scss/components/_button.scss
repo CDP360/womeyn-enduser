@@ -14,7 +14,7 @@
     width: 100%;
     border: none;
     outline: none;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 10px 0px;
     font-weight: 500;
     @include xsBreakPoint {
@@ -54,7 +54,7 @@
  
     border: 1px solid rgba(0, 0, 0, 0.2);
     font-weight: 500;
-    border-radius: 20px;
+    border-radius: 10px;
 
     @include xsBreakPoint {
         width: 100% !important;
@@ -66,6 +66,20 @@
         padding: 10px !important;
         font-size: 0.957rem !important;
     }
+}
+.sellerinactive:hover
+{
+    background-color: #e95a5a;
+    color: white;
+    padding: 10px 0px;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    outline: none;
+ 
+    border: 1px solid #e95a5a;
+    font-weight: 500;
+    border-radius: 10px; 
 }
 
 // login button

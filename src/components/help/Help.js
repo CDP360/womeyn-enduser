@@ -100,16 +100,16 @@ function Help() {
 
 
                 <div className={styles.loream}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                If you were unable to find specific information on <span><a href="https://www.womeyn.com">https://www.womeyn.com</a></span> then please feel free to reach out by filling in the details below and one of our support consultants will call or reply back within 24 to 48 hours. 
                 </div>
 
 
                 <div>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                        
-                        <Form.Control as="textarea" type="text" rows={2} placeholder="Type your problem here" className={styles.sendmessagebox}
+                        <Form.Control as="textarea" type="text" rows={2} placeholder="Please type your query here" className={styles.sendmessagebox}
                             {...register("help", {
-                                required: "Please Enter Type your problem here",
+                                required: " Please type your query here",
 
                             })}
 

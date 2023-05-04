@@ -155,7 +155,7 @@ function Womenpreneurs() {
 
                     <div>
                         {searchname?.length > 0 ? <>
-                            <div className='cardsections row justify-content-center  w-100 mt-5 mb-5 ms-1'>
+                            <div className='cardsections row   w-100 mt-5 mb-5 ms-1'>
                                 <div>
                                     {dataseller.length === 0 && <div>No Data Found!!!!</div>}
                                 </div>
@@ -184,7 +184,7 @@ function Womenpreneurs() {
                                 })}
                             </div>
                         </> : <>
-                            <div className='cardsections row justify-content-center  w-100 mt-5 mb-3 ms-1'>
+                            <div className='cardsections row   w-100 mt-5 mb-3 ms-1'>
                                 <div>
                                     {dataseller.length === 0 && <div>No Data Found!!!!</div>}
                                 </div>

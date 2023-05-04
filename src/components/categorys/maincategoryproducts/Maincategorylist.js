@@ -114,7 +114,7 @@ function Maincategorylist({ name, searchnamevalue }) {
 
                     <LoaderLogo />
 
-                </> : <div className='row justify-content-center gap-2 mb-5'>
+                </> : <div className='row  gap-2 mb-5'>
                     {product?.length === 0 ? <>
                         {CartDataProduct?.map((item, index) => {
                             return (
