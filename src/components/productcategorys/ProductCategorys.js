@@ -195,7 +195,7 @@ function ProductCategorys() {
                                                 }
                                             </div>
                                             <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
-                                                <Image src={star} alt="no image" className={styles.stars} />
+                                                {/* <Image src={star} alt="no image" className={styles.stars} /> */}
 
 
                                                 <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}

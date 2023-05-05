@@ -230,18 +230,19 @@ function Womenpreneusdetails({ id }) {
                         <div className={styles.leftdetailpage}>
 
 
-                            <div className={styles.insidesplitwomeyn}>
-                                <div className={styles.imagewomenleft}>
+                          
                                     {sellers?.profileImageName ? <>
                                         <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
                                     </> : <>
                                         <Image src={users} alt="no image" className={styles.womenlogo} />
                                     </>}
 
-                                </div>
-                                <div className={styles.imagewomenright}>
+                              
 
-                                    <div className="large-text">
+                        </div>
+                        <div className={styles.rightdetailpage}>
+
+                        <div className="large-text">
                                         <div className="capital">
                                             {sellers?.firstName}
                                         </div>
@@ -249,11 +250,6 @@ function Womenpreneusdetails({ id }) {
                                     <div className={styles.idsellers}>
                                         {id}
                                     </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className={styles.rightdetailpage}>
                             <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
 
                                 {show ? <>
