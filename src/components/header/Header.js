@@ -176,7 +176,7 @@ function Header() {
 
 
     const HelpPage=()=>{
-        router.push(`/profile/help`);
+        router.push(`/profile/faq`);
 
         
     }
@@ -323,7 +323,7 @@ function Header() {
                                                                 <Image src={helpss} alt="no image" className={styles.profileimageover} />
                                                             </div>
                                                             <div className={styles.logouttexts}>
-                                                                Help
+                                                           Faq
                                                             </div>
                                                         </div>
                                                        
