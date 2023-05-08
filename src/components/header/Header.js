@@ -153,35 +153,35 @@ function Header() {
     }
 
 
-    const Orders=(data)=>{
+    const Orders = (data) => {
         router.push(`/profile/orders`);
 
     }
 
 
-    
-    const Services=(data)=>{
+
+    const Services = (data) => {
         router.push(`/profile/services`);
     }
 
-    const Whishlists=(data)=>{
+    const Whishlists = (data) => {
         router.push(`/profile/favorts`);
     }
 
 
-    const Coupons=(data)=>{
+    const Coupons = (data) => {
         router.push(`/profile/coupons`);
     }
 
 
 
-    const HelpPage=()=>{
+    const HelpPage = () => {
         router.push(`/profile/faq`);
 
-        
+
     }
 
-    
+
 
     return (
         <Fragment>
@@ -278,7 +278,7 @@ function Header() {
                                                                 My Profile
                                                             </div>
                                                         </div>
-                                                  
+
                                                         <div className={styles.headerprofile} onClick={Orders}>
                                                             <div>
                                                                 <Image src={orderactive} alt="no image" className={styles.profileimageover} />
@@ -287,7 +287,7 @@ function Header() {
                                                                 Orders
                                                             </div>
                                                         </div>
-                                               
+
                                                         <div className={styles.headerprofile} onClick={Whishlists}>
                                                             <div>
                                                                 <Image src={favortsactive} alt="no image" className={styles.profileimageover} />
@@ -296,7 +296,7 @@ function Header() {
                                                                 Whishlist
                                                             </div>
                                                         </div>
-                                                      
+
 
                                                         <div className={styles.headerprofile} onClick={Services}>
                                                             <div>
@@ -306,7 +306,7 @@ function Header() {
                                                                 Services
                                                             </div>
                                                         </div>
-                                                     
+
 
                                                         <div className={styles.headerprofile} onClick={Coupons}>
                                                             <div>
@@ -316,17 +316,17 @@ function Header() {
                                                                 Coupons
                                                             </div>
                                                         </div>
-                                                       
+
 
                                                         <div className={styles.headerprofile} onClick={HelpPage}>
                                                             <div>
                                                                 <Image src={helpss} alt="no image" className={styles.profileimageover} />
                                                             </div>
                                                             <div className={styles.logouttexts}>
-                                                           Faq
+                                                                Faq
                                                             </div>
                                                         </div>
-                                                       
+
 
                                                         <div className={styles.headerprofile} onClick={logoutHandler}>
                                                             <div>

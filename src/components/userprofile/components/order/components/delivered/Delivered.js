@@ -10,6 +10,8 @@ import Returnreviewmodel from './returnreviewmodel/Returnreviewmodel';
 
 function Delivered({ Orders, traking, loading }) {
   const [data, setData] = useState([])
+
+  const [newdate,setNewDate]=useState("");
   const [orderlist, setOrderlist] = useState({});
 
   const [returnlist,setReturnlist]=useState({});
@@ -18,33 +20,24 @@ function Delivered({ Orders, traking, loading }) {
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
 
-
   const handleShow2 = (data) => {
     setShow2(true);
     setReturnlist(data);
   }
-
-
-
-
-
-
   const handleClose1 = () => setShow1(false);
   const handleClose2 = () => setShow2(false);
-
   const handleShow1 = (data) => {
     setOrderlist(data)
     setShow1(true)
 
   };
 
-
   useEffect(() => {
     const datas = Orders?.filter((item) => item.stateId == 6);
     setData(datas)
-
-  }, [Orders])
-
+    var d = Date();            
+    setNewDate(d.slice(8,10));
+  }, [Orders,newdate])
 
   const Productview = (data) => {
     history.push(`/product/${data}`)
@@ -61,7 +54,8 @@ function Delivered({ Orders, traking, loading }) {
 
               </div>
               <div>
-                {moment(data?.orderedDate).format("L")}
+                {moment(item?.orderedDate).format('L')}
+                <br/>
               </div>
             </div>
 
@@ -109,11 +103,13 @@ function Delivered({ Orders, traking, loading }) {
                       </div>
 
                       <div className="mb-4">
-
-                        {
+                      {Number(item?.orderedDate.slice(8,10))+Number(10)===Number(newdate)?<></>:<>
+                      {
                           <button className={styles.trackingbuttons} onClick={() => handleShow2(items)}>Return</button>
 
                         }
+                      </>}
+                        
 
                         <div className="mt-3">
                           {item?.stateId === 6 && <div>

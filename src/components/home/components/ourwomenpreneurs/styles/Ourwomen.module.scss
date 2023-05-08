@@ -170,23 +170,14 @@
                     animation: roundss 3s ease-in-out infinite;
                 }
                 .slideimagesize {
-                    width: 220px !important;
+                    width: 180px !important;
                     margin: 0 auto;
-                    height: 220px !important;
-                    // z-index: 98;
-                    // object-fit: cover;
+                    height: 210px !important;
                     cursor: pointer;
-                    border-radius: 50%;
-                    // border-top-left-radius: 50px;
-                    // border-bottom-right-radius: 50px;
-                    // border:3px solid blue;
-                    // padding: 5px;
-                    // display: flex;
-                    // align-items: center;
-                    // justify-content: center;
-                    // position:relative !important;
+                    // object-fit:contain;
                     z-index: 99 !important;
                     // margin-top: 6.8%;
+                    border-radius:10px;
 
                     @include xsBreakPoint {
                         width: 200px !important;
@@ -372,20 +363,20 @@
     }
 }
 
-@keyframes rounds {
-    50% {
-        transform: translateY(50px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
+// @keyframes rounds {
+//     50% {
+//         transform: translateY(50px);
+//     }
+//     100% {
+//         transform: translateY(0px);
+//     }
+// }
 
-@keyframes roundss {
-    50% {
-        transform: translateY(-40px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
+// @keyframes roundss {
+//     50% {
+//         transform: translateY(-40px);
+//     }
+//     100% {
+//         transform: translateY(0px);
+//     }
+// }

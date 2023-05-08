@@ -11,7 +11,6 @@ import LoaderLogo from '../../../../../loaderlogo/LoaderLogo';
 function Allorders({ Orders, traking, loading }) {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
-
   const [deleteid, setDeleteid] = useState("");
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
@@ -48,6 +47,8 @@ function Allorders({ Orders, traking, loading }) {
 
 
   useEffect(() => {
+
+  
 
   }, [orderlist])
 
