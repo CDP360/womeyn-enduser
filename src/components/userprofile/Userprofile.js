@@ -133,7 +133,7 @@ function Userprofile({ name, error }) {
                                 <Coupon error={errors} />
                             </div>
                             }
-                             {name == "help" && <div>
+                             {name == "faq" && <div>
                   
                              <Help/>
                             </div>

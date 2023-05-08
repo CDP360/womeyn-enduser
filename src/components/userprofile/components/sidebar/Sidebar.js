@@ -231,12 +231,12 @@ function Sidebar({ user, error }) {
                             </div>
                         </div>
 
-                        <div className={pathname == "help" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("help")}>
+                        <div className={pathname == "faq" ? styles.activeboldtextss : styles.profilecontentinlistsection} onClick={() => PathNavigate("faq")}>
                             <div >
-                                {pathname == "help" ? <Image src={helpss} alt="no image" className={styles.profileicon} /> : <Image src={helps} alt="no image" className={styles.profileicon} />}
+                                {pathname == "faq" ? <Image src={helpss} alt="no image" className={styles.profileicon} /> : <Image src={helps} alt="no image" className={styles.profileicon} />}
                             </div>
-                            <div className={pathname == "help" ? styles.boldtextactive : styles.boldtexts}>
-                                Help
+                            <div className={pathname == "faq" ? styles.boldtextactive : styles.boldtexts}>
+                             Faq
                             </div>
                         </div>
                         <div className={styles.dashedsectionmain}>
@@ -362,7 +362,7 @@ function Sidebar({ user, error }) {
                                 {pathname == "help" ? <Image src={helpss} alt="no image" className={styles.profileicon} /> : <Image src={helps} alt="no image" className={styles.profileicon} />}
                             </div>
                             <div className={pathname == "help" ? styles.boldtextactive : styles.boldtexts}>
-                                Help
+                               Faq
                             </div>
                         </div>
                         <div className={styles.dashedsectionmain}>

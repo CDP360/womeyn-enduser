@@ -30,11 +30,11 @@ function Help() {
             <div className={styles.borderboxhelp}>
                 <div className={styles.ordersslice} onClick={() => setDropdown1(!dropdown1)}>
                     <div className={styles.imagesectionhelp}>
-                        <div>
+                        {/* <div>
                             <Image src={helpimage} alt="no image" className={styles.imagehelp} />
-                        </div>
+                        </div> */}
                         <div className={styles.yours}>
-                            Your orders
+                        1. Orders
                         </div>
                     </div>
                     <div className={styles.arrowsection}>
@@ -45,18 +45,40 @@ function Help() {
                 </div>
                 {dropdown1 && <div>
                     <div className={styles.bordertopsection}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales dapibus laoreet. Morbi arcu dolor, euismod ullamcorper nulla non, suscipit consequat justo. Duis urna orci, interdum vel mauris nec, rhoncus accumsan massa. Integer maximus accumsan sagittis. Morbi suscipit, tortor eget suscipit pellentesque, ante urna commodo mi, id consectetur justo metus vel dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in tortor aliquam, convallis augue et, elementum velit. In placerat rhoncus arcu ut ultrices. Integer neque elit, scelerisque sed eros vel, vehicula pretium velit. Duis id congue felis. Suspendisse potenti. Etiam nec dolor dictum, accumsan metus in, eleifend mi. Nulla ultrices accumsan leo mattis eleifend. Cras at neque non dui condimentum molestie. Integer condimentum quam a dolor bibendum, a suscipit risus auctor. Curabitur augue ligula, mattis id cursus eu, pulvinar ut nisl.
+<div  className="mt-3 mb-3">
+If the estimated delivery date for your order has passed and your item hasn't arrived, please let the seller know by logging a dispute case with the seller stating that you didn't receive the item.
+
+</div>
+ 
+
+<div className="mt-3 mb-3">
+For local delivery you have 15 days and for interstate deliveries 21 days before you can lodge a dispute and seek a status before requesting a refund. 
+
+    </div>
+ 
+
+<div>
+On lodging the dispute the Seller will revert back to you with 3 working days and provide a status update of the shipment or acknowledge the refund request. Similar process will also be applicable for part shipment and for items not received.
+
+</div>
+ 
+
+<div className="mt-3 mb-3">
+In case your item has arrived during this period, please close the dispute as resolved.
+
+</div>
+ 
                     </div>
                 </div>}
             </div>
             <div className={styles.borderboxhelp}>
                 <div className={styles.ordersslice} onClick={() => setDropdown2(!dropdown2)}>
                     <div className={styles.imagesectionhelp}>
-                        <div>
+                        {/* <div>
                             <Image src={helpimage} alt="no image" className={styles.imagehelp} />
-                        </div>
+                        </div> */}
                         <div className={styles.yours}>
-                            Refunds and payments
+                        2. How do I track my order
                         </div>
                     </div>
                     <div className={styles.arrowsection}>
@@ -66,19 +88,33 @@ function Help() {
                 </div>
                 {dropdown2 && <div>
                     <div className={styles.bordertopsection}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales dapibus laoreet. Morbi arcu dolor, euismod ullamcorper nulla non, suscipit consequat justo. Duis urna orci, interdum vel mauris nec, rhoncus accumsan massa. Integer maximus accumsan sagittis. Morbi suscipit, tortor eget suscipit pellentesque, ante urna commodo mi, id consectetur justo metus vel dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in tortor aliquam, convallis augue et, elementum velit. In placerat rhoncus arcu ut ultrices. Integer neque elit, scelerisque sed eros vel, vehicula pretium velit. Duis id congue felis. Suspendisse potenti. Etiam nec dolor dictum, accumsan metus in, eleifend mi. Nulla ultrices accumsan leo mattis eleifend. Cras at neque non dui condimentum molestie. Integer condimentum quam a dolor bibendum, a suscipit risus auctor. Curabitur augue ligula, mattis id cursus eu, pulvinar ut nisl.
-                    </div>
+                    <div className="mt-3 mb-3">
+On successful completion of a transaction WomeynPreneur will uploads tracking information that you can check online all the way to your delivery address.
+
+</div>
+ 
+
+<div className="mt-3 mb-3">
+If the WomeynPreneur is using a tracked delivery service, you'll be able to view carrier information and your order's current location. If your item isn't sent with tracking, you'll be able to see the expected delivery date for your package.
+
+</div>
+
+<div className="mt-3 mb-3">
+You can also check your order's delivery status in your Purchase history. If the seller is using a tracked service, you'll see the item's tracking number as a link next to the item.
+
+</div>
+</div>
                 </div>}
             </div>
 
             <div className={styles.borderboxhelp}>
                 <div className={styles.ordersslice} onClick={() => setDropdown3(!dropdown3)}>
                     <div className={styles.imagesectionhelp}>
-                        <div>
+                        {/* <div>
                             <Image src={helpimage} alt="no image" className={styles.imagehelp} />
-                        </div>
+                        </div> */}
                         <div className={styles.yours}>
-                            Covid and Womeyn
+                        3. Disputes & Refunds     
                         </div>
                     </div>
                     <div className={styles.arrowsection}>
@@ -88,7 +124,31 @@ function Help() {
                 </div>
                 {dropdown3 && <div>
                     <div className={styles.bordertopsection}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales dapibus laoreet. Morbi arcu dolor, euismod ullamcorper nulla non, suscipit consequat justo. Duis urna orci, interdum vel mauris nec, rhoncus accumsan massa. Integer maximus accumsan sagittis. Morbi suscipit, tortor eget suscipit pellentesque, ante urna commodo mi, id consectetur justo metus vel dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in tortor aliquam, convallis augue et, elementum velit. In placerat rhoncus arcu ut ultrices. Integer neque elit, scelerisque sed eros vel, vehicula pretium velit. Duis id congue felis. Suspendisse potenti. Etiam nec dolor dictum, accumsan metus in, eleifend mi. Nulla ultrices accumsan leo mattis eleifend. Cras at neque non dui condimentum molestie. Integer condimentum quam a dolor bibendum, a suscipit risus auctor. Curabitur augue ligula, mattis id cursus eu, pulvinar ut nisl.
+                   <div className="mt-3 mb-3">
+
+                a)     You have not received an item
+                   </div>
+
+<div className="mt-3 mb-3">
+b)    Some of the item or items ordered are missing
+
+    </div>
+
+<div className="mt-3 mb-3">
+c)     The item is damaged in transit
+
+</div>
+
+<div className="mt-3 mb-3">
+d)    The item delivered is not what was ordered
+
+</div>
+
+<div className="mt-3 mb-4">
+
+Once the dispute / case is lodged, you are recommended to connect with the WomeynPreneur to amicably resolve the dispute. Womeyn is an intermediary / aggregator platform and will endeavour to assist the WomeynPatron (you) to seek a refund or a product replacement. If the settlement is via a refund, please allow 7 to 15 working days for the credit to reflect in your account.
+
+</div>
                     </div>
                 </div>}
             </div>
