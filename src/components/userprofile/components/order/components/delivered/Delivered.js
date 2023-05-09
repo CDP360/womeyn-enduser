@@ -6,15 +6,17 @@ import Modal from 'react-bootstrap/Modal';
 import { toast } from 'react-toastify';
 import Reviewmodel from './reviewmodel/Reviewmodel';
 import Returnreviewmodel from './returnreviewmodel/Returnreviewmodel';
+import Skeleton from 'react-loading-skeleton';
+
 
 
 function Delivered({ Orders, traking, loading }) {
   const [data, setData] = useState([])
 
-  const [newdate,setNewDate]=useState("");
+  const [newdate, setNewDate] = useState("");
   const [orderlist, setOrderlist] = useState({});
 
-  const [returnlist,setReturnlist]=useState({});
+  const [returnlist, setReturnlist] = useState({});
 
   const history = useRouter();
   const [show1, setShow1] = useState(false);
@@ -35,9 +37,9 @@ function Delivered({ Orders, traking, loading }) {
   useEffect(() => {
     const datas = Orders?.filter((item) => item.stateId == 6);
     setData(datas)
-    var d = Date();            
-    setNewDate(d.slice(8,10));
-  }, [Orders,newdate])
+    var d = Date();
+    setNewDate(d.slice(8, 10));
+  }, [Orders, newdate])
 
   const Productview = (data) => {
     history.push(`/product/${data}`)
@@ -55,7 +57,7 @@ function Delivered({ Orders, traking, loading }) {
               </div>
               <div>
                 {moment(item?.orderedDate).format('L')}
-                <br/>
+                <br />
               </div>
             </div>
 
@@ -103,13 +105,24 @@ function Delivered({ Orders, traking, loading }) {
                       </div>
 
                       <div className="mb-4">
-                      {Number(item?.orderedDate.slice(8,10))+Number(10)===Number(newdate)?<></>:<>
-                      {
-                          <button className={styles.trackingbuttons} onClick={() => handleShow2(items)}>Return</button>
+                        {/* {Number(item?.orderedDate.slice(8, 10)) + Number(10) === 31?"kalai":"nazriya"} */}
+                        {Number(item?.orderedDate.slice(8, 10)) + Number(10) === 31 && 1 ||
+                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 32 && 2 ||
+                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 33 && 3 ||
+                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 34 && 4 ||
+                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 35 && 5 ||
+                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 36 && 6 ||
+                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 37 && 7 ||
+                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 38 && 8 ||
+                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 39 && 9 ||
+                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 40 && 10
+                          === Number(newdate) ? <></> : <>
+                          {
+                            <button className={styles.trackingbuttons} onClick={() => handleShow2(items)}>Return</button>
 
-                        }
-                      </>}
-                        
+                          }
+                        </>}
+
 
                         <div className="mt-3">
                           {item?.stateId === 6 && <div>
@@ -134,7 +147,7 @@ function Delivered({ Orders, traking, loading }) {
       </div>
       <div>
         <Returnreviewmodel show2={show2}
-          handleClose2={handleClose2} orderlist={returnlist}/>
+          handleClose2={handleClose2} orderlist={returnlist} />
       </div>
 
     </Fragment>

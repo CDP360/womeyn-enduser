@@ -2,7 +2,7 @@
 
 .reviewrating {
     width: 100%;
-    padding: 14px;
+    padding: 30px;
     margin-bottom: 3%;
     // border:1px solid blue;
 
@@ -125,4 +125,25 @@
     margin: 0 auto;
     align-items: center;
     justify-content: center;
+}
+
+
+.img
+{
+    width:200px;
+    height:200px;
+}
+
+.retrunbox
+{
+    width:100%;
+    display:flex;
+    gap:40px;
+    padding-top:4%;
+    padding-bottom:3%;
+}
+
+.boxretrunmodel
+{
+    padding:40px !important;
 }

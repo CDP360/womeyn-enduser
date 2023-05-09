@@ -53,6 +53,8 @@ function ProductCategorys() {
             setLoading(false);
 
         })
+        WomenSellercategories();
+        GetFilterandSearchData();
 
     }, [categoryid])
 
@@ -86,15 +88,15 @@ function ProductCategorys() {
     }
     const GetFilterandSearchData = () => {
         setLoading(true);
-        // WomenpreneursFilter(categoryid).then((res) => {
-        //     setDataseller(res?.data?.results);
-        //     setLimit(res?.data);
-        //     setTimeout(() => {
-        //         setLoading(false);
-        //     }, 300);
-        // }).catch((err) => {
-        //     console.log(err);
-        // })
+        WomenpreneursFilter(categoryid).then((res) => {
+            setDataseller(res?.data?.results);
+            setLimit(res?.data);
+            setTimeout(() => {
+                setLoading(false);
+            }, 300);
+        }).catch((err) => {
+            console.log(err);
+        })
     }
     const GetSearchdata = () => {
         setLoading(true);
@@ -133,7 +135,6 @@ function ProductCategorys() {
         }
         return originalElement;
     }
-
 
     return (
         <Fragment>
@@ -196,11 +197,8 @@ function ProductCategorys() {
                                             </div>
                                             <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
                                                 {/* <Image src={star} alt="no image" className={styles.stars} /> */}
-
-
                                                 <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
                                                     tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
-
                                                     disabled
 
                                                 />

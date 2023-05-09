@@ -309,7 +309,7 @@ function Viewproducts({ id }) {
     const handleChange = (cartdata, productvariations) => {
 
 
-        console.log(cartdata?.localDeliveryCharge,"cartdatakalai")
+        console.log(cartdata?.localDeliveryCharge, "cartdatakalai")
 
         const datas = [productvariations[0]?.name];
         const datas1 = [productvariations[0]?.name, productvariations[1]?.name];
@@ -599,28 +599,26 @@ function Viewproducts({ id }) {
     // No Records Found
 
 
-    const [errorpage,setNotPage]=useState(false);
+    const [errorpage, setNotPage] = useState(false);
 
 
-    
+
     useEffect(() => {
-       
+
         const tokencheck = localStorage.getItem("userToken");
         setTokenset(tokencheck);
         ProductDataView();
     }, [productnames, tokencheck, index1, index2, index3, index4, averageRatings?.avgRating, errors]);
 
 
-    const ProductDataView=async()=>
-    {
-        try
-        {
+    const ProductDataView = async () => {
+        try {
             await ProductView(productnames).then((res) => {
 
 
-               
-    
-    
+
+
+
                 setProductseller(res?.data?.sellerInformation[0])
                 const productshowimages = [];
                 res?.data?.productDetails?.productImages?.map((item, index) => {
@@ -649,15 +647,13 @@ function Viewproducts({ id }) {
                     };
                     variationdata.push(datas);
                 });
-    
+
             })
         }
-        catch(err)
-        {
-if(err?.response?.data?.message)
-{
-    setNotPage(true);
-}
+        catch (err) {
+            if (err?.response?.data?.message) {
+                setNotPage(true);
+            }
         }
     }
 
@@ -1026,46 +1022,45 @@ if(err?.response?.data?.message)
         setPathUrl(URL);
     }, [productdata?.productThumbImage])
 
- 
-
-    console.log(router,"router")
-    
-
-    if(errorpage)
-    {
-return(
-    <div>
-
-<div>
-    <img src={womenlogo?.src} alt="no image" className={styles.womelogo}/>
-</div>
-<div className={styles.sorry}>
-Sorry , No Record Found
-    </div>
-
-    <div>
-
-        <button className={styles.goback} onClick={()=>router.back()}>Go Back</button>
 
 
+    console.log(router, "router")
 
-    </div>
-    </div>
-)
-    }
-    else{
+
+    // if (errorpage) {
+    //     return (
+    //         <div>
+
+    //             <div>
+    //                 <img src={womenlogo?.src} alt="no image" className={styles.womelogo} />
+    //             </div>
+    //             <div className={styles.sorry}>
+    //                 Sorry , No Record Found
+    //             </div>
+
+    //             <div>
+
+    //                 <button className={styles.goback} onClick={() => router.back()}>Go Back</button>
+
+
+
+    //             </div>
+    //         </div>
+    //     )
+    // }
+    // else {
         return (
             <Fragment>
                 <>
-    
-    
+
+
                     {productdata ? <>
-    
-    
+
+
                         <Head >
-    
-    
-    
+
+
+
                             {productdata?.productName && <title>{productdata?.productName > 10 ? <>{productdata?.productName}</> : <>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.</>}</title>}
                             {productdata?.productName && <meta name="title" content={`Womeyn ${productdata?.productName}`} />}
                             {/* <meta name="description" content={productdata?.productDescription} /> */}
@@ -1076,8 +1071,8 @@ Sorry , No Record Found
                             {productdata?.productName && <meta property="og:title" content={productdata?.productName} />}
                             {productdata?.productDescription && <meta property="og:description" content={productdata?.productDescription} />}
                             {productdata?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}
-    
-    
+
+
                             <meta name="twitter:card" content="summary" />
                             <meta name="twitter:site" content="https://www.womeyn.cdp360.in/" />
                             <meta name="twitter:creator" content="https://www.womeyn.cdp360.in/" />
@@ -1088,13 +1083,13 @@ Sorry , No Record Found
                             {productdata?.productDescription && <meta property="twitter:description" content={productdata?.productDescription} />}
                             {/* <meta property="twitter:image" content={imaged} /> */}
                             {productdata?.productThumbImage && <meta property="twitter:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}
-    
+
                         </Head>
                     </> : <>
                     </>}
-    
-    
-    
+
+
+
                 </>
                 <div className={styles.mainproductviewscreen}>
                     <div className={styles.insideproductview}>
@@ -1122,11 +1117,11 @@ Sorry , No Record Found
                                     <div className={styles.rightcardimagesshow}>
                                         <div className={styles.leftwomensearchsection}>
                                             <div className={styles.serachlargeimage}>
-    
+
                                                 <div className="d-block d-lg-none">
-    
-    
-    
+
+
+
                                                     <img
                                                         className={styles.serachlargeimages}
                                                         src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
@@ -1134,12 +1129,12 @@ Sorry , No Record Found
                                                     />
                                                 </div>
                                                 <div className="d-none d-lg-block">
-    
+
                                                     <ReactImageMagnify
                                                         //  className={styles.serachlargeimages}
                                                         {...{
                                                             smallImage: {
-    
+
                                                                 alt: 'Wristwatch by Ted Baker London',
                                                                 isFluidWidth: true,
                                                                 src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
@@ -1153,8 +1148,8 @@ Sorry , No Record Found
                                                                 // border:"3px solid blue"
                                                                 zIndex: "989898988989898989898989",
                                                                 borderRadius: "10px"
-    
-    
+
+
                                                             },
                                                             imageStyle: {
                                                                 // border:"2px solid red",
@@ -1165,7 +1160,7 @@ Sorry , No Record Found
                                                                 zIndex: "9898989898",
                                                                 backgroundColor: "white",
                                                                 borderRadius: "10px"
-    
+
                                                             },
                                                             // smallImage: {
                                                             //     src: String, (required)
@@ -1178,18 +1173,18 @@ Sorry , No Record Found
                                                             //     onLoad: Function,
                                                             //     onError: Function
                                                             // },
-    
-    
+
+
                                                         }}
-    
-    
+
+
                                                     />
                                                 </div>
-    
-    
-    
+
+
+
                                             </div>
-    
+
                                             {tokencheck ? <div className={styles.heartimagesection}>
                                                 <button className={styles.btn}
                                                     onClick={() => {
@@ -1203,13 +1198,13 @@ Sorry , No Record Found
                                                 >
                                                     {like ? <>
                                                         <Image src={heartlike} alt="no image" className={styles.heartlikes} />
-    
+
                                                     </> : <>
                                                         <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
-    
-    
+
+
                                                     </>}
-    
+
                                                     {/* {like?"kalai true":"kalai false"} */}
                                                 </button>
                                             </div> :
@@ -1218,7 +1213,7 @@ Sorry , No Record Found
                                                         CheckLoginUsers(productdata?.productSlugName)
                                                         // LikeWishlist(productdata?.id)
                                                     }}>
-    
+
                                                         <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
                                                     </button>
                                                 </div>
@@ -1277,28 +1272,28 @@ Sorry , No Record Found
                                                 count={5}
                                                 disabled
                                             />}
-    
+
                                         </> : <>
-    
+
                                             {<Rate defaultValue={0} allowHalf style={{ color: "#54BE43" }}
                                                 tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
                                                 count={5}
                                                 disabled
                                             />}
-    
-    
-    
-    
+
+
+
+
                                         </>}
-    
-    
-    
+
+
+
                                     </div>
                                     <div>
                                         {ratingcount} Review
                                     </div>
                                 </div>
-    
+
                                 <div className={styles.proceinproduct}>
                                     <div className={styles.offertext}>
                                         {productdata?.offerPercentag == 0 ? <>
@@ -1313,7 +1308,7 @@ Sorry , No Record Found
                                         {productdata?.offerPercentag == 0 ? <></> : <del className={styles.priceautuals}>A${productdata?.actualPrice}</del>}
                                     </div>
                                 </div>
-    
+
                                 <div className={styles.colorsectionlists}>
                                     {productvariations[0]?.name ? <><div className={styles.sizesectionandcolor}>
                                         <div className={styles.fontweightsizes}> {productvariations[0]?.name}</div>
@@ -1444,16 +1439,16 @@ Sorry , No Record Found
                                         </div>
                                     </>
                                 }
-    
+
                                 <div className={styles.locationsection}>
                                     <div>
                                     </div>
-    
+
                                     {productdata?.isShippingRequired === 1 ? <>
-    
-    
+
+
                                     </> : <>
-    
+
                                         <div className={styles.deverisection}>
                                             <div>
                                                 <Image src={location} alt="no image" className={styles.deliveryicon} />
@@ -1472,8 +1467,8 @@ Sorry , No Record Found
                                             Delivery in days Thursday |  <span className={styles.free}>Free</span>  <del> A$ 40</del> is orderd before 3:34pm
                                         </div>
                                     </>}
-    
-    
+
+
                                 </div>
                                 <div className={styles.sellernames}>
                                     <div className={styles.sellername}>
@@ -1485,7 +1480,7 @@ Sorry , No Record Found
                                 </div>
                             </div>
                         </div >
-    
+
                         <div className={styles.descriptionsection}>
                             <div className={styles.additionaldetails}>
                                 Product Description
@@ -1508,7 +1503,7 @@ Sorry , No Record Found
                                         <div className={styles.leftname}>Model Name</div>
                                         <div className={styles.rightname}>{productdata?.modelName}</div>
                                     </div>
-    
+
                                     <div className={styles.listproductdata}>
                                         <div className={styles.leftname}>Manufacture Name</div>
                                         <div className={styles.rightname}>{productdata?.manufacturerName}</div>
@@ -1543,22 +1538,22 @@ Sorry , No Record Found
                     </div>
                 </div >
                 <div className={styles.leftbg}>
-    
+
                 </div>
                 <div className={styles.righttopbg}></div>
-    
-    
+
+
             </Fragment >
         )
     }
 
 
- 
 
 
 
 
-}
+
+// }
 
 export default Viewproducts;
 

@@ -1,15 +1,15 @@
-import React ,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import Modal from 'react-bootstrap/Modal';
 import styles from './styles/Returnviewmodel.module.scss';
 import Form from 'react-bootstrap/Form';
 import Image from 'next/image';
-
 import moment from 'moment';
 import camera from '../../../../../../../assests/womeynlogos/cameraprofile.png';
+import Skeleton from 'react-loading-skeleton';
 
-function Returnreviewmodel({show2, handleClose2, orderlist}) {
+function Returnreviewmodel({ show2, handleClose2, orderlist }) {
     const {
         register,
         handleSubmit,
@@ -24,23 +24,9 @@ function Returnreviewmodel({show2, handleClose2, orderlist}) {
         setValue("username", names);
 
 
-        // const datas=moment('2023-05-04').isAfter('2023-05-03');
-        const datas=!moment("2023-05-04").isBefore(moment('2023-05-06'), "day");
 
-        console.log(datas,"datas")
 
-        // pickedDate = Date.parse("04-Apri-2012".replace(/-/g, " "));
-        // todaysDate = new Date();
-        // todaysDate.setHours(0, 0, 0, 0);
-        // dateDifference = Math.abs(Number(todaysDate) - pickedDate);
-        // //7 Days=604800000ms
-        // if (dateDifference > 604800000) {
-        //     return false;
-        // } else {
-        //     return true;
-        // }
 
-       
     }, [count])
 
     const handleImagechange = (e) => {
@@ -69,6 +55,7 @@ function Returnreviewmodel({show2, handleClose2, orderlist}) {
         })
         setImage(filters);
     }
+
     return (
         <div>
             <Modal
@@ -78,15 +65,60 @@ function Returnreviewmodel({show2, handleClose2, orderlist}) {
                 keyboard={false}
                 centered
                 size="lg"
+               
+                
             >
                 <div className={styles.reviewrating}>
                     <div className={styles.insidemodelpopup}>
                         <div className={styles.removetexts}>
-                         Return Product
+                            Return Product
                         </div>
                         <div onClick={handleClose2}>
                             <ion-icon name="close-outline" size="large"></ion-icon>
                         </div>
+                    </div>
+
+
+                    <div className={styles.retrunbox}>
+
+                        <div>
+                            <div >
+                                {orderlist?.productThumbImage ? <>
+                                    <img
+                                        className={styles.img}
+                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${orderlist?.productThumbImage}`}
+                                        alt="profile-pic"
+                                    />
+                                </> : <>
+                                    <Skeleton className={styles.img} />
+                                </>}
+
+                            </div>
+                        </div>
+                        <div>
+                        <div>
+                          <div className='carttextsmall' onClick={() => Productview(orderlist?.productSlugName)}>
+                            {orderlist?.productName}
+                          </div>
+
+                          <div className='carttextsmall mt-3' onClick={() => Productview(orderlist?.productSlugName)}>
+                            A$ {orderlist?.price}
+                          </div>
+                          <div>
+                            {orderlist?.variations?.map((itemss, index) => {
+                              return (
+                                <div >
+                                  <span className="sizecolor">{orderlist?.name}</span> : {orderlist?.value}
+                                </div>
+                              )
+                            })}
+                          </div>
+                          <div>
+
+                          </div>
+                        </div>
+                        </div>
+
                     </div>
 
                     <div>
@@ -94,137 +126,137 @@ function Returnreviewmodel({show2, handleClose2, orderlist}) {
                         <div>Reason</div>
 
 
-                  <div className="mt-2 ">
-                  <label htmlFor="field-rain1">
-                    <input
-                        {...register("weather")}
-                        type="radio"
-                        value="Expected delivery time is very long
+                        <div className="mt-2 ">
+                            <label htmlFor="field-rain1">
+                                <input
+                                    {...register("weather")}
+                                    type="radio"
+                                    value="Expected delivery time is very long
                         "
-                        id="field-rain1"
-                    />
-                  <span className="ms-2">
-                  Expected delivery time is very long
-                  </span>
-                </label>
-                  </div>
-               <div className="mt-2 mb-2">
-               <label htmlFor="field-rain2">
-                    <input
-                        {...register("weather")}
-                        type="radio"
-                        value="
+                                    id="field-rain1"
+                                />
+                                <span className="ms-2">
+                                    Expected delivery time is very long
+                                </span>
+                            </label>
+                        </div>
+                        <div className="mt-2 mb-2">
+                            <label htmlFor="field-rain2">
+                                <input
+                                    {...register("weather")}
+                                    type="radio"
+                                    value="
                     I will not available at home on delivery day
                         "
-                        id="field-rain2"
-                    />
-                <span className="ms-2">
-I will not available at home on delivery day
-</span>
-                </label>
-                </div>
+                                    id="field-rain2"
+                                />
+                                <span className="ms-2">
+                                    I will not available at home on delivery day
+                                </span>
+                            </label>
+                        </div>
 
-                <div className="mt-2 mb-2">
-               <label htmlFor="field-rain3">
-                    <input
-                        {...register("weather")}
-                        type="radio"
-                        value="
+                        <div className="mt-2 mb-2">
+                            <label htmlFor="field-rain3">
+                                <input
+                                    {...register("weather")}
+                                    type="radio"
+                                    value="
                         Have purchased the product elsewhere
                         "
-                        id="field-rain3"
-                    />
-                <span className="ms-2">
-               Have purchased the product elsewhere
-</span>
-                </label>
-                </div>
+                                    id="field-rain3"
+                                />
+                                <span className="ms-2">
+                                    Have purchased the product elsewhere
+                                </span>
+                            </label>
+                        </div>
 
-                <div className="mt-2 mb-2">
-               <label htmlFor="field-rain4">
-                    <input
-                        {...register("weather")}
-                        type="radio"
-                        value="
+                        <div className="mt-2 mb-2">
+                            <label htmlFor="field-rain4">
+                                <input
+                                    {...register("weather")}
+                                    type="radio"
+                                    value="
                         I want cancel due to product quality issues
                         "
-                        id="field-rain4"
-                    />
-                     <span className="ms-2">
-        I want cancel due to product quality issues
-</span>
-                </label>
-                </div>
+                                    id="field-rain4"
+                                />
+                                <span className="ms-2">
+                                    I want cancel due to product quality issues
+                                </span>
+                            </label>
+                        </div>
 
 
-                <div className="mt-2 mb-2">
-               <label htmlFor="field-rain5">
-                    <input
-                        {...register("weather")}
-                        type="radio"
-                        value="
+                        <div className="mt-2 mb-2">
+                            <label htmlFor="field-rain5">
+                                <input
+                                    {...register("weather")}
+                                    type="radio"
+                                    value="
                         I want to change address for the order
                         "
-                        id="field-rain5"
-                    />
-                     <span className="ms-2">
-I want to change address for the order
-</span>
-                </label>
-                </div>
+                                    id="field-rain5"
+                                />
+                                <span className="ms-2">
+                                    I want to change address for the order
+                                </span>
+                            </label>
+                        </div>
 
-                <div className="mt-2 mb-2">
-               <label htmlFor="field-rain6">
-                    <input
-                        {...register("weather")}
-                        type="radio"
-                        value="
+                        <div className="mt-2 mb-2">
+                            <label htmlFor="field-rain6">
+                                <input
+                                    {...register("weather")}
+                                    type="radio"
+                                    value="
                         Price for the product has decreased
                         "
-                        id="field-rain6"
-                    />
-                     <span className="ms-2">
-Price for the product has decreased
-</span>
-                </label>
-                </div>
+                                    id="field-rain6"
+                                />
+                                <span className="ms-2">
+                                    Price for the product has decreased
+                                </span>
+                            </label>
+                        </div>
 
 
-                <div className="mt-2 mb-2">
-               <label htmlFor="field-rain7">
-                    <input
-                        {...register("weather")}
-                        type="radio"
-                        value="
+                        <div className="mt-2 mb-2">
+                            <label htmlFor="field-rain7">
+                                <input
+                                    {...register("weather")}
+                                    type="radio"
+                                    value="
                         I have changed my mind
                         "
-                        id="field-rain7"
-                    />
-                     <span className="ms-2">
-I have changed my mind
-</span>
+                                    id="field-rain7"
+                                />
+                                <span className="ms-2">
+                                    I have changed my mind
+                                </span>
 
-                </label>
-                </div>
+                            </label>
+                        </div>
 
-                <div>
-               <label htmlFor="field-rain8">
-                    <input
-                        {...register("weather")}
-                        type="radio"
-                        value="
+                        <div>
+                            <label htmlFor="field-rain8">
+                                <input
+                                    {...register("weather")}
+                                    type="radio"
+                                    value="
                         I want to change my phone number
                         "
-                        id="field-rain8"
-                    />
-                     <span className="ms-2">
-I want to change my phone number
-</span>
+                                    id="field-rain8"
+                                />
+                                <span className="ms-2">
+                                    I want to change my phone number
+                                </span>
 
-                </label>
-                </div>
+                            </label>
+                        </div>
                     </div>
-                   
+
                     {/* <div className="mb-3 mt-3">
                         <div className='mb-2'>
                             Name
