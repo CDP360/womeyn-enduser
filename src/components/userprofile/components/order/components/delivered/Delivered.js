@@ -38,12 +38,18 @@ function Delivered({ Orders, traking, loading }) {
     const datas = Orders?.filter((item) => item.stateId == 6);
     setData(datas)
     var d = Date();
-    setNewDate(d.slice(8, 10));
+    const formates=(moment(d).format("L").slice(0, 10)).replace("/",'');
+    console.log(formates.replace("/",''),"kl")
+    // setNewDate(moment(d).format("L").slice(0, 10));
+
   }, [Orders, newdate])
+
 
   const Productview = (data) => {
     history.push(`/product/${data}`)
   }
+
+  console.log(newdate.replace("/",''), "newdate")
 
   return (
     <Fragment>
@@ -56,7 +62,13 @@ function Delivered({ Orders, traking, loading }) {
 
               </div>
               <div>
-                {moment(item?.orderedDate).format('L')}
+
+              {(moment(item?.orderedDate).format("L"))}
+
+                {/* {moment(item?.orderedDate).format('L')}-------
+                New Date----{newdate} */}
+
+                {/* {moment(item?.orderedDate).format("L").slice(0, 10)} */}
                 <br />
               </div>
             </div>
@@ -106,23 +118,34 @@ function Delivered({ Orders, traking, loading }) {
 
                       <div className="mb-4">
                         {/* {Number(item?.orderedDate.slice(8, 10)) + Number(10) === 31?"kalai":"nazriya"} */}
-                        {Number(item?.orderedDate.slice(8, 10)) + Number(10) === 31 && 1 ||
-                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 32 && 2 ||
-                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 33 && 3 ||
-                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 34 && 4 ||
-                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 35 && 5 ||
-                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 36 && 6 ||
-                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 37 && 7 ||
-                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 38 && 8 ||
-                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 39 && 9 ||
-                          Number(item?.orderedDate.slice(8, 10)) + Number(10) === 40 && 10
+                        {/* {Number(item?.orderedDate.slice(0, 5)) + Number(10) === 31 && 1 ||
+                          Number(item?.orderedDate.slice(0, 5)) + Number(10) === 32 && 2 ||
+                          Number(item?.orderedDate.slice(0, 5)) + Number(10) === 33 && 3 ||
+                          Number(item?.orderedDate.slice(0, 5)) + Number(10) === 34 && 4 ||
+                          Number(item?.orderedDate.slice(0, 5)) + Number(10) === 35 && 5 ||
+                          Number(item?.orderedDate.slice(0, 5)) + Number(10) === 36 && 6 ||
+                          Number(item?.orderedDate.slice(0, 5)) + Number(10) === 37 && 7 ||
+                          Number(item?.orderedDate.slice(0, 5)) + Number(10) === 38 && 8 ||
+                          Number(item?.orderedDate.slice(0, 5)) + Number(10) === 39 && 9 ||
+                          Number(item?.orderedDate.slice(0, 5)) + Number(10) === 40 && 10
                           === Number(newdate) ? <></> : <>
                           {
                             <button className={styles.trackingbuttons} onClick={() => handleShow2(items)}>Return</button>
 
                           }
-                        </>}
+                        </>} */}
 
+           
+              <button className={styles.trackingbuttons} onClick={() => handleShow2(items)}>Return</button>
+
+             
+
+
+          
+
+                        {/* {Number(item?.orderedDate.slice(0, 10))===Number(04/14/2023)?"kalai success":"kalai not success"} */}
+
+                        {/* {Number(item?.orderedDate.slice(0, 10)) + Number(10) === Number(32) && 2 || Number(newdate) ? "kalai" : "nazriya"} */}
 
                         <div className="mt-3">
                           {item?.stateId === 6 && <div>

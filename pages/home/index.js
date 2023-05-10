@@ -3,6 +3,7 @@ import Home from '../../src/components/home/Home'
 function index() {
     return (
         <div>
+            
             <Home />
         </div>
     )

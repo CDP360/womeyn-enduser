@@ -12,12 +12,23 @@ import { Userlogin } from "../../services/user-login-service/user-login-services
 import eye from '../../assests/login-logos/Eye.png';
 import eyeoff from '../../assests/login-logos/Eye Off.png';
 import Spinner from 'react-bootstrap/Spinner';
+import { IpAddress } from "../../services/ipaddressservice/ipaddress-service";
 function Login() {
     const [show1, setShow1] = useState(false);
     const history = useRouter();
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
     const [tokenUser, setTokenUser] = useState("");
+
+    const [ipaddress,setIpaddress]=useState("");
+
+    useEffect(() => {
+        IpAddress().then((res) => {
+            setIpaddress(res?.data?.ip)
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, [ipaddress])
     const {
         register,
         handleSubmit,
@@ -29,13 +40,14 @@ function Login() {
         const productWhishlist = JSON.parse(localStorage.getItem("whish"));
         const datas = {
             email: email,
-            password: password
+            password: password,
+            loginIPAddress:ipaddress
         }
         setLoading(true);
         if (productWhishlist) {
             Userlogin(datas).then(async (res) => {
                 if (res) {
-                  
+
                     localStorage.setItem("user", JSON.stringify(res?.data?.user?.firstName));
                     localStorage.setItem("auth", true);
                     localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
@@ -45,7 +57,7 @@ function Login() {
                         setLoading(false);
                     }, 400)
                 }
-               
+
             }).catch((err) => {
                 toast.error(err?.response?.data,
                     {
@@ -77,20 +89,20 @@ function Login() {
                         setLoading(false);
                     }, 600);
                 }
-               
+
             }).catch((err) => {
                 toast.error(err?.response?.data?.message || err?.response?.data,
-                        {
-                            position: "top-center",
-                            autoClose: 3300,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: "dark",
-                        }
-                    );
+                    {
+                        position: "top-center",
+                        autoClose: 3300,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
                 setError(false);
                 setLoading(false);
 
