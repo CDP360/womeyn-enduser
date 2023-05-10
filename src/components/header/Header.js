@@ -467,7 +467,7 @@ function Header() {
 
                     <div className={router.pathname == "/womenpreneurs" ? "active" : ""}>
                         <div className='nav-link' onClick={() => router?.push("/womenpreneurs")}>
-                            <span className='ms-2 hovertexts'>Our WomenPreneur</span>
+                            <span className='ms-2 hovertexts'>Our WomeynPreneur</span>
                         </div>
                     </div>
                     <div className={router.pathname == "/events" ? "active" : ""}>
