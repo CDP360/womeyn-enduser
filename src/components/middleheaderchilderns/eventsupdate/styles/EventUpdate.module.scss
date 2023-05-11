@@ -107,8 +107,10 @@
                     }
                     .imageeventcard {
                         width: 100%;
-                        object-fit: contain;
-                        height: 200px;
+                        // object-fit: contain;
+                        height: 300px;
+                        border-radius:10px;
+
                     }
                     .sportslistsection {
                         display: flex;
@@ -141,13 +143,14 @@
                     }
                     .imageeventcard {
                         width: 90%;
-                        object-fit: contain;
+                        // object-fit: contain;
                         height: 200px;
                         // border:2px solid red;
                         margin: 0 auto;
                         display: flex;
                         align-items: center;
                         justify-content: center;
+                        border-radius:10px;
                     }
                     .categoryevents {
                         color: #34312d;

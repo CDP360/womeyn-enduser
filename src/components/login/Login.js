@@ -41,7 +41,7 @@ function Login() {
         const datas = {
             email: email,
             password: password,
-            loginIPAddress:ipaddress
+            // loginIPAddress:ipaddress
         }
         setLoading(true);
         if (productWhishlist) {
