@@ -126,7 +126,7 @@ function Womenpreneurs() {
                     </div>
                     <div className={styles.ourwomenpreneurs}>
                         <div className='large-text'>
-                            Our Womenpreneurs
+                            Our WomeynPreneurs
                         </div>
                         <div className={styles.loreamtextwomen}>
                             Please select to know more about the Womeynpreneur's business, her journey her story and her success against all odds
@@ -236,17 +236,17 @@ function Womenpreneurs() {
 
 
             <div className={styles.emptyboxrightcolor}>
-                </div>
-                <div className={styles.emptyboxleftcolor}>
-                </div>
-                <div className={styles.emptyboxleftcolor1}>
-                </div>
-                <div className={styles.emptyboxleftcolor2}>
-                </div>
-                <div className={styles.emptyboxleftcolor3}>
-                </div>
-                <div className={styles.emptyboxleftcolor4}>
-                </div>
+            </div>
+            <div className={styles.emptyboxleftcolor}>
+            </div>
+            <div className={styles.emptyboxleftcolor1}>
+            </div>
+            <div className={styles.emptyboxleftcolor2}>
+            </div>
+            <div className={styles.emptyboxleftcolor3}>
+            </div>
+            <div className={styles.emptyboxleftcolor4}>
+            </div>
 
 
 

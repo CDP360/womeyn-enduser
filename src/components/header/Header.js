@@ -211,7 +211,7 @@ function Header() {
 
                                     <div className={styles.rightheaderbox}>
                                         <div className={styles.Seller} onClick={SellerLogin}>
-                                            Become a WomeynPreneur
+                                            Become a WomeynPreneurs
                                         </div>
                                     </div>
                                 </div>
@@ -467,7 +467,7 @@ function Header() {
 
                     <div className={router.pathname == "/womenpreneurs" ? "active" : ""}>
                         <div className='nav-link' onClick={() => router?.push("/womenpreneurs")}>
-                            <span className='ms-2 hovertexts'>Our WomeynPreneur</span>
+                            <span className='ms-2 hovertexts'>Our WomeynPreneurs</span>
                         </div>
                     </div>
                     <div className={router.pathname == "/events" ? "active" : ""}>

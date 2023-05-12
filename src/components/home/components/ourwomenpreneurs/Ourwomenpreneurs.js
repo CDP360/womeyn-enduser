@@ -116,6 +116,7 @@ function Ourwomenpreneurs() {
 
     const MainSectionWomens = () => {
         Topwomenprenuers().then((res) => {
+            console.log(res?.data, "kalai")
             setDatas(res?.data);
         }).catch((err) => {
             console.log(err);
