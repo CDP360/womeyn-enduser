@@ -17,7 +17,6 @@ function Allcategories() {
     MainTopSections();
   }, []);
 
-
   const MainTopSections=()=>{
     TopProducts().then((res) => {
       setProducts(res?.data);
