@@ -137,7 +137,7 @@ function Ourwomenpreneurs() {
                         </div>
                     </div>
                     <div className='textseller mt-5'>
-                        Our Womenpreneurs of the Month!
+                        Our WomeynPreneur of the Month!
                     </div>
                     <div className={styles.womensectionslider}>
                         <div className={styles.insidewomensectionslider}>
