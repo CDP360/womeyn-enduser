@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useState,useEffect}from 'react'
 import { Fragment } from 'react';
 import Image from 'next/image';
 import { ContactText } from '../../consttext/Contactconst';
@@ -10,8 +10,21 @@ import Contactlogo from '../../assests/login-logos/Contactno.png';
 import offcircle from '../../assests/login-logos/arrowcircle.png';
 import circles from '../../assests/login-logos/arrowcircleoff.png';
 import ContactForm from './ContactForm';
+import { ConatctAdminInfor } from '../../services/contact-service/contact-service';
 
 function Contactus() {
+
+
+    const [information,setInformation]=useState([]);
+
+
+    useEffect(()=>{
+ConatctAdminInfor().then((res)=>{
+    setInformation(res?.data[0]);
+}).catch((err)=>{
+ console.log(err);   
+})
+    },[])
     const Contactdetails = [
         {
             id: 1,
@@ -20,18 +33,19 @@ function Contactus() {
         },
         {
             id: 2,
-            name: ContactText?.Fillup,
+            name: information?.content,
 
         },
         {
             id: 3,
-            name: ContactText?.contactno,
+            name: information?.contactNo,
+
             image: Contactlogo
 
         },
         {
             id: 4,
-            name: ContactText?.contactemail,
+            name: information?.email,
             image: Email
         },
         {

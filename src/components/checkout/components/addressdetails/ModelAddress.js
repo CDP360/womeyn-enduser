@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-function ModelAddress({ show, handleClose, register, errors, handleSubmit, SubmitsAddress, handleShow }) {
+function ModelAddress({ show, handleClose, register, errors, handleSubmit, SubmitsAddress, handleShow,editaddressid,UpdateAddresss }) {
     return (
         <>
             <div>    <button className={styles.addnewaddressbutton} onClick={handleShow}>
@@ -117,11 +117,7 @@ function ModelAddress({ show, handleClose, register, errors, handleSubmit, Submi
                                                 })}
                                             />
                                         </Form.Group>
-                                        {/* <Form.Control type="text" placeholder="Enter Address" className='form-control-profiles'
-                        {...register("address", {
-                          required: "Please enter Address",
-                        })}
-                      /> */}
+                                     
                                         <Form.Text className="text-muted">
                                             {errors.address && <span className="active">{errors.address.message}</span>}
                                         </Form.Text>
@@ -176,9 +172,17 @@ function ModelAddress({ show, handleClose, register, errors, handleSubmit, Submi
                         </div>
                         <div className={styles.buttonsectionaddress}>
                             <div >
+
+                                {editaddressid?<>
+                                    <button className={styles.addbutton} onClick={handleSubmit(UpdateAddresss)}>
+                                    Update
+                                </button>
+                                </>:<>
                                 <button className={styles.addbutton} onClick={handleSubmit(SubmitsAddress)}>
                                     Add
                                 </button>
+                                </>}
+                              
                             </div>
                             <div>
                                 <button className={styles.cancelbutton} onClick={handleClose}>

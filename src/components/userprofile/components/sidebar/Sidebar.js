@@ -236,7 +236,7 @@ function Sidebar({ user, error }) {
                                 {pathname == "faq" ? <Image src={helpss} alt="no image" className={styles.profileicon} /> : <Image src={helps} alt="no image" className={styles.profileicon} />}
                             </div>
                             <div className={pathname == "faq" ? styles.boldtextactive : styles.boldtexts}>
-                             Faq
+                             FAQ
                             </div>
                         </div>
                         <div className={styles.dashedsectionmain}>

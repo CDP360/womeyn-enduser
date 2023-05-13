@@ -323,7 +323,7 @@ function Header() {
                                                                 <Image src={helpss} alt="no image" className={styles.profileimageover} />
                                                             </div>
                                                             <div className={styles.logouttexts}>
-                                                                Faq
+                                                                FAQ
                                                             </div>
                                                         </div>
 
@@ -472,7 +472,7 @@ function Header() {
                     </div>
                     <div className={router.pathname == "/events" ? "active" : ""}>
                         <div className='nav-link' onClick={() => router?.push("/events")}>
-                            <span className='ms-2 hovertexts'>Events & Updates</span>
+                            <span className='ms-2 hovertexts'>Events & Blogs</span>
                         </div>
                     </div>
                     <div className={router.pathname == "/abouts" ? "active" : ""}>

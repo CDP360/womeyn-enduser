@@ -10,58 +10,48 @@ import { Button } from 'react-bootstrap';
 import dynamic from 'next/dynamic';
 import Spinner from 'react-bootstrap/Spinner';
 import { toast } from 'react-toastify';
-import { Addaddress, GetAddressData } from '../../../../services/user-profile-service/user-profile-services';
+import { Addaddress, GetAddressData,UpdateAddress,SingleAddress } from '../../../../services/user-profile-service/user-profile-services';
 import ModelAddress from './ModelAddress';
 import { useForm } from "react-hook-form";
+import editimage from '../../../../assests/cart-logos/b1.png'
 function Addressdetail({ state, step, setStep, setName, name }) {
 
-
-
-
-
-
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm();
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
   const [pincodes, setPincodes] = useState("");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   const [selectAddress, setCheckAddress] = useState("");
   const [address, setAddress] = useState([]);
   const [topping, setTopping] = useState("");
-
   const [loading, setLoading] = useState(false);
+  const [editaddressid,setEditaddressId]=useState("");
+
   useEffect(() => {
     GetAddressData().then((res) => {
       setAddress(res?.data?.results);
     }).catch((err) => {
       console.log(err);
     })
-  }, [])
 
+    SingleAddress(editaddressid).then((res)=>{
+      setValue("name",res?.data?.name);
+      setValue("contactno",res?.data?.contactNumber);
+      setValue("alternatecontactno",res?.data?.alternateContactNumber);
+      setValue("address",res?.data?.fullAddress);
+      setValue("pincode",res?.data?.pinCode);
+      setValue("landmark",res?.data?.landMark);
+      setValue("city",res?.data?.cityName);
+      setValue("state",res?.data?.stateName);
+          }).catch((err)=>{
+            console.log(err);
+          })
+  }, [editaddressid])
 
 
   const handleDeliverAddress = () => {
@@ -89,13 +79,7 @@ function Addressdetail({ state, step, setStep, setName, name }) {
       }, 1000)
     }
   }
-  const {
-    register,
-    handleSubmit,
-    watch,
-    setValue,
-    formState: { errors },
-  } = useForm();
+ 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -142,13 +126,62 @@ function Addressdetail({ state, step, setStep, setName, name }) {
 
   }
 
-  console.log(address, "address")
+
+
+
+  // edit Address
+
+  const EditAddress=(id)=>{
+    handleShow();
+    setEditaddressId(id);
+
+  }
+
+
+  const UpdateAddresss=(data)=>{
+    const address = {
+      name: data?.name,
+      contactNumber: data?.contactno,
+      alternateContactNumber: data?.alternatecontactno,
+      fullAddress: data?.address,
+      pinCode: data?.pincode,
+      landMark: data?.landmark,
+      cityName: data?.city,
+      stateName: data?.state,
+      countryName: "Australia",
+      addressId:editaddressid
+    }
+    UpdateAddress(address).then((res) => {
+      toast.success("Address Updated",
+        {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+      window.location.reload();
+      handleClose();
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
+
   return (
     <Fragment>
       <div className={styles.mainorderpage}>
         <div className={styles.addnewaddressbutton}>
           <div className={styles.addnewaddressbuttonsubmenu}>
-            <ModelAddress register={register} show={show} errors={errors} SubmitsAddress={SubmitsAddress} handleSubmit={handleSubmit} handleShow={handleShow} handleClose={handleClose} />
+            <ModelAddress register={register} show={show} errors={errors} SubmitsAddress={SubmitsAddress} handleSubmit={handleSubmit} handleShow={handleShow} handleClose={handleClose} 
+            UpdateAddresss={UpdateAddresss}
+
+            editaddressid={editaddressid}
+            />
           </div>
         </div>
         <div className="mt-1">
@@ -175,7 +208,15 @@ function Addressdetail({ state, step, setStep, setName, name }) {
                       </div>
 
                     </label>
+
+                    <div>
+                    <div className={styles.EditAddress} onClick={()=>EditAddress(item?.id)}>
+                      Edit Address
+                      </div>
+                      
+                    </div>
                   </div>
+                 
                 </div>
               </>
             )

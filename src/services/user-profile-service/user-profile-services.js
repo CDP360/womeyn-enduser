@@ -52,6 +52,43 @@ export function DeleteAddress(id) {
 }
 
 
+export function SingleAddress(id) {
+    // return instanceBaseurl.delete(`/customer/delete-address/${id}`).then((res) => {
+    //     return res
+    // }).catch((err) => {
+    //     return err;
+    // })
+
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.get(`/customer/addresses/${id}`).then(response => {
+            resolve(response)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}
+
+
+
+
+export function UpdateAddress(data) {
+    // return instanceBaseurl.delete(`/customer/delete-address/${id}`).then((res) => {
+    //     return res
+    // }).catch((err) => {
+    //     return err;
+    // })
+
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.post(`/customer/addresses`,data).then(response => {
+            resolve(response)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}
+
+
+
 
 
 

@@ -134,7 +134,6 @@ function Userprofile({ name, error }) {
                             </div>
                             }
                              {name == "faq" && <div>
-                  
                              <Help/>
                             </div>
                             }
