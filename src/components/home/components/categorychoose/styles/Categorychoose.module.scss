@@ -19,6 +19,18 @@
         display: flex;
         gap: 5%;
       }
+      .insideslides
+      {
+     
+        margin:0 auto!important;
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+        flex-direction:column !important;
+        padding:10px !important;
+      
+        // padding-left:15%;
+      }
     }
     .imagesectioncategory {
       display: flex;

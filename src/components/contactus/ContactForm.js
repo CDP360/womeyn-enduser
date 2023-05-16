@@ -185,14 +185,19 @@ function ContactForm() {
             <div className="col-lg-5">
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label className={styles.firstNametexts}>Phone</Form.Label>
+                <div className={styles.contactphone}>
+                  <span>+61</span>
                 <Form.Control
                   type="text"
                   placeholder="Enter Phone..."
-                  className={styles.contactformtextfield}
+                  className={styles.contactformtextfield1}
                   name="phone"
                   value={phone}
                   onChange={handlechange}
+                  maxlength={9}
                 />
+                </div>
+                
                 {error && phone?.length <= 0 ? <span className="active">Contact No is Required!!!</span> : <></>}
 
 

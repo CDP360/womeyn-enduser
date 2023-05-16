@@ -7,6 +7,21 @@
     .insidecontactuspage {
         width: 75%;
         margin: 0 auto;
+        .contactphone
+        {
+            width:100%;
+            display:flex;
+            align-items:center;
+            border: 2px solid #f1f0f0 !important;
+            border-radius: 10px !important;
+            padding:0px 5px;
+
+            .contactformtextfield1
+            {
+                border:none!important;
+                outline:none !important;
+            }
+        }
         @include xsBreakPoint {
             width: 85%;
             padding-top: 6%;

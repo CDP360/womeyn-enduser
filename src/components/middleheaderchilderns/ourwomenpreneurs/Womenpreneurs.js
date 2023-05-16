@@ -65,6 +65,8 @@ function Womenpreneurs() {
     const GetFilterandSearchData = () => {
         setLoading(true);
         WomenpreneursFilter(categoryid).then((res) => {
+
+            console.log(res?.data?.results, "kalai")
             setDataseller(res?.data?.results);
             setLimit(res?.data);
             setTimeout(() => {
@@ -120,7 +122,6 @@ function Womenpreneurs() {
                 <div className={styles.emptyboxcolorleft}>
                 </div>
                 <div className={styles.bodysectionwomeynpre}>
-
                     <div className={styles.imagesectionwomeyn}>
                         <Womencarouselbanner />
                     </div>
@@ -173,12 +174,22 @@ function Womenpreneurs() {
                                                     </>}
                                                 </div>
                                             </div>
+                                            
                                             <div className='womentitle'>
                                                 {item?.firstName}
                                             </div>
                                             <div className='womendescription'>
                                                 {item?.businessSlugName}
+                                                
                                             </div>
+                                            {/* <div >
+                                                {item?.categoryTypeId==1 && <span>Product</span>}
+                                                {item?.categoryTypeId==2 && <span>Service</span>}
+                                                {item?.categoryTypeId==3 && <span>Product & Service</span>}
+                                                </div> */}
+                                         
+
+                                            
                                         </div>
                                     )
                                 })}
@@ -207,7 +218,15 @@ function Womenpreneurs() {
                                             </div>
                                             <div className='womendescription'>
                                                 {item?.businessSlugName}
+                                               
                                             </div>
+{/* 
+                                            <div >
+                                                {item?.categoryTypeId==1 && <span>Product</span>}
+                                                {item?.categoryTypeId==2 && <span>Service</span>}
+                                                {item?.categoryTypeId==3 && <span>Product & Service</span>}
+                                                </div> */}
+                                          
                                         </div>
                                     )
                                 })}

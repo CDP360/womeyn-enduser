@@ -1,0 +1,31 @@
+@use "../../../../../../scss/abstract/" as *;
+
+.mainblogview {
+    width: 100%;
+    height: 100%;
+   
+    .insideblogsection {
+        width: 75%;
+        margin: 0 auto;
+ 
+        .imageeventcard
+        {
+            width:100%;
+            height:300px;
+            border-radius:10px;
+            // border:3px solid red;
+            
+        }
+        .bannerviewblog {
+            width: 100%;
+            // border: 2px solid blue;
+            padding-top:2%;
+          
+        }
+        .blogtitle
+        {
+            font-size:2rem;
+            font-weight:600;
+        }
+    }
+}

@@ -174,10 +174,12 @@
                     margin: 0 auto;
                     height: 210px !important;
                     cursor: pointer;
-                    // object-fit:contain;
+                    object-fit:contain;
                     z-index: 99 !important;
                     // margin-top: 6.8%;
-                    border-radius:10px;
+                    // border:2px solid blue;
+             border-radius:30px;
+
 
                     @include xsBreakPoint {
                         width: 200px !important;

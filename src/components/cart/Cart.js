@@ -10,6 +10,8 @@ import dynamic from 'next/dynamic';
 import { ContextStore } from './../../Redux/store/Contextstore';
 import cartempty from '../../assests/cart-logos/emptycartlogo.png';
 import Modal from 'react-bootstrap/Modal';
+import { toast } from 'react-toastify';
+
 function Cart() {
   const [show, setShow] = useState(false);
   const [deleteid, setDeleteid] = useState("");
@@ -61,6 +63,9 @@ function Cart() {
   useEffect(() => {
     setCart(state?.cart?.cartData);
 
+
+   
+
   }, [deleteid, totalvalue])
   const shopping = () => {
     router.push("/")
@@ -98,11 +103,27 @@ function Cart() {
   }
 
 
-
-
-
   const CartNavigateProductView=(productSlugName)=>{
     router.push(`/product/${productSlugName}`)
+  }
+
+
+  const CallCount=(items)=>{
+    if(items==9)
+    {
+      toast.warning("We're sorry! Only 10 unit(s) allowed in each order",
+      {
+        position: "top-center",
+        autoClose: 3300,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+    }
+      )
+    }
   }
   return (
     <Fragment>
@@ -162,15 +183,37 @@ function Cart() {
                           </div>
                           <div className={styles.cartaddsection}>
                             <div >
-                              <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() =>
-                                handleRemove(index, item)
-                              } />
+                            {item?.quantity==1 ?<>
+                                  <Image src={minusicon} alt="no image" className={styles.carticonsadds} 
+                                //   onClick={() =>
+                                //   handleRemove(index, item)
+                                // }
+                                 />
+                                </>:<>
+                                <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() =>
+                                  handleRemove(index, item)
+                                } />
+                                </>}
                             </div>
-                            <div>{item?.quantity}</div>
+                            <div >{item?.quantity}</div>
                             <div>
-                              <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() =>
-                                handleAdd(index, item)
+
+                            {item?.quantity==10 ?<>
+                              <Image src={addicon} alt="no image" className={styles.carticonsadds} 
+                              // onClick={() =>
+                              //   handleAdd(index, item)
+                              // } 
+                              />
+                                </>:<>
+                                <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() =>{
+                                    handleAdd(index, item)
+                                    CallCount(item?.quantity)
+                                }
+                              
                               } />
+                                </>}
+                              
+                             
                             </div>
                           </div>
                           <div className={styles.cartremovesection} onClick={() => handleShow(item)}>
@@ -250,9 +293,18 @@ function Cart() {
 
                             <div className={styles.cartaddsection}>
                               <div>
+                                {item?.quantity==1 ?<>
+                                  <Image src={minusicon} alt="no image" className={styles.carticonsadds} 
+                                //   onClick={() =>
+                                //   handleRemove(index, item)
+                                // }
+                                 />
+                                </>:<>
                                 <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() =>
                                   handleRemove(index, item)
                                 } />
+                                </>}
+                              
                               </div>
                               <div>{item?.quantity}</div>
                               <div >

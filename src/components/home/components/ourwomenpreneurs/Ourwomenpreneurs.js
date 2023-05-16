@@ -170,7 +170,7 @@ function Ourwomenpreneurs() {
                                     })}
                                 </Slider>
 
-                                <div className={styles.dummydots}>
+                                {/* <div className={styles.dummydots}>
 
                                 </div>
                                 <div className={styles.dummydots1}>
@@ -179,7 +179,7 @@ function Ourwomenpreneurs() {
 
                                 <div className={styles.dummybg}>
 
-                                </div>
+                                </div> */}
 
                                 {/* <div>
                                     <Image src={roundscircles} alt="no image" className={styles.roundscirclesimage} />

@@ -6,13 +6,19 @@ import Signupnewsletter from '../../home/components/signupfornewsletter/Signupne
 import Footer from '../../footer/Footer';
 import Childfooter from './../../footer/Childfooter';
 import { getBlogs } from '../../../services/blog-service/blog-service';
+import { getEvents } from '../../../services/event-services/event-services';
+
 import { useRouter } from 'next/router';
 function Eventsupdate() {
 
     const history=useRouter();
 
+    const [indexs,setindexs]=useState(0);
+
 
     const [topevents, setTopEvents] = useState([]);
+    const [Neweevnts, setNewEvents] = useState([]);
+
 
 
     useEffect(() => {
@@ -21,36 +27,25 @@ function Eventsupdate() {
         }).catch((err) => {
             console.log(err);
         })
-    }, [])
-    const data = [
-        {
-            id: 1,
-            image: "https://picsum.photos/200/300",
-            description: "You may combine any of the options above"
-        },
-        {
-            id: 2,
-            image: "https://picsum.photos/200/300",
-            description: "You may combine any of the options above"
-
-        },
-        {
-            id: 3,
-            image: "https://picsum.photos/200/300",
-            description: "You may combine any of the options above"
-
-        },
-        {
-            id: 4,
-            image: "https://picsum.photos/200/300",
-            description: "You may combine any of the options above"
-
-        }
-    ]
 
 
-    const ViewBlog=(id)=>{
+        getEvents().then((res) => {
+            setNewEvents(res?.data?.results)
+        }).catch((err) => {
+            console.log(err);
+        })
+        
+    }, [indexs])
+   
+    const ViewBlogEvent=(id)=>{
         history.push(`/events/${id}`)
+      
+    }
+    const ViewBlog=(id)=>{
+        history.push(`/blog/${id}`)
+    }
+    const handleChnagepage=(counts)=>{
+        setindexs(counts);
     }
     return (
         <Fragment>
@@ -63,6 +58,7 @@ function Eventsupdate() {
                     <div className={styles.emptyboxeventsectionbottom}>
                     </div>
                     <div className={styles.insidecontentsectionevent}>
+                        
                         <div>
                             <Image src={eventbaner} alt="no image" className={styles.eventbannerimage} />
                         </div>
@@ -77,32 +73,48 @@ function Eventsupdate() {
                             </div>
                         </div>
 
+                        
+                        <div className={styles.blogbuttons}>
+<button className={indexs==0?styles.activebutton:styles.inactivebutton} onClick={()=>handleChnagepage(0)}>Blogs</button>
+
+<button className={indexs==1?styles.activebutton:styles.inactivebutton} onClick={()=>handleChnagepage(1)}>Events</button>
+
+                    </div>
+
+                    {indexs===1 && <>
+                    
                         <div className={styles.splitboxeventsection}>
                             <div className={styles.lefteventsection}>
                                 <div className="textseller">
                                     Latest Events
                                 </div>
-                                <div className='cardsections-events row   w-100 mt-1 mb-3'>
-                                    {topevents.map((item, index) => {
+                                <div className='cardsections-events row  w-100 mt-1 mb-3'>
+                                    {Neweevnts.map((item, index) => {
                                         return (
-                                            <div className='cardevents mb-3' key={index} onClick={()=>ViewBlog(item?.slugName)}>
+                                            <div className='cardevents mb-3' key={index} onClick={()=>ViewBlogEvent(item?.slugName)}>
                                                 <div>
                                                     {/* <img src={item?.image} alt="no image" className={styles.imageeventcard} /> */}
 
-                                                    {item?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.postImageName}`} alt="no image" className={styles.imageeventcard} /> : <>
+                                                    {item?.eventImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.eventImageName}`} alt="no image" className={styles.imageeventcard} /> : <>
                                                         <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
                                                     </>}
                                                 </div>
                                                 <div className={styles.sportslistsection}>
+
+                                                <div className="d-flex justify-content-between">
+<div>Start : {item?.startDate}</div>
+<div>End :{item?.endDate}</div>
+
+                                                    </div>
                                                     <div>
                                                         {/* <span className={styles.activesports}> SPORT</span> - January 25, 2022 */}
-                                                        {item?.keywords}
+                                                        {item?.title}
                                                     </div>
                                                     <div className={styles.categoryevents}>
                                                         {item.category}
                                                     </div>
                                                     <div className={styles.loramsevents}>
-                                                        {item?.shortDescription.slice(0,100)}
+                                                        {item?.description.slice(0,100)}
                                                     </div>
                                                 </div>
                                             </div>
@@ -110,7 +122,7 @@ function Eventsupdate() {
                                     })}
                                 </div>
                             </div>
-                            <div className={styles.righteventsection}>
+                            {/* <div className={styles.righteventsection}>
                                 <div className="textseller ms-3">Topics</div>
                                 {topevents.map((items, index) => {
                                     return (
@@ -124,8 +136,71 @@ function Eventsupdate() {
                                         </div>
                                     )
                                 })}
-                            </div>
+                            </div> */}
                         </div>
+                    
+                    </>}
+
+
+
+
+                      {indexs===0 && <>
+                    
+                        <div className={styles.splitboxeventsection}>
+                            <div className={styles.lefteventsection}>
+                                <div className="textseller">
+                                    Latest Blogs
+                                </div>
+                                <div className='cardsections-events row  w-100 mt-1 mb-3'>
+                                    {topevents.map((item, index) => {
+                                        return (
+                                            <div className='cardevents mb-3' key={index} onClick={()=>ViewBlog(item?.slugName)}>
+                                                <div>
+                                                    {/* <img src={item?.image} alt="no image" className={styles.imageeventcard} /> */}
+
+                                                    {item?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.postImageName}`} alt="no image" className={styles.imageeventcard} /> : <>
+                                                        <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
+                                                    </>}
+                                                </div>
+                                                <div className={styles.sportslistsection}>
+
+                                                  
+                                                    <div>
+                                                        {/* <span className={styles.activesports}> SPORT</span> - January 25, 2022 */}
+                                                        {item?.title}
+                                                    </div>
+                                                    <div className={styles.categoryevents}>
+                                                        {item.category}
+                                                    </div>
+                                                    <div className={styles.loramsevents}>
+                                                        {item?.shortDescription.slice(0,100)}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            </div>
+                            {/* <div className={styles.righteventsection}>
+                                <div className="textseller ms-3">Topics</div>
+                                {topevents.map((items, index) => {
+                                    return (
+                                        <div className="mb-4 mt-3" key={index} onClick={()=>ViewBlog(items?.slugName)}>
+                                          
+                                          {items?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${items?.postImageName}`} alt="no image" className={styles.imageeventcard} /> : <>
+                                                        <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
+                                                    </>}
+                                            <div className={styles.categoryevents}>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div> */}
+                        </div>
+                    
+                    </>}
+
+                       
                     </div>
                     <div>
                         <Signupnewsletter />

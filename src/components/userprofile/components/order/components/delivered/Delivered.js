@@ -38,8 +38,8 @@ function Delivered({ Orders, traking, loading }) {
     const datas = Orders?.filter((item) => item.stateId == 6);
     setData(datas)
     var d = Date();
-    const formates=(moment(d).format("L").slice(0, 10)).replace("/",'');
-    console.log(formates.replace("/",''),"kl")
+    const formates = (moment(d).format("L").slice(0, 10)).replace("/", '');
+    console.log(formates.replace("/", ''), "kl")
     // setNewDate(moment(d).format("L").slice(0, 10));
 
   }, [Orders, newdate])
@@ -49,7 +49,7 @@ function Delivered({ Orders, traking, loading }) {
     history.push(`/product/${data}`)
   }
 
-  console.log(newdate.replace("/",''), "newdate")
+  console.log(newdate.replace("/", ''), "newdate")
 
   return (
     <Fragment>
@@ -63,7 +63,7 @@ function Delivered({ Orders, traking, loading }) {
               </div>
               <div>
 
-              {(moment(item?.orderedDate).format("L"))}
+                {(moment(item?.orderedDate).format("L"))}
 
                 {/* {moment(item?.orderedDate).format('L')}-------
                 New Date----{newdate} */}
@@ -135,13 +135,13 @@ function Delivered({ Orders, traking, loading }) {
                           }
                         </>} */}
 
-           
-              <button className={styles.trackingbuttons} onClick={() => handleShow2(items)}>Return</button>
 
-             
+                        <button className={styles.trackingbuttons} onClick={() => handleShow2(items)}>Return</button>
 
 
-          
+
+
+
 
                         {/* {Number(item?.orderedDate.slice(0, 10))===Number(04/14/2023)?"kalai success":"kalai not success"} */}
 

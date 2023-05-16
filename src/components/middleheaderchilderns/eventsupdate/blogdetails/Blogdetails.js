@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import styles from './styles/Eventsdetails.module.scss';
-import { getSingleBlogs } from '../../../../services/blog-service/blog-service';
+import { getingleEvent } from '../../../../services/event-services/event-services';
 import ReactHtmlParser from "react-html-parser";
 
-function Eventsdetails({ id }) {
+function Blogdetails({ id }) {
 
     const [viewblog, setViewBlog] = useState([]);
 
     useEffect(() => {
-        getSingleBlogs(id).then((res) => {
+        getingleEvent(id).then((res) => {
             setViewBlog(res?.data)
 
             console.log(res?.data, "kl")
@@ -20,8 +20,8 @@ function Eventsdetails({ id }) {
         <div className={styles.mainblogview}>
             <div className={styles.insideblogsection}>
                 <div>
-                    {viewblog[0]?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${viewblog[0]?.postImageName}`} alt="no image" className={styles.imageeventcard} /> : <>
-                        <img src={"https://visionhospitalgoa.com/wp-content/uploads/2020/09/blog-banner-1.jpg"} alt="no image" />
+                    {viewblog[0]?.eventImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${viewblog[0]?.eventImageName}`} alt="no image" className={styles.imageeventcard} /> : <>
+                        <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtzY6p2cqrDwlq7On2OGF3e_rpWyFkryfgRJjGP98fJKtK8zid9c15sg75ZvUWkvFgRVA&usqp=CAU'} alt="no image" />
                     </>}
                 </div>
                 <div className={styles.bannerviewblog}>
@@ -31,7 +31,9 @@ function Eventsdetails({ id }) {
                         </div>
 
                         <div className="mt-3 mb-4">
-                            {ReactHtmlParser(viewblog[0]?.postContent)}
+                            {ReactHtmlParser(viewblog[0]?.eventContent.replace(/&lt;/g, "<"))}
+                      {/* {ReactHtmlParser(item?.planDetails.replace(/&lt;/g, "<"))} */}
+
                         </div>
 
                     </div>
@@ -47,4 +49,4 @@ function Eventsdetails({ id }) {
     )
 }
 
-export default Eventsdetails
+export default Blogdetails
