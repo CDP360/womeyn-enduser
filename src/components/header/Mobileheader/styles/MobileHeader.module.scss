@@ -38,12 +38,13 @@
         align-items: center;
         justify-content: center;
         .barsection {
-            width: 45px;
-            height: 45px;
+            width: 20px;
+            height: 20px;
             cursor: pointer;
             // object-fit: contain;
-            border-radius: 50%;
-            border: 2px solid #e95a5a;
+            // border-radius: 50%;
+            // border: 2px solid #e95a5a;
+            animation:rounds 3s ease-in-out infinite;
         }
         @include smBreakPoint {
             width: 20%;
@@ -177,4 +178,16 @@
     height: 60px;
     left: 0;
     bottom: 0%;
+}
+
+
+@keyframes rounds{
+    50%
+    {
+        transform:rotate(-10deg);
+    }
+    100%
+    {
+        transform:rotate(-10deg);
+    }
 }

@@ -19,6 +19,7 @@ import { LoginActions } from './../../../Redux/actions/loginactions/Loginaction'
 import Searchbar from './../serachcategorys/Searchbar';
 import dummyimagess from '../../../assests/homepage-logos/backgroundrounds.png';
 import { SearchProductCategorys } from '../../../services/category-services/category-service';
+import mobilebar from '../../../assests/login-logos/mobilebar.png';
 function MobileHeader() {
     const router = useRouter();
     const dispatch = useDispatch();
@@ -120,7 +121,7 @@ function MobileHeader() {
 
                 <div className={styles.mobilerightsection}>
                     <div onClick={handleShow} >
-                        {favortcountdataredux?.loginUser?.logindata?.profileImageName ? <>
+                        {/* {favortcountdataredux?.loginUser?.logindata?.profileImageName ? <>
                             <img
                                 className={styles.barsection}
                                 src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${favortcountdataredux?.loginUser?.logindata?.profileImageName}`}
@@ -129,7 +130,9 @@ function MobileHeader() {
                         </> : <>
                             <Image src={profile} alt="no image" className={styles.barsection} />
 
-                        </>}
+                        </>} */}
+
+                        <Image src={mobilebar} alt="no image" className={styles.barsection}/>
 
 
                     </div>
