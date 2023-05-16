@@ -9,6 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 import Image from 'next/image';
 import coupons from '../../../../assests/cart-logos/couponicon.png';
 import Spinner from 'react-bootstrap/Spinner';
+import { toast } from 'react-toastify';
 
 
 import cartempty from '../../../../assests/cart-logos/emptycartlogo.png';
@@ -18,7 +19,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
   const { state, dispatch } = useContext(ContextStore);
   const [carts, setCart] = useState([]);
   const [show, setShow] = useState(false);
-  const [loading,setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
   const [deleteid, setDeleteid] = useState("");
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
@@ -26,23 +27,23 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
     setDeleteid(id);
   };
 
- 
+
 
   const history = useRouter()
   const { cart } = state;
   const deliverOrderConfirm = () => {
     setLoading(true);
-    setTimeout(()=>{
+    setTimeout(() => {
       setLoading(false);
-    setStep(step + 1);
-    },1000)
+      setStep(step + 1);
+    }, 1000)
   }
 
 
   const shopping = () => {
     history.push("/")
   }
-  
+
   const handlePush = (path) => {
     history.push(`/product/${path}`)
   }
@@ -78,7 +79,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
   useEffect(() => {
     setCart(state?.cart?.cartData);
 
-   
+
   }, [deleteid]);
 
 
@@ -109,6 +110,25 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
   }
 
 
+
+  const CallCount = (items) => {
+    if (items?.quantity == Number(items?.quantityLeft) - Number(1)) {
+      toast.warning(` We're sorry! Only ${items?.quantityLeft} unit(s) allowed in Quantity`,
+        {
+          position: "top-center",
+          autoClose: 3300,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      )
+    }
+
+  }
+
   return (
 
     <Fragment>
@@ -126,7 +146,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
                             className={styles.editprofilesection}
                             src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
                             alt="profile-pic"
-                          />  
+                          />
                         </div>
                         <div>
                           <div className="carttext">{item?.productName}
@@ -152,7 +172,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
                           </div>
                         </div>
                       </div>
-                      <div className={styles.cartaddsection}>
+                      {/* <div className={styles.cartaddsection}>
                         <div >
                           <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() =>
                             handleRemove(index, item)
@@ -163,6 +183,42 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
                           <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() =>
                             handleAdd(index, item)
                           } />
+                        </div>
+                      </div> */}
+
+                      <div className={styles.cartaddsection}>
+                        <div >
+                          {item?.quantity == 1 ? <>
+                            <Image src={minusicon} alt="no image" className={styles.carticonsadds}
+                            //   onClick={() =>
+                            //   handleRemove(index, item)
+                            // }
+                            />
+                          </> : <>
+                            <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() =>
+                              handleRemove(index, item)
+                            } />
+                          </>}
+                        </div>
+                        <div >{item?.quantity}</div>
+                        <div>
+
+                          {item?.quantity == item?.quantityLeft ? <>
+                            <Image src={addicon} alt="no image" className={styles.carticonsadds}
+                            // onClick={() =>
+                            //   handleAdd(index, item)
+                            // } 
+                            />
+                          </> : <>
+                            <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() => {
+                              handleAdd(index, item)
+                              CallCount(item)
+                            }
+
+                            } />
+                          </>}
+
+
                         </div>
                       </div>
                       <div className={styles.cartremovesection} onClick={() => handleShow(item)}>
@@ -218,7 +274,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
                           <div>{item?.productName}
                           </div>
                           <div>
-                          A${item?.salePrice} <span>
+                            A${item?.salePrice} <span>
                               {item?.offerPercentag == 0 ? <span></span> : <>
                                 <del>
                                   <span>{item?.actualPrice}</span>
@@ -234,7 +290,44 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
                       </div>
                       <div className={styles.mobilecartresponsive}>
 
+
                         <div className={styles.cartaddsection}>
+                          <div >
+                            {item?.quantity == 1 ? <>
+                              <Image src={minusicon} alt="no image" className={styles.carticonsadds}
+                              //   onClick={() =>
+                              //   handleRemove(index, item)
+                              // }
+                              />
+                            </> : <>
+                              <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() =>
+                                handleRemove(index, item)
+                              } />
+                            </>}
+                          </div>
+                          <div >{item?.quantity}</div>
+                          <div>
+
+                            {item?.quantity == item?.quantityLeft ? <>
+                              <Image src={addicon} alt="no image" className={styles.carticonsadds}
+                              // onClick={() =>
+                              //   handleAdd(index, item)
+                              // } 
+                              />
+                            </> : <>
+                              <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() => {
+                                handleAdd(index, item)
+                                CallCount(item)
+                              }
+
+                              } />
+                            </>}
+
+
+                          </div>
+                        </div>
+
+                        {/* <div className={styles.cartaddsection}>
                           <div>
                             <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() =>
                               handleRemove(index, item)
@@ -246,7 +339,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
                               handleAdd(index, item)
                             } />
                           </div>
-                        </div>
+                        </div> */}
                         <div className={styles.cartremovesection} onClick={() => handleShow(item)}>
                           <div>
                             <Image src={delteteicon} alt="no image" className={styles.deleteicons} />
@@ -316,31 +409,31 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
         </>} */}
 
         {cart?.cartData?.length > 0 &&
-        
-        <div className="mt-4">
-        <button className={styles.continuebutton} onClick={deliverOrderConfirm}>
-          
-          
-          
+
+          <div className="mt-4">
+            <button className={styles.continuebutton} onClick={deliverOrderConfirm}>
 
 
-          {loading?<>
-         
-         <Spinner
-       as="span"
-       animation="border"
-       size="sm"
-       role="status"
-       aria-hidden="true"
-     />
-     <span className="ms-3">Loading...</span>
-        </>:<>
-        Continue
-        </>}
-          </button>
-      </div>
+
+
+
+              {loading ? <>
+
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+                <span className="ms-3">Loading...</span>
+              </> : <>
+                Continue
+              </>}
+            </button>
+          </div>
         }
-      
+
 
       </div>
 

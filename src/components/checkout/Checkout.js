@@ -77,6 +77,9 @@ const AllchargeCount=Number(cartpricevaues)+Number(deliveryChargeAmount);
   }
 
 
+  
+  
+
   if(tokens)
   {
     return(
