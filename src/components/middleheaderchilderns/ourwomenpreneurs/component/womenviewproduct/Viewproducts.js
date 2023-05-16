@@ -310,7 +310,7 @@ function Viewproducts({ id }) {
     const handleChange = (cartdata, productvariations) => {
 
 
-        console.log(cartdata?.localDeliveryCharge, "cartdatakalai")
+    
 
         const datas = [productvariations[0]?.name];
         const datas1 = [productvariations[0]?.name, productvariations[1]?.name];
@@ -659,11 +659,7 @@ function Viewproducts({ id }) {
     }
 
     useEffect(() => {
-        //         ProductLikeWishlistGet().then((res) => {
-        // console.log(res?.data,"thalas")
-        //         }).catch((err) => {
-        //             console.log(err);
-        //         })
+       
         const productids = JSON.parse(localStorage.getItem("auth"));
         if (productids) {
             ProductLikeandUnlikeCheck(productdata?.id).then((res) => {

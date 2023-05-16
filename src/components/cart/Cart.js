@@ -109,9 +109,9 @@ function Cart() {
 
 
   const CallCount=(items)=>{
-    if(items==4)
+    if(items?.quantity==Number(items?.quantityLeft)-Number(1))
     {
-      toast.warning("We're sorry! Only 5 unit(s) allowed in each order",
+      toast.warning(` We're sorry! Only ${items?.quantityLeft} unit(s) allowed in Quantity`,
       {
         position: "top-center",
         autoClose: 3300,
@@ -124,7 +124,9 @@ function Cart() {
     }
       )
     }
+   
   }
+
   return (
     <Fragment>
       <div className='mainsection'>
@@ -198,7 +200,7 @@ function Cart() {
                             <div >{item?.quantity}</div>
                             <div>
 
-                            {item?.quantity==5 ?<>
+                            {item?.quantity==item?.quantityLeft ?<>
                               <Image src={addicon} alt="no image" className={styles.carticonsadds} 
                               // onClick={() =>
                               //   handleAdd(index, item)
@@ -207,7 +209,7 @@ function Cart() {
                                 </>:<>
                                 <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() =>{
                                     handleAdd(index, item)
-                                    CallCount(item?.quantity)
+                                    CallCount(item)
                                 }
                               
                               } />
