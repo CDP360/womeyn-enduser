@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styles from './styles/Eventsdetails.module.scss';
-import { getingleEvent } from '../../../../services/event-services/event-services';
+import { getSingleEvent } from '../../../../services/event-services/event-services';
 import ReactHtmlParser from "react-html-parser";
 
 function Blogdetails({ id }) {
@@ -8,7 +8,7 @@ function Blogdetails({ id }) {
     const [viewblog, setViewBlog] = useState([]);
 
     useEffect(() => {
-        getingleEvent(id).then((res) => {
+        getSingleEvent(id).then((res) => {
             setViewBlog(res?.data)
 
             console.log(res?.data, "kl")

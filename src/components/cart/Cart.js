@@ -109,9 +109,9 @@ function Cart() {
 
 
   const CallCount=(items)=>{
-    if(items==9)
+    if(items==4)
     {
-      toast.warning("We're sorry! Only 10 unit(s) allowed in each order",
+      toast.warning("We're sorry! Only 5 unit(s) allowed in each order",
       {
         position: "top-center",
         autoClose: 3300,
@@ -198,7 +198,7 @@ function Cart() {
                             <div >{item?.quantity}</div>
                             <div>
 
-                            {item?.quantity==10 ?<>
+                            {item?.quantity==5 ?<>
                               <Image src={addicon} alt="no image" className={styles.carticonsadds} 
                               // onClick={() =>
                               //   handleAdd(index, item)
@@ -308,9 +308,20 @@ function Cart() {
                               </div>
                               <div>{item?.quantity}</div>
                               <div >
-                                <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() =>
-                                  handleAdd(index, item)
-                                } />
+                              {item?.quantity==5 ?<>
+                              <Image src={addicon} alt="no image" className={styles.carticonsadds} 
+                              // onClick={() =>
+                              //   handleAdd(index, item)
+                              // } 
+                              />
+                                </>:<>
+                                <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() =>{
+                                    handleAdd(index, item)
+                                    CallCount(item?.quantity)
+                                }
+                              
+                              } />
+                                </>}
                               </div>
                             </div>
                             <div className={styles.cartremovesection} onClick={() => handleShow(item)}>

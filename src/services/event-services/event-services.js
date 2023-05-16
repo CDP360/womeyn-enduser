@@ -13,7 +13,7 @@ export function getEvents() {
     })
 }
 
-export function getingleEvent(id) {
+export function getSingleEvent(id) {
 
 
     return new Promise((resolve, reject) => {

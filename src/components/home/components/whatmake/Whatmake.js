@@ -1,34 +1,14 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import styles from './styles/Whatmake.module.scss';
-import image1 from '../../../../assests/womeynlogos/Tropygreen.png';
-import image2 from '../../../../assests/womeynlogos/24.png';
-import image3 from '../../../../assests/womeynlogos/securepayment.png';
 import Image from 'next/image';
 import Slider from "react-slick";
 import SlideNextArrow from './slidenextarrow/SlideNextArrow';
 import SlidePreArrow from './slideprearrow/SlidePreArrow';
-
-import shop1 from '../../../../assests/whatmake/shop1.jpeg';
-import shop2 from '../../../../assests/whatmake/shop2.jpg';
-import shop3 from '../../../../assests/whatmake/shop4.jpg';
-import shop4 from '../../../../assests/whatmake/shop5.jpg';
-import shop5 from '../../../../assests/whatmake/shop6.jpg';
-import shop6 from '../../../../assests/whatmake/shop7.png';
-import shop7 from '../../../../assests/whatmake/shop8.jpg';
-import shop8 from '../../../../assests/whatmake/shop9.jpg';
-import shop9 from '../../../../assests/whatmake/shop10.jpg';
-import shop10 from '../../../../assests/whatmake/shop11.jpg';
 import { useRouter } from 'next/router';
-
-
-
+import { getBlogs } from './../../../../services/blog-service/blog-service';
 
 function Whatmake() {
-
-
-    const history=useRouter();
-
-
+    const history = useRouter();
     const settings = {
         dots: false,
         infinite: true,
@@ -78,90 +58,24 @@ function Whatmake() {
         ]
     };
 
-    const datas = [
-        {
-            id: 1,
-            name: "RARE Women's Synthetic a-line Knee-Long Dress",
-            title: "crafted from top materials",
-            image: shop1,
-            colorbg: " #F0F8F3"
-        },
-        {
-            id: 2,
-            name: "KERI PERRY Women's Chiffon Western Dress(Sky Blue) Dress for Women, Dress ",
-            title: "Stripe & Paypal",
-            image: shop2,
-            colorbg: " #FDF0F0"
-        },
-        {
-            id: 3,
-            name: "Lymio Dresses for Women Multi Color Women Dress (558",
-            title: "Dedicated support",
-            image: shop3,
-            colorbg: " #FFF8F1"
-        },
-        {
-            id: 4,
-            name: " Myx Women's Cotton Short Kurti ",
-            title: "Dedicated support",
-            image: shop4,
-            colorbg: " #FFF8F1"
-        },
-        {
-            id: 5,
-            name: "Eden & Ivy Women Pajama Set ",
-            title: "Dedicated support",
-            image: shop5,
-            colorbg: " #FFF8F1"
-        },
-        {
-            id: 6,
-            name: "GoSriKi Women Kurta with Pant & Dupatta",
-            title: "Dedicated support",
-            image: shop6,
-            colorbg: " #FFF8F1"
-        },
-        {
-            id: 7,
-            name: "Uptownie Lite Women's Knee Length Jumpsuit ",
-            title: "Dedicated support",
-            image: shop7,
-            colorbg: " #FFF8F1"
-        },
-        {
-            id: 8,
-            name: "ANNI DESIGNER Women's Cotton Blend Printed Straight Kurta with Pant & Dupatta (Itta STY) ",
-            title: "Dedicated support",
-            image: shop8,
-            colorbg: " #FFF8F1"
-        },
-        {
-            id: 9,
-            name: "Lymio Dresses for Women || Western Dresses for Women || Dress for Women || Dresses (632) ",
-            title: "Dedicated support",
-            image: shop9,
-            colorbg: " #FFF8F1"
-        },
-        {
-            id: 10,
-            name: "Brand - Symbol Women Shirt ",
-            title: "Dedicated support",
-            image: shop10,
-            colorbg: " #FFF8F1"
-        },
-        // {
-        //     id: 11,
-        //     name: "24 / 7 Support",
-        //     title: "Dedicated support",
-        //     image: shop11,
-        //     colorbg: " #FFF8F1"
-        // }
-    ]
+
+    const [datas, setDatas] = useState([]);
 
 
-    const NavigatePathes=()=>{
-        history.push("/womenpreneurs")
+
+
+    const NavigatePathes = (id) => {
+        history.push(`/blog/${id}`)
     }
+
+
+    useEffect(() => {
+        getBlogs().then((res) => {
+            setDatas(res?.data?.results.slice(0,15));
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, [])
     return (
         <Fragment>
 
@@ -187,12 +101,17 @@ function Whatmake() {
                         <div className={styles.insideslidess}>
                             {datas.map((item, index) => {
                                 return (
-                                    <div className={styles.cardsslide} key={index} style={{ backgroundColor: item.colorbg }}>
+                                    <div className={styles.cardsslide} key={index} style={{ backgroundColor: item.colorbg }} onClick={() => NavigatePathes(item?.slugName)}>
                                         <div>
-                                            <Image src={item?.image} alt="no image" className={styles.whatmakeimage} />
+                                            {/* <Image src={item?.image} alt="no image" className={styles.whatmakeimage} /> */}
+                                            {item?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.postImageName}`} alt="no image" className={styles.whatmakeimage} /> : <>
+                                                <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
+                                            </>}
                                         </div>
-                                        <div className='mt-4' onClick={() => pushCatgorys(item?.slugName)} >
-                                            <h6>{item?.name}</h6>
+                                        <div className='mt-4 text-center' onClick={() => NavigatePathes(item?.slugName)} >
+
+                                            <h6>{item?.title?.length < 10 ? <>{item?.title}</> : <>      {item?.title.slice(0, 25)}...</>}</h6>
+
                                         </div>
                                         {/* <div onClick={() => pushCatgorys(item?.slugName)} >
                                         {item?.description}
@@ -205,18 +124,21 @@ function Whatmake() {
                         <Slider {...settings}>
                             {datas.map((item, index) => {
                                 return (
-                                    <div className={styles.insideslides} key={index} onClick={NavigatePathes}>
+                                    <div className={styles.insideslides} key={index} onClick={() => NavigatePathes(item?.slugName)}>
                                         <div>
-                                            <Image src={item?.image} alt="no image" className={styles.whatmakeimage} />
+                                            {/* <Image src={item?.image} alt="no image" className={styles.whatmakeimage} /> */}
+
+
+                                            {item?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.postImageName}`} alt="no image" className={styles.whatmakeimage} /> : <>
+                                                <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
+                                            </>}
                                         </div>
-                                        <div className='mt-4' onClick={() => pushCatgorys(item?.slugName)} >
+                                        <div className='mt-4' onClick={() => NavigatePathes(item?.slugName)} >
                                             {/* <h6>{item?.name}</h6> */}
-                                            <h6>{item?.name?.length < 10 ? <>{item?.name}</> : <>      {item?.name.slice(0, 25)}...</>}</h6>
+                                            <h6>{item?.title?.length < 10 ? <>{item?.title}</> : <>      {item?.title.slice(0, 25)}...</>}</h6>
 
                                         </div>
-                                        {/* <div onClick={() => pushCatgorys(item?.slugName)} >
-                                        {item?.description?.length <= 10 ? <>{item?.description}</> : <>{item?.description.slice(0, 20)}...</>}
-                                    </div> */}
+
                                     </div>
                                 )
                             })}

@@ -19,6 +19,7 @@ import Head from "next/head";
 import { DefaultSeo, NextSeo, ArticleJsonLd } from 'next-seo';
 import { Rate } from "antd";
 import womenlogo from '../../../../../assests/homepage-logos/new womeyn logo.png';
+import { getCarriersshipping } from '../../../../../services/shipping-service/shipping-service';
 function Viewproducts({ id }) {
     const history = useRouter();
     const [errors, setError] = useState(false);
@@ -1024,31 +1025,19 @@ function Viewproducts({ id }) {
 
 
 
-    console.log(router, "router")
 
-
-    // if (errorpage) {
-    //     return (
-    //         <div>
-
-    //             <div>
-    //                 <img src={womenlogo?.src} alt="no image" className={styles.womelogo} />
-    //             </div>
-    //             <div className={styles.sorry}>
-    //                 Sorry , No Record Found
-    //             </div>
-
-    //             <div>
-
-    //                 <button className={styles.goback} onClick={() => router.back()}>Go Back</button>
+    useEffect(()=>{
+getCarriersshipping().then((res)=>{
+    console.log(res,"shipping")
+}).catch((err)=>{
+    console.log(err);
+})
+    },[])
 
 
 
-    //             </div>
-    //         </div>
-    //     )
-    // }
-    // else {
+
+  
         return (
             <Fragment>
                 <>

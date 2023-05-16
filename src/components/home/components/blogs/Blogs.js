@@ -47,8 +47,10 @@ console.log(err);
         })
     }, [])
 
-    const EventNavigte=()=>{
-        history.push("/events")
+    const EventNavigte=(id)=>{
+    
+        history.push(`/blog/${id}`)
+
     }
     return (
         <Fragment>
@@ -66,9 +68,8 @@ console.log(err);
                     <div className="blog-cards row d-flex justify-content-center gap-3  ">
                         {datas?.map((item, index) => {
                             return (
-                                <div className='cards-blog  col-sm-12 col-xs-12 col-md-12 col-xl-4 mt-3 mb-3' key={index} onClick={EventNavigte}>
+                                <div className='cards-blog  col-sm-12 col-xs-12 col-md-12 col-xl-4 mt-3 mb-3' key={index} onClick={() => EventNavigte(item?.slugName)}>
                                     <div>
-                                        {/* <Image src={item?.image} alt="no image" className={styles.blogimages} /> */}
 
                                         
                                         {item?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.postImageName}`} alt="no image" className={styles.blogimages} /> : <>
@@ -76,24 +77,15 @@ console.log(err);
                                         </>}
 
                                     </div>
-                                    <div className='blog-section-split mt-2'>
-                                        {/* <div className="smalltextgrey">
-                                            {item?.title}
-                                        </div>
-                                        <div className="smalltextgrey ">
-                                            {item?.shortDescription}
-                                        </div> */}
-
-                                    </div>
-                                    <div className="mt-2">
+                                   
+                                    <div className="mt-2" onClick={() => EventNavigte(item?.slugName)}>
                                         <div>
-                                        {item?.title}
+                                     
+                                        <h6>{item?.title?.length < 10 ? <>{item?.title}</> : <>      {item?.title.slice(0, 25)}...</>}</h6>
+
 
                                             </div>
-                                            <div>
-                                        {item?.shortDescription.slice(0,40)}
-
-                                            </div>
+                                        
                                     </div>
                                 </div>
                             )
