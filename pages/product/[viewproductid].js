@@ -16,9 +16,9 @@ function index() {
 
   return (
     <LayoutHeader>
-      {/* <Head>
-        <title>Womeyn ProductView</title>
-        <meta name="description" content="Women ProductView" key="desc" />
+      <Head>
+        <title>{viewproductid}</title>
+        <meta name="description" content={`womeyn ${viewproductid}`} key="desc" />
         <meta property="og:title" content="Women ProductView" />
         <meta
           property="og:description"
@@ -28,7 +28,7 @@ function index() {
           property="og:image"
           content="https://www.womeyn.cdp360.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fwomeyn_logo.72a6530c.png&w=384&q=75"
         />
-      </Head> */}
+      </Head>
       <Viewproducts id={viewproductid} />
     </LayoutHeader>
   )

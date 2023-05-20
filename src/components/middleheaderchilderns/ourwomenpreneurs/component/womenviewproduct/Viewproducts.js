@@ -1060,18 +1060,8 @@ function Viewproducts({ id }) {
                         {productdata?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}
 
 
-                        <meta name="twitter:card" content="summary" />
-                        <meta name="twitter:site" content="https://www.womeyn.cdp360.in/" />
-                        <meta name="twitter:creator" content="https://www.womeyn.cdp360.in/" />
-                        {/* <meta property="og:url" content="http://bits.blogs.nytimes.com/2011/12/08/a-twitter-for-my-sister/" /> */}
-                        <meta property="twitter:card" content="summary_large_image" />
-                        <meta property="twitter:url" content="https://www.womeyn.cdp360.in/" />
-                        {productdata?.productName && <meta property="twitter:title" content={productdata?.productName} />}
-                        {productdata?.productDescription && <meta property="twitter:description" content={productdata?.productDescription} />}
-                        {/* <meta property="twitter:image" content={imaged} /> */}
-                        {productdata?.productThumbImage && <meta property="twitter:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}
-
-                    </Head>
+                                             
+                   </Head>
                 </> : <>
                 </>}
 
