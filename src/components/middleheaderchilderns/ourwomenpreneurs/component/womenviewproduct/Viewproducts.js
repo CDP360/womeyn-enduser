@@ -1053,19 +1053,12 @@ function Viewproducts({ id }) {
                         <meta property="og:url" content="https://www.womeyn.cdp360.in/" />
                         {productdata?.productName && <meta property="og:title" content={productdata?.productName} />}
                         {productdata?.productDescription && <meta property="og:description" content={productdata?.productDescription} />}
-                        {productdata?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}
-
-
-                                             
+                        {productdata?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}                    
                    </Head>
                 </> : <>
                 </>}
 
             </>
-
-
-
-
 
             <div className={styles.mainproductviewscreen}>
                 <div className={styles.insideproductview}>

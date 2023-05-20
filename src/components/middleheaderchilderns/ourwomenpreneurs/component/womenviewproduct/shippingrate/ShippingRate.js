@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'next/image';
 import { usePlacesWidget } from "react-google-autocomplete";
+import LoaderLogo from '../../../../../loaderlogo/LoaderLogo';
 
 
 function ShippingRate({ productdata, location }) {
@@ -14,10 +15,13 @@ function ShippingRate({ productdata, location }) {
     const [postalcodeset, setPostalCodes] = useState("");
     const [errorpost, setErrorPostCode] = useState(false);
 
-    const [shippdata,setShippData]=useState([]);
+    const [shippdata, setShippData] = useState([]);
 
 
-    const [codes,setCodes]=useState("");
+    const [codes, setCodes] = useState("");
+
+
+    const [loader, setLoader] = useState(false);
 
 
 
@@ -30,15 +34,21 @@ function ShippingRate({ productdata, location }) {
             productId: productdata?.id,
         }
 
-        if(postalcodeset?.length===0)
-        {
+        if (postalcodeset?.length === 0) {
             setErrorPostCode(true);
         }
-        if(postalcodeset){
+
+        setLoader(true);
+        if (postalcodeset) {
             postShipmentrates(forms).then((res) => {
                 setShippData(res?.rate_response?.rates[0])
+                setTimeout(() => {
+                    setLoader(false);
+                }, 600);
             }).catch((err) => {
                 console.log(err);
+                setLoader(false);
+
             })
         }
     }
@@ -47,7 +57,7 @@ function ShippingRate({ productdata, location }) {
         <div>
             <div className={styles.locationsection}>
                 <div>
-                    
+
                 </div>
                 {productdata?.isShippingRequired === 1 ? <>
                 </> : <>
@@ -60,11 +70,11 @@ function ShippingRate({ productdata, location }) {
                     </div>
                     <div className={styles.inputlocationfield}>
                         <div>
-                          
 
-                             <input type="text" placeholder='PinCode' className={styles.location}
+
+                            <input type="text" placeholder='PinCode' className={styles.location}
                                 maxLength={4}
-                              
+
                                 value={postalcodeset}
                                 onChange={(e) => setPostalCodes(e?.target?.value)}
                             />
@@ -74,34 +84,42 @@ function ShippingRate({ productdata, location }) {
                         <div>
                             <button className={styles.check} onClick={PinCodeCheck}>Check</button>
                         </div>
-                      
+
                     </div>
 
                     <div>
-{errorpost && postalcodeset?.length<=0 ?<div className="text-danger mt-1">Post Code is Required</div>:<></>}
-                        </div>
-                    {shippdata?.length===0 ?<>
-                       
-                    </>:<>
-                    <div className='mt-2'>
-
-                        <span>{shippdata?.estimated_delivery_date==null?<>
-                        Not Estimated delivery date
-                        </>:<>
-
-                        Delivery in days Thursday |
-                        
-                        
-                        </>}</span>
-
-                         <span className={styles.free}>
-                        {/* Free */}
-                        Delivery Charge 
-                            </span><span className={styles.shippingcharge}> A$ {shippdata?.shipping_amount?.amount}</span>
-                             {/* is orderd before 3:34pm */}
+                        {errorpost && postalcodeset?.length <= 0 ? <div className="text-danger mt-1">Post Code is Required</div> : <></>}
                     </div>
+
+
+                    {loader?<>
+                    <LoaderLogo/>
+                    </>:<>
+                    
+                    {shippdata?.length === 0 ? <>
+
+</> : <>
+    <div className='mt-2'>
+
+        <span>{shippdata?.estimated_delivery_date == null ? <>
+            Expected delivery date not available
+        </> : <>
+
+            Delivery in days Thursday |
+
+
+        </>}</span>
+
+        <span className={styles.free}>
+            {/* Free */}
+            Delivery Charge
+        </span><span className={styles.shippingcharge}> A$ {shippdata?.shipping_amount?.amount}</span>
+        {/* is orderd before 3:34pm */}
+    </div>
+</>}
                     </>}
                     
+
                 </>}
 
 

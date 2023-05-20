@@ -102,7 +102,7 @@ function AddressCreate({error}) {
       stateName: data?.state,
       stateShortCode:data?.stateShortCode,
       countryName: "Australia",
-      addressType:data?.addressType
+      addressType:Number(data?.addressType)
     }
 
 
@@ -163,7 +163,7 @@ router.push('/profile/address')
 
 
 
-
+const [addressTypes,setAddressTypes]=useState("");
 
   useEffect(() => {
    
@@ -184,9 +184,10 @@ router.push('/profile/address')
      setValue("state",firststate?firststate:res?.data?.stateName);
      setValue("addressType",res?.data?.addressType);
 
-     setValue("stateShortCode",firststateCode?firststateCode:res?.data?.stateShortCode?"kalai":"nazriya" );
-   
-   
+     setValue("stateShortCode",firststateCode?firststateCode:res?.data?.stateShortCode);
+    //  setCodes(res?.data?.pinCode);
+    setShortcode1(res?.data?.pinCode)
+     setAddressTypes(res?.data?.addressType)
        }).catch((err)=>{
          console.log(err);
        })
@@ -226,14 +227,14 @@ router.push('/profile/address')
       contactNumber: data?.contactno,
       alternateContactNumber: data?.alternatecontactno,
       fullAddress: data?.address,
-      pinCode: codes,
+      pinCode: codes?codes:stateshortcode1,
       landMark: data?.landmark,
       cityName: data?.city,
       stateName: data?.state,
       stateShortCode:data?.stateShortCode,
       countryName: "Australia",
       addressId:addressids?.id,
-      addressType:data?.addressType
+      addressType:Number(data?.addressType)
     }
 
     
@@ -242,11 +243,10 @@ router.push('/profile/address')
       setErrorPostCode(true);
     }
 
-    if(codes && postalcodeset)
+    if(postalcodeset)
     {
 
-      console.log(address,"addresss")
-     UpdateAddress(address).then((res) => {
+          UpdateAddress(address).then((res) => {
         toast.success("Address Updated",
           {
             position: "top-center",
@@ -267,33 +267,16 @@ router.push('/profile/address')
         console.log(err);
       })
     }
-
-
- 
-    
-
-
-  
   }
 
-
-
-
-
-
-
   const { ref } = usePlacesWidget({
-
-
-
     apiKey: `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places`,
     onPlaceSelected: (place) => {
-
       for (const component of place.address_components) {
         const componentType = component.types[0];
         if (componentType === "locality") {
 
-          
+        
       setValue("city",component.long_name?component.long_name:null)
 
       setFirstCity(component.long_name)
@@ -325,10 +308,6 @@ router.push('/profile/address')
       componentRestrictions: { country: "Aus" },
     },
   });
-
-
-
-
 
 
   return (
@@ -432,7 +411,7 @@ router.push('/profile/address')
 {errors.city && <span className="active">Post Code is Required</span>}
                        
 
-                        {errorpost && codes?.length<=0?<span className="active">Post Code is Required</span>:null}
+                        {/* {errorpost && codes?.length<=0?<span className="active">Post Code is Required</span>:null} */}
                         {errorpost && postalcodeset?.length<=0?<span className="active">Postal codeset is Required</span>:null}
                   
                       </Form.Text>
@@ -478,7 +457,7 @@ router.push('/profile/address')
 
   <Col>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label className="labelname">State ShortCode</Form.Label>
+                      <Form.Label className="labelname">State Short Code</Form.Label>
                       <Form.Control type="text" placeholder="Enter stateShortCode" className='form-control-profiles'
                          {...register("stateShortCode", {
                           required: "Please enter stateShortCode",
@@ -516,20 +495,48 @@ router.push('/profile/address')
 
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-4 mt-2" style={{cursor:"pointer"}}>
+                <Form.Label className="labelname mb-2">Address Type</Form.Label>
 
-           <Row>
+
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                
+
+                <select
+                  className='form-control-profiles'
+                  id="selectmethod"
+                  defaultValue=""
+                  name="addressType"
+                  {...register("addressType", { required: "Please enter addressType", })}
+                 
+                >
+                   <option value="" disabled>---Please Select Address Type---</option>
+                  <option value="1">Home (All Day Delivery)</option>
+                  <option value="2">Work (Delivery between 10 AM to 5.30 PM)</option>
+
+                </select>
+
+                {/* <Form.Select aria-label="Default select example"   {...register("gender", { required: "Please enter gender", })}>
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+  
+                </Form.Select> */}
+
+
+                <Form.Text className="text-muted">
+                  {errors.addressType && <span className="active">{errors.addressType.message}</span>}
+                </Form.Text>
+              </Form.Group>
+
+           {/* <Row>
 
             <Col lg="4">
             
             <Form.Check
-          
           type={"radio"}
-          label={"Home(All Day Delivery)"}
+          label={"Home (All Day Delivery)"}
           id={"1"}
-
           value="1"
-
           {...register("addressType",{
             required: "Please Select Address Type",
           })}
@@ -541,23 +548,17 @@ router.push('/profile/address')
             <Col>
             
             <Form.Check
-
           type={"radio"}
           label={"Work (Delivery between 10 AM to 5.30 PM)"}
           id={"2"}
           value="2"
-
+        
           {...register("addressType",{
             required: "Please Select Address Type",
           })}
         />
             </Col>
-
-
-            
-
-
-            </Row>
+            </Row> */}
 
           
             <Form.Text className="text-muted">

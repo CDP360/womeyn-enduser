@@ -7,12 +7,15 @@ import strip from '../../../../assests/cart-logos/Stripe-Logo1.png';
 import paypal from '../../../../assests/cart-logos/PayPal-Logo1.png';
 import Spinner from 'react-bootstrap/Spinner';
 import { toast } from 'react-toastify';
-function Payment({ totalPrice, addressid, couponname,totalvalue,checkshippingamount }) {
+function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippingamount }) {
   const [loading, setLoading] = useState(false);
   const { state } = useContext(ContextStore);
   const [orders, setOrders] = useState([]);
   const [paymentType, setPaymentType] = useState("");
   const { cart } = state;
+
+
+  console.log(checkshippingamount,"checkshippingamount")
   const paymentMethods = [
     {
       id: 1,
@@ -31,17 +34,17 @@ function Payment({ totalPrice, addressid, couponname,totalvalue,checkshippingamo
     checkshippingamount?.map((item) => {
       storesfilter.push({
         productName: item?.productName,
-        productId: item?.id,
+        productId: item?.productId,
         price: item?.salePrice,
         deliveryFee: item?.deliveryCharge,
         quantity: item?.quantity,
         variations: item?.variations,
         sellerId: item?.sellerId,
-        sellerBusinessName: item?.sellerBusinessName,
-        productThumbImage: item?.productThumbImage,
+        sellerBusinessName: item?.businessName,
+        productThumbImage: item?.imageName,
         productSlugName: item?.productSlugName,
-        gst: totalvalue,
-        rateId:item?.rateId
+        rateId: item?.rateId,
+        expectedDeliveryDate:item?.expectedDeliveryDate,
       })
     })
     setOrders(storesfilter);
@@ -57,7 +60,9 @@ function Payment({ totalPrice, addressid, couponname,totalvalue,checkshippingamo
       totalOrderAmount: totalPrice,
       customerName: userName,
       couponName: couponname,
+      gstAmount: totalvalue,
     }
+
     if (paymentType?.length === 0) {
       toast.error("Please select Payment Type!!", {
         position: "top-center",

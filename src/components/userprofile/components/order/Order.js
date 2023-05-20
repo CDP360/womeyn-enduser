@@ -21,8 +21,6 @@ function Order({error}) {
   useEffect(() => {
     setLoading(true);
     GetOrders().then((res) => {
-
-      console.log(res,"res")
       setOrders(res?.data?.results);
       setTimeout(()=>{
         setLoading(false);
