@@ -393,18 +393,20 @@ function Cart() {
                       ${cart?.cartData?.reduce((acc, current) => acc + Number(current.salePrice - current.actualPrice), 0)}
                     </div>
                   </div>} */}
-                  <div className={styles.splitcartsections}>
+                  {/* <div className={styles.splitcartsections}>
                     <div>
                       Delivery Charges</div>
                     <div className={styles.textprice}>
                       A${deliveryChargeAmount}
                     </div>
-                  </div>
+                  </div> */}
                   <div className={styles.splitcartsections}>
                     <div>
                       GST</div>
                     <div className={styles.textprice}>
-                      A${Number(Sample) + Number(chargeDelivery)}
+                      A${Number(Sample) 
+                      // + Number(chargeDelivery)
+                      }
                     </div>
                   </div>
                 </div>

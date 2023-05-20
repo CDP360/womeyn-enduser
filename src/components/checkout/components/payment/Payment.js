@@ -7,7 +7,7 @@ import strip from '../../../../assests/cart-logos/Stripe-Logo1.png';
 import paypal from '../../../../assests/cart-logos/PayPal-Logo1.png';
 import Spinner from 'react-bootstrap/Spinner';
 import { toast } from 'react-toastify';
-function Payment({ totalPrice, addressid, couponname,totalvalue }) {
+function Payment({ totalPrice, addressid, couponname,totalvalue,checkshippingamount }) {
   const [loading, setLoading] = useState(false);
   const { state } = useContext(ContextStore);
   const [orders, setOrders] = useState([]);
@@ -28,19 +28,20 @@ function Payment({ totalPrice, addressid, couponname,totalvalue }) {
 
   useEffect(() => {
     let storesfilter = [];
-    cart?.cartData?.map((item) => {
+    checkshippingamount?.map((item) => {
       storesfilter.push({
         productName: item?.productName,
         productId: item?.id,
         price: item?.salePrice,
-        deliveryFee: "40",
+        deliveryFee: item?.deliveryCharge,
         quantity: item?.quantity,
         variations: item?.variations,
         sellerId: item?.sellerId,
         sellerBusinessName: item?.sellerBusinessName,
         productThumbImage: item?.productThumbImage,
         productSlugName: item?.productSlugName,
-        gst: totalvalue
+        gst: totalvalue,
+        rateId:item?.rateId
       })
     })
     setOrders(storesfilter);

@@ -24,6 +24,9 @@ function Checkout() {
   const [step2, setStep2] = useState('');
   const [step3, setStep3] = useState('');
   const [couponname, setCouponName] = useState("");
+
+
+  const [checkshippingamount,setShippingAmount]=useState([]);
   const totalPrice = cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice + 40, 0);
   const [totalvalue, setTotalValue] = useState(0);
 
@@ -34,7 +37,9 @@ function Checkout() {
       cartpricevaues - (cartpricevaues) * 10 / 100
     )
 );
-const deliveryChargeAmount = state?.cart?.cartData?.reduce((acc, current) => acc + current.deliverycharge, 0)
+// const deliveryChargeAmount = state?.cart?.cartData?.reduce((acc, current) => acc + current.deliverycharge, 0)
+const deliveryChargeAmount = checkshippingamount.reduce((acc, current) => acc + Number(current.deliveryCharge), 0)
+
 const DeliveryChargeAmount = Math.max(
   0,
   Math.round(
@@ -126,10 +131,14 @@ const AllchargeCount=Number(cartpricevaues)+Number(deliveryChargeAmount);
                   </div>}
                   {step === 1 && <div>
                     {/* <Payment /> */}
-                    <Confirmorders name={name} totalPrice={totalPrice} setStep={setStep} step={step} setCouponName={setCouponName} />
+                    <Confirmorders name={name} totalPrice={totalPrice} setStep={setStep} step={step} setCouponName={setCouponName}  addressid={name} 
+                    setShippingAmount={setShippingAmount}
+                    />
                   </div>}
                   {step === 2 && <div>
-                    <Payment addressid={name} totalPrice={totalPrice} couponname={couponname} totalvalue={totalvalue} />
+                    <Payment addressid={name} totalPrice={totalPrice} couponname={couponname} totalvalue={totalvalue} 
+                    checkshippingamount={checkshippingamount}
+                    />
                   </div>}
                 </div>
               </div>
@@ -166,13 +175,17 @@ const AllchargeCount=Number(cartpricevaues)+Number(deliveryChargeAmount);
                         ${cart?.cartData?.reduce((acc, current) => acc + Number(current.salePrice - current.actualPrice), 0)}
                       </div> */}
                     {/* </div> */}
-                    <div className={styles.splitcartsections}>
+
+                    {deliveryChargeAmount?<>
+                      <div className={styles.splitcartsections}>
                       <div>
                         Delivery Charges</div>
                       <div className={styles.textprice}>
                         A${deliveryChargeAmount}
                       </div>
                     </div>
+                    </>:<></>}
+                    
                     <div className={styles.splitcartsections}>
                     <div>
                       GST</div>

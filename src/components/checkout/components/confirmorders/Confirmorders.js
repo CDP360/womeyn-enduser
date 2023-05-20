@@ -13,9 +13,10 @@ import { toast } from 'react-toastify';
 
 
 import cartempty from '../../../../assests/cart-logos/emptycartlogo.png';
+import { postShipmentcreate } from '../../../../services/shipping-service/shipping-service';
 
 
-function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
+function Confirmorders({ name, totalPrice, step, setStep, setCouponName, addressid, setShippingAmount }) {
   const { state, dispatch } = useContext(ContextStore);
   const [carts, setCart] = useState([]);
   const [show, setShow] = useState(false);
@@ -26,6 +27,9 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
     setShow(true)
     setDeleteid(id);
   };
+
+
+  const [finalorders, setFinalOrders] = useState([]);
 
 
 
@@ -78,7 +82,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
 
   useEffect(() => {
     setCart(state?.cart?.cartData);
-
+    ShippingOrders();
 
   }, [deleteid]);
 
@@ -129,50 +133,85 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
 
   }
 
+
+
+
+  const ShippingOrders = () => {
+
+
+    const pushShippingCart = [];
+
+    state?.cart?.cartData.map((item, index) => {
+      const filtercart = {
+        productId: item?.id,
+        quantity: item?.quantity,
+        variations: item?.variations
+      }
+      pushShippingCart.push(filtercart)
+    })
+
+    const sendShippData = {
+      products: pushShippingCart,
+      addressId: addressid
+    }
+
+    postShipmentcreate(sendShippData).then((res) => {
+      toast.success("Success data get ")
+      console.log(res, "res")
+      setFinalOrders(res);
+      setShippingAmount(res);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
+  console.log(finalorders, "finalorders")
+
   return (
 
     <Fragment>
       <div className={styles.cartsection}>
         <div className={styles.leftcartsection}>
-          <div className="d-none d-lg-block">
-            {cart?.cartData?.length > 0 ? <div className={styles.bordersectioncart}>
-              {cart?.cartData?.map((item, index) => {
-                return (
-                  <>
-                    <div className={styles.cartlistsection} key={index}>
-                      <div className={styles.cartimagesection}>
-                        <div>
-                          <img
-                            className={styles.editprofilesection}
-                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
-                            alt="profile-pic"
-                          />
-                        </div>
-                        <div>
-                          <div className="carttext">{item?.productName}
+          {finalorders?.length > 0 ? <>
+            <div className="d-none d-lg-block">
+              {finalorders?.length > 0 ? <div className={styles.bordersectioncart}>
+                {finalorders?.map((item, index) => {
+                  return (
+                    <>
+                      <div className={styles.cartlistsection} key={index}>
+                        <div className={styles.cartimagesection}>
+                          <div>
+                            <img
+                              className={styles.editprofilesection}
+                              src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`}
+                              alt="profile-pic"
+                            />
                           </div>
                           <div>
-                            <span className="saleprice"> A${item?.salePrice}</span> <span>
-                              {item?.offerPercentag == 0 ? <span></span> : <>
-                                <del className="dim">
-                                  <span>{item?.actualPrice}</span>
-                                </del>
-                              </>}
-                              {item?.offerPercentag == 0 ? <></> : <span className="offersection"> ( {item?.offerPercentag} off )</span>}
-                            </span>
-                          </div>
-                          <div>
-                            {item?.variations?.map((items, index) => {
-                              return (
-                                <div >
-                                  <span className="sizecolor">{items?.name} : {items?.value}</span>
-                                </div>
-                              )
-                            })}
+                            <div className="carttext">{item?.productName}
+                            </div>
+                            <div>
+                              <span className="saleprice"> A${item?.salePrice}</span> <span>
+                                {item?.offerPercentag == 0 ? <span></span> : <>
+                                  <del className="dim">
+                                    <span>{item?.actualPrice}</span>
+                                  </del>
+                                </>}
+                                {item?.offerPercentag == 0 ? <></> : <span className="offersection"> ( {item?.offerPercentag} off )</span>}
+                              </span>
+                            </div>
+                            <div>
+                              {item?.variations?.map((items, index) => {
+                                return (
+                                  <div >
+                                    <span className="sizecolor">{items?.name} : {items?.value}</span>
+                                  </div>
+                                )
+                              })}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      {/* <div className={styles.cartaddsection}>
+                        {/* <div className={styles.cartaddsection}>
                         <div >
                           <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() =>
                             handleRemove(index, item)
@@ -186,28 +225,36 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
                         </div>
                       </div> */}
 
-                      <div className={styles.cartaddsection}>
-                        <div >
+                        <div className={styles.cartaddsection}>
+                          {/* <div >
                           {item?.quantity == 1 ? <>
                             <Image src={minusicon} alt="no image" className={styles.carticonsadds}
-                            //   onClick={() =>
-                            //   handleRemove(index, item)
-                            // }
+                              onClick={() =>
+                              handleRemove(index, item)
+                            }
                             />
                           </> : <>
                             <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() =>
                               handleRemove(index, item)
                             } />
                           </>}
-                        </div>
-                        <div >{item?.quantity}</div>
-                        <div>
+                        </div> */}
+                          {/* <div className="text-center">
+                            <div className="sizecolor">
+                              Quantity
+                            </div>
+                            <div className={styles.quntitytext}>
+                              {item?.quantity}
+                            </div>
+
+                          </div> */}
+                          {/* <div>
 
                           {item?.quantity == item?.quantityLeft ? <>
                             <Image src={addicon} alt="no image" className={styles.carticonsadds}
-                            // onClick={() =>
-                            //   handleAdd(index, item)
-                            // } 
+                            onClick={() =>
+                              handleAdd(index, item)
+                            } 
                             />
                           </> : <>
                             <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() => {
@@ -219,100 +266,240 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
                           </>}
 
 
+                        </div> */}
+                        </div>
+                        <div className={styles.cartremovesection} onClick={() => handleShow(item)}>
+                          {/* <div>
+                            <Image src={delteteicon} alt="no image" className={styles.deleteicons} />
+                          </div>
+                          <div>
+                            Remove
+                          </div> */}
+
+<div className="text-center">
+                            <div className="sizecolor">
+                              Quantity
+                            </div>
+                            <div className={styles.quntitytext}>
+                              {item?.quantity}
+                            </div>
+
+                          </div>
                         </div>
                       </div>
-                      <div className={styles.cartremovesection} onClick={() => handleShow(item)}>
-                        <div>
-                          <Image src={delteteicon} alt="no image" className={styles.deleteicons} />
-                        </div>
-                        <div>
-                          Remove
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                )
-              })}
-            </div> : <>
-              <div className={styles.cartemptysection}>
+                    </>
+                  )
+                })}
+              </div> : <>
+                <div className={styles.cartemptysection}>
 
-                <div>
-                  <Image src={cartempty} alt="no image" className={styles.cartimage} />
-                </div>
+                  <div>
+                    <Image src={cartempty} alt="no image" className={styles.cartimage} />
+                  </div>
 
-                <div className={styles.yourcarttexts}>
+                  <div className={styles.yourcarttexts}>
 
-                  No Item to checkout please explore
+                    No Item to checkout please explore
 
-                </div>
-                {/* <div className={styles.yourcarttexts}>
+                  </div>
+                  {/* <div className={styles.yourcarttexts}>
                   Please add your products to the cart
                 </div> */}
-                <div className="mt-4 mb-5">
-                  <button className={styles.shopbutton} onClick={shopping}>Shop Now</button>
+                  <div className="mt-4 mb-5">
+                    <button className={styles.shopbutton} onClick={shopping}>Shop Now</button>
+                  </div>
                 </div>
-              </div>
-            </>}
-          </div>
+              </>}
+            </div>
+          </> : <>
 
-          <div className="d-block d-lg-none">
-
-            {cart?.cartData?.length > 0 ? <div className={styles.bordersectioncart}>
-              {cart?.cartData?.map((item, index) => {
-                return (
-                  <>
-                    <div className={styles.cartlistsection} key={index}>
-                      <div className={styles.cartimagesection}>
-                        <div>
-                          <img
-                            className={styles.editprofilesection}
-                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
-                            alt="profile-pic"
-                          />
+            <div className="d-none d-lg-block">
+              {cart?.cartData?.length > 0 ? <div className={styles.bordersectioncart}>
+                {cart?.cartData?.map((item, index) => {
+                  return (
+                    <>
+                      <div className={styles.cartlistsection} key={index}>
+                        <div className={styles.cartimagesection}>
+                          <div>
+                            <img
+                              className={styles.editprofilesection}
+                              src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
+                              alt="profile-pic"
+                            />
+                          </div>
+                          <div>
+                            <div className="carttext">{item?.productName}
+                            </div>
+                            <div>
+                              <span className="saleprice"> A${item?.salePrice}</span> <span>
+                                {item?.offerPercentag == 0 ? <span></span> : <>
+                                  <del className="dim">
+                                    <span>{item?.actualPrice}</span>
+                                  </del>
+                                </>}
+                                {item?.offerPercentag == 0 ? <></> : <span className="offersection"> ( {item?.offerPercentag} off )</span>}
+                              </span>
+                            </div>
+                            <div>
+                              {item?.variations?.map((items, index) => {
+                                return (
+                                  <div >
+                                    <span className="sizecolor">{items?.name} : {items?.value}</span>
+                                  </div>
+                                )
+                              })}
+                            </div>
+                          </div>
                         </div>
+                        {/* <div className={styles.cartaddsection}>
+                        <div >
+                          <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() =>
+                            handleRemove(index, item)
+                          } />
+                        </div>
+                        <div>{item?.quantity}</div>
                         <div>
-                          <div>{item?.productName}
+                          <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() =>
+                            handleAdd(index, item)
+                          } />
+                        </div>
+                      </div> */}
+
+                        <div className={styles.cartaddsection}>
+                          {/* <div >
+                          {item?.quantity == 1 ? <>
+                            <Image src={minusicon} alt="no image" className={styles.carticonsadds}
+                              onClick={() =>
+                              handleRemove(index, item)
+                            }
+                            />
+                          </> : <>
+                            <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() =>
+                              handleRemove(index, item)
+                            } />
+                          </>}
+                        </div> */}
+                          <div className="text-center">
+                            <div className="sizecolor">
+                              Quantity
+                            </div>
+                            <div className={styles.quntitytext}>
+                              {item?.quantity}
+                            </div>
+
+                          </div>
+                          {/* <div>
+
+                          {item?.quantity == item?.quantityLeft ? <>
+                            <Image src={addicon} alt="no image" className={styles.carticonsadds}
+                            onClick={() =>
+                              handleAdd(index, item)
+                            } 
+                            />
+                          </> : <>
+                            <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() => {
+                              handleAdd(index, item)
+                              CallCount(item)
+                            }
+
+                            } />
+                          </>}
+
+
+                        </div> */}
+                        </div>
+                        <div className={styles.cartremovesection} onClick={() => handleShow(item)}>
+                          <div>
+                            <Image src={delteteicon} alt="no image" className={styles.deleteicons} />
                           </div>
                           <div>
-                            A${item?.salePrice} <span>
-                              {item?.offerPercentag == 0 ? <span></span> : <>
-                                <del>
-                                  <span>{item?.actualPrice}</span>
-                                </del>
-                              </>}
-                              {item?.offerPercentag == 0 ? <></> : <> {item?.offerPercentag} off</>}
-                            </span>
-                          </div>
-                          <div>
-                            {/* {item?.productDescription} */}
+                            Remove
                           </div>
                         </div>
                       </div>
-                      <div className={styles.mobilecartresponsive}>
+                    </>
+                  )
+                })}
+              </div> : <>
+                <div className={styles.cartemptysection}>
+
+                  <div>
+                    <Image src={cartempty} alt="no image" className={styles.cartimage} />
+                  </div>
+
+                  <div className={styles.yourcarttexts}>
+
+                    No Item to checkout please explore
+
+                  </div>
+                  {/* <div className={styles.yourcarttexts}>
+                  Please add your products to the cart
+                </div> */}
+                  <div className="mt-4 mb-5">
+                    <button className={styles.shopbutton} onClick={shopping}>Shop Now</button>
+                  </div>
+                </div>
+              </>}
+            </div>
+
+            <div className="d-block d-lg-none">
+
+              {cart?.cartData?.length > 0 ? <div className={styles.bordersectioncart}>
+                {cart?.cartData?.map((item, index) => {
+                  return (
+                    <>
+                      <div className={styles.cartlistsection} key={index}>
+                        <div className={styles.cartimagesection}>
+                          <div>
+                            <img
+                              className={styles.editprofilesection}
+                              src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
+                              alt="profile-pic"
+                            />
+                          </div>
+                          <div>
+                            <div>{item?.productName}
+                            </div>
+                            <div>
+                              A${item?.salePrice} <span>
+                                {item?.offerPercentag == 0 ? <span></span> : <>
+                                  <del>
+                                    <span>{item?.actualPrice}</span>
+                                  </del>
+                                </>}
+                                {item?.offerPercentag == 0 ? <></> : <> {item?.offerPercentag} off</>}
+                              </span>
+                            </div>
+                            <div>
+                              {/* {item?.productDescription} */}
+                            </div>
+                          </div>
+                        </div>
+                        <div className={styles.mobilecartresponsive}>
 
 
-                        <div className={styles.cartaddsection}>
-                          <div >
+                          <div className={styles.cartaddsection}>
+                            {/* <div >
                             {item?.quantity == 1 ? <>
                               <Image src={minusicon} alt="no image" className={styles.carticonsadds}
-                              //   onClick={() =>
-                              //   handleRemove(index, item)
-                              // }
+                                onClick={() =>
+                                handleRemove(index, item)
+                              }
                               />
                             </> : <>
                               <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() =>
                                 handleRemove(index, item)
                               } />
                             </>}
-                          </div>
-                          <div >{item?.quantity}</div>
-                          <div>
+                          </div> */}
+                            <div >{item?.quantity}</div>
+                            {/* <div>
 
                             {item?.quantity == item?.quantityLeft ? <>
                               <Image src={addicon} alt="no image" className={styles.carticonsadds}
-                              // onClick={() =>
-                              //   handleAdd(index, item)
-                              // } 
+                              onClick={() =>
+                                handleAdd(index, item)
+                              } 
                               />
                             </> : <>
                               <Image src={addicon} alt="no image" className={styles.carticonsadd} onClick={() => {
@@ -324,10 +511,10 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
                             </>}
 
 
+                          </div> */}
                           </div>
-                        </div>
 
-                        {/* <div className={styles.cartaddsection}>
+                          {/* <div className={styles.cartaddsection}>
                           <div>
                             <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() =>
                               handleRemove(index, item)
@@ -340,27 +527,29 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName }) {
                             } />
                           </div>
                         </div> */}
-                        <div className={styles.cartremovesection} onClick={() => handleShow(item)}>
-                          <div>
-                            <Image src={delteteicon} alt="no image" className={styles.deleteicons} />
-                          </div>
-                          <div className="d-none d-md-block">
-                            Remove
+                          <div className={styles.cartremovesection} onClick={() => handleShow(item)}>
+                            <div>
+                              <Image src={delteteicon} alt="no image" className={styles.deleteicons} />
+                            </div>
+                            <div className="d-none d-md-block">
+                              Remove
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </>
-                )
-              })}
-            </div> : <>
-              <div className={styles.cartemptysection}>
-                Cart Is Empty. <span className={styles.shoppingcartempty} onClick={shopping}>Go Shopping</span>
-              </div>
-            </>}
+                    </>
+                  )
+                })}
+              </div> : <>
+                <div className={styles.cartemptysection}>
+                  Cart Is Empty. <span className={styles.shoppingcartempty} onClick={shopping}>Go Shopping</span>
+                </div>
+              </>}
 
 
-          </div>
+            </div>
+          </>}
+
         </div>
 
 
