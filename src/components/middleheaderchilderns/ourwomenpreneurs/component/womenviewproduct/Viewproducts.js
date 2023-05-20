@@ -1050,10 +1050,6 @@ function Viewproducts({ id }) {
                     <Head >
                         {productdata?.productName && <title>{productdata?.productName > 10 ? <>{productdata?.productName}</> : <>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.</>}</title>}
                         {productdata?.productName && <meta name="title" content={`Womeyn ${productdata?.productName}`} />}
-                        {/* <meta name="description" content={productdata?.productDescription} /> */}
-                        <meta property="og:locale" content="en_US" />
-                        <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
-                        <meta property="og:type" content="women" />
                         <meta property="og:url" content="https://www.womeyn.cdp360.in/" />
                         {productdata?.productName && <meta property="og:title" content={productdata?.productName} />}
                         {productdata?.productDescription && <meta property="og:description" content={productdata?.productDescription} />}

@@ -145,12 +145,12 @@ function Cart() {
                         <div className={styles.cartlistsection} key={index}>
 
                           <div className={styles.cartimagesection}>
-                            <div className={styles.deliverycharge}>
+                            {/* <div className={styles.deliverycharge}>
 
                               {item?.deliverycharge ? <>
                                 Delivery Charge : A$ {item?.deliverycharge}
                               </> : <>FREE Delivery</>}
-                            </div>
+                            </div> */}
                             <div onClick={()=>CartNavigateProductView(item?.productSlugName)}>
                               <img
                                 className={styles.editprofilesection}
