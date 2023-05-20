@@ -6,6 +6,7 @@ import styles from "./styles/Layoutheader.module.scss";
 import Footer from "./../footer/Footer";
 import Signupnewsletter from "../home/components/signupfornewsletter/Signupnewsletter";
 import Childfooter from "./../footer/Childfooter";
+import Script from "next/script";
 function LayoutHeader({ setdark, dark, title, children }) {
   useEffect(() => { }, []);
   return (

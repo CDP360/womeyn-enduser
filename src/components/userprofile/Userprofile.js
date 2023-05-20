@@ -7,6 +7,9 @@ import { toast } from 'react-toastify';
 import Profile from './components/profile/Profile';
 import EditProfile from './components/profile/editprofile/EditProfile';
 import Manageaddress from './components/manageaddress/Manageaddress';
+
+
+
 import Changepassword from './components/changepassword/Changepassword';
 import Favorts from './components/favorts/Favorts';
 import Orders from './components/order/Order';
@@ -14,11 +17,13 @@ import Coupon from './components/coupons/Coupons';
 import ServiceMaindetails from './components/servicedetails/ServiceMaindetails';
 import { useSelector } from 'react-redux';
 import Help from '../help/Help';
+import AddressCreate from './components/manageaddress/addresscreate/AddressCreate';
 function Userprofile({ name, error }) {
     const history = useRouter();
     const [user, setUser] = useState([]);
     const [errors, setError] = useState(false);
     const state = useSelector((state) => state);
+
     useEffect(() => {
         const womentoken = localStorage.getItem("userToken");
         if (JSON.parse(womentoken)) {
@@ -31,6 +36,8 @@ function Userprofile({ name, error }) {
 
 
     }, [state]);
+
+
 
 
     const CheckTokenUser = async () => {
@@ -108,10 +115,17 @@ function Userprofile({ name, error }) {
                             </div>}
 
                             {name == "address" && <div>
-
-                                <Manageaddress error={errors} />
+                                <Manageaddress error={errors}  />
                             </div>
+                            
                             }
+
+{name == "addresscreate" && <div>
+                               <AddressCreate  error={errors} />
+                            </div>}
+
+                          
+                            
                             {name == "changepassword" && <div>
                                 <Changepassword error={errors} />
                             </div>

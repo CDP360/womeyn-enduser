@@ -20,6 +20,7 @@ import { useRouter } from 'next/router';
 
 import dynamic from 'next/dynamic';
 import Orderdetails from './../order/components/orderdetails/Orderdetails';
+import Googleautocomplete from '../../../googleautocompleteaddress/Googleautocomplete';
 function Manageaddress({ error }) {
   const [pincodeaus, setPincodeAus] = useState("");
   const [stateaus, setStateAus] = useState("");
@@ -50,18 +51,18 @@ function Manageaddress({ error }) {
   useEffect(() => {
     getAddressdata();
 
-    SingleAddress(editaddressid).then((res)=>{
-setValue("name",res?.data?.name);
-setValue("contactno",res?.data?.contactNumber);
-setValue("alternatecontactno",res?.data?.alternateContactNumber);
-setValue("address",res?.data?.fullAddress);
-setValue("pincode",res?.data?.pinCode);
-setValue("landmark",res?.data?.landMark);
-setValue("city",res?.data?.cityName);
-setValue("state",res?.data?.stateName);
-    }).catch((err)=>{
-      console.log(err);
-    })
+//     SingleAddress(editaddressid).then((res)=>{
+// setValue("name",res?.data?.name);
+// setValue("contactno",res?.data?.contactNumber);
+// setValue("alternatecontactno",res?.data?.alternateContactNumber);
+// setValue("address",res?.data?.fullAddress);
+// setValue("pincode",res?.data?.pinCode);
+// setValue("landmark",res?.data?.landMark);
+// setValue("city",res?.data?.cityName);
+// setValue("state",res?.data?.stateName);
+//     }).catch((err)=>{
+//       console.log(err);
+//     })
 
 
     if (error) {
@@ -119,6 +120,9 @@ setValue("state",res?.data?.stateName);
     })
   }
   const DeleteAddressUser = () => {
+
+
+  
     setRemoveloading(true);
     DeleteAddress(deleteaddressid).then((res) => {
       toast.success("Delete Address",
@@ -132,53 +136,73 @@ setValue("state",res?.data?.stateName);
           progress: undefined,
           theme: "dark",
         });
+
+      
       setTimeout(() => {
-        window.location.reload();
+        // window.location.reload();
         setRemoveloading(false);
+        handleClosedelete();
+
       }, 400)
     }).catch((err) => {
       console.log(err);
     })
+
+    const Filterdata=getaddress?.filter((item)=>{
+      return item?.id!==deleteaddressid
+    })
+    setAddress(Filterdata);
   }
 
   const EditAddress=(id)=>{
-    handleShow();
-    setEditaddressId(id);
+     
+       router.push({
+        pathname: '/profile/addresscreate',
+        query:{id:id},
+    })
+  
 
   }
 
 
-  const UpdateAddresss=(data)=>{
-    const address = {
-      name: data?.name,
-      contactNumber: data?.contactno,
-      alternateContactNumber: data?.alternatecontactno,
-      fullAddress: data?.address,
-      pinCode: data?.pincode,
-      landMark: data?.landmark,
-      cityName: data?.city,
-      stateName: data?.state,
-      countryName: "Australia",
-      addressId:editaddressid
-    }
-    UpdateAddress(address).then((res) => {
-      toast.success("Address Updated",
-        {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        }
-      );
-      window.location.reload();
-      handleClose();
-    }).catch((err) => {
-      console.log(err);
-    })
+  // const UpdateAddresss=(data)=>{
+  //   const address = {
+  //     name: data?.name,
+  //     contactNumber: data?.contactno,
+  //     alternateContactNumber: data?.alternatecontactno,
+  //     fullAddress: data?.address,
+  //     pinCode: data?.pincode,
+  //     landMark: data?.landmark,
+  //     cityName: data?.city,
+  //     stateName: data?.state,
+  //     countryName: "Australia",
+  //     addressId:editaddressid
+  //   }
+  //   UpdateAddress(address).then((res) => {
+  //     toast.success("Address Updated",
+  //       {
+  //         position: "top-center",
+  //         autoClose: 3000,
+  //         hideProgressBar: false,
+  //         closeOnClick: true,
+  //         pauseOnHover: true,
+  //         draggable: true,
+  //         progress: undefined,
+  //         theme: "dark",
+  //       }
+  //     );
+  //     window.location.reload();
+  //     handleClose();
+  //   }).catch((err) => {
+  //     console.log(err);
+  //   })
+  // }
+
+
+  const NavigateAddress=()=>{
+    router.push("/profile/addresscreate"
+     );
+
   }
 
   return (
@@ -191,11 +215,10 @@ setValue("state",res?.data?.stateName);
                 <div className="commonprofiletextsize" >
                   Manage Address
                 </div>
-
               </div>
               <div className={styles.rightaddresssection}>
                 <div>
-                  <button className={styles.addbuttonnew} onClick={handleShow} >Add new address</button>
+                  <button className={styles.addbuttonnew} onClick={NavigateAddress} >+ Add new address</button>
                 </div>
               </div>
             </div>
@@ -262,7 +285,7 @@ setValue("state",res?.data?.stateName);
             <div>
               <div className={styles.rightaddresssection}>
                 <div>
-                  <button className={styles.addbuttonnew} onClick={handleShow} >Add new address</button>
+                  <button className={styles.addbuttonnew} onClick={NavigateAddress} >Add new address</button>
                 </div>
               </div>
             </div>
@@ -270,25 +293,11 @@ setValue("state",res?.data?.stateName);
         </div>
       </div>
 
-      <div>
-        <Modal
-          show={show}
-          onHide={handleClose}
-          backdrop="static"
-          keyboard={false}
-          size="lg"
-          centered
-        >
+   
 
-
-        </Modal>
-
-      </div>
-
-
-
+ 
       <>
-        <Modal
+        {/* <Modal
           show={show}
           onHide={handleClose}
           backdrop="static"
@@ -307,6 +316,7 @@ setValue("state",res?.data?.stateName);
                 </div>
               </div>
               <div className="mt-3">
+
 
 
                 <Row>
@@ -444,7 +454,13 @@ setValue("state",res?.data?.stateName);
                       </Form.Text>
                     </Form.Group>
                   </Col>
+                  <Col>
+                  <div >
+                  <Googleautocomplete/>
+</div>
+                  </Col>
                 </Row>
+             
               </div>
               <div className={styles.buttonsectionaddress}>
                 <div >
@@ -469,7 +485,7 @@ setValue("state",res?.data?.stateName);
             </div>
           </Modal.Body>
 
-        </Modal>
+        </Modal> */}
 
         <div>
 
@@ -493,7 +509,7 @@ setValue("state",res?.data?.stateName);
               </div>
               <div className={styles.pathbuttonsplit}>
 
-                <div className={styles.cancelbutton}>Cancel</div>
+                <div className={styles.cancelbutton} onClick={handleClosedelete}>Cancel</div>
                 <div className={styles.removebutton} onClick={DeleteAddressUser}>
 
                   {removeloading ? <>
@@ -519,7 +535,7 @@ setValue("state",res?.data?.stateName);
           </Modal>
 
         </div>
-      </>
+      </> 
 
     </>
 

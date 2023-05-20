@@ -60,7 +60,17 @@ function Eventsupdate() {
                     <div className={styles.insidecontentsectionevent}>
                         
                         <div>
-                            <Image src={eventbaner} alt="no image" className={styles.eventbannerimage} />
+                            {/* <Image src={eventbaner} alt="no image" className={styles.eventbannerimage} /> */}
+
+                            <div className={styles.leftbannerblogs}>
+
+
+                            </div>
+
+                            <div className={styles.rightbannerblogs}>
+
+
+</div>
                         </div>
                         <div className={styles.bordertopeventsection}>
                             <div className={styles.borderinsidesection}>
@@ -101,12 +111,7 @@ function Eventsupdate() {
                                                 </div>
                                                 <div className={styles.sportslistsection}>
 
-                                                <div className="d-flex justify-content-between">
-<div>Start : {item?.startDate}</div>
-<div>End :{item?.endDate}</div>
-
-                                                    </div>
-                                                    <div>
+                                                    <div className={styles.titleevents}>
                                                         {/* <span className={styles.activesports}> SPORT</span> - January 25, 2022 */}
                                                         {item?.title}
                                                     </div>
@@ -115,6 +120,12 @@ function Eventsupdate() {
                                                     </div>
                                                     <div className={styles.loramsevents}>
                                                         {item?.description.slice(0,100)}
+                                                    </div>
+
+                                                    <div className="d-flex justify-content-between">
+<div>Start : {item?.startDate}</div>
+<div>End :{item?.endDate}</div>
+
                                                     </div>
                                                 </div>
                                             </div>

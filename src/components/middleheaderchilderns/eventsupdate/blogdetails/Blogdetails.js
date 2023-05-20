@@ -10,7 +10,6 @@ function Blogdetails({ id }) {
     useEffect(() => {
         getSingleEvent(id).then((res) => {
             setViewBlog(res?.data)
-
             console.log(res?.data, "kl")
         }).catch((err) => {
             console.log(err);

@@ -104,7 +104,7 @@ function Header() {
         }).catch((err) => {
             console.log(err);
         })
-        FavortActions(dispatch);
+        // FavortActions(dispatch);
         FilterData();
         SearchProductCategorys().then((res) => {
             setSearchDataCategory(res?.data);

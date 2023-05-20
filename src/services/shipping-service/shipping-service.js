@@ -1,4 +1,6 @@
 import ShippingApiUrl from "../../config/shippingurl"
+import instanceBaseurl from './../../config/Baseurl';
+
 
 export function getCarriersshipping() {
     return new Promise((resolve, reject) => {
@@ -29,3 +31,14 @@ export function postShipment(data) {
         })
     })
 }
+
+export function postShipmentrates(data) {
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.post('/common/rates',data).then((res) => {
+            resolve(res?.data);
+        }).catch((err) => {
+            reject(err);
+        })
+    })
+}
+
