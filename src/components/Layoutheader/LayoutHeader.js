@@ -132,33 +132,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
         </div>
       </div>
 
-      {/* 
-            <div className={styles.mainsectionlayout}>
-
-                <div className={styles.insidesectionlayout}>
-
-                    <div className={styles.headertopsection}>
-                        <div className={`d-none d-lg-block`}>
-                            <Header setdark={setdark} dark={dark} />
-                        </div>
-                        <div className={`d-block d-lg-none`}>
-                            <MobileHeader setdark={setdark} dark={dark} />
-                        </div>
-
-                    </div>
-
-                    <main>
-
-                        {children}
-
-                    </main>
-                    <footer>
-                        <div>
-                            <Footer />
-                        </div>
-                    </footer>
-                </div>
-            </div> */}
+   
     </>
   );
 }

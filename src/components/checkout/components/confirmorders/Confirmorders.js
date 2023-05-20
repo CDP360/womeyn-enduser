@@ -156,8 +156,6 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
     }
 
     postShipmentcreate(sendShippData).then((res) => {
-      toast.success("Success data get ")
-      console.log(res, "res")
       setFinalOrders(res);
       setShippingAmount(res);
     }).catch((err) => {

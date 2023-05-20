@@ -102,6 +102,7 @@ function AddressCreate({error}) {
       stateName: data?.state,
       stateShortCode:data?.stateShortCode,
       countryName: "Australia",
+      addressType:data?.addressType
     }
 
 
@@ -181,6 +182,8 @@ router.push('/profile/address')
    setPostalCodes(codes?codes:res?.data?.pinCode);
      setValue("city",firstcity?firstcity:res?.data?.cityName);
      setValue("state",firststate?firststate:res?.data?.stateName);
+     setValue("addressType",res?.data?.addressType);
+
      setValue("stateShortCode",firststateCode?firststateCode:res?.data?.stateShortCode?"kalai":"nazriya" );
    
    
@@ -229,7 +232,8 @@ router.push('/profile/address')
       stateName: data?.state,
       stateShortCode:data?.stateShortCode,
       countryName: "Australia",
-      addressId:addressids?.id
+      addressId:addressids?.id,
+      addressType:data?.addressType
     }
 
     
@@ -512,6 +516,57 @@ router.push('/profile/address')
 
                 </div>
 
+                <div className="mb-3">
+
+           <Row>
+
+            <Col lg="4">
+            
+            <Form.Check
+          
+          type={"radio"}
+          label={"Home(All Day Delivery)"}
+          id={"1"}
+
+          value="1"
+
+          {...register("addressType",{
+            required: "Please Select Address Type",
+          })}
+        />
+            </Col>
+
+
+
+            <Col>
+            
+            <Form.Check
+
+          type={"radio"}
+          label={"Work (Delivery between 10 AM to 5.30 PM)"}
+          id={"2"}
+          value="2"
+
+          {...register("addressType",{
+            required: "Please Select Address Type",
+          })}
+        />
+            </Col>
+
+
+            
+
+
+            </Row>
+
+          
+            <Form.Text className="text-muted">
+                        {errors.addressType && <span className="active">{errors.addressType.message}</span>}
+                      </Form.Text>
+
+
+                  </div>
+
 
                 <div>
                 <Row>
@@ -519,7 +574,7 @@ router.push('/profile/address')
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label className="labelname">Address</Form.Label>
                       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                        <Form.Control as="textarea" rows={3}
+                        <Form.Control as="textarea" rows={5}
                           className='form-control-profiles'
                           placeholder="Enter Address"
                           {...register("address", {

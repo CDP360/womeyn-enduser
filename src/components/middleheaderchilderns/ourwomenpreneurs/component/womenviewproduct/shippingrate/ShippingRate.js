@@ -20,8 +20,6 @@ function ShippingRate({ productdata, location }) {
     const [codes,setCodes]=useState("");
 
 
-    console.log(shippdata,"shippdata")
-
 
     useEffect(() => {
     }, [])
@@ -45,55 +43,11 @@ function ShippingRate({ productdata, location }) {
         }
     }
 
-
-
-    // const { ref } = usePlacesWidget({
-
-
-
-    //     apiKey: `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places`,
-    //     onPlaceSelected: (place) => {
-
-    //         for (const component of place.address_components) {
-    //             const componentType = component.types[0];
-    //             if (componentType === "locality") {
-
-
-    //                 //   setValue("city",component.long_name?component.long_name:null)
-
-    //                 //   setFirstCity(component.long_name)
-
-
-    //             }
-    //             if (componentType === "administrative_area_level_1") {
-    //                 //   setValue("state",component.long_name?component.long_name:null)
-    //                 //   setFirstState(component.long_name?component.long_name:null);
-    //                 //   setValue("stateShortCode",component.short_name)
-    //                 //   setstateShortCode(component.short_name)
-    //             }
-    //             if (componentType === "country") {
-    //                 if (component.long_name === "Australia") {
-    //                     //   setValue("country","Australia")
-    //                 }
-    //             }
-    //             if (componentType === "postal_code") {
-    //                 setPostalCodes(component.long_name);
-    //                 setCodes(component.long_name);
-    //             }
-
-    //         }
-
-
-    //     },
-    //     options: {
-    //         types: ["(regions)"],
-    //         componentRestrictions: { country: "Aus" },
-    //     },
-    // });
     return (
         <div>
             <div className={styles.locationsection}>
                 <div>
+                    
                 </div>
                 {productdata?.isShippingRequired === 1 ? <>
                 </> : <>
@@ -106,12 +60,7 @@ function ShippingRate({ productdata, location }) {
                     </div>
                     <div className={styles.inputlocationfield}>
                         <div>
-                            {/* <input type="text" placeholder='PinCode' className={styles.location}
-                                maxLength={4}
-                                ref={ref}
-                                value={postalcodeset || codes}
-                                onChange={(e) => setPostalCodes(e?.target?.value)}
-                            /> */}
+                          
 
                              <input type="text" placeholder='PinCode' className={styles.location}
                                 maxLength={4}
