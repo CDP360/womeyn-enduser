@@ -15,7 +15,7 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
   const { cart } = state;
 
 
-  console.log(checkshippingamount,"checkshippingamount")
+  console.log(checkshippingamount, "checkshippingamount")
   const paymentMethods = [
     {
       id: 1,
@@ -44,7 +44,7 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
         productThumbImage: item?.imageName,
         productSlugName: item?.productSlugName,
         rateId: item?.rateId,
-        expectedDeliveryDate:item?.expectedDeliveryDate,
+        expectedDeliveryDate: item?.expectedDeliveryDate,
       })
     })
     setOrders(storesfilter);
