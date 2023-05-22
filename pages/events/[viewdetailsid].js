@@ -7,7 +7,6 @@ import Blogdetails from './../../src/components/middleheaderchilderns/eventsupda
 function viewdetailsid() {
   const router = useRouter();
   const { viewdetailsid } = router.query;
-
   return (
     <LayoutHeader>
       <Head>

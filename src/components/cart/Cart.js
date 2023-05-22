@@ -419,7 +419,7 @@ function Cart() {
                     {/* {(Number(Sample))+(Number(chargeDelivery))} */}
                   </div>
                   <div className={styles.textprices}>
-                    A${Number(AllchargeCount) + Number(OverallTotalPrice)}
+                    A${Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))}
                     {/* A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)} */}
                   </div>
                 </div>

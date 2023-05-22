@@ -1,15 +1,30 @@
-@use "../../../../../../scss/abstract/" as *;
+@use '../../../../../../scss/abstract/' as *;
+
 
 .mainaddresspage {
-    width: 100%;
-    // border: 2px solid blue;
+    width: 60%;
+    margin:0 auto;
     border: 1px solid #9f9f9f;
+  
     border-radius: 15px;
     padding:3%;
+
+    @include xsBreakPoint
+    {
+        width:90%;
+    }
+       
+    @include smBreakPoint
+    {
+        width:90%;
+    }
+    @include mdBreakPoint
+    {
+        width:90%;
+    }
    
     .insideaddresspage {
         width: 100%;
-        // border: 4px solid orange;
         // padding-top:3%;
         
         .topsectionaddress {
@@ -346,6 +361,10 @@ background-color:white;
         }
 
         @include smBreakPoint
+        {
+            width:10%;
+        }
+        @include mdBreakPoint
         {
             width:10%;
         }

@@ -95,14 +95,15 @@ function AddressCreate({ error }) {
       name: data?.name,
       contactNumber: data?.contactno,
       alternateContactNumber: data?.alternatecontactno,
-      fullAddress: data?.address,
+      // fullAddress: data?.address,
       pinCode: codes,
       landMark: data?.landmark,
       cityName: data?.city,
       stateName: data?.state,
       stateShortCode: data?.stateShortCode,
       countryName: "Australia",
-      addressType: Number(data?.addressType)
+      addressType: Number(data?.addressType),
+      addressLineOne:data?.addressLineOne
     }
 
 
@@ -173,7 +174,7 @@ function AddressCreate({ error }) {
         setValue("name", res?.data?.name);
         setValue("contactno", res?.data?.contactNumber);
         setValue("alternatecontactno", res?.data?.alternateContactNumber);
-        setValue("address", res?.data?.fullAddress);
+        // setValue("address", res?.data?.fullAddress);
         // setValue("pincode",res?.data?.pinCode);
         setValue("landmark", res?.data?.landMark);
         setPostalCodes(codes ? codes : res?.data?.pinCode);
@@ -185,6 +186,8 @@ function AddressCreate({ error }) {
         //  setCodes(res?.data?.pinCode);
         setShortcode1(res?.data?.pinCode)
         setAddressTypes(res?.data?.addressType)
+        setAddressTypes("addressLineOne",res?.data?.addressLineOne)
+
       }).catch((err) => {
         console.log(err);
       })
@@ -223,7 +226,7 @@ function AddressCreate({ error }) {
       name: data?.name,
       contactNumber: data?.contactno,
       alternateContactNumber: data?.alternatecontactno,
-      fullAddress: data?.address,
+      // fullAddress: data?.address,
       pinCode: codes ? codes : stateshortcode1,
       landMark: data?.landmark,
       cityName: data?.city,
@@ -231,7 +234,8 @@ function AddressCreate({ error }) {
       stateShortCode: data?.stateShortCode,
       countryName: "Australia",
       addressId: addressids?.id,
-      addressType: Number(data?.addressType)
+      addressType: Number(data?.addressType),
+      addressLineOne:data?.addressLineOne
     }
 
 
@@ -335,14 +339,30 @@ function AddressCreate({ error }) {
               <Col>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label className="labelname">Contact Number</Form.Label>
-                  <Form.Control type="text" placeholder="Enter Contact No" className='form-control-profiles'
+                  {/* <Form.Control type="text" placeholder="Enter Contact No" className='form-control-profiles'
                     {...register("contactno", {
                       required: "Please enter Contact No",
 
                     })}
                     maxLength={9}
 
-                  />
+                  /> */}
+
+<div className={styles.formcontrolscontact}>
+<div className={styles.numbercontactsections}>
+    +61
+</div>
+<div className="col-lg-11">
+<input type="text" placeholder="Enter Alternate Contactno" className={styles.contactformbox   }
+                                       {...register("contactno", {
+                                        required: "Please enter Contact No",
+                                      })}
+                                      maxLength={9}
+
+                                />
+</div>
+
+                                </div>
                   <Form.Text className="text-muted">
                     {errors.contactno && <span className="active">{errors.contactno.message}</span>}
                   </Form.Text>
@@ -356,7 +376,7 @@ function AddressCreate({ error }) {
               <Col>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label className="labelname">Alternate Contact Number</Form.Label>
-                  <Form.Control type="text" placeholder="Enter Alternate Contact No" className='form-control-profiles'
+                  {/* <Form.Control type="text" placeholder="Enter Alternate Contact No" className='form-control-profiles'
                     {...register("alternatecontactno", {
                       required: "Please enter Alternate Contact No",
                     })}
@@ -364,7 +384,27 @@ function AddressCreate({ error }) {
                   />
                   <Form.Text className="text-muted">
                     {errors.alternatecontactno && <span className="active">{errors.alternatecontactno.message}</span>}
-                  </Form.Text>
+                  </Form.Text> */}
+
+<div className={styles.formcontrolscontact}>
+<div className={styles.numbercontactsections}>
+    +61
+</div>
+<div className="col-lg-11">
+<input type="text" placeholder="Enter Alternate Contactno" className={styles.contactformbox   }
+                                       {...register("alternatecontactno", {
+                                        required: "Please enter Alternate Contactno",
+                                      })}
+                                      maxLength={9}
+
+                                />
+</div>
+
+                                </div>
+
+                                <Form.Text className="text-muted">
+                    {errors.alternatecontactno && <span className="active">{errors.alternatecontactno.message}</span>}
+                  </Form.Text> 
                 </Form.Group>
               </Col>
 
@@ -394,14 +434,14 @@ function AddressCreate({ error }) {
                     <Form.Control as="textarea" rows={2}
                       className='form-control-profiles'
                       placeholder="Enter Address"
-                      {...register("address", {
-                        required: "Please enter Address",
+                      {...register("addressLineOne", {
+                        required: "Please enter address 1",
                       })}
                       maxlength={51}
                     />
                   </Form.Group>
                   <Form.Text className="text-muted">
-                    {errors.address && <span className="active">{errors.address.message}</span>}
+                    {errors.addressLineOne && <span className="active">{errors.addressLineOne.message}</span>}
                   </Form.Text>
                 </Form.Group>
               </Col>
@@ -580,9 +620,9 @@ function AddressCreate({ error }) {
             </Row> */}
 
 
-            <Form.Text className="text-muted">
+            {/* <Form.Text className="text-muted">
               {errors.addressType && <span className="active">{errors.addressType.message}</span>}
-            </Form.Text>
+            </Form.Text> */}
 
 
           </div>

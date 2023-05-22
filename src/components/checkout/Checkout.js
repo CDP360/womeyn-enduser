@@ -202,7 +202,7 @@ const AllchargeCount=Number(cartpricevaues)+Number(deliveryChargeAmount);
                       Total Payable</div>
                     <div className={styles.textprices}>
 
-                    A${Number(AllchargeCount) + Number(OverallTotalPrice)}
+                    A${Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))}
                       {/* A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0) + Number(Sample) + Number(deliveryChargeAmount)} */}
 
                     </div>

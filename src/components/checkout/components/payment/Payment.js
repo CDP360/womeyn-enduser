@@ -45,6 +45,8 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
         productSlugName: item?.productSlugName,
         rateId: item?.rateId,
         expectedDeliveryDate: item?.expectedDeliveryDate,
+        salePriceGST:item?.salePriceGST,
+        deliveryChargeGST:item?.deliveryChargeGST
       })
     })
     setOrders(storesfilter);
@@ -94,6 +96,7 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
 
   }
 
+  console.log(checkshippingamount,"checkshippingamount")
   const onOptionChange = (e) => {
     setPaymentType(e.target.value);
   }
