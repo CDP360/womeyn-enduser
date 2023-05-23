@@ -236,7 +236,7 @@ function Manageaddress({ error }) {
                             <Image src={maplocation} alt="no image" className={styles.map} />
                           </div>
                           <div className={styles.rightaddress}>
-                            <div>
+                            {/* <div>
                               {item?.name}
                             </div>
                             <div>
@@ -247,9 +247,21 @@ function Manageaddress({ error }) {
                             </div>
                             <div>
                               {item?.cityName}
-                            </div>
+                            </div> */}
+
                             <div>
-                              {item?.fullAddress}
+                            {item?.name} , <span className={styles.workspace}>{item?.addressType===1?"HOME":"WORK"}</span> <span> ContactNo : {item?.contactNumber}</span>
+
+                              </div>
+
+                              <div>
+                              {item?.cityName},<>{item?.stateName}</>,<> {item?.countryName}</>,<> {item?.landMark}</>,<> {item?.pinCode}</>
+
+                                </div>
+                            <div>
+                            <div className={`mb-2 ${styles.addressorders}`}>
+                        {item?.addressLineOne}
+                      </div>
                             </div>
                             <div className={styles.splitedits}>
                               <div className={styles.editaddresss} onClick={()=>EditAddress(item?.id)}>

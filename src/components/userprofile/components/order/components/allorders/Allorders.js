@@ -8,9 +8,10 @@ import { CustomerOrderCancel } from "../../../../../../services/customer-order-s
 import { toast } from 'react-toastify';
 import Reviewmodel from './reviewmodel/Reviewmodel';
 import LoaderLogo from '../../../../../loaderlogo/LoaderLogo';
-function Allorders({ Orders, traking, loading }) {
+function Allorders({ Orders, traking, loading,setTrackId }) {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
+  const [loadings,setLoadings]=useState(false);
   const [deleteid, setDeleteid] = useState("");
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
@@ -30,7 +31,7 @@ function Allorders({ Orders, traking, loading }) {
       handleClose();
       CustomerOrderCancel(e).then((res) => {
         toast.success(res?.data?.message);
-        window.location.reload();
+        setLoadings(true);
       }).catch((err) => {
         console.log(err);
       })
@@ -43,8 +44,17 @@ function Allorders({ Orders, traking, loading }) {
     history.push(`/product/${data}`)
   }
   useEffect(() => {
-  }, [deleteid, Orders]);
+    setLoadings(false);
+  }, [deleteid, Orders,loadings]);
 
+
+  const NavigateTrackid=(id)=>{
+
+    history.push({
+      pathname: '/order/tracking',
+      query:{id:id},
+  })
+  }
 
   useEffect(() => {
 
@@ -188,7 +198,7 @@ function Allorders({ Orders, traking, loading }) {
 
                                 {item?.stateId === 4 || item?.stateId === 5 || item?.stateId == 6 ? <></> : <div className={styles.thirdimagesection}>
                                   <div>
-                                    <button className={styles.trackingbuttons} onClick={traking}>Track</button>
+                                    <button className={styles.trackingbuttons} onClick={()=>NavigateTrackid(item?.orderId)}>Track</button>
                                   </div>
                                   <div className="mt-3">
                                     <div>

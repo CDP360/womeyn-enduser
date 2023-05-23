@@ -14,8 +14,17 @@ function Order({error}) {
   const history = useRouter();
   const [Orders, setOrders] = useState([]);
   const [loading,setLoading]=useState(false);
+  const [trackid,setTrackId]=useState("");
+
+  console.log(trackid,"trackid")
+
   const traking = () => {
-    history.push("/order/tracking");
+    
+
+  //   history.push({
+  //     pathname: '/order/tracking',
+  //     query:{id:"WOD1230423135443632"},
+  // })
   };
   const [step, setStep] = useState(0);
   useEffect(() => {
@@ -42,7 +51,7 @@ function Order({error}) {
 
         history.push("/login");
     }
-  }, [error]);
+  }, [error,trackid]);
 
 
 
@@ -113,7 +122,7 @@ function Order({error}) {
               <hr className={styles.hrSub} />
             </div>
             {step === 0 && <div>
-              <Allorders Orders={Orders} traking={traking} loading={loading}/>
+              <Allorders Orders={Orders} traking={traking} loading={loading} setTrackId={setTrackId}/>
             </div>}
             {step === 1 && <div>
               <Inprogress Orders={Orders} traking={traking} loading={loading}/>

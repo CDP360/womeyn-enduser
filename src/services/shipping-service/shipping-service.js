@@ -56,3 +56,14 @@ export function postShipmentcreate(data) {
         })
     })
 }
+
+
+export function getShipmentTrack(id) {
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.get(`/customer/track/${id}`).then((res) => {
+            resolve(res?.data);
+        }).catch((err) => {
+            reject(err);
+        })
+    })
+}
