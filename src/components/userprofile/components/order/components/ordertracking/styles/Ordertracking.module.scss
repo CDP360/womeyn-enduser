@@ -193,6 +193,10 @@ padding:0px 20px;
             .cancel {
               color: #e95a5a;
               margin-top: 14%;
+              background: rgba(233, 90, 90, 0.2);
+              padding:8px 14px;
+              border-radius:10px;
+              cursor: pointer;
               @include mdBreakPoint {
                 margin-top:0px;
               }
@@ -210,3 +214,44 @@ padding:0px 20px;
     color:red !important;
   }
 
+
+
+  .modelremove {
+    width: 100%;
+  
+    .insidemodelpopup {
+      // border:3px solid red;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      align-items: center;
+    }
+    .buttonsections {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      padding-top: 4%;
+      padding-bottom: 5%;
+      .buttonscancel {
+        outline: none;
+        cursor: pointer;
+        background-color: white;
+        color: rgba(233, 90, 90, 1);
+        border: 1px solid rgba(233, 90, 90, 1);
+        padding: 8px 30px;
+        border-radius: 10px;
+        font-weight: 600;
+      }
+      .buttonsremove {
+        outline: none;
+        cursor: pointer;
+        background-color: rgba(233, 90, 90, 1);
+        color: white;
+        border: none;
+        padding: 8px 30px;
+        border-radius: 10px;
+        font-weight: 600;
+      }
+    }
+  }
