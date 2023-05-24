@@ -169,6 +169,18 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
     }).catch((err) => {
       console.log(err);
       setLoader(false);
+      toast.error("Order Something Error..!",
+      {
+        position: "top-center",
+        autoClose: 3300,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+    }
+      );
     })
   }
 
