@@ -39,7 +39,12 @@ function Cart() {
     setTokens(JSON.parse(checktoken));
     TotalPrice();
   }, [tokes, price, totalvalue]);
-  const cartpricevaues = state?.cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)
+  const cartpricevaues = state?.cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0);
+
+
+
+  console.log(cartpricevaues,"cartpricevaues")
+
   const values = Math.max(
     0,
     Math.round(
@@ -54,6 +59,7 @@ function Cart() {
     )
   );
   const Sample = cartpricevaues - values;
+
   const chargeDelivery = deliveryChargeAmount - DeliveryChargeAmount;
 
   // const AllchargeCount = Number(cartpricevaues) + Number(deliveryChargeAmount);
@@ -404,8 +410,10 @@ function Cart() {
                       GST</div>
                     <div className={styles.textprice}>
                       A${Number(Sample) 
+                     
                       // + Number(chargeDelivery)
                       }
+                    
                     </div>
                   </div>
                 </div>

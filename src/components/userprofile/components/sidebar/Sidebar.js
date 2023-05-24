@@ -180,7 +180,7 @@ function Sidebar({ user, error }) {
                                 {pathname == "orders" ? <Image src={orderactive} alt="no image" className={styles.profileicon} /> : <Image src={order} alt="no image" className={styles.profileicon} />}
                             </div>
                             <div className={pathname == "orders" ? styles.boldtextactive : styles.boldtexts}>
-                                Orders
+                                Product Orders
                             </div>
                         </div>
 

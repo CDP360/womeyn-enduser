@@ -10,10 +10,10 @@ import Payment from './components/payment/Payment';
 import { ContextStore } from '../../Redux/store/Contextstore';
 import dynamic from 'next/dynamic';
 import Confirmorders from './components/confirmorders/Confirmorders';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 function Checkout() {
-  const history=useRouter();
-  const [tokens,seTokens]=useState();
+  const history = useRouter();
+  const [tokens, seTokens] = useState();
   const [step, setStep] = useState(0);
   const { state, dispatch } = useContext(ContextStore);
   const [name, setName] = useState("");
@@ -26,73 +26,62 @@ function Checkout() {
   const [couponname, setCouponName] = useState("");
 
 
-  const [checkshippingamount,setShippingAmount]=useState([]);
-  const totalPrice = cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice + 40, 0);
+  const [checkshippingamount, setShippingAmount] = useState([]);
+  const totalPrice = cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0);
   const [totalvalue, setTotalValue] = useState(0);
-
-  const cartpricevaues=state?.cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)
+  const cartpricevaues = state?.cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)
   const values = Math.max(
     0,
     Math.round(
       cartpricevaues - (cartpricevaues) * 10 / 100
     )
-);
-// const deliveryChargeAmount = state?.cart?.cartData?.reduce((acc, current) => acc + current.deliverycharge, 0)
-const deliveryChargeAmount = checkshippingamount.reduce((acc, current) => acc + Number(current.deliveryCharge), 0)
-
-const DeliveryChargeAmount = Math.max(
-  0,
-  Math.round(
-    deliveryChargeAmount - (deliveryChargeAmount) * 10 / 100
-  )
-);
-const Sample = cartpricevaues - values;
-const chargeDelivery = deliveryChargeAmount - DeliveryChargeAmount;
-const AllchargeCount=Number(cartpricevaues)+Number(deliveryChargeAmount);
-  const OverallTotalPrice=Number(Sample)+Number(chargeDelivery);
-  console.log(OverallTotalPrice,"OverallTotalPrice")
+  );
+  // const deliveryChargeAmount = state?.cart?.cartData?.reduce((acc, current) => acc + current.deliverycharge, 0)
+  const deliveryChargeAmount = checkshippingamount.reduce((acc, current) => acc + Number(current.deliveryCharge), 0)
+  const DeliveryChargeAmount = Math.max(
+    0,
+    Math.round(
+      deliveryChargeAmount - (deliveryChargeAmount) * 10 / 100
+    )
+  );
+  const Sample = cartpricevaues - values;
+  const chargeDelivery = deliveryChargeAmount - DeliveryChargeAmount;
+  const AllchargeCount = Number(cartpricevaues) + Number(deliveryChargeAmount);
+  const OverallTotalPrice = Number(Sample) + Number(chargeDelivery);
   useEffect(() => {
     if (step === 0) {
       setStep1("active")
     }
     if (step === 2) {
       setStep2("active")
-
     }
     if (step === 3) {
       setStep3("active")
-
     }
-
-
-    const authcheck=localStorage.getItem("userToken");
-
-    if(!authcheck)
-    {
+    const authcheck = localStorage.getItem("userToken");
+    if (!authcheck) {
       seTokens(true);
     }
 
-  }, [width, step1, step2, step3, step,totalvalue]);
+  }, [width, step1, step2, step3, step, totalvalue]);
 
-  const NavigatePath=()=>{
+  const NavigatePath = () => {
     history.push("/login");
   }
 
 
-  
-  
 
-  if(tokens)
-  {
-    return(
+
+
+  if (tokens) {
+    return (
       <div>
 
-{NavigatePath()}
+        {NavigatePath()}
       </div>
     )
   }
-  else
-  {
+  else {
     return (
       <Fragment>
         <div className='mainsection'>
@@ -128,13 +117,13 @@ const AllchargeCount=Number(cartpricevaues)+Number(deliveryChargeAmount);
                   </div>}
                   {step === 1 && <div>
                     {/* <Payment /> */}
-                    <Confirmorders name={name} totalPrice={totalPrice} setStep={setStep} step={step} setCouponName={setCouponName}  addressid={name} 
-                    setShippingAmount={setShippingAmount}
+                    <Confirmorders name={name} totalPrice={totalPrice} setStep={setStep} step={step} setCouponName={setCouponName} addressid={name}
+                      setShippingAmount={setShippingAmount}
                     />
                   </div>}
                   {step === 2 && <div>
-                    <Payment addressid={name} totalPrice={totalPrice} couponname={couponname} totalvalue={totalvalue} 
-                    checkshippingamount={checkshippingamount}
+                    <Payment addressid={name} totalPrice={totalPrice} couponname={couponname} totalvalue={totalvalue}
+                      checkshippingamount={checkshippingamount}
                     />
                   </div>}
                 </div>
@@ -173,23 +162,23 @@ const AllchargeCount=Number(cartpricevaues)+Number(deliveryChargeAmount);
                       </div> */}
                     {/* </div> */}
 
-                    {deliveryChargeAmount?<>
+                    {deliveryChargeAmount ? <>
                       <div className={styles.splitcartsections}>
+                        <div>
+                          Delivery Charges</div>
+                        <div className={styles.textprice}>
+                          A${deliveryChargeAmount}
+                        </div>
+                      </div>
+                    </> : <></>}
+
+                    <div className={styles.splitcartsections}>
                       <div>
-                        Delivery Charges</div>
+                        GST</div>
                       <div className={styles.textprice}>
-                        A${deliveryChargeAmount}
+                        A${Number(Sample) + Number(chargeDelivery)}
                       </div>
                     </div>
-                    </>:<></>}
-                    
-                    <div className={styles.splitcartsections}>
-                    <div>
-                      GST</div>
-                    <div className={styles.textprice}>
-                    A${Number(Sample) + Number(chargeDelivery)}
-                    </div>
-                  </div>
                   </div>
                   <div className={styles.borderdashedsection}>
                     <div className={styles.insideborderdashedsection}></div>
@@ -198,44 +187,43 @@ const AllchargeCount=Number(cartpricevaues)+Number(deliveryChargeAmount);
                     <div className={styles.pricetextss}>
                       Total Payable</div>
                     <div className={styles.textprices}>
-
-                    A${Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))}
+                      A${Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))}
                       {/* A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0) + Number(Sample) + Number(deliveryChargeAmount)} */}
 
                     </div>
                   </div>
-  
+
                   {/* <div className={styles.borderdashedsection}>
                     <div className={styles.insideborderdashedsection}></div>
                   </div> */}
                   <div className="mt-3 mb-3">
-  
+
                     {/* {tokes ?
                       <Button className={styles.checkoutbutton} onClick={() => router.push("/checkout")}>Place Order</Button> :
                       <Button className={styles.checkoutbutton} onClick={() => router.push("/login?redirect=/checkout", { kalai: "thala" })}>Place Order</Button>
                     } */}
                   </div>
-  
-  
+
+
                 </div>
               </div>
             </div>
           </div>
         </div>
-  
-  
+
+
         <div className={styles.emptyboxrightcolor}>
-                </div>
-                <div className={styles.emptyboxleftcolor}>
-                </div>
-                <div className={styles.emptyboxleftcolor1}>
-                </div>
-                <div className={styles.emptyboxleftcolor2}>
-                </div>
-                <div className={styles.emptyboxleftcolor3}>
-                </div>
-                <div className={styles.emptyboxleftcolor4}>
-                </div>
+        </div>
+        <div className={styles.emptyboxleftcolor}>
+        </div>
+        <div className={styles.emptyboxleftcolor1}>
+        </div>
+        <div className={styles.emptyboxleftcolor2}>
+        </div>
+        <div className={styles.emptyboxleftcolor3}>
+        </div>
+        <div className={styles.emptyboxleftcolor4}>
+        </div>
       </Fragment>
     )
   }

@@ -51,6 +51,8 @@ function Addressdetail({ state, step, setStep, setName, name }) {
       setValue("landmark",res?.data?.landMark);
       setValue("city",res?.data?.cityName);
       setValue("state",res?.data?.stateName);
+      setValue("addressLineone",res?.data?.addressLineone);
+
           }).catch((err)=>{
             console.log(err);
           })

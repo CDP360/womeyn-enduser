@@ -265,7 +265,6 @@ function Header() {
                                         </> : <div className={styles.logintexts}>Login</div>}
                                     </div>
                                     {showmega &&
-
                                         <div className={styles.bordersections}>
                                             {userauth ?
                                                 <>
@@ -278,13 +277,20 @@ function Header() {
                                                                 My Profile
                                                             </div>
                                                         </div>
-
                                                         <div className={styles.headerprofile} onClick={Orders}>
                                                             <div>
                                                                 <Image src={orderactive} alt="no image" className={styles.profileimageover} />
                                                             </div>
                                                             <div className={styles.logouttexts}>
-                                                                Orders
+                                                                Product Orders
+                                                            </div>
+                                                        </div>
+                                                        <div className={styles.headerprofile} onClick={Services}>
+                                                            <div>
+                                                                <Image src={serviceactive} alt="no image" className={styles.profileimageover} />
+                                                            </div>
+                                                            <div className={styles.logouttexts}>
+                                                                Service 
                                                             </div>
                                                         </div>
 
@@ -298,14 +304,7 @@ function Header() {
                                                         </div>
 
 
-                                                        <div className={styles.headerprofile} onClick={Services}>
-                                                            <div>
-                                                                <Image src={serviceactive} alt="no image" className={styles.profileimageover} />
-                                                            </div>
-                                                            <div className={styles.logouttexts}>
-                                                                Services
-                                                            </div>
-                                                        </div>
+                                                     
 
 
                                                         <div className={styles.headerprofile} onClick={Coupons}>
