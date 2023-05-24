@@ -56,16 +56,15 @@ function Cart() {
   const Sample = cartpricevaues - values;
   const chargeDelivery = deliveryChargeAmount - DeliveryChargeAmount;
 
-  const AllchargeCount = Number(cartpricevaues) + Number(deliveryChargeAmount);
+  // const AllchargeCount = Number(cartpricevaues) + Number(deliveryChargeAmount);
+  const AllchargeCount = Number(cartpricevaues) + Number(Sample);
+
+  console.log(AllchargeCount,"AllchargeCount")
 
   const OverallTotalPrice = Number(Sample) + Number(chargeDelivery);
 
   useEffect(() => {
     setCart(state?.cart?.cartData);
-
-
-   
-
   }, [deleteid, totalvalue])
   const shopping = () => {
     router.push("/")
@@ -223,7 +222,7 @@ function Cart() {
                               <Image src={delteteicon} alt="no image" className={styles.deleteicons} />
                             </div>
                             <div>
-                              Remove
+                              Remove 
                             </div>
                           </div>
                         </div>
@@ -419,7 +418,9 @@ function Cart() {
                     {/* {(Number(Sample))+(Number(chargeDelivery))} */}
                   </div>
                   <div className={styles.textprices}>
-                    A${Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))}
+                    {/* A$ {Number(AllchargeCount) + Number(OverallTotalPrice)} */}
+                    A${ Math.round(Number(AllchargeCount))}
+
                     {/* A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)} */}
                   </div>
                 </div>

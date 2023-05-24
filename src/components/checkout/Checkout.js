@@ -49,12 +49,9 @@ const DeliveryChargeAmount = Math.max(
 const Sample = cartpricevaues - values;
 const chargeDelivery = deliveryChargeAmount - DeliveryChargeAmount;
 const AllchargeCount=Number(cartpricevaues)+Number(deliveryChargeAmount);
-
   const OverallTotalPrice=Number(Sample)+Number(chargeDelivery);
+  console.log(OverallTotalPrice,"OverallTotalPrice")
   useEffect(() => {
-
-
-   
     if (step === 0) {
       setStep1("active")
     }
