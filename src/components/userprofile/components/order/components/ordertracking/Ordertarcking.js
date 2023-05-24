@@ -15,7 +15,7 @@ function Ordertarcking({ Orders }) {
   const router = useRouter();
   const [deleteid, setDeleteid] = useState("");
 
-  const [loadings,setLoadings]=useState(false);
+  const [loadings, setLoadings] = useState(false);
 
   const [loading, setLoading] = useState(false);
   // console.log(,"id")
@@ -227,23 +227,25 @@ function Ordertarcking({ Orders }) {
                             A$ {tracksorders?.orderDetails?.itemsOrdered[0]?.price}
                           </h5>
 
-                          {tracksorders?.trackingDetails?.events?.map((item,index)=>{
+                          {tracksorders?.trackingDetails?.events?.map((item, index) => {
 
- 
-{item?.description=="Departed FedEx location" || item?.description=="At local FedEx facility" || item?.description=="On FedEx vehicle for delivery " || item?.description=="Delivered" ?<></>:<>
-<div>
-                          <h6 className={style.cancel} onClick={() => handleShow(router?.query?.id)}>Cancel order</h6>
-  
+
+                            {
+                              item?.description == "Departed FedEx location" || item?.description == "At local FedEx facility" || item?.description == "On FedEx vehicle for delivery " || item?.description == "Delivered" ? <></> : <>
+                                <div>
+                                  <h6 className={style.cancel} onClick={() => handleShow(router?.query?.id)}>Cancel order</h6>
+
                                 </div>
-</>}
-                                
+                              </>
+                            }
 
-                           
+
+
                           })}
                           <div>
 
 
-                            </div>
+                          </div>
                         </div>
 
                       </div>

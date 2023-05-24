@@ -108,10 +108,12 @@
         display:flex;
         align-items:center;
         justify-content:center;
-  
-
         gap:40px;
         margin-top:5%;
+        @include xsBreakPoint
+        {
+            flex-direction:column;
+        }
         .commonboximage
         {
             display:flex;
