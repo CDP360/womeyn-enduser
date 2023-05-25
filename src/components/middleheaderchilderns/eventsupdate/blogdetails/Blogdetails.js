@@ -10,11 +10,12 @@ function Blogdetails({ id }) {
     useEffect(() => {
         getSingleEvent(id).then((res) => {
             setViewBlog(res?.data)
-            console.log(res?.data, "kl")
         }).catch((err) => {
             console.log(err);
         })
     }, [])
+
+    console.log(viewblog,"viewblog")
     return (
         <div className={styles.mainblogview}>
             <div className={styles.insideblogsection}>
@@ -29,6 +30,43 @@ function Blogdetails({ id }) {
                             {viewblog[0]?.title}
                         </div>
 
+<div className={styles.eventlengthtext}>
+   <span className={styles.eventlength}> Event Length</span> : {viewblog[0]?.eventLength}
+</div>
+
+
+<div className={styles.eventlengthtext}>
+<span className={styles.eventlength}> Organizer Name </span> : {viewblog[0]?.organizerName}   
+</div>
+<div className={styles.eventlengthtext}>
+<span className={styles.eventlength}> Organization Company</span> : {viewblog[0]?.organizationCompany}
+</div>
+
+<div className={styles.eventlengthtext}>
+<span className={styles.eventlength}>Start Date</span> : {viewblog[0]?.startDate}   
+</div>
+
+
+<div className={styles.eventlengthtext}>
+<span className={styles.eventlength}>End Date </span>: {viewblog[0]?.endDate}   
+</div>
+
+
+<div className={styles.eventlengthtext}>
+<span className={styles.eventlength}>Location</span> : {viewblog[0]?.location}   
+</div>
+
+
+
+
+<div className={styles.eventlengthtext}>
+<span className={styles.eventlength}>Ticketing Details </span>: {viewblog[0]?.ticketingDetails}   
+</div>
+
+
+<div className={styles.eventlengthtext}>
+<span className={styles.eventlength}>description</span> : {viewblog[0]?.description}   
+</div>
                         <div className="mt-3 mb-4">
                             {ReactHtmlParser(viewblog[0]?.eventContent.replace(/&lt;/g, "<"))}
                       {/* {ReactHtmlParser(item?.planDetails.replace(/&lt;/g, "<"))} */}

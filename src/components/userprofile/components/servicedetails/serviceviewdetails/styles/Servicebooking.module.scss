@@ -1,0 +1,545 @@
+@use "../../../../../../../scss/abstract/" as *;
+
+// .mainservicebooking {
+//   width: 100%;
+//   //   border: 2px solid blue;
+//   .insideservicebooking {
+//     width: 100%;
+//     display: flex;
+//     gap: 30px;
+//     @include smBreakPoint {
+//       display: contents;
+//     }
+//     .leftservicebooking {
+//       width: 50%;
+//       @include smBreakPoint {
+//         margin-left: 3%;
+//       }
+//       .bannerlogo {
+//         width: 100%;
+//         object-fit: contain;
+//         height: auto;
+//         // border: 2px solid blue;
+//       }
+
+//       // border:3px solid orange;
+//     }
+//     .rightservicebooking {
+//       width: 50%;
+//       margin-top: 1%;
+//       @include smBreakPoint {
+//         width: 100%;
+//       }
+//       // border:3px solid red;
+//       .parahead1 {
+//         font-size: x-large;
+//       }
+//       .maincontainersub {
+//         display: flex;
+//         .maincontainerstar {
+//           display: flex;
+//         }
+//         .ratingPara {
+//           margin-left: 2%;
+//           margin-top: -1%;
+//           display: flex;
+//           .para1 {
+//             font-weight: bold;
+//           }
+//           .ratings {
+//             margin-left: 0%;
+//             color: gray;
+//           }
+//         }
+//       }
+//       .offlinepara {
+//         color: #e95a5a;
+//       }
+//       .sidecontaineraddress {
+//         width: 39%;
+//         @include smBreakPoint {
+//           width: 100%;
+//         }
+//         .address {
+//           font-weight: bold;
+//         }
+//       }
+//       .mappara {
+//         color: #5865f2;
+//         font-size: small;
+//       }
+//       .daysPara {
+//         font-weight: bold;
+//       }
+//       .month {
+//         display: flex;
+//         flex-direction: row;
+//         width: 80%;
+//         flex-wrap: wrap;
+//       }
+
+//       .control {
+//         display: inline-flex;
+//         position: relative;
+//         margin: 5px;
+//         cursor: pointer;
+//         border-radius: 99em;
+
+//         input {
+//           position: absolute;
+//           opacity: 0;
+//           z-index: -1;
+//         }
+
+//         svg {
+//           margin-right: 6px;
+//           border-radius: 50%;
+//           box-shadow: 3px 3px 16px rgba(0, 0, 0, 0.2);
+//         }
+//       }
+//       .control__content {
+//         border: 1px solid #e95a5a;
+//         padding: 10px;
+//         text-align: center;
+//         font-weight: 500;
+//         color: #e95a5a;
+//         // background-color: #e95a5a;
+//         border-radius: 20px;
+//         cursor: pointer;
+//         width: 120px;
+//         background-color: white;
+//       }
+//       .control input:focus ~ .control__content {
+//         background-color: white;
+//       }
+
+//       .control input:checked ~ .control__content {
+//         background-color: #e95a5a;
+//         color: white;
+//       }
+//       .radio {
+//         display: flex;
+//         // justify-content: space-around;
+//         width: 95%;
+//         .radio1 {
+//           border-radius: 50%;
+//           width: 5%;
+//           border: 1px solid #e95a5a;
+//           height: 28px;
+//           background-color: white;
+//           .num {
+//             text-align: center;
+//             color: #e95a5a;
+//           }
+//         }
+//         .radio2 {
+//           border-radius: 50%;
+//           width: 5%;
+//           border: 1px solid #f5f5f5;
+//           height: 28px;
+//           margin-left: 3%;
+//           .num {
+//             text-align: center;
+//           }
+//         }
+//       }
+
+//       .viewmore {
+//         color: #5865f2;
+//       }
+//       .bookbutton {
+//         width: 55% !important;
+//         background-color: #e95a5a;
+//         color: white;
+//       }
+//     }
+//   }
+//   .customerserviceside {
+//     width: 100%;
+//     margin-top: 5%;
+//     .review {
+//       font-weight: 400;
+//     }
+//     .customerservicemaincontainer {
+//       margin-top: 3%;
+//       .Writija {
+//         font-weight: initial;
+//         margin-bottom: 2%;
+//         font-size: large;
+//       }
+//       .freak {
+//         font-weight: initial;
+//         margin-bottom: 2%;
+//         font-size: large;
+//         margin-top: 2%;
+//       }
+//       .maincontainerstarservice {
+//         display: flex;
+//         width: 2%;
+//       }
+//       .customersubcontainer {
+//         width: 100%;
+//       }
+//       .paraservice {
+//         width: 67%;
+//         color: #59626f;
+//       }
+//       .hrborder {
+//         border: 1px solid #f5f5f5;
+//       }
+//     }
+//   }
+// }
+
+.mainservicesetion {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 9;
+  border: 1px solid #9f9f9f;
+  padding:15px;
+  border-radius:10px;
+  .insidesection {
+    width: 100%;
+    padding-bottom: 5%;
+    .servicebanner {
+      width: 100%;
+      height: 340px;
+      object-fit: contain;
+      border-radius: 20px;
+      @include xsBreakPoint {
+        width: 100%;
+        height: auto;
+      }
+      @include smBreakPoint {
+        width: 100%;
+        height: auto;
+      }
+      @include lgBreakPoint {
+        height: 300px;
+      }
+      @include xlBreakPoint {
+        height: 300px;
+      }
+    }
+    .classesszumba {
+      padding-top: 5%;
+      .zumbasection {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        .expre {
+          color: #0d0c22;
+          opacity: 0.4;
+          font-weight: 400;
+          font-size: 1rem;
+        }
+        .arrwoimage {
+          width: 12px;
+          height: 12px;
+          object-fit: contain;
+        }
+      }
+    }
+    .zumbaservices {
+      padding-top: 2%;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    .servicerating {
+      padding-top: 1%;
+      display: flex;
+      align-items: center;
+      gap: 5%;
+      .rightstar {
+        display: flex;
+        gap: 13px;
+      }
+      .leftstar {
+        display: flex;
+        gap: 10px;
+      }
+    }
+    .aboustservice {
+      padding-top: 2%;
+      .aboutservice {
+        padding-bottom: 1.2%;
+        font-size: 1.3rem;
+      }
+      .servicelearn {
+        line-height: 1.7;
+        word-spacing: 1px;
+        width: 90%;
+        @include xsBreakPoint {
+          width: 100%;
+        }
+      }
+    }
+    .booknowrow {
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      @include xsBreakPoint {
+        flex-direction: column;
+      }
+      @include smBreakPoint {
+        flex-direction: column;
+        padding-bottom: 7%;
+      }
+      @include mdBreakPoint {
+        flex-direction: column;
+        padding-bottom: 7%;
+      }
+      @include lgBreakPoint {
+        gap: 7px;
+      }
+      @include xlBreakPoint {
+        gap: 10px;
+      }
+
+      .booknowbox {
+        width: 25%;
+        background: #ffffff;
+        border: 1px solid #e95a5a;
+        border-radius: 10px;
+        padding: 2% 10px;
+        cursor: pointer;
+        @include xsBreakPoint {
+          width: 100%;
+          padding: 5% 4px;
+        }
+        @include smBreakPoint {
+          width: 70%;
+          padding: 5% 4px;
+          margin: 0 auto;
+        }
+        @include mdBreakPoint {
+          width: 70%;
+          padding: 5% 4px;
+          margin: 0 auto;
+        }
+        @include lgBreakPoint {
+          // width: 30%;
+          // padding: 5% 4px;
+          // margin: 0 auto;
+        }
+      }
+      .booknowbox:hover {
+        background-color: #ffefef;
+      }
+      .reviewcontent {
+        // border:2px solid red;
+        padding: 12% 0px;
+      }
+      .monthsections {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        .monthssectionsmonth {
+          font-weight: 700;
+          font-size: 1.245rem;
+        }
+        .countnumber {
+          font-size: 2rem;
+          font-weight: 700;
+          padding-top: 3%;
+        }
+      }
+      .booknowbutton {
+        width: 80%;
+        background: #e95a5a;
+        box-shadow: 0px 11px 27px rgba(192, 48, 51, 0.25);
+        border-radius: 12px;
+        border: none;
+        outline: none;
+        padding: 10px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 550;
+        cursor: pointer;
+      }
+      .ticksections {
+        display: flex;
+        gap: 10px;
+        padding-left: 4%;
+        padding-bottom: 4%;
+        // padding-top: 4%;
+        .ticket {
+          width: 13px;
+          height: 12px;
+        }
+      }
+    }
+    .instractions {
+      padding-top: 3%;
+    }
+    .instractionsection {
+      width: 60%;
+      background: #ffffff;
+      box-shadow: 0px 11px 43px rgba(0, 0, 0, 0.06);
+      border-radius: 10px;
+      // border: 1px solid red;
+      display: flex;
+      gap: 50px;
+      padding: 3% 4px;
+      @include xsBreakPoint {
+        width: 100%;
+        padding: 5% 4px;
+      }
+      @include smBreakPoint {
+        width: 100%;
+        padding: 5% 4px;
+      }
+      @include mdBreakPoint {
+        width: 70%;
+        padding: 5% 4px;
+      }
+      @include lgBreakPoint {
+        width: 45%;
+      }
+      @include xlBreakPoint {
+        width: 38%;
+      }
+      .leftimageins {
+        width: 25%;
+        .personimages {
+          width: 130px;
+          height: 130px;
+          // object-fit: cover;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          // padding: 10px;
+          border-radius: 50%;
+          border: 3px solid #e95a5a;
+          @include xsBreakPoint {
+            width: 90px;
+            height: 90px;
+          }
+        }
+      }
+      .rightimageins {
+        width: 75%;
+        display: flex;
+        // align-items:center;
+        // justify-content:center;
+        flex-direction: column;
+        gap: 10px;
+        .viewdetailsbutton {
+          border: none;
+          outline: none;
+          border: 1px solid #e95a5a;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          border-radius: 15px;
+          background-color: white;
+          color: #e95a5a;
+          padding: 10px 20px;
+        }
+      }
+    }
+  }
+}
+
+.activestar {
+  color: #e95a5a;
+}
+
+.leftsectionservicebg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 40%;
+  z-index: 0;
+  background: #fecf9d;
+  opacity: 0.36;
+  filter: blur(239.825px);
+}
+
+.rightsectionservicebg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 40%;
+  z-index: 0;
+  background: #e95a5a;
+  opacity: 0.36;
+  filter: blur(239.825px);
+}
+
+.viewmorebutton {
+  color: #4681fd;
+  border-bottom: 1px solid #4681fd;
+  cursor: pointer;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.viewmorebutton:hover {
+  color: #e95a5a;
+  font-weight: 500;
+  border-bottom: 1px solid #e95a5a;
+}
+
+.closebuttons {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 10px;
+  background-color: #e95a5a;
+  color: white;
+  font-weight: 550;
+  width: 18%;
+  font-size: 1.2rem;
+}
+
+.workingdays {
+  display: flex;
+  border: 1px solid #efeeee;
+  margin: 2% 0px;
+  border-radius: 5px;
+  padding: 10px;
+  align-items: center;
+  cursor: pointer;
+  .leftdays {
+    width: 30%;
+  }
+}
+.workingdays:hover {
+  background-color: #efeeee;
+}
+
+.cancelsection {
+  display: flex;
+  padding-bottom: 3%;
+  .leftcancelsection {
+    width: 50%;
+
+    color: #000000;
+    font-weight: 500;
+    font-size: 1rem;
+
+    mix-blend-mode: normal;
+    opacity: 0.4;
+  }
+}
+
+.working {
+  color: #000000;
+  font-weight: 500;
+  font-size: 1rem;
+
+  mix-blend-mode: normal;
+  opacity: 0.4;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}

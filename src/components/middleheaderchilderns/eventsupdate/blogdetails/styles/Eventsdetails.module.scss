@@ -7,6 +7,16 @@
     .insideblogsection {
         width: 75%;
         margin: 0 auto;
+
+        .eventlengthtext
+        {
+            padding-top:2%; padding-bottom:2%;
+        }
+        .eventlength
+        {
+            color: rgba(0, 0, 0, 0.5);
+            font-weight:600;
+        }
  
         .imageeventcard
         {

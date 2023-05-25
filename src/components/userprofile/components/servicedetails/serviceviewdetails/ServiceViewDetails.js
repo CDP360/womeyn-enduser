@@ -2,18 +2,25 @@
 import React, { Fragment, useState } from 'react'
 import styles from './styles/Servicebooking.module.scss';
 import Image from 'next/image';
-import rightarrow from '../../../../assests/service-logos/path rightarrow.png';
-import star from "../../../../assests/service-logos/Star 4.svg";
-import ticket from '../../../../assests/service-logos/tickmark.png';
+import rightarrow from '../../../../../assests/service-logos/path rightarrow.png';
+import star from "../../../../../assests/service-logos/Star 4.svg";
+import ticket from '../../../../../assests/service-logos/tickmark.png';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { ServiceusersGetSingle } from '../../../../services/servicewomeyn/service-womeyn';
+import { ServiceusersGetSingle } from '../../../../../services/servicewomeyn/service-womeyn';
+
 import moment from 'moment';
 import Modal from 'react-bootstrap/Modal';
 import Skeleton from 'react-loading-skeleton';
-import Reviewsproduct from '../Reviews/Reviewsproduct';
+import Reviewsproduct from './Reviews/Reviewsproduct';
 
-function Servicebooking({ id }) {
+
+function ServiceViewDetails() {
+
+    const history = useRouter();
+  
+
+    const serviceid = history.query?.id;
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -24,52 +31,45 @@ function Servicebooking({ id }) {
     const [reviews,setReviews]=useState([]);
     const [ratingsdata,setRatingData]=useState("");
     useEffect(() => {
-        ServiceusersGetSingle(id).then((res) => {
-            // console.log(res,"res");
-            console.log(res, "res");
+        ServiceusersGetSingle(serviceid).then((res) => {
+            
             setReviews(res?.data?.reviews)
-
             setServiceBooking(res?.data?.serviceDetails[0]);
             setSellerinfo(res?.data?.sellerInformation);
             setRatingData(res?.data?.averageRating[0]?.avgRating);
+            setServiceBookingSingle(res?.data?.serviceDetails[0]?.serviceVariations[0]);
+
         }).catch((err) => {
             // console.log(err,"res");
 
         })
-    }, [id,ratingsdata])
 
 
 
-
-
-    const history = useRouter();
-
+        
+    }, [ratingsdata,serviceid])
 
     const NavigateUsers = (data) => {
         history.push(`/womenpreneurs/${data}`);
     }
 
-
     const FilterModelPopup = (id) => {
-
-        serviceBooking?.serviceVariations?.map((item, index) => {
-            if (item?._id === id) {
-                setServiceBookingSingle(item);
-                handleShow();
-
-            }
-        })
-
-
-
+        // serviceBooking[0]?.serviceVariations?.map((item, index) => {
+        //     if (item?._id === id) {
+        //         setServiceBookingSingle(item);
+        //         handleShow();
+        //     }
+        // })
     }
+
+
 
     return (
         <Fragment>
-            <div className='mainsection'>
-                <div className="insidesection">
+           
                     <div className={styles.mainservicesetion}>
                         <div className={styles.insidesection}>
+                           
                             <div>
 
                                 {/* serviceThumbImage */}
@@ -92,7 +92,7 @@ function Servicebooking({ id }) {
 
                                 <div className={styles.zumbasection}>
                                     <div className={styles.expre}>
-                                        Experiences
+                                        Experiences{serviceid}
                                     </div>
                                     <div>
                                         <Image src={rightarrow} alt="no image" className={styles.arrwoimage} />
@@ -139,7 +139,86 @@ function Servicebooking({ id }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="mt-5">
+
+                            <div className="mt-3">
+                                <div>Service Booked</div>
+
+                                <div>
+
+<div className={styles.cancelsection}>
+    <div className={styles.leftcancelsection}>
+        Date :
+
+    </div>
+    <div className="ms-2">
+
+        {moment(serviceBookingSingle?.startDate).format("MMM Do YY",)} to {moment(serviceBookingSingle?.endDate).format("MMM Do YY",)}
+
+    </div>
+</div>
+
+<div className={styles.cancelsection}>
+    <div className={styles.leftcancelsection}>
+        Is this an online/ offline service :
+
+    </div>
+    <div className="ms-2">
+        {serviceBookingSingle?.serviceTypeId === 1 ? <>Online</> : <>Offline</>}
+
+    </div>
+</div>
+
+<div className={styles.cancelsection}>
+
+    <div className={styles.leftcancelsection}>
+
+        Cancellation :
+    </div>
+
+    <div className="ms-2">
+        {serviceBookingSingle?.isCancellationAvailable ? <>
+            CancellationAvailable
+        </> : <>
+            CancellationUnAvailable
+        </>}
+    </div>
+</div>
+
+<div className={styles.cancelsection}>
+    <div className={styles.leftcancelsection}>
+
+        Number of people allowed :
+    </div>
+    <div className="ms-2">
+
+        {serviceBookingSingle?.numberOfPeopleAllowed}
+
+    </div>
+</div>
+
+<div>
+
+    <div className={styles.working}>Working Days</div>
+    {serviceBookingSingle?.workingDays?.map((item, index) => {
+        return (
+            <div className={styles.workingdays}>
+                <div className={styles.leftdays}>
+
+                    {item?.dayName}
+                </div>
+                <div>
+
+                    {item?.workingHours}
+                </div>
+            </div>
+        )
+    })}
+
+</div>
+
+</div>
+                            </div>
+                            {/* <div className="mt-5">
 
                                 <div className={styles.booknowrow}>
 
@@ -222,7 +301,7 @@ function Servicebooking({ id }) {
                                     })}
 
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="mt-5 mb-5">
                                 <Reviewsproduct reviews={reviews} averageRatings={ratingsdata}/>
                             </div>
@@ -270,14 +349,8 @@ function Servicebooking({ id }) {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.leftsectionservicebg}>
-
-                    </div>
-                    <div className={styles.rightsectionservicebg}>
-
-                    </div>
-                </div>
-            </div>
+                    
+            
 
             <>
 
@@ -376,4 +449,4 @@ function Servicebooking({ id }) {
     )
 }
 
-export default Servicebooking
+export default ServiceViewDetails

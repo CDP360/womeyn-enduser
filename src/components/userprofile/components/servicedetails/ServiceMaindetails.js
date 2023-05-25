@@ -53,7 +53,12 @@ function ServiceMaindetails({ error }) {
 
 
     const pushProductPage=(data)=>{
-        history?.push(`/service/${data}`);
+        // history?.push(`/service/${data}`);
+         
+        history.push({
+        pathname: '/profile/servicedetail',
+        query:{id:data},
+    })
 
     }
 

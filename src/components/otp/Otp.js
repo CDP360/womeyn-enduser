@@ -12,11 +12,8 @@ import Spinner from 'react-bootstrap/Spinner';
 function Otp() {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
-
     const [tokenUser, setTokenUser] = useState("");
-
-
-
+    const [tokenUser1, setTokenUser1] = useState("");
 
     const [otp, setOtp] = useState("");
     const [minutes, setMinutes] = useState(1);
@@ -100,16 +97,28 @@ function Otp() {
 
     useEffect(() => {
         const TokenCheckUser = localStorage.getItem("auth");
+        const TokenCheckUser1 = localStorage.getItem("userToken");
+        setTokenUser1(JSON.parse(TokenCheckUser1))
         setTokenUser(JSON.parse(TokenCheckUser));
 
-    }, [])
+        if(tokenUser1)
+        {
+        }
+        else
 
+        {
+        router.push("/signup")
+
+        }
+
+    }, [])
 
     const NavigateService = () => {
         router.push("/")
     }
-
-
+    const NavigateLogin = () => {
+        router.push("/")
+    }
 
     if (tokenUser) {
         return (

@@ -18,6 +18,7 @@ import ServiceMaindetails from './components/servicedetails/ServiceMaindetails';
 import { useSelector } from 'react-redux';
 import Help from '../help/Help';
 import AddressCreate from './components/manageaddress/addresscreate/AddressCreate';
+import ServiceViewDetails from './components/servicedetails/serviceviewdetails/ServiceViewDetails';
 function Userprofile({ name, error }) {
     const history = useRouter();
     const [user, setUser] = useState([]);
@@ -116,6 +117,12 @@ function Userprofile({ name, error }) {
 
                             {name == "address" && <div>
                                 <Manageaddress error={errors}  />
+                            </div>
+                            
+                            }
+
+{name == "servicedetail" && <div>
+                                <ServiceViewDetails error={errors}  />
                             </div>
                             
                             }
