@@ -18,7 +18,7 @@ import Reviewsproduct from './Reviews/Reviewsproduct';
 function ServiceViewDetails() {
 
     const history = useRouter();
-  
+
 
     const serviceid = history.query?.id;
     const [show, setShow] = useState(false);
@@ -28,11 +28,11 @@ function ServiceViewDetails() {
     const [serviceBooking, setServiceBooking] = useState([]);
     const [serviceBookingSingle, setServiceBookingSingle] = useState([]);
     const [sellerinformations, setSellerinfo] = useState({});
-    const [reviews,setReviews]=useState([]);
-    const [ratingsdata,setRatingData]=useState("");
+    const [reviews, setReviews] = useState([]);
+    const [ratingsdata, setRatingData] = useState("");
     useEffect(() => {
         ServiceusersGetSingle(serviceid).then((res) => {
-            
+
             setReviews(res?.data?.reviews)
             setServiceBooking(res?.data?.serviceDetails[0]);
             setSellerinfo(res?.data?.sellerInformation);
@@ -46,79 +46,75 @@ function ServiceViewDetails() {
 
 
 
-        
-    }, [ratingsdata,serviceid])
+
+    }, [ratingsdata, serviceid])
 
     const NavigateUsers = (data) => {
         history.push(`/womenpreneurs/${data}`);
     }
 
-    const FilterModelPopup = (id) => {
-        // serviceBooking[0]?.serviceVariations?.map((item, index) => {
-        //     if (item?._id === id) {
-        //         setServiceBookingSingle(item);
-        //         handleShow();
-        //     }
-        // })
-    }
+
+
+    console.log(serviceBookingSingle, "serviceBookingSingle")
+
 
 
 
     return (
         <Fragment>
-           
-                    <div className={styles.mainservicesetion}>
-                        <div className={styles.insidesection}>
-                           
+
+            <div className={styles.mainservicesetion}>
+                <div className={styles.insidesection}>
+
+                    <div>
+
+                        {/* serviceThumbImage */}
+
+                        {/* <Image src={servicebanner} alt="no image" className={styles.servicebanner} /> */}
+
+                        {serviceBooking?.serviceThumbImage ? <>
+                            <img
+                                className={styles.servicebanner}
+                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${serviceBooking?.serviceThumbImage}`}
+                                alt="profile-pic"
+                            />
+                        </> : <>
+                            <Skeleton
+                                className={styles.servicebanner}
+                            />
+                        </>}
+                    </div>
+                    <div className={styles.classesszumba}>
+
+                        <div className={styles.zumbasection}>
+                            <div className={styles.expre}>
+                                Experiences{serviceid}
+                            </div>
                             <div>
+                                <Image src={rightarrow} alt="no image" className={styles.arrwoimage} />
 
-                                {/* serviceThumbImage */}
-
-                                {/* <Image src={servicebanner} alt="no image" className={styles.servicebanner} /> */}
-
-                                {serviceBooking?.serviceThumbImage ? <>
-                                    <img
-                                        className={styles.servicebanner}
-                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${serviceBooking?.serviceThumbImage}`}
-                                        alt="profile-pic"
-                                    />
-                                </> : <>
-                                <Skeleton
-                                             className={styles.servicebanner}
-                                            />
-                                </>}
                             </div>
-                            <div className={styles.classesszumba}>
+                            <div className={styles.expre}>
+                                Zumba
 
-                                <div className={styles.zumbasection}>
-                                    <div className={styles.expre}>
-                                        Experiences{serviceid}
-                                    </div>
-                                    <div>
-                                        <Image src={rightarrow} alt="no image" className={styles.arrwoimage} />
+                            </div>                    </div>
+                    </div>
+                    <div className={styles.zumbaservices}>
 
-                                    </div>
-                                    <div className={styles.expre}>
-                                        Zumba
+                        {serviceBooking?.serviceName}
+                    </div>
 
-                                    </div>                    </div>
+                    <div className={styles.servicerating}>
+                        <div className={styles.rightstar}>
+                            <div>
+                                <Image src={star} alt="no image" />
                             </div>
-                            <div className={styles.zumbaservices}>
-
-                                {serviceBooking?.serviceName}
+                            <div className={styles.activestar}>
+                                4.5 (106 ratings)
                             </div>
 
-                            <div className={styles.servicerating}>
-                                <div className={styles.rightstar}>
-                                    <div>
-                                        <Image src={star} alt="no image" />
-                                    </div>
-                                    <div className={styles.activestar}>
-                                        4.5 (106 ratings)
-                                    </div>
-
-                                </div>
-                                {/* <div className={styles.leftstar}>
+                        </div>
+                        {/* <div className={styles.leftstar}>
 
                                     <div className={styles.activestar}>
                                         offline
@@ -128,100 +124,91 @@ function ServiceViewDetails() {
                                         Mumbai,india
                                     </div>
                                 </div> */}
+                    </div>
+                    <div className={styles.aboustservice}>
+                        <div>
+                            <div className={styles.aboutservice}>
+                                About the experience
                             </div>
-                            <div className={styles.aboustservice}>
-                                <div>
-                                    <div className={styles.aboutservice}>
-                                        About the experience
-                                    </div>
-                                    <div className={styles.servicelearn}>
-                                        {serviceBooking?.serviceDescription}
-                                    </div>
+                            <div className={styles.servicelearn}>
+                                {serviceBooking?.serviceDescription}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="mt-3">
+                        <div>Service Booked</div>
+                        <div className="mt-3">
+                            <div className={styles.cancelsection}>
+                                <div className={styles.leftcancelsection}>
+                                    Date :
+                                </div>
+                                <div className="ms-2">
+                                    {moment(serviceBookingSingle?.startDate).format("MMM Do YY",)} to {moment(serviceBookingSingle?.endDate).format("MMM Do YY",)}
                                 </div>
                             </div>
 
-                            <div className="mt-3">
-                                <div>Service Booked</div>
+                            <div className={styles.cancelsection}>
+                                <div className={styles.leftcancelsection}>
+                                    Is this an online/ offline service :
 
-                                <div>
+                                </div>
+                                <div className="ms-2">
+                                    {serviceBookingSingle?.serviceTypeId === 1 ? <>Online</> : <>Offline</>}
 
-<div className={styles.cancelsection}>
-    <div className={styles.leftcancelsection}>
-        Date :
-
-    </div>
-    <div className="ms-2">
-
-        {moment(serviceBookingSingle?.startDate).format("MMM Do YY",)} to {moment(serviceBookingSingle?.endDate).format("MMM Do YY",)}
-
-    </div>
-</div>
-
-<div className={styles.cancelsection}>
-    <div className={styles.leftcancelsection}>
-        Is this an online/ offline service :
-
-    </div>
-    <div className="ms-2">
-        {serviceBookingSingle?.serviceTypeId === 1 ? <>Online</> : <>Offline</>}
-
-    </div>
-</div>
-
-<div className={styles.cancelsection}>
-
-    <div className={styles.leftcancelsection}>
-
-        Cancellation :
-    </div>
-
-    <div className="ms-2">
-        {serviceBookingSingle?.isCancellationAvailable ? <>
-            CancellationAvailable
-        </> : <>
-            CancellationUnAvailable
-        </>}
-    </div>
-</div>
-
-<div className={styles.cancelsection}>
-    <div className={styles.leftcancelsection}>
-
-        Number of people allowed :
-    </div>
-    <div className="ms-2">
-
-        {serviceBookingSingle?.numberOfPeopleAllowed}
-
-    </div>
-</div>
-
-<div>
-
-    <div className={styles.working}>Working Days</div>
-    {serviceBookingSingle?.workingDays?.map((item, index) => {
-        return (
-            <div className={styles.workingdays}>
-                <div className={styles.leftdays}>
-
-                    {item?.dayName}
-                </div>
-                <div>
-
-                    {item?.workingHours}
-                </div>
-            </div>
-        )
-    })}
-
-</div>
-
-</div>
+                                </div>
                             </div>
-                            {/* <div className="mt-5">
 
+                            <div className={styles.cancelsection}>
+                                <div className={styles.leftcancelsection}>
+                                    Cancellation :
+                                </div>
+
+                                <div className="ms-2">
+                                    {serviceBookingSingle?.isCancellationAvailable ? <>
+                                        CancellationAvailable
+                                    </> : <>
+                                        CancellationUnAvailable
+                                    </>}
+                                </div>
+                            </div>
+
+                            <div className={styles.cancelsection}>
+                                <div className={styles.leftcancelsection}>
+
+                                    Number of people allowed :
+                                </div>
+                                <div className="ms-2">
+
+                                    {serviceBookingSingle?.numberOfPeopleAllowed}
+
+                                </div>
+                            </div>
+
+                            <div>
+                                <div className={styles.working}>Working Days</div>
+                                <div className="row gap-3">
+                                    {serviceBookingSingle?.workingDays?.map((item, index) => {
+                                        return (
+                                            <div className={styles.workingdays}>
+                                                <div className={styles.leftdays}>
+                                                    {item?.dayName}
+                                                </div>
+                                                <div>
+
+                                                    {item?.workingHours}
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    {/* <div className="mt-5">
                                 <div className={styles.booknowrow}>
-
                                     {serviceBooking?.serviceVariations?.map((item, index) => {
                                         return (
                                             <div className={styles.booknowbox}>
@@ -302,55 +289,55 @@ function ServiceViewDetails() {
 
                                 </div>
                             </div> */}
-                            <div className="mt-5 mb-5">
-                                <Reviewsproduct reviews={reviews} averageRatings={ratingsdata}/>
-                            </div>
-                            <div className={styles.instractions}>
-                                <div>
-                                    Instructors
+                    <div className="mt-5 mb-5">
+                        <Reviewsproduct reviews={reviews} averageRatings={ratingsdata} />
+                    </div>
+                    <div className={styles.instractions}>
+                        <div>
+                            Instructors
+                        </div>
+                        <div className='mt-3'>
+
+
+                            <div className={styles.instractionsection}>
+                                <div className={styles.leftimageins}>
+
+                                    {sellerinformations?.profileImageName ? <>
+                                        <img
+                                            className={styles.personimages}
+                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellerinformations?.profileImageName}`}
+                                            alt="profile-pic"
+                                        />
+                                    </> : <></>}
+
+                                    {/* profileImageName */}
+                                    {/* <Image src={images} alt="no image" className={styles.personimages} /> */}
+
                                 </div>
-                                <div className='mt-3'>
 
+                                <div className={styles.rightimageins}>
 
-                                    <div className={styles.instractionsection}>
-                                        <div className={styles.leftimageins}>
-
-                                            {sellerinformations?.profileImageName ? <>
-                                                <img
-                                                    className={styles.personimages}
-                                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellerinformations?.profileImageName}`}
-                                                    alt="profile-pic"
-                                                />
-                                            </> : <></>}
-
-                                            {/* profileImageName */}
-                                            {/* <Image src={images} alt="no image" className={styles.personimages} /> */}
-
-                                        </div>
-
-                                        <div className={styles.rightimageins}>
-
-                                            <div>
-                                                {sellerinformations?.firstName}
-                                            </div>
-                                            <div>
-                                                {sellerinformations?.businessName}
-                                            </div>
-
-
-                                            <div>
-                                                <button className={styles.viewdetailsbutton} onClick={() => NavigateUsers(sellerinformations?.businessSlugName)}>View Details</button>
-                                            </div>
-
-                                        </div>
+                                    <div>
+                                        {sellerinformations?.firstName}
                                     </div>
-                                </div>
+                                    <div>
+                                        {sellerinformations?.businessName}
+                                    </div>
 
+
+                                    <div>
+                                        <button className={styles.viewdetailsbutton} onClick={() => NavigateUsers(sellerinformations?.businessSlugName)}>View Details</button>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
+
                     </div>
-                    
-            
+                </div>
+            </div>
+
+
 
             <>
 

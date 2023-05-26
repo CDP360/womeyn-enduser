@@ -24,10 +24,10 @@
     width: 75%;
     height: 100%;
     // padding-bottom: 5%;
-    position:relative;
-    z-index:9 !important;
-    background-color:none;
-    margin:0 auto;
+    position: relative;
+    z-index: 9 !important;
+    background-color: none;
+    margin: 0 auto;
     @include xsBreakPoint {
         width: 85%;
         padding-top: 6%;
@@ -174,8 +174,10 @@
     height: auto;
     position: relative;
     .sellerimagesize {
-        height: 300px;
+        height: 100%;
         width: 100%;
+        object-fit: contain;
+        border:2px solid red;
         border-radius: 10px !important;
         @include xsBreakPoint {
             height: 320px;
@@ -251,8 +253,8 @@
 
 .sellerimagesize {
     width: 100%;
-    height: 170px;
-    // object-fit: contain;
+   height:220px;
+    object-fit: contain;
     border-radius: 10px;
 
     @include mdBreakPoint {
@@ -353,8 +355,6 @@
     color: #e95a5a !important;
 }
 
-
-
 .emptyboxrightcolor {
     // background-color: orange;
     position: absolute;
@@ -364,10 +364,10 @@
     opacity: 0.4;
     filter: blur(100px);
     left: 0;
-    top:0%;
+    top: 0%;
     z-index: 0;
-  }
-  .emptyboxleftcolor {
+}
+.emptyboxleftcolor {
     position: absolute;
     width: 10%;
     height: 30% !important;
@@ -377,58 +377,52 @@
     right: 5%;
     top: -5%;
     z-index: 0;
-  }
-  
-  
-  .emptyboxleftcolor1
-  {
+}
+
+.emptyboxleftcolor1 {
     position: absolute;
     width: 18%;
     height: 20% !important;
-    background: #415B91;
+    background: #415b91;
     opacity: 0.4;
     filter: blur(100px);
     right: 0%;
     top: 30%;
     z-index: 0;
-  }
-  
-  .emptyboxleftcolor2
-  {
+}
+
+.emptyboxleftcolor2 {
     position: absolute;
     width: 15%;
     height: 25% !important;
-    background: #E95A5A;
+    background: #e95a5a;
     opacity: 0.4;
     filter: blur(100px);
     left: 0%;
     top: 50%;
     z-index: 0;
-  }
-  
-  
-  .emptyboxleftcolor3
-  {
+}
+
+.emptyboxleftcolor3 {
     position: absolute;
     width: 25%;
     height: 30% !important;
-    background: #FFE7CD;
+    background: #ffe7cd;
     opacity: 0.6;
     filter: blur(100px);
     right: 0%;
     top: 70%;
     z-index: 0;
-  }
-  
-  .emptyboxleftcolor4
-  {
+}
+
+.emptyboxleftcolor4 {
     position: absolute;
     width: 15%;
     height: 10% !important;
-    background: #FFE7CD;
+    background: #ffe7cd;
     opacity: 0.6;
     filter: blur(100px);
     left: 0%;
     bottom: 0%;
     z-index: 0;
-  }
+}

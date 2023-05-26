@@ -127,7 +127,7 @@ function Reviewsproduct({ reviews, ratingcount, averageRatings }) {
                 </div>
 
             </> : <div>
-                No Review Service..!!!
+              
             </div>}
 
 

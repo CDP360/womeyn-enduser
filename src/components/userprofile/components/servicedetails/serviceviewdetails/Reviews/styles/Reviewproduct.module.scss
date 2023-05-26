@@ -18,7 +18,7 @@
     width: 100%;
   }
   @include xlBreakPoint {
-    width: 85%;
+    width: 100%;
   }
   .redstartreview {
     width: 15px;
@@ -72,10 +72,16 @@
         width: 100% !important;
       }
       @include mdBreakPoint {
-        width: 48% !important;
+        width: 80% !important;
+        margin:0 auto;
       }
       @include lgBreakPoint {
+        width: 90% !important;
+        margin: 0 auto;
+      }
+      @include xlBreakPoint {
         width: 48% !important;
+       
       }
       .splitprofilesection {
         display: flex;

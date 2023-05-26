@@ -50,10 +50,10 @@
 
                     .boxinside {
                         width: 100%;
-
                         display: flex;
                         gap: 5px;
                         align-items: center;
+                        // border:2px solid red;
                         @include lgBreakPoint {
                             gap: 0px;
                         }
@@ -61,11 +61,15 @@
                             width: 70%;
                             // margin:0 auto;
                             position: relative;
+                            @include lgBreakPoint
+                            {
+                                width:65%;
+                            }
                         }
                         .rightheaderbox {
                             width: 30%;
                             @include lgBreakPoint {
-                                width: 40%;
+                                width: 35%;
                             }
                             @include xlBreakPoint {
                                 width: 33%;
@@ -106,7 +110,11 @@
                     color: white;
                     @include lgBreakPoint {
                         width: 100%;
-                        font-size: 0.989rem;
+                        font-size: 0.889rem;
+                    }
+                    @include xlBreakPoint {
+                        width: 100%;
+                        font-size: 0.889rem;
                     }
                 }
             }

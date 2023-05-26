@@ -398,10 +398,10 @@
         padding: 5% 4px;
       }
       @include lgBreakPoint {
-        width: 45%;
+        width: 80%;
       }
       @include xlBreakPoint {
-        width: 38%;
+        width: 70%;
       }
       .leftimageins {
         width: 25%;
@@ -505,17 +505,42 @@
 .workingdays {
   display: flex;
   border: 1px solid #efeeee;
-  margin: 2% 0px;
+  // margin: 2% 0px;
   border-radius: 5px;
   padding: 10px;
   align-items: center;
   cursor: pointer;
+  width: 30%;
+  @include xsBreakPoint
+  {
+    width:90%;
+    margin:0 auto;
+  }
+  @include smBreakPoint
+  {
+    width:40%;
+    margin:0 auto;
+    flex-direction:column;
+  }
+  
+  @include lgBreakPoint
+  {
+    flex-direction:column;
+  }
+  @include xlBreakPoint
+  {
+    flex-direction:column;
+  }
   .leftdays {
     width: 30%;
   }
 }
 .workingdays:hover {
-  background-color: #efeeee;
+  // background-color: #efeeee;
+  background: #E75B5E;
+  color:white;
+  border:none;
+  outline:none;
 }
 
 .cancelsection {
