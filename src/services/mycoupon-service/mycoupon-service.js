@@ -17,3 +17,21 @@ export function MyCouponList() {
         })
     })
 }
+
+
+export function couponApply(data) {
+    // return instanceBaseurl.get(`/common/coupons`).then((res) => {
+    //     return res
+    // }).catch((err) => {
+    //     return err;
+    // })
+
+
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.post(`/customer/coupon`, data).then(response => {
+            resolve(response?.data)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}

@@ -15,18 +15,21 @@ import { toast } from 'react-toastify';
 import cartempty from '../../../../assests/cart-logos/emptycartlogo.png';
 import { postShipmentcreate } from '../../../../services/shipping-service/shipping-service';
 import LoaderLogo from '../../../loaderlogo/LoaderLogo';
+import { couponApply } from '../../../../services/mycoupon-service/mycoupon-service';
 
 
 
 
 
-function Confirmorders({ name, totalPrice, step, setStep, setCouponName, addressid, setShippingAmount }) {
+function Confirmorders({ name, totalPrice, step, setStep, setCouponName, addressid, setShippingAmount, overallamount,setDiscountAmount ,
+  discountamount
+}) {
   const { state, dispatch } = useContext(ContextStore);
   const [carts, setCart] = useState([]);
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const [deleteid, setDeleteid] = useState("");
-  const [loader,setLoader]=useState(false);
+  const [loader, setLoader] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
     setShow(true)
@@ -106,9 +109,25 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
       setCouponerror(true);
     }
     if (couponscode) {
-      setCouponcodetrue(true);
+      // setCouponcodetrue(true);
       setCouponName(couponscode);
-      setCouponerror(false);
+      // setCouponerror(false);
+
+
+      const couponnames = {
+        couponCode: couponscode,
+        orderAmount: overallamount
+
+      }
+
+
+
+      couponApply(couponnames).then((res) => {
+        console.log(res, "data")
+        setDiscountAmount(res);
+      }).catch((err) => {
+        console.log(err);
+      })
     }
   }
 
@@ -163,23 +182,23 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
     postShipmentcreate(sendShippData).then((res) => {
       setFinalOrders(res);
       setShippingAmount(res);
-      setTimeout(()=>{
+      setTimeout(() => {
         setLoader(false);
-      },800)
+      }, 800)
     }).catch((err) => {
       console.log(err);
       setLoader(false);
       toast.error("Order Something Error..!",
-      {
-        position: "top-center",
-        autoClose: 3300,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-    }
+        {
+          position: "top-center",
+          autoClose: 3300,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
       );
     })
   }
@@ -191,61 +210,61 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
     <Fragment>
       <div className={styles.cartsection}>
         <div className={styles.leftcartsection}>
-       
 
-       {loader?<>
-       <LoaderLogo/>
-       </>:<>
-       
-       {finalorders?.length > 0 ? <>
-            <div className="d-none d-lg-block">
-              {finalorders?.length > 0 ? <div className={styles.bordersectioncart}>
-                {finalorders?.map((item, index) => {
-                  return (
-                    <>
-                      <div className={styles.cartlistsection} key={index}>
-               
-                        <div className={styles.cartimagesection}>
-                        <div className={styles.deliverycharge}>
 
-{item?.deliveryCharge ? <>
-  Delivery Charge : A$ {item?.deliveryCharge}
-</> : <>FREE Delivery</>}
-</div>
-                          <div>
-                            <img
-                              className={styles.editprofilesection}
-                              src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`}
-                              alt="profile-pic"
-                            />
-                          </div>
-                          <div>
-                            <div className="carttext">{item?.productName}
+          {loader ? <>
+            <LoaderLogo />
+          </> : <>
+
+            {finalorders?.length > 0 ? <>
+              <div className="d-none d-lg-block">
+                {finalorders?.length > 0 ? <div className={styles.bordersectioncart}>
+                  {finalorders?.map((item, index) => {
+                    return (
+                      <>
+                        <div className={styles.cartlistsection} key={index}>
+
+                          <div className={styles.cartimagesection}>
+                            <div className={styles.deliverycharge}>
+
+                              {item?.deliveryCharge ? <>
+                                Delivery Charge : A$ {item?.deliveryCharge}
+                              </> : <>FREE Delivery</>}
                             </div>
                             <div>
-                              <span className="saleprice"> A${item?.salePrice}</span> <span>
-                                {item?.offerPercentag == 0 ? <span></span> : <>
-                                  <del className="dim">
-                                    <span>{item?.actualPrice}</span>
-                                  </del>
-                                </>}
-                                {item?.offerPercentag == 0 ? <></> : <span className="offersection"> ( {item?.offerPercentag} off )</span>}
-                              </span>
+                              <img
+                                className={styles.editprofilesection}
+                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`}
+                                alt="profile-pic"
+                              />
                             </div>
                             <div>
-                              {item?.variations?.map((items, index) => {
-                                return (
-                                  <div >
-                                    <span className="sizecolor">{items?.name} : {items?.value}</span>
-                                  </div>
-                                )
-                              })}
-                            </div>
+                              <div className="carttext">{item?.productName}
+                              </div>
+                              <div>
+                                <span className="saleprice"> A${item?.salePrice}</span> <span>
+                                  {item?.offerPercentag == 0 ? <span></span> : <>
+                                    <del className="dim">
+                                      <span>{item?.actualPrice}</span>
+                                    </del>
+                                  </>}
+                                  {item?.offerPercentag == 0 ? <></> : <span className="offersection"> ( {item?.offerPercentag} off )</span>}
+                                </span>
+                              </div>
+                              <div>
+                                {item?.variations?.map((items, index) => {
+                                  return (
+                                    <div >
+                                      <span className="sizecolor">{items?.name} : {items?.value}</span>
+                                    </div>
+                                  )
+                                })}
+                              </div>
 
-                           
+
+                            </div>
                           </div>
-                        </div>
-                        {/* <div className={styles.cartaddsection}>
+                          {/* <div className={styles.cartaddsection}>
                         <div >
                           <Image src={minusicon} alt="no image" className={styles.carticonsadd} onClick={() =>
                             handleRemove(index, item)
@@ -259,8 +278,8 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
                         </div>
                       </div> */}
 
-                        <div className={styles.cartaddsection}>
-                          {/* <div >
+                          <div className={styles.cartaddsection}>
+                            {/* <div >
                           {item?.quantity == 1 ? <>
                             <Image src={minusicon} alt="no image" className={styles.carticonsadds}
                               onClick={() =>
@@ -273,7 +292,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
                             } />
                           </>}
                         </div> */}
-                          {/* <div className="text-center">
+                            {/* <div className="text-center">
                             <div className="sizecolor">
                               Quantity
                             </div>
@@ -282,7 +301,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
                             </div>
 
                           </div> */}
-                          {/* <div>
+                            {/* <div>
 
                           {item?.quantity == item?.quantityLeft ? <>
                             <Image src={addicon} alt="no image" className={styles.carticonsadds}
@@ -301,48 +320,48 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
 
 
                         </div> */}
-                        </div>
-                        <div className={styles.cartremovesection} onClick={() => handleShow(item)}>
-                          {/* <div>
+                          </div>
+                          <div className={styles.cartremovesection} onClick={() => handleShow(item)}>
+                            {/* <div>
                             <Image src={delteteicon} alt="no image" className={styles.deleteicons} />
                           </div>
                           <div>
                             Remove
                           </div> */}
 
-                          <div className="text-center mt-4">
-                            <div className="sizecolor">
-                              Quantity
-                            </div>
-                            <div className={styles.quntitytext}>
-                              {item?.quantity}
-                            </div>
+                            <div className="text-center mt-4">
+                              <div className="sizecolor">
+                                Quantity
+                              </div>
+                              <div className={styles.quntitytext}>
+                                {item?.quantity}
+                              </div>
 
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </>
-                  )
-                })}
-              </div> : <>
-              <div className={styles.cartemptysection}>
+                      </>
+                    )
+                  })}
+                </div> : <>
+                  <div className={styles.cartemptysection}>
 
-<div>
-  <Image src={cartempty} alt="no image" className={styles.cartimage} />
-</div>
+                    <div>
+                      <Image src={cartempty} alt="no image" className={styles.cartimage} />
+                    </div>
 
-<div className={styles.yourcarttexts}>
+                    <div className={styles.yourcarttexts}>
 
-  No Item to checkout please explore
+                      No Item to checkout please explore
 
-</div>
+                    </div>
 
-<div className="mt-4 mb-5">
-  <button className={styles.shopbutton} onClick={shopping}>Shop Now</button>
-</div>
-</div>
-               
-                {/* <div className={styles.cartemptysection}>
+                    <div className="mt-4 mb-5">
+                      <button className={styles.shopbutton} onClick={shopping}>Shop Now</button>
+                    </div>
+                  </div>
+
+                  {/* <div className={styles.cartemptysection}>
 
                   <div>
                     <Image src={cartempty} alt="no image" className={styles.cartimage} />
@@ -360,11 +379,11 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
                 </div> */}
 
 
-              </>}
-            </div>
-          </> : <>
+                </>}
+              </div>
+            </> : <>
 
-            {/* <div className="d-none d-lg-block">
+              {/* <div className="d-none d-lg-block">
               {cart?.cartData?.length > 0 ? <div className={styles.bordersectioncart}>
                 {cart?.cartData?.map((item, index) => {
                   return (
@@ -491,7 +510,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
               </>}
             </div> */}
 
-            {/* <div className="d-block d-lg-none">
+              {/* <div className="d-block d-lg-none">
 
               {cart?.cartData?.length > 0 ? <div className={styles.bordersectioncart}>
                 {cart?.cartData?.map((item, index) => {
@@ -597,87 +616,110 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
 
 
             </div> */}
-          </>
-          }
+            </>
+            }
 
 
-<div className='mt-5'>
+            <div className='mt-5'>
+
+              {discountamount?.message && <>
+                <div className={styles.couponsectionsplit}>
+                  <div>
+                    <input type="text" placeHolder="EARLY BIRD" className={styles.couponform} name={couponscode} value={couponscode} onChange={(e) => setCouponcode(e.target.value)} />
+                  </div>
+
+                  <div>
+                    <button className={styles.applycoupons} onClick={couponcodeSubmit}>Apply</button>
+                  </div>
+                </div>
+                <div>
+                  {couponerror && couponscode?.length <= 0 ? <span className="active">Coupon field is reuired!!!</span> : <></>}
+                </div>
+              </>}
+              {discountamount?.message?<>
+              <span className="text-danger">
+                {discountamount?.message}
+              </span>
+              </>:<>
+              
+              {discountamount?.result ? <>
+                <div className={styles.couponcreatedsection}>
+                  <div className={styles.insidecouponsdeletesection}>
+                    <div className={styles.iconandcontentsection}>
+                      <div>
+                        <Image src={coupons} alt="no image" className={styles.couponimage} />
+                      </div>
+                      <div>
+                        <div className={styles.couponname}>
+                          A${discountamount?.result} Saved! With applied coupon
+                        </div>
+                        {/* <div className={styles.offercoupon}>
+                          5% savings with this promo code
+                          applied on this booking
+                        </div> */}
+                      </div>
+                    </div>
+                    {/* <div className={styles.deleteiconsection} onClick={Closecoupons}>
+                      <ion-icon name="close-outline" className={styles.crs}></ion-icon>
+                    </div> */}
+                  </div>
+                </div>
+              </> : <>
+                <div className={styles.couponsectionsplit}>
+                  <div>
+                    <input type="text" placeHolder="EARLY BIRD" className={styles.couponform} name={couponscode} value={couponscode} onChange={(e) => setCouponcode(e.target.value)} />
+                  </div>
+
+                  <div>
+                    <button className={styles.applycoupons} onClick={couponcodeSubmit}>Apply</button>
+                  </div>
+                </div>
+                <div>
+                  {couponerror && couponscode?.length <= 0 ? <span className="active">Coupon field is reuired!!!</span> : <></>}
+                </div>
+              </>}
+              </>}
 
 
-{/* {couponsectiontrue ? <>
-  <div className={styles.couponcreatedsection}>
-    <div className={styles.insidecouponsdeletesection}>
-      <div className={styles.iconandcontentsection}>
-        <div>
-          <Image src={coupons} alt="no image" className={styles.couponimage} />
+             
+
+
+              {finalorders?.length > 0 &&
+
+                <div className="mt-4">
+                  <button className={styles.continuebutton} onClick={deliverOrderConfirm}>
+
+                    {loading ? <>
+
+                      <Spinner
+                        as="span"
+                        animation="border"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                      />
+                      <span className="ms-3">Loading...</span>
+                    </> : <>
+                      Continue
+                    </>}
+                  </button>
+                </div>
+              }
+
+
+            </div>
+
+          </>}
+
+
         </div>
-        <div>
-          <div className={styles.couponname}>
-            Earlybird
-          </div>
-          <div className={styles.offercoupon}>
-            5% savings with this promo code
-            applied on this booking
-          </div>
-        </div>
-      </div>
-      <div className={styles.deleteiconsection} onClick={Closecoupons}>
-        <ion-icon name="close-outline" className={styles.crs}></ion-icon>
-      </div>
-    </div>
-  </div>
-</> : <>
-  <div className={styles.couponsectionsplit}>
-    <div>
-      <input type="text" placeHolder="EARLY BIRD" className={styles.couponform} name={couponscode} value={couponscode} onChange={(e) => setCouponcode(e.target.value)} />
-    </div>
-
-    <div>
-      <button className={styles.applycoupons} onClick={couponcodeSubmit}>Apply</button>
-    </div>
-  </div>
-  <div>
-    {couponerror && couponscode?.length <= 0 ? <span className="active">Coupon field is reuired!!!</span> : <></>}
-  </div>
-</>} */}
-
-
-{finalorders?.length > 0 &&
-
-<div className="mt-4">
-<button className={styles.continuebutton} onClick={deliverOrderConfirm}>
-
-{loading ? <>
-
-<Spinner
-as="span"
-animation="border"
-size="sm"
-role="status"
-aria-hidden="true"
-/>
-<span className="ms-3">Loading...</span>
-</> : <>
-Continue
-</>}
-</button>
-</div>
-}
-
-
-</div>
-       
-       </>}
-      
-
-        </div>
 
 
 
       </div>
 
 
-    
+
 
       <>
         <Modal

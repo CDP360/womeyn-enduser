@@ -24,18 +24,28 @@ function Checkout() {
   const [step2, setStep2] = useState('');
   const [step3, setStep3] = useState('');
   const [couponname, setCouponName] = useState("");
+  const [discountamount, setDiscountAmount] = useState("");
+
 
 
   const [checkshippingamount, setShippingAmount] = useState([]);
   const totalPrice = cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0);
+
+
+  
   const [totalvalue, setTotalValue] = useState(0);
-  const cartpricevaues = state?.cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)
+  const cartpricevaues = state?.cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0);
   const values = Math.max(
     0,
     Math.round(
       cartpricevaues - (cartpricevaues) * 10 / 100
     )
   );
+
+
+  const GSTValue = cartpricevaues - values;
+
+
   // const deliveryChargeAmount = state?.cart?.cartData?.reduce((acc, current) => acc + current.deliverycharge, 0)
   const deliveryChargeAmount = checkshippingamount.reduce((acc, current) => acc + Number(current.deliveryCharge), 0)
   const DeliveryChargeAmount = Math.max(
@@ -48,6 +58,13 @@ function Checkout() {
   const chargeDelivery = deliveryChargeAmount - DeliveryChargeAmount;
   const AllchargeCount = Number(cartpricevaues) + Number(deliveryChargeAmount);
   const OverallTotalPrice = Number(Sample) + Number(chargeDelivery);
+
+
+  // coupon value calculate
+
+  const toatalpricecart=discountamount?.message?Math.round(Number(AllchargeCount) + Number(OverallTotalPrice)):
+  Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))-Number(discountamount?.result)
+  ;
   useEffect(() => {
     if (step === 0) {
       setStep1("active")
@@ -63,13 +80,15 @@ function Checkout() {
       seTokens(true);
     }
 
-  }, [width, step1, step2, step3, step, totalvalue]);
+  }, [width, step1, step2, step3, step, totalvalue,discountamount]);
 
   const NavigatePath = () => {
     history.push("/login");
   }
 
 
+
+  console.log(discountamount,"discountamount")
 
 
 
@@ -119,11 +138,16 @@ function Checkout() {
                     {/* <Payment /> */}
                     <Confirmorders name={name} totalPrice={totalPrice} setStep={setStep} step={step} setCouponName={setCouponName} addressid={name}
                       setShippingAmount={setShippingAmount}
+                      overallamount={Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))}
+                      setDiscountAmount={setDiscountAmount}
+
+                      discountamount={discountamount}
                     />
                   </div>}
                   {step === 2 && <div>
-                    <Payment addressid={name} totalPrice={totalPrice} couponname={couponname} totalvalue={totalvalue}
+                    <Payment addressid={name} totalPrice={toatalpricecart} couponname={couponname} totalvalue={totalvalue}
                       checkshippingamount={checkshippingamount}
+                      toatalpricecart={toatalpricecart}
                     />
                   </div>}
                 </div>
@@ -172,11 +196,25 @@ function Checkout() {
                       </div>
                     </> : <></>}
 
+                    {discountamount?.result? <>
+                      <div className={styles.splitcartsections}>
+                      <div>
+                        Item Discount
+                        </div>
+                      <div className={styles.textprice}>
+                        {/* A${Number(Sample) + Number(chargeDelivery)} */}
+                        - A${discountamount?.result}
+                      </div>
+                    </div>
+                    </>:null}
+                   
+
                     <div className={styles.splitcartsections}>
                       <div>
                         GST</div>
                       <div className={styles.textprice}>
-                        A${Number(Sample) + Number(chargeDelivery)}
+                        {/* A${Number(Sample) + Number(chargeDelivery)} */}
+                        A${GSTValue}
                       </div>
                     </div>
                   </div>
@@ -187,7 +225,21 @@ function Checkout() {
                     <div className={styles.pricetextss}>
                       Total Payable</div>
                     <div className={styles.textprices}>
+
+                      {discountamount?.message?<>
+                        A${Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))}
+                      </>:<>
+                      
+                      {discountamount?.result?<>
+                        A${Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))-Number(discountamount?.result)}
+                      
+                      </>:<>
                       A${Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))}
+                      
+                      </>}
+                      </>}
+
+                     
                       {/* A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0) + Number(Sample) + Number(deliveryChargeAmount)} */}
 
                     </div>

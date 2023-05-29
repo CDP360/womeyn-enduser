@@ -61,9 +61,8 @@
                             width: 70%;
                             // margin:0 auto;
                             position: relative;
-                            @include lgBreakPoint
-                            {
-                                width:65%;
+                            @include lgBreakPoint {
+                                width: 65%;
                             }
                         }
                         .rightheaderbox {
@@ -213,12 +212,12 @@
         }
     }
     .headerprofile {
-        padding:5% 15px;
+        padding: 5% 15px;
         display: flex;
         align-items: center;
         gap: 20px;
         cursor: pointer;
-        
+
         .profileimageover {
             width: 100%;
             height: 20px;
@@ -229,13 +228,9 @@
             font-weight: 600;
         }
     }
-    .headerprofile:hover
-    {
-  background: #fff1f1;
-  padding:5% 15px;
-
-
-       
+    .headerprofile:hover {
+        background: #fff1f1;
+        padding: 5% 15px;
     }
     .profileimagesection {
         width: 40px;
@@ -265,8 +260,7 @@
     }
 }
 
-.barsectiontop
-{
+.barsectiontop {
     // border:2px solid red;
 }
 
@@ -360,19 +354,17 @@
         cursor: pointer;
         margin-top: 15%;
         border-radius: 10px;
-        padding:10px 0px;
+        padding: 10px 0px;
         left: -280%;
 
         @include lgBreakPoint {
             width: 22vw !important;
-           
+
             left: -400%;
         }
         @include xlBreakPoint {
             width: 20vw !important;
             left: -400%;
-
-        
         }
     }
 }
@@ -386,12 +378,9 @@
     color: #e84a4e;
 }
 
-.hovertexts
-{
-    cursor:pointer !important;
+.hovertexts {
+    cursor: pointer !important;
 }
-.nav-link
-{
-    cursor:pointer !important;
-
+.nav-link {
+    cursor: pointer !important;
 }

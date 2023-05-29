@@ -379,7 +379,7 @@ font-weight:600;
 
 .couponsectionsplit {
   display: flex;
-  justify-content: space-between;
+  gap:10%;
   align-items: center;
   @include xsBreakPoint
   {
@@ -415,10 +415,10 @@ font-weight:600;
     outline: none;
     background-color: #121e49;
     color: white;
-    padding: 10px;
+    padding: 10px 60px;
     border-radius: 10px;
     cursor: pointer;
-    width: 120px;
+    width: auto;
     @include xsBreakPoint
     {
       width:250px;
@@ -427,7 +427,7 @@ font-weight:600;
 }
 .couponcreatedsection {
   // border:1px solid red;
-  background-color: #fff8f8;
+  background-color: #DCFBEE;
   padding: 2% 10px;
   border-radius: 10px;
   .insidecouponsdeletesection {
@@ -438,6 +438,8 @@ font-weight:600;
       display: flex;
       gap: 20px;
       height: 100%;
+      align-items:center;
+      
       .couponimage {
         width: 100%;
         object-fit: contain;
@@ -445,7 +447,9 @@ font-weight:600;
       }
       .couponname {
         font-weight: 600;
-        font-size: 1.4rem;
+        font-size: 1.123rem;
+        color:#2E9973;
+        
       }
       .offercoupon {
         width: 60%;
