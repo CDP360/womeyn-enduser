@@ -209,6 +209,18 @@ function Checkout() {
                       </div>
                     </> : <></>}
 
+                   
+
+
+                    <div className={styles.splitcartsections}>
+                      <div>
+                        GST</div>
+                      <div className={styles.textprice}>
+                        {/* A${Number(Sample) + Number(chargeDelivery)} */}
+                        A${GSTTotalValue}
+                      </div>
+                    </div>
+
                     {discountamount?.result ? <>
                       <div className={styles.splitcartsections}>
                         <div>
@@ -220,16 +232,6 @@ function Checkout() {
                         </div>
                       </div>
                     </> : null}
-
-
-                    <div className={styles.splitcartsections}>
-                      <div>
-                        GST</div>
-                      <div className={styles.textprice}>
-                        {/* A${Number(Sample) + Number(chargeDelivery)} */}
-                        A${GSTTotalValue}
-                      </div>
-                    </div>
                   </div>
                   <div className={styles.borderdashedsection}>
                     <div className={styles.insideborderdashedsection}></div>
