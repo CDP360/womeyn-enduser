@@ -7,7 +7,7 @@ import minusicon from '../../../../assests/cart-logos/minuscart.png';
 import delteteicon from '../../../../assests/cart-logos/deleteicons.png';
 import Modal from 'react-bootstrap/Modal';
 import Image from 'next/image';
-import coupons from '../../../../assests/cart-logos/couponicon.png';
+import coupons from '../../../../assests/cart-logos/coupincodeimage.png';
 import Spinner from 'react-bootstrap/Spinner';
 import { toast } from 'react-toastify';
 
@@ -21,7 +21,7 @@ import { couponApply } from '../../../../services/mycoupon-service/mycoupon-serv
 
 
 
-function Confirmorders({ name, totalPrice, step, setStep, setCouponName, addressid, setShippingAmount, overallamount,setDiscountAmount ,
+function Confirmorders({ name, totalPrice, step, setStep, setCouponName, addressid, setShippingAmount, overallamount, setDiscountAmount,
   discountamount
 }) {
   const { state, dispatch } = useContext(ContextStore);
@@ -101,7 +101,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
   const [couponscode, setCouponcode] = useState("");
   const [couponerror, setCouponerror] = useState(false);
 
-  const [couponsectiontrue, setCouponcodetrue] = useState(false);
+  const [couponsectionloading, setCouponcodeloading] = useState(false);
 
   const couponcodeSubmit = (e) => {
     e.preventDefault();
@@ -120,13 +120,20 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
 
       }
 
+      setCouponcodeloading(true);
+
 
 
       couponApply(couponnames).then((res) => {
         console.log(res, "data")
         setDiscountAmount(res);
+
+        setTimeout(()=>{
+          setCouponcodeloading(false);
+        },400)
       }).catch((err) => {
         console.log(err);
+        setCouponcodeloading(false);
       })
     }
   }
@@ -217,7 +224,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
           </> : <>
 
             {finalorders?.length > 0 ? <>
-              <div className="d-none d-lg-block">
+              <div className="">
                 {finalorders?.length > 0 ? <div className={styles.bordersectioncart}>
                   {finalorders?.map((item, index) => {
                     return (
@@ -329,15 +336,14 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
                             Remove
                           </div> */}
 
-                            <div className="text-center mt-4">
+                            
                               <div className="sizecolor">
                                 Quantity
                               </div>
                               <div className={styles.quntitytext}>
                                 {item?.quantity}
                               </div>
-
-                            </div>
+                           
                           </div>
                         </div>
                       </>
@@ -622,66 +628,71 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
 
             <div className='mt-5'>
 
-              {discountamount?.message && <>
-                <div className={styles.couponsectionsplit}>
+            <div className={styles.couponsectionsplit}>
                   <div>
                     <input type="text" placeHolder="EARLY BIRD" className={styles.couponform} name={couponscode} value={couponscode} onChange={(e) => setCouponcode(e.target.value)} />
                   </div>
 
                   <div>
-                    <button className={styles.applycoupons} onClick={couponcodeSubmit}>Apply</button>
+                    <button className={styles.applycoupons} onClick={couponcodeSubmit}>
+                      
+                     
+                      
+                      
+                      {couponsectionloading ? <div className="d-flex gap-2 align-items-center justify-content-center">
+
+<Spinner
+  as="span"
+  animation="border"
+  size="sm"
+  role="status"
+  aria-hidden="true"
+/>
+<span className="ms-3">Loading...</span>
+</div> : <>
+Apply
+</>}
+                      </button>
                   </div>
                 </div>
-                <div>
-                  {couponerror && couponscode?.length <= 0 ? <span className="active">Coupon field is reuired!!!</span> : <></>}
+                <div className="mt-2">
+                  {couponerror && couponscode?.length <= 0 ? <span className="active">Coupon Code field is Required</span> : <></>}
                 </div>
-              </>}
-              {discountamount?.message?<>
-              <span className="text-danger">
-                {discountamount?.message}
-              </span>
-              </>:<>
-              
-              {discountamount?.result ? <>
-                <div className={styles.couponcreatedsection}>
-                  <div className={styles.insidecouponsdeletesection}>
-                    <div className={styles.iconandcontentsection}>
-                      <div>
-                        <Image src={coupons} alt="no image" className={styles.couponimage} />
-                      </div>
-                      <div>
-                        <div className={styles.couponname}>
-                          A${discountamount?.result} Saved! With applied coupon
+
+             
+              {discountamount?.message ? <>
+                <span className="text-danger mt-2 mb-3">
+                  {discountamount?.message}
+                </span>
+              </> : <div>
+
+                {discountamount?.result ? <div className="mt-3">
+                  <div className={styles.couponcreatedsection}>
+                    <div className={styles.insidecouponsdeletesection}>
+                      <div className={styles.iconandcontentsection}>
+                        <div>
+                          <Image src={coupons} alt="no image" className={styles.couponimage} />
                         </div>
-                        {/* <div className={styles.offercoupon}>
+                        <div>
+                          <div className={styles.couponname}>
+                            A${discountamount?.result} Saved! With applied coupon
+                          </div>
+                          {/* <div className={styles.offercoupon}>
                           5% savings with this promo code
                           applied on this booking
                         </div> */}
+                        </div>
                       </div>
-                    </div>
-                    {/* <div className={styles.deleteiconsection} onClick={Closecoupons}>
+                      {/* <div className={styles.deleteiconsection} onClick={Closecoupons}>
                       <ion-icon name="close-outline" className={styles.crs}></ion-icon>
                     </div> */}
+                    </div>
                   </div>
-                </div>
-              </> : <>
-                <div className={styles.couponsectionsplit}>
-                  <div>
-                    <input type="text" placeHolder="EARLY BIRD" className={styles.couponform} name={couponscode} value={couponscode} onChange={(e) => setCouponcode(e.target.value)} />
-                  </div>
-
-                  <div>
-                    <button className={styles.applycoupons} onClick={couponcodeSubmit}>Apply</button>
-                  </div>
-                </div>
-                <div>
-                  {couponerror && couponscode?.length <= 0 ? <span className="active">Coupon field is reuired!!!</span> : <></>}
-                </div>
-              </>}
-              </>}
+                </div> : null}
+              </div>}
 
 
-             
+
 
 
               {finalorders?.length > 0 &&

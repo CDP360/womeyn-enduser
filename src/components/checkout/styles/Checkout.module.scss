@@ -17,6 +17,9 @@
     flex-direction: column;
   }
   @include mdBreakPoint {
+    flex-direction: column;
+  }
+  @include mdBreakPoint {
     gap: 5px;
   }
   @include lgBreakPoint {
@@ -24,6 +27,12 @@
   }
   @include xlBreakPoint {
     gap: 10px;
+  }
+
+  .textpricegreen {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color:#2E9973;
   }
 
   .leftcartsection {

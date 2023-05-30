@@ -5,17 +5,15 @@
   font-weight: 600;
   padding: 2% 0px;
 }
-.carticonsadds
-{
+.carticonsadds {
   width: 25px;
   height: 25px;
   object-fit: contain;
   cursor: no-drop;
 }
-.quntitytext
-{
-  font-size:1.4rem;
-  font-weight:600;
+.quntitytext {
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 .cartsection {
   width: 100%;
@@ -114,9 +112,14 @@
       padding: 5px 20px;
       background-color: none;
       display: flex;
-      position:relative;
+      position: relative;
 
       @include xsBreakPoint {
+        width: 100%;
+        flex-direction: column;
+        padding:30px 0px;
+      }
+      @include smBreakPoint {
         width: 100%;
         flex-direction: column;
       }
@@ -124,29 +127,35 @@
         width: 100%;
         flex-direction: column;
       }
-      @include lgBreakPoint
-      {
+      @include lgBreakPoint {
         padding: 5px 0px;
       }
 
-      .deliverycharge
-      {
-        position:absolute;
-        right:0;
-        top:0;
+      .deliverycharge {
+        position: absolute;
+        right: 0;
+        top: 0;
         // border:3px solid blue;
         // width:100%;
-        padding:7px 30px;
+        padding: 7px 30px;
         border-top-left-radius: 1000px;
         border-bottom-right-radius: 1000px;
-      
 
         background: rgba(69, 110, 214, 0.1);
-        color: #E95A5A;
+        color: #e95a5a;
 
         // opacity: 0.10;
-font-weight:600;
-
+        font-weight: 600;
+        @include smBreakPoint
+        {
+          padding:5px 15px;
+        }
+        @include xsBreakPoint
+        {
+          padding:5px 15px;
+       
+          
+        }
       }
       .cartimagesection {
         width: 60%;
@@ -155,6 +164,9 @@ font-weight:600;
         padding-bottom: 2%;
         // position:relative;
         @include xsBreakPoint {
+          width: 100%;
+        }
+        @include smBreakPoint {
           width: 100%;
         }
         @include mdBreakPoint {
@@ -175,7 +187,7 @@ font-weight:600;
         gap: 22px;
         @include xsBreakPoint {
           width: 100%;
-          gap:20px;
+          gap: 20px;
         }
         @include smBreakPoint {
           width: 100%;
@@ -201,25 +213,46 @@ font-weight:600;
         width: 20%;
         // border: 2px solid red;
         display: flex;
-        gap: 10px;
+        flex-direction:column;
+        padding-top:7%;
+        gap: 3px;
         align-items: center;
         justify-content: center;
 
-        @include lgBreakPoint
-        {
-        // border: 2px solid red;
-        width:20%;
-        flex-direction:column;
+        @include lgBreakPoint {
+          // border: 2px solid red;
+          width: 20%;
+          flex-direction: column;
+        }
+        @include xlBreakPoint {
+          // border: 2px solid red;
+          width: 20%;
+          flex-direction: column;
+        }
+        @include xsBreakPoint {
+          gap:10px !important;
+    display:flex !important;
+    flex-direction:row !important;
+    padding:0 !important;
+ 
+ 
+         }
+        @include smBreakPoint {
+          gap:10px !important;
+    display:flex !important;
+    flex-direction:row !important;
+    padding:0 !important;
+    margin-bottom:2%;
+         }
+        @include mdBreakPoint {
+         gap:10px !important;
+   display:flex !important;
+   flex-direction:row !important;
+   padding:0 !important;
+   margin-bottom:2%;
 
         }
-        @include xlBreakPoint
-        {
-        // border: 2px solid red;
-        width:20%;
-        flex-direction:column;
 
-        }
-        
         .deleteicons {
           width: 25px;
           height: 25px;
@@ -371,20 +404,34 @@ font-weight:600;
   background: #e95a5a;
   border-radius: 10px;
   font-weight: 600;
-  @include xsBreakPoint
-  {
-    width:100%;
+  @include xsBreakPoint {
+    width: 100%;
   }
 }
 
 .couponsectionsplit {
   display: flex;
-  gap:3%;
+  gap: 1%;
   align-items: center;
-  @include xsBreakPoint
-  {
-    flex-direction:column;
-    gap:20px;
+  @include xsBreakPoint {
+    flex-direction: column;
+    gap: 20px;
+  }
+  @include smBreakPoint {
+  
+    gap: 20px;
+  }
+  @include mdBreakPoint {
+  
+    gap: 20px;
+  }
+  @include lgBreakPoint {
+  
+    gap: 20px;
+  }
+  @include xlBreakPoint {
+  
+    gap: 30px;
   }
   .couponform {
     border: 0.7px solid #111f53;
@@ -392,21 +439,20 @@ font-weight:600;
     width: 500px;
     padding: 6px;
     background-color: #fbfbfb;
-    outline:none;
-    @include xsBreakPoint
-    {
-      width:250px;
+    outline: none;
+    @include xsBreakPoint {
+      width: 250px;
     }
-    @include mdBreakPoint
-    {
-      width:190px;
+    @include smBreakPoint {
+      width: 300px;
     }
-    @include lgBreakPoint
-    {
+    @include mdBreakPoint {
+      width: 430px;
+    }
+    @include lgBreakPoint {
       width: 340px;
     }
-    @include xlBreakPoint
-    {
+    @include xlBreakPoint {
       width: 400px;
     }
   }
@@ -415,19 +461,18 @@ font-weight:600;
     outline: none;
     background-color: #121e49;
     color: white;
-    padding: 10px 60px;
+    padding: 10px 40px;
     border-radius: 10px;
     cursor: pointer;
     width: auto;
-    @include xsBreakPoint
-    {
-      width:250px;
+    @include xsBreakPoint {
+      width: 250px;
     }
   }
 }
 .couponcreatedsection {
-  // border:1px solid red;
-  background-color: #DCFBEE;
+  border:1px solid #2E9973;
+  background-color: #dcfbee;
   padding: 2% 10px;
   border-radius: 10px;
   .insidecouponsdeletesection {
@@ -438,8 +483,8 @@ font-weight:600;
       display: flex;
       gap: 20px;
       height: 100%;
-      align-items:center;
-      
+      align-items: center;
+
       .couponimage {
         width: 100%;
         object-fit: contain;
@@ -448,8 +493,7 @@ font-weight:600;
       .couponname {
         font-weight: 600;
         font-size: 1.123rem;
-        color:#2E9973;
-        
+        color: #2e9973;
       }
       .offercoupon {
         width: 60%;
