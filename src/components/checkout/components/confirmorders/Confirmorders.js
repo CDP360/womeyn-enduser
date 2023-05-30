@@ -660,7 +660,9 @@ Apply
                 </div>
 
              
-              {discountamount?.message ? <>
+
+             {couponsectionloading ?<></>:<>
+             {discountamount?.message ? <>
                 <span className="text-danger mt-2 mb-3">
                   {discountamount?.message}
                 </span>
@@ -690,6 +692,9 @@ Apply
                   </div>
                 </div> : null}
               </div>}
+             
+             </>}
+              
 
 
 

@@ -132,13 +132,12 @@ function Header() {
     }
 
 
-    const SearchUserData = (data) => {
-        SearchProductUser(data).then((res) => {
-
-
-
+    const SearchUserData = () => {
+        SearchProductUser(serachcategory).then((res) => {
 
             // setSearchDataCategory(res?.data?.results)
+
+            console.log("kalaires,",res?.data)
 
 
         }).catch((err) => {
@@ -204,7 +203,7 @@ function Header() {
                                             </div>
                                         </div>
                                         <div className={styles.barsectiontop}>
-                                            {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} /> : <></>}
+                                            {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} SearchUserData={SearchUserData}/> : <></>}
 
                                         </div>
                                     </div>
@@ -290,7 +289,7 @@ function Header() {
                                                                 <Image src={serviceactive} alt="no image" className={styles.profileimageover} />
                                                             </div>
                                                             <div className={styles.logouttexts}>
-                                                                Service 
+                                                                Service Orders
                                                             </div>
                                                         </div>
 

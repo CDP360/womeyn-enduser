@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { usePlacesWidget } from "react-google-autocomplete";
 import LoaderLogo from '../../../../../loaderlogo/LoaderLogo';
 
+import Spinner from 'react-bootstrap/Spinner';
 
 function ShippingRate({ productdata, location }) {
 
@@ -82,7 +83,24 @@ function ShippingRate({ productdata, location }) {
 
                         </div>
                         <div>
-                            <button className={styles.check} onClick={PinCodeCheck}>Check</button>
+                            <button className={styles.check} onClick={PinCodeCheck}>
+
+
+                                {loader ? <div className="d-flex gap-2 align-items-center justify-content-center">
+
+                                    <Spinner
+                                        as="span"
+                                        animation="border"
+                                        size="sm"
+                                        role="status"
+                                        aria-hidden="true"
+                                    />
+                                    <span className="ms-3">Loading...</span>
+                                </div> : <>
+                                    Check
+                                </>}
+
+                            </button>
                         </div>
 
                     </div>
@@ -92,33 +110,42 @@ function ShippingRate({ productdata, location }) {
                     </div>
 
 
+                    {/* {loader ? <>
+                        <LoaderLogo />
+                    </> : <> */}
+
+
                     {loader?<>
-                    <LoaderLogo/>
                     </>:<>
                     
                     {shippdata?.length === 0 ? <>
 
 </> : <>
-    <div className='mt-2'>
+    <div className='mt-3'>
 
-        <span>{shippdata?.estimated_delivery_date == null ? <>
+        <div>{shippdata?.estimated_delivery_date == null ? <div>
             Expected delivery date not available
-        </> : <>
+        </div> : <div>
 
             Delivery in days Thursday |
 
 
-        </>}</span>
+        </div>}</div>
 
-        <span className={styles.free}>
+       <div className="mt-2 mb-3">
+       <span className={styles.free}>
             {/* Free */}
             Delivery Charge
         </span><span className={styles.shippingcharge}> A$ {shippdata?.shipping_amount?.amount}</span>
+        </div>
         {/* is orderd before 3:34pm */}
     </div>
 </>}
                     </>}
+
                     
+                    {/* </>} */}
+
 
                 </>}
 

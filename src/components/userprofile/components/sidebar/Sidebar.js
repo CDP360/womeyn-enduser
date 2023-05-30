@@ -195,7 +195,7 @@ function Sidebar({ user, error }) {
                                 {pathname == "services" ? <Image src={serviceactive} alt="no image" className={styles.profileicon} /> : <Image src={serviceinactive} alt="no image" className={styles.profileicon} />}
                             </div>
                             <div className={pathname == "services" ? styles.boldtextactive : styles.boldtexts}>
-                                Services
+                                Service Orders
                             </div>
                         </div>
 

@@ -3,8 +3,7 @@ import styles from './styles/Search.module.scss';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import nodata from '../../../assests/login-logos/No data-amico.png';
-
-function Searchbar({ serachdata, serachicon }) {
+function Searchbar({ serachdata, serachicon,SearchUserData }) {
     const history = useRouter();
     const CategoryNavigatepath = (data) => {
         history.push(`/category/${data}`)
@@ -38,8 +37,8 @@ function Searchbar({ serachdata, serachicon }) {
                             </div>
                         )
                     })}
-                    {serachdata?.length === 0 && <div>
-                        {/* <Image src={nodata} alt="no image" className={styles.nodataimage}/> */}
+                    {/* {serachdata?.length === 0 && <div>
+                        <Image src={nodata} alt="no image" className={styles.nodataimage}/>
 
                         <div>
 
@@ -47,7 +46,9 @@ function Searchbar({ serachdata, serachicon }) {
                                 Popular Searches
                             </div>
                         </div>
-                    </div>}
+                    </div>} */}
+
+                    {serachdata?.length===0 && <div>No Records</div>}
                 </div> : <>
                     {serachdata?.length === 0 && <div>No Result..!!!</div>}
                 </>}

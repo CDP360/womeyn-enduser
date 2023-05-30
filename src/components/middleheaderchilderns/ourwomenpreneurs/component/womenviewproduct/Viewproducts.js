@@ -877,19 +877,14 @@ function Viewproducts({ id }) {
 
             if (datas2) {
                 if (productSize1 && productSize2 && productSize3) {
-
                     router?.push("/login?redirect=/checkout")
-
-
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge === null ? 0 : cartdata?.localDeliveryCharge } });
 
                 }
             }
             else {
                 router?.push("/login?redirect=/checkout")
-
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge === null ? 0 : cartdata?.localDeliveryCharge } });
-
             }
 
 
@@ -1053,8 +1048,8 @@ function Viewproducts({ id }) {
                         <meta property="og:url" content="https://www.womeyn.cdp360.in/" />
                         {productdata?.productName && <meta property="og:title" content={productdata?.productName} />}
                         {productdata?.productDescription && <meta property="og:description" content={productdata?.productDescription} />}
-                        {productdata?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}                    
-                   </Head>
+                        {productdata?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}
+                    </Head>
                 </> : <>
                 </>}
 
@@ -1410,7 +1405,7 @@ function Viewproducts({ id }) {
                             }
 
                             <div>
-                                <ShippingRate  productdata={productdata} location={location}/>
+                                <ShippingRate productdata={productdata} location={location} />
                             </div>
                             <div className={styles.sellernames}>
                                 <div className={styles.sellername}>
