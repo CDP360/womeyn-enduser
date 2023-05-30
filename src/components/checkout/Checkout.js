@@ -75,9 +75,9 @@ function Checkout() {
 
 
   // coupon value calculate
-  const toatalpricecart = discountamount?.message ? Math.round(Number(AllchargeCount) + Number(OverallTotalPrice)) :
-    Math.round(Number(AllchargeCount) + Number(OverallTotalPrice)) - Number(discountamount?.result)
-    ;
+  const toatalpricecart = discountamount?discountamount?.message ? (Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))) :
+    (Math.round(Number(AllchargeCount) + Number(OverallTotalPrice)) - Number(discountamount?.result))
+    :Math.round(Number(AllchargeCount) + Number(OverallTotalPrice));
   useEffect(() => {
     if (step === 0) {
       setStep1("active")
@@ -101,7 +101,7 @@ function Checkout() {
 
 
 
-  console.log(discountamount, "discountamount")
+  console.log(toatalpricecart, "toatalpricecart")
 
 
 
@@ -153,7 +153,6 @@ function Checkout() {
                       setShippingAmount={setShippingAmount}
                       overallamount={Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))}
                       setDiscountAmount={setDiscountAmount}
-
                       discountamount={discountamount}
                     />
                   </div>}
@@ -161,6 +160,7 @@ function Checkout() {
                     <Payment addressid={name} totalPrice={toatalpricecart} couponname={couponname} totalvalue={totalvalue}
                       checkshippingamount={checkshippingamount}
                       toatalpricecart={toatalpricecart}
+                      
                     />
                   </div>}
                 </div>
@@ -209,7 +209,7 @@ function Checkout() {
                       </div>
                     </> : <></>}
 
-                   
+
 
 
                     <div className={styles.splitcartsections}>
@@ -260,7 +260,7 @@ function Checkout() {
                     </div>
                   </div>
 
-               
+
                   <div className="mt-3 mb-3">
 
                     {/* {tokes ?

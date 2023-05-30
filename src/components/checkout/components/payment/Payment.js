@@ -15,7 +15,7 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
   const { cart } = state;
 
 
-  console.log(checkshippingamount, "checkshippingamount")
+ 
   const paymentMethods = [
     {
       id: 1,
@@ -81,6 +81,7 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
       }, 500)
 
     }
+
     if (paymentType) {
       CustomerOrders(overAllorders).then((res) => {
         window.location = res?.data?.url;
@@ -94,9 +95,10 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
       })
     }
 
+
+
   }
 
-  console.log(checkshippingamount,"checkshippingamount")
   const onOptionChange = (e) => {
     setPaymentType(e.target.value);
   }
