@@ -10,9 +10,12 @@ import { UserForgetPassword } from '../../services/user-login-service/user-login
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { toast } from 'react-toastify';
+import Spinner from 'react-bootstrap/Spinner';
+
 function Forgetpassword() {
     const router = useRouter();
     const [show, setShow] = useState(false);
+    const [loading,setLoading]=useState(false);
     const handleClose = () => {
         toast.success("Login Page!!");
         setTimeout(() => {
@@ -35,12 +38,17 @@ function Forgetpassword() {
             email: data?.email
         }
 
+        setLoading(true);
         UserForgetPassword(datas).then((res) => {
             handleShow();
             toast.success("Check Your Mail");
-
+setTimeout(()=>{
+    setLoading(false);
+},500)
         }).catch((err) => {
             console.log(err);
+    setLoading(false);
+
         })
     };
 
@@ -72,7 +80,21 @@ function Forgetpassword() {
                                         {errors.email && <span className="active">{errors.email.message}</span>}
                                     </Form.Group>
                                     <button variant="primary" type="submit" className="loginbutton mt-4 mb-3">
-                                        Request Reset Password link
+
+                                    {loading ? <div className="d-flex gap-2 align-items-center justify-content-center">
+
+<Spinner
+  as="span"
+  animation="border"
+  size="sm"
+  role="status"
+  aria-hidden="true"
+/>
+<span className="ms-3">Loading...</span>
+</div> : <>
+Request Reset Password link
+</>}
+                                       
                                     </button>
                                 </Form>
 
@@ -93,15 +115,15 @@ function Forgetpassword() {
                     centered
                 >
                     <Modal.Header closeButton>
-            
+                    Reset Password 
                     </Modal.Header>
                     <Modal.Body>
-                    <div className='mt-5 mb-5'>
+                    <div className='mt-5 mb-5 text-center'>
                                         If you are a registered customer, you will receive a password reset link in your email. Please follow the instruction and Reset your password.
                                     </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="primary" onClick={handleClose}>Ok</Button>
+                        <button className={styles.okaybutton} onClick={handleClose}>Ok</button>
                     </Modal.Footer>
                 </Modal>
             </>
