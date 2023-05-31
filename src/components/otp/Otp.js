@@ -63,7 +63,7 @@ function Otp() {
                         setLoading(false);
                     }, 1000)
                 }
-                
+
             }).catch((err) => {
                 console.log(err);
                 setLoading(false);
@@ -97,19 +97,19 @@ function Otp() {
 
     useEffect(() => {
         const TokenCheckUser = localStorage.getItem("auth");
-        const TokenCheckUser1 = localStorage.getItem("userToken");
-        setTokenUser1(JSON.parse(TokenCheckUser1))
+        // const TokenCheckUser1 = localStorage.getItem("userToken");
+        // setTokenUser1(JSON.parse(TokenCheckUser1))
         setTokenUser(JSON.parse(TokenCheckUser));
 
-        if(tokenUser1)
-        {
-        }
-        else
+        // if(tokenUser1)
+        // {
+        // }
+        // else
 
-        {
-        router.push("/signup")
+        // {
+        // router.push("/signup")
 
-        }
+        // }
 
     }, [])
 
@@ -129,8 +129,7 @@ function Otp() {
     }
 
 
-    else
-    {
+    else {
 
 
         return (
@@ -157,9 +156,9 @@ function Otp() {
                                         focusStyle="focusStyle"
                                         shouldAutoFocus={true}
                                     />
-    
+
                                     {error && otp?.length <= 0 ? <div className="text-danger mt-3">Otp Filed Is Empty</div> : <>{otp?.length >= 4 ? <div className="text-success text-center mt-3">
-    
+
                                     </div> : <></>}</>}
                                 </div>
                                 <div>
@@ -177,7 +176,7 @@ function Otp() {
                                 <div className={styles.verifyotpsection}>
                                     <button onClick={SummitOtp} className="loginbutton mt-2 mb-3">
                                         {loading ? <>
-    
+
                                             <Spinner
                                                 as="span"
                                                 animation="grow"
@@ -189,7 +188,7 @@ function Otp() {
                                         </> : <>
                                             Verify
                                         </>}
-    
+
                                     </button>
                                     <button className={`${seconds > 0 || minutes > 0 ? "resendbuttondisable" : "resendbutton"}`} disabled={seconds > 0 || minutes > 0}
                                         style={{
@@ -207,13 +206,13 @@ function Otp() {
                     </div>
                 </div>
                 <div className={styles.leftsection1}>
-    
+
                 </div>
                 <div className={styles.righttopsection1}>
-    
+
                 </div>
                 <div className={styles.rightbottomsection1}>
-    
+
                 </div>
             </Fragment>
         )
@@ -221,7 +220,7 @@ function Otp() {
     }
 
 
-   
+
 }
 
 export default Otp;
