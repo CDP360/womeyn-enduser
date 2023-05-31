@@ -174,6 +174,8 @@ function Passwordcreate() {
         const TokenCheckUser = localStorage.getItem("auth");
         setTokenUser(JSON.parse(TokenCheckUser));
 
+
+      
     }, [])
 
 

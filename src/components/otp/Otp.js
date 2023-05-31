@@ -97,19 +97,9 @@ function Otp() {
 
     useEffect(() => {
         const TokenCheckUser = localStorage.getItem("auth");
-        // const TokenCheckUser1 = localStorage.getItem("userToken");
+        const TokenCheckUser1 = localStorage.getItem("userToken");
         // setTokenUser1(JSON.parse(TokenCheckUser1))
         setTokenUser(JSON.parse(TokenCheckUser));
-
-        // if(tokenUser1)
-        // {
-        // }
-        // else
-
-        // {
-        // router.push("/signup")
-
-        // }
 
     }, [])
 

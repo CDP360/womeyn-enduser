@@ -2,8 +2,16 @@
 
 .allcategorymainsection {
     padding-bottom: 2%;
-    // border: 3px solid orange;
+
     @include xsBreakPoint {
+        width: 100% !important;
+        margin: 0 auto;
+    }
+    @include xlBreakPoint {
+        width: 95% !important;
+        margin: 0 auto;
+    }
+    @include lgBreakPoint {
         width: 100% !important;
         margin: 0 auto;
     }

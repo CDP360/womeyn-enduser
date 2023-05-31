@@ -6,7 +6,7 @@
     margin: 0 auto;
     padding: 20px 0px;
     .cardcategory {
-        // border: 2px solid blue;
+
         overflow: hidden;
         height: 340px;
         width: 94% !important;
@@ -19,6 +19,16 @@
             // height:auto;
             // border:2px solid red;
             height: 290px;
+        }
+        @include lgBreakPoint {
+            // height:auto;
+            // border:2px solid red;
+            height: 265px;
+        }
+        @include xlBreakPoint {
+            // height:auto;
+            // border:2px solid red;
+            height: 265px;
         }
     }
     .sellerimagesize {
