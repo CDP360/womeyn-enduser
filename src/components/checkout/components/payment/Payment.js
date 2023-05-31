@@ -15,7 +15,7 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
   const { cart } = state;
 
 
- 
+
   const paymentMethods = [
     {
       id: 1,
@@ -45,8 +45,8 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
         productSlugName: item?.productSlugName,
         rateId: item?.rateId,
         expectedDeliveryDate: item?.expectedDeliveryDate,
-        salePriceGST:item?.salePriceGST,
-        deliveryChargeGST:item?.deliveryChargeGST
+        salePriceGST: item?.salePriceGST,
+        deliveryChargeGST: item?.deliveryChargeGST
       })
     })
     setOrders(storesfilter);
@@ -94,9 +94,6 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
 
       })
     }
-
-
-
   }
 
   const onOptionChange = (e) => {

@@ -108,7 +108,6 @@ function Checkout() {
   if (tokens) {
     return (
       <div>
-
         {NavigatePath()}
       </div>
     )

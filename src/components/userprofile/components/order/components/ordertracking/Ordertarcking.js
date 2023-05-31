@@ -12,6 +12,8 @@ import Modal from 'react-bootstrap/Modal';
 function Ordertarcking({ Orders }) {
   // const [step, setIndex] = useState(2);
 
+  
+
   const router = useRouter();
   const [deleteid, setDeleteid] = useState("");
 
@@ -47,6 +49,8 @@ function Ordertarcking({ Orders }) {
       setTimeout(() => {
         setLoading(false);
       }, 500)
+
+      console.log(res,"res")
       setTracksOrders(res);
       res?.trackingDetails?.events?.map((item, index) => {
         const f = {
@@ -105,6 +109,7 @@ function Ordertarcking({ Orders }) {
   }
 
 
+  
   const ShopMore = () => {
     router.push("/");
 
