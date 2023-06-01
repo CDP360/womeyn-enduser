@@ -117,7 +117,7 @@
       @include xsBreakPoint {
         width: 100%;
         flex-direction: column;
-        padding:30px 0px;
+        padding: 30px 0px;
       }
       @include smBreakPoint {
         width: 100%;
@@ -146,15 +146,11 @@
 
         // opacity: 0.10;
         font-weight: 600;
-        @include smBreakPoint
-        {
-          padding:5px 15px;
+        @include smBreakPoint {
+          padding: 5px 15px;
         }
-        @include xsBreakPoint
-        {
-          padding:5px 15px;
-       
-          
+        @include xsBreakPoint {
+          padding: 5px 15px;
         }
       }
       .cartimagesection {
@@ -213,8 +209,8 @@
         width: 20%;
         // border: 2px solid red;
         display: flex;
-        flex-direction:column;
-        padding-top:7%;
+        flex-direction: column;
+        padding-top: 7%;
         gap: 3px;
         align-items: center;
         justify-content: center;
@@ -230,27 +226,24 @@
           flex-direction: column;
         }
         @include xsBreakPoint {
-          gap:10px !important;
-    display:flex !important;
-    flex-direction:row !important;
-    padding:0 !important;
- 
- 
-         }
+          gap: 10px !important;
+          display: flex !important;
+          flex-direction: row !important;
+          padding: 0 !important;
+        }
         @include smBreakPoint {
-          gap:10px !important;
-    display:flex !important;
-    flex-direction:row !important;
-    padding:0 !important;
-    margin-bottom:2%;
-         }
+          gap: 10px !important;
+          display: flex !important;
+          flex-direction: row !important;
+          padding: 0 !important;
+          margin-bottom: 2%;
+        }
         @include mdBreakPoint {
-         gap:10px !important;
-   display:flex !important;
-   flex-direction:row !important;
-   padding:0 !important;
-   margin-bottom:2%;
-
+          gap: 10px !important;
+          display: flex !important;
+          flex-direction: row !important;
+          padding: 0 !important;
+          margin-bottom: 2%;
         }
 
         .deleteicons {
@@ -418,19 +411,15 @@
     gap: 20px;
   }
   @include smBreakPoint {
-  
     gap: 20px;
   }
   @include mdBreakPoint {
-  
     gap: 20px;
   }
   @include lgBreakPoint {
-  
     gap: 20px;
   }
   @include xlBreakPoint {
-  
     gap: 30px;
   }
   .couponform {
@@ -471,7 +460,7 @@
   }
 }
 .couponcreatedsection {
-  border:1px solid #2E9973;
+  border: 1px solid #2e9973;
   background-color: #dcfbee;
   padding: 2% 10px;
   border-radius: 10px;
@@ -489,17 +478,14 @@
         width: 100%;
         object-fit: contain;
         height: 100%;
-        @include mdBreakPoint
-        {
-          width:80%;
+        @include mdBreakPoint {
+          width: 80%;
         }
-        @include lgBreakPoint
-        {
-          width:90%;
+        @include lgBreakPoint {
+          width: 90%;
         }
-        @include xlBreakPoint
-        {
-          width:90%;
+        @include xlBreakPoint {
+          width: 90%;
         }
       }
       .couponname {

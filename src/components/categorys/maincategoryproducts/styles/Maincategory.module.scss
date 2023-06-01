@@ -1,12 +1,18 @@
 @use "../../../../../scss/abstract/" as *;
 
 
-
-.skeltons
+.rowcategorycard
 {
-    width:100%;
+  display:flex;
+
+    .skeltons
+{
+    width:30% !important;
     cursor:pointer;
     height:200px;
+    display:flex;
+    border:2px solid blue;
+
     @include mdBreakPoint
     {
         width: 100%;
@@ -16,6 +22,9 @@
         width: 100%;
     }
 }
+
+}
+
 
 .arrowsizefix
 {

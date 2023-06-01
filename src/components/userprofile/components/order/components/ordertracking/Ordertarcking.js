@@ -332,6 +332,19 @@ function Ordertarcking({ Orders }) {
             </div>
           </div>
         </div>
+
+        <div className={style.emptyboxrightcolor}>
+                </div>
+                <div className={style.emptyboxleftcolor}>
+                </div>
+                <div className={style.emptyboxleftcolor1}>
+                </div>
+                <div className={style.emptyboxleftcolor2}>
+                </div>
+                <div className={style.emptyboxleftcolor3}>
+                </div>
+                <div className={style.emptyboxleftcolor4}>
+                </div>
       </>}
 
 

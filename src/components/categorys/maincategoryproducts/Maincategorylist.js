@@ -114,17 +114,20 @@ function Maincategorylist({ name, searchnamevalue }) {
 
                     <LoaderLogo />
 
-                </> : <div className='row  gap-2 mb-5'>
-                    {product?.length === 0 ? <>
-                        {CartDataProduct?.map((item, index) => {
-                            return (
-                                <div key={index}>
-                                    <Skeleton className={styles.skeltons} />
-                                </div>
-                            )
-                        })}
+                </> : <div >
+                    {product?.length === 0 ? <div>
+                        {/* {CartDataProduct?.map((item, index) => {
+                            return ( */}
+                                {/* <div key={index}> */}
+                                <div className="text-center fs-2 d-flex align-items-center justify-content-center">
 
-                    </> : <>
+                                No Categorys Records..
+                                </div>
+                                {/* </div>
+                            )
+                        })} */}
+
+                    </div > : <>
                         {product?.map((item, index) => {
                             return (
                                 <>
