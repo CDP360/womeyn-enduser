@@ -38,7 +38,7 @@ function Home() {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 2,
+                    slidesToScroll: 1,
                     infinite: true,
                     dots: false,
 

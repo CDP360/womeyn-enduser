@@ -4,13 +4,11 @@
   width: 100%;
   position: relative;
   z-index: 9 !important;
-
   .insidesectionhome {
     width: 75%;
     margin: 0 auto;
     // position: relative;
     z-index: 9 !important;
-
     @include xsBreakPoint {
       width: 85%;
       padding-top: 6%;
@@ -34,23 +32,25 @@
       .sliderimage {
         width: 100%;
         height: 330px;
-        object-fit: cover;
+        // object-fit: cover;
         border-radius: 8px;
         cursor: pointer;
         @include xsBreakPoint {
-          height: auto;
+          height: 160px;
           width: 100%;
-          object-fit: cover;
           border-radius: 10px !important;
         }
         @include smBreakPoint {
-          height: auto;
+          height: 200px;
         }
         @include mdBreakPoint {
-          height: auto;
+          height: 200px;
         }
         @include lgBreakPoint {
-          height: auto;
+          height: 300px;
+        }
+        @include xlBreakPoint {
+          height: 300px;
         }
       }
     }
@@ -159,7 +159,7 @@
   opacity: 0.4;
   filter: blur(100px);
   left: 0;
-  top:0%;
+  top: 0%;
   z-index: 0;
 }
 .emptyboxleftcolor {
@@ -174,13 +174,11 @@
   z-index: 0;
 }
 
-
-.emptyboxleftcolor1
-{
+.emptyboxleftcolor1 {
   position: absolute;
   width: 18%;
   height: 20% !important;
-  background: #415B91;
+  background: #415b91;
   opacity: 0.3;
   filter: blur(100px);
   right: 0%;
@@ -188,12 +186,11 @@
   z-index: 0;
 }
 
-.emptyboxleftcolor2
-{
+.emptyboxleftcolor2 {
   position: absolute;
   width: 15%;
   height: 25% !important;
-  background: #E95A5A;
+  background: #e95a5a;
   opacity: 0.2;
   filter: blur(100px);
   left: 0%;
@@ -201,13 +198,11 @@
   z-index: 0;
 }
 
-
-.emptyboxleftcolor3
-{
+.emptyboxleftcolor3 {
   position: absolute;
   width: 25%;
   height: 30% !important;
-  background: #FFE7CD;
+  background: #ffe7cd;
   opacity: 0.5;
   filter: blur(100px);
   right: 0%;
@@ -215,18 +210,14 @@
   z-index: 0;
 }
 
-.emptyboxleftcolor4
-{
+.emptyboxleftcolor4 {
   position: absolute;
   width: 15%;
   height: 10% !important;
-  background: #FFE7CD;
+  background: #ffe7cd;
   opacity: 0.5;
   filter: blur(100px);
   left: 0%;
   bottom: 0%;
   z-index: 0;
 }
-
-
-

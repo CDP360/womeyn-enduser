@@ -489,6 +489,18 @@
         width: 100%;
         object-fit: contain;
         height: 100%;
+        @include mdBreakPoint
+        {
+          width:80%;
+        }
+        @include lgBreakPoint
+        {
+          width:90%;
+        }
+        @include xlBreakPoint
+        {
+          width:90%;
+        }
       }
       .couponname {
         font-weight: 600;
