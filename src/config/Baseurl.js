@@ -1,4 +1,6 @@
 import axios from 'axios';
+import jwt_decode from "jwt-decode";
+
 axios.interceptors.request.use(
     function (config) {
         if (config.url.search("/customer/update-photo") !== -1 || config.url.search("/customer/add-review") !== -1) {
@@ -28,6 +30,21 @@ axios.interceptors.request.use(
         else {
             const token = localStorage.getItem("userToken");
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
+            var decoded = jwt_decode(token);
+
+
+
+            if (Date.now() >= decoded.exp * 1000) {
+                localStorage.removeItem("userid");
+                localStorage.removeItem("userToken");
+                localStorage.removeItem("userTokens");
+                localStorage.removeItem("whish");
+                localStorage.removeItem("user");
+                localStorage.removeItem("auth");
+                localStorage.removeItem("productid");
+                localStorage.removeItem('signupuser');
+                window.location.assign("/");
+            }
             config.headers = {
                 ...config.headers,
                 "Content-Type": "application/json",
