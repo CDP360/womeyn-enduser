@@ -18,7 +18,7 @@ function Womencarouselbanner() {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        // autoplay: true,
+        autoplay: true,
         autoplaySpeed: 3500,
         pauseOnHover: true,
         nextArrow: <SlideNextArrow />,
@@ -62,7 +62,9 @@ function Womencarouselbanner() {
     };
 
     useEffect(() => {
-        Getwomenpreneursbanner().then((res) => {
+
+        const data="Service Banner";
+        Getwomenpreneursbanner(data).then((res) => {
             setBanners(res?.data);
         }).catch((err) => {
             console.log(err);
@@ -81,16 +83,7 @@ function Womencarouselbanner() {
         {
             id: 2,
             image: w3
-        },
-        {
-            id: 3,
-            image: w1
-        },
-        {
-            id: 4,
-            image: w2
-        },
-
+        }
     ]
     return (
         <div>
@@ -115,7 +108,13 @@ function Womencarouselbanner() {
                         {banners?.map((item, index) => {
                             return (
                                 <div>
-                                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />
+                                    {item?.imageName?<>
+                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />
+                                    
+                                    </>:<>
+                                    <Skeleton className={styles.homebanner} />
+                                    
+                                    </>}
                                 </div>
                             )
                         })}

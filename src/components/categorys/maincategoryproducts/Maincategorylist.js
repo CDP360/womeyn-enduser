@@ -127,7 +127,7 @@ function Maincategorylist({ name, searchnamevalue }) {
                             )
                         })} */}
 
-                    </div > : <>
+                    </div > : <div className="row gap-3">
                         {product?.map((item, index) => {
                             return (
                                 <>
@@ -135,7 +135,7 @@ function Maincategorylist({ name, searchnamevalue }) {
                                 </>
                             )
                         })}
-                    </>}
+                    </div>}
                 </div>}
             </div>
 

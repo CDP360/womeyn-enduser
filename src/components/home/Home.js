@@ -28,7 +28,7 @@ function Home() {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        // autoplay: true,
+        autoplay: true,
         autoplaySpeed: 3500,
         pauseOnHover: true,
         nextArrow: <SlideNextArrow />,
@@ -77,11 +77,8 @@ function Home() {
     useEffect(() => {
         GetBannerimages();
         CheckTokens();
-
-
-
-
     }, [state]);
+
     const CheckTokens = async () => {
         try {
             const userid = localStorage.getItem("userid");
@@ -99,7 +96,7 @@ function Home() {
                 localStorage.removeItem('signupuser');
             }
 
-            if (state?.loginUser?.error?.code === 401 || state?.loginUser?.error?.code===403) {
+            if (state?.loginUser?.error?.code === 401 || state?.loginUser?.error?.code === 403) {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("userTokens");
@@ -207,7 +204,7 @@ function Home() {
                         </div>
                     </div>
                     <div>
-                        <Categorychoose HomeTexts={HomeTexts} />
+                        <Categorychoose HomeTexts={HomeTexts} bannerimages={bannerimages} />
                     </div>
                 </div>
                 <div>

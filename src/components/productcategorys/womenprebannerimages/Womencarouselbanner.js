@@ -21,7 +21,7 @@ function Womencarouselbanner() {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        // autoplay: true,
+        autoplay: true,
         autoplaySpeed: 3500,
         pauseOnHover: true,
         nextArrow: <SlideNextArrow />,
@@ -98,7 +98,9 @@ function Womencarouselbanner() {
     ]
 
     useEffect(() => {
-        Getwomenpreneursbanner().then((res) => {
+
+        const data='Product Banner';
+        Getwomenpreneursbanner(data).then((res) => {
             setBanners(res?.data);
         }).catch((err) => {
             console.log(err);
@@ -123,11 +125,13 @@ function Womencarouselbanner() {
             name: "no names"
         }
     ]
+
+
     return (
         <div>
             <div className={styles.imagesectionhome}>
 
-                {banners?.length === 0 ? <>
+                {banners?.length===0 ? <>
                     <div>
                         <Slider {...settings}>
                             {ImageSellers?.map((item, index) => {
@@ -146,7 +150,13 @@ function Womencarouselbanner() {
                         {banners?.map((item, index) => {
                             return (
                                 <div>
-                                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />
+                                    {item?.imageName?<>
+                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />
+                                    
+                                    </>:<>
+                                    <Skeleton className={styles.homebanner} />
+                                    
+                                    </>}
                                 </div>
                             )
                         })}

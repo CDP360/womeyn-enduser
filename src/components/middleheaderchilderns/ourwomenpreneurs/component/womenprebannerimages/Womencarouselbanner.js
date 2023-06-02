@@ -65,7 +65,9 @@ function Womencarouselbanner() {
     };
 
     useEffect(() => {
-        Getwomenpreneursbanner().then((res) => {
+
+        const data="Our WomeynPreneurs Banners";
+        Getwomenpreneursbanner(data).then((res) => {
             setBanners(res?.data);
         }).catch((err) => {
             console.log(err);
@@ -108,19 +110,7 @@ function Womencarouselbanner() {
         {
             id: 4,
             image: w6
-        },
-        {
-            id: 5,
-            image: w1
-        },
-        {
-            id: 6,
-            image: w7
-        },
-        {
-            id: 7,
-            image: w2
-        },
+        }
 
     ]
     return (
@@ -145,8 +135,15 @@ function Womencarouselbanner() {
                     <Slider {...settings}>
                         {banners?.map((item, index) => {
                             return (
-                                <div>
+                               <div>
+
+{item?.imageName?<>
                                     <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />
+                                
+                                </>:<>
+                                <Skeleton className={styles.homebanner} />
+                                
+                                </>}
                                 </div>
                             )
                         })}

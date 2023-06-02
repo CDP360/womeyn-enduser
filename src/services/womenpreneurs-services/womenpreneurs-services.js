@@ -1,6 +1,6 @@
 import instanceBaseurl from "../../config/Baseurl";
 
-export function Getwomenpreneursbanner() {
+export function Getwomenpreneursbanner(data) {
     // return instanceBaseurl.get("/common/get-placement/WomenpreneursBanner/3").then((res) => {
     //     return res
     // }).catch((err) => {
@@ -8,7 +8,7 @@ export function Getwomenpreneursbanner() {
     // });
 
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/get-placement/WomenpreneursBanner/3`).then(response => {
+        instanceBaseurl.get(`/common/get-placement/${data}/5`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)

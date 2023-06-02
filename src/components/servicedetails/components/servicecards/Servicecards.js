@@ -125,10 +125,7 @@ function Servicecards() {
     return (
         <Fragment>
             <div className={styles.womeynmainsectionpre}>
-                <div className={styles.emptyboxcolorright}>
-                </div>
-                <div className={styles.emptyboxcolorleft}>
-                </div>
+               
                 <div className={styles.bodysectionwomeynpre}>
 
                     <div className={styles.imagesectionwomeyn}>

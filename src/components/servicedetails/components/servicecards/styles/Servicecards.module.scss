@@ -5,7 +5,7 @@
     height: 100%;
     padding-bottom: 5%;
     position: relative;
-    z-index: 9 !important;
+    z-index: 987877 !important;
     .insideservicecards {
         width: 100%;
         .images {
@@ -74,7 +74,7 @@
             background: #e95a5a;
             opacity: 0.34;
             right: 0;
-            filter: blur(329px);
+            // filter: blur(329px);
         }
         .emptyboxcolorleft {
             position: absolute;
@@ -301,6 +301,7 @@
     right: 0%;
     top: 70%;
     z-index: 0;
+    border:5px solid blue;
   }
   
   .emptyboxleftcolor4

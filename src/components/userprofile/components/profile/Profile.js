@@ -25,7 +25,7 @@ function Profile({ users, error }) {
   useEffect(() => {
     setUser(users);
   }, [error, users,user]);
-  useEffect(() => {
+useEffect(() => {
     setValue("username", user?.firstName);
     setValue("gender", user?.gender);
     setValue("email", user?.email);

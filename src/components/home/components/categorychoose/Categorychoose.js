@@ -20,7 +20,7 @@ import coup3 from '../../../../assests/COUPONS/cou3.png';
 import coup4 from '../../../../assests/COUPONS/cou4.png';
 import coup5 from '../../../../assests/COUPONS/cou5.png';
 
-function Categorychoose({HomeTexts}) {
+function Categorychoose({HomeTexts,bannerimages}) {
     const [datas, setDatas] = useState([]);
 
     const history = useRouter();
@@ -74,8 +74,10 @@ function Categorychoose({HomeTexts}) {
         ]
     };
 
-    const pushCatgorys = () => {
-        history.push(`/profile/coupons`)
+    const pushCatgorys = (data) => {
+
+        window.open(data);
+       
     }
 
     useEffect(() => {
@@ -86,6 +88,9 @@ function Categorychoose({HomeTexts}) {
             console.log(err);
         })
     }, [])
+    
+
+    console.log(bannerimages[5]?.Coupons,"kl")
     return (
         <Fragment>
             <div className={styles.categoryhomesection}>
@@ -93,46 +98,43 @@ function Categorychoose({HomeTexts}) {
                     <div className={styles.supportcategorysection}>
 
 
-                        {datas?.length > 4 ? <>
+                        {bannerimages[5]?.Coupons?.length > 4 ? <>
 
                             <Slider {...settings}>
-                                {datas.map((item, index) => {
+                                {bannerimages[5]?.Coupons?.map((item, index) => {
                                     return (
-                                        <div className={styles.insideslides} onClick={pushCatgorys} key={index}>
-                                            {index + 1 === 1 && <Image src={coup1} alt="no image" className={styles.slideimagesizes} />}
+                                        <div className={styles.insideslides} onClick={()=>pushCatgorys(item?.redirectUrl)} key={index}>
+
+
+{item?.imageName? <>
+                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesizes} onClick={() => pushCatgorys(item?.redirectUrl)} />
+                            </> : <>
+                                <Skeleton className={styles.addimageboxs} />
+                            </>}
+                                            {/* {index + 1 === 1 && <Image src={coup1} alt="no image" className={styles.slideimagesizes} />}
                                             {index + 1 === 2 && <Image src={coup2} alt="no image" className={styles.slideimagesizes} />}
                                             {index + 1 === 3 && <Image src={coup3} alt="no image" className={styles.slideimagesizes} />}
                                             {index + 1 === 4 && <Image src={coup4} alt="no image" className={styles.slideimagesizes} />}
-                                            {index + 1 === 5 && <Image src={coup5} alt="no image" className={styles.slideimagesizes} />}
+                                            {index + 1 === 5 && <Image src={coup5} alt="no image" className={styles.slideimagesizes} />} */}
 
-                                            {/* <Image src={couponoffers} alt="no image" className={styles.slideimagesizes} /> */}
-                                            {/* <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesize} /> */}
-                                            <div className='mt-4' onClick={() => pushCatgorys(item?.slugName)} >
-                                                <h6>{item?.title}</h6>
-                                            </div>
-                                            {/* <div onClick={() => pushCatgorys(item?.slugName)} >
-                                            {item?.description?.length <= 10 ? <>{item?.description}</> : <>{item?.description.slice(0, 20)}...</>}
-                                        </div> */}
-                                        </div>
+                                                                                    </div>
                                     )
                                 })}
                             </Slider>
                         </> : <>
 
                             <div className="row d-flex gap-3">
-                                {datas?.map((item, index) => {
+                                
+                                {bannerimages[5]?.Coupons?.map((item, index) => {
                                     return (
-                                        <div className={styles.couponcardssection}>
-                                            {index + 1 === 1 && <Image src={coup1} alt="no image" className={styles.slideimagesizes} />}
-                                            {index + 1 === 2 && <Image src={coup2} alt="no image" className={styles.slideimagesizes} />}
-                                            {index + 1 === 3 && <Image src={coup3} alt="no image" className={styles.slideimagesizes} />}
-                                            {index + 1 === 4 && <Image src={coup4} alt="no image" className={styles.slideimagesizes} />}
-                                            {index + 1 === 5 && <Image src={coup5} alt="no image" className={styles.slideimagesizes} />}
-
-
-                                            <div className='mt-4' onClick={() => pushCatgorys(item?.slugName)} >
-                                                <h6>{item?.title}</h6>
-                                            </div>
+                                        <div className={styles.couponcardssection} onClick={()=>pushCatgorys(item?.redirectUrl)}>
+                                            
+                                            {item?.imageName? <>
+                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.add1} onClick={() => pushCatgorys(item?.redirectUrl)} />
+                            </> : <>
+                                <Skeleton className={styles.addimageboxs} />
+                            </>}
+                                          
                                         </div>
                                     )
                                 })}

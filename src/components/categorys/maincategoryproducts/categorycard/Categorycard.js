@@ -62,7 +62,7 @@ function Categorycard({ item }) {
                             <del>{item?.offerPercentag === 0 ? <></> : <>${item?.actualPrice}</>}</del>
                         </div>
                         <div>
-                            ({item?.offerPercentag}% 0ff)
+                           {item?.offerPercentag == 0?<></>:<>({item?.offerPercentag}% 0ff)</>} 
                         </div>
                     </div>
                 </div>
