@@ -31,7 +31,6 @@ function Profile({ users, error }) {
     setValue("email", user?.email);
     setValue("phonenumber", user?.contactNumber);
     setValue("dateofbirth", user?.dateOfBirth);
-    localStorage.setItem("user", JSON.stringify(user?.firstName));
     if(error)
     {
         localStorage.removeItem("userid");

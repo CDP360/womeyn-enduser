@@ -7,6 +7,7 @@ import strip from '../../../../assests/cart-logos/Stripe-Logo1.png';
 import paypal from '../../../../assests/cart-logos/PayPal-Logo1.png';
 import Spinner from 'react-bootstrap/Spinner';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippingamount }) {
   const [loading, setLoading] = useState(false);
   const { state } = useContext(ContextStore);
@@ -14,8 +15,7 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
   const [paymentType, setPaymentType] = useState("");
   const { cart } = state;
 
-
-
+  const userprofile=useSelector((state)=>state?.loginUser?.logindata?.firstName);
   const paymentMethods = [
     {
       id: 1,
@@ -54,13 +54,12 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
 
   const deliverOrderConfirm = () => {
     setLoading(true);
-    const userName = JSON.parse(localStorage.getItem("user"));
     const overAllorders = {
       deliveryAddressId: addressid,
       paymentMethod: paymentType,
       itemsOrdered: orders,
       totalOrderAmount: totalPrice,
-      customerName: userName,
+      customerName: userprofile,
       couponName: couponname,
       gstAmount: totalvalue,
     }
@@ -81,6 +80,7 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
       }, 500)
 
     }
+
 
     if (paymentType) {
       CustomerOrders(overAllorders).then((res) => {
@@ -125,7 +125,7 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
               />
               <span className="ms-3">Loading...</span>
             </> : <>
-              Continue Payment
+              Continue Payment 
 
             </>}
 

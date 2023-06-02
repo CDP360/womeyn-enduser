@@ -47,8 +47,6 @@ function Login() {
         if (productWhishlist) {
             Userlogin(datas).then(async (res) => {
                 if (res) {
-
-                    localStorage.setItem("user", JSON.stringify(res?.data?.user?.firstName));
                     localStorage.setItem("auth", true);
                     localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
                     localStorage.setItem("userToken", JSON.stringify(res?.data?.tokens?.access?.token));
@@ -80,7 +78,6 @@ function Login() {
         else {
             Userlogin(datas).then(async (res) => {
                 if (res) {
-                    localStorage.setItem("user", JSON.stringify(res?.data?.user?.firstName));
                     localStorage.setItem("auth", true);
                     localStorage.setItem("userid", JSON.stringify(res?.data?.user?.id));
                     localStorage.setItem("userToken", JSON.stringify(res?.data?.tokens?.access?.token));
