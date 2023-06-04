@@ -42,6 +42,13 @@ function Header() {
     const [favortscount, setFavortcount] = useState([]);
     const [explorecategorys, setCatgorys] = useState([]);
     const [searchDatacategory, setSearchDataCategory] = useState([]);
+    const [searchDatacategory1, setSearchDataCategory1] = useState([]);
+
+
+    const [loadingserach,setLoaderserach]=useState(false);
+   
+
+
     const logoutHandler = async () => {
         toast.success("Logout Successfull!!",
             {
@@ -111,7 +118,7 @@ function Header() {
         }).catch((err) => {
             console.log(err);
         })
-    }, [userauth]);
+    }, [userauth,loadingserach]);
 
     const SellerLogin = () => {
         window.open('https://eseller.cdp360.in/sign-up')
@@ -121,7 +128,7 @@ function Header() {
     const handleChange = (e) => {
         setSerachCategory(e?.target?.value)
         FilterData(e?.target?.value);
-        SearchUserData(e?.target.value)
+       
     }
 
     const FilterData = (value) => {
@@ -132,16 +139,24 @@ function Header() {
     }
 
 
-    const SearchUserData = () => {
+    const SearchUserSomething= () => {
+
+        setLoaderserach(true);
         SearchProductUser(serachcategory).then((res) => {
 
             // setSearchDataCategory(res?.data?.results)
 
-            console.log("kalaires,",res?.data)
+
+           setTimeout(()=>{
+            setSearchDataCategory1(res?.data?.results);
+
+            setLoaderserach(false);
+           },1000)
 
 
         }).catch((err) => {
             console.log(err);
+            setLoaderserach(false);
         })
     }
 
@@ -182,6 +197,9 @@ function Header() {
 
 
 
+    console.log(searchDatacategory,"searchDatacategory")
+
+
     return (
         <Fragment>
             <div className={styles.mainheadersection}>
@@ -199,11 +217,11 @@ function Header() {
                                         <div className={styles.inputsearchsection}>
                                             <input type="text" placeholder='Search for products,brands and more....' className="inputserach" onChange={handleChange} value={serachcategory} />
                                             <div>
-                                                <Image src={serachicon} alt="no image" className='serachicon' onClick={SearchUserData} />
+                                                <Image src={serachicon} alt="no image" className='serachicon' onClick={SearchUserSomething} />
                                             </div>
                                         </div>
                                         <div className={styles.barsectiontop}>
-                                            {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} SearchUserData={SearchUserData}/> : <></>}
+                                            {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} searchDatacategory={searchDatacategory1} loadingserah={loadingserach}/> : <></>}
 
                                         </div>
                                     </div>

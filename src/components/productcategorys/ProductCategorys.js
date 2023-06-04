@@ -53,8 +53,8 @@ function ProductCategorys() {
             setLoading(false);
 
         })
-        WomenSellercategories();
-        GetFilterandSearchData();
+        // WomenSellercategories();
+        // GetFilterandSearchData();
 
     }, [categoryid])
 
@@ -86,31 +86,31 @@ function ProductCategorys() {
         setFilter(data.name);
         setSearchName("");
     }
-    const GetFilterandSearchData = () => {
-        setLoading(true);
-        WomenpreneursFilter(categoryid).then((res) => {
-            setDataseller(res?.data?.results);
-            setLimit(res?.data);
-            setTimeout(() => {
-                setLoading(false);
-            }, 300);
-        }).catch((err) => {
-            console.log(err);
-        })
-    }
-    const GetSearchdata = () => {
-        setLoading(true);
-        WomenpreneursSearch(searchname).then((res) => {
-            setDataseller(res?.data?.results);
-            setFilter("");
-            setTimeout(() => {
-                setLoading(false);
-            }, 300);
+    // const GetFilterandSearchData = () => {
+    //     setLoading(true);
+    //     WomenpreneursFilter(categoryid).then((res) => {
+    //         setDataseller(res?.data?.results);
+    //         setLimit(res?.data);
+    //         setTimeout(() => {
+    //             setLoading(false);
+    //         }, 300);
+    //     }).catch((err) => {
+    //         console.log(err);
+    //     })
+    // }
+    // const GetSearchdata = () => {
+    //     setLoading(true);
+    //     WomenpreneursSearch(searchname).then((res) => {
+    //         setDataseller(res?.data?.results);
+    //         setFilter("");
+    //         setTimeout(() => {
+    //             setLoading(false);
+    //         }, 300);
 
-        }).catch((err) => {
-            console.log(err);
-        })
-    }
+    //     }).catch((err) => {
+    //         console.log(err);
+    //     })
+    // }
     const fetchCurrentData = async (current) => {
         const resdata = await WomenpreneursSellers(current);
         setDataseller(resdata?.data?.results);
@@ -165,7 +165,9 @@ function ProductCategorys() {
                                 <input type='text' placeholder="Search by Name or Brand" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
                             </div>
                             <div>
-                                <Image src={serachicon} alt="no image" className={styles.serachiconwomen} onClick={GetSearchdata} />
+                                <Image src={serachicon} alt="no image" className={styles.serachiconwomen} 
+                                // onClick={GetSearchdata}
+                                 />
                             </div>
                         </div>
                         <div className='col-lg-3 col-xs-6 col-sm-5'>

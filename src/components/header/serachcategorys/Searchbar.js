@@ -3,15 +3,21 @@ import styles from './styles/Search.module.scss';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import nodata from '../../../assests/login-logos/No data-amico.png';
-function Searchbar({ serachdata, serachicon,SearchUserData }) {
+
+import Spinner from 'react-bootstrap/Spinner';
+function Searchbar({ serachdata, serachicon,searchDatacategory,loadingserach }) {
     const history = useRouter();
     const CategoryNavigatepath = (data) => {
         history.push(`/category/${data}`)
     }
+
+
+    console.log(searchDatacategory,"serachdata")
     return (
         <div className={styles.mainserachbarsection}>
             <div className={styles.searchbarcontents}>
-                {serachdata ? <div className={styles.backgroundwhites}>
+                {serachdata?.length>0? 
+                <div className={styles.backgroundwhites}>
                     {serachdata?.map((item, index) => {
                         return (
                             <div>
@@ -48,9 +54,46 @@ function Searchbar({ serachdata, serachicon,SearchUserData }) {
                         </div>
                     </div>} */}
 
-                    {serachdata?.length===0 && <div>No Records</div>}
+                   
+                       
+                        
+                      
+                      
                 </div> : <>
-                    {serachdata?.length === 0 && <div>No Result..!!!</div>}
+                    {/* {serachdata?.length === 0 && <div>No Result..!!!</div>} */}
+                    <div className={styles.backgroundwhites}>
+                    
+                        {searchDatacategory?.length>0?<>
+                            {searchDatacategory?.map((item, index) => {
+                        return (
+                            <div>
+
+                              
+                                <div className={styles.serachboxtexts} onClick={() => CategoryNavigatepath(item?.slugName)}>
+                                    <div>
+                                        {item?.productThumbImage ? <>
+                                            <img
+                                                className={styles.serachshoeimages}
+                                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
+                                                alt="profile-pic"
+                                            />
+                                        </> : <>
+                                            <Image src={serachicon} alt="no image" className='serachicon' />
+                                        </>}
+                                        <span className="ms-2">{item?.productName}</span>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        )
+                    })}
+                        </>:<>
+                        <Spinner animation="border" />
+                        </>}
+                 
+
+                  
+                    </div>
                 </>}
 
 
