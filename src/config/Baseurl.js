@@ -29,7 +29,7 @@ axios.interceptors.request.use(
         else {
             const token = localStorage.getItem("userToken");
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
-           
+
             config.headers = {
                 ...config.headers,
                 "Content-Type": "application/json",
@@ -45,12 +45,31 @@ axios.interceptors.request.use(
 
 );
 
+
+
+
+
 axios.interceptors.response.use(
     function (response) {
         return response;
     },
     async function (error) {
-        return Promise.reject(error);
+        if (error.response.status === 401) {
+            await login_services.logout();
+            localStorage.removeItem("userid");
+            localStorage.removeItem("userToken");
+            localStorage.removeItem("userTokens");
+            localStorage.removeItem("whish");
+            localStorage.removeItem("user");
+            localStorage.removeItem("auth");
+            localStorage.removeItem("productid");
+            localStorage.removeItem('signupuser');
+            window.location.assign("/");
+            router.push("/");
+        } else {
+            return Promise.reject(error);
+        }
+
     }
 );
 
