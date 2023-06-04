@@ -55,7 +55,7 @@ axios.interceptors.response.use(
     },
     async function (error) {
         if (error.response.status === 401) {
-            await login_services.logout();
+           
             localStorage.removeItem("userid");
             localStorage.removeItem("userToken");
             localStorage.removeItem("userTokens");
@@ -64,8 +64,8 @@ axios.interceptors.response.use(
             localStorage.removeItem("auth");
             localStorage.removeItem("productid");
             localStorage.removeItem('signupuser');
-            window.location.assign("/");
-            router.push("/");
+            window.location.href("/");
+       
         } else {
             return Promise.reject(error);
         }
