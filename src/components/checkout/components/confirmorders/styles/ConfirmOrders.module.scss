@@ -11,6 +11,14 @@
   object-fit: contain;
   cursor: no-drop;
 }
+
+.viewcouponslist
+{
+  color:#E95A5A;
+display:flex;
+justify-content:flex-end;
+cursor:pointer;
+}
 .quntitytext {
   font-size: 1.4rem;
   font-weight: 600;

@@ -187,18 +187,9 @@ function Header() {
         router.push(`/profile/coupons`);
     }
 
-
-
     const HelpPage = () => {
         router.push(`/profile/faq`);
-
-
     }
-
-
-
-    console.log(searchDatacategory,"searchDatacategory")
-
 
     return (
         <Fragment>

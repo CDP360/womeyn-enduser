@@ -17,57 +17,55 @@ function Coupons({ error }) {
     }).catch((err) => {
       console.log(err);
     })
-    if(error)
-    {
-        localStorage.removeItem("userid");
-        localStorage.removeItem("userToken");
-        localStorage.removeItem("whish");
-        localStorage.removeItem("user");
-        localStorage.removeItem("auth");
-        localStorage.removeItem("productid");
-        localStorage.removeItem('signupuser');
+    if (error) {
+      localStorage.removeItem("userid");
+      localStorage.removeItem("userToken");
+      localStorage.removeItem("whish");
+      localStorage.removeItem("user");
+      localStorage.removeItem("auth");
+      localStorage.removeItem("productid");
+      localStorage.removeItem('signupuser');
 
-        history.push("/login");
+      history.push("/login");
     }
   }, [error]);
 
- 
-    return (
-      <div className={styles.couponsContainer}>
-        <div className="mb-4 mt-3">
-          <div className={styles.couponsHeading}>Coupons</div>
-        </div>
 
-        {coupons?.length === 0 && <div>No Data Found!!!</div>}
-        {loading ? <>
+  return (
+    <div className={styles.couponsContainer}>
+      <div className="mb-4 mt-3">
+        <div className={styles.couponsHeading}>Coupons</div>
+      </div>
 
-          Loading....
-        </> : <>
+      {coupons?.length === 0 && <div>No Data Found!!!</div>}
+      {loading ? <>
+Loading...
+      </> : <>
 
-          {
-            coupons.map((data) =>
-              <div>
-                <div className={styles.couponsContentContainer}>
-                  <div>
-                    <div className={styles.couponsOfferName}>{data.title}</div>
-                    <div className={styles.couponsOfferNames}>{data.couponCode}</div>
-                    <div className={styles.couponsSubContent}>{data.couponDescription}</div>
-                  </div>
-                  <div >
-                    <div className={styles.couponsValidDate}>
-                      Valid {moment(data?.endDate).format("MMM Do YY",)}
-                    </div>
+        {
+          coupons.map((data) =>
+            <div>
+              <div className={styles.couponsContentContainer}>
+                <div>
+                  <div className={styles.couponsOfferName}>{data.title}</div>
+                  <div className={styles.couponsOfferNames}>{data.couponCode}</div>
+                  <div className={styles.couponsSubContent}>{data.couponDescription}</div>
+                </div>
+                <div >
+                  <div className={styles.couponsValidDate}>
+                    Valid {moment(data?.endDate).format("MMM Do YY",)}
                   </div>
                 </div>
-                <hr className={styles.couponsDottedLine} />
               </div>
-            )
-          }</>}
+              <hr className={styles.couponsDottedLine} />
+            </div>
+          )
+        }</>}
 
 
-      </div>
-    )
-  }
+    </div>
+  )
+}
 
 
 export default Coupons

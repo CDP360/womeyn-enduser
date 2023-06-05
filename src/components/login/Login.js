@@ -86,9 +86,8 @@ function Login() {
                         setLoading(false);
                     }, 600);
                 }
-
             }).catch((err) => {
-                toast.error(err?.response?.data?.message || err?.response?.data,
+                toast.error("Incorrect email or password",
                     {
                         position: "top-center",
                         autoClose: 3300,
@@ -102,7 +101,6 @@ function Login() {
                 );
                 setError(false);
                 setLoading(false);
-
             })
         }
 

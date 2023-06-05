@@ -1,5 +1,6 @@
 import axios from 'axios';
-
+import { redirect } from 'next/navigation';
+import { NavigatePage } from './PageNavigate';
 axios.interceptors.request.use(
     function (config) {
         if (config.url.search("/customer/update-photo") !== -1 || config.url.search("/customer/add-review") !== -1) {
@@ -55,7 +56,7 @@ axios.interceptors.response.use(
     },
     async function (error) {
         if (error.response.status === 401) {
-           
+
             localStorage.removeItem("userid");
             localStorage.removeItem("userToken");
             localStorage.removeItem("userTokens");
@@ -64,8 +65,9 @@ axios.interceptors.response.use(
             localStorage.removeItem("auth");
             localStorage.removeItem("productid");
             localStorage.removeItem('signupuser');
-            window.location.href("/");
-       
+            NavigatePage();
+            
+
         } else {
             return Promise.reject(error);
         }

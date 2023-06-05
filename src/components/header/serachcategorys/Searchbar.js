@@ -11,8 +11,6 @@ function Searchbar({ serachdata, serachicon,searchDatacategory,loadingserach }) 
         history.push(`/category/${data}`)
     }
 
-
-    console.log(searchDatacategory,"serachdata")
     return (
         <div className={styles.mainserachbarsection}>
             <div className={styles.searchbarcontents}>

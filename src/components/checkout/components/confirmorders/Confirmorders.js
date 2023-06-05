@@ -210,7 +210,10 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
     })
   }
 
-  console.log(finalorders, "finalorders")
+
+  const ViewCoupons=()=>{
+    window.open('https://www.womeyn.cdp360.in/coupons');
+  }
 
   return (
 
@@ -626,7 +629,11 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
             }
 
 
-            <div className='mt-5'>
+<div className="mt-3 mb-2">
+  <div className={styles.viewcouponslist} onClick={ViewCoupons}>View Coupons</div>
+</div>
+
+            <div className='mt-4'>
 
             <div className={styles.couponsectionsplit}>
                   <div>
