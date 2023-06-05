@@ -223,7 +223,7 @@ function Checkout() {
                     {discountamount?.result ? <>
                       <div className={styles.splitcartsections}>
                         <div>
-                          Item Discount
+                        Applied Coupon
                         </div>
                         <div className={styles.textpricegreen}>
                           {/* A${Number(Sample) + Number(chargeDelivery)} */}

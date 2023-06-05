@@ -119,9 +119,6 @@ function Servicepayment({ id }) {
     }
 
 
-
-    console.log(payements, "payements")
-
     const LoginNavigate = () => {
         const pathnames = `/service/payment/${id}`;
         localStorage.setItem("whish", JSON.stringify(pathnames));
