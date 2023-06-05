@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import nodata from '../../../assests/login-logos/No data-amico.png';
 
 import Spinner from 'react-bootstrap/Spinner';
+import LoaderLogo from './../../loaderlogo/LoaderLogo';
 function Searchbar({ serachdata, serachicon,searchDatacategory,loadingserach }) {
     const history = useRouter();
     const CategoryNavigatepath = (data) => {
@@ -86,7 +87,8 @@ function Searchbar({ serachdata, serachicon,searchDatacategory,loadingserach }) 
                         )
                     })}
                         </>:<>
-                        <Spinner animation="border" />
+                        {/* <Spinner animation="border" /> */}
+                        <LoaderLogo/>
                         </>}
                  
 

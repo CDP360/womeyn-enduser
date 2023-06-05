@@ -151,7 +151,7 @@ function Header() {
             setSearchDataCategory1(res?.data?.results);
 
             setLoaderserach(false);
-           },1000)
+           },500)
 
 
         }).catch((err) => {
