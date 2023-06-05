@@ -55,7 +55,7 @@ function ServiceViewDetails() {
 
 
 
-    console.log(serviceBookingSingle, "serviceBookingSingle")
+
 
 
 
@@ -159,6 +159,33 @@ function ServiceViewDetails() {
                                 </div>
                             </div>
 
+                            {serviceBookingSingle?.serviceTypeId === 1 ? <>
+                                <div className={styles.cancelsection}>
+                                    <div className={styles.leftcancelsection}>
+                                        Online Link :
+                                    </div>
+                                    <div className="ms-2">
+                                        {serviceBookingSingle?.linkDescription}
+
+                                    </div>
+                                </div>
+
+                            </> : <>
+
+                                <div className={styles.cancelsection}>
+                                    <div className={styles.leftcancelsection}>
+                                        Offline:
+                                    </div>
+                                    <div className="ms-2">
+                                        {/* {serviceBookingSingle?.linkDescription} */}
+                                        null
+
+                                    </div>
+                                </div>
+                            </>}
+
+
+
                             <div className={styles.cancelsection}>
                                 <div className={styles.leftcancelsection}>
                                     Cancellation :
@@ -190,7 +217,7 @@ function ServiceViewDetails() {
                                 <div className="row gap-3">
                                     {serviceBookingSingle?.workingDays?.map((item, index) => {
                                         return (
-                                            <div className={styles.workingdays}>
+                                            <div className={styles.workingdays} key={index}>
                                                 <div className={styles.leftdays}>
                                                     {item?.dayName}
                                                 </div>
