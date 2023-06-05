@@ -39,7 +39,8 @@ function Allcoupons() {
         <div className={styles.maincouponssection}>
             <div className={styles.insidemaincouponsections}>
 
-                {couponslist?.map((item, index) => {
+              <div className="row gap-1">
+              {couponslist?.map((item, index) => {
                     return (
                         <div className={styles.boxcoupons}>
 <div className={styles.leftcoupons}>
@@ -61,6 +62,7 @@ function Allcoupons() {
                     )
                 })}
 
+              </div>
             </div>
         </div>
     )

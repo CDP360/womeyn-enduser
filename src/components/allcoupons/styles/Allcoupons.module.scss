@@ -8,6 +8,25 @@
         width: 75%;
         height: 100%;
         margin: 0 auto;
+        @include xsBreakPoint {
+            width: 90%;
+            padding-top: 6%;
+            margin:0 2.5%;
+            
+          }
+          @include smBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+          }
+          @include mdBreakPoint {
+            width: 85%;
+          }
+          @include lgBreakPoint {
+            width: 89%;
+          }
+          @include xlBreakPoint {
+            width: 85%;
+          }
         .boxcoupons {
                    border: 1px solid #9f9f9f;
                    padding:10px;
@@ -15,8 +34,29 @@
 
             margin: 1% 10px;
             display: flex;
+            width:48%;
+            @include xsBreakPoint
+            {
+                width:100%;
+            }
+             @include smBreakPoint
+            {
+                width:100%;
+            }
+            @include mdBreakPoint
+            {
+                width:46.5%;
+            }
+            @include lgBreakPoint
+            {
+                width:47.5%;
+            }
+            @include xlBreakPoint
+            {
+                width:47.8%;
+            }
             .leftcoupons {
-                width: 80%;
+                width: 60%;
                 .couponsOfferName {
                     font-size: 18px;
                     font-weight: 600;
@@ -48,7 +88,7 @@
                 }
             }
             .rightcouons {
-                width: 20%;
+                width: 40%;
                 .couponsValidDate {
                     font-size: 18px;
                     font-weight: 600;

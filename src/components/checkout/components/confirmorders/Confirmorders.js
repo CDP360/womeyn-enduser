@@ -236,7 +236,6 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
 
                           <div className={styles.cartimagesection}>
                             <div className={styles.deliverycharge}>
-
                               {item?.deliveryCharge ? <>
                                 Delivery Charge : A$ {item?.deliveryCharge}
                               </> : <>FREE Delivery</>}
