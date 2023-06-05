@@ -25,16 +25,12 @@ function Servicebooking({ id }) {
     const [ratingsdata,setRatingData]=useState("");
     useEffect(() => {
         ServiceusersGetSingle(id).then((res) => {
-            // console.log(res,"res");
-            console.log(res, "res");
             setReviews(res?.data?.reviews)
-
             setServiceBooking(res?.data?.serviceDetails[0]);
             setSellerinfo(res?.data?.sellerInformation);
             setRatingData(res?.data?.averageRating[0]?.avgRating);
         }).catch((err) => {
-            // console.log(err,"res");
-
+            console.log(err);
         })
     }, [id,ratingsdata])
 

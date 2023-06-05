@@ -100,7 +100,7 @@ function Servicepayment({ id }) {
             const datas = {
                 serviceId: payements?.serviceId,
                 variationId: payements?.variationId,
-                sellerId: JSON.parse(userid),
+                sellerId: payements?.sellerId,
                 price: payements?.price,
                 gstAmount: totalvalue,
                 totalOrderAmount: (Number(totalvalue) + (Number(payements?.price))),
@@ -120,12 +120,14 @@ function Servicepayment({ id }) {
 
 
 
+    console.log(payements, "payements")
+
     const LoginNavigate = () => {
         const pathnames = `/service/payment/${id}`;
         localStorage.setItem("whish", JSON.stringify(pathnames));
 
         // setTimeout(() => {
-            history.push("/login");
+        history.push("/login");
         //     localStorage.removeItem("userid");
         //     localStorage.removeItem("userToken");
         //     localStorage.removeItem("whish");
@@ -138,7 +140,7 @@ function Servicepayment({ id }) {
     const NavigatePathUser = () => {
         history?.push("/login");
     }
-   
+
 
 
 
@@ -192,71 +194,71 @@ function Servicepayment({ id }) {
                                             />
                                         </>}
                                     </div>
-                                {tokens?<div>
-                                <div className={styles.servicepayment}>
-                                        <div className={styles.quantity}>
+                                    {tokens ? <div>
+                                        <div className={styles.servicepayment}>
+                                            <div className={styles.quantity}>
 
-                                            <div className={styles.price}>
-                                                Quantity
-                                            </div>
-                                            <div className={styles.price}>
-                                                1
-                                            </div>
-                                        </div>
-
-                                        <div className={styles.bordersections}>
-
-                                        </div>
-
-                                    </div>
-                                    <div className={styles.servicepayment}>
-                                        <div className={styles.quantity}>
-                                            <div className={styles.price}>
-                                                Item price
-                                            </div>
-                                            <div className={styles.price}>
-                                                A$ {payements?.price}
-                                            </div>
-                                        </div>
-
-
-                                        <div className={styles.bordersections}>
-
-                                        </div>
-
-                                        <div className={styles.quantity}>
-                                            <div className={styles.price}>
-                                                GST
-                                            </div>
-                                            <div className={styles.price}>
-                                                A$ {totalvalue}
-                                            </div>
-                                        </div>
-
-                                        <div className={styles.bordersections}>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div className="mt-3 mb-5">
-
-                                        <div className={styles.totalamount}>
-                                            <div className={styles.price}>
-                                                Total amount
-                                            </div>
-                                            <div className={styles.totalflex}>
                                                 <div className={styles.price}>
-                                                    A$
+                                                    Quantity
                                                 </div>
+                                                <div className={styles.price}>
+                                                    1
+                                                </div>
+                                            </div>
 
-                                                <div>
-                                                    <span className={styles.total}>{(Number(totalvalue)) + (Number(payements?.price))}</span>
-                                                </div>                                        </div>
+                                            <div className={styles.bordersections}>
+
+                                            </div>
+
                                         </div>
-                                    </div>
-                                </div>:<div></div>}
-                                    
+                                        <div className={styles.servicepayment}>
+                                            <div className={styles.quantity}>
+                                                <div className={styles.price}>
+                                                    Item price
+                                                </div>
+                                                <div className={styles.price}>
+                                                    A$ {payements?.price}
+                                                </div>
+                                            </div>
+
+
+                                            <div className={styles.bordersections}>
+
+                                            </div>
+
+                                            <div className={styles.quantity}>
+                                                <div className={styles.price}>
+                                                    GST
+                                                </div>
+                                                <div className={styles.price}>
+                                                    A$ {totalvalue}
+                                                </div>
+                                            </div>
+
+                                            <div className={styles.bordersections}>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div className="mt-3 mb-5">
+
+                                            <div className={styles.totalamount}>
+                                                <div className={styles.price}>
+                                                    Total amount
+                                                </div>
+                                                <div className={styles.totalflex}>
+                                                    <div className={styles.price}>
+                                                        A$
+                                                    </div>
+
+                                                    <div>
+                                                        <span className={styles.total}>{(Number(totalvalue)) + (Number(payements?.price))}</span>
+                                                    </div>                                        </div>
+                                            </div>
+                                        </div>
+                                    </div> : <div></div>}
+
 
                                     <div className='mt-4 mb-3'>
                                         {tokens ? <>

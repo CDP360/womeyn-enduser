@@ -11,7 +11,6 @@ function Searchbar({ serachdata, serachicon,searchDatacategory,loadingserach }) 
     const CategoryNavigatepath = (data) => {
         history.push(`/category/${data}`)
     }
-
     return (
         <div className={styles.mainserachbarsection}>
             <div className={styles.searchbarcontents}>
