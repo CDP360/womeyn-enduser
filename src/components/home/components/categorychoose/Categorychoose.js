@@ -88,9 +88,7 @@ function Categorychoose({HomeTexts,bannerimages}) {
             console.log(err);
         })
     }, [])
-    
 
-    console.log(bannerimages[5]?.Coupons,"kl")
     return (
         <Fragment>
             <div className={styles.categoryhomesection}>

@@ -131,12 +131,12 @@ function Eventsupdate() {
                                                     {item?.title}
                                                 </div>
                                                 <div className={styles.eventlengthtext}>
-<span className={styles.eventlength}>Start Date</span> : {item?.startDate}   
+<span className={styles.eventlength}>Start Date</span> :  {item?.startDate}   
 </div>
 
 
 <div className={styles.eventlengthtext}>
-<span className={styles.eventlength}>End Date </span>: {item?.endDate}   
+<span className={styles.eventlength}>End Date </span>:   {item?.endDate}   
 </div>
                                                 <div className={styles.loramsevents}>
                                                     {item?.description.slice(0, 150)}

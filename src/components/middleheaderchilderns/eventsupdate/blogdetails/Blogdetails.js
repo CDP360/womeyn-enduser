@@ -36,46 +36,22 @@ function Blogdetails({ id }) {
                             <div className={styles.blogtitle}>
                                 {viewblog[0]?.title}
                             </div>
-                            <div className="mb-4 mt-2">
-                               
+                            <div className="mb-2 mt-2">
+
 
                                 <div className={styles.eventcontentbox}>
-<div className={styles.lefteventboxover}>
-<div className={styles.imageboxs}>
-                                       <Image src={third} alt="no image" className={styles.firstLocation}/>
+                                    <div className={styles.lefteventboxover}>
+                                        <div className={styles.imageboxs}>
+                                            <Image src={third} alt="no image" className={styles.firstLocation} />
+                                        </div>
+                                        <div>
+                                            Location
+                                        </div>
                                     </div>
-                                    <div>
-                                     Location
+
+                                    <div className="ms-2 d-flex align-items-center">
+                                        : <span className="ms-2">{viewblog[0]?.location}</span>
                                     </div>
-</div>
-
-<div className="ms-2 d-flex align-items-center">
-: {viewblog[0]?.location}
-</div>
-
-
-                                </div>
-
-                            </div>
-
-                          
-
-                            <div>
-
-                            <div className={styles.eventcontentbox}>
-<div className={styles.lefteventboxover}>
-<div className={styles.imageboxs}>
-                                       <Image src={fourth} alt="no image" className={styles.firstLocation}/>
-                                    </div>
-                                    <div>
-                                    Event Duration
-                                    </div>
-</div>
-
-<div className="ms-2 d-flex align-items-center">
-: {viewblog[0]?.eventLength} hrs
-
-</div>
 
 
                                 </div>
@@ -83,53 +59,77 @@ function Blogdetails({ id }) {
                             </div>
 
 
+
                             <div>
 
-<div className={styles.eventcontentbox}>
-<div className={styles.lefteventboxover}>
-<div className={styles.imageboxs}>
-           <Image src={first} alt="no image" className={styles.firstLocation}/>
-        </div>
-        <div>
-        Organizer Details
-        </div>
-</div>
+                                <div className={styles.eventcontentbox}>
+                                    <div className={styles.lefteventboxover}>
+                                        <div className={styles.imageboxs}>
+                                            <Image src={fourth} alt="no image" className={styles.firstLocation} />
+                                        </div>
+                                        <div>
+                                            Event Duration
+                                        </div>
+                                    </div>
 
-<div className="ms-2 d-flex align-items-center">
-: {viewblog[0]?.organizerName} , {viewblog[0]?.organizationCompany}
+                                    <div className="ms-2 d-flex align-items-center">
+                                        : <span className="ms-2">{viewblog[0]?.eventLength} hrs</span>
 
-</div>
-
-
-    </div>
-
-</div>
+                                    </div>
 
 
-<div >
+                                </div>
 
-<div className={styles.eventcontentbox}>
-<div className={styles.lefteventboxover}>
-<div className={styles.imageboxs}>
-           <Image src={second} alt="no image" className={styles.firstLocation}/>
-        </div>
-        <div>
-        Date
-        </div>
-</div>
-
-<div className="ms-2 d-flex align-items-center">
-: {viewblog[0]?.startDate} - {viewblog[0]?.endDate} 
-
-</div>
+                            </div>
 
 
-    </div>
+                            <div>
 
-</div>
+                                <div className={styles.eventcontentbox}>
+                                    <div className={styles.lefteventboxover}>
+                                        <div className={styles.imageboxs}>
+                                            <Image src={first} alt="no image" className={styles.firstLocation} />
+                                        </div>
+                                        <div>
+                                            Organizer Details
+                                        </div>
+                                    </div>
+
+                                    <div className="ms-2 d-flex align-items-center">
+                                        : <span className="ms-2">{viewblog[0]?.organizerName} , {viewblog[0]?.organizationCompany}</span>
+
+                                    </div>
 
 
-                         
+                                </div>
+
+                            </div>
+
+
+                            <div >
+
+                                <div className={styles.eventcontentbox}>
+                                    <div className={styles.lefteventboxover}>
+                                        <div className={styles.imageboxs}>
+                                            <Image src={second} alt="no image" className={styles.firstLocation} />
+                                        </div>
+                                        <div>
+                                            Date
+                                        </div>
+                                    </div>
+
+                                    <div className="ms-2 d-flex align-items-center">
+                                        :    <span className="ms-2">{viewblog[0]?.startDate} - {viewblog[0]?.endDate} </span>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+
+
 
 
                         </div>

@@ -56,18 +56,7 @@ axios.interceptors.response.use(
     },
     async function (error) {
         if (error.response.status === 401) {
-
-            localStorage.removeItem("userid");
-            localStorage.removeItem("userToken");
-            localStorage.removeItem("userTokens");
-            localStorage.removeItem("whish");
-            localStorage.removeItem("user");
-            localStorage.removeItem("auth");
-            localStorage.removeItem("productid");
-            localStorage.removeItem('signupuser');
-            NavigatePage();
-            
-
+            NavigatePage("/");
         } else {
             return Promise.reject(error);
         }

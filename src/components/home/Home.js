@@ -18,6 +18,7 @@ import { HomeTexts } from '../../consttext/Homeconst';
 import Head from "next/head";
 
 import womenlog from '../../assests/homepage-logos/Mobileviewlogoshort.png';
+import { NavigatePage } from '../../config/PageNavigate';
 
 
 function Home() {
@@ -77,6 +78,7 @@ function Home() {
     useEffect(() => {
         GetBannerimages();
         CheckTokens();
+
     }, [state]);
 
     const CheckTokens = async () => {
@@ -94,6 +96,7 @@ function Home() {
                 localStorage.removeItem("auth");
                 localStorage.removeItem("productid");
                 localStorage.removeItem('signupuser');
+            
             }
 
             if (state?.loginUser?.error?.code === 401 || state?.loginUser?.error?.code === 403) {
@@ -119,6 +122,7 @@ function Home() {
                 localStorage.removeItem('signupuser');
             }
         }
+
     }
 
 
