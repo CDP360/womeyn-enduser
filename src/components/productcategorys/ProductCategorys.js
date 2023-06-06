@@ -57,7 +57,7 @@ function ProductCategorys() {
 
         })
         WomenSellercategories();
-        GetFilterandSearchData();
+        // GetFilterandSearchData();
 
     }, [categoryid])
 
@@ -89,18 +89,18 @@ function ProductCategorys() {
         setFilter(data.name);
         setSearchName("");
     }
-    const GetFilterandSearchData = () => {
-        setLoading(true);
-        WomenpreneursFilter(categoryid).then((res) => {
-            setServiceusers(res?.data?.results);
-            setLimit(res?.data);
-            setTimeout(() => {
-                setLoading(false);
-            }, 300);
-        }).catch((err) => {
-            console.log(err);
-        })
-    }
+    // const GetFilterandSearchData = () => {
+    //     setLoading(true);
+    //     WomenpreneursFilter(categoryid).then((res) => {
+    //         setServiceusers(res?.data?.results);
+    //         setLimit(res?.data);
+    //         setTimeout(() => {
+    //             setLoading(false);
+    //         }, 300);
+    //     }).catch((err) => {
+    //         console.log(err);
+    //     })
+    // }
     const GetSearchdata = () => {
         setLoading(true);
         SearchProductUser(searchname).then((res) => {
