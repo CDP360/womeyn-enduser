@@ -119,7 +119,7 @@ function Blogdetails({ id }) {
                                     </div>
 
                                     <div className="ms-2 d-flex align-items-center">
-                                        :    <span className="ms-2">{viewblog[0]?.startDate} - {viewblog[0]?.endDate} </span>
+                                        :    <span className="ms-2">{viewblog[0]?.startDate} to {viewblog[0]?.endDate} </span>
 
                                     </div>
 
@@ -127,8 +127,6 @@ function Blogdetails({ id }) {
                                 </div>
 
                             </div>
-
-
 
 
 

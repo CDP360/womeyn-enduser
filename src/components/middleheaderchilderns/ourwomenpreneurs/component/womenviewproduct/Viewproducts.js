@@ -24,6 +24,7 @@ import Autocomplete from "react-google-autocomplete";
 import dynamic from 'next/dynamic';
 import Googleautocomplete from '../../../../googleautocompleteaddress/Googleautocomplete';
 import ShippingRate from './shippingrate/ShippingRate';
+import ImageViewModal from './imageviewmodel/ImageViewModal';
 function Viewproducts({ id }) {
 
     const [googleplaces, setGooglePlaces] = useState("");
@@ -1036,6 +1037,16 @@ function Viewproducts({ id }) {
     const Apiurl = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places`
 
 
+    const [imagemodel, setImageModel] = useState(false);
+
+    const handleImageshow = () => {
+        setImageModel(true);
+    }
+
+    const handleImageClose = () => {
+        setImageModel(false);
+    }
+
 
 
     return (
@@ -1061,11 +1072,16 @@ function Viewproducts({ id }) {
                         <div className={styles.leftproductview}>
                             <div className={styles.leftmainsectionslide}>
                                 <div className={styles.leftcardimages}>
+
+                                    <ImageViewModal imagemodel={imagemodel} handleImageClose={handleImageClose} productimages={productimages}/>
                                     <div className={styles.imagerowsection}>
                                         {productimages?.map((item, index) => {
                                             return (
                                                 <div className={`${indexs === index ? styles.activewomen : styles.borderimages
-                                                    } `} onClick={() => setIndex(index)} onMouseOver={() => setIndex(index)} key={index}>
+                                                    } `} onClick={() => {
+                                                        setIndex(index)
+                                                        handleImageshow()
+                                                    }} onMouseOver={() => setIndex(index)} key={index}>
                                                     {item?.name ? <><img
                                                         className={styles.imagecards}
                                                         src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}

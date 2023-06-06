@@ -100,7 +100,7 @@ function Eventsupdate() {
         ]
     };
 
-    console.log(topevents,"topevents")
+
     return (
         <Fragment>
             <div className={styles.eventupdatemainsection}>
