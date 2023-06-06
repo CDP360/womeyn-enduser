@@ -636,7 +636,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
 
             <div className={styles.couponsectionsplit}>
                   <div>
-                    <input type="text" placeHolder="EARLY BIRD" className={styles.couponform} name={couponscode} value={couponscode} onChange={(e) => setCouponcode(e.target.value)} />
+                    <input type="text" placeHolder="Enter Coupon Code" className={styles.couponform} name={couponscode} value={couponscode} onChange={(e) => setCouponcode(e.target.value)} />
                   </div>
 
                   <div>
