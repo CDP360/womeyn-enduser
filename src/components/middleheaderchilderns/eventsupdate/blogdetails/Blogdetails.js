@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react'
 import styles from './styles/Eventsdetails.module.scss';
 import { getSingleEvent } from '../../../../services/event-services/event-services';
 import ReactHtmlParser from "react-html-parser";
-
+import first from '../../../../assests/events/first.png';
+import second from '../../../../assests/events/Frame-2.png';
+import third from '../../../../assests/events/third.png';
+import fourth from '../../../../assests/events/fourth.png';
+import Image from 'next/image';
 function Blogdetails({ id }) {
 
     const [viewblog, setViewBlog] = useState([]);
@@ -15,7 +19,7 @@ function Blogdetails({ id }) {
         })
     }, [])
 
-    console.log(viewblog,"viewblog")
+    console.log(viewblog, "viewblog")
     return (
         <div className={styles.mainblogview}>
             <div className={styles.insideblogsection}>
@@ -25,53 +29,137 @@ function Blogdetails({ id }) {
                     </>}
                 </div>
                 <div className={styles.bannerviewblog}>
-                    <div>
-                        <div className={styles.blogtitle}>
-                            {viewblog[0]?.title}
+
+
+                    <div className={styles.eventsectionsplitinside}>
+                        <div className={styles.lefteventsection}>
+                            <div className={styles.blogtitle}>
+                                {viewblog[0]?.title}
+                            </div>
+                            <div className="mb-4 mt-2">
+                               
+
+                                <div className={styles.eventcontentbox}>
+<div className={styles.lefteventboxover}>
+<div className={styles.imageboxs}>
+                                       <Image src={third} alt="no image" className={styles.firstLocation}/>
+                                    </div>
+                                    <div>
+                                     Location
+                                    </div>
+</div>
+
+<div className="ms-2 d-flex align-items-center">
+: {viewblog[0]?.location}
+</div>
+
+
+                                </div>
+
+                            </div>
+
+                          
+
+                            <div>
+
+                            <div className={styles.eventcontentbox}>
+<div className={styles.lefteventboxover}>
+<div className={styles.imageboxs}>
+                                       <Image src={fourth} alt="no image" className={styles.firstLocation}/>
+                                    </div>
+                                    <div>
+                                    Event Duration
+                                    </div>
+</div>
+
+<div className="ms-2 d-flex align-items-center">
+: {viewblog[0]?.eventLength} hrs
+
+</div>
+
+
+                                </div>
+
+                            </div>
+
+
+                            <div>
+
+<div className={styles.eventcontentbox}>
+<div className={styles.lefteventboxover}>
+<div className={styles.imageboxs}>
+           <Image src={first} alt="no image" className={styles.firstLocation}/>
+        </div>
+        <div>
+        Organizer Details
+        </div>
+</div>
+
+<div className="ms-2 d-flex align-items-center">
+: {viewblog[0]?.organizerName} , {viewblog[0]?.organizationCompany}
+
+</div>
+
+
+    </div>
+
+</div>
+
+
+<div >
+
+<div className={styles.eventcontentbox}>
+<div className={styles.lefteventboxover}>
+<div className={styles.imageboxs}>
+           <Image src={second} alt="no image" className={styles.firstLocation}/>
+        </div>
+        <div>
+        Date
+        </div>
+</div>
+
+<div className="ms-2 d-flex align-items-center">
+: {viewblog[0]?.startDate} - {viewblog[0]?.endDate} 
+
+</div>
+
+
+    </div>
+
+</div>
+
+
+                         
+
+
                         </div>
+                        <div className={styles.righteventsection}>
+                            <div className={styles.eventlengthtext}>
+                                <span className={styles.eventlength}>description</span> : {viewblog[0]?.description}
+                            </div>
+                            <div className="mt-3 mb-4">
+                                {ReactHtmlParser(viewblog[0]?.eventContent.replace(/&lt;/g, "<"))}
+                                {/* {ReactHtmlParser(item?.planDetails.replace(/&lt;/g, "<"))} */}
 
-<div className={styles.eventlengthtext}>
-   <span className={styles.eventlength}> Event Length</span> : {viewblog[0]?.eventLength}
-</div>
-
-
-<div className={styles.eventlengthtext}>
-<span className={styles.eventlength}> Organizer Name </span> : {viewblog[0]?.organizerName}   
-</div>
-<div className={styles.eventlengthtext}>
-<span className={styles.eventlength}> Organization Company</span> : {viewblog[0]?.organizationCompany}
-</div>
-
-<div className={styles.eventlengthtext}>
-<span className={styles.eventlength}>Start Date</span> : {viewblog[0]?.startDate}   
-</div>
-
-
-<div className={styles.eventlengthtext}>
-<span className={styles.eventlength}>End Date </span>: {viewblog[0]?.endDate}   
-</div>
-
-
-<div className={styles.eventlengthtext}>
-<span className={styles.eventlength}>Location</span> : {viewblog[0]?.location}   
-</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
 
 
 
 
+
+
+
+
+                        {/* 
 <div className={styles.eventlengthtext}>
 <span className={styles.eventlength}>Ticketing Details </span>: {viewblog[0]?.ticketingDetails}   
-</div>
+</div> */}
 
 
-<div className={styles.eventlengthtext}>
-<span className={styles.eventlength}>description</span> : {viewblog[0]?.description}   
-</div>
-                        <div className="mt-3 mb-4">
-                            {ReactHtmlParser(viewblog[0]?.eventContent.replace(/&lt;/g, "<"))}
-                      {/* {ReactHtmlParser(item?.planDetails.replace(/&lt;/g, "<"))} */}
 
-                        </div>
 
                     </div>
 

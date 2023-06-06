@@ -7,8 +7,6 @@
     .insideblogsection {
         width: 75%;
         margin: 0 auto;
-
-
         @include xsBreakPoint {
             width: 85%;
             padding-top: 6%;
@@ -29,7 +27,8 @@
 
         .eventlengthtext
         {
-            padding-top:2%; padding-bottom:2%;
+            padding-top:1.5%; padding-bottom:1.5%;
+            display:flex;
         }
         .eventlength
         {
@@ -55,6 +54,83 @@
         {
             font-size:2rem;
             font-weight:600;
+        }
+        .eventsectionsplitinside
+        {
+          width:100%;
+          display:flex;
+          @include xsBreakPoint
+          {
+            flex-direction:column;
+          }
+          @include smBreakPoint
+          {
+            flex-direction:column;
+          }
+          .lefteventsection
+          {
+            width:45%;
+            border-right:1px solid #C4C4C4;
+            @include xsBreakPoint
+            {
+              border:none;
+              width:100%;
+            }
+            @include smBreakPoint
+            {
+              border:none;
+              width:100%;
+            }
+            .firstLocation
+            {
+              width:20px;
+              height:20px;
+            }
+            .eventcontentbox
+            {
+              width:100%;
+              display:flex;
+            padding-top:1.5%; padding-bottom:1.5%;
+              
+              .lefteventboxover
+              {
+             
+                display:flex;
+                align-items:center;
+                gap:10px;
+                // .imageboxs
+                // {
+                //   width:30px;
+                //   height:30px;
+                //   // padding:5px;
+                //   display:flex;
+                //   align-items:center;
+                //   justify-content:center;
+                //   border-radius:6px;
+                //   background: rgba(255, 61, 0, 0.1);
+                // }
+              }
+
+            }
+          }
+          .righteventsection
+          {
+            width:55%;
+            padding-left:3%;
+            @include xsBreakPoint
+            {
+              border:none;
+              width:100%;
+              padding-top:10%;
+            }
+            @include smBreakPoint
+            {
+              border:none;
+              width:100%;
+              padding-top:10%;
+
+            }
+          }
         }
     }
 }
