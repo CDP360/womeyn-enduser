@@ -21,8 +21,11 @@ import noimage from '../../assests/womeynlogos/noimage.png';
 import LoaderLogo from '../loaderlogo/LoaderLogo';
 import { AllProductCategorys } from '../../services/productview-service/productview-services';
 import star from '../../assests/homepage-logos/stars.png';
+import Skeleton from 'react-loading-skeleton'
+
 
 import { Rate } from "antd";
+import { SearchProductUser } from '../../services/category-services/category-service';
 
 
 function ProductCategorys() {
@@ -53,8 +56,8 @@ function ProductCategorys() {
             setLoading(false);
 
         })
-        // WomenSellercategories();
-        // GetFilterandSearchData();
+        WomenSellercategories();
+        GetFilterandSearchData();
 
     }, [categoryid])
 
@@ -86,31 +89,31 @@ function ProductCategorys() {
         setFilter(data.name);
         setSearchName("");
     }
-    // const GetFilterandSearchData = () => {
-    //     setLoading(true);
-    //     WomenpreneursFilter(categoryid).then((res) => {
-    //         setDataseller(res?.data?.results);
-    //         setLimit(res?.data);
-    //         setTimeout(() => {
-    //             setLoading(false);
-    //         }, 300);
-    //     }).catch((err) => {
-    //         console.log(err);
-    //     })
-    // }
-    // const GetSearchdata = () => {
-    //     setLoading(true);
-    //     WomenpreneursSearch(searchname).then((res) => {
-    //         setDataseller(res?.data?.results);
-    //         setFilter("");
-    //         setTimeout(() => {
-    //             setLoading(false);
-    //         }, 300);
+    const GetFilterandSearchData = () => {
+        setLoading(true);
+        WomenpreneursFilter(categoryid).then((res) => {
+            setServiceusers(res?.data?.results);
+            setLimit(res?.data);
+            setTimeout(() => {
+                setLoading(false);
+            }, 300);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    const GetSearchdata = () => {
+        setLoading(true);
+        SearchProductUser(searchname).then((res) => {
+            setServiceusers(res?.data?.results);
+            setFilter("");
+            setTimeout(() => {
+                setLoading(false);
+            }, 300);
 
-    //     }).catch((err) => {
-    //         console.log(err);
-    //     })
-    // }
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     const fetchCurrentData = async (current) => {
         const resdata = await WomenpreneursSellers(current);
         setDataseller(resdata?.data?.results);
@@ -135,6 +138,10 @@ function ProductCategorys() {
         }
         return originalElement;
     }
+
+
+
+ 
 
     return (
         <Fragment>
@@ -162,18 +169,18 @@ function ProductCategorys() {
                     <div className={styles.serachsectionwomen}>
                         <div className={styles.serachwomenpresection}>
                             <div>
-                                <input type='text' placeholder="Search by Name or Brand" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
+                                <input type='text' placeholder="Search by Brand Name" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
                             </div>
                             <div>
-                                <Image src={serachicon} alt="no image" className={styles.serachiconwomen} 
-                                // onClick={GetSearchdata}
-                                 />
+                                <Image src={serachicon} alt="no image" className={styles.serachiconwomen}
+                                onClick={GetSearchdata}
+                                />
                             </div>
                         </div>
                         <div className='col-lg-3 col-xs-6 col-sm-5'>
 
                             <Select
-                                placeholder={"Filter Category ..."}
+                                placeholder={"Filter Product Category ..."}
                                 value={filterdata}
                                 onChange={(e) => handleFilterCategory(e)}
                                 options={datacategory}

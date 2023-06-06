@@ -75,9 +75,9 @@ function Checkout() {
 
 
   // coupon value calculate
-  const toatalpricecart = discountamount?discountamount?.message ? (Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))) :
+  const toatalpricecart = discountamount ? discountamount?.message ? (Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))) :
     (Math.round(Number(AllchargeCount) + Number(OverallTotalPrice)) - Number(discountamount?.result))
-    :Math.round(Number(AllchargeCount) + Number(OverallTotalPrice));
+    : Math.round(Number(AllchargeCount) + Number(OverallTotalPrice));
   useEffect(() => {
     if (step === 0) {
       setStep1("active")
@@ -159,7 +159,7 @@ function Checkout() {
                     <Payment addressid={name} totalPrice={toatalpricecart} couponname={couponname} totalvalue={totalvalue}
                       checkshippingamount={checkshippingamount}
                       toatalpricecart={toatalpricecart}
-                      
+
                     />
                   </div>}
                 </div>
@@ -223,7 +223,7 @@ function Checkout() {
                     {discountamount?.result ? <>
                       <div className={styles.splitcartsections}>
                         <div>
-                        Applied Coupon
+                          Applied Coupon
                         </div>
                         <div className={styles.textpricegreen}>
                           {/* A${Number(Sample) + Number(chargeDelivery)} */}

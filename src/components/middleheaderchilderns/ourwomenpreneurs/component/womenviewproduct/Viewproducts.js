@@ -1137,16 +1137,9 @@ function Viewproducts({ id }) {
                                                         //     onLoad: Function,
                                                         //     onError: Function
                                                         // },
-
-
                                                     }}
-
-
                                                 />
                                             </div>
-
-
-
                                         </div>
 
                                         {tokencheck ? <div className={styles.heartimagesection}>

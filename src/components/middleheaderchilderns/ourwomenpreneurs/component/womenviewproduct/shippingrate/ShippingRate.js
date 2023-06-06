@@ -37,6 +37,8 @@ function ShippingRate({ productdata, location }) {
 
         if (postalcodeset?.length === 0) {
             setErrorPostCode(true);
+                setLoader(false);
+            
         }
 
         setLoader(true);
@@ -73,7 +75,7 @@ function ShippingRate({ productdata, location }) {
                         <div>
 
 
-                            <input type="text" placeholder='PinCode' className={styles.location}
+                            <input type="text" placeholder='PostCode' className={styles.location}
                                 maxLength={4}
 
                                 value={postalcodeset}

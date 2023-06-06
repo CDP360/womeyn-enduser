@@ -45,8 +45,8 @@ function Header() {
     const [searchDatacategory1, setSearchDataCategory1] = useState([]);
 
 
-    const [loadingserach,setLoaderserach]=useState(false);
-   
+    const [loadingserach, setLoaderserach] = useState(false);
+
 
 
     const logoutHandler = async () => {
@@ -118,7 +118,7 @@ function Header() {
         }).catch((err) => {
             console.log(err);
         })
-    }, [userauth,loadingserach]);
+    }, [userauth, loadingserach]);
 
     const SellerLogin = () => {
         window.open('https://eseller.cdp360.in/sign-up')
@@ -128,7 +128,7 @@ function Header() {
     const handleChange = (e) => {
         setSerachCategory(e?.target?.value)
         FilterData(e?.target?.value);
-       
+
     }
 
     const FilterData = (value) => {
@@ -139,19 +139,16 @@ function Header() {
     }
 
 
-    const SearchUserSomething= () => {
+    const SearchUserSomething = () => {
 
         setLoaderserach(true);
         SearchProductUser(serachcategory).then((res) => {
 
             // setSearchDataCategory(res?.data?.results)
-
-
-           setTimeout(()=>{
-            setSearchDataCategory1(res?.data?.results);
-
-            setLoaderserach(false);
-           },500)
+            setTimeout(() => {
+                setSearchDataCategory1(res?.data?.results);
+                setLoaderserach(false);
+            }, 500)
 
 
         }).catch((err) => {
@@ -212,7 +209,7 @@ function Header() {
                                             </div>
                                         </div>
                                         <div className={styles.barsectiontop}>
-                                            {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} searchDatacategory={searchDatacategory1} loadingserah={loadingserach}/> : <></>}
+                                            {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} searchDatacategory={searchDatacategory1} loadingserah={loadingserach} /> : <></>}
 
                                         </div>
                                     </div>
@@ -312,7 +309,7 @@ function Header() {
                                                         </div>
 
 
-                                                     
+
 
 
                                                         <div className={styles.headerprofile} onClick={Coupons}>
