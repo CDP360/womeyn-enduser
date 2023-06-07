@@ -17,8 +17,8 @@ export const LoginActions = async (dispatch) => {
         dispatch({
             type: "LOGIN_ERROR",
             payload: {
-                message: err?.response?.data?.message,
-                code: err?.response?.data?.code
+                message: "unAuthorized User",
+                code: 401 || 404
             },
 
         })

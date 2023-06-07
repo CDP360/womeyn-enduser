@@ -11,6 +11,7 @@ import Slider from "react-slick";
 import { useRouter } from 'next/router';
 import SlideNextArrow from './../../home/slidenextarrow/SlideNextArrow';
 import SlidePreArrow from './../../home/slideprearrow/SlidePreArrow';
+import moment from 'moment';
 function Eventsupdate() {
 
     const history = useRouter();
@@ -139,7 +140,7 @@ function Eventsupdate() {
 <span className={styles.eventlength}>End Date </span>:   {item?.endDate}   
 </div>
                                                 <div className={styles.loramsevents}>
-                                                    {item?.description.slice(0, 150)}
+                                                    {item?.description.slice(0, 80)}
                                                 </div>
                                             </div>
                                         </div>
@@ -171,7 +172,7 @@ function Eventsupdate() {
                                                     {item?.category}
                                                 </div>
                                                 <div className={styles.loramsevents}>
-                                                    {item?.shortDescription.slice(0, 100)}
+                                                    {item?.shortDescription.slice(0, 80)}
                                                 </div>
                                             </div>
                                         </div>
@@ -205,7 +206,7 @@ function Eventsupdate() {
 
                             <div className={styles.splitboxeventsection}>
                                 <div className={styles.lefteventsection}>
-                                    <div className="textseller">
+                                    <div className="textseller mb-4">
                                         Latest Events
                                     </div>
                                     <div className='cardsections-events row  w-100 mt-1 mb-3'>
@@ -223,13 +224,13 @@ function Eventsupdate() {
 
                                                         <div className={styles.titleevents}>
                                                             {/* <span className={styles.activesports}> SPORT</span> - January 25, 2022 */}
-                                                            {item?.title}
+                                                            {item?.title.slice(0,30)}
                                                         </div>
                                                         <div className={styles.categoryevents}>
                                                             {item.category}
                                                         </div>
                                                         <div className={styles.loramsevents}>
-                                                            {item?.description.slice(0, 100)}
+                                                            {item?.description.slice(0, 50)}
                                                         </div>
 
                                                         <div className="d-flex justify-content-between">
@@ -269,7 +270,7 @@ function Eventsupdate() {
 
                             <div className={styles.splitboxeventsection}>
                                 <div className={styles.lefteventsection}>
-                                    <div className="textseller">
+                                    <div className="textseller mb-4">
                                         Latest Blogs
                                     </div>
                                     <div className='cardsections-events row  w-100 mt-1 mb-3'>
@@ -288,7 +289,7 @@ function Eventsupdate() {
 
                                                         <div className={styles.titleevents}>
                                                             {/* <span className={styles.activesports}> SPORT</span> - January 25, 2022 */}
-                                                            {item?.title}
+                                                            {item?.title.slice(0,30)}
                                                         </div>
                                                         <div className={styles.categoryevents}>
                                                             {item.keywords}

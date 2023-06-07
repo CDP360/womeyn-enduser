@@ -18,8 +18,6 @@ function Blogdetails({ id }) {
             console.log(err);
         })
     }, [])
-
-    console.log(viewblog, "viewblog")
     return (
         <div className={styles.mainblogview}>
             <div className={styles.insideblogsection}>
@@ -36,7 +34,7 @@ function Blogdetails({ id }) {
                             <div className={styles.blogtitle}>
                                 {viewblog[0]?.title}
                             </div>
-                            <div className="">
+                            <div className="mt-3">
 
 
                                 <div className={styles.eventcontentbox}>
@@ -45,22 +43,20 @@ function Blogdetails({ id }) {
                                             <Image src={third} alt="no image" className={styles.firstLocation} />
                                         </div>
                                         <div className={styles.eventlength}>
-                                            Location
+                                            Location : 
                                         </div>
                                     </div>
-
-                                    <div className="ms-2 d-flex align-items-center">
-                                        : <span className="ms-2">{viewblog[0]?.location}</span>
-                                    </div>
-
-
                                 </div>
+
+                                <div className="ms-5 d-flex align-items-center">
+                                        <span className="ms-2">{viewblog[0]?.location}</span>
+                                    </div>
 
                             </div>
 
 
 
-                            <div>
+                            <div className="mt-3">
 
                                 <div className={styles.eventcontentbox}>
                                     <div className={styles.lefteventboxover}>
@@ -68,22 +64,24 @@ function Blogdetails({ id }) {
                                             <Image src={fourth} alt="no image" className={styles.firstLocation} />
                                         </div>
                                         <div className={styles.eventlength}>
-                                            Event Duration
+                                            Event Duration : 
                                         </div>
                                     </div>
 
-                                    <div className="ms-2 d-flex align-items-center">
-                                        : <span className="ms-2">{viewblog[0]?.eventLength} hrs</span>
-
-                                    </div>
+                                    
 
 
                                 </div>
 
+                                <div className="ms-5 d-flex align-items-center">
+                                        <span className="ms-2">{viewblog[0]?.eventLength} </span>
+
+                                    </div>
+
                             </div>
 
 
-                            <div>
+                            <div className="mt-3">
 
                                 <div className={styles.eventcontentbox}>
                                     <div className={styles.lefteventboxover}>
@@ -91,22 +89,23 @@ function Blogdetails({ id }) {
                                             <Image src={first} alt="no image" className={styles.firstLocation} />
                                         </div>
                                         <div className={styles.eventlength}>
-                                            Organizer Details
+                                            Organizer Details : 
                                         </div>
                                     </div>
 
-                                    <div className="ms-2 d-flex align-items-center">
-                                        : <span className="ms-2">{viewblog[0]?.organizerName} , {viewblog[0]?.organizationCompany}</span>
-
-                                    </div>
+                                   
 
 
                                 </div>
 
+                                <div className="ms-5 d-flex align-items-center">
+                                         <span className="ms-2">{viewblog[0]?.organizerName} , {viewblog[0]?.organizationCompany}</span>
+
+                                    </div>
                             </div>
 
 
-                            <div >
+                            <div className="mt-3">
 
                                 <div className={styles.eventcontentbox}>
                                     <div className={styles.lefteventboxover}>
@@ -114,17 +113,19 @@ function Blogdetails({ id }) {
                                             <Image src={second} alt="no image" className={styles.firstLocation} />
                                         </div>
                                         <div className={styles.eventlength}>
-                                            Date
+                                            Date : 
                                         </div>
                                     </div>
 
-                                    <div className="ms-2 d-flex align-items-center">
-                                        :    <span className="ms-2">{viewblog[0]?.startDate} to {viewblog[0]?.endDate} </span>
-
-                                    </div>
+                                   
 
 
                                 </div>
+
+                                <div className="ms-5 d-flex align-items-center">
+                                            <span className="ms-2">{viewblog[0]?.startDate} to {viewblog[0]?.endDate} </span>
+
+                                    </div>
 
                             </div>
 

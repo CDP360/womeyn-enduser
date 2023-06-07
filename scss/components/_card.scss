@@ -181,17 +181,13 @@
         }
         @include lgBreakPoint {
             width: 29.5% !important;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            
+           
+            height:auto;
         }
         @include xlBreakPoint {
             width: 29.5% !important;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+           
         }
         .womentitle {
             position: absolute;

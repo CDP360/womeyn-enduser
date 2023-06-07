@@ -21,6 +21,7 @@ import womenlog from '../../assests/homepage-logos/Mobileviewlogoshort.png';
 import { NavigatePage } from '../../config/PageNavigate';
 
 
+
 function Home() {
     const [bannerimages, setBannerImages] = useState([]);
     const settings = {
@@ -79,6 +80,8 @@ function Home() {
         GetBannerimages();
         CheckTokens();
 
+       
+
     }, [state]);
 
     const CheckTokens = async () => {
@@ -111,7 +114,7 @@ function Home() {
             }
 
 
-            if (state?.loginUser?.error?.message == "Please authenticate") {
+            if (state?.loginUser?.error?.message == "Please authenticate" || state?.loginUser?.error?.message == "unAuthorized User") {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("userTokens");
