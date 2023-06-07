@@ -12,6 +12,8 @@ function Allorders({ Orders, traking, loading,setTrackId }) {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
   const [loadings,setLoadings]=useState(false);
+
+  const [refreshloader,setRefreshloader]=useState(false);
   const [deleteid, setDeleteid] = useState("");
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
@@ -32,8 +34,11 @@ function Allorders({ Orders, traking, loading,setTrackId }) {
       CustomerOrderCancel(e).then((res) => {
         toast.success(res?.data?.message);
         setLoadings(true);
+        setRefreshloader(true);
+        window.location.reload(false);
       }).catch((err) => {
         console.log(err);
+        setRefreshloader(false);
       })
     }, 500);
   }
@@ -45,7 +50,8 @@ function Allorders({ Orders, traking, loading,setTrackId }) {
   }
   useEffect(() => {
     setLoadings(false);
-  }, [deleteid, Orders,loadings]);
+    setRefreshloader(false);
+  }, [deleteid, Orders,loadings,refreshloader]);
 
 
   const NavigateTrackid=(id)=>{
