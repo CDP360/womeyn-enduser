@@ -1099,9 +1099,6 @@ function Viewproducts({ id }) {
                                         <div className={styles.serachlargeimage}>
 
                                             <div className="d-block d-lg-none">
-
-
-
                                                 <img
                                                     className={styles.serachlargeimages}
                                                     src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}

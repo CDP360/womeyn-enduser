@@ -6,14 +6,19 @@ import nodata from '../../../assests/login-logos/No data-amico.png';
 
 import Spinner from 'react-bootstrap/Spinner';
 import LoaderLogo from './../../loaderlogo/LoaderLogo';
-function Searchbar({ serachdata, serachicon,searchDatacategory,loadingserach }) {
+function Searchbar({ serachdata, serachicon,searchDatacategory,loadingserah,serachcategory }) {
     const history = useRouter();
     const CategoryNavigatepath = (data) => {
         history.push(`/category/${data}`)
     }
+
+
+    console.log(loadingserah,"loadingserach")
     return (
         <div className={styles.mainserachbarsection}>
             <div className={styles.searchbarcontents}>
+
+        
                 {serachdata?.length>0? 
                 <div className={styles.backgroundwhites}>
                     {serachdata?.map((item, index) => {
@@ -27,9 +32,9 @@ function Searchbar({ serachdata, serachicon,searchDatacategory,loadingserach }) 
                                                 src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`}
                                                 alt="profile-pic"
                                             />
-                                        </> : <>
-                                            <Image src={serachicon} alt="no image" className='serachicon' />
-                                        </>}
+                                        </> : < div className={styles.cursorserach}>
+                                            <Image src={serachicon} alt="no image" className={"serachicon"} />
+                                        </div>}
                                     </div>
                                     <div className={styles.textsbrands} onClick={() => CategoryNavigatepath(item?.slugName)}>
 
@@ -58,41 +63,64 @@ function Searchbar({ serachdata, serachicon,searchDatacategory,loadingserach }) 
                       
                       
                 </div> : <>
-                    {/* {serachdata?.length === 0 && <div>No Result..!!!</div>} */}
+                  
+
+                    {loadingserah?<>
+                        <div className={styles.backgroundwhites}>
+
+                        <div className={styles.serachboxtexts} >
+                    
+                    <div className="d-flex align-items-center justify-content-center mt-5 w-100 mx-auto">
+                    <Spinner animation="border" />
+                    </div>
+
+                     </div>
+</div>
+
+                    </>:<>
+                    
                     <div className={styles.backgroundwhites}>
                     
-                        {searchDatacategory?.length>0?<>
-                            {searchDatacategory?.map((item, index) => {
-                        return (
-                            <div>
+                    {searchDatacategory?.length>0?<>
+                        {searchDatacategory?.map((item, index) => {
+                    return (
+                        <div>
 
-                              
-                                <div className={styles.serachboxtexts} onClick={() => CategoryNavigatepath(item?.slugName)}>
-                                    <div>
-                                        {item?.productThumbImage ? <>
-                                            <img
-                                                className={styles.serachshoeimages}
-                                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
-                                                alt="profile-pic"
-                                            />
-                                        </> : <>
-                                            <Image src={serachicon} alt="no image" className='serachicon' />
-                                        </>}
-                                        <span className="ms-2">{item?.productName}</span>
-                                    </div>
-                                   
-                                </div>
+                            <div className={styles.serachboxtexts} onClick={() => CategoryNavigatepath(item?.slugName)}>
+                                <div>
+                                    {item?.productThumbImage ? <>
+                                        <img
+                                            className={styles.serachshoeimages}
+                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
+                                            alt="profile-pic"
+                                        />
+                                    </> : <>
+                                        <Image src={serachicon} alt="no image" className='serachicon' />
+                                    </>}
+                                    <span className="ms-2">{item?.productName}</span>
+                                </div>                                   
                             </div>
-                        )
-                    })}
-                        </>:<>
-                        {/* <Spinner animation="border" /> */}
-                        <LoaderLogo/>
-                        </>}
-                 
+                        </div>
+                    )
+                })}
+                    </>:<>
+
+                     {/* <Spinner animation="border" /> */}
+                   <div className="d-flex align-items-center justify-content-center mt-5">
+
+                   No Records
+                   </div>
+                  
+                
+                    </>}
 
                   
-                    </div>
+             
+
+              
+                </div>
+                    </>}
+                   
                 </>}
 
 

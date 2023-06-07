@@ -36,7 +36,7 @@ function Blogdetails({ id }) {
                             <div className={styles.blogtitle}>
                                 {viewblog[0]?.title}
                             </div>
-                            <div className="mb-2 mt-2">
+                            <div className="">
 
 
                                 <div className={styles.eventcontentbox}>
@@ -44,7 +44,7 @@ function Blogdetails({ id }) {
                                         <div className={styles.imageboxs}>
                                             <Image src={third} alt="no image" className={styles.firstLocation} />
                                         </div>
-                                        <div>
+                                        <div className={styles.eventlength}>
                                             Location
                                         </div>
                                     </div>
@@ -67,7 +67,7 @@ function Blogdetails({ id }) {
                                         <div className={styles.imageboxs}>
                                             <Image src={fourth} alt="no image" className={styles.firstLocation} />
                                         </div>
-                                        <div>
+                                        <div className={styles.eventlength}>
                                             Event Duration
                                         </div>
                                     </div>
@@ -90,7 +90,7 @@ function Blogdetails({ id }) {
                                         <div className={styles.imageboxs}>
                                             <Image src={first} alt="no image" className={styles.firstLocation} />
                                         </div>
-                                        <div>
+                                        <div className={styles.eventlength}>
                                             Organizer Details
                                         </div>
                                     </div>
@@ -113,7 +113,7 @@ function Blogdetails({ id }) {
                                         <div className={styles.imageboxs}>
                                             <Image src={second} alt="no image" className={styles.firstLocation} />
                                         </div>
-                                        <div>
+                                        <div className={styles.eventlength}>
                                             Date
                                         </div>
                                     </div>
@@ -128,14 +128,24 @@ function Blogdetails({ id }) {
 
                             </div>
 
-
-
                         </div>
                         <div className={styles.righteventsection}>
                             <div className={styles.eventlengthtext}>
-                                <span className={styles.eventlength}>description</span> : {viewblog[0]?.description}
+                                <span className={styles.eventlength}>Description   :</span>  
+                                
+                               
                             </div>
-                            <div className="mt-3 mb-4">
+
+                            <div className="ms-5">
+                            {viewblog[0]?.description}
+                            </div>
+
+                            <div className={styles.eventlengthtext}>
+                                <span className={styles.eventlength}>Content   :  </span> 
+                                
+                               
+                            </div>
+                            <div className="mt-2 mb-4 ms-5">
                                 {ReactHtmlParser(viewblog[0]?.eventContent.replace(/&lt;/g, "<"))}
                                 {/* {ReactHtmlParser(item?.planDetails.replace(/&lt;/g, "<"))} */}
 

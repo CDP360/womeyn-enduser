@@ -23,8 +23,7 @@
         padding: 0px 0px;
         cursor: pointer;
         // border:2px solid blue !important;
-    background-color: none !important;
-    
+        background-color: none !important;
 
         @include themed() {
             background: t($card);
@@ -33,7 +32,7 @@
             width: 100% !important;
         }
         @include smBreakPoint {
-            width: 50% !important;
+            width: 48% !important;
         }
         @include mdBreakPoint {
             width: 45% !important;
@@ -51,7 +50,6 @@
             // justify-content: center;
         }
     }
-  
 }
 // womenpreneurs card section start
 .cardsections {
@@ -60,7 +58,6 @@
     align-items: center;
     // justify-content: center;
     width: 100%;
-
     @include lgBreakPoint {
         // border:2px solid blue !important;
         gap: 5px;

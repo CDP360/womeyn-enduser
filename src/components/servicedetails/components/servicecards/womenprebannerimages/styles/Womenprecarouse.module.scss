@@ -8,26 +8,25 @@
     cursor: pointer;
 
     @include xsBreakPoint {
-        height: auto;
+        height:150px;
         width:100%;
 
     }
     @include smBreakPoint {
-        height: auto;
+        height:220px;
         width:100%;
-
     }
     @include mdBreakPoint {
-        height: auto;
+        height:300px;
         width:100%;
 
     }
     @include lgBreakPoint {
-        height: auto;
+      height:300px;
         width:100%;
     }
     @include xlBreakPoint {
-        height: auto;
+        height:300px;
         width:100%;
     }
    

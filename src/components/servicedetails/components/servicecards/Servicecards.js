@@ -148,7 +148,7 @@ function Servicecards() {
                                 <Image src={serachicon} alt="no image" className={styles.serachiconwomen} onClick={GetSearchdata} />
                             </div>
                         </div>
-                        <div className='col-lg-3 col-xs-6 col-sm-5'>
+                        <div className='col-lg-3 col-xs-6 col-sm-6 col-lg-5'>
 
                             <Select
                                 placeholder={"Filter Category ..."}

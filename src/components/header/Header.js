@@ -205,11 +205,11 @@ function Header() {
                                         <div className={styles.inputsearchsection}>
                                             <input type="text" placeholder='Search for products,brands and more....' className="inputserach" onChange={handleChange} value={serachcategory} />
                                             <div>
-                                                <Image src={serachicon} alt="no image" className='serachicon' onClick={SearchUserSomething} />
+                                                <Image src={serachicon} alt="no image" className={styles.cursorserach} onClick={SearchUserSomething} />
                                             </div>
                                         </div>
                                         <div className={styles.barsectiontop}>
-                                            {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} searchDatacategory={searchDatacategory1} loadingserah={loadingserach} /> : <></>}
+                                            {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} searchDatacategory={searchDatacategory1} loadingserah={loadingserach}  serachcategory={serachcategory}/> : <></>}
 
                                         </div>
                                     </div>

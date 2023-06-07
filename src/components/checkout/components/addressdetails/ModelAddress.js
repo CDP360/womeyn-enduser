@@ -399,7 +399,7 @@ function ModelAddress({ error }) {
         //  setCodes(res?.data?.pinCode);
         setShortcode1(res?.data?.pinCode)
         setAddressTypes(res?.data?.addressType)
-        setAddressTypes("addressLineOne", res?.data?.addressLineOne)
+        setValue("addressLineOne", res?.data?.addressLineOne)
 
       }).catch((err) => {
         console.log(err);

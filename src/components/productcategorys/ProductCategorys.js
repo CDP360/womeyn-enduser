@@ -13,6 +13,7 @@ import { WomenpreneursCommoncategories, WomenpreneursSellers } from '../../servi
 import users from '../../assests/homepage-logos/usersimageprofile.png';
 import Select from 'react-select';
 import { WomenpreneursFilter, WomenpreneursSearch } from '../../services/womenpreneurs-services/womenpreneurs-services';
+import { ProductCatgorylist } from '../../services/category-services/category-service';
 
 import Pagination from 'rc-pagination';
 import rightarrow from '../../assests/category-logos/leftcategoryarrow.png';
@@ -39,14 +40,13 @@ function ProductCategorys() {
     const [filterdata, setFilter] = useState("");
     const [searchname, setSearchName] = useState('');
 
-    const [categoryid, setCategoryId] = useState(0);
+    const [categoryid, setCategoryId] = useState("");
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         setLoading(true);
         AllProductCategorys().then((res) => {
             setServiceusers(res?.data?.results);
-
             setTimeout(() => {
                 setLoading(false);
 
@@ -57,8 +57,35 @@ function ProductCategorys() {
 
         })
         WomenSellercategories();
-        // GetFilterandSearchData();
 
+        if(searchname)
+        {
+            SearchProductUser(searchname).then((res) => {
+                setServiceusers(res?.data?.results);
+              
+                setTimeout(() => {
+                    setLoading(false);
+                }, 300);
+    
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+        else
+        {
+            SearchProductUser("").then((res) => {
+                setServiceusers(res?.data?.results);
+              
+                setTimeout(() => {
+                    setLoading(false);
+                }, 300);
+    
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+
+     
     }, [categoryid])
 
     const WomenSellercategories = () => {
@@ -85,25 +112,28 @@ function ProductCategorys() {
         setSearchName(e.target.value);
     }
     const handleFilterCategory = (data) => {
-        setCategoryId(data?.id);
+        // setCategoryId(data?.id);
         setFilter(data.name);
         setSearchName("");
+        const count=0;
+
+        ProductCatgorylist(data.value.toLowerCase(),count).then((res) => {
+            console.log("kalai123",res?.data)
+            setServiceusers(res?.data?.results);
+            setLimit(res?.data);
+            setTimeout(() => {
+                setLoading(false);
+            }, 300);
+        }).catch((err) => {
+            console.log(err);
+        })
+
+       
     }
-    // const GetFilterandSearchData = () => {
-    //     setLoading(true);
-    //     WomenpreneursFilter(categoryid).then((res) => {
-    //         setServiceusers(res?.data?.results);
-    //         setLimit(res?.data);
-    //         setTimeout(() => {
-    //             setLoading(false);
-    //         }, 300);
-    //     }).catch((err) => {
-    //         console.log(err);
-    //     })
-    // }
+
     const GetSearchdata = () => {
         setLoading(true);
-        SearchProductUser(searchname).then((res) => {
+        SearchProductUser(searchname?.length === 0 ? "" : searchname).then((res) => {
             setServiceusers(res?.data?.results);
             setFilter("");
             setTimeout(() => {
@@ -139,10 +169,6 @@ function ProductCategorys() {
         return originalElement;
     }
 
-
-
- 
-
     return (
         <Fragment>
 
@@ -173,12 +199,14 @@ function ProductCategorys() {
                             </div>
                             <div>
                                 <Image src={serachicon} alt="no image" className={styles.serachiconwomen}
-                                onClick={GetSearchdata}
+                                    onClick={GetSearchdata}
                                 />
                             </div>
                         </div>
-                        <div className='col-lg-3 col-xs-6 col-sm-5'>
+                        <div className='col-lg-3 col-xs-6 col-sm-6 col-lg-5'>
 
+                            {filterdata}
+                           
                             <Select
                                 placeholder={"Filter Product Category ..."}
                                 value={filterdata}
@@ -190,58 +218,117 @@ function ProductCategorys() {
                     </div>
 
 
-                    <div className='cardsection row mb-3 ms-1 mt-5'>
-                        {loading ? <>
-                            <LoaderLogo />
-                        </> : <>{servicesusers?.map((item, index) => {
-                            return (
-                                <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 ' key={index} >
 
-                                    <div onClick={() => router.push(`/product/${item?.productSlugName}`)} className={styles.imagebox}>
-                                        {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={styles.sellerimagesize} /> :
-                                            <>
-                                                <Skeleton className={styles.loaderskelimage} />
-                                            </>
-                                        }
+                    {searchname?.length > 0 ? <>
+                        <div className='cardsection row mb-3 ms-1 mt-5'>
+                            {loading ? <>
+                                <LoaderLogo />
+                            </> : <>{servicesusers?.map((item, index) => {
+                                return (
+                                    <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 ' key={index} >
+
+                                        <div onClick={() => router.push(`/product/${item?.productSlugName}`)} className={styles.imagebox}>
+                                            {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={styles.sellerimagesize} /> :
+                                                <>
+                                                    <Skeleton className={styles.loaderskelimage} />
+                                                </>
+                                            }
+                                        </div>
+                                        <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
+                                            {/* <Image src={star} alt="no image" className={styles.stars} /> */}
+                                            <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
+                                                tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
+                                                disabled
+
+                                            />
+
+                                            <div className={styles.brandname}>
+                                                {item?.productName?.length <= 10 ? <>{item?.productName}</> : <>    {item?.productName.slice(0, 18)}...</>}
+                                            </div>
+
+                                            <div className='textgrey'>
+                                                {item?.brandName?.length <= 18 ? <>{item?.brandName}</> : <>{item?.brandName.slice(0, 18)}...</>}
+                                            </div>
+                                            <div className={styles.cardsellerborder}>
+                                                <div className={styles.cardsellerinsideborder}>
+                                                </div>
+                                            </div>
+                                            <div className={styles.cardpricesection}>
+                                                <div className='textprice'>
+                                                    <span>A${item?.salePrice}</span>
+                                                </div>
+                                                <div className={styles.splitoffers}>
+                                                    {item?.offerPercentag == 0 ? <></> : <span className='textpricedashedgreen'> <del>A${item?.actualPrice}</del></span>}
+                                                    <span className='textpricedashedgreen ms-2'>
+                                                        {item?.offerPercentag == 0 ? <></> : <>
+                                                            ({item?.offerPercentag} off)
+                                                        </>}
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
-                                        {/* <Image src={star} alt="no image" className={styles.stars} /> */}
-                                        <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
-                                            tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
-                                            disabled
+                                )
+                            })}</>}
+                        </div>
+                    </> : <>
 
-                                        />
+                        <div className='cardsection row mb-3 ms-1 mt-5'>
+                            {loading ? <>
+                                <LoaderLogo />
+                            </> : <>{servicesusers?.map((item, index) => {
+                                return (
+                                    <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 ' key={index} >
 
-                                        <div className={styles.brandname}>
-                                            {item?.productName?.length <= 10 ? <>{item?.productName}</> : <>    {item?.productName.slice(0, 18)}...</>}
+                                        <div onClick={() => router.push(`/product/${item?.productSlugName}`)} className={styles.imagebox}>
+                                            {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={styles.sellerimagesize} /> :
+                                                <>
+                                                    <Skeleton className={styles.loaderskelimage} />
+                                                </>
+                                            }
                                         </div>
+                                        <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
+                                            {/* <Image src={star} alt="no image" className={styles.stars} /> */}
+                                            <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
+                                                tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
+                                                disabled
 
-                                        <div className='textgrey'>
-                                            {item?.brandName?.length <= 18 ? <>{item?.brandName}</> : <>{item?.brandName.slice(0, 18)}...</>}
-                                        </div>
-                                        <div className={styles.cardsellerborder}>
-                                            <div className={styles.cardsellerinsideborder}>
-                                            </div>
-                                        </div>
-                                        <div className={styles.cardpricesection}>
-                                            <div className='textprice'>
-                                                <span>A${item?.salePrice}</span>
-                                            </div>
-                                            <div className={styles.splitoffers}>
-                                                {item?.offerPercentag == 0 ? <></> : <span className='textpricedashedgreen'> <del>A${item?.actualPrice}</del></span>}
-                                                <span className='textpricedashedgreen ms-2'>
-                                                    {item?.offerPercentag == 0 ? <></> : <>
-                                                        ({item?.offerPercentag} off)
-                                                    </>}
-                                                </span>
+                                            />
+
+                                            <div className={styles.brandname}>
+                                                {item?.productName?.length <= 10 ? <>{item?.productName}</> : <>    {item?.productName.slice(0, 18)}...</>}
                                             </div>
 
+                                            <div className='textgrey'>
+                                                {item?.brandName?.length <= 18 ? <>{item?.brandName}</> : <>{item?.brandName.slice(0, 18)}...</>}
+                                            </div>
+                                            <div className={styles.cardsellerborder}>
+                                                <div className={styles.cardsellerinsideborder}>
+                                                </div>
+                                            </div>
+                                            <div className={styles.cardpricesection}>
+                                                <div className='textprice'>
+                                                    <span>A${item?.salePrice}</span>
+                                                </div>
+                                                <div className={styles.splitoffers}>
+                                                    {item?.offerPercentag == 0 ? <></> : <span className='textpricedashedgreen'> <del>A${item?.actualPrice}</del></span>}
+                                                    <span className='textpricedashedgreen ms-2'>
+                                                        {item?.offerPercentag == 0 ? <></> : <>
+                                                            ({item?.offerPercentag} off)
+                                                        </>}
+                                                    </span>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            )
-                        })}</>}
-                    </div>
+                                )
+                            })}</>}
+                        </div>
+                    </>}
+
+
 
 
                     {/* <div>

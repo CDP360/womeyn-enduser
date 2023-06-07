@@ -11,24 +11,26 @@
     cursor: pointer;
 
     @include xsBreakPoint {
-        height: auto;
-        width: 100%;
+        height:150px;
+        width:100%;
+
     }
     @include smBreakPoint {
-        height: auto;
-        width: 100%;
+        height:220px;
+        width:100%;
     }
     @include mdBreakPoint {
-        height: auto;
-        width: 100%;
+        height:300px;
+        width:100%;
+
     }
     @include lgBreakPoint {
-        height: 300px;
-        width: 100%;
+      height:300px;
+        width:100%;
     }
     @include xlBreakPoint {
-        height: 250px;
-        width: 100%;
+        height:300px;
+        width:100%;
     }
 }
 .womenbanners {

@@ -197,8 +197,8 @@
   position: relative;
   z-index: 9;
   border: 1px solid #9f9f9f;
-  padding:15px;
-  border-radius:10px;
+  padding: 15px;
+  border-radius: 10px;
   .insidesection {
     width: 100%;
     padding-bottom: 5%;
@@ -504,32 +504,29 @@
 
 .workingdays {
   display: flex;
-  border: 1px solid #efeeee;
+  border: 1px solid #E95A5A;
   // margin: 2% 0px;
   border-radius: 5px;
   padding: 10px;
   align-items: center;
   cursor: pointer;
-  width: 30%;
-  @include xsBreakPoint
-  {
-    width:90%;
-    margin:0 auto;
+  width: 32%;
+  gap:6px !important;
+  @include xsBreakPoint {
+    width: 90%;
+    margin: 0 auto;
   }
-  @include smBreakPoint
-  {
-    width:40%;
-    margin:0 auto;
-    flex-direction:column;
+  @include smBreakPoint {
+    width: 40%;
+    margin: 0 auto;
+    flex-direction: column;
   }
-  
-  @include lgBreakPoint
-  {
-    flex-direction:column;
+
+  @include lgBreakPoint {
+    flex-direction: column;
   }
-  @include xlBreakPoint
-  {
-    flex-direction:column;
+  @include xlBreakPoint {
+    flex-direction: column;
   }
   .leftdays {
     width: 30%;
@@ -537,10 +534,13 @@
 }
 .workingdays:hover {
   // background-color: #efeeee;
-  background: #E75B5E;
-  color:white;
-  border:none;
-  outline:none;
+  background: #e75b5e;
+  color: white;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cancelsection {

@@ -213,7 +213,7 @@ function ServiceViewDetails() {
                             </div>
 
                             <div>
-                                <div className={styles.working}>Working Days</div>
+                                <div className={styles.working}>Slots</div>
                                 <div className="row gap-3">
                                     {serviceBookingSingle?.workingDays?.map((item, index) => {
                                         return (
@@ -222,8 +222,7 @@ function ServiceViewDetails() {
                                                     {item?.dayName}
                                                 </div>
                                                 <div>
-
-                                                    {item?.workingHours}
+                                                    {item?.workingHours} 
                                                 </div>
                                             </div>
                                         )

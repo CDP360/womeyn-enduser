@@ -1,9 +1,16 @@
-import React ,{useState}from 'react'
+import React ,{useState,useEffect}from 'react'
 import Modal from 'react-bootstrap/Modal';
 import styles from './styles/ImageViewmodels.module.scss';
 function ImageViewModal({imagemodel,handleImageClose,productimages}) {
 
     const [indexs, setIndex] = useState(0);
+
+
+    useEffect(()=>{
+
+    },[indexs])
+
+    console.log(productimages?.length-1,"kalai")
 
     return (
         <div>
@@ -23,11 +30,36 @@ function ImageViewModal({imagemodel,handleImageClose,productimages}) {
                              </div>
 
                     <div className={styles.imageboxmodel}>
+                 <div className={styles.leftimageArrowSlide}>
+                 {indexs===0?
+<>
+
+</>:<div >
+<div onClick={()=>setIndex((pre)=>pre-1)} className={styles.arrowclickleft}>
+<ion-icon name="chevron-back-outline"></ion-icon>
+</div>
+</div>}
+                 </div>
                     <img
                                                     className={styles.serachlargeimages}
                                                     src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
                                                     alt="profile-pic"
                                                 />
+
+<div className={styles.rightimageArrowSlide}>
+{productimages?.length-1===indexs?
+<>
+
+</>:<div>
+<div onClick={()=>setIndex((pre)=>pre+1)} className={styles.arrowclickright}>
+<ion-icon name="chevron-forward-outline"></ion-icon>
+</div>
+</div>}
+
+</div>
+
+
+                                         
                     </div>
                 <div className={styles.cardimagesshow}>
                 {productimages?.map((item, index) => {
