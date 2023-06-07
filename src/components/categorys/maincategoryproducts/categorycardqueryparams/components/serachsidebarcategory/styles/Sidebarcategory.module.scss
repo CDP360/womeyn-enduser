@@ -1,0 +1,81 @@
+@use '../../../../../../../../scss/abstract/' as *;
+
+.mainsidebarsectioncategory {
+    // border: 2px solid red;
+    z-index: 9898989898;
+    .filtersectiontext {
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        margin: 0 auto;
+        .filterbytext {
+            color: #000000;
+            font-weight: 600;
+        }
+        .splitfiltertext {
+            display: flex;
+            width: 100%;
+            .leftfilter {
+                width: 60%;
+                display: flex;
+                gap: 13px;
+                padding-left: 3%;
+                @include mdBreakPoint {
+                    width: 100%;
+                    gap: 15px !important;
+                    text-align: center;
+                }
+                @include lgBreakPoint {
+                    width: 100%;
+                    gap: 20px !important;
+                }
+            }
+            .rightfilter {
+                width: 40%;
+                display: flex;
+                justify-content: flex-end;
+                padding-right: 3%;
+                @include mdBreakPoint {
+                    width: 100%;
+                   
+                }
+                @include lgBreakPoint {
+                    width: 50%;
+                }
+            }
+        }
+    }
+    .bordertopsection {
+        // border: 0.12px solid #242d40;
+        opacity: 0.3;
+        border: 1px solid #242d40;
+    }
+}
+
+.dropdownsection {
+    width: 100%;
+    padding-top: 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    .transactionsize {
+        font-size: 1.2rem;
+        color: #000000;
+    }
+}
+
+.gapsectiondropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 4%;
+    cursor: pointer;
+}
+
+.kalai
+{
+    // border:2px solid red;
+  
+    marginLeft: 16
+}

@@ -59,66 +59,69 @@ function Searchbar({ serachdata, serachicon,searchDatacategory,loadingserah,sera
                         
                       
                       
-                </div> : <>
+                </div> :
+                null
+//                  <>
                   
 
-                    {loadingserah?<>
-                        <div className={styles.backgroundwhites}>
+//                     {loadingserah?<>
+//                         <div className={styles.backgroundwhites}>
 
-                        <div className={styles.serachboxtexts} >
+//                         <div className={styles.serachboxtexts} >
                     
-                    <div className="d-flex align-items-center justify-content-center mt-5 w-100 mx-auto">
-                    <Spinner animation="border" />
-                    </div>
+//                     <div className="d-flex align-items-center justify-content-center mt-5 w-100 mx-auto">
+//                     <Spinner animation="border" />
+//                     </div>
 
-                     </div>
-</div>
+//                      </div>
+// </div>
 
-                    </>:<>
+//                     </>:<>
                     
-                    <div className={styles.backgroundwhites}>
+//                     <div className={styles.backgroundwhites}>
                     
-                    {searchDatacategory?.length>0?<>
-                        {searchDatacategory?.map((item, index) => {
-                    return (
-                        <div>
+//                     {searchDatacategory?.length>0?<>
+//                         {searchDatacategory?.map((item, index) => {
+//                     return (
+//                         <div>
 
-                            <div className={styles.serachboxtexts} onClick={() => CategoryNavigatepath(item?.slugName)}>
-                                <div>
-                                    {item?.productThumbImage ? <>
-                                        <img
-                                            className={styles.serachshoeimages}
-                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
-                                            alt="profile-pic"
-                                        />
-                                    </> : <>
-                                        <Image src={serachicon} alt="no image" className='serachicon' />
-                                    </>}
-                                    <span className="ms-2">{item?.productName}</span>
-                                </div>                                   
-                            </div>
-                        </div>
-                    )
-                })}
-                    </>:<>
+//                             <div className={styles.serachboxtexts} onClick={() => CategoryNavigatepath(item?.slugName)}>
+//                                 <div>
+//                                     {item?.productThumbImage ? <>
+//                                         <img
+//                                             className={styles.serachshoeimages}
+//                                             src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
+//                                             alt="profile-pic"
+//                                         />
+//                                     </> : <>
+//                                         <Image src={serachicon} alt="no image" className='serachicon' />
+//                                     </>}
+//                                     <span className="ms-2">{item?.productName}</span>
+//                                 </div>                                   
+//                             </div>
+//                         </div>
+//                     )
+//                 })}
+//                     </>:<>
 
-                     {/* <Spinner animation="border" /> */}
-                   <div className="d-flex align-items-center justify-content-center mt-5">
+         
+//                    <div className="d-flex align-items-center justify-content-center mt-5">
 
-                   No Records
-                   </div>
+//                    No Records
+//                    </div>
                   
                 
-                    </>}
+//                     </>}
 
                   
              
 
               
-                </div>
-                    </>}
+//                 </div>
+//                     </>}
                    
-                </>}
+//                 </>
+                }
 
 
 

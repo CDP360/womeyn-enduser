@@ -1,0 +1,144 @@
+@use '../../../../../../scss/abstract/' as *;
+
+.maincategorysection {
+    width: 100%;
+    position: relative;
+
+    .serachwomenpresection {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        display: flex;
+        padding: 0;
+        background: linear-gradient(0deg, rgba(241, 241, 241, 0.32), rgba(241, 241, 241, 0.32)), #ffffff;
+        align-items: center;
+        padding: 5px 20px;
+        gap: 20px;
+        .inputtypesection {
+            border: none !important;
+            background: linear-gradient(0deg, rgba(241, 241, 241, 0.32), rgba(241, 241, 241, 0.32)), #ffffff;
+            padding: 0 !important;
+            outline: none !important;
+        }
+        .serachiconwomen {
+            width: 100%;
+            height: 24px;
+            opacity: 0.5;
+            @include smBreakPoint {
+                height: 23px;
+            }
+        }
+        @include smBreakPoint {
+            width: 100%;
+        }
+    }
+    .emptyboxleft {
+        position: absolute;
+        background: #fecf9d;
+        opacity: 0.3;
+        filter: blur(239.825px);
+        left: 0;
+        width: 20%;
+        height: 20%;
+        // z-index: -1;
+    }
+    .emptyboxright {
+        position: absolute;
+        background: #e95a5a;
+        opacity: 0.2;
+        filter: blur(329px);
+        right: 0;
+        width: 15%;
+        height: 30%;
+    }
+    .insidecategorysection {
+        width: 75%;
+        margin: 0 auto;
+        @include xsBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include smBreakPoint {
+            width: 85%;
+            padding-top: 6%;
+        }
+        @include mdBreakPoint {
+            width: 85%;
+        }
+        @include lgBreakPoint {
+            width: 89%;
+        }
+        @include xlBreakPoint {
+            width: 85%;
+        }
+        .bannercategoryimage {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .mainselectbox {
+            width: 100%;
+            // border:2px solid red;
+            .selectboxfilter {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 20px;
+                padding-top: 1.5%;
+            }
+        }
+
+        .splitcategorysection {
+            width: 100%;
+            display: flex;
+            // border:3px solid red;
+            padding-top: 5%;
+            gap: 20px;
+            @include xsBreakPoint {
+                flex-direction: column;
+            }
+            @include smBreakPoint {
+                flex-direction: column;
+            }
+            // gap:20px;
+            .leftcatgory {
+                width: 25%;
+                // border:2px solid green;
+                @include xsBreakPoint {
+                    width: 100%;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                }
+                @include mdBreakPoint {
+                    width: 40%;
+                }
+                @include lgBreakPoint {
+                    width: 30%;
+                }
+            }
+            .rightcategory {
+                width: 75%;
+                // border:2px solid blue;
+                @include xsBreakPoint {
+                    width: 100%;
+                }
+                @include smBreakPoint {
+                    width: 100%;
+                }
+                @include mdBreakPoint {
+                    width: 100%;
+                }
+                @include lgBreakPoint {
+                    width: 80%;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+

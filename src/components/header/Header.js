@@ -141,20 +141,27 @@ function Header() {
 
     const SearchUserSomething = () => {
 
-        setLoaderserach(true);
-        SearchProductUser(serachcategory).then((res) => {
 
-            // setSearchDataCategory(res?.data?.results)
-            setTimeout(() => {
-                setSearchDataCategory1(res?.data?.results);
-                setLoaderserach(false);
-            }, 500)
-
-
-        }).catch((err) => {
-            console.log(err);
-            setLoaderserach(false);
+        router.push({
+            pathname: '/category',
+            query: { search: serachcategory },
         })
+        // setLoaderserach(true);
+        // SearchProductUser(serachcategory).then((res) => {
+
+
+          
+        //     // setSearchDataCategory(res?.data?.results)
+        //     setTimeout(() => {
+        //         setSearchDataCategory1(res?.data?.results);
+        //         setLoaderserach(false);
+        //     }, 500)
+
+
+        // }).catch((err) => {
+        //     console.log(err);
+        //     setLoaderserach(false);
+        // })
     }
 
 
@@ -209,7 +216,7 @@ function Header() {
                                             </div>
                                         </div>
                                         <div className={styles.barsectiontop}>
-                                            {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} searchDatacategory={searchDatacategory1} loadingserah={loadingserach}  serachcategory={serachcategory}/> : <></>}
+                                            {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} searchDatacategory={searchDatacategory1} loadingserah={loadingserach} serachcategory={serachcategory} /> : <></>}
 
                                         </div>
                                     </div>
