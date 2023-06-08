@@ -20,7 +20,7 @@ import coup3 from '../../../../assests/COUPONS/cou3.png';
 import coup4 from '../../../../assests/COUPONS/cou4.png';
 import coup5 from '../../../../assests/COUPONS/cou5.png';
 
-function Categorychoose({HomeTexts,bannerimages}) {
+function Categorychoose({ HomeTexts, bannerimages }) {
     const [datas, setDatas] = useState([]);
 
     const history = useRouter();
@@ -77,7 +77,7 @@ function Categorychoose({HomeTexts,bannerimages}) {
     const pushCatgorys = (data) => {
 
         window.open(data);
-       
+
     }
 
     useEffect(() => {
@@ -101,38 +101,38 @@ function Categorychoose({HomeTexts,bannerimages}) {
                             <Slider {...settings}>
                                 {bannerimages[5]?.Coupons?.map((item, index) => {
                                     return (
-                                        <div className={styles.insideslides} onClick={()=>pushCatgorys(item?.redirectUrl)} key={index}>
+                                        <div className={styles.insideslides} onClick={() => pushCatgorys(item?.redirectUrl)} key={index}>
 
 
-{item?.imageName? <>
-                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesizes} onClick={() => pushCatgorys(item?.redirectUrl)} />
-                            </> : <>
-                                <Skeleton className={styles.addimageboxs} />
-                            </>}
+                                            {item?.imageName ? <>
+                                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesizes} onClick={() => pushCatgorys(item?.redirectUrl)} />
+                                            </> : <>
+                                                <Skeleton className={styles.addimageboxs} />
+                                            </>}
                                             {/* {index + 1 === 1 && <Image src={coup1} alt="no image" className={styles.slideimagesizes} />}
                                             {index + 1 === 2 && <Image src={coup2} alt="no image" className={styles.slideimagesizes} />}
                                             {index + 1 === 3 && <Image src={coup3} alt="no image" className={styles.slideimagesizes} />}
                                             {index + 1 === 4 && <Image src={coup4} alt="no image" className={styles.slideimagesizes} />}
                                             {index + 1 === 5 && <Image src={coup5} alt="no image" className={styles.slideimagesizes} />} */}
 
-                                                                                    </div>
+                                        </div>
                                     )
                                 })}
                             </Slider>
                         </> : <>
 
                             <div className="row d-flex gap-3">
-                                
-                                {bannerimages[5]?.Coupons?.map((item, index) => {
+
+                                {bannerimages[5]?.Coupons?.slice(0,2).map((item, index) => {
                                     return (
-                                        <div className={styles.couponcardssection} onClick={()=>pushCatgorys(item?.redirectUrl)}>
-                                            
-                                            {item?.imageName? <>
-                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.add1} onClick={() => pushCatgorys(item?.redirectUrl)} />
-                            </> : <>
-                                <Skeleton className={styles.addimageboxs} />
-                            </>}
-                                          
+                                        <div className={styles.couponcardssection} onClick={() => pushCatgorys(item?.redirectUrl)}>
+
+                                            {item?.imageName ? <>
+                                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesizes} onClick={() => pushCatgorys(item?.redirectUrl)} />
+                                            </> : <>
+                                                <Skeleton className={styles.addimageboxs} />
+                                            </>}
+
                                         </div>
                                     )
                                 })}
@@ -221,7 +221,7 @@ function Categorychoose({HomeTexts,bannerimages}) {
                             </Col>
                         </Row> */}
 
-                        
+
                     </div>
                     <div className={styles.categorybodysection}>
                         <div className='large-text mt-5 text-center'>

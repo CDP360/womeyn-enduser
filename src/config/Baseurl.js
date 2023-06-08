@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { redirect } from 'next/navigation';
 import { NavigatePage } from './PageNavigate';
+import jwt_decode from "jwt-decode";
+
 axios.interceptors.request.use(
     function (config) {
         if (config.url.search("/customer/update-photo") !== -1 || config.url.search("/customer/add-review") !== -1) {
@@ -30,6 +32,14 @@ axios.interceptors.request.use(
         else {
             const token = localStorage.getItem("userToken");
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
+            if(token)
+            {
+                   const g=jwt_decode(token);
+            console.log(g,"g")
+                if (jwt_decode(token).exp < Date.now() / 1000) {
+                    localStorage.clear();
+                }
+            }
             config.headers = {
                 ...config.headers,
                 "Content-Type": "application/json",
