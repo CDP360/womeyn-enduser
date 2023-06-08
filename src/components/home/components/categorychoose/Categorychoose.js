@@ -29,7 +29,7 @@ function Categorychoose({HomeTexts,bannerimages}) {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: 2,
         slidesToScroll: 1,
         // autoplay: true,
         autoplaySpeed: 3500,
@@ -40,7 +40,7 @@ function Categorychoose({HomeTexts,bannerimages}) {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 2,
                     slidesToScroll: 2,
                     infinite: true,
                     dots: false,
@@ -50,7 +50,7 @@ function Categorychoose({HomeTexts,bannerimages}) {
             {
                 breakpoint: 800,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 2,
                     slidesToScroll: 1,
                     initialSlide: 2
                 }
@@ -58,7 +58,7 @@ function Categorychoose({HomeTexts,bannerimages}) {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 1,
                     slidesToScroll: 1,
                     initialSlide: 2
                 }

@@ -20,6 +20,9 @@ import Head from "next/head";
 import womenlog from '../../assests/homepage-logos/Mobileviewlogoshort.png';
 import { NavigatePage } from '../../config/PageNavigate';
 
+import jwt_decode from "jwt-decode";
+
+
 
 
 function Home() {
@@ -79,6 +82,18 @@ function Home() {
     useEffect(() => {
         GetBannerimages();
         CheckTokens();
+
+        
+
+        const token =
+      
+        JSON.parse(localStorage.getItem("userToken"));
+
+        const g=jwt_decode(token);
+        console.log(g,"g")
+    if (jwt_decode(token).exp < Date.now() / 1000) {
+        localStorage.clear();
+    }
 
        
 

@@ -103,7 +103,7 @@ function Allorders({ Orders, traking, loading,setTrackId }) {
                         return (
                           <div className={styles.firstsectioninsidess} key={index}>
                             <div className={styles.leftorderdelivery}>
-                              <div onClick={NavigateOrderdetails}>
+                              <div onClick={() => Productview(items?.productSlugName)}>
                                 {items?.productThumbImage ? <>
                                   <img
                                     className={styles.img}
@@ -160,7 +160,7 @@ function Allorders({ Orders, traking, loading,setTrackId }) {
                           <div className={styles.firstsectioninsidess} key={index}>
                             <div className={styles.leftorderdelivery}>
 
-                              <div onClick={NavigateOrderdetails}>
+                              <div onClick={() => Productview(items?.productSlugName)}>
                                 {items?.productThumbImage ? <>
                                   <img
                                     className={styles.img}

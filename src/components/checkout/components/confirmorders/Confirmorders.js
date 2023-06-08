@@ -15,10 +15,12 @@ import { toast } from 'react-toastify';
 import cartempty from '../../../../assests/cart-logos/emptycartlogo.png';
 import { postShipmentcreate } from '../../../../services/shipping-service/shipping-service';
 import LoaderLogo from '../../../loaderlogo/LoaderLogo';
-import { couponApply } from '../../../../services/mycoupon-service/mycoupon-service';
+import { couponApply, MyCouponList } from '../../../../services/mycoupon-service/mycoupon-service';
 
 
 
+import moment from 'moment';
+import Allcoupons from '../../../allcoupons/Allcoupons';
 
 
 function Confirmorders({ name, totalPrice, step, setStep, setCouponName, addressid, setShippingAmount, overallamount, setDiscountAmount,
@@ -38,6 +40,8 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
 
 
   const [finalorders, setFinalOrders] = useState([]);
+  const [coupnslist, setCouponsList] = useState([]);
+
 
 
 
@@ -92,6 +96,12 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
     setCart(state?.cart?.cartData);
     ShippingOrders();
 
+    MyCouponList().then((res) => {
+      setCouponsList(res?.data?.results);
+    }).catch((err) => {
+      console.log(err);
+    })
+
   }, [deleteid]);
 
 
@@ -128,9 +138,9 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
         console.log(res, "data")
         setDiscountAmount(res);
 
-        setTimeout(()=>{
+        setTimeout(() => {
           setCouponcodeloading(false);
-        },400)
+        }, 400)
       }).catch((err) => {
         console.log(err);
         setCouponcodeloading(false);
@@ -211,8 +221,24 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
   }
 
 
-  const ViewCoupons=()=>{
+  const ViewCoupons = () => {
     window.open('https://www.womeyn.cdp360.in/coupons');
+  }
+
+  const copylink = (codes) => {
+    toast.success("Coupon Code Copied",
+      {
+        position: "top-center",
+        autoClose: 3300,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      }
+    );
+    navigator.clipboard.writeText(codes)
   }
 
   return (
@@ -338,14 +364,14 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
                             Remove
                           </div> */}
 
-                            
-                              <div className="sizecolor">
-                                Quantity
-                              </div>
-                              <div className={styles.quntitytext}>
-                                {item?.quantity}
-                              </div>
-                           
+
+                            <div className="sizecolor">
+                              Quantity
+                            </div>
+                            <div className={styles.quntitytext}>
+                              {item?.quantity}
+                            </div>
+
                           </div>
                         </div>
                       </>
@@ -628,79 +654,79 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
             }
 
 
-<div className="mt-3 mb-2">
+            {/* <div className="mt-3 mb-2">
   <div className={styles.viewcouponslist} onClick={ViewCoupons}>View Coupons</div>
-</div>
+</div> */}
 
             <div className='mt-4'>
 
-            <div className={styles.couponsectionsplit}>
-                  <div>
-                    <input type="text" placeHolder="Enter Coupon Code" className={styles.couponform} name={couponscode} value={couponscode} onChange={(e) => setCouponcode(e.target.value)} />
-                  </div>
-
-                  <div>
-                    <button className={styles.applycoupons} onClick={couponcodeSubmit}>
-                      
-                     
-                      
-                      
-                      {couponsectionloading ? <div className="d-flex gap-2 align-items-center justify-content-center">
-
-<Spinner
-  as="span"
-  animation="border"
-  size="sm"
-  role="status"
-  aria-hidden="true"
-/>
-<span className="ms-3">Loading...</span>
-</div> : <>
-Apply
-</>}
-                      </button>
-                  </div>
-                </div>
-                <div className="mt-2">
-                  {couponerror && couponscode?.length <= 0 ? <span className="active">Coupon Code field is Required</span> : <></>}
+              <div className={styles.couponsectionsplit}>
+                <div>
+                  <input type="text" placeHolder="Enter Coupon Code" className={styles.couponform} name={couponscode} value={couponscode} onChange={(e) => setCouponcode(e.target.value)} />
                 </div>
 
-             
+                <div>
+                  <button className={styles.applycoupons} onClick={couponcodeSubmit}>
 
-             {couponsectionloading ?<></>:<>
-             {discountamount?.message ? <>
-                <span className="text-danger mt-2 mb-3">
-                  {discountamount?.message}
-                </span>
-              </> : <div>
 
-                {discountamount?.result ? <div className="mt-3">
-                  <div className={styles.couponcreatedsection}>
-                    <div className={styles.insidecouponsdeletesection}>
-                      <div className={styles.iconandcontentsection}>
-                        <div>
-                          <Image src={coupons} alt="no image" className={styles.couponimage} />
-                        </div>
-                        <div>
-                          <div className={styles.couponname}>
-                            A${discountamount?.result} Saved! With applied coupon
+
+
+                    {couponsectionloading ? <div className="d-flex gap-2 align-items-center justify-content-center">
+
+                      <Spinner
+                        as="span"
+                        animation="border"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                      />
+                      <span className="ms-3">Loading...</span>
+                    </div> : <>
+                      Apply
+                    </>}
+                  </button>
+                </div>
+              </div>
+              <div className="mt-2">
+                {couponerror && couponscode?.length <= 0 ? <span className="active">Coupon Code field is Required</span> : <></>}
+              </div>
+
+
+
+              {couponsectionloading ? <></> : <>
+                {discountamount?.message ? <>
+                  <span className="text-danger mt-2 mb-3">
+                    {discountamount?.message}
+                  </span>
+                </> : <div>
+
+                  {discountamount?.result ? <div className="mt-3">
+                    <div className={styles.couponcreatedsection}>
+                      <div className={styles.insidecouponsdeletesection}>
+                        <div className={styles.iconandcontentsection}>
+                          <div>
+                            <Image src={coupons} alt="no image" className={styles.couponimage} />
                           </div>
-                          {/* <div className={styles.offercoupon}>
+                          <div>
+                            <div className={styles.couponname}>
+                              A${discountamount?.result} Saved! With applied coupon
+                            </div>
+                            {/* <div className={styles.offercoupon}>
                           5% savings with this promo code
                           applied on this booking
                         </div> */}
+                          </div>
                         </div>
-                      </div>
-                      {/* <div className={styles.deleteiconsection} onClick={Closecoupons}>
+                        {/* <div className={styles.deleteiconsection} onClick={Closecoupons}>
                       <ion-icon name="close-outline" className={styles.crs}></ion-icon>
                     </div> */}
+                      </div>
                     </div>
-                  </div>
-                </div> : null}
-              </div>}
-             
-             </>}
-              
+                  </div> : null}
+                </div>}
+
+              </>}
+
 
 
 
@@ -732,6 +758,53 @@ Apply
             </div>
 
           </>}
+
+          <div className="mt-5">
+            <h5>Coupons</h5>
+
+
+            <div className={styles.couponlistorders}>
+
+
+              <div className={styles.approvalstatuscoupon}>
+                {coupnslist?.map((item, index) => {
+                  return (
+
+
+
+
+
+
+                    <div className={styles.boxcoupons}>
+                      <div className={styles.leftcoupons}>
+                        <div className={styles.couponsOfferName}>{item.title}</div>
+                        <div className={styles.couponsOfferNames}>{item.couponCode}</div>
+                        <div className={styles.couponsSubContent}>{item.couponDescription}</div>
+                      </div>
+                      <div className={styles.rightcouons}>
+                        <div className={styles.couponsValidDate}>
+                          Valid {moment(item?.endDate).format("MMM Do YY",)}
+                        </div>
+
+                        <div onClick={() => copylink(item.couponCode)} className={styles.couponcodecopy}>
+                          <ion-icon name="copy-outline" size="small" ></ion-icon> <span className={styles.copycodecolor}>Copy</span>
+                        </div>
+                      </div>
+
+                    </div>
+
+
+
+
+
+                  )
+                })}
+              </div>
+
+
+
+            </div>
+          </div>
 
 
         </div>

@@ -7,6 +7,7 @@ import second from '../../../../assests/events/Frame-2.png';
 import third from '../../../../assests/events/third.png';
 import fourth from '../../../../assests/events/fourth.png';
 import Image from 'next/image';
+import moment from 'moment';
 function Blogdetails({ id }) {
 
     const [viewblog, setViewBlog] = useState([]);
@@ -123,7 +124,19 @@ function Blogdetails({ id }) {
                                 </div>
 
                                 <div className="ms-5 d-flex align-items-center">
-                                            <span className="ms-2">{viewblog[0]?.startDate} to {viewblog[0]?.endDate} </span>
+                                            <span className="ms-2">
+                                                {/* {viewblog[0]?.startDate} */}
+                                                {moment(viewblog[0]?.startDate).format("MMM Do YY")} 
+                                                
+                                                
+                                               <span className="mx-2">  to </span>
+                                                 
+                                                 {/* {viewblog[0]?.endDate}  */}
+
+                                                 {moment(viewblog[0]?.endDate).format("MMM Do YY")} 
+                                                 
+                                                 
+                                                 </span>
 
                                     </div>
 

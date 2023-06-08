@@ -151,6 +151,9 @@ function Signup() {
     const handlePushTerms = () => {
         router.push("/terms-and-conditions")
     }
+    const handlePushPrivacypolicy = () => {
+        router.push("/privacypolicy")
+    }
 
     const Googleoauth = () => {
         window.open(
@@ -267,9 +270,26 @@ function Signup() {
                             <div className={styles.insideterms}>
                                 <div className={styles.toourtext}>
                                     {LoginText?.Bysigningupyouagreetoour}
+
                                 </div>
-                                <div className={styles.termsactivetext} onClick={handlePushTerms}>
-                                    {LoginText?.termsandconditions}
+
+                                {/* handlePushPrivacypolicy */}
+                                <div className="mt-1">
+                                    <span className="ms-2" onClick={handlePushTerms}>
+                                        <span className={styles.termsactivetext}>Terms of Use</span>
+                                    </span>
+                                    <span className="ms-2">
+                                        and
+                                    </span>
+                                    <span className={"ms-2"} onClick={handlePushPrivacypolicy}>
+
+                                        <span className={styles.termsactivetext}>Privacy Policy.</span>
+                                    </span>
+                                </div>
+                                <div className={styles.termsactivetext} >
+                                    {/* {LoginText?.termsandconditions} */}
+
+                                    {/* By continuing, you agree to Womeyn Terms of Use and Privacy Policy. */}
                                 </div>
                             </div>
                         </div>

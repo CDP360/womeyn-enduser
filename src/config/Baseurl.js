@@ -30,7 +30,6 @@ axios.interceptors.request.use(
         else {
             const token = localStorage.getItem("userToken");
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
-
             config.headers = {
                 ...config.headers,
                 "Content-Type": "application/json",

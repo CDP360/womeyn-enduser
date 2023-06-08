@@ -35,16 +35,16 @@
             width: 48% !important;
         }
         @include mdBreakPoint {
-            width: 45% !important;
+            width: 48.5% !important;
         }
         @include lgBreakPoint {
-            width: 23.3% !important;
-            height: 310px;
+            width: 31.5% !important;
+            height: auto
         }
         @include xlBreakPoint {
-            width: 22.3% !important;
+            width: 22.7% !important;
 
-            height: 300px;
+            height: auto;
             // display: flex;
             // align-items: center;
             // justify-content: center;
