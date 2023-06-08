@@ -88,12 +88,17 @@ function Home() {
         const token =
       
         JSON.parse(localStorage.getItem("userToken"));
+     
 
-        const g=jwt_decode(token);
+        if(token)
+        {
+               const g=jwt_decode(token);
         console.log(g,"g")
-    if (jwt_decode(token).exp < Date.now() / 1000) {
-        localStorage.clear();
-    }
+            if (jwt_decode(token).exp < Date.now() / 1000) {
+                localStorage.clear();
+            }
+        }
+  
 
        
 
