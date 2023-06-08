@@ -96,7 +96,7 @@ function Categorychoose({ HomeTexts, bannerimages }) {
                     <div className={styles.supportcategorysection}>
 
 
-                        {bannerimages[5]?.Coupons?.length > 4 ? <>
+                        {bannerimages[5]?.Coupons?.length > 2 ? <>
 
                             <Slider {...settings}>
                                 {bannerimages[5]?.Coupons?.map((item, index) => {
