@@ -34,15 +34,14 @@ function Servicecards() {
     const [categoryid, setCategoryId] = useState(0);
     const [error, setError] = useState(false);
     useEffect(() => {
-
-
-        Serviceusers().then((res) => {
+        Serviceusers(current).then((res) => {
             setServiceusers(res?.data?.results);
+           
         }).catch((err) => {
             console.log(err);
         })
         
-    }, [categoryid])
+    }, [categoryid,current])
 
     const WomenSellercategories = () => {
         setLoading(true);
@@ -98,11 +97,14 @@ function Servicecards() {
         })
     }
     const fetchCurrentData = async (current) => {
-        const resdata = await WomenpreneursSellers(current);
-        setDataseller(resdata?.data?.results);
+        console.log(current,"resdata")
+
+        const resdata = await Serviceusers(current);
+        setServiceusers(resdata?.data?.results);
     }
     const handleChangePagecount = async (e) => {
         setCurrent(e);
+        console.log("post",e)
         const current = e;
         await fetchCurrentData(current);
     }
@@ -122,6 +124,13 @@ function Servicecards() {
         return originalElement;
     }
 
+    useEffect(()=>{
+if(servicesusers?.length>10)
+{
+setCurrent((pre)=>pre*10)
+}
+
+    },[])
     return (
         <Fragment>
             <div className={styles.womeynmainsectionpre}>
@@ -133,7 +142,7 @@ function Servicecards() {
                     </div>
                     <div className={styles.ourwomenpreneurs}>
                         <div className='large-text'>
-                            Services
+                            Services  {current}
                         </div>
                         <div className={styles.loreamtextwomen}>
                             Please select to know more about the Womeynpreneur's business, her journey her story and her success against all odds
@@ -189,12 +198,12 @@ function Servicecards() {
                                 </div>
                             )
                         })}
+
+                        
                     </div>
-
-
                     <div>
 
-                        {/* {dataseller?.length > 8 &&
+                        {/* {servicesusers?.length > 8 &&
                                 <div className='d-flex justify-content-center mt-4'>
                                     <Pagination
                                         className="pagination-data"

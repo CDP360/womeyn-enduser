@@ -1,16 +1,14 @@
 import instanceBaseurl from "../../config/Baseurl";
 
 
-export function Serviceusers() {
+export function Serviceusers(current) {
     // return instanceBaseurl.get(`/common/services`).then((res) => {
     //     return res;
     // }).catch((err) => {
     //     return err;
     // })
-
-
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/services`).then(response => {
+        instanceBaseurl.get(`/common/services?page=0&limit=${current}`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)

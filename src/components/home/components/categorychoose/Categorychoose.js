@@ -94,16 +94,11 @@ function Categorychoose({ HomeTexts, bannerimages }) {
             <div className={styles.categoryhomesection}>
                 <div className={styles.insidecategorysection}>
                     <div className={styles.supportcategorysection}>
-
-
                         {bannerimages[5]?.Coupons?.length > 2 ? <>
-
                             <Slider {...settings}>
                                 {bannerimages[5]?.Coupons?.map((item, index) => {
                                     return (
                                         <div className={styles.insideslides} onClick={() => pushCatgorys(item?.redirectUrl)} key={index}>
-
-
                                             {item?.imageName ? <>
                                                 <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesizes} onClick={() => pushCatgorys(item?.redirectUrl)} />
                                             </> : <>
@@ -120,10 +115,8 @@ function Categorychoose({ HomeTexts, bannerimages }) {
                                 })}
                             </Slider>
                         </> : <>
-
                             <div className="row d-flex gap-3">
-
-                                {bannerimages[5]?.Coupons?.slice(0,2).map((item, index) => {
+                                {bannerimages[5]?.Coupons?.slice(0, 2).map((item, index) => {
                                     return (
                                         <div className={styles.couponcardssection} onClick={() => pushCatgorys(item?.redirectUrl)}>
 

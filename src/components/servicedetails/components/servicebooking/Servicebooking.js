@@ -339,7 +339,7 @@ function Servicebooking({ id }) {
 
                             <div>
 
-                                <div className={styles.working}>Working Days</div>
+                                <div className={styles.working}>Slots or Working Days</div>
                                 {serviceBookingSingle?.workingDays?.map((item, index) => {
                                     return (
                                         <div className={styles.workingdays}>

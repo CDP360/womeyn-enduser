@@ -52,14 +52,14 @@ function Summarybreaksalary({ bannerimages }) {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 5,
-        slidesToScroll: 2,
-        // autoplay: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: true,
         autoplaySpeed: 3500,
         pauseOnHover: true,
         nextArrow: <SlideNextArrow />,
         prevArrow: <SlidePreArrow />,
-        responsive: [
+        responsive: [   
             {
                 breakpoint: 1024,
                 settings: {
@@ -101,35 +101,105 @@ function Summarybreaksalary({ bannerimages }) {
     }
     return (
         <Fragment>
-            <div className={styles.summarymainsection}>
-                <div className={styles.insidesummarysection}>
-                    {bannerimages?.ClientLogos?.length === 0 ? <div className={styles.sketonbannes}>
 
+         
 
-                        {data?.map((item, index) => {
-                            return (
-                                <div className="col-lg-2">
-                                    <Skeleton className={styles.summaryBreakPoints} />
-                                    
+              <div className={styles.summarymainsection}>
 
-                                </div>
-                            )
-                        })}
-
-
-                    </div> :
-                        <Slider {...settings}>
-                            {bannerimages?.ClientLogos?.map((item, index) => {
-                                return (
-                                    <div className={styles.insideslidess} key={index}>
-                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.slidesummaryimages1} onClick={() => MovePageData(item.redirectUrl)} />
-                                    </div>
-                                )
-                            })}
-                        </Slider>
-                    }
+                {bannerimages?.ClientLogos?.length>4?<>
+                 <div className={styles.insidesummarysection}>
+                 <Slider {...settings}>
+        {bannerimages?.ClientLogos?.map((item, index) => {
+            return (
+                <div className={styles.insideslidess} key={index}>
+                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.slidesummaryimages1} onClick={() => MovePageData(item.redirectUrl)} />
                 </div>
-            </div>
+            )
+        })}
+    </Slider>
+                 </div>
+                </>:<>
+                <div className={styles.insidesummarysection}>
+                 
+        {bannerimages?.ClientLogos?.map((item, index) => {
+            return (
+                <div className={styles.insideslidess} key={index}>
+                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.slidesummaryimages1} onClick={() => MovePageData(item.redirectUrl)} />
+                </div>
+            )
+        })}
+
+                 </div>
+                </>}
+                
+{/* <div className={styles.insidesummarysection}>
+{bannerimages?.ClientLogos?.length>2?<>
+    <Slider {...settings}>
+        {bannerimages?.ClientLogos?.map((item, index) => {
+            return (
+                <div className={styles.insideslidess} key={index}>
+                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.slidesummaryimages1} onClick={() => MovePageData(item.redirectUrl)} />
+                </div>
+            )
+        })}
+    </Slider>
+</>:<>
+<div className={styles.client}>
+{bannerimages?.ClientLogos?.map((item, index) => {
+            return (
+                <div className={styles.insideslidesss} key={index}>
+                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.slidesummaryimages12} onClick={() => MovePageData(item.redirectUrl)} />
+                </div>
+            )
+        })}
+</div>
+
+</>}
+</div> */}
+
+              </div>
+
+
+            
+            {/* <div className={styles.summarymainsection}>
+            {bannerimages?.ClientLogos?.length>4?<>
+                <div className={styles.insidesummarysection}>
+
+
+
+
+    <Slider {...settings}>
+        {bannerimages?.ClientLogos?.map((item, index) => {
+            return (
+                <div className={styles.insideslidess} key={index}>
+                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.slidesummaryimages1} onClick={() => MovePageData(item.redirectUrl)} />
+                </div>
+            )
+        })}
+    </Slider>
+
+</div>
+            </>:<>
+            <div className={styles.insidesummarysection}>
+
+
+
+
+
+   
+        {bannerimages?.ClientLogos?.map((item, index) => {
+            return (
+                <div className={styles.insideslidess} key={index}>
+                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.slidesummaryimages1} onClick={() => MovePageData(item.redirectUrl)} />
+                </div>
+            )
+        })}
+
+
+</div>
+            </>}
+             
+            </div> */}
         </Fragment>
     )
 }

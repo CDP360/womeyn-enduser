@@ -90,3 +90,47 @@
     // justify-content:center;
     
 }
+
+.client
+{
+    width:100%;
+    display:flex;
+    gap:20px;
+    margin:0 auto;
+    @include xsBreakPoint
+    {
+        width:100%;
+        gap:40px;
+    }
+    .insideslidesss
+    {
+        width:100%;
+    margin:0 auto;
+        .slidesummaryimages12
+        {
+            width:80%;
+            height:100px;
+            object-fit:contain;
+            @include xsBreakPoint
+            {
+                width:100%;
+            }
+            @include smBreakPoint
+            {
+                width:100%;
+            }
+            @include mdBreakPoint
+            {
+                width:100%;
+            }
+            @include lgBreakPoint
+            {
+                width:100%;
+            }
+            @include xlBreakPoint
+            {
+                width:80%;
+            }
+        }
+    }
+}
