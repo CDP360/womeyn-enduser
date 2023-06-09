@@ -1,7 +1,21 @@
-import React, { Fragment } from 'react'
+import React, { Fragment,useState,useEffect } from 'react'
 import { Terms } from './const/Consttextterms';
 import styles from './styles/Termsandconditions.module.scss';
+import { Gettermsandconditions } from '../../services/termsandconditions-service/termsandconditions_services';
+import ReactHtmlParser from "react-html-parser";
 function Termsandconditions() {
+
+    const [termscondition, setTermsconditions] = useState([]);
+    useEffect(() => {
+        const ids = 2;
+        Gettermsandconditions(ids).then((res) => {
+            setTermsconditions(res?.data);
+           
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, [])
+
     return (
         <Fragment>
             <div className={styles.maintermsandconditions}>
@@ -10,7 +24,13 @@ function Termsandconditions() {
                 <div className={styles.emptyleftsectionbox}>
                 </div>
                 <div className={styles.emptybottomsectionbox}></div>
+                <div>
                 <div className={styles.insidetermsandconditions}>
+                {termscondition?.content ? <>{ReactHtmlParser(termscondition?.content.replace(/&lt;/g, "<"))}</> : null}
+
+                    </div>
+                </div>
+                {/* <div className={styles.insidetermsandconditions}>
                     <div className="large-text mt-2 mb-2">
                         {Terms?.TermsandConditions}
                     </div>
@@ -70,7 +90,7 @@ function Termsandconditions() {
                         </div>
                     </div>
 
-                </div>
+                </div> */}
             </div>
         </Fragment>
     )

@@ -15,7 +15,7 @@ function Whatmake() {
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
-        // autoplay: true,
+        autoplay: true,
         autoplaySpeed: 3500,
         pauseOnHover: true,
         nextArrow: <SlideNextArrow />,

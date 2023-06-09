@@ -31,7 +31,7 @@ function Categorychoose({ HomeTexts, bannerimages }) {
         speed: 500,
         slidesToShow: 2,
         slidesToScroll: 1,
-        // autoplay: true,
+        autoplay: true,
         autoplaySpeed: 3500,
         pauseOnHover: true,
         nextArrow: <SlideNextArrow />,

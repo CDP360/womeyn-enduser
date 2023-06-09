@@ -1,11 +1,11 @@
 import React from 'react'
 import LayoutHeader from './../../src/components/Layoutheader/LayoutHeader';
-import Termsandconditions from './../../src/components/termsandconditions/Termsandconditions';
+import Privacypolicy from './../../src/components/privacypolicy/Privacypolicy';
 
 function index() {
     return (
         <LayoutHeader title={"privacypolicy"}>
-            <Termsandconditions />
+          <Privacypolicy/>
         </LayoutHeader>
     )
 }
