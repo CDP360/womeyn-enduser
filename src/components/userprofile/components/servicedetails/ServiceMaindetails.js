@@ -7,6 +7,8 @@ import Modal from 'react-bootstrap/Modal';
 import Search from '../../../../assests/homepage-logos/serachicon.png';
 import Image from "next/image";
 import Reviewmodel from './reviewmodel/Reviewmodel';
+import moment from 'moment';
+
 
 function ServiceMaindetails({ error }) {
 
@@ -128,8 +130,14 @@ function ServiceMaindetails({ error }) {
                                                     <p className={styles.favortsDeleteText}>Remove</p>
                                                 </div> */}
                                                 <div>
+                                {moment(data?.endDate).isAfter(moment(data?.startDate)) ?<>
+                                    <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button>
+                                </>:<>
+                                <button className={styles.trackingbuttons} onClick={() => pushProductPage(data.serviceSlugName)}>Book Now</button>
+                                </> }
 
-                                                    <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button>
+
+                                                   
                                                 </div>
                                             </div>
                                         </div>

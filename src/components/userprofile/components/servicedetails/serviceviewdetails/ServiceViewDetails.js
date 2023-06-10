@@ -44,6 +44,9 @@ function ServiceViewDetails() {
 
         })
 
+        // console.log(moment(new Date()).isAfter(moment(new Date('28-Feb-19'))),"kalai");
+    
+
 
 
 
@@ -229,6 +232,10 @@ function ServiceViewDetails() {
                                     })}
                                 </div>
 
+                            </div>
+
+                            <div>
+                 
                             </div>
 
                         </div>

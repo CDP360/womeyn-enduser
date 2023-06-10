@@ -15,9 +15,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Topwomenprenuers } from '../../../../services/banner-image-service/banner-image-service';
 import users from '../../../../assests/homepage-logos/usersimageprofile.png';
-import roundscircles from '../../../../assests/homepage-logos/backgroundrounds.png';
 function Ourwomenpreneurs() {
-    const [count, setCount] = useState("");
     const [datas, setDatas] = useState([]);
     const router = useRouter();
     const state = useSelector((state) => state);
@@ -70,53 +68,14 @@ function Ourwomenpreneurs() {
             }
         ]
     };
-    const data = [
-        {
-            id: 1,
-            image: anu,
-            title: "ANU KULKARNI 0",
-            title1: 'FOUNDER & DIRECTOR - WOMEYN',
-            description: "With over 25 years of corporate and business experience ranging from fashion, jewelry to fitness. ",
-            button: "VISIT HER STORE!",
-            facebook: facebook,
-            twitter: twitter,
-            instagram: instagram,
-            linked: linkedin,
-        },
-        {
-            id: 2,
-            image: anu,
-            title: "ANU KULKARNI 1",
-            title1: 'FOUNDER & DIRECTOR - WOMEYN',
-            description: "With over 25 years of corporate and business experience ranging from fashion, jewelry to fitness. ",
-            button: "VISIT HER STORE!",
-            facebook: facebook,
-            twitter: twitter,
-            instagram: instagram,
-            linked: linkedin,
-        },
-        {
-            id: 3,
-            image: anu,
-            title: "ANU KULKARNI 2",
-            title1: 'FOUNDER & DIRECTOR - WOMEYN',
-            description: "With over 25 years of corporate and business experience ranging from fashion, jewelry to fitness. ",
-            button: "VISIT HER STORE!",
-            facebook: facebook,
-            twitter: twitter,
-            instagram: instagram,
-            linked: linkedin,
-        }
-
-    ]
+ 
     useEffect(() => {
         MainSectionWomens();
-    }, [counts]);
+    }, []);
 
 
     const MainSectionWomens = () => {
         Topwomenprenuers().then((res) => {
-            console.log(res?.data, "kalai")
             setDatas(res?.data);
         }).catch((err) => {
             console.log(err);

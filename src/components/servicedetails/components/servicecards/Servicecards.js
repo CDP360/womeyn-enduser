@@ -33,15 +33,21 @@ function Servicecards() {
     const [loadingset, setLoading] = useState(false);
     const [categoryid, setCategoryId] = useState(0);
     const [error, setError] = useState(false);
+        const lengthcurrentcount=Number(servicesusers?.length);
+      
+
     useEffect(() => {
-        Serviceusers(current).then((res) => {
+
+       
+
+        Serviceusers(Number(lengthcurrentcount*2)).then((res) => {
             setServiceusers(res?.data?.results);
            
         }).catch((err) => {
             console.log(err);
         })
         
-    }, [categoryid,current])
+    }, [categoryid])
 
     const WomenSellercategories = () => {
         setLoading(true);
@@ -124,13 +130,7 @@ function Servicecards() {
         return originalElement;
     }
 
-    useEffect(()=>{
-if(servicesusers?.length>10)
-{
-setCurrent((pre)=>pre*10)
-}
 
-    },[])
     return (
         <Fragment>
             <div className={styles.womeynmainsectionpre}>
@@ -142,7 +142,7 @@ setCurrent((pre)=>pre*10)
                     </div>
                     <div className={styles.ourwomenpreneurs}>
                         <div className='large-text'>
-                            Services  {current}
+                            Services  
                         </div>
                         <div className={styles.loreamtextwomen}>
                             Please select to know more about the Womeynpreneur's business, her journey her story and her success against all odds

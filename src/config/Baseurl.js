@@ -31,14 +31,34 @@ axios.interceptors.request.use(
         }
         else {
             const token = localStorage.getItem("userToken");
+            var tokenDate = new Date(parseInt(token) * 1000)
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
-            if(token)
+
+            var date = new Date();
+            // date.getTime() is in milliseconds and thus we've got to divide by 10004
+            if(tokenDate)
             {
-                   const g=jwt_decode(token);
-                if (jwt_decode(token).exp < Date.now() / 1000) {
+                if (tokenDate.exp < date.getTime() / 1000) {
+                    console.log('The token has expired');
                     localStorage.clear();
+    
+                } else {
+                    console.log('The token is still valid');
                 }
             }
+           
+
+
+            // if (token) {
+            //     const g = jwt_decode(token);
+
+            //     console.log(g, "g")
+
+
+            //     if (jwt_decode(token).exp < Date.now() / 1000) {
+            //         localStorage.clear();
+            //     }
+            // }
             config.headers = {
                 ...config.headers,
                 "Content-Type": "application/json",
@@ -64,7 +84,14 @@ axios.interceptors.response.use(
     },
     async function (error) {
         if (error.response.status === 401) {
-            NavigatePage("/");
+            const g = jwt_decode(token);
+
+            console.log(g, "g")
+            if (jwt_decode(token).exp < Date.now() / 1000) {
+                localStorage.clear();
+                NavigatePage("/");
+
+            }
         } else {
             return Promise.reject(error);
         }

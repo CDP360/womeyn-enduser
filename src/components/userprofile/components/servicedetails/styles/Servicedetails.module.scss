@@ -172,6 +172,7 @@
       display: flex;
       margin-top: 4%;
       cursor: pointer;
+      width:30%;
       @include mdBreakPoint {
         margin-top: 6%;
       }

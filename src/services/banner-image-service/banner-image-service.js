@@ -2,9 +2,7 @@
 import instanceBaseurl from "../../config/Baseurl";
 
 export function Bannerimage() {
-    // return instanceBaseurl.get("/common/home-placements").then((res) => {
-    //     return res
-    // }).catch((err) => { return err });
+
 
 
     return new Promise((resolve, reject) => {

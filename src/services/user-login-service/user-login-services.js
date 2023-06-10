@@ -126,11 +126,7 @@ export function UserProfileImageupload(userid, data) {
 }
 export function UserProfileInformation(userid) {
 
-    // return instanceBaseurl.get(`/customer/basicinfo/${userid}`).then((res) => {
-    //     return res;
-    // }).catch((err) => {
-    //     console.log(err,"kalai");
-    // })
+ 
 
 
     return new Promise((resolve, reject) => {

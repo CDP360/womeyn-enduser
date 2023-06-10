@@ -101,7 +101,7 @@ function Home() {
 
        
 
-    }, [state]);
+    }, []);
 
     const CheckTokens = async () => {
         try {
