@@ -40,8 +40,10 @@ function Servicecards() {
 
        
 
-        Serviceusers(Number(lengthcurrentcount*2)).then((res) => {
+        Serviceusers().then((res) => {
             setServiceusers(res?.data?.results);
+
+            console.log(res,"res")
            
         }).catch((err) => {
             console.log(err);
@@ -106,7 +108,7 @@ function Servicecards() {
         console.log(current,"resdata")
 
         const resdata = await Serviceusers(current);
-        setServiceusers(resdata?.data?.results);
+        // setServiceusers(resdata?.data?.results);
     }
     const handleChangePagecount = async (e) => {
         setCurrent(e);
