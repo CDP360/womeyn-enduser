@@ -131,9 +131,12 @@ function ServiceMaindetails({ error }) {
                                                 </div> */}
                                                 <div>
                                 {moment(data?.endDate).isAfter(moment(data?.startDate)) ?<>
-                                    <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button>
+                                    <button className={styles.trackingbuttons} onClick={() => pushProductPage(data.serviceSlugName)}>Book Now</button>
+
                                 </>:<>
-                                <button className={styles.trackingbuttons} onClick={() => pushProductPage(data.serviceSlugName)}>Book Now</button>
+
+                                <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button>
+
                                 </> }
 
 
