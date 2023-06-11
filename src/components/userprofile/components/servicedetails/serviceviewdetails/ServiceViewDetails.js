@@ -45,7 +45,7 @@ function ServiceViewDetails() {
         })
 
         // console.log(moment(new Date()).isAfter(moment(new Date('28-Feb-19'))),"kalai");
-    
+
 
 
 
@@ -225,7 +225,7 @@ function ServiceViewDetails() {
                                                     {item?.dayName}
                                                 </div>
                                                 <div>
-                                                    {item?.workingHours} 
+                                                    {item?.workingHours}
                                                 </div>
                                             </div>
                                         )
@@ -235,7 +235,12 @@ function ServiceViewDetails() {
                             </div>
 
                             <div>
-                 
+                                {moment(new Date()).isAfter(moment(serviceBookingSingle?.endDate)) ? <>
+                                    <button className={styles.trackingbuttons}>Review</button>
+
+                                </> : null}
+
+                                {/* {moment(serviceBookingSingle?.startDate).isAfter(moment(serviceBookingSingle?.endDate)) ?"date expired":"date not expired" } */}
                             </div>
 
                         </div>

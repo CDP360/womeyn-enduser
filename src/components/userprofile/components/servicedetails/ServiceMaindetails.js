@@ -22,6 +22,12 @@ function ServiceMaindetails({ error }) {
     
     const history = useRouter();
 
+
+    const g1=moment('2010-10-20').isAfter('2009-12-31', 'year');
+    const g=moment('Jun 5th 23').isAfter(moment('Jun 10th 23',"year"));
+
+    console.log("g",g)
+
     useEffect(() => {
         setLoading(true);
         ServiceBookingUsers().then((res) => {
@@ -73,6 +79,8 @@ function ServiceMaindetails({ error }) {
     };
 
    
+
+    console.log(serviceusers,"serviceusers")
         return (
             <>
                 <div>
@@ -130,12 +138,16 @@ function ServiceMaindetails({ error }) {
                                                     <p className={styles.favortsDeleteText}>Remove</p>
                                                 </div> */}
                                                 <div>
-                                {moment(data?.endDate).isAfter(moment(data?.startDate)) ?<>
-                                    <button className={styles.trackingbuttons} onClick={() => pushProductPage(data.serviceSlugName)}>Book Now</button>
+                                                    {data?.startDate}
+                                {moment(data?.startDate).isAfter(moment(data?.endDate)) ?<>
+
+                                    <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button>
+
 
                                 </>:<>
 
-                                <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button>
+                                <button className={styles.trackingbuttons} onClick={() => pushProductPage(data.serviceSlugName)}>Book Now</button>
+
 
                                 </> }
 

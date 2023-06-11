@@ -43,7 +43,7 @@ function Servicecards() {
         Serviceusers().then((res) => {
             setServiceusers(res?.data?.results);
 
-            console.log(res,"res")
+            
            
         }).catch((err) => {
             console.log(err);

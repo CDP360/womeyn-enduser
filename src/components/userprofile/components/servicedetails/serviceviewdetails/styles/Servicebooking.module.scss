@@ -568,3 +568,20 @@
   padding-top: 2%;
   padding-bottom: 2%;
 }
+
+
+.trackingbuttons {
+  width: 20%;
+  outline: none;
+  padding: 8px 40px;
+  border-radius: 10px;
+  color: #e95a5a;
+  border: 1px solid #e95a5a;
+  background-color: white;
+  margin-top:5%;
+  @include xsBreakPoint
+  {
+    width:100%;
+    padding:7px 50px;
+  }
+}
