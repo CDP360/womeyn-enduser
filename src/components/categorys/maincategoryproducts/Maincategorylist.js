@@ -13,6 +13,7 @@ import Image from 'next/image';
 import styles from './styles/Maincategory.module.scss';
 import { ProductCatgorylist } from '../../../services/category-services/category-service';
 import LoaderLogo from './../../loaderlogo/LoaderLogo';
+import { Nodatafoundimage } from './../../nodatafoundimage/Nodatafound';
 
 function Maincategorylist({ name, searchnamevalue }) {
     const [product, setProducts] = useState([]);
@@ -116,16 +117,13 @@ function Maincategorylist({ name, searchnamevalue }) {
 
                 </> : <div >
                     {product?.length === 0 ? <div>
-                        {/* {CartDataProduct?.map((item, index) => {
-                            return ( */}
-                                {/* <div key={index}> */}
-                                <div className="text-center fs-2 d-flex align-items-center justify-content-center">
-
-                                No Categorys Records..
+                       
+                                <div>
+                                  <Nodatafoundimage
+                                  title="Category Not Available"
+                                  />
                                 </div>
-                                {/* </div>
-                            )
-                        })} */}
+                               
 
                     </div > : <div className="row gap-3">
                         {product?.map((item, index) => {

@@ -91,8 +91,7 @@ function Home() {
      
 
         if(token)
-        {
-               
+        {               
             if (jwt_decode(token).exp < Date.now() / 1000) {
                 localStorage.clear();
             }

@@ -16,6 +16,7 @@ import Pagination from 'rc-pagination';
 import rightarrow from '../../../assests/category-logos/leftcategoryarrow.png';
 import leftarrow from '../../../assests/category-logos/rightcategoryarrow.png';
 import noimage from '../../../assests/womeynlogos/noimage.png';
+import { Nodatafoundimage } from './../../nodatafoundimage/Nodatafound';
 function Womenpreneurs() {
     const router = useRouter();
     const [current, setCurrent] = useState(1);
@@ -158,7 +159,11 @@ function Womenpreneurs() {
                         {searchname?.length > 0 ? <>
                             <div className='cardsections row   w-100 mt-5 mb-5 ms-1'>
                                 <div>
-                                    {dataseller.length === 0 && <div>No Data Found!!!!</div>}
+                                    {dataseller.length === 0 && <div>
+                                        <Nodatafoundimage
+                                            title="Not Available Womeynpreneurs"
+                                        />
+                                    </div>}
                                 </div>
                                 {loadingset ? <>
                                     <div>
@@ -174,22 +179,22 @@ function Womenpreneurs() {
                                                     </>}
                                                 </div>
                                             </div>
-                                            
+
                                             <div className='womentitle'>
                                                 {item?.firstName}
                                             </div>
                                             <div className='womendescription'>
                                                 {item?.businessSlugName}
-                                                
+
                                             </div>
                                             {/* <div >
                                                 {item?.categoryTypeId==1 && <span>Product</span>}
                                                 {item?.categoryTypeId==2 && <span>Service</span>}
                                                 {item?.categoryTypeId==3 && <span>Product & Service</span>}
                                                 </div> */}
-                                         
 
-                                            
+
+
                                         </div>
                                     )
                                 })}
@@ -218,15 +223,15 @@ function Womenpreneurs() {
                                             </div>
                                             <div className='womendescription'>
                                                 {item?.businessSlugName}
-                                               
+
                                             </div>
-{/* 
+                                            {/* 
                                             <div >
                                                 {item?.categoryTypeId==1 && <span>Product</span>}
                                                 {item?.categoryTypeId==2 && <span>Service</span>}
                                                 {item?.categoryTypeId==3 && <span>Product & Service</span>}
                                                 </div> */}
-                                          
+
                                         </div>
                                     )
                                 })}

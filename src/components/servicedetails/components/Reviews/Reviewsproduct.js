@@ -4,6 +4,7 @@ import redstar from '../../../../assests/womeynlogos/redstar.png';
 import Image from 'next/image';
 import Skeleton from 'react-loading-skeleton';
 import { Rate } from "antd";
+import { Nodatafoundimage } from './../../../nodatafoundimage/Nodatafound';
 
 function Reviewsproduct({ reviews, ratingcount, averageRatings }) {
 
@@ -65,7 +66,7 @@ function Reviewsproduct({ reviews, ratingcount, averageRatings }) {
 
     return (
         <Fragment>
-            
+
             {reviews?.length > 0 ? <>
                 <div className={styles.mainreviewinsidesection}>
                     <div className={styles.seeallsectionreviews}>
@@ -127,7 +128,13 @@ function Reviewsproduct({ reviews, ratingcount, averageRatings }) {
                 </div>
 
             </> : <div>
-                No Review Service..!!!
+
+                <div>
+                    Review Service
+                </div>
+                <Nodatafoundimage
+                    title={"No Service Reviews"}
+                />
             </div>}
 
 

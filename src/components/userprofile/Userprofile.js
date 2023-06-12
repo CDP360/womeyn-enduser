@@ -7,9 +7,6 @@ import { toast } from 'react-toastify';
 import Profile from './components/profile/Profile';
 import EditProfile from './components/profile/editprofile/EditProfile';
 import Manageaddress from './components/manageaddress/Manageaddress';
-
-
-
 import Changepassword from './components/changepassword/Changepassword';
 import Favorts from './components/favorts/Favorts';
 import Orders from './components/order/Order';
@@ -32,13 +29,8 @@ function Userprofile({ name, error }) {
         else {
             history.push("/login");
         }
-
         CheckTokenUser();
-
-
     }, [state]);
-
-
 
 
     const CheckTokenUser = async () => {

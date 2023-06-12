@@ -31,32 +31,16 @@ axios.interceptors.request.use(
         }
         else {
             const token = localStorage.getItem("userToken");
-            var tokenDate = new Date(parseInt(token) * 1000)
+            // var tokenDate = new Date(parseInt(token) * 1000)
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
-
-            var date = new Date();
-            // date.getTime() is in milliseconds and thus we've got to divide by 10004
-            if(tokenDate)
-            {
-                if (tokenDate.exp < date.getTime() / 1000) {
-                    console.log('The token has expired');
-                    localStorage.clear();
-    
-                } else {
-                    console.log('The token is still valid');
-                }
-            }
-           
-
-
-            // if (token) {
-            //     const g = jwt_decode(token);
-
-            //     console.log(g, "g")
-
-
-            //     if (jwt_decode(token).exp < Date.now() / 1000) {
+            // var date = new Date();
+            // if(tokenDate)
+            // {
+            //     if (tokenDate.exp < date.getTime() / 1000) {
             //         localStorage.clear();
+            //     } else {
+            //         console.log('The token is still valid');
+        
             //     }
             // }
             config.headers = {
@@ -84,13 +68,26 @@ axios.interceptors.response.use(
     },
     async function (error) {
         if (error.response.status === 401) {
-            const g = jwt_decode(token);
+            const token = localStorage.getItem("userToken");
 
-            console.log(g, "g")
-            if (jwt_decode(token).exp < Date.now() / 1000) {
-                localStorage.clear();
+            var tokenDate = new Date(parseInt(token) * 1000)
+            // if (jwt_decode(token).exp < Date.now() / 1000) {
+            //     localStorage.clear();
+            //     NavigatePage("/");
+
+            // }
+
+            var date = new Date();
+            if(tokenDate)
+            {
+                if (tokenDate.exp < date.getTime() / 1000) {
+                    localStorage.clear();
                 NavigatePage("/");
 
+                } else {
+                    console.log('The token is still valid');
+        
+                }
             }
         } else {
             return Promise.reject(error);

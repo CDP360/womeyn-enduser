@@ -24,6 +24,7 @@ import w1 from '../../../../../assests/sellerbanners/w1.jpg';
 import w2 from '../../../../../assests/sellerbanners/w2.jpg';
 import w3 from '../../../../../assests/sellerbanners/w3.jpg';
 import w4 from '../../../../../assests/sellerbanners/w4.jpg';
+import { Nodatafoundimage } from '../../../../nodatafoundimage/Nodatafound';
 
 
 
@@ -197,7 +198,7 @@ function Womenpreneusdetails({ id }) {
 
 
 
-    
+
 
 
     return (
@@ -230,26 +231,26 @@ function Womenpreneusdetails({ id }) {
                         <div className={styles.leftdetailpage}>
 
 
-                          
-                                    {sellers?.profileImageName ? <>
-                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
-                                    </> : <>
-                                        <Image src={users} alt="no image" className={styles.womenlogo} />
-                                    </>}
 
-                              
+                            {sellers?.profileImageName ? <>
+                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
+                            </> : <>
+                                <Image src={users} alt="no image" className={styles.womenlogo} />
+                            </>}
+
+
 
                         </div>
                         <div className={styles.rightdetailpage}>
 
-                        <div className="large-text">
-                                        <div className="capital">
-                                            {sellers?.firstName}
-                                        </div>
-                                    </div>
-                                    <div className={styles.idsellers}>
-                                        {id}
-                                    </div>
+                            <div className="large-text">
+                                <div className="capital">
+                                    {sellers?.firstName}
+                                </div>
+                            </div>
+                            <div className={styles.idsellers}>
+                                {id}
+                            </div>
                             <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
 
                                 {show ? <>
@@ -271,17 +272,21 @@ function Womenpreneusdetails({ id }) {
                     </div>
 
                     <div>
-                        {categorys?.length == 0 ?<></>:<>
-                        <div className={styles.wehave}>
-                            We have loads of <br /> products to choose from
-                        </div>
+                        {categorys?.length == 0 ? <></> : <>
+                            <div className={styles.wehave}>
+                                We have loads of <br /> products to choose from
+                            </div>
                         </>}
 
-                      
+
                     </div>
                     <div className={styles.middleheaderpage}>
                         <div className={styles.insidemiddleheader}>
-                            {categorys?.length == 0 && <div>No Categorys</div>}
+                            {categorys?.length == 0 && <div>
+                                <Nodatafoundimage
+                                    title="Not Available Categorys"
+                                />
+                            </div>}
                             {categorys?.map((item, index) => {
                                 return (
                                     <div className={`${indexs === index ? styles.actives : styles.detailpage}`} onClick={() => {

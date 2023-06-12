@@ -219,9 +219,7 @@ function Servicebooking({ id }) {
 
                                 </div>
                             </div>
-                            <div className="mt-5 mb-5">
-                                <Reviewsproduct reviews={reviews} averageRatings={ratingsdata}/>
-                            </div>
+                         
                             <div className={styles.instractions}>
                                 <div>
                                     Instructors
@@ -263,6 +261,10 @@ function Servicebooking({ id }) {
                                     </div>
                                 </div>
 
+                            </div>
+
+                            <div className="mt-5 mb-5">
+                                <Reviewsproduct reviews={reviews} averageRatings={ratingsdata}/>
                             </div>
                         </div>
                     </div>

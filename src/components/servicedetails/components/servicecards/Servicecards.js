@@ -18,13 +18,13 @@ import Pagination from 'rc-pagination';
 import rightarrow from '../../../../assests/category-logos/leftcategoryarrow.png';
 import leftarrow from '../../../../assests/category-logos/rightcategoryarrow.png';
 import noimage from '../../../../assests/womeynlogos/noimage.png';
+
+import { Nodatafoundimage } from '../../../nodatafoundimage/Nodatafound';
 function Servicecards() {
     const router = useRouter();
     const [current, setCurrent] = useState(1);
     const [limit, setLimit] = useState(current * 10);
     const [servicesusers, setServiceusers] = useState([]);
-
-
     const [dataseller, setDataseller] = useState([]);
     const [datacategory, setDataCtagoryies] = useState([]);
     const [filters, setFilterData] = useState([]);
@@ -33,22 +33,15 @@ function Servicecards() {
     const [loadingset, setLoading] = useState(false);
     const [categoryid, setCategoryId] = useState(0);
     const [error, setError] = useState(false);
-        const lengthcurrentcount=Number(servicesusers?.length);
-      
-
     useEffect(() => {
 
-       
 
         Serviceusers().then((res) => {
             setServiceusers(res?.data?.results);
-
-            
-           
         }).catch((err) => {
             console.log(err);
         })
-        
+
     }, [categoryid])
 
     const WomenSellercategories = () => {
@@ -105,14 +98,14 @@ function Servicecards() {
         })
     }
     const fetchCurrentData = async (current) => {
-        console.log(current,"resdata")
+  
 
         const resdata = await Serviceusers(current);
         // setServiceusers(resdata?.data?.results);
     }
     const handleChangePagecount = async (e) => {
         setCurrent(e);
-        console.log("post",e)
+      
         const current = e;
         await fetchCurrentData(current);
     }
@@ -136,7 +129,7 @@ function Servicecards() {
     return (
         <Fragment>
             <div className={styles.womeynmainsectionpre}>
-               
+
                 <div className={styles.bodysectionwomeynpre}>
 
                     <div className={styles.imagesectionwomeyn}>
@@ -144,7 +137,7 @@ function Servicecards() {
                     </div>
                     <div className={styles.ourwomenpreneurs}>
                         <div className='large-text'>
-                            Services  
+                            Services
                         </div>
                         <div className={styles.loreamtextwomen}>
                             Please select to know more about the Womeynpreneur's business, her journey her story and her success against all odds
@@ -175,7 +168,9 @@ function Servicecards() {
 
                     <div className='cardsections row  w-100 mt-5 mb-3 ms-1'>
                         <div>
-                            {servicesusers.length === 0 && <div>No Data Found!!!!</div>}
+                            {servicesusers.length === 0 && <div>
+                                <Nodatafoundimage />
+                            </div>}
                         </div>
                         {loadingset ? <>
                             <div>
@@ -201,7 +196,7 @@ function Servicecards() {
                             )
                         })}
 
-                        
+
                     </div>
                     <div>
 
@@ -224,17 +219,17 @@ function Servicecards() {
 
 
             <div className={styles.emptyboxrightcolor}>
-                </div>
-                <div className={styles.emptyboxleftcolor}>
-                </div>
-                <div className={styles.emptyboxleftcolor1}>
-                </div>
-                <div className={styles.emptyboxleftcolor2}>
-                </div>
-                <div className={styles.emptyboxleftcolor3}>
-                </div>
-                <div className={styles.emptyboxleftcolor4}>
-                </div>
+            </div>
+            <div className={styles.emptyboxleftcolor}>
+            </div>
+            <div className={styles.emptyboxleftcolor1}>
+            </div>
+            <div className={styles.emptyboxleftcolor2}>
+            </div>
+            <div className={styles.emptyboxleftcolor3}>
+            </div>
+            <div className={styles.emptyboxleftcolor4}>
+            </div>
 
 
         </Fragment>

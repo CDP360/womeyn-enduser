@@ -13,11 +13,21 @@ import moment from 'moment';
 import Modal from 'react-bootstrap/Modal';
 import Skeleton from 'react-loading-skeleton';
 import Reviewsproduct from './Reviews/Reviewsproduct';
+import Reviewmodel from '../reviewmodel/Reviewmodel';
+import { Nodatafoundimage } from '../../../../nodatafoundimage/Nodatafound';
 
 
 function ServiceViewDetails() {
 
     const history = useRouter();
+
+
+    const [show1, setShow1] = useState(false);
+    const handleClose1 = () => setShow1(false);
+    const handleShow1 = (data) => {
+        setShow1(true)
+    };
+
 
 
     const serviceid = history.query?.id;
@@ -46,10 +56,6 @@ function ServiceViewDetails() {
 
         // console.log(moment(new Date()).isAfter(moment(new Date('28-Feb-19'))),"kalai");
 
-
-
-
-
     }, [ratingsdata, serviceid])
 
     const NavigateUsers = (data) => {
@@ -57,11 +63,10 @@ function ServiceViewDetails() {
     }
 
 
-
-
-
-
-
+    const NavigateGoogemeet=(data)=>{
+        const links=data.slice(43,200);
+        window.open(links);
+    }
 
     return (
         <Fragment>
@@ -167,9 +172,12 @@ function ServiceViewDetails() {
                                     <div className={styles.leftcancelsection}>
                                         Online Link :
                                     </div>
-                                    <div className="ms-2">
-                                        {serviceBookingSingle?.linkDescription}
-
+                                    <div className="ms-2" onClick={()=>NavigateGoogemeet(serviceBookingSingle?.linkDescription)}>
+                                        <div>
+<a href="">
+{serviceBookingSingle?.linkDescription}
+</a>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -192,6 +200,7 @@ function ServiceViewDetails() {
                             <div className={styles.cancelsection}>
                                 <div className={styles.leftcancelsection}>
                                     Cancellation :
+                                    
                                 </div>
 
                                 <div className="ms-2">
@@ -217,7 +226,7 @@ function ServiceViewDetails() {
 
                             <div>
                                 <div className={styles.working}>Slots</div>
-                                <div className="row gap-3">
+                                <div className="row gap-2 ms-2">
                                     {serviceBookingSingle?.workingDays?.map((item, index) => {
                                         return (
                                             <div className={styles.workingdays} key={index}>
@@ -231,18 +240,13 @@ function ServiceViewDetails() {
                                         )
                                     })}
                                 </div>
-
                             </div>
-
-                            <div>
+                            <div className="mt-5">
                                 {moment(new Date()).isAfter(moment(serviceBookingSingle?.endDate)) ? <>
-                                    <button className={styles.trackingbuttons}>Review</button>
-
+                                    <button className={styles.trackingbuttons} onClick={handleShow1}>Review</button>
                                 </> : null}
-
-                                {/* {moment(serviceBookingSingle?.startDate).isAfter(moment(serviceBookingSingle?.endDate)) ?"date expired":"date not expired" } */}
+                      
                             </div>
-
                         </div>
                     </div>
                     {/* <div className="mt-5">
@@ -327,6 +331,14 @@ function ServiceViewDetails() {
 
                                 </div>
                             </div> */}
+
+                    <div>
+                        <Reviewmodel
+                            show1={show1}
+                            handleClose1={handleClose1}
+                            servicedata={"kalai"}
+                        />
+                    </div>
                     <div className="mt-5 mb-5">
                         <Reviewsproduct reviews={reviews} averageRatings={ratingsdata} />
                     </div>
@@ -346,7 +358,14 @@ function ServiceViewDetails() {
                                             src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellerinformations?.profileImageName}`}
                                             alt="profile-pic"
                                         />
-                                    </> : <></>}
+                                    </> : <>
+
+                                        <Skeleton
+                                            className={styles.personimages}
+                                        />
+                                        {/* <Image src={images} alt="no image" className={styles.personimages} /> */}
+
+                                    </>}
 
                                     {/* profileImageName */}
                                     {/* <Image src={images} alt="no image" className={styles.personimages} /> */}
@@ -371,6 +390,13 @@ function ServiceViewDetails() {
                             </div>
                         </div>
 
+                    </div>
+
+                    <div className="mt-4">
+                        <div>
+Review Service
+                        </div>
+                    <Nodatafoundimage title={"No Service Reviews"}/>
                     </div>
                 </div>
             </div>

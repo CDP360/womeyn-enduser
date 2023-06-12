@@ -6,9 +6,6 @@ export function Gettermsandconditions(data) {
     // }).catch((err) => {
     //     return err;
     // })
-
-
-
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/common/static-info?typeId=${data}`).then(response => {
             resolve(response)

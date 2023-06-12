@@ -80,7 +80,7 @@ function ServiceMaindetails({ error }) {
 
    
 
-    console.log(serviceusers,"serviceusers")
+  
         return (
             <>
                 <div>
