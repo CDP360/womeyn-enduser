@@ -125,8 +125,6 @@ function ServiceMaindetails({ error }) {
 
                                                     <div className={styles.favortsRatingContainer}>
 
-
-
                                                         {data?.salePrice}
 
                                                     </div>
@@ -142,17 +140,10 @@ function ServiceMaindetails({ error }) {
                                 {moment(data?.startDate).isAfter(moment(data?.endDate)) ?<>
 
                                     <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button>
-
-
                                 </>:<>
-
-                                <button className={styles.trackingbuttons} onClick={() => pushProductPage(data.serviceSlugName)}>Book Now</button>
-
+                                <button className={styles.trackingbuttons} onClick={() => pushProductPage(data.serviceSlugName)}>Booked</button>
 
                                 </> }
-
-
-                                                   
                                                 </div>
                                             </div>
                                         </div>

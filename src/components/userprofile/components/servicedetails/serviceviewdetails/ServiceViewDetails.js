@@ -64,8 +64,7 @@ function ServiceViewDetails() {
 
 
     const NavigateGoogemeet=(data)=>{
-        const links=data.slice(43,200);
-        window.open(links);
+        window.open(data);
     }
 
     return (
@@ -167,7 +166,9 @@ function ServiceViewDetails() {
                                 </div>
                             </div>
 
-                            {serviceBookingSingle?.serviceTypeId === 1 ? <>
+                          
+<div>
+{serviceBookingSingle?.serviceTypeId === 1 ? <>
                                 <div className={styles.cancelsection}>
                                     <div className={styles.leftcancelsection}>
                                         Online Link :
@@ -194,7 +195,7 @@ function ServiceViewDetails() {
                                     </div>
                                 </div>
                             </>}
-
+</div>
 
 
                             <div className={styles.cancelsection}>
@@ -207,7 +208,7 @@ function ServiceViewDetails() {
                                     {serviceBookingSingle?.isCancellationAvailable ? <>
                                         CancellationAvailable
                                     </> : <>
-                                        CancellationUnAvailable
+                                        Cancellation Un Available
                                     </>}
                                 </div>
                             </div>

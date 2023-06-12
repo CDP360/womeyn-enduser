@@ -547,12 +547,10 @@
   display: flex;
   padding-bottom: 3%;
   .leftcancelsection {
-    width: 50%;
-
+    width: 40%;
     color: #000000;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1rem;
-
     mix-blend-mode: normal;
     opacity: 0.4;
   }
@@ -560,7 +558,7 @@
 
 .working {
   color: #000000;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1rem;
 
   mix-blend-mode: normal;
