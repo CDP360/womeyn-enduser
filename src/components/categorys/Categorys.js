@@ -1,18 +1,19 @@
 import React, { Fragment, useState } from 'react'
 import styles from './styles/Category.module.scss';
-
-import Image from 'next/image';
 import Sidebarcateogrys from './sidebarcategory/Sidebarcateogrys';
 import Maincategorylist from './maincategoryproducts/Maincategorylist';
 import { useEffect } from 'react';
 import Categorycarouse from './categoryslidecarousel/Categorycarouse';
-import Select from 'react-select';
-import serachicon from '../../assests/homepage-logos/serachicon.png';
-
 function Categorys({ id }) {
   const [selectname, selectedOption] = useState(null);
   const [searchname, setSearchName] = useState('');
   const [searchnamevalue, setSearchNameValue] = useState('');
+
+  const [filterproducts,setFilterproducts]=useState([]);
+
+  const [loadingproduct,setLoadingproduct]=useState(false);
+  const [productgetloading,setProductgetloading]=useState(false);
+
   const values = id;
   useEffect(() => {
   }, [values])
@@ -34,7 +35,8 @@ function Categorys({ id }) {
   }
 
   useEffect(() => {
-  }, [searchname, searchnamevalue])
+  }, [searchname, searchnamevalue,filterproducts,productgetloading])
+
   return (
     <Fragment>
       <div className={styles.maincategorysection}>
@@ -74,10 +76,12 @@ function Categorys({ id }) {
           </div> */}
           <div className={styles.splitcategorysection}>
             <div className={styles.leftcatgory}>
-              <Sidebarcateogrys />
+              <Sidebarcateogrys setFilterproducts={setFilterproducts} setLoadingproduct={setLoadingproduct} setProductgetloading={setProductgetloading}/>
             </div>
             <div className={styles.rightcategory}>
-              <Maincategorylist name={values} searchnamevalue={searchnamevalue} />
+              <Maincategorylist name={values} searchnamevalue={searchnamevalue} filterproducts={filterproducts} setFilterproducts={setFilterproducts} setLoadingproduct={setLoadingproduct} loadingproduct={loadingproduct}
+              setProductgetloading={setProductgetloading}
+              />
             </div>
           </div>
         </div>
@@ -86,4 +90,4 @@ function Categorys({ id }) {
   )
 }
 
-export default Categorys
+export default Categorys;

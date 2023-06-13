@@ -15,7 +15,6 @@ import first from '../../../assests/abouts-logos/FIRST.gif';
 import second from '../../../assests/abouts-logos/SECOND.gif';
 import third from '../../../assests/abouts-logos/THIRD.gif';
 import { useSelector } from 'react-redux';
-
 import wba from '../../../assests/abouts-logos/wb1.png';
 import wba1 from '../../../assests/abouts-logos/wb2.png';
 import womenlogo from '../../../assests/homepage-logos/womeyn_logo.png';
@@ -161,9 +160,6 @@ function Aboutus({ id }) {
                     <div >
                         <Ourteam />
                     </div>
-            
-
-                    
                     <div >
                         <Ourclutures />
                     </div>

@@ -91,7 +91,7 @@ function Categorycarouse() {
                     <Slider {...settings}>
                         {datas?.map((item, index) => {
                             return (
-                                <div>
+                                <div key={index}>
 
                                     <Skeleton className={styles.loadingskelton} />
 
@@ -104,7 +104,7 @@ function Categorycarouse() {
                     <Slider {...settings}>
                         {banners?.map((item, index) => {
                             return (
-                                <div>
+                                <div key={index}>
                                     <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />
                                 </div>
                             )

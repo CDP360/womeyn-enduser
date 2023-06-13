@@ -83,19 +83,30 @@ function Home() {
         GetBannerimages();
         CheckTokens();
 
+
+        const token = localStorage.getItem("userToken");
+
+            var tokenDate = new Date(parseInt(token) * 1000)
+            // if (jwt_decode(token).exp < Date.now() / 1000) {
+            //     localStorage.clear();
+            //     NavigatePage("/");
+
+            // }
+
+            var date = new Date();
+            if(tokenDate)
+            {
+                if (tokenDate.exp < date.getTime() / 1000) {
+                    localStorage.clear();
+            
+                } else {
+                    console.log('The token is still valid');
+        
+                }
+            }
         
 
-        const token =
-      
-        JSON.parse(localStorage.getItem("userToken"));
-     
-
-        if(token)
-        {               
-            if (jwt_decode(token).exp < Date.now() / 1000) {
-                localStorage.clear();
-            }
-        }
+        
   
 
        
@@ -132,7 +143,7 @@ function Home() {
             }
 
 
-            if (state?.loginUser?.error?.message == "Please authenticate" || state?.loginUser?.error?.message == "unAuthorized User") {
+            if (state?.loginUser?.error?.message == "Please authenticate" || state?.loginUser?.error?.message == "unAuthorized User" || state?.loginUser?.logindata===[]) {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("userTokens");
@@ -157,7 +168,6 @@ function Home() {
     const MovePageData = (data) => {
         window.open(data);
     }
-
     return (
         <Fragment>
             <Head>

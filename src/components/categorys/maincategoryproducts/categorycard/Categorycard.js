@@ -18,11 +18,9 @@ function Categorycard({ item }) {
         history.push(`/product/${data}`)
     }
     return (
-        // onClick={()=>ProductView(item?.productSlugName)}
+      
         <div className={styles.cards} onClick={() => ProductView(item?.productSlugName)}  >
-            {/* <div className={styles.plussection}>
-                <Image src={plus} alt="no image" className={styles.plus} onClick={() => Carthandleproduct(item)} />
-            </div> */}
+           
             {item?.productThumbImage ? <>
                 <img
                     className={styles.categoryimage}
@@ -45,7 +43,7 @@ function Categorycard({ item }) {
 
                         <Skeleton className={styles.skeltonbrands} />
                     </>}</> : <>{item?.brandName.slice(0, 28)}...</>}
-                    {/* <span className={styles.brandnames}>{item?.brandName}</span> */}
+                    
 
                 </div>
                 <div className={styles.cardsellerborder}>

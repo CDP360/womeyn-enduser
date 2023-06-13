@@ -5,8 +5,15 @@ import p2 from '../../../../assests/abouts-logos/p2.png';
 import p3 from '../../../../assests/abouts-logos/p3.png';
 import p4 from '../../../../assests/abouts-logos/p4.png';
 import Image from 'next/image';
+import {useRouter} from 'next/router';
 
 function Ourclutures() {
+
+    const router=useRouter();
+
+    const Getintouch=()=>{
+        router.push("/getintouch")
+    }
     return (
         <div>
             {/* <div className='mt-5'>
@@ -68,7 +75,9 @@ function Ourclutures() {
 
             <div className={styles.ifyou}>
 
-                If you are looking for Technology, Digital Marketing and Customer Support related jobs then please express your interest and send us your resume to contactus @womeyn.com. One of our team members with reach out to have the initial dialogue.
+                If you are looking for Technology, Digital Marketing and Customer Support related jobs then please express your interest and send us your resume to contactus @womeyn.com or  <span onClick={Getintouch} className={styles.linkname}>
+                Click here
+                    </span> One of our team members with reach out to have the initial dialogue.
             </div>
 
 
@@ -85,7 +94,9 @@ function Ourclutures() {
 
             <div className={styles.ifyou}>
 
-                If you are keen on making a difference in the way we empower women then you are in the right place. Please connect with us via the contact us page and express your desire to work as a volunteer with Womeyn
+                If you are keen on making a difference in the way we empower women then you are in the right place. Please 
+                <span onClick={Getintouch} className={styles.linkname}>Click here</span>
+                 to connect with us via the contact us page and express your desire to work as a volunteer with Womeyn
             </div>
 
 

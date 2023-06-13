@@ -195,7 +195,7 @@ function ProductCategorys() {
                     <div className={styles.serachsectionwomen}>
                         <div className={styles.serachwomenpresection}>
                             <div>
-                                <input type='text' placeholder="Search by Brand Name" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
+                                <input type='text' placeholder="Search by Product Name" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
                             </div>
                             <div>
                                 <Image src={serachicon} alt="no image" className={styles.serachiconwomen}
@@ -208,7 +208,7 @@ function ProductCategorys() {
                             {filterdata}
                            
                             <Select
-                                placeholder={"Filter Product Category ..."}
+                                placeholder={"Filter by Product Categorys..."}
                                 value={filterdata}
                                 onChange={(e) => handleFilterCategory(e)}
                                 options={datacategory}

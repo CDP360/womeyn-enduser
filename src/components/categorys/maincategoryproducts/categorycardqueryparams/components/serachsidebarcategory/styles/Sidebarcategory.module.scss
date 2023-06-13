@@ -60,22 +60,106 @@
     align-items: center;
     cursor: pointer;
     .transactionsize {
-        font-size: 1.2rem;
+        font-size: 1rem;
         color: #000000;
+        font-weight:600;
     }
 }
 
 .gapsectiondropdown {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     padding-top: 4%;
     cursor: pointer;
+    width:100%;
 }
 
-.kalai
+
+
+.readmorebutton
 {
-    // border:2px solid red;
+    color: #E95A5A;
+    padding-top:4%;
+    cursor:pointer;
+}
+
+.cleartexts
+{
+    color:#E95A5A;
+    cursor:pointer;
+}
+
+.totext
+{
+    color:rgba(0, 0, 0, 0.48);
+    font-weight:600;
+}
+
+.pricefiltertextbox
+{
+   
+    outline:none !important;
+    color:black !important;
   
-    marginLeft: 16
+}
+
+.filterprogress
+{
+  
+    padding:20px 0px;
+    background:rgba(69, 110, 214, 0.05);
+    border-radius:2px;
+}
+
+
+.filtermodelshow
+{
+
+ width:100%;
+    height:500px;
+    over-flow:hidden;
+    overflow:auto;
+   
+    .cardfilters
+    {
+        width:32%!important;
+        padding-top:1%;
+display:flex;
+gap:10px;
+cursor:pointer;       
+    }
+    .supportcursor
+    {
+        cursor:pointer;
+    }
+
+    
+    
+}
+
+.savefilters
+{
+    width:18%;
+    padding:6px;
+    border:1px solid red;
+    outlien:none;
+    background:#E95A5A;
+    color:white;
+    cursor:pointer;
+    border-radius:10px;
+    font-weight:600;
+}
+
+.closefilter
+{
+    width:18%;
+    padding:6px;
+    border:1px solid #E95A5A;
+    outlien:none;
+    background:white;
+    color:#E95A5A;
+    cursor:pointer;
+    border-radius:10px;
+    font-weight:600;
 }

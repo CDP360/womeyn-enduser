@@ -15,7 +15,7 @@ import { ProductCatgorylist } from '../../../services/category-services/category
 import LoaderLogo from './../../loaderlogo/LoaderLogo';
 import { Nodatafoundimage } from './../../nodatafoundimage/Nodatafound';
 
-function Maincategorylist({ name, searchnamevalue }) {
+function Maincategorylist({ name, searchnamevalue,filterproducts,setFilterproducts ,setLoadingproduct,loadingproduct,setProductgetloading}) {
     const [product, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [perPage, setPerPage] = useState(10);
@@ -23,71 +23,29 @@ function Maincategorylist({ name, searchnamevalue }) {
     const [dummy, setDummy] = useState([]);
     const [limit, seLimit] = useState([]);
     const [current, setCurrent] = useState(1);
-    const CartDataProduct = [
-        {
-            id: 1,
-            name: "sample",
-
-
-        },
-        {
-            id: 2,
-            name: "sample",
-
-        },
-        {
-            id: 3,
-            name: "s",
-
-        }, {
-            id: 4,
-            name: "s1",
-
-        }, {
-            id: 5,
-            name: "s2",
-
-        }, {
-            id: 6,
-            name: "s3",
-
-        }, {
-            id: 7,
-            name: "s4",
-
-        }, {
-            id: 8,
-            name: "s5",
-
-        }, {
-            id: 9,
-            name: "s6",
-
-        }, {
-            id: 10,
-            name: "s7",
-
-        },
-
-    ]
+   
     useEffect(() => {
         getproducts();
     }, [name, searchnamevalue])
     const getproducts = () => {
-        setLoading(true);
+        setLoadingproduct(true);
+        setProductgetloading(false);
         ProductCatgorylist(name).then((res) => {
             seLimit(res?.data);
-            setProducts(res?.data?.results);
+            setFilterproducts(res?.data?.results);
             setTimeout(() => {
-                setLoading(false);
+                setLoadingproduct(false);
             }, 300)
+
+            setProductgetloading(true);
         }).catch((err) => {
             console.log(err);
+            setProductgetloading(false);
         })
     }
     const fetchCurrentData = async (names, current) => {
         const resdata = await ProductCatgorylist(names, current, searchnamevalue);
-        setProducts(resdata?.data?.results);
+        setFilterproducts(resdata?.data?.results);
     }
     const handleChangePagecount = async (e) => {
         setCurrent(e);
@@ -97,7 +55,7 @@ function Maincategorylist({ name, searchnamevalue }) {
 
     const PrevNextArrow = (current, type, originalElement) => {
         if (type === 'prev') {
-            return <button className={perPage > 11 ? "activess" : "disactive"}>
+            return <button className={perPage > 10 ? "activess" : "disactive"}>
                 <Image src={leftarrow} alt="no image" className={styles.arrowsizefix} />
             </button>
         }
@@ -111,12 +69,12 @@ function Maincategorylist({ name, searchnamevalue }) {
     return (
         <div>
             <div>
-                {loading ? <>
+                {loadingproduct ? <>
 
                     <LoaderLogo />
 
                 </> : <div >
-                    {product?.length === 0 ? <div>
+                    {filterproducts?.length === 0 ? <div>
                        
                                 <div>
                                   <Nodatafoundimage
@@ -126,7 +84,7 @@ function Maincategorylist({ name, searchnamevalue }) {
                                
 
                     </div > : <div className="row gap-3">
-                        {product?.map((item, index) => {
+                        {filterproducts?.map((item, index) => {
                             return (
                                 <>
                                     <Categorycard item={item} />
@@ -137,7 +95,7 @@ function Maincategorylist({ name, searchnamevalue }) {
                 </div>}
             </div>
 
-            {product?.length > 0 && <div className='d-flex justify-content-center mt-4'>
+            {filterproducts?.length > 0 && <div className='d-flex justify-content-center mt-4'>
                 <Pagination
                     className="pagination-data"
                     total={limit?.totalPages * 10}

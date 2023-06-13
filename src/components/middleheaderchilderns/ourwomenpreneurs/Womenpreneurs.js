@@ -137,21 +137,19 @@ function Womenpreneurs() {
                     <div className={styles.serachsectionwomen}>
                         <div className={styles.serachwomenpresection}>
                             <div>
-                                <input type='text' placeholder="Search by Name or Brand" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
+                                <input type='text' placeholder="Search by WomeynPreneurs Name" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
                             </div>
                             <div>
                                 <Image src={serachicon} alt="no image" className={styles.serachiconwomen} onClick={GetSearchdata} />
                             </div>
                         </div>
-                        <div className='col-lg-3 col-xs-6 col-sm-5'>
-
+                        <div className='col-lg-4 col-xs-10  col-sm-12'>
                             <Select
-                                placeholder={"Filter Category ..."}
+                                placeholder={"Filter by Categorys..."}
                                 value={filterdata}
                                 onChange={(e) => handleFilterCategory(e)}
                                 options={datacategory}
                             />
-
                         </div>
                     </div>
 

@@ -74,3 +74,19 @@ export function SearchProductUser(data) {
     })
 }
 
+export function CategoryproductFilter(data) {
+    // return instanceBaseurl.get(`/common/search/products?search=${data}`).then((res) => {
+    //     return res;
+    // }).catch((err) => {
+    //     return err;
+
+    // })
+
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.post(`/common/filter/products`,data).then(response => {
+            resolve(response)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}

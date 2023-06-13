@@ -126,6 +126,8 @@ function Servicecards() {
     }
 
 
+    console.log(servicesusers,"servicesusers")
+
     return (
         <Fragment>
             <div className={styles.womeynmainsectionpre}>
@@ -146,7 +148,7 @@ function Servicecards() {
                     <div className={styles.serachsectionwomen}>
                         <div className={styles.serachwomenpresection}>
                             <div>
-                                <input type='text' placeholder="Search by Name or Brand" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
+                                <input type='text' placeholder="Search by Business Name" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
                             </div>
                             <div>
                                 <Image src={serachicon} alt="no image" className={styles.serachiconwomen} onClick={GetSearchdata} />
@@ -155,7 +157,7 @@ function Servicecards() {
                         <div className='col-lg-3 col-xs-6 col-sm-6 col-lg-5'>
 
                             <Select
-                                placeholder={"Filter Category ..."}
+                                placeholder={"Filter by Service Categorys..."}
                                 value={filterdata}
                                 onChange={(e) => handleFilterCategory(e)}
                                 options={datacategory}
