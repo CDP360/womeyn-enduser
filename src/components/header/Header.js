@@ -239,12 +239,17 @@ function Header() {
                                 </div> */}
                                 <div className={styles.falight} >
 
-                                    {/* {router.pathname == "/profile/favorts"?<>
-                                    
-                                    kalai
+                                    {router.asPath == "/profile/favorts"?<>
+                                    <div className={styles.maincartcount} onClick={heartpushdata}>
+                                        <div>
+                                            <Image src={heart1} alt="no image" className={styles.notifications} />
+                                        </div>
+                                        {favortcountdataredux?.favorts?.favortsdata?.length > 0 ? <div className={styles.cartcountbox}>
+                                            {favortcountdataredux?.favorts?.favortsdata?.length}
+                                        </div>
+                                            : <></>}
+                                    </div>
                                     </>:<>
-                                    
-                                    j</>} */}
                                     <div className={styles.maincartcount} onClick={heartpushdata}>
                                         <div>
                                             <Image src={heart2} alt="no image" className={styles.notifications} />
@@ -255,6 +260,8 @@ function Header() {
                                             : <></>}
 
                                     </div>
+                                    </>}
+                                   
                                 </div>
 
                                 <div className={styles.falight} onClick={carts}>

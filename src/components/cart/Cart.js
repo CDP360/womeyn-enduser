@@ -27,6 +27,8 @@ function Cart() {
   const [tokes, setTokens] = useState("");
   const [carts, setCart] = useState([]);
   const [totalvalue, setTotalValue] = useState(0);
+  const [gstvalue, setGstValue] = useState(0);
+
   const TotalPrice = () => {
     let prices = 0;
     cart?.cartData?.map((item) => {
@@ -47,16 +49,20 @@ function Cart() {
 
   const values = Math.max(
     0,
-    Math.round(
+    // Math.round(
       cartpricevaues - (cartpricevaues) * 10 / 100
-    )
+    // )
   );
+
   const deliveryChargeAmount = state?.cart?.cartData?.reduce((acc, current) => acc + current.deliverycharge, 0)
   const DeliveryChargeAmount = Math.max(
     0,
-    Math.round(
+    // Math.round(
+    //   deliveryChargeAmount - (deliveryChargeAmount) * 10 / 100
+    // )
+  
       deliveryChargeAmount - (deliveryChargeAmount) * 10 / 100
-    )
+    
   );
   const Sample = cartpricevaues - values;
 
@@ -65,13 +71,48 @@ function Cart() {
   // const AllchargeCount = Number(cartpricevaues) + Number(deliveryChargeAmount);
   const AllchargeCount = Number(cartpricevaues) + Number(Sample);
 
-  console.log(AllchargeCount,"AllchargeCount")
+  const ToatlAmountString=AllchargeCount.toString();
+
+
+
 
   const OverallTotalPrice = Number(Sample) + Number(chargeDelivery);
 
+
+  const GSTString=Sample.toString();
+
+
+
   useEffect(() => {
     setCart(state?.cart?.cartData);
-  }, [deleteid, totalvalue])
+
+    const gh=Sample.toString();
+
+
+    if(gh.includes("."))
+    {
+      console.log(gh,"gh");
+
+      if(gh?.length>10)
+      {
+     
+
+      setGstValue(gh.slice(0,8));
+
+      }
+    }
+    else
+    {
+      console.log(gh,"gh2");
+      
+      setGstValue(gh);
+      
+    }
+
+  
+
+    console.log(gh.slice(0,8),"OverallTotalPrice")
+  }, [deleteid, totalvalue,gstvalue])
   const shopping = () => {
     router.push("/")
   }
@@ -388,7 +429,7 @@ function Cart() {
                     <div>
                       Price</div>
                     <div className={styles.textprice}>
-                      A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)}
+                      A ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)}
                     </div>
                   </div>
                   {/* {cart?.cartData?.offerPercentag === 0 ? <></> : <div className={styles.splitcartsections}>
@@ -409,10 +450,25 @@ function Cart() {
                     <div>
                       GST</div>
                     <div className={styles.textprice}>
-                      A${Number(Sample) 
+                      {/* A${Number(Sample)
+
                      
                       // + Number(chargeDelivery)
-                      }
+                      } */}
+
+{/* A${Number(gstvalue)} */}
+
+
+A${GSTString.includes(".")?<>
+{GSTString?.length>10 || 5?<>
+  {GSTString.slice(0,7)}
+</>:GSTString}
+</>:<>
+{GSTString}
+</>}
+
+{/* {GSTString} */}
+
                     
                     </div>
                   </div>
@@ -427,7 +483,19 @@ function Cart() {
                   </div>
                   <div className={styles.textprices}>
                     {/* A$ {Number(AllchargeCount) + Number(OverallTotalPrice)} */}
-                    A${Math.round(Number(AllchargeCount))}
+                    {/* A ${Number(AllchargeCount)} */}
+
+
+                    A${ToatlAmountString.includes(".")?<>
+{ToatlAmountString?.length>10?<>
+  {ToatlAmountString.slice(0,8)}
+</>:ToatlAmountString}
+</>:<>
+{GSTString}
+</>}
+
+
+                    {/* ToatlAmountString */}
 
                     {/* A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)} */}
                   </div>

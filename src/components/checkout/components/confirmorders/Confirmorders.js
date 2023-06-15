@@ -647,9 +647,8 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
   <div className={styles.viewcouponslist} onClick={ViewCoupons}>View Coupons</div>
 </div> */}
 
-            <div className='mt-4'>
-
-              <div className={styles.couponsectionsplit}>
+{coupnslist?.length===0 ?null:<div className="mt-3">
+  <div className={styles.couponsectionsplit}>
                 <div>
                   <input type="text" placeHolder="Enter Coupon Code" className={styles.couponform} name={couponscode} value={couponscode} onChange={(e) => setCouponcode(e.target.value)} />
                 </div>
@@ -711,6 +710,12 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
 
               </>}
 
+</div>}
+
+            <div className='mt-4'>
+
+            
+
 
 
 
@@ -741,50 +746,61 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
 
             </div>
 
+
+
           </>}
 
+
+          {coupnslist?.length===0?null:
+          
           <div className="mt-5">
-            <h5>Coupons</h5>
+          <h5>Coupons</h5>
 
 
-            <div className={styles.couponlistorders}>
+          <div className={styles.couponlistorders}>
 
 
-              <div className={styles.approvalstatuscoupon}>
-                {coupnslist?.map((item, index) => {
-                  return (
-
-
-
+            <div className={styles.approvalstatuscoupon}>
+              {coupnslist?.map((item, index) => {
+                return (
 
 
 
-                    <div className={styles.boxcoupons}>
-                      <div className={styles.leftcoupons}>
-                        <div className={styles.couponsOfferName}>{item.title}</div>
-                        <div className={styles.couponsOfferNames}>{item.couponCode}</div>
-                        <div className={styles.couponsSubContent}>{item.couponDescription}</div>
-                      </div>
-                      <div className={styles.rightcouons}>
-                        <div className={styles.couponsValidDate}>
-                          Valid {moment(item?.endDate).format("MMM Do YY",)}
-                        </div>
 
-                        <div onClick={() => copylink(item.couponCode)} className={styles.couponcodecopy}>
-                          <ion-icon name="copy-outline" size="small" ></ion-icon> <span className={styles.copycodecolor}>Copy</span>
-                        </div>
+
+
+                  <div className={styles.boxcoupons}>
+                    <div className={styles.leftcoupons}>
+                      <div className={styles.couponsOfferName}>{item.title}</div>
+                      <div className={styles.couponsOfferNames}>{item.couponCode}</div>
+                      <div className={styles.couponsSubContent}>{item.couponDescription}</div>
+                    </div>
+                    <div className={styles.rightcouons}>
+                      <div className={styles.couponsValidDate}>
+                        Valid {moment(item?.endDate).format("MMM Do YY",)}
                       </div>
 
+                      <div onClick={() => copylink(item.couponCode)} className={styles.couponcodecopy}>
+                        <ion-icon name="copy-outline" size="small" ></ion-icon> <span className={styles.copycodecolor}>Copy</span>
+                      </div>
                     </div>
 
-                  )
-                })}
-              </div>
+                  </div>
 
-
-
+                )
+              })}
             </div>
+
+
+
           </div>
+        </div>
+          
+          }
+
+        
+
+
 
 
         </div>

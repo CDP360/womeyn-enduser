@@ -69,7 +69,7 @@ axios.interceptors.response.use(
         var date = new Date();
         if(tokenDate)
         {
-            // if (tokenDate.exp < date.getTime() / 1000) {
+            if (tokenDate.exp < date.getTime() / 1000) {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("userTokens");
@@ -81,15 +81,12 @@ axios.interceptors.response.use(
         }
         if (error.response.status == 401) {
             const token = localStorage.getItem("userToken");
-
             var tokenDate = new Date(parseInt(token) * 1000)
-           
-
             var date = new Date();
             if(tokenDate)
             {
-                // if (tokenDate.exp < date.getTime() / 1000)
-                //  {
+                if (tokenDate.exp < date.getTime() / 1000)
+                 {
                 //     localStorage.clear();
                 // NavigatePage("/");
 
@@ -103,7 +100,8 @@ axios.interceptors.response.use(
                 localStorage.removeItem("productid");
                 localStorage.removeItem('signupuser');
 
-                // } else {
+                }
+                //  else {
                 // return null;
         
                 // }
@@ -113,6 +111,7 @@ axios.interceptors.response.use(
         }
 
     }
+}
 );
 
 const instanceBaseurl = axios;

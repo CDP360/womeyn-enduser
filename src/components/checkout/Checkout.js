@@ -36,18 +36,18 @@ function Checkout() {
 
   const values = Math.max(
     0,
-    Math.round(
+    // Math.round(
       cartpricevaues - (cartpricevaues) * 10 / 100
-    )
+    // )
   );
 
 
   const deliveryChargeAmount = checkshippingamount.reduce((acc, current) => acc + Number(current.deliveryCharge), 0)
   const DeliveryChargeAmount = Math.max(
     0,
-    Math.round(
+    // Math.round(
       deliveryChargeAmount - (deliveryChargeAmount) * 10 / 100
-    )
+    // )
   );
 
   const chargeDelivery = deliveryChargeAmount - DeliveryChargeAmount;
@@ -57,7 +57,10 @@ function Checkout() {
   const GSTValue = cartpricevaues - values;
 
 
-  const GSTTotalValue = Number(GSTValue) + Number(chargeDelivery)
+  const GSTTotalValue = Number(GSTValue) + Number(chargeDelivery);
+
+  const GSTString=GSTTotalValue.toString();
+
 
 
   // const deliveryChargeAmount = state?.cart?.cartData?.reduce((acc, current) => acc + current.deliverycharge, 0)
@@ -75,9 +78,15 @@ function Checkout() {
 
 
   // coupon value calculate
-  const toatalpricecart = discountamount ? discountamount?.message ? (Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))) :
-    (Math.round(Number(AllchargeCount) + Number(OverallTotalPrice)) - Number(discountamount?.result))
-    : Math.round(Number(AllchargeCount) + Number(OverallTotalPrice));
+  const toatalpricecart = discountamount ? discountamount?.message ? ((Number(AllchargeCount) + Number(OverallTotalPrice))) :
+    ((Number(AllchargeCount) + Number(OverallTotalPrice)) - Number(discountamount?.result))
+    : (Number(AllchargeCount) + Number(OverallTotalPrice));
+
+
+    console.log(toatalpricecart,"toatalpricecart")
+
+  const ToatlAmountString=toatalpricecart.toString();
+
   useEffect(() => {
     if (step === 0) {
       setStep1("active")
@@ -216,7 +225,15 @@ function Checkout() {
                         GST</div>
                       <div className={styles.textprice}>
                         {/* A${Number(Sample) + Number(chargeDelivery)} */}
-                        A${GSTTotalValue}
+                        {/* A${GSTTotalValue} */}
+
+                        A${GSTString.includes(".")?<>
+{GSTString?.length>10 || 5?<>
+  {GSTString.slice(0,7)}
+</>:GSTString}
+</>:<>
+{GSTString}
+</>}
                       </div>
                     </div>
 
@@ -240,18 +257,30 @@ function Checkout() {
                       Total Payable</div>
                     <div className={styles.textprices}>
 
-                      {discountamount?.message ? <>
-                        A${Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))}
+                      {/* {discountamount?.message ? <>
+                        A${(Number(AllchargeCount) + Number(OverallTotalPrice))}
                       </> : <>
 
                         {discountamount?.result ? <>
-                          A${Math.round(Number(AllchargeCount) + Number(OverallTotalPrice)) - Number(discountamount?.result)}
+                          A${(Number(AllchargeCount) + Number(OverallTotalPrice)) - Number(discountamount?.result)}
 
                         </> : <>
-                          A${Math.round(Number(AllchargeCount) + Number(OverallTotalPrice))}
+                          A${(Number(AllchargeCount) + Number(OverallTotalPrice))}
 
                         </>}
-                      </>}
+                      </>} */}
+
+
+                
+
+
+                      A${ToatlAmountString.includes(".")?<>
+{ToatlAmountString?.length>10?<>
+  {ToatlAmountString.slice(0,7)}
+</>:ToatlAmountString}
+</>:<>
+{GSTString}
+</>}
 
 
                       {/* A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0) + Number(Sample) + Number(deliveryChargeAmount)} */}
