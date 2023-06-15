@@ -37,7 +37,7 @@ function Checkout() {
   const values = Math.max(
     0,
     // Math.round(
-      cartpricevaues - (cartpricevaues) * 10 / 100
+    cartpricevaues - (cartpricevaues) * 10 / 100
     // )
   );
 
@@ -46,7 +46,7 @@ function Checkout() {
   const DeliveryChargeAmount = Math.max(
     0,
     // Math.round(
-      deliveryChargeAmount - (deliveryChargeAmount) * 10 / 100
+    deliveryChargeAmount - (deliveryChargeAmount) * 10 / 100
     // )
   );
 
@@ -59,7 +59,7 @@ function Checkout() {
 
   const GSTTotalValue = Number(GSTValue) + Number(chargeDelivery);
 
-  const GSTString=GSTTotalValue.toString();
+  const GSTString = GSTTotalValue.toString();
 
 
 
@@ -83,9 +83,9 @@ function Checkout() {
     : (Number(AllchargeCount) + Number(OverallTotalPrice));
 
 
-    console.log(toatalpricecart,"toatalpricecart")
+  console.log(toatalpricecart, "toatalpricecart")
 
-  const ToatlAmountString=toatalpricecart.toString();
+  const ToatlAmountString = toatalpricecart.toString();
 
   useEffect(() => {
     if (step === 0) {
@@ -227,13 +227,13 @@ function Checkout() {
                         {/* A${Number(Sample) + Number(chargeDelivery)} */}
                         {/* A${GSTTotalValue} */}
 
-                        A${GSTString.includes(".")?<>
-{GSTString?.length>10 || 5?<>
-  {GSTString.slice(0,7)}
-</>:GSTString}
-</>:<>
-{GSTString}
-</>}
+                        A${GSTString.includes(".") ? <>
+                          {GSTString?.length > 10 || 5 ? <>
+                            {GSTString.slice(0, 7)}
+                          </> : GSTString}
+                        </> : <>
+                          {GSTString}
+                        </>}
                       </div>
                     </div>
 
@@ -271,16 +271,16 @@ function Checkout() {
                       </>} */}
 
 
-                
 
 
-                      A${ToatlAmountString.includes(".")?<>
-{ToatlAmountString?.length>10?<>
-  {ToatlAmountString.slice(0,7)}
-</>:ToatlAmountString}
-</>:<>
-{GSTString}
-</>}
+
+                      A${ToatlAmountString.includes(".") ? <>
+                        {ToatlAmountString?.length > 10 ? <>
+                          {ToatlAmountString.slice(0, 7)}
+                        </> : ToatlAmountString}
+                      </> : <>
+                        {GSTString}
+                      </>}
 
 
                       {/* A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0) + Number(Sample) + Number(deliveryChargeAmount)} */}

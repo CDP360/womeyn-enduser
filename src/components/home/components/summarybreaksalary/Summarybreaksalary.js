@@ -59,7 +59,7 @@ function Summarybreaksalary({ bannerimages }) {
         pauseOnHover: true,
         nextArrow: <SlideNextArrow />,
         prevArrow: <SlidePreArrow />,
-        responsive: [   
+        responsive: [
             {
                 breakpoint: 1024,
                 settings: {
@@ -102,37 +102,37 @@ function Summarybreaksalary({ bannerimages }) {
     return (
         <Fragment>
 
-         
 
-              <div className={styles.summarymainsection}>
 
-                {bannerimages?.ClientLogos?.length>4?<>
-                 <div className={styles.insidesummarysection}>
-                 <Slider {...settings}>
-        {bannerimages?.ClientLogos?.map((item, index) => {
-            return (
-                <div className={styles.insideslidess} key={index}>
-                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.slidesummaryimages1} onClick={() => MovePageData(item.redirectUrl)} />
-                </div>
-            )
-        })}
-    </Slider>
-                 </div>
-                </>:<>
-                <div className={styles.insidesummarysection}>
-                 
-        {bannerimages?.ClientLogos?.map((item, index) => {
-            return (
-                <div className={styles.insideslidess} key={index}>
-                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.slidesummaryimages1} onClick={() => MovePageData(item.redirectUrl)} />
-                </div>
-            )
-        })}
+            <div className={styles.summarymainsection}>
 
-                 </div>
+                {bannerimages?.ClientLogos?.length > 3 ? <>
+                    <div className={styles.insidesummarysection}>
+                        <Slider {...settings}>
+                            {bannerimages?.ClientLogos?.map((item, index) => {
+                                return (
+                                    <div className={styles.insideslidess} key={index}>
+                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.slidesummaryimages1} onClick={() => MovePageData(item.redirectUrl)} />
+                                    </div>
+                                )
+                            })}
+                        </Slider>
+                    </div>
+                </> : <>
+                    <div className={styles.insidesummarysection}>
+
+                        {bannerimages?.ClientLogos?.map((item, index) => {
+                            return (
+                                <div className={styles.insideslidess} key={index}>
+                                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.slidesummaryimages1} onClick={() => MovePageData(item.redirectUrl)} />
+                                </div>
+                            )
+                        })}
+
+                    </div>
                 </>}
-                
-{/* <div className={styles.insidesummarysection}>
+
+                {/* <div className={styles.insidesummarysection}>
 {bannerimages?.ClientLogos?.length>2?<>
     <Slider {...settings}>
         {bannerimages?.ClientLogos?.map((item, index) => {
@@ -157,10 +157,10 @@ function Summarybreaksalary({ bannerimages }) {
 </>}
 </div> */}
 
-              </div>
+            </div>
 
 
-            
+
             {/* <div className={styles.summarymainsection}>
             {bannerimages?.ClientLogos?.length>4?<>
                 <div className={styles.insidesummarysection}>
