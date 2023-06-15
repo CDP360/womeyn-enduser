@@ -87,7 +87,13 @@ function CategorycardQueryparams({ id }) {
   const [loadingproduct,setLoadingproduct]=useState(false);
   const [productgetloading,setProductgetloading]=useState(false);
 
-  const values = id;
+
+  const router=useRouter();
+
+
+
+  const values = router.query.search;
+
   useEffect(() => {
   }, [values])
   const options = [
@@ -119,7 +125,7 @@ function CategorycardQueryparams({ id }) {
         </div>
         <div className={styles.insidecategorysection}>
           <div className='mb-3 mt-2'>
-            Categorys / health
+            Categorys / health {id}
           </div>
          
           <div>

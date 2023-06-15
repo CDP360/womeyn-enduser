@@ -157,6 +157,9 @@ function Seacrhsidebarcatgory({ setFilterproducts, setLoadingproduct, setProduct
   const [filterproductprice1, setProductfilterprice1] = useState("");
   const [filterproductprice2, setProductfilterprice2] = useState("");
 
+  const [filtercategorysearch, setFiltercategorysearch] = useState("");
+  const [filtercategorysearch1, setFiltercategorysearch1] = useState("");
+
 
   const [show, setShow] = useState(false);
 
@@ -304,13 +307,50 @@ function Seacrhsidebarcatgory({ setFilterproducts, setLoadingproduct, setProduct
         </div>
         {dropdown1 && <div className={styles.gapsectiondropdown}>
 
-          {commoncategorys?.slice(0, 10).map((item, index) => {
-            return (
-              <div key={index}>
-                <Form.Check type="checkbox" label={item?.name} value={item?.id} onChange={handleFilterCategorys} />
+        <Form.Group controlId="formBasicEmail" className="col-lg-12 mb-3">
+            <Form.Label>Search Brands</Form.Label>
+            <Form.Control type="search" placeholder="Enter Search Brands..."
+              name="categorysearch"
+              value={filtercategorysearch1}
+              onChange={(e) => setFiltercategorysearch1(e?.target?.value)} />
+          </Form.Group>
+
+          {filtercategorysearch1 ? <>
+            {commoncategorys?.filter(user =>
+              user?.name.toLowerCase().includes(filtercategorysearch1)).map((item, index) => {
+                return (
+                  // <div key={index}>
+                  //   <Form.Check type="checkbox" label={item?.name} value={item?.id} onChange={handleFilterCategorys} />
+                  // </div>
+
+                  <div key={index} className={styles.cardfilters}>
+                  <Form.Check type="checkbox" id={item?.name} value={item?.id} onChange={handleFilterCategorys}
+                    className={styles.formselectcursor}
+                  />
+                  <label htmlFor={item?.name} className={styles.supportcursor}>
+                    {item?.name}
+                  </label>
+                </div>
+                )
+              })}
+          </> : <>
+            {commoncategorys?.slice(0, 10).map((item, index) => {
+              return (
+                // <div key={index}>
+                //   <Form.Check type="checkbox" label={item?.name} value={item?.id} onChange={handleFilterCategorys} />
+                // </div>
+
+                <div key={index} className={styles.cardfilters}>
+                <Form.Check type="checkbox" id={item?.name} value={item?.id} onChange={handleFilterCategorys}
+                  className={styles.formselectcursor}
+                />
+                <label htmlFor={item?.name} className={styles.supportcursor}>
+                  {item?.name}
+                </label>
               </div>
-            )
-          })}
+              )
+            })}
+          </>}
         </div>}
         {commoncategorys?.length > 10 && <div className={styles.readmorebutton} onClick={handleShow}>
           {commoncategorys?.length} Read More...
@@ -405,22 +445,40 @@ function Seacrhsidebarcatgory({ setFilterproducts, setLoadingproduct, setProduct
         <Modal.Body className={styles.filtermodelshow}>
         <div className={"row d-flex gap-1"}>
         
+        <div className="d-flex justify-content-between">
+
+<div className="w-100">
+  <Form.Group controlId="formBasicEmail" className="col-lg-12 mb-3">
+    <Form.Label>Search Brands</Form.Label>
+    <Form.Control type="search" placeholder="Enter Search Brands..."
+      name="categorysearch"
+      value={filtercategorysearch}
+      onChange={(e) => setFiltercategorysearch(e?.target?.value)} />
+  </Form.Group>
+</div>
+<div className="text-end d-flex justify-content-end  w-100 mt-2">
+<div  className={"cursorpointers"} onClick={handleClose}>
+<ion-icon name="close-outline" size="large"></ion-icon>
+</div>
+</div>
+<hr />
+
+</div>
 
 
-{commoncategorys?.slice(0, 10).map((item, index) => {
-            return (
-              <div key={index} className={styles.cardfilters}>
-                <Form.Check type="checkbox" id={item?.name} value={item?.id} onChange={handleFilterCategorys}
-                className={styles.formselectcursor}
-                />
-      <label htmlFor={item?.name} className={styles.supportcursor}>
-        {item?.name}
-      </label>
-
-
-              </div>
-            )
-          })}
+{commoncategorys?.filter(user =>
+              user?.name.toLowerCase().includes(filtercategorysearch)).map((item, index) => {
+                return (
+                  <div key={index} className={styles.cardfilters}>
+                    <Form.Check type="checkbox" id={item?.name} value={item?.id} onChange={handleFilterCategorys}
+                      className={styles.formselectcursor}
+                    />
+                    <label htmlFor={item?.name} className={styles.supportcursor}>
+                      {item?.name}
+                    </label>
+                  </div>
+                )
+              })}
           
         </div>
 

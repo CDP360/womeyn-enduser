@@ -32,7 +32,7 @@ import { SearchProductUser } from '../../services/category-services/category-ser
 function ProductCategorys() {
     const router = useRouter();
     const [current, setCurrent] = useState(1);
-    const [limit, setLimit] = useState(current * 10);
+    const [limit, setLimit] = useState([]);
     const [servicesusers, setServiceusers] = useState([]);
     const [dataseller, setDataseller] = useState([]);
     const [datacategory, setDataCtagoryies] = useState([]);
@@ -45,7 +45,7 @@ function ProductCategorys() {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         setLoading(true);
-        AllProductCategorys().then((res) => {
+        SearchProductUser().then((res) => {
             setServiceusers(res?.data?.results);
             setTimeout(() => {
                 setLoading(false);
@@ -115,10 +115,7 @@ function ProductCategorys() {
         // setCategoryId(data?.id);
         setFilter(data.name);
         setSearchName("");
-        const count=0;
-
-        ProductCatgorylist(data.value.toLowerCase(),count).then((res) => {
-            console.log("kalai123",res?.data)
+        ProductCatgorylist(data.value.toLowerCase()).then((res) => {
             setServiceusers(res?.data?.results);
             setLimit(res?.data);
             setTimeout(() => {
@@ -144,14 +141,16 @@ function ProductCategorys() {
             console.log(err);
         })
     }
-    const fetchCurrentData = async (current) => {
-        const resdata = await WomenpreneursSellers(current);
+    const fetchCurrentData = async (searchname,current) => {
+        const resdata = await SearchProductUser(searchname,current);
         setDataseller(resdata?.data?.results);
     }
     const handleChangePagecount = async (e) => {
         setCurrent(e);
         const current = e;
-        await fetchCurrentData(current);
+
+        console.log(current,"currentkalai")
+        await fetchCurrentData(searchname,current);
     }
 
     const PrevNextArrow = (current, type, originalElement) => {
@@ -331,9 +330,8 @@ function ProductCategorys() {
 
 
 
-                    {/* <div>
-
-                                {dataseller?.length > 8 &&
+                    <div>
+                                {servicesusers?.length > 50 &&
                                 <div className='d-flex justify-content-center mt-4'>
                                     <Pagination
                                         className="pagination-data"
@@ -345,7 +343,7 @@ function ProductCategorys() {
                                     />
                                 </div>
                             }
-                            </div> */}
+                            </div>
                 </div>
 
 

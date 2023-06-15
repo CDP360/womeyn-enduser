@@ -356,9 +356,9 @@
 }
 
 .creationabout {
-    width: 68%;
+    width: 100%;
     margin: 0 auto;
-    text-align: center;
+    // text-align: center;
     /* Black/Black Grey 2 */
     color: #898989;
     padding-top: 3%;
@@ -380,21 +380,21 @@
         font-size: 1.3rem;
     }
     @include lgBreakPoint {
-        width: 90%;
+        width: 100%;
         line-height: 1.7;
         font-size: 1.1rem;
     }
     @include xlBreakPoint {
-        width: 90%;
+        width: 100%;
         line-height: 1.8;
     }
 }
 
 .creationabouts {
-    width: 76%;
+    width: 100%;
     font-size: 1.2rem;
     margin: 0 auto;
-    text-align: center;
+    // text-align: center;
     /* Black/Black Grey 2 */
     color: #898989;
     padding-top: 3%;
@@ -413,11 +413,11 @@
         font-size: 1.3rem;
     }
     @include lgBreakPoint {
-        width: 90%;
+        width: 100%;
         line-height: 1.7;
     }
     @include xlBreakPoint {
-        width: 90%;
+        width: 100%;
         line-height: 1.8;
     }
 }

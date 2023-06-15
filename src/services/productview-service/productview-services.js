@@ -69,7 +69,7 @@ export function ProductLikeandUnlikeCheck(id) {
 }
 
 
-export function AllProductCategorys() {
+export function AllProductCategorys(current) {
     // return instanceBaseurl.get(`/common/search/products?search=shoe&page=0&limit=10`).then((res) => {
     //     return res;
     // }).catch((err) => {
@@ -77,7 +77,7 @@ export function AllProductCategorys() {
     // })
 
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/search/products?search=shoe&page=0&limit=10`).then(response => {
+        instanceBaseurl.get(`/common/search/products?search=""&limit=12&page=${current}`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)

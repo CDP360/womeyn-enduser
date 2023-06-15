@@ -8,12 +8,9 @@ function Categorys({ id }) {
   const [selectname, selectedOption] = useState(null);
   const [searchname, setSearchName] = useState('');
   const [searchnamevalue, setSearchNameValue] = useState('');
-
   const [filterproducts,setFilterproducts]=useState([]);
-
   const [loadingproduct,setLoadingproduct]=useState(false);
   const [productgetloading,setProductgetloading]=useState(false);
-
   const values = id;
   useEffect(() => {
   }, [values])
@@ -83,7 +80,7 @@ function Categorys({ id }) {
               setProductgetloading={setProductgetloading}
               />
             </div>
-          </div>
+          </div>  
         </div>
       </div>
     </Fragment>

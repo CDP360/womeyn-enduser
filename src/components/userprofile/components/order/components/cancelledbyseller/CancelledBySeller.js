@@ -3,6 +3,7 @@ import styles from '../allorders/styles/Allorders.module.scss';
 import { useRouter } from 'next/router';
 import moment from 'moment';
 import LoaderLogo from '../../../../../loaderlogo/LoaderLogo';
+import { Nodatafoundimage } from '../../../../../nodatafoundimage/Nodatafound';
 
 function CancelledBySeller({ Orders, traking, loading }) {
     const [data, setData] = useState([])
@@ -25,7 +26,11 @@ function CancelledBySeller({ Orders, traking, loading }) {
     <div className={styles.ordermapsectionlists}>
       <div className={styles.firstimagesections}>
 
-        {data?.length===0 && <div>No Data Found!!</div>}
+        {data?.length===0 && <div>
+          <Nodatafoundimage
+          title={"No Order Cancel By Seller"}
+          />
+          </div>}
         <div className={styles.orderstatussection}>
           <div>
             {data?.stateId === 4 && <button className={styles.confirmordercanceld}>Cancelled </button>}

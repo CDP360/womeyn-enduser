@@ -282,11 +282,11 @@ function Womenpreneusdetails({ id }) {
                     </div>
                     <div className={styles.middleheaderpage}>
                         <div className={styles.insidemiddleheader}>
-                            {categorys?.length == 0 && <div>
+                            {/* {categorys?.length == 0 && <div>
                                 <Nodatafoundimage
                                     title="Not Available Categorys"
                                 />
-                            </div>}
+                            </div>} */}
                             {categorys?.map((item, index) => {
                                 return (
                                     <div className={`${indexs === index ? styles.actives : styles.detailpage}`} onClick={() => {

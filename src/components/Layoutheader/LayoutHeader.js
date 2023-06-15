@@ -12,8 +12,6 @@ function LayoutHeader({ setdark, dark, title, children }) {
   return (
     <>
       <Head>
-
-
         <link
           rel="icon"
           type="image/png"

@@ -11,8 +11,6 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { StoreProviderContext } from '../src/Redux/store/Contextstore';
 import LoaderLogo from '../src/components/loaderlogo/LoaderLogo';
 import Errorboundary from '../src/components/errorboundary/Errorboundary';
-
-
 function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -29,6 +27,24 @@ function App({ Component, pageProps }) {
     Router.events.on('routeChangeError', (url) => {
     });
   }, []);
+
+
+  const [showTopBtn, setShowTopBtn] = useState(false);
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 40) {
+                setShowTopBtn(true);
+            } else {
+                setShowTopBtn(false);
+            }
+        });
+    }, []);
+    const goToTop = () => {
+        window.scrollTo({   
+            top: 20,
+            behavior: "smooth",
+        });
+    };
   return (
     <div>
       <div className='womeyn-enduser'>

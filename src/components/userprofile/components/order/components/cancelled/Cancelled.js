@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from '../allorders/styles/Allorders.module.scss';
 import { useRouter } from 'next/router';
 import moment from 'moment';
+import { Nodatafoundimage } from '../../../../../nodatafoundimage/Nodatafound';
 
 function Cancelled({ Orders, traking, loading }) {
 
@@ -23,7 +24,12 @@ function Cancelled({ Orders, traking, loading }) {
     <>
       <div className={styles.allordermainsection}>
 
-        {Orders?.length === 0 && <div>No Data Found!!</div>}
+        {Orders?.length === 0 && <div>
+
+          <Nodatafoundimage
+            title={"No Order InProgress"}
+          />
+        </div>}
 
         {loading ? <>
           <LoaderLogo />

@@ -31,18 +31,9 @@ axios.interceptors.request.use(
         }
         else {
             const token = localStorage.getItem("userToken");
-            // var tokenDate = new Date(parseInt(token) * 1000)
+    
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
-            // var date = new Date();
-            // if(tokenDate)
-            // {
-            //     if (tokenDate.exp < date.getTime() / 1000) {
-            //         localStorage.clear();
-            //     } else {
-            //         console.log('The token is still valid');
-        
-            //     }
-            // }
+            
             config.headers = {
                 ...config.headers,
                 "Content-Type": "application/json",
@@ -67,27 +58,55 @@ axios.interceptors.response.use(
         return response;
     },
     async function (error) {
-        if (error.response.status === 401) {
+
+        const token = localStorage.getItem("userToken");
+
+        var tokenDate = new Date(parseInt(token) * 1000)
+
+        console.log(tokenDate,"tokenDate")
+       
+
+        var date = new Date();
+        if(tokenDate)
+        {
+            // if (tokenDate.exp < date.getTime() / 1000) {
+                localStorage.removeItem("userid");
+                localStorage.removeItem("userToken");
+                localStorage.removeItem("userTokens");
+                localStorage.removeItem("whish");
+                localStorage.removeItem("user");
+                localStorage.removeItem("auth");
+                localStorage.removeItem("productid");
+                localStorage.removeItem('signupuser');
+        }
+        if (error.response.status == 401) {
             const token = localStorage.getItem("userToken");
 
             var tokenDate = new Date(parseInt(token) * 1000)
-            // if (jwt_decode(token).exp < Date.now() / 1000) {
-            //     localStorage.clear();
-            //     NavigatePage("/");
-
-            // }
+           
 
             var date = new Date();
             if(tokenDate)
             {
-                if (tokenDate.exp < date.getTime() / 1000) {
-                    localStorage.clear();
-                NavigatePage("/");
+                // if (tokenDate.exp < date.getTime() / 1000)
+                //  {
+                //     localStorage.clear();
+                // NavigatePage("/");
 
-                } else {
-                    console.log('The token is still valid');
+
+                localStorage.removeItem("userid");
+                localStorage.removeItem("userToken");
+                localStorage.removeItem("userTokens");
+                localStorage.removeItem("whish");
+                localStorage.removeItem("user");
+                localStorage.removeItem("auth");
+                localStorage.removeItem("productid");
+                localStorage.removeItem('signupuser');
+
+                // } else {
+                // return null;
         
-                }
+                // }
             }
         } else {
             return Promise.reject(error);

@@ -149,7 +149,7 @@ function Womencarouselbanner() {
                     <Slider {...settings}>
                         {banners?.map((item, index) => {
                             return (
-                                <div>
+                                <div key={index}>
                                     {item?.imageName?<>
                                         <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />
                                     

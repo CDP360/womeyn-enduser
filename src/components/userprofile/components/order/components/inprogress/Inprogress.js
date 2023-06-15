@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from '../allorders/styles/Allorders.module.scss';
 import { useRouter } from 'next/router';
 import moment from 'moment';
+import { Nodatafoundimage } from '../../../../../nodatafoundimage/Nodatafound';
 
 function Inprogress({ Orders, traking, loading }) {
 
@@ -26,7 +27,12 @@ function Inprogress({ Orders, traking, loading }) {
   return (
     <div>
 
-      {data?.length===0 && <div>No Data Found!!</div>}
+      {data?.length===0 && <div>
+        <Nodatafoundimage
+        title="No Order Inprogress"
+        />
+        
+        </div>}
        <div className={styles.orderstatussection}>
             <div>
             {data?.stateId === 3 && <button className={styles.confirmorderprogress}>Progress</button>}

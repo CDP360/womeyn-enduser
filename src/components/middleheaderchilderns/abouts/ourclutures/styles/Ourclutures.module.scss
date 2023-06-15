@@ -40,10 +40,10 @@
 
 .ifyou {
     color: #898989;
-    width: 75%;
+    width: 100%;
     letter-spacing: 0.02em;
     line-height: 1.9;
-    text-align: center;
+    // text-align: center;
     padding-top: 2%;
     padding-bottom: 2%;
     margin: 0 auto;
@@ -61,10 +61,10 @@
         width: 100%;
     }
     @include lgBreakPoint {
-        width: 90%;
+        width: 100%;
     }
     @include xlBreakPoint {
-        width: 90%;
+        width: 100%;
     }
 }
 

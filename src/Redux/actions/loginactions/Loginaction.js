@@ -5,13 +5,21 @@ import { UserProfileInformation } from "../../../services/user-login-service/use
 export const LoginActions = async (dispatch) => {
     const userid = localStorage.getItem("userid");
     try {
-        const responses = await UserProfileInformation(JSON.parse(userid));
-        if (responses) {
-            dispatch({
-                type: "LOGIN_SUCCESS",
-                payload: responses?.data
-            })
+        if(userid)
+        {
+            const responses = await UserProfileInformation(JSON.parse(userid));
+            if (responses) {
+                dispatch({
+                    type: "LOGIN_SUCCESS",
+                    payload: responses?.data
+                })
+            }
         }
+        else
+        {
+            return null
+        }
+      
     }
     catch (err) {
         dispatch({

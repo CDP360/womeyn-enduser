@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import Reviewmodel from './reviewmodel/Reviewmodel';
 import Returnreviewmodel from './returnreviewmodel/Returnreviewmodel';
 import Skeleton from 'react-loading-skeleton';
+import { Nodatafoundimage } from '../../../../../nodatafoundimage/Nodatafound';
 
 
 
@@ -49,10 +50,16 @@ function Delivered({ Orders, traking, loading }) {
     history.push(`/product/${data}`)
   }
 
-  console.log(newdate.replace("/", ''), "newdate")
+ 
 
   return (
     <Fragment>
+
+      {data?.length===0 && <div>
+        <Nodatafoundimage
+        title="No Order Deliverd"
+        />
+        </div>}
       {data?.map((item, index) => {
         return (
           <div>

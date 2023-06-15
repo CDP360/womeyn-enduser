@@ -2,27 +2,16 @@ import React, { useEffect, useState, useContext, Fragment } from 'react'
 import styles from './styles/ConfirmOrders.module.scss';
 import { ContextStore } from '../../../../Redux/store/Contextstore';
 import { useRouter } from 'next/router';
-import addicon from '../../../../assests/cart-logos/addcart.png';
-import minusicon from '../../../../assests/cart-logos/minuscart.png';
-import delteteicon from '../../../../assests/cart-logos/deleteicons.png';
 import Modal from 'react-bootstrap/Modal';
 import Image from 'next/image';
 import coupons from '../../../../assests/cart-logos/coupincodeimage.png';
 import Spinner from 'react-bootstrap/Spinner';
 import { toast } from 'react-toastify';
-
-
 import cartempty from '../../../../assests/cart-logos/emptycartlogo.png';
 import { postShipmentcreate } from '../../../../services/shipping-service/shipping-service';
 import LoaderLogo from '../../../loaderlogo/LoaderLogo';
 import { couponApply, MyCouponList } from '../../../../services/mycoupon-service/mycoupon-service';
-
-
-
 import moment from 'moment';
-import Allcoupons from '../../../allcoupons/Allcoupons';
-
-
 function Confirmorders({ name, totalPrice, step, setStep, setCouponName, addressid, setShippingAmount, overallamount, setDiscountAmount,
   discountamount
 }) {
@@ -711,15 +700,10 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
                             <div className={styles.couponname}>
                               A${discountamount?.result} Saved! With applied coupon
                             </div>
-                            {/* <div className={styles.offercoupon}>
-                          5% savings with this promo code
-                          applied on this booking
-                        </div> */}
+
                           </div>
                         </div>
-                        {/* <div className={styles.deleteiconsection} onClick={Closecoupons}>
-                      <ion-icon name="close-outline" className={styles.crs}></ion-icon>
-                    </div> */}
+
                       </div>
                     </div>
                   </div> : null}
@@ -792,10 +776,6 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
                       </div>
 
                     </div>
-
-
-
-
 
                   )
                 })}

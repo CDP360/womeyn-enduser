@@ -1,19 +1,88 @@
-import React from 'react'
+import React, { useEffect ,useState} from 'react'
 import styles from './styles/Ourclutures.module.scss';
 import p1 from '../../../../assests/abouts-logos/p1.png';
 import p2 from '../../../../assests/abouts-logos/p2.png';
 import p3 from '../../../../assests/abouts-logos/p3.png';
 import p4 from '../../../../assests/abouts-logos/p4.png';
 import Image from 'next/image';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
+
+import Slider from "react-slick";
+import SlideNextArrow from '../ourteam/slidenextarrow/SlideNextArrow';
+import SlidePreArrow from '../ourteam/slideprearrow/SlidePreArrow';
+import { Getwomenpreneursbanner } from '../../../../services/womenpreneurs-services/womenpreneurs-services';
+
 
 function Ourclutures() {
 
-    const router=useRouter();
+    const router = useRouter();
 
-    const Getintouch=()=>{
+    const Getintouch = () => {
         router.push("/getintouch")
     }
+
+
+    const [partnersbanners,setPartnersBanners]=useState([]);
+
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplaySpeed: 3500,
+        pauseOnHover: true,
+        nextArrow: <SlideNextArrow />,
+        prevArrow: <SlidePreArrow />,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 2,
+                    infinite: true,
+                    dots: false,
+
+                }
+            },
+            {
+                breakpoint: 800,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 1
+                }
+            }
+        ]
+    };
+
+
+    useEffect(() => {
+
+        const data = "Partners & Collaborations Banners"
+        Getwomenpreneursbanner(data).then((res) => {
+console.log(res?.data,"ourteambannersimages");
+setPartnersBanners(res?.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, [])
     return (
         <div>
             {/* <div className='mt-5'>
@@ -37,7 +106,10 @@ function Ourclutures() {
 
                 <div className={styles.aboutimagelogo}>
 
-                    <div>
+                   
+
+{partnersbanners?.length===0 ?<>
+    <div>
                         <Image src={p1} alt="no image" className={styles.aboutlogo} />
                     </div>
                     <div>
@@ -48,6 +120,63 @@ function Ourclutures() {
                     </div>
                     <div>
                         <Image src={p4} alt="no image" className={styles.aboutlogo} />
+                    </div>
+</>:<>
+ <Slider {...settings}>
+                    {partnersbanners.map((item, index) => {
+                        return (
+                            <div>
+                                <div className={styles.insideslides} style={{ background: item.colorbg }}>
+                                    {/* <div className={styles.imagesectionour}>
+                                        <div className={styles.slideaboutimage}>
+                                            <Image src={item?.image} alt="no image" className={styles.slideimagesize} />
+                                        </div>
+
+                                    </div>
+                                    <div className={styles.nameshadowsection}>
+                                        <span className={styles.namecustomers}>{item?.name}</span>
+
+                                        <span className={styles.desc}>{item?.title}</span>
+
+                                    </div> */}
+
+{item?.imageName?<>
+                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />
+                                    
+                                    </>:<>
+                                    <Skeleton className={styles.homebanner} />
+                                    
+                                    </>}
+                                </div>
+                            </div>
+                        )
+                    })}
+                </Slider>
+</>}
+
+                    <div className={styles.mainslidesection}>
+                        {/* <Slider {...settings}>
+                    {data.map((item, index) => {
+                        return (
+                            <div>
+                                <div className={styles.insideslides} style={{ background: item.colorbg }}>
+                                    <div className={styles.imagesectionour}>
+                                        <div className={styles.slideaboutimage}>
+                                            <Image src={item?.image} alt="no image" className={styles.slideimagesize} />
+                                        </div>
+
+                                    </div>
+                                    <div className={styles.nameshadowsection}>
+                                        <span className={styles.namecustomers}>{item?.name}</span>
+
+                                        <span className={styles.desc}>{item?.title}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </Slider> */}
                     </div>
                 </div>
             </div>
@@ -76,8 +205,8 @@ function Ourclutures() {
             <div className={styles.ifyou}>
 
                 If you are looking for Technology, Digital Marketing and Customer Support related jobs then please express your interest and send us your resume to contactus @womeyn.com or  <span onClick={Getintouch} className={styles.linkname}>
-                Click here
-                    </span> One of our team members with reach out to have the initial dialogue.
+                    Click here
+                </span> One of our team members with reach out to have the initial dialogue.
             </div>
 
 
@@ -94,9 +223,9 @@ function Ourclutures() {
 
             <div className={styles.ifyou}>
 
-                If you are keen on making a difference in the way we empower women then you are in the right place. Please 
+                If you are keen on making a difference in the way we empower women then you are in the right place. Please
                 <span onClick={Getintouch} className={styles.linkname}>Click here</span>
-                 to connect with us via the contact us page and express your desire to work as a volunteer with Womeyn
+                to connect with us via the contact us page and express your desire to work as a volunteer with Womeyn
             </div>
 
 

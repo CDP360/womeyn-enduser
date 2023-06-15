@@ -22,7 +22,10 @@
         width: 49%;
     }
     @include lgBreakPoint {
-        width: 32%;
+        width: 32.5%;
+    }
+    @include xlBreakPoint {
+        width: 32.6%;
     }
     .categoryimage {
         width: 100%;

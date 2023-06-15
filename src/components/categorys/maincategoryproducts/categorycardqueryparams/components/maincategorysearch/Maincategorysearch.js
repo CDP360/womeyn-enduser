@@ -136,7 +136,7 @@ function Maincategorysearch({ name, searchnamevalue,filterproducts,setFilterprod
         getproducts();
     }, [name, searchnamevalue])
     const getproducts = () => {
-        setLoadingproduct(true);
+        setLoadingproduct(true);    
         setProductgetloading(false);
         SearchProductUser(name).then((res) => {
             seLimit(res?.data);
@@ -152,13 +152,13 @@ function Maincategorysearch({ name, searchnamevalue,filterproducts,setFilterprod
         })
     }
     const fetchCurrentData = async (names, current) => {
-        const resdata = await ProductCatgorylist(names, current, searchnamevalue);
+        const resdata = await SearchProductUser(names, current);
         setFilterproducts(resdata?.data?.results);
     }
     const handleChangePagecount = async (e) => {
         setCurrent(e);
         const current = e;
-        await fetchCurrentData(name, current, searchnamevalue);
+        await fetchCurrentData(name, current);
     }
 
     const PrevNextArrow = (current, type, originalElement) => {
@@ -191,7 +191,7 @@ function Maincategorysearch({ name, searchnamevalue,filterproducts,setFilterprod
                                 </div>
                                
 
-                    </div > : <div className="row gap-3">
+                    </div > : <div className="row gap-2">
                         {filterproducts?.map((item, index) => {
                             return (
                                 <>
@@ -203,7 +203,7 @@ function Maincategorysearch({ name, searchnamevalue,filterproducts,setFilterprod
                 </div>}
             </div>
 
-            {filterproducts?.length > 0 && <div className='d-flex justify-content-center mt-4'>
+            {filterproducts?.length > 12 && <div className='d-flex justify-content-center mt-4'>
                 <Pagination
                     className="pagination-data"
                     total={limit?.totalPages * 10}

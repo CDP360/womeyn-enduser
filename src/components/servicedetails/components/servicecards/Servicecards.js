@@ -98,14 +98,14 @@ function Servicecards() {
         })
     }
     const fetchCurrentData = async (current) => {
-  
+
 
         const resdata = await Serviceusers(current);
         // setServiceusers(resdata?.data?.results);
     }
     const handleChangePagecount = async (e) => {
         setCurrent(e);
-      
+
         const current = e;
         await fetchCurrentData(current);
     }
@@ -126,7 +126,7 @@ function Servicecards() {
     }
 
 
-    console.log(servicesusers,"servicesusers")
+
 
     return (
         <Fragment>
@@ -171,7 +171,9 @@ function Servicecards() {
                     <div className='cardsections row  w-100 mt-5 mb-3 ms-1'>
                         <div>
                             {servicesusers.length === 0 && <div>
-                                <Nodatafoundimage />
+                                <Nodatafoundimage
+                                    title="No Services Available"
+                                />
                             </div>}
                         </div>
                         {loadingset ? <>

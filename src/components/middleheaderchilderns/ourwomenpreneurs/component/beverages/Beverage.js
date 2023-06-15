@@ -16,6 +16,7 @@ import { CART_SUCCESS } from '../../../../../Redux/types';
 import LoaderLogo from '../../../../loaderlogo/LoaderLogo';
 import { cartContext } from '../../../../../Redux/store/CartContext';
 import Skeleton from 'react-loading-skeleton';
+import { Nodatafoundimage } from './../../../../nodatafoundimage/Nodatafound';
 function Beverage({ productlist, loading, sellers }) {
     const { state, dispatch } = useContext(ContextStore)
     const router = useRouter();
@@ -31,7 +32,12 @@ function Beverage({ productlist, loading, sellers }) {
         <Fragment>
             <div className={styles.mainbeveragesection}>
                 <div>
-                    {productlist?.length == 0 && <div>No Data Found!!!</div>}
+                    {productlist?.length == 0 && <div>
+                        {/* <Nodatafoundimage/> */}
+                     <Nodatafoundimage
+                       title="No Available Categorys"
+                     />
+                        </div>}
                 </div>
                 <div className='cardsection row mb-3 ms-1'>
                     {loading ? <>

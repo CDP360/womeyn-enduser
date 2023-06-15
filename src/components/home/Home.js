@@ -82,35 +82,18 @@ function Home() {
     useEffect(() => {
         GetBannerimages();
         CheckTokens();
-
-
         const token = localStorage.getItem("userToken");
+        var tokenDate = new Date(parseInt(token) * 1000)
+        var date = new Date();
+        if (tokenDate) {
+            if (tokenDate.exp < date.getTime() / 1000) {
+                localStorage.clear();
 
-            var tokenDate = new Date(parseInt(token) * 1000)
-            // if (jwt_decode(token).exp < Date.now() / 1000) {
-            //     localStorage.clear();
-            //     NavigatePage("/");
+            } else {
+                console.log('The token is still valid');
 
-            // }
-
-            var date = new Date();
-            if(tokenDate)
-            {
-                if (tokenDate.exp < date.getTime() / 1000) {
-                    localStorage.clear();
-            
-                } else {
-                    console.log('The token is still valid');
-        
-                }
             }
-        
-
-        
-  
-
-       
-
+        }
     }, []);
 
     const CheckTokens = async () => {
@@ -119,7 +102,9 @@ function Home() {
             await UserProfileInformation(JSON.parse(userid));
         }
         catch (err) {
-            if (err?.response?.data?.message == "Please authenticate" || err?.response?.data?.message == "Forbidden") {
+
+            console.log(err?.response?.data?.message,"err")
+            if (err?.response?.data?.message == "Please authenticate" || err?.response?.data?.message == "Forbidden" || err?.response?.data?.message == "Not found") {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("userTokens");
@@ -128,7 +113,7 @@ function Home() {
                 localStorage.removeItem("auth");
                 localStorage.removeItem("productid");
                 localStorage.removeItem('signupuser');
-            
+
             }
 
             if (state?.loginUser?.error?.code === 401 || state?.loginUser?.error?.code === 403) {
@@ -143,7 +128,7 @@ function Home() {
             }
 
 
-            if (state?.loginUser?.error?.message == "Please authenticate" || state?.loginUser?.error?.message == "unAuthorized User" || state?.loginUser?.logindata===[]) {
+            if (state?.loginUser?.error?.message == "Please authenticate" || state?.loginUser?.error?.message == "unAuthorized User" || state?.loginUser?.logindata == []) {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("userTokens");
@@ -168,6 +153,24 @@ function Home() {
     const MovePageData = (data) => {
         window.open(data);
     }
+
+    const [showTopBtn, setShowTopBtn] = useState(false);
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 40) {
+                setShowTopBtn(true);
+            } else {
+                setShowTopBtn(false);
+            }
+        });
+    }, []);
+    const goToTop = () => {
+        window.scrollTo({   
+            top: 20,
+            behavior: "smooth",
+        });
+    };
+
     return (
         <Fragment>
             <Head>
@@ -259,6 +262,20 @@ function Home() {
                 </div>
                 <div>
                     <Whatmake />
+                </div>
+
+                <div>
+
+                <div className={styles.mainscrollbutton}>
+                {showTopBtn && (
+                    <div
+                        className={styles.iconsection}
+                        onClick={goToTop}
+                    >
+                        top section
+                    </div>
+                )}
+            </div>
                 </div>
             </div>
         </Fragment >

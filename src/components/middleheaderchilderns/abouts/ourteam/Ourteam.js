@@ -210,7 +210,7 @@ function Ourteam() {
             <div>
 
 
-                <div className={styles.kulkarinextss}>
+                <div className={styles.kulkarinexts}>
 
                 A vibrant and energetic young Lawyer who is making her mark in the corporate world and at the same time working towards being an active member of the core founding team. She takes on the role of all legal matters and is the backbone in ensuring that the business is in compliance with law of the land. Tanushka specializes in corporate & commercial law and is on embarking on her masters.
 

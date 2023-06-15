@@ -19,20 +19,22 @@ function Sidebarcateogrys({ setFilterproducts, setLoadingproduct, setProductgetl
   const [categoryfilter, setCategoryfilters] = useState([]);
   const [filterproductprice1, setProductfilterprice1] = useState("");
   const [filterproductprice2, setProductfilterprice2] = useState("");
-
+  const [filtercategorysearch, setFiltercategorysearch] = useState("");
+  const [filtercategorysearch1, setFiltercategorysearch1] = useState("");
 
   const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false)
+    setFiltercategorysearch("");
+  };
   const handleShow = () => setShow(true);
-
-
   const onChange = (value) => {
     setFirst(value);
   }
   const onAfterChange = (value) => {
     setFirst1(value);
   }
+
   useEffect(() => {
     // WomenpreneursCommoncategories
     WomenpreneursCommoncategories().then((res) => {
@@ -45,22 +47,16 @@ function Sidebarcateogrys({ setFilterproducts, setLoadingproduct, setProductgetl
     setProductgetloading(false);
 
     if (categoryfilter) {
-
-      const price1=filterproductprice1;
-      const price2=filterproductprice2;
-
-      console.log(price1,price2,"ko")
-
+      const price1 = filterproductprice1;
+      const price2 = filterproductprice2;
       const datas = {
         categoryIds: categoryfilter.toString(),
-        priceFrom:price1,
+        priceFrom: price1,
         priceTo: price2
       }
-
-      console.log(datas,"datas")
       CategoryproductFilter(datas).then((res) => {
         setFilterproducts(res?.data?.results);
-        setProductgetloading(true); s
+        setProductgetloading(true); 
         setTimeout(() => {
           setLoadingproduct(false);
           setProductgetloading(false);
@@ -71,24 +67,18 @@ function Sidebarcateogrys({ setFilterproducts, setLoadingproduct, setProductgetl
         setLoadingproduct(false);
       })
     }
-  }, [categoryfilter,filterproductprice1,filterproductprice2]);
+  }, [categoryfilter, filterproductprice1, filterproductprice2]);
 
   const ClearFiltersall = () => {
     setLoadingproduct(true);
     setTimeout(() => {
       setLoadingproduct(false);
     }, 600)
-
     setCategoryfilters([]);
-
     window.location.reload(false);
-
-
-
-
   }
 
-  console.log(first[0], first[1], "first")
+
 
 
 
@@ -117,11 +107,13 @@ function Sidebarcateogrys({ setFilterproducts, setLoadingproduct, setProductgetl
             <div className={styles.filterbytext}>
               Filter by
             </div>
-
           </div>
+          <div className={styles.rightfilter}>
           <div className={styles.cleartexts} onClick={ClearFiltersall}>
-            Clear All
+            {categoryfilter?.length === 0 ? null : categoryfilter?.length} <span className="">Clear All</span>
           </div>
+          </div>
+        
         </div>
       </div>
       <div className='mt-2'>
@@ -167,13 +159,50 @@ function Sidebarcateogrys({ setFilterproducts, setLoadingproduct, setProductgetl
         </div>
         {dropdown1 && <div className={styles.gapsectiondropdown}>
 
-          {commoncategorys?.slice(0, 10).map((item, index) => {
-            return (
-              <div key={index}>
-                <Form.Check type="checkbox" label={item?.name} value={item?.id} onChange={handleFilterCategorys} />
+          <Form.Group controlId="formBasicEmail" className="col-lg-12 mb-3">
+            <Form.Label>Search Brands</Form.Label>
+            <Form.Control type="search" placeholder="Enter Search Brands..."
+              name="categorysearch"
+              value={filtercategorysearch1}
+              onChange={(e) => setFiltercategorysearch1(e?.target?.value)} />
+          </Form.Group>
+
+          {filtercategorysearch1 ? <>
+            {commoncategorys?.filter(user =>
+              user?.name.toLowerCase().includes(filtercategorysearch1)).map((item, index) => {
+                return (
+                  // <div key={index}>
+                  //   <Form.Check type="checkbox" label={item?.name} value={item?.id} onChange={handleFilterCategorys} />
+                  // </div>
+
+                  <div key={index} className={styles.cardfilters}>
+                  <Form.Check type="checkbox" id={item?.name} value={item?.id} onChange={handleFilterCategorys}
+                    className={styles.formselectcursor}
+                  />
+                  <label htmlFor={item?.name} className={styles.supportcursor}>
+                    {item?.name}
+                  </label>
+                </div>
+                )
+              })}
+          </> : <>
+            {commoncategorys?.slice(0, 10).map((item, index) => {
+              return (
+                // <div key={index}>
+                //   <Form.Check type="checkbox" label={item?.name} value={item?.id} onChange={handleFilterCategorys} />
+                // </div>
+
+                <div key={index} className={styles.cardfilters}>
+                <Form.Check type="checkbox" id={item?.name} value={item?.id} onChange={handleFilterCategorys}
+                  className={styles.formselectcursor}
+                />
+                <label htmlFor={item?.name} className={styles.supportcursor}>
+                  {item?.name}
+                </label>
               </div>
-            )
-          })}
+              )
+            })}
+          </>}
         </div>}
         {commoncategorys?.length > 10 && <div className={styles.readmorebutton} onClick={handleShow}>
           {commoncategorys?.length} Read More...
@@ -211,11 +240,13 @@ function Sidebarcateogrys({ setFilterproducts, setLoadingproduct, setProductgetl
             onChange={onChange} onAfterChange={onAfterChange}
           />
 
+        
+
           <div>
 
 
             <Row>
-              <Col lg="5">
+              <Col lg="12" sm="5">
                 <Form.Select aria-label="Default select example" name="pricefilterproduct" className={styles.pricefiltertextbox}
                   onChange={(e) => setProductfilterprice1(e?.target?.value)}
                   value={filterproductprice1}
@@ -229,30 +260,25 @@ function Sidebarcateogrys({ setFilterproducts, setLoadingproduct, setProductgetl
                   <option value="3000">A$3000</option>
                 </Form.Select>
               </Col>
-              <Col lg="1">
-                <div className="d-flex align-items-center justify-content-center mt-2">
+              <Col lg="12" sm="2">
+                <div className="d-flex align-items-center justify-content-center mt-2 mb-2">
                   <div className={styles.totext}>
                     to
                   </div>
                 </div>
               </Col>
-              <Col lg="5">
+              <Col lg="12" sm="5">
                 <Form.Select aria-label="Default select example" name="pricefilterproduct" className={styles.pricefiltertextbox}
                   onChange={(e) => setProductfilterprice2(e?.target?.value)}
                   value={filterproductprice2}
                 >
                   <option value="" default={""} diabled>A$3000+</option>
-
-
-
                   <option value="3000">A$3000</option>
                   <option value="2500">A$2500</option>
                   <option value="2000">A$2000</option>
                   <option value="1500">A$1500</option>
                   <option value="1000">A$1000</option>
                   <option value="500">A$500</option>
-
-
                 </Form.Select>
               </Col>
             </Row>
@@ -262,34 +288,57 @@ function Sidebarcateogrys({ setFilterproducts, setLoadingproduct, setProductgetl
         </div>}
       </div>
 
-    
+
 
       <Modal show={show} onHide={handleClose} centered size="lg">
         <Modal.Body className={styles.filtermodelshow}>
-        <div className={"row d-flex gap-1"}>
-        
+          <div className={"row d-flex gap-1"}>
 
 
-{commoncategorys?.slice(0, 10).map((item, index) => {
-            return (
-              <div key={index} className={styles.cardfilters}>
-                <Form.Check type="checkbox" id={item?.name} value={item?.id} onChange={handleFilterCategorys}
-                className={styles.formselectcursor}
-                />
-      <label htmlFor={item?.name} className={styles.supportcursor}>
-        {item?.name}
-      </label>
+          <div className="d-flex justify-content-between">
+
+<div className="w-100">
+  <Form.Group controlId="formBasicEmail" className="col-lg-12 mb-3">
+    <Form.Label>Search Brands</Form.Label>
+    <Form.Control type="search" placeholder="Enter Search Brands..."
+      name="categorysearch"
+      value={filtercategorysearch}
+      onChange={(e) => setFiltercategorysearch(e?.target?.value)} />
+  </Form.Group>
+</div>
+<div className="text-end d-flex justify-content-end  w-100 mt-2">
+<div  className={"cursorpointers"}  onClick={handleClose}>
+<ion-icon name="close-outline" size="large"></ion-icon>
+</div>
+</div>
+<hr />
+
+</div>
 
 
-              </div>
-            )
-          })}
-          
-        </div>
+
+
+
+
+            {commoncategorys?.filter(user =>
+              user?.name.toLowerCase().includes(filtercategorysearch)).map((item, index) => {
+                return (
+                  <div key={index} className={styles.cardfilters}>
+                    <Form.Check type="checkbox" id={item?.name} value={item?.id} onChange={handleFilterCategorys}
+                      className={styles.formselectcursor}
+                    />
+                    <label htmlFor={item?.name} className={styles.supportcursor}>
+                      {item?.name}
+                    </label>
+                  </div>
+                )
+              })}
+
+          </div>
 
         </Modal.Body>
         <Modal.Footer>
-          <button  onClick={handleClose} className={styles.closefilter}>
+          <button onClick={handleClose} className={styles.closefilter}>
             Close
           </button>
           <button className={styles.savefilters} onClick={handleClose}>

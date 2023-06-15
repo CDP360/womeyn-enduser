@@ -34,7 +34,7 @@ function Searchcategorycards({ item }) {
             <div className={styles.cardinsidesection}>
                 <Image src={stars} alt="no image" className={styles.stars} />
                 <div className={styles.productname}>
-                    {item?.productName?.length <= 10 ? <> {item?.productName}</> : <> {item?.productName.slice(0, 28)}...</>}
+                    {item?.productName?.length <= 10 ? <> {item?.productName}</> : <> {item?.productName.slice(0, 18)}...</>}
 
                 </div>
                 <div className={styles.brandnames}>

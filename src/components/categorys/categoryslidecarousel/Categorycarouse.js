@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles/Categorycarousel.module.scss';
 import Slider from "react-slick";
-import { CategoryBanners } from './../../../services/category-services/category-service';
+// import { CategoryBanners } from './../../../services/category-services/category-service';
 import SlideNextArrow from '../../home/slidenextarrow/SlideNextArrow';
 import SlidePreArrow from '../../home/slideprearrow/SlidePreArrow';
 import Skeleton from 'react-loading-skeleton';
+
+import { Getwomenpreneursbanner } from './../../../services/womenpreneurs-services/womenpreneurs-services';
+
 
 function Categorycarouse() {
 
@@ -16,7 +19,7 @@ function Categorycarouse() {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        // autoplay: true,
+        autoplay: true,
         autoplaySpeed: 3500,
         pauseOnHover: true,
         nextArrow: <SlideNextArrow />,
@@ -26,7 +29,7 @@ function Categorycarouse() {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 2,
+                    slidesToScroll: 1,
                     infinite: true,
                     dots: false,
 
@@ -59,12 +62,13 @@ function Categorycarouse() {
         ]
     };
     useEffect(() => {
-        CategoryBanners().then((res) => {
-
+        const data = 'Category Banners';
+        Getwomenpreneursbanner(data).then((res) => {
             setBanners(res?.data);
         }).catch((err) => {
             console.log(err);
         })
+
     }, []);
     const MovePageData = (data) => {
         window.open(data);
@@ -92,9 +96,7 @@ function Categorycarouse() {
                         {datas?.map((item, index) => {
                             return (
                                 <div key={index}>
-
                                     <Skeleton className={styles.loadingskelton} />
-
                                 </div>
                             )
                         })}
@@ -115,5 +117,4 @@ function Categorycarouse() {
         </div>
     )
 }
-
 export default Categorycarouse

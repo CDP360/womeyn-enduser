@@ -83,7 +83,7 @@ function Maincategorylist({ name, searchnamevalue,filterproducts,setFilterproduc
                                 </div>
                                
 
-                    </div > : <div className="row gap-3">
+                    </div > : <div className="row gap-2">
                         {filterproducts?.map((item, index) => {
                             return (
                                 <>
@@ -95,7 +95,7 @@ function Maincategorylist({ name, searchnamevalue,filterproducts,setFilterproduc
                 </div>}
             </div>
 
-            {filterproducts?.length > 0 && <div className='d-flex justify-content-center mt-4'>
+            {filterproducts?.length > 12 && <div className='d-flex justify-content-center mt-4'>
                 <Pagination
                     className="pagination-data"
                     total={limit?.totalPages * 10}

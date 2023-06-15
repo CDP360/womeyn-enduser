@@ -133,6 +133,8 @@ export function UserProfileInformation(userid) {
         instanceBaseurl.get(`/customer/basicinfo/${userid}`).then(response => {
             resolve(response)
         }).catch(err => {
+
+            console.log("kalaierr",err?.response?.data?.message)
             reject(err)
         })
     })

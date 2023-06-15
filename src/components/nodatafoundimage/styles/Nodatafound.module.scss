@@ -1,25 +1,21 @@
 @use "../../../../scss/abstract/" as *;
 
-
-.nodatafoundimagesection
-{
-    width:100%;
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    padding:15px;
-    .noimages
-    {
-        width:150px;
-        height:150px;
+.nodatafoundimagesection {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px;
+    .noimages {
+        width: 50px;
+        height: 50px;
     }
-    .titlereview
-    {
+    .titlereview {
         color: rgba(0, 0, 0, 0.48);
-        font-size:1rem;
-        padding-top:1.4%;
+        font-size: 1.3rem;
+        padding-top: 1.4%;
+        font-weight: 500;
     }
-
 }

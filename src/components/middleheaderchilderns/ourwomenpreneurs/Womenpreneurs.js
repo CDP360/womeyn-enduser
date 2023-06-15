@@ -153,14 +153,13 @@ function Womenpreneurs() {
                         </div>
                     </div>
 
+{dataseller?.length===0 && null}
                     <div>
                         {searchname?.length > 0 ? <>
                             <div className='cardsections row   w-100 mt-5 mb-5 ms-1'>
                                 <div>
                                     {dataseller.length === 0 && <div>
-                                        <Nodatafoundimage
-                                            title="Not Available Womeynpreneurs"
-                                        />
+                                       
                                     </div>}
                                 </div>
                                 {loadingset ? <>

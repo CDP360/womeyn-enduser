@@ -8,7 +8,7 @@ export function Getwomenpreneursbanner(data) {
     // });
 
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/get-placement/${data}/5`).then(response => {
+        instanceBaseurl.get(`/common/get-placement/${data}/20`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)

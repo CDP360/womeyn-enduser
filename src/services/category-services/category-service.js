@@ -28,7 +28,7 @@ export function ProductCatgorylist(data, current) {
     // })
 
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/category/products?slugName=${data}&limit=10&page=${current}`).then(response => {
+        instanceBaseurl.get(`/common/category/products?slugName=${data}&limit=12&page=${current}`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)
@@ -57,7 +57,7 @@ export function SearchProductCategorys() {
 }
 
 
-export function SearchProductUser(data) {
+export function SearchProductUser(data,current) {
     // return instanceBaseurl.get(`/common/search/products?search=${data}`).then((res) => {
     //     return res;
     // }).catch((err) => {
@@ -65,8 +65,10 @@ export function SearchProductUser(data) {
 
     // })
 
+    console.log(current,"current")
+
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/search/products?search=${data}`).then(response => {
+        instanceBaseurl.get(`/common/search/products?search=${data}&limit=50&page=${current}`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)

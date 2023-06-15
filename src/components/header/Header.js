@@ -14,6 +14,9 @@ import { useContext, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { toast } from 'react-toastify';
 import heart from '../../assests/homepage-logos/hearticon.png';
+import heart1 from '../../assests/heartlogos/heart1.png';
+import heart2 from '../../assests/heartlogos/heart2.png';
+
 import { ContextStore } from './../../Redux/store/Contextstore';
 import { GetFavoritsList } from './../../services/user-favorits-service/User-favorits-service';
 import { ExploreCategorys } from '../../services/explore-service/explore-service';
@@ -150,7 +153,7 @@ function Header() {
         // SearchProductUser(serachcategory).then((res) => {
 
 
-          
+
         //     // setSearchDataCategory(res?.data?.results)
         //     setTimeout(() => {
         //         setSearchDataCategory1(res?.data?.results);
@@ -194,7 +197,6 @@ function Header() {
     const HelpPage = () => {
         router.push(`/profile/faq`);
     }
-
     return (
         <Fragment>
             <div className={styles.mainheadersection}>
@@ -232,13 +234,20 @@ function Header() {
                         <div className={styles.rightlogo}>
                             <div className={styles.insiderightlogos}>
 
-                                <div className={styles.falight} onClick={notificationsPush}>
+                                {/* <div className={styles.falight} onClick={notificationsPush}>
                                     <Image src={notifications} alt="no image" className={styles.notifications} />
-                                </div>
+                                </div> */}
                                 <div className={styles.falight} >
+
+                                    {/* {router.pathname == "/profile/favorts"?<>
+                                    
+                                    kalai
+                                    </>:<>
+                                    
+                                    j</>} */}
                                     <div className={styles.maincartcount} onClick={heartpushdata}>
                                         <div>
-                                            <Image src={heart} alt="no image" className={styles.notifications} />
+                                            <Image src={heart2} alt="no image" className={styles.notifications} />
                                         </div>
                                         {favortcountdataredux?.favorts?.favortsdata?.length > 0 ? <div className={styles.cartcountbox}>
                                             {favortcountdataredux?.favorts?.favortsdata?.length}

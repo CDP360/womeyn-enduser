@@ -32,7 +32,7 @@ function Healthfitness() {
       <>
         <div className={styles.allcategorymainsection}>
           <div className='textseller'>
-            Our bestselling Electronics
+            Our bestselling Health and Fitnesss
           </div>
           <div className='cardsection row justify-content-center  w-100 mt-4 mb-3 ms-1 '>
             {Products?.slice(15, 19).map((item, index) => {

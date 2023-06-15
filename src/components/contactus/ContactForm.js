@@ -61,11 +61,9 @@ function ContactForm() {
         contactNo: phone,
         contactReasons: checks?.toString()
       }
-
       setLoading(true);
-
       ConatctformsUser(forms).then((res) => {
-        toast.success("Thanks for contacting us. We will reach you shortly...", {
+        toast.success("We will respond you shortly", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
@@ -124,7 +122,7 @@ function ContactForm() {
     <div className={styles.contactformsections}>
 
 
-    
+
       <form>
         <div className={styles.insidecontactforms}>
           <div className="col-lg-5">
@@ -140,7 +138,7 @@ function ContactForm() {
                 value={firstName}
                 onChange={handlechange}
               />
-              {error && firstName?.length <= 0 ? <span className="active">first Name is Required!!!</span> : <></>}
+              {error && firstName?.length <= 0 ? <span className="active">First Name is Required</span> : <></>}
 
             </Form.Group>
           </div>
@@ -157,7 +155,7 @@ function ContactForm() {
                 value={lastName}
                 onChange={handlechange}
               />
-              {error && lastName?.length <= 0 ? <span className="active">Last Name is Required!!!</span> : <></>}
+              {error && lastName?.length <= 0 ? <span className="active">Last Name is Required</span> : <></>}
 
 
             </Form.Group>
@@ -177,28 +175,28 @@ function ContactForm() {
                   value={email}
                   onChange={handlechange}
                 />
-                {error && email?.length <= 0 ? <span className="active">email is Required!!!</span> : <></>}
+                {error && email?.length <= 0 ? <span className="active">Email is Required</span> : <></>}
 
 
               </Form.Group>
             </div>
             <div className="col-lg-5">
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label className={styles.firstNametexts}>Phone</Form.Label>
+                <Form.Label className={styles.firstNametexts}>Contact No</Form.Label>
                 <div className={styles.contactphone}>
                   <span>+61</span>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter Phone..."
-                  className={styles.contactformtextfield1}
-                  name="phone"
-                  value={phone}
-                  onChange={handlechange}
-                  maxlength={9}
-                />
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Contact No ..."
+                    className={styles.contactformtextfield1}
+                    name="phone"
+                    value={phone}
+                    onChange={handlechange}
+                    maxlength={9}
+                  />
                 </div>
-                
-                {error && phone?.length <= 0 ? <span className="active">Contact No is Required!!!</span> : <></>}
+
+                {error && phone?.length <= 0 ? <span className="active">Contact No is Required</span> : <></>}
 
 
               </Form.Group>
@@ -215,8 +213,6 @@ function ContactForm() {
           <div>
             <div className={styles.checkboxs}>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
-
-
                 <input
                   type='checkbox'
 
@@ -305,7 +301,7 @@ function ContactForm() {
 
 
 
-          {errorhelp && checks?.length <= 0 ? <span className="active">Help is Required!!!</span> : <></>}
+          {errorhelp && checks?.length <= 0 ? <span className="active">Help is Required</span> : <></>}
         </div>
 
 
@@ -327,7 +323,7 @@ function ContactForm() {
                 as="textarea" rows={4}
               />
 
-              {error && message?.length <= 0 ? <span className="active">message is Required!!!</span> : <></>}
+              {error && message?.length <= 0 ? <span className="active">Message is Required</span> : <></>}
 
 
             </Form.Group>

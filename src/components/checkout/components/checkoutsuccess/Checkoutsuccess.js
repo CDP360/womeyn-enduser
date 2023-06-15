@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { CheckoutSuccessUpdate, CheckoutSuccessUpdatePaypal } from '../../../../services/checkout-services/checkout-service';
 import { useRouter } from 'next/router';
 import styles from './styles/Checkout.module.scss';
 import { useSearchParams } from 'next/navigation';
-import LoaderLogo from './../../../loaderlogo/LoaderLogo';
-import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import ordercomplete from '../../../../assests/cart-logos/Order complete.gif';
 import Image from 'next/image';
@@ -16,31 +13,19 @@ function Checkoutsuccess() {
     const Transaction_id = searchParams.get('transaction_id');
     const paymentId_id = searchParams.get('paymentId');
     const PayerID_id = searchParams.get('PayerID');
-
     const [show, setShow] = useState(false);
     const handleClose = () => {
         setShow(false)
         history.push("/profile/orders");
-
     };
     const handleShow = () => setShow(true);
     useEffect(() => {
         if (Transaction_id) {
             handleShow();
-
             CheckoutSuccessUpdate(Transaction_id).then((res) => {
                 if (res?.data?.message == "Order completed successfully") {
-                    // toast.success(res?.data?.message, {
-                    //     position: "top-center",
-                    //     autoClose: 3000,
-                    //     hideProgressBar: false,
-                    //     closeOnClick: true,
-                    //     pauseOnHover: true,
-                    //     draggable: true,
-                    //     progress: undefined,
-                    //     theme: "dark",
-                    // });
                     Cookies.remove("CartDatas");
+                    Cookies.clear();
                     setTimeout(() => {
                         history.push("/profile/orders");
                         handleClose();
@@ -51,27 +36,15 @@ function Checkoutsuccess() {
             })
         }
         else {
-
         }
     }, [Transaction_id]);
-
     useEffect(() => {
         if (paymentId_id, PayerID_id) {
             handleShow();
-
             CheckoutSuccessUpdatePaypal(paymentId_id, PayerID_id).then((res) => {
                 if (res?.data?.message == "Order completed successfully") {
-                    // toast.success(res?.data?.message, {
-                    //     position: "top-center",
-                    //     autoClose: 3000,
-                    //     hideProgressBar: false,
-                    //     closeOnClick: true,
-                    //     pauseOnHover: true,
-                    //     draggable: true,
-                    //     progress: undefined,
-                    //     theme: "dark",
-                    // });
                     Cookies.remove("CartDatas");
+                    Cookies.clear();
                     setTimeout(() => {
                         history.push("/profile/orders");
                         handleClose();
@@ -82,16 +55,11 @@ function Checkoutsuccess() {
             })
         }
     }, [PayerID_id, paymentId_id])
-
-
     return (
         <>
             <div className={styles.success}>
-                {/* <LoaderLogo /> */}
-
                 <Modal show={show} onHide={handleClose} centered>
                     <Modal.Header closeButton className="modalheader">
-
                     </Modal.Header>
                     <Modal.Body>
                         <div>
@@ -110,7 +78,6 @@ function Checkoutsuccess() {
                             </div>
                         </div>
                     </Modal.Body>
-
                 </Modal>
             </div>
         </>

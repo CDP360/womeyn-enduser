@@ -26,10 +26,7 @@ import Googleautocomplete from '../../../../googleautocompleteaddress/Googleauto
 import ShippingRate from './shippingrate/ShippingRate';
 import ImageViewModal from './imageviewmodel/ImageViewModal';
 function Viewproducts({ id }) {
-
     const [googleplaces, setGooglePlaces] = useState("");
-
-
     const history = useRouter();
     const [errors, setError] = useState(false);
     const [productnotfound, setProductNotfound] = useState(false);
@@ -315,26 +312,18 @@ function Viewproducts({ id }) {
     }
 
     const handleChange = (cartdata, productvariations) => {
-
-
-
-
         const datas = [productvariations[0]?.name];
         const datas1 = [productvariations[0]?.name, productvariations[1]?.name];
         const datas2 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name];
         const datas3 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name];
         const datas4 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name, productvariations[4]?.name];
-
-
         if (datas?.length === productvariations?.length) {
             const values = [
                 {
                     name: datas[0],
                     value: productSize1
                 }
-
             ]
-
             if (productSize1.length === 0) {
                 toast.error(`Please select a ${datas[0]}`,
                     {
@@ -419,7 +408,6 @@ function Viewproducts({ id }) {
 
         }
         else if (datas2?.length === productvariations?.length) {
-
             const values = [
                 {
                     name: datas2[0],
@@ -434,9 +422,6 @@ function Viewproducts({ id }) {
                     value: productSize3
                 }
             ]
-
-
-
             if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0) {
                 toast.error(`Please select a ${datas2[0]} and ${datas2[1]} and ${datas2[2]} `,
                     {
@@ -451,7 +436,6 @@ function Viewproducts({ id }) {
                     }
                 );
             }
-
             if (datas2) {
                 if (productSize1 && productSize2 && productSize3) {
                     setTimeout(() => {
@@ -459,19 +443,14 @@ function Viewproducts({ id }) {
 
                     }, 400)
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryCharge === null ? 0 : cartdata?.localDeliveryCharge === null ? 0 : cartdata?.localDeliveryCharge } });
-
                 }
             }
             else {
                 setTimeout(() => {
                     router?.push("/cart")
-
                 }, 400)
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryCharge } });
-
             }
-
-
         }
         else if (datas3?.length === productvariations?.length) {
             const values = [
@@ -492,8 +471,6 @@ function Viewproducts({ id }) {
                     value: productSize4
                 }
             ]
-
-
 
             if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0 || productSize4?.length === 0) {
                 toast.error(`Please select a ${datas3[0]} and ${datas3[1]} and ${datas3[2]} and ${datas3[3]}`,
@@ -522,7 +499,6 @@ function Viewproducts({ id }) {
             else {
                 setTimeout(() => {
                     router?.push("/cart")
-
                 }, 400)
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryCharge } });
 
@@ -552,9 +528,6 @@ function Viewproducts({ id }) {
                     value: productSize5
                 }
             ]
-
-
-
             if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0 || productSize4?.length === 0 || productSize5?.length === 0) {
                 toast.error(`Please select a ${datas4[0]} and ${datas4[1]} and ${datas4[2]} and ${datas4[3]} and ${datas4[4]}`,
                     {
@@ -598,35 +571,19 @@ function Viewproducts({ id }) {
             dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge == null ? 0 : cartdata?.localDeliveryCharge } });
 
         }
-
-
-
-
     }
 
     // No Records Found
 
-
     const [errorpage, setNotPage] = useState(false);
-
-
-
     useEffect(() => {
-
         const tokencheck = localStorage.getItem("userToken");
         setTokenset(tokencheck);
         ProductDataView();
     }, [productnames, tokencheck, index1, index2, index3, index4, averageRatings?.avgRating, errors]);
-
-
     const ProductDataView = async () => {
         try {
             await ProductView(productnames).then((res) => {
-
-
-
-
-
                 setProductseller(res?.data?.sellerInformation[0])
                 const productshowimages = [];
                 res?.data?.productDetails?.productImages?.map((item, index) => {
@@ -666,7 +623,6 @@ function Viewproducts({ id }) {
     }
 
     useEffect(() => {
-
         const productids = JSON.parse(localStorage.getItem("auth"));
         if (productids) {
             ProductLikeandUnlikeCheck(productdata?.id).then((res) => {
@@ -675,15 +631,7 @@ function Viewproducts({ id }) {
                 console.log(err);
             })
         }
-
-
     }, [productSize, productseller, productnames, averageRatings?.avgRating, productnotfound, errors, productdata]);
-
-
-
-
-
-
 
     const LikeWishlistlike = (id) => {
         const likeid = {
@@ -699,7 +647,6 @@ function Viewproducts({ id }) {
                 draggable: true,
                 progress: undefined,
                 theme: "dark",
-
             })
             setLike(true)
         }).catch((err) => {
@@ -721,7 +668,6 @@ function Viewproducts({ id }) {
                 draggable: true,
                 progress: undefined,
                 theme: "dark",
-
             })
             setLike(false)
         }).catch((err) => {
@@ -735,36 +681,21 @@ function Viewproducts({ id }) {
         }, 500)
         history.push(`/womenpreneurs/${data}`);
     }
-
     const buyNowPathNavigate = (cartdata, productvariations) => {
-
-
-
-
         const pathnames = "/checkout";
         localStorage.setItem("whish", JSON.stringify(pathnames));
-
-
-
         const datas = [productvariations[0]?.name];
         const datas1 = [productvariations[0]?.name, productvariations[1]?.name];
         const datas2 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name];
         const datas3 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name];
         const datas4 = [productvariations[0]?.name, productvariations[1]?.name, productvariations[2]?.name, productvariations[3]?.name, productvariations[4]?.name];
-
-
-
-
-
         if (datas?.length === productvariations?.length) {
             const values = [
                 {
                     name: datas[0],
                     value: productSize1
                 }
-
             ]
-
             if (productSize1.length === 0) {
                 toast.error(`Please select a ${datas[0]}`,
                     {
@@ -779,20 +710,15 @@ function Viewproducts({ id }) {
                     }
                 );
             }
-
             if (datas) {
                 if (productSize1) {
                     router?.push("/login?redirect=/checkout")
-
                     dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: values, couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge === null ? 0 : cartdata?.localDeliveryCharge } });
-
                 }
             }
             else {
                 router?.push("/login?redirect=/checkout")
-
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge === null ? 0 : cartdata?.localDeliveryCharge } });
-
             }
 
         }
@@ -836,14 +762,12 @@ function Viewproducts({ id }) {
             }
             else {
                 router?.push("/login?redirect=/checkout")
-
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge === null ? 0 : cartdata?.localDeliveryCharge } });
 
             }
 
         }
         else if (datas2?.length === productvariations?.length) {
-
             const values = [
                 {
                     name: datas2[0],
@@ -858,9 +782,6 @@ function Viewproducts({ id }) {
                     value: productSize3
                 }
             ]
-
-
-
             if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0) {
                 toast.error(`Please select a ${datas2[0]} and ${datas2[1]} and ${datas2[2]} `,
                     {
@@ -875,7 +796,6 @@ function Viewproducts({ id }) {
                     }
                 );
             }
-
             if (datas2) {
                 if (productSize1 && productSize2 && productSize3) {
                     router?.push("/login?redirect=/checkout")
@@ -887,8 +807,6 @@ function Viewproducts({ id }) {
                 router?.push("/login?redirect=/checkout")
                 dispatch({ type: "CART_SUCCESS", payload: { ...cartdata, quantity: 1, variations: [], couponName: "", sellerBusinessName: productseller?.businessSlugName, deliverycharge: cartdata?.localDeliveryCharge === null ? 0 : cartdata?.localDeliveryCharge } });
             }
-
-
         }
         else if (datas3?.length === productvariations?.length) {
             const values = [
@@ -909,8 +827,6 @@ function Viewproducts({ id }) {
                     value: productSize4
                 }
             ]
-
-
 
             if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0 || productSize4?.length === 0) {
                 toast.error(`Please select a ${datas3[0]} and ${datas3[1]} and ${datas3[2]} and ${datas3[3]}`,
@@ -966,8 +882,6 @@ function Viewproducts({ id }) {
                 }
             ]
 
-
-
             if (productSize1.length === 0 || productSize2?.length === 0 || productSize3?.length === 0 || productSize4?.length === 0 || productSize5?.length === 0) {
                 toast.error(`Please select a ${datas4[0]} and ${datas4[1]} and ${datas4[2]} and ${datas4[3]} and ${datas4[4]}`,
                     {
@@ -1006,11 +920,7 @@ function Viewproducts({ id }) {
         }
     }
 
-
-
-
     const [pathurl, setPathUrl] = useState("");
-
     useEffect(() => {
         const origin =
             typeof window !== 'undefined' && window.location.origin
