@@ -763,16 +763,10 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
             <div className={styles.approvalstatuscoupon}>
               {coupnslist?.map((item, index) => {
                 return (
-
-
-
-
-
-
                   <div className={styles.boxcoupons}>
                     <div className={styles.leftcoupons}>
                       <div className={styles.couponsOfferName}>{item.title}</div>
-                      <div className={styles.couponsOfferNames}>{item.couponCode}</div>
+                      {/* <div className={styles.couponsOfferNames}>{item.couponCode}</div> */}
                       <div className={styles.couponsSubContent}>{item.couponDescription}</div>
                     </div>
                     <div className={styles.rightcouons}>
@@ -781,7 +775,9 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
                       </div>
 
                       <div onClick={() => copylink(item.couponCode)} className={styles.couponcodecopy}>
-                        <ion-icon name="copy-outline" size="small" ></ion-icon> <span className={styles.copycodecolor}>Copy</span>
+                        <ion-icon name="copy-outline" size="small" ></ion-icon> <span className={styles.copycodecolor}>
+                        Click here to copy the coupon code
+                        </span>
                       </div>
                     </div>
 

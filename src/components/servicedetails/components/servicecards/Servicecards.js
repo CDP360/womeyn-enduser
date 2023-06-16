@@ -14,7 +14,8 @@ import users from '../../../../assests/homepage-logos/usersimageprofile.png';
 import Select from 'react-select';
 import { WomenpreneursFilter, WomenpreneursSearch } from '../../../../services/womenpreneurs-services/womenpreneurs-services';
 
-import Pagination from 'rc-pagination';
+import ReactPaginate from 'react-paginate';
+
 import rightarrow from '../../../../assests/category-logos/leftcategoryarrow.png';
 import leftarrow from '../../../../assests/category-logos/rightcategoryarrow.png';
 import noimage from '../../../../assests/womeynlogos/noimage.png';
@@ -33,11 +34,13 @@ function Servicecards() {
     const [loadingset, setLoading] = useState(false);
     const [categoryid, setCategoryId] = useState(0);
     const [error, setError] = useState(false);
+    
+  const [pagecount,setPagecount]=useState("");
     useEffect(() => {
-
-
         Serviceusers().then((res) => {
             setServiceusers(res?.data?.results);
+      setPagecount(res?.data?.totalResults)
+
         }).catch((err) => {
             console.log(err);
         })
@@ -125,6 +128,23 @@ function Servicecards() {
         return originalElement;
     }
 
+
+
+    const fetchComments = async (current) => {
+        const res = await Serviceusers(current)
+        console.log(res?.data, "res")
+    
+        return res?.data?.results;
+      }
+    
+      const handlePageClick = async (data) => {
+        console.log(data?.selected + 1, "one");
+    
+        let current = data?.selected + 1;
+    
+        const commentForms = await fetchComments(current);
+        setServiceusers(commentForms);
+      }
 
 
 
@@ -216,6 +236,27 @@ function Servicecards() {
                                     />
                                 </div>
                             } */}
+{servicesusers?.length>9 &&<ReactPaginate
+      activeClassName={'actives '}
+        breakClassName={'item break-me '}
+        breakLabel={'...'}
+        containerClassName={'pagination'}
+        disabledClassName={'disabled-page'}
+        marginPagesDisplayed={2}
+        nextClassName={"item next "}
+        nextLabel={"NEXT"}
+        onPageChange={handlePageClick}
+        pageCount={pagecount}
+        pageClassName={'item pagination-page '}
+        pageRangeDisplayed={2}
+        previousClassName={"item previous"}
+        previousLabel={"PREVIOUS"}
+
+      
+   
+      />}
+
+
                     </div>
                 </div>
 

@@ -14,7 +14,7 @@
     border:2px solid blue;
 
     @include mdBreakPoint
-    {
+    {   
         width: 100%;
     }
     @include lgBreakPoint

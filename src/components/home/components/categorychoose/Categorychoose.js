@@ -100,7 +100,7 @@ function Categorychoose({ HomeTexts, bannerimages }) {
                                     return (
                                         <div className={styles.insideslides} onClick={() => pushCatgorys(item?.redirectUrl)} key={index}>
                                             {item?.imageName ? <>
-                                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesizes} onClick={() => pushCatgorys(item?.redirectUrl)} />
+                                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className='subbannerimage' onClick={() => pushCatgorys(item?.redirectUrl)} />
                                             </> : <>
                                                 <Skeleton className={styles.addimageboxs} />
                                             </>}
@@ -121,7 +121,7 @@ function Categorychoose({ HomeTexts, bannerimages }) {
                                         <div className={styles.couponcardssection} onClick={() => pushCatgorys(item?.redirectUrl)}>
 
                                             {item?.imageName ? <>
-                                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesizes} onClick={() => pushCatgorys(item?.redirectUrl)} />
+                                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className='subbannerimage' onClick={() => pushCatgorys(item?.redirectUrl)} />
                                             </> : <>
                                                 <Skeleton className={styles.addimageboxs} />
                                             </>}

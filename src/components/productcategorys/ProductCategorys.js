@@ -15,7 +15,6 @@ import Select from 'react-select';
 import { WomenpreneursFilter, WomenpreneursSearch } from '../../services/womenpreneurs-services/womenpreneurs-services';
 import { ProductCatgorylist } from '../../services/category-services/category-service';
 
-import Pagination from 'rc-pagination';
 import rightarrow from '../../assests/category-logos/leftcategoryarrow.png';
 import leftarrow from '../../assests/category-logos/rightcategoryarrow.png';
 import noimage from '../../assests/womeynlogos/noimage.png';
@@ -24,9 +23,12 @@ import { AllProductCategorys } from '../../services/productview-service/productv
 import star from '../../assests/homepage-logos/stars.png';
 import Skeleton from 'react-loading-skeleton'
 
+import ReactPaginate from 'react-paginate';
 
 import { Rate } from "antd";
-import { SearchProductUser } from '../../services/category-services/category-service';
+import { SearchProductUser,AllSearchProductUser } from '../../services/category-services/category-service';
+
+
 
 
 function ProductCategorys() {
@@ -43,13 +45,18 @@ function ProductCategorys() {
     const [categoryid, setCategoryId] = useState("");
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
+  const [pagecount,setPagecount]=useState("");
+  const [pagecountnumbers,setPagecountNumbers]=useState(1);
+
+
     useEffect(() => {
         setLoading(true);
-        SearchProductUser().then((res) => {
+        AllSearchProductUser().then((res) => {
             setServiceusers(res?.data?.results);
+      setPagecount(res?.data?.totalResults)
+
             setTimeout(() => {
                 setLoading(false);
-
             }, 500)
         }).catch((err) => {
             console.log(err);
@@ -58,41 +65,41 @@ function ProductCategorys() {
         })
         WomenSellercategories();
 
-        if(searchname)
-        {
-            SearchProductUser(searchname).then((res) => {
-                setServiceusers(res?.data?.results);
+        // if(searchname)
+        // {
+        //     SearchProductUser(searchname).then((res) => {
+        //         setServiceusers(res?.data?.results);
               
-                setTimeout(() => {
-                    setLoading(false);
-                }, 300);
+        //         setTimeout(() => {
+        //             setLoading(false);
+        //         }, 300);
     
-            }).catch((err) => {
-                console.log(err);
-            })
-        }
-        else
-        {
-            SearchProductUser("").then((res) => {
-                setServiceusers(res?.data?.results);
+        //     }).catch((err) => {
+        //         console.log(err);
+        //     })
+        // }
+        // else
+        // {
+        //     SearchProductUser("").then((res) => {
+        //         setServiceusers(res?.data?.results);
               
-                setTimeout(() => {
-                    setLoading(false);
-                }, 300);
+        //         setTimeout(() => {
+        //             setLoading(false);
+        //         }, 300);
     
-            }).catch((err) => {
-                console.log(err);
-            })
-        }
+        //     }).catch((err) => {
+        //         console.log(err);
+        //     })
+        // }
 
      
-    }, [categoryid])
+    }, [categoryid,pagecountnumbers])
 
     const WomenSellercategories = () => {
         setLoading(true);
         WomenpreneursCommoncategories().then((res) => {
             const storecategory = [];
-            res?.data.map((item, index) => {
+            res.data.map((item, index) => {
                 const data = {
                     value: item?.name,
                     label: item?.name,
@@ -115,8 +122,11 @@ function ProductCategorys() {
         // setCategoryId(data?.id);
         setFilter(data.name);
         setSearchName("");
+        setPagecountNumbers(1);
         ProductCatgorylist(data.value.toLowerCase()).then((res) => {
             setServiceusers(res?.data?.results);
+      setPagecount(res?.data?.totalResults)
+
             setLimit(res?.data);
             setTimeout(() => {
                 setLoading(false);
@@ -130,8 +140,9 @@ function ProductCategorys() {
 
     const GetSearchdata = () => {
         setLoading(true);
-        SearchProductUser(searchname?.length === 0 ? "" : searchname).then((res) => {
+        SearchProductUser(searchname).then((res) => {
             setServiceusers(res?.data?.results);
+      setPagecount(res?.data?.totalResults)
             setFilter("");
             setTimeout(() => {
                 setLoading(false);
@@ -141,32 +152,32 @@ function ProductCategorys() {
             console.log(err);
         })
     }
-    const fetchCurrentData = async (searchname,current) => {
-        const resdata = await SearchProductUser(searchname,current);
-        setDataseller(resdata?.data?.results);
-    }
-    const handleChangePagecount = async (e) => {
-        setCurrent(e);
-        const current = e;
+  
 
-        console.log(current,"currentkalai")
-        await fetchCurrentData(searchname,current);
-    }
+    const fetchComments = async (current) => {
+        const res = await AllSearchProductUser(current);
+        return res?.data?.results;
+      }
 
-    const PrevNextArrow = (current, type, originalElement) => {
-        if (type === 'prev') {
-            return <button className='disactive'>
-                <Image src={leftarrow} alt="no image" className={styles.arrowsizefix} />
-            </button>;
 
-        }
-        if (type === 'next') {
-            return <button className='activess'>
-                <Image src={rightarrow} alt="no image" className={styles.arrowsizefix} />
-            </button>;
-        }
-        return originalElement;
-    }
+      const fetchComments1 = async (searchname,current) => {
+        const res = await SearchProductUser(searchname,current);
+        return res?.data?.results;
+      }
+    
+      const handlePageClick = async (data) => {
+        let current = data?.selected + 1;
+        setPagecountNumbers(current);
+        const commentForms = await fetchComments(current);
+        const commentForms1 = await fetchComments1(searchname,current);
+
+        setServiceusers(commentForms);
+        setServiceusers(commentForms1);
+
+      }
+
+
+    
 
     return (
         <Fragment>
@@ -234,7 +245,6 @@ function ProductCategorys() {
                                             }
                                         </div>
                                         <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
-                                            {/* <Image src={star} alt="no image" className={styles.stars} /> */}
                                             <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
                                                 tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
                                                 disabled
@@ -288,7 +298,6 @@ function ProductCategorys() {
                                             }
                                         </div>
                                         <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
-                                            {/* <Image src={star} alt="no image" className={styles.stars} /> */}
                                             <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
                                                 tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
                                                 disabled
@@ -328,21 +337,34 @@ function ProductCategorys() {
                     </>}
 
 
+<div className="mt-3">
+    <hr/>
+</div>
+<div>
+   Page {pagecountnumbers} / {pagecount}
+</div>
 
+                    <div className="mt-3">
+                               
+<ReactPaginate
+      activeClassName={'actives '}
+        breakClassName={'item break-me '}
+        breakLabel={'...'}
+        containerClassName={'pagination'}
+        disabledClassName={'disabled-page'}
+        marginPagesDisplayed={2}
+        nextClassName={"item next "}
+        nextLabel={"NEXT"}
+        onPageChange={handlePageClick}
+        pageCount={pagecount/12}
+        pageClassName={'item pagination-page '}
+        pageRangeDisplayed={2}
+        previousClassName={"item previous"}
+        previousLabel={"PREVIOUS"}
 
-                    <div>
-                                {servicesusers?.length > 50 &&
-                                <div className='d-flex justify-content-center mt-4'>
-                                    <Pagination
-                                        className="pagination-data"
-                                        total={limit?.totalPages * 10}
-                                        onChange={handleChangePagecount}
-                                        current={current}
-                                        itemRender={PrevNextArrow}
-                                        breakLabel="..."
-                                    />
-                                </div>
-                            }
+      
+   
+      />
                             </div>
                 </div>
 

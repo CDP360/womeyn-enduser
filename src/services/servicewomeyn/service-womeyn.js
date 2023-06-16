@@ -8,7 +8,7 @@ export function Serviceusers(current) {
     //     return err;
     // })
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/services?page=0&limit=${"20"}`).then(response => {
+        instanceBaseurl.get(`/common/services?pagrode=0&limit=${"20"}`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)

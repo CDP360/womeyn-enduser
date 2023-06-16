@@ -25,7 +25,7 @@ export function WomenpreneursSellers(current) {
     // });
 
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/womenpreneurs&limit=10&page=${current}`).then(response => {
+        instanceBaseurl.get(`/common/womenpreneurs?sortBy=updatedAt:desc&limit=12&page=${current}`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)

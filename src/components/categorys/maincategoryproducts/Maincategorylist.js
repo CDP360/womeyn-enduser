@@ -15,7 +15,10 @@ import { ProductCatgorylist } from '../../../services/category-services/category
 import LoaderLogo from './../../loaderlogo/LoaderLogo';
 import { Nodatafoundimage } from './../../nodatafoundimage/Nodatafound';
 
-function Maincategorylist({ name, searchnamevalue,filterproducts,setFilterproducts ,setLoadingproduct,loadingproduct,setProductgetloading}) {
+import ReactPaginate from 'react-paginate';
+
+
+function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterproducts, setLoadingproduct, loadingproduct, setProductgetloading }) {
     const [product, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [perPage, setPerPage] = useState(10);
@@ -23,7 +26,10 @@ function Maincategorylist({ name, searchnamevalue,filterproducts,setFilterproduc
     const [dummy, setDummy] = useState([]);
     const [limit, seLimit] = useState([]);
     const [current, setCurrent] = useState(1);
-   
+
+    const [pagecount,setPagecount]=useState("");
+    const [pagecountnumbers,setPagecountNumbers]=useState(1);
+
     useEffect(() => {
         getproducts();
     }, [name, searchnamevalue])
@@ -33,39 +39,60 @@ function Maincategorylist({ name, searchnamevalue,filterproducts,setFilterproduc
         ProductCatgorylist(name).then((res) => {
             seLimit(res?.data);
             setFilterproducts(res?.data?.results);
+      setPagecount(res?.data?.totalResults)
             setTimeout(() => {
                 setLoadingproduct(false);
             }, 300)
-
             setProductgetloading(true);
         }).catch((err) => {
             console.log(err);
             setProductgetloading(false);
         })
     }
-    const fetchCurrentData = async (names, current) => {
-        const resdata = await ProductCatgorylist(names, current, searchnamevalue);
-        setFilterproducts(resdata?.data?.results);
-    }
-    const handleChangePagecount = async (e) => {
-        setCurrent(e);
-        const current = e;
-        await fetchCurrentData(name, current, searchnamevalue);
-    }
 
-    const PrevNextArrow = (current, type, originalElement) => {
-        if (type === 'prev') {
-            return <button className={perPage > 10 ? "activess" : "disactive"}>
-                <Image src={leftarrow} alt="no image" className={styles.arrowsizefix} />
-            </button>
-        }
-        if (type === 'next') {
-            return <button className='activess'>
-                <Image src={rightarrow} alt="no image" className={styles.arrowsizefix} />
-            </button>
-        }
-        return originalElement;
-    }
+
+    // const fetchCurrentData = async (names, current) => {
+    //     const resdata = await ProductCatgorylist(names, current, searchnamevalue);
+    //     setFilterproducts(resdata?.data?.results);
+    // }
+    // const handleChangePagecount = async (e) => {
+    //     setCurrent(e);
+    //     const current = e;
+    //     await fetchCurrentData(name, current, searchnamevalue);
+    // }
+
+    // const PrevNextArrow = (current, type, originalElement) => {
+    //     if (type === 'prev') {
+    //         return <button className={perPage > 10 ? "activess" : "disactive"}>
+    //             <Image src={leftarrow} alt="no image" className={styles.arrowsizefix} />
+    //         </button>
+    //     }
+    //     if (type === 'next') {
+    //         return <button className='activess'>
+    //             <Image src={rightarrow} alt="no image" className={styles.arrowsizefix} />
+    //         </button>
+    //     }
+    //     return originalElement;
+    // }
+
+
+    const fetchComments = async (name,current) => {
+        const res = await ProductCatgorylist(name,current);
+        return res?.data?.results;
+      }
+
+
+   
+    
+      const handlePageClick = async (data) => {
+        let current = data?.selected + 1;
+        setPagecountNumbers(current);
+        const commentForms = await fetchComments(name,current);
+        setFilterproducts(commentForms);
+ 
+
+      }
+
     return (
         <div>
             <div>
@@ -75,13 +102,13 @@ function Maincategorylist({ name, searchnamevalue,filterproducts,setFilterproduc
 
                 </> : <div >
                     {filterproducts?.length === 0 ? <div>
-                       
-                                <div>
-                                  <Nodatafoundimage
-                                  title="Category Not Available"
-                                  />
-                                </div>
-                               
+
+                        <div>
+                            <Nodatafoundimage
+                                title="Category Not Available"
+                            />
+                        </div>
+
 
                     </div > : <div className="row gap-2">
                         {filterproducts?.map((item, index) => {
@@ -95,7 +122,7 @@ function Maincategorylist({ name, searchnamevalue,filterproducts,setFilterproduc
                 </div>}
             </div>
 
-            {filterproducts?.length > 12 && <div className='d-flex justify-content-center mt-4'>
+            {/* {filterproducts?.length > 12 && <div className='d-flex justify-content-center mt-4'>
                 <Pagination
                     className="pagination-data"
                     total={limit?.totalPages * 10}
@@ -104,7 +131,43 @@ function Maincategorylist({ name, searchnamevalue,filterproducts,setFilterproduc
                     itemRender={PrevNextArrow}
                     breakLabel="..."
                 />
-            </div>}
+            </div>} */
+            
+            }
+
+          
+
+<div className="mt-3">
+    <hr/>
+</div>
+<div>
+   Page {pagecountnumbers} / {pagecount}
+</div>
+
+                    <div className="mt-3">
+                               
+<ReactPaginate
+      activeClassName={'actives '}
+        breakClassName={'item break-me '}
+        breakLabel={'...'}
+        containerClassName={'pagination'}
+        disabledClassName={'disabled-page'}
+        marginPagesDisplayed={2}
+        nextClassName={"item next "}
+        nextLabel={"NEXT"}
+        onPageChange={handlePageClick}
+        pageCount={pagecount/12}
+        pageClassName={'item pagination-page '}
+        pageRangeDisplayed={2}
+        previousClassName={"item previous"}
+        previousLabel={"PREVIOUS"}
+
+      
+   
+      />
+                            </div>
+
+            
         </div>
     )
 }

@@ -57,6 +57,28 @@ export function SearchProductCategorys() {
 }
 
 
+export function AllSearchProductUser(current) {
+    // return instanceBaseurl.get(`/common/search/products?search=${data}`).then((res) => {
+    //     return res;
+    // }).catch((err) => {
+    //     return err;
+
+    // })
+
+  
+    return new Promise((resolve, reject) => {
+
+        instanceBaseurl.get(`/common/search/products?sortBy=updatedAt:desc&limit=12&page=${current}`).then(response => {
+            resolve(response)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+   
+
+   
+}
+
 export function SearchProductUser(data,current) {
     // return instanceBaseurl.get(`/common/search/products?search=${data}`).then((res) => {
     //     return res;
@@ -65,15 +87,17 @@ export function SearchProductUser(data,current) {
 
     // })
 
-    console.log(current,"current")
-
+ 
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/search/products?search=${data}&limit=50&page=${current}`).then(response => {
+        instanceBaseurl.get(`/common/search/products?search=${data}&sortBy=updatedAt:desc&limit=12&page=${current}`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)
         })
     })
+  
+
+   
 }
 
 export function CategoryproductFilter(data) {

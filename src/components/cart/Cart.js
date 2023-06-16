@@ -71,7 +71,7 @@ function Cart() {
   // const AllchargeCount = Number(cartpricevaues) + Number(deliveryChargeAmount);
   const AllchargeCount = Number(cartpricevaues) + Number(Sample);
 
-  const ToatlAmountString=AllchargeCount.toString();
+
 
 
 
@@ -79,39 +79,16 @@ function Cart() {
   const OverallTotalPrice = Number(Sample) + Number(chargeDelivery);
 
 
-  const GSTString=Sample.toString();
+ 
 
 
 
   useEffect(() => {
     setCart(state?.cart?.cartData);
 
-    const gh=Sample.toString();
 
 
-    if(gh.includes("."))
-    {
-      console.log(gh,"gh");
-
-      if(gh?.length>10)
-      {
-     
-
-      setGstValue(gh.slice(0,8));
-
-      }
-    }
-    else
-    {
-      console.log(gh,"gh2");
-      
-      setGstValue(gh);
-      
-    }
-
-  
-
-    console.log(gh.slice(0,8),"OverallTotalPrice")
+   
   }, [deleteid, totalvalue,gstvalue])
   const shopping = () => {
     router.push("/")
@@ -429,7 +406,7 @@ function Cart() {
                     <div>
                       Price</div>
                     <div className={styles.textprice}>
-                      A ${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)}
+                      A${Number(cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)).toFixed(2)}
                     </div>
                   </div>
                   {/* {cart?.cartData?.offerPercentag === 0 ? <></> : <div className={styles.splitcartsections}>
@@ -450,24 +427,13 @@ function Cart() {
                     <div>
                       GST</div>
                     <div className={styles.textprice}>
-                      {/* A${Number(Sample)
-
                      
-                      // + Number(chargeDelivery)
-                      } */}
 
-{/* A${Number(gstvalue)} */}
+A${Number(Sample).toFixed(2)}
 
 
-A${GSTString.includes(".")?<>
-{GSTString?.length>10 || 5?<>
-  {GSTString.slice(0,7)}
-</>:GSTString}
-</>:<>
-{GSTString}
-</>}
 
-{/* {GSTString} */}
+
 
                     
                     </div>
@@ -482,22 +448,11 @@ A${GSTString.includes(".")?<>
                     {/* {(Number(Sample))+(Number(chargeDelivery))} */}
                   </div>
                   <div className={styles.textprices}>
-                    {/* A$ {Number(AllchargeCount) + Number(OverallTotalPrice)} */}
-                    {/* A ${Number(AllchargeCount)} */}
+    
+                    A${Number(AllchargeCount).toFixed(2)}
 
 
-                    A${ToatlAmountString.includes(".")?<>
-{ToatlAmountString?.length>10?<>
-  {ToatlAmountString.slice(0,8)}
-</>:ToatlAmountString}
-</>:<>
-{GSTString}
-</>}
-
-
-                    {/* ToatlAmountString */}
-
-                    {/* A${cart?.cartData?.reduce((acc, current) => acc + current.quantity * current.salePrice, 0)} */}
+               
                   </div>
                 </div>
                 <div className={styles.borderdashedsection}>

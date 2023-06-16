@@ -64,7 +64,7 @@ function Carouselseller({ bannerimages, MovePageData }) {
                         {bannerimages?.PromotionBanner?.map((item, index) => {
                             return (
                                 <div key={index}>
-                                    {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> :
+                                    {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={'allbanners'} onClick={() => MovePageData(item.redirectUrl)} /> :
                                         <Skeleton width={600} height={100} />
                                     }
                                 </div>

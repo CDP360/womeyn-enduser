@@ -126,7 +126,7 @@ export function UserProfileImageupload(userid, data) {
 }
 export function UserProfileInformation(userid) {
 
- 
+
 
 
     return new Promise((resolve, reject) => {
@@ -134,7 +134,7 @@ export function UserProfileInformation(userid) {
             resolve(response)
         }).catch(err => {
 
-            console.log("kalaierr",err?.response?.data?.message)
+            console.log("kalaierr", err?.response?.data?.message)
             reject(err)
         })
     })
@@ -184,5 +184,20 @@ export function Changepassworduser(data) {
         }).catch(err => {
             reject(err)
         })
+    })
+}
+
+
+export function logout(data) {
+    return new Promise((resolve, reject) => {
+        localStorage.removeItem("userid");
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("userTokens");
+        localStorage.removeItem("whish");
+        localStorage.removeItem("user");
+        localStorage.removeItem("auth");
+        localStorage.removeItem("productid");
+        localStorage.removeItem('signupuser');
+        resolve(true)
     })
 }

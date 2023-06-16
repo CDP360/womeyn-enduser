@@ -17,6 +17,8 @@ import rightarrow from '../../../assests/category-logos/leftcategoryarrow.png';
 import leftarrow from '../../../assests/category-logos/rightcategoryarrow.png';
 import noimage from '../../../assests/womeynlogos/noimage.png';
 import { Nodatafoundimage } from './../../nodatafoundimage/Nodatafound';
+import ReactPaginate from 'react-paginate';
+
 function Womenpreneurs() {
     const router = useRouter();
     const [current, setCurrent] = useState(1);
@@ -30,9 +32,20 @@ function Womenpreneurs() {
     const [loadingset, setLoading] = useState(false);
     const [categoryid, setCategoryId] = useState(0);
     const [error, setError] = useState(false);
+    const [pagecount,setPagecount]=useState("");
+    const [pagecountnumbers,setPagecountNumbers]=useState(1);
     useEffect(() => {
         WomenSellercategories();
         GetFilterandSearchData();
+
+        WomenpreneursSellers().then((res)=>{
+            
+        setDataseller(res?.data?.results);
+      setPagecount(res?.data?.totalResults)
+
+        }).catch((err)=>{
+            console.log(err);
+        })
     }, [categoryid])
 
     const WomenSellercategories = () => {
@@ -66,9 +79,8 @@ function Womenpreneurs() {
     const GetFilterandSearchData = () => {
         setLoading(true);
         WomenpreneursFilter(categoryid).then((res) => {
-
-            console.log(res?.data?.results, "kalai")
             setDataseller(res?.data?.results);
+      setPagecount(res?.data?.totalResults)
             setLimit(res?.data);
             setTimeout(() => {
                 setLoading(false);
@@ -85,35 +97,44 @@ function Womenpreneurs() {
             setTimeout(() => {
                 setLoading(false);
             }, 300);
-
         }).catch((err) => {
             console.log(err);
         })
     }
-    const fetchCurrentData = async (current) => {
-        const resdata = await WomenpreneursSellers(current);
-        setDataseller(resdata?.data?.results);
-    }
-    const handleChangePagecount = async (e) => {
-        setCurrent(e);
-        const current = e;
-        await fetchCurrentData(current);
-    }
+    // const fetchCurrentData = async (current) => {
+    //     const resdata = await WomenpreneursSellers(current);
+    //   setPagecount(res?.data?.totalResults)
 
-    const PrevNextArrow = (current, type, originalElement) => {
-        if (type === 'prev') {
-            return <button className='disactive'>
-                <Image src={leftarrow} alt="no image" className={styles.arrowsizefix} />
-            </button>;
+    //     setDataseller(resdata?.data?.results);
+    // }
+    // const handleChangePagecount = async (e) => {
+    //     setCurrent(e);
+    //     const current = e;
+    //     await fetchCurrentData(current);
+    // }
 
-        }
-        if (type === 'next') {
-            return <button className='activess'>
-                <Image src={rightarrow} alt="no image" className={styles.arrowsizefix} />
-            </button>;
-        }
-        return originalElement;
-    }
+
+    const fetchComments = async (current) => {
+        const res = await WomenpreneursSellers(current);
+        return res?.data?.results;
+      }
+
+
+    //   const fetchComments1 = async (searchname,current) => {
+    //     const res = await SearchProductUser(searchname,current);
+    //     return res?.data?.results;
+    //   }
+    
+      const handlePageClick = async (data) => {
+        let current = data?.selected + 1;
+        setPagecountNumbers(current);
+        const commentForms = await fetchComments(current);
+        // const commentForms1 = await fetchComments1(searchname,current);
+        setDataseller(commentForms);
+        // setServiceusers(commentForms1);
+
+      }
+ 
 
     return (
         <Fragment>
@@ -237,22 +258,43 @@ function Womenpreneurs() {
 
                         <div>
 
-                            {/* {dataseller?.length > 8 &&
-                                <div className='d-flex justify-content-center mt-4'>
-                                    <Pagination
-                                        className="pagination-data"
-                                        total={limit?.totalPages * 10}
-                                        onChange={handleChangePagecount}
-                                        current={current}
-                                        itemRender={PrevNextArrow}
-                                        breakLabel="..."
-                                    />
-                                </div>
-                            } */}
+                        <div className="mt-3">
+    <hr/>
+</div>
+<div>
+   Page {pagecountnumbers} / {pagecount}
+</div>
+
+                    <div className="mt-3">
+                               
+<ReactPaginate
+      activeClassName={'actives '}
+        breakClassName={'item break-me '}
+        breakLabel={'...'}
+        containerClassName={'pagination'}
+        disabledClassName={'disabled-page'}
+        marginPagesDisplayed={2}
+        nextClassName={"item next "}
+        nextLabel={"NEXT"}
+        onPageChange={handlePageClick}
+        pageCount={pagecount/12}
+        pageClassName={'item pagination-page '}
+        pageRangeDisplayed={2}
+        previousClassName={"item previous"}
+        previousLabel={"PREVIOUS"}
+
+      
+   
+      />
+                            </div>
+                </div>
+
+
+            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+              
+          
 
 
 

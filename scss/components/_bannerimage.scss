@@ -1,0 +1,22 @@
+@use "../abstract/" as *;
+
+
+.allbanners
+{
+    max-width:1200px;
+    width:100%;
+    height:350px;
+    // object-fit:none;
+    // border:1px solid red;
+    border-radius:5px;
+}
+
+
+.subbannerimage{
+    max-width:1200px;
+    width:100%;
+    height:150px;
+    object-fit:none;
+    // border:1px solid red;
+    border-radius:5px;
+}
