@@ -1,4 +1,4 @@
-import React, { useEffect ,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles/Ourclutures.module.scss';
 import p1 from '../../../../assests/abouts-logos/p1.png';
 import p2 from '../../../../assests/abouts-logos/p2.png';
@@ -22,14 +22,16 @@ function Ourclutures() {
     }
 
 
-    const [partnersbanners,setPartnersBanners]=useState([]);
+    const [partnersbanners, setPartnersBanners] = useState([]);
 
     const settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: 2,
         slidesToScroll: 1,
+        autoplay: true,
+        
         autoplaySpeed: 3500,
         pauseOnHover: true,
         nextArrow: <SlideNextArrow />,
@@ -38,7 +40,7 @@ function Ourclutures() {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 1,
                     slidesToScroll: 2,
                     infinite: true,
                     dots: false,
@@ -48,7 +50,7 @@ function Ourclutures() {
             {
                 breakpoint: 800,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 1,
                     slidesToScroll: 1,
                     initialSlide: 2
                 }
@@ -75,10 +77,10 @@ function Ourclutures() {
 
     useEffect(() => {
 
-        const data = "Partners & Collaborations Banners"
+        const data = "Partners and Collaboration Banners"
         Getwomenpreneursbanner(data).then((res) => {
-console.log(res?.data,"ourteambannersimages");
-setPartnersBanners(res?.data);
+            console.log(res?.data, "ourteambannersimages");
+            setPartnersBanners(res?.data);
         }).catch((err) => {
             console.log(err);
         })
@@ -106,53 +108,9 @@ setPartnersBanners(res?.data);
 
                 <div className={styles.aboutimagelogo}>
 
-                   
 
-{partnersbanners?.length===0 ?<>
-    <div>
-                        <Image src={p1} alt="no image" className={styles.aboutlogo} />
-                    </div>
-                    <div>
-                        <Image src={p2} alt="no image" className={styles.aboutlogo} />
-                    </div>
-                    <div>
-                        <Image src={p3} alt="no image" className={styles.aboutlogo} />
-                    </div>
-                    <div>
-                        <Image src={p4} alt="no image" className={styles.aboutlogo} />
-                    </div>
-</>:<>
- <Slider {...settings}>
-                    {partnersbanners.map((item, index) => {
-                        return (
-                            <div>
-                                <div className={styles.insideslides} style={{ background: item.colorbg }}>
-                                    {/* <div className={styles.imagesectionour}>
-                                        <div className={styles.slideaboutimage}>
-                                            <Image src={item?.image} alt="no image" className={styles.slideimagesize} />
-                                        </div>
 
-                                    </div>
-                                    <div className={styles.nameshadowsection}>
-                                        <span className={styles.namecustomers}>{item?.name}</span>
-
-                                        <span className={styles.desc}>{item?.title}</span>
-
-                                    </div> */}
-
-{item?.imageName?<>
-                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />
-                                    
-                                    </>:<>
-                                    <Skeleton className={styles.homebanner} />
-                                    
-                                    </>}
-                                </div>
-                            </div>
-                        )
-                    })}
-                </Slider>
-</>}
+                  
 
                     <div className={styles.mainslidesection}>
                         {/* <Slider {...settings}>
@@ -179,6 +137,47 @@ setPartnersBanners(res?.data);
                 </Slider> */}
                     </div>
                 </div>
+            </div>
+
+            <div className="mt-4 mb-4">
+
+
+            {partnersbanners?.length === 0 ? <>
+                        <div>
+                            <Image src={p1} alt="no image" className={styles.aboutlogo} />
+                        </div>
+                        <div>
+                            <Image src={p2} alt="no image" className={styles.aboutlogo} />
+                        </div>
+                        <div>
+                            <Image src={p3} alt="no image" className={styles.aboutlogo} />
+                        </div>
+                        <div>
+                            <Image src={p4} alt="no image" className={styles.aboutlogo} />
+                        </div>
+                    </> : <div>
+                        <Slider {...settings}>
+                            {partnersbanners.map((item, index) => {
+                                return (
+
+
+
+                                    <div className={styles.insideslides}>
+
+
+                                        {item?.imageName ? <>
+                                            <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.aboutlogos} onClick={() => MovePageData(item.redirectUrl)} />
+
+                                        </> : <>
+                                            <Skeleton className={styles.homebanner} />
+
+                                        </>}
+                                    </div>
+
+                                )
+                            })}
+                        </Slider>
+                    </div>}
             </div>
 
             <div>
