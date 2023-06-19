@@ -114,3 +114,30 @@
     height:160px;
     object-fit:contain;
 }
+
+.insideslides
+{
+  
+    width:100%;
+ 
+}
+    .aboutlogoss
+    {
+        width:100% !important;
+        height:200px !important;
+        object-fit:contain;
+        border-radius:10px;
+        cursor:pointer;
+        @include mdBreakPoint
+        {
+            padding:10px;
+            border-radius:20px;
+        }
+        @include smBreakPoint
+        {
+            padding:10px 0px;
+            border-radius:20px;
+        }
+        
+    }
+   

@@ -16,12 +16,14 @@ function Delivered({ Orders, traking, loading }) {
 
   const [newdate, setNewDate] = useState("");
   const [orderlist, setOrderlist] = useState({});
-
   const [returnlist, setReturnlist] = useState({});
 
   const history = useRouter();
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
+
+  const [invoiceprint, setInvoicePrint] = useState("");
+
 
   const handleShow2 = (data) => {
     setShow2(true);
@@ -50,16 +52,24 @@ function Delivered({ Orders, traking, loading }) {
     history.push(`/product/${data}`)
   }
 
- 
+
+  const downloadinvoice = (data) => {
+    Invoicedownload(data).then((res) => {
+      setInvoicePrint(res?.data?.url)
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
 
   return (
     <Fragment>
 
-      {data?.length===0 && <div>
+      {data?.length === 0 && <div>
         <Nodatafoundimage
-        title="No Order Deliverd"
+          title="No Order Deliverd"
         />
-        </div>}
+      </div>}
       {data?.map((item, index) => {
         return (
           <div>
@@ -147,6 +157,10 @@ function Delivered({ Orders, traking, loading }) {
 
 
 
+                        <button className={styles.trackingbuttons} onClick={() => downloadinvoice(item?.orderId)}>
+
+                          <a href={invoiceprint} target="_blank" download className={styles.linka} title="Invoice">Invoice</a>
+                        </button>
 
 
 

@@ -8,14 +8,16 @@ import { CustomerOrderCancel } from "../../../../../../services/customer-order-s
 import { toast } from 'react-toastify';
 import Reviewmodel from './reviewmodel/Reviewmodel';
 import LoaderLogo from '../../../../../loaderlogo/LoaderLogo';
-function Allorders({ Orders, traking, loading,setTrackId }) {
+import { Invoicedownload } from '../../../../../../services/invoice-services/invoice_services';
+function Allorders({ Orders, traking, loading, setTrackId }) {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
-  const [loadings,setLoadings]=useState(false);
-
-  const [refreshloader,setRefreshloader]=useState(false);
+  const [loadings, setLoadings] = useState(false);
+  const [refreshloader, setRefreshloader] = useState(false);
   const [deleteid, setDeleteid] = useState("");
   const handleClose = () => setShow(false);
+
+  const [invoiceprint, setInvoicePrint] = useState("");
   const handleShow = (id) => {
     setShow(true)
     setDeleteid(id);
@@ -51,23 +53,32 @@ function Allorders({ Orders, traking, loading,setTrackId }) {
   useEffect(() => {
     setLoadings(false);
     setRefreshloader(false);
-  }, [deleteid, Orders,loadings,refreshloader]);
+  }, [deleteid, Orders, loadings, refreshloader]);
 
 
-  const NavigateTrackid=(id)=>{
+  const NavigateTrackid = (id) => {
 
     history.push({
       pathname: '/order/tracking',
-      query:{id:id},
-  })
+      query: { id: id },
+    })
   }
 
   useEffect(() => {
 
-  
+
 
   }, [orderlist])
 
+
+
+  const downloadinvoice = (data) => {
+    Invoicedownload(data).then((res) => {
+      setInvoicePrint(res?.data?.url)
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
 
   return (
     <div className={styles.allordermainsection}>
@@ -140,6 +151,11 @@ function Allorders({ Orders, traking, loading,setTrackId }) {
 
                               {item?.stateId === 6 && <div>
                                 <button className={styles.trackingbuttons} onClick={() => handleShow1(items)}>Review</button>
+                                <button className={styles.trackingbuttons} onClick={() => downloadinvoice(item?.orderId)}>
+      
+      <a href={invoiceprint} target="_blank"  download className={styles.linka} title="Invoice">Invoice</a>
+      </button>
+
                               </div>}
                             </div>
 
@@ -199,12 +215,12 @@ function Allorders({ Orders, traking, loading,setTrackId }) {
                             <div className={styles.rightimagesections}>
 
 
-
+                            
                               {index === 0 ? <>
 
                                 {item?.stateId === 4 || item?.stateId === 5 || item?.stateId == 6 ? <></> : <div className={styles.thirdimagesection}>
                                   <div>
-                                    <button className={styles.trackingbuttons} onClick={()=>NavigateTrackid(item?.orderId)}>Track</button>
+                                    <button className={styles.trackingbuttons} onClick={() => NavigateTrackid(item?.orderId)}>Track</button>
                                   </div>
                                   <div className="mt-3">
                                     <div>

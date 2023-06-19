@@ -6,9 +6,41 @@
     max-width:1200px;
     width:100%;
     height:350px;
-    // object-fit:none;
-    // border:1px solid red;
     border-radius:5px;
+    @include xsBreakPoint
+    {
+        width:100%;
+        height:170px !important;
+        
+    }
+    @include smBreakPoint
+    {
+        width:100%;
+        height:200px !important;
+
+        
+    }
+    @include mdBreakPoint
+    {
+        width:100%;
+        height:250px !important;
+
+        
+    }
+    @include lgBreakPoint
+    {
+        width:100%;
+        height:300px !important;
+
+        
+    }
+    @include xlBreakPoint
+    {
+        width:100%;
+        height:320px !important;
+
+        
+    }
 }
 
 
@@ -17,6 +49,5 @@
     width:100%;
     height:150px;
     object-fit:none;
-    // border:1px solid red;
     border-radius:5px;
 }

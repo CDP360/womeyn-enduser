@@ -40,7 +40,7 @@ function Ourclutures() {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                     slidesToScroll: 2,
                     infinite: true,
                     dots: false,
@@ -85,6 +85,12 @@ function Ourclutures() {
             console.log(err);
         })
     }, [])
+
+
+    const MovePageData=(data)=>{
+        window.open(data);
+
+    }
     return (
         <div>
             {/* <div className='mt-5'>
@@ -106,68 +112,21 @@ function Ourclutures() {
                     Partners & Collaborations
                 </div>
 
-                <div className={styles.aboutimagelogo}>
-
-
-
-                  
-
-                    <div className={styles.mainslidesection}>
-                        {/* <Slider {...settings}>
-                    {data.map((item, index) => {
-                        return (
-                            <div>
-                                <div className={styles.insideslides} style={{ background: item.colorbg }}>
-                                    <div className={styles.imagesectionour}>
-                                        <div className={styles.slideaboutimage}>
-                                            <Image src={item?.image} alt="no image" className={styles.slideimagesize} />
-                                        </div>
-
-                                    </div>
-                                    <div className={styles.nameshadowsection}>
-                                        <span className={styles.namecustomers}>{item?.name}</span>
-
-                                        <span className={styles.desc}>{item?.title}</span>
-
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    })}
-                </Slider> */}
-                    </div>
-                </div>
+               
             </div>
 
-            <div className="mt-4 mb-4">
+            <div className="mt-5 mb-5">
 
 
-            {partnersbanners?.length === 0 ? <>
-                        <div>
-                            <Image src={p1} alt="no image" className={styles.aboutlogo} />
-                        </div>
-                        <div>
-                            <Image src={p2} alt="no image" className={styles.aboutlogo} />
-                        </div>
-                        <div>
-                            <Image src={p3} alt="no image" className={styles.aboutlogo} />
-                        </div>
-                        <div>
-                            <Image src={p4} alt="no image" className={styles.aboutlogo} />
-                        </div>
-                    </> : <div>
-                        <Slider {...settings}>
+ {partnersbanners?.length>4?<>
+
+
+ <Slider {...settings}>
                             {partnersbanners.map((item, index) => {
                                 return (
-
-
-
                                     <div className={styles.insideslides}>
-
-
                                         {item?.imageName ? <>
                                             <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.aboutlogos} onClick={() => MovePageData(item.redirectUrl)} />
-
                                         </> : <>
                                             <Skeleton className={styles.homebanner} />
 
@@ -177,14 +136,40 @@ function Ourclutures() {
                                 )
                             })}
                         </Slider>
-                    </div>}
-            </div>
+ </>:<div className="row ">
 
-            <div>
+ {partnersbanners.map((item, index) => {
+                                return (
+                                    <div className="col-lg-3 col-sm-11 col-xs-11 col-md-6">
+                                        {item?.imageName ? <>
+                                            <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.aboutlogoss} onClick={() => MovePageData(item.redirectUrl)} />
+                                        </> : <>
+                                            <Skeleton className={styles.homebanner} />
+
+                                        </>}
+                                    </div>
+
+                                )
+                            })}
+
+ </div>}         
+<div>
+
+
+
+</div>
+
+
+
+           
+                    </div>
+                 
+
+            <div className="mt-5 mb-4">
 
                 <div className='large-text text-center'>
 
-                    Join Womeyn
+                    Join Womeyn 
                 </div>
 
 
