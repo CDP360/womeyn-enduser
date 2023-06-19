@@ -13,16 +13,9 @@ import heartunlike from '../../../../../assests/product-logo/likeborder.png';
 import { toast } from 'react-toastify';
 import Skeleton from 'react-loading-skeleton';
 import ReactImageMagnify from 'react-image-magnify';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
 import Head from "next/head";
-import { DefaultSeo, NextSeo, ArticleJsonLd } from 'next-seo';
 import { Rate } from "antd";
-import womenlogo from '../../../../../assests/homepage-logos/new womeyn logo.png';
-import { getCarriersshipping } from '../../../../../services/shipping-service/shipping-service';
-import Autocomplete from "react-google-autocomplete";
 import dynamic from 'next/dynamic';
-import Googleautocomplete from '../../../../googleautocompleteaddress/Googleautocomplete';
 import ShippingRate from './shippingrate/ShippingRate';
 import ImageViewModal from './imageviewmodel/ImageViewModal';
 function Viewproducts({ id }) {
@@ -983,7 +976,7 @@ function Viewproducts({ id }) {
                             <div className={styles.leftmainsectionslide}>
                                 <div className={styles.leftcardimages}>
 
-                                    <ImageViewModal imagemodel={imagemodel} handleImageClose={handleImageClose} productimages={productimages}/>
+                                    <ImageViewModal imagemodel={imagemodel} handleImageClose={handleImageClose} productimages={productimages} />
                                     <div className={styles.imagerowsection}>
                                         {productimages?.map((item, index) => {
                                             return (

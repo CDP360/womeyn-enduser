@@ -43,13 +43,25 @@ export function ProductLikeWishlistGet() {
     //     return err;
     // })
 
-    return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/customer/wishlist`).then(response => {
-            resolve(response)
-        }).catch(err => {
-            reject(err)
+
+    // const userId=localStorage.getItem("")
+    const token = localStorage.getItem("userToken");
+
+
+    if (token) {
+        return new Promise((resolve, reject) => {
+            instanceBaseurl.get(`/customer/wishlist`).then(response => {
+                resolve(response)
+            }).catch(err => {
+                reject(err)
+            })
         })
-    })
+    }
+    else {
+        return null;
+    }
+
+
 }
 
 export function ProductLikeandUnlikeCheck(id) {

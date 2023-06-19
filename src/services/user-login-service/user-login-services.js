@@ -128,16 +128,23 @@ export function UserProfileInformation(userid) {
 
 
 
+    if(userid)
+    {
+        return new Promise((resolve, reject) => {
+            instanceBaseurl.get(`/customer/basicinfo/${userid}`).then(response => {
+                resolve(response)
+            }).catch(err => {
 
-    return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/customer/basicinfo/${userid}`).then(response => {
-            resolve(response)
-        }).catch(err => {
-
-            console.log("kalaierr", err?.response?.data?.message)
-            reject(err)
+                reject(err)
+            })
         })
-    })
+    }
+    else
+    {
+        return null
+    }
+
+   
 }
 export function UserForgetPassword(data) {
     // return instanceBaseurl.post(`/auth/customer/forgot-password`, data).then((res) => {

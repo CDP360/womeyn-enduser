@@ -53,17 +53,17 @@ axios.interceptors.response.use(
     },
     async function (error) {
         // if (error.response.status == 401) {
-            await logout();
-                localStorage.removeItem("userid");
-                localStorage.removeItem("userToken");
-                localStorage.removeItem("userTokens");
-                localStorage.removeItem("whish");
-                localStorage.removeItem("user");
-                localStorage.removeItem("auth");
-                localStorage.removeItem("productid");
-                localStorage.removeItem('signupuser');
+        await logout();
+        localStorage.removeItem("userid");
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("userTokens");
+        localStorage.removeItem("whish");
+        localStorage.removeItem("user");
+        localStorage.removeItem("auth");
+        localStorage.removeItem("productid");
+        localStorage.removeItem('signupuser');
         // } else {
-            return Promise.reject(error);
+        return Promise.reject(error);
         // }
     }
 );
