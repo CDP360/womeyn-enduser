@@ -8,7 +8,7 @@ import paypal from '../../../../assests/cart-logos/PayPal-Logo1.png';
 import Spinner from 'react-bootstrap/Spinner';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
-function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippingamount }) {
+function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippingamount,discountamount }) {
   const [loading, setLoading] = useState(false);
   const { state } = useContext(ContextStore);
   const [orders, setOrders] = useState([]);
@@ -52,6 +52,9 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
     setOrders(storesfilter);
   }, [addressid]);
 
+//   couponCode
+// discountAmount
+
   const deliverOrderConfirm = () => {
     setLoading(true);
     const overAllorders = {
@@ -59,9 +62,12 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
       paymentMethod: paymentType,
       itemsOrdered: orders,
       totalOrderAmount: totalPrice,
-      customerName: userprofile,
+      customerName: userprofile,     
+       couponCode: couponname,
       couponName: couponname,
-      gstAmount: totalvalue,
+      discountAmount:discountamount?.result
+
+
     }
 
     if (paymentType?.length === 0) {
@@ -99,6 +105,8 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
   const onOptionChange = (e) => {
     setPaymentType(e.target.value);
   }
+
+  console.log(discountamount?.result,"discountamount")
   return (
     <div className={styles.mainsectionpayment}>
       <div className={styles.paymentsections}>

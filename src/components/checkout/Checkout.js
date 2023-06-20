@@ -105,11 +105,6 @@ function Checkout() {
   }
 
 
-
-
-
-
-
   if (tokens) {
     return (
       <div>
@@ -164,6 +159,7 @@ function Checkout() {
                     <Payment addressid={name} totalPrice={toatalpricecart} couponname={couponname} totalvalue={totalvalue}
                       checkshippingamount={checkshippingamount}
                       toatalpricecart={toatalpricecart}
+                      discountamount={discountamount}
 
                     />
                   </div>}
