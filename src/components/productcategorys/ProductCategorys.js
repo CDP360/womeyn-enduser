@@ -26,7 +26,7 @@ import Skeleton from 'react-loading-skeleton'
 import ReactPaginate from 'react-paginate';
 
 import { Rate } from "antd";
-import { SearchProductUser,AllSearchProductUser } from '../../services/category-services/category-service';
+import { SearchProductUser, AllSearchProductUser } from '../../services/category-services/category-service';
 
 
 
@@ -45,15 +45,15 @@ function ProductCategorys() {
     const [categoryid, setCategoryId] = useState("");
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
-  const [pagecount,setPagecount]=useState("");
-  const [pagecountnumbers,setPagecountNumbers]=useState(1);
+    const [pagecount, setPagecount] = useState("");
+    const [pagecountnumbers, setPagecountNumbers] = useState(1);
 
 
     useEffect(() => {
         setLoading(true);
         AllSearchProductUser().then((res) => {
             setServiceusers(res?.data?.results);
-      setPagecount(res?.data?.totalResults)
+            setPagecount(res?.data?.totalResults)
 
             setTimeout(() => {
                 setLoading(false);
@@ -69,11 +69,11 @@ function ProductCategorys() {
         // {
         //     SearchProductUser(searchname).then((res) => {
         //         setServiceusers(res?.data?.results);
-              
+
         //         setTimeout(() => {
         //             setLoading(false);
         //         }, 300);
-    
+
         //     }).catch((err) => {
         //         console.log(err);
         //     })
@@ -82,18 +82,18 @@ function ProductCategorys() {
         // {
         //     SearchProductUser("").then((res) => {
         //         setServiceusers(res?.data?.results);
-              
+
         //         setTimeout(() => {
         //             setLoading(false);
         //         }, 300);
-    
+
         //     }).catch((err) => {
         //         console.log(err);
         //     })
         // }
 
-     
-    }, [categoryid,pagecountnumbers])
+
+    }, [categoryid, pagecountnumbers])
 
     const WomenSellercategories = () => {
         setLoading(true);
@@ -125,7 +125,7 @@ function ProductCategorys() {
         setPagecountNumbers(1);
         ProductCatgorylist(data.value.toLowerCase()).then((res) => {
             setServiceusers(res?.data?.results);
-      setPagecount(res?.data?.totalResults)
+            setPagecount(res?.data?.totalResults)
 
             setLimit(res?.data);
             setTimeout(() => {
@@ -135,14 +135,14 @@ function ProductCategorys() {
             console.log(err);
         })
 
-       
+
     }
 
     const GetSearchdata = () => {
         setLoading(true);
         SearchProductUser(searchname).then((res) => {
             setServiceusers(res?.data?.results);
-      setPagecount(res?.data?.totalResults)
+            setPagecount(res?.data?.totalResults)
             setFilter("");
             setTimeout(() => {
                 setLoading(false);
@@ -152,32 +152,32 @@ function ProductCategorys() {
             console.log(err);
         })
     }
-  
+
 
     const fetchComments = async (current) => {
         const res = await AllSearchProductUser(current);
         return res?.data?.results;
-      }
+    }
 
 
-      const fetchComments1 = async (searchname,current) => {
-        const res = await SearchProductUser(searchname,current);
+    const fetchComments1 = async (searchname, current) => {
+        const res = await SearchProductUser(searchname, current);
         return res?.data?.results;
-      }
-    
-      const handlePageClick = async (data) => {
+    }
+
+    const handlePageClick = async (data) => {
         let current = data?.selected + 1;
         setPagecountNumbers(current);
         const commentForms = await fetchComments(current);
-        const commentForms1 = await fetchComments1(searchname,current);
+        const commentForms1 = await fetchComments1(searchname, current);
 
         setServiceusers(commentForms);
         setServiceusers(commentForms1);
 
-      }
+    }
 
 
-    
+
 
     return (
         <Fragment>
@@ -199,7 +199,7 @@ function ProductCategorys() {
                             Products
                         </div>
                         <div className={styles.loreamtextwomen}>
-                            Please select to know more about the Womeynpreneur's business, her journey her story and her success against all odds
+                            Please select to know more about the WomeynPreneurs business, her journey her story and her success against all odds
                         </div>
                     </div>
                     <div className={styles.serachsectionwomen}>
@@ -216,7 +216,7 @@ function ProductCategorys() {
                         <div className='col-lg-3 col-xs-6 col-sm-6 col-lg-5'>
 
                             {filterdata}
-                           
+
                             <Select
                                 placeholder={"Filter by Product Categorys..."}
                                 value={filterdata}
@@ -337,35 +337,35 @@ function ProductCategorys() {
                     </>}
 
 
-<div className="mt-3">
-    <hr/>
-</div>
-<div>
-   Page {pagecountnumbers} / {pagecount}
-</div>
+                    <div className="mt-3">
+                        <hr />
+                    </div>
+                    <div>
+                        Page {pagecountnumbers} / {pagecount}
+                    </div>
 
                     <div className="mt-3">
-                               
-<ReactPaginate
-      activeClassName={'actives '}
-        breakClassName={'item break-me '}
-        breakLabel={'...'}
-        containerClassName={'pagination'}
-        disabledClassName={'disabled-page'}
-        marginPagesDisplayed={2}
-        nextClassName={"item next "}
-        nextLabel={"NEXT"}
-        onPageChange={handlePageClick}
-        pageCount={pagecount/12}
-        pageClassName={'item pagination-page '}
-        pageRangeDisplayed={2}
-        previousClassName={"item previous"}
-        previousLabel={"PREVIOUS"}
 
-      
-   
-      />
-                            </div>
+                        <ReactPaginate
+                            activeClassName={'actives '}
+                            breakClassName={'item break-me '}
+                            breakLabel={'...'}
+                            containerClassName={'pagination'}
+                            disabledClassName={'disabled-page'}
+                            marginPagesDisplayed={2}
+                            nextClassName={"item next "}
+                            nextLabel={"NEXT"}
+                            onPageChange={handlePageClick}
+                            pageCount={pagecount / 12}
+                            pageClassName={'item pagination-page '}
+                            pageRangeDisplayed={2}
+                            previousClassName={"item previous"}
+                            previousLabel={"PREVIOUS"}
+
+
+
+                        />
+                    </div>
                 </div>
 
 

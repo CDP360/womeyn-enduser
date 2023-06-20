@@ -23,8 +23,8 @@ function Blogdetails({ id }) {
         <div className={styles.mainblogview}>
             <div className={styles.insideblogsection}>
                 <div>
-                    {viewblog[0]?.eventImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${viewblog[0]?.eventImageName}`} alt="no image" className={styles.imageeventcard} /> : <>
-                        <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtzY6p2cqrDwlq7On2OGF3e_rpWyFkryfgRJjGP98fJKtK8zid9c15sg75ZvUWkvFgRVA&usqp=CAU'} alt="no image" />
+                    {viewblog[0]?.eventImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${viewblog[0]?.eventImageName}`} alt="no image" className="allbanners" /> : <>
+                        <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtzY6p2cqrDwlq7On2OGF3e_rpWyFkryfgRJjGP98fJKtK8zid9c15sg75ZvUWkvFgRVA&usqp=CAU'} alt="no image" className="allbanners" />
                     </>}
                 </div>
                 <div className={styles.bannerviewblog}>

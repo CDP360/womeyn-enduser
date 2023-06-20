@@ -58,7 +58,7 @@ function Eventsupdate() {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        // autoplay: true,
+        autoplay: true,
         autoplaySpeed: 3500,
         pauseOnHover: true,
         nextArrow: <SlideNextArrow />,
@@ -114,73 +114,72 @@ function Eventsupdate() {
                     </div>
                     <div className={styles.insidecontentsectionevent}>
                         {indexs === 1 ? <>
-
                             <div className={'row'} >
-                            <Slider {...settings}>
-                                {Neweevnts?.map((item, index) => {
-                                    return (
-                                        <div className={styles.maineventssection} key={index} onClick={() => ViewBlogEvent(item?.slugName)}>
-                                            {/* <Image src={eventbaner} alt="no image" className={styles.eventbannerimage} /> */}
-                                            <div className={styles.leftbannerblogs}>
-                                                {item?.eventImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.eventImageName}`} alt="no image" className={styles.imageeventcards} /> : <>
-                                                    <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
-                                                </>}
-                                            </div>
-                                            <div className={styles.rightbannerblogs}>
-                                                <div className="mb-2">
-                                                    {/* <span className={styles.activesports}> SPORT</span> - January 25, 2022 */}
-                                                    {item?.title}
+                                <Slider {...settings}>
+                                    {Neweevnts?.map((item, index) => {
+                                        return (
+                                            <div className={styles.maineventssection} key={index} onClick={() => ViewBlogEvent(item?.slugName)}>
+                                                {/* <Image src={eventbaner} alt="no image" className={styles.eventbannerimage} /> */}
+                                                <div className={styles.leftbannerblogs}>
+                                                    {item?.eventImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.eventImageName}`} alt="no image" className={styles.imageeventcards} /> : <>
+                                                        <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
+                                                    </>}
                                                 </div>
-                                                <div className={styles.eventlengthtext}>
-<span className={styles.eventlength}>Start Date</span> :  {item?.startDate}   
-</div>
+                                                <div className={styles.rightbannerblogs}>
+                                                    <div className="mb-2">
+                                                        {/* <span className={styles.activesports}> SPORT</span> - January 25, 2022 */}
+                                                        {item?.title}
+                                                    </div>
+                                                    <div className={styles.eventlengthtext}>
+                                                        <span className={styles.eventlength}>Start Date</span> :  {item?.startDate}
+                                                    </div>
 
 
-<div className={styles.eventlengthtext}>
-<span className={styles.eventlength}>End Date </span>:   {item?.endDate}   
-</div>
-                                                <div className={styles.loramsevents}>
-                                                    {item?.description.slice(0, 80)}
+                                                    <div className={styles.eventlengthtext}>
+                                                        <span className={styles.eventlength}>End Date </span>:   {item?.endDate}
+                                                    </div>
+                                                    <div className={styles.loramsevents}>
+                                                        {item?.description.slice(0, 80)}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    )
-                                })}
-                            </Slider>
+                                        )
+                                    })}
+                                </Slider>
 
-</div>
+                            </div>
                         </> : <>
 
-                        <div className={'row'} >
+                            <div className={'row'} >
 
-                            <Slider {...settings}>
-                                {topevents?.map((item, index) => {
-                                    return (
-                                        <div className={styles.maineventssection} key={index} onClick={() => ViewBlog(item?.slugName)}>
-                                            {/* <Image src={eventbaner} alt="no image" className={styles.eventbannerimage} /> */}
-                                            <div className={styles.leftbannerblogs}>
-                                                {item?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.postImageName}`} alt="no image" className={styles.imageeventcards} /> : <>
-                                                    <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
-                                                </>}
+                                <Slider {...settings}>
+                                    {topevents?.map((item, index) => {
+                                        return (
+                                            <div className={styles.maineventssection} key={index} onClick={() => ViewBlog(item?.slugName)}>
+                                                {/* <Image src={eventbaner} alt="no image" className={styles.eventbannerimage} /> */}
+                                                <div className={styles.leftbannerblogs}>
+                                                    {item?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.postImageName}`} alt="no image" className="allbanners" /> : <>
+                                                        <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" className="allbanners"/>
+                                                    </>}
+                                                </div>
+                                                <div className={styles.rightbannerblogs}>
+                                                    <div className="mb-4">
+                                                        {/* <span className={styles.activesports}> SPORT</span> - January 25, 2022 */}
+                                                        {item?.title}
+                                                    </div>
+                                                    <div className={styles.categoryevents}>
+                                                        {item?.category}
+                                                    </div>
+                                                    <div className={styles.loramsevents}>
+                                                        {item?.shortDescription.slice(0, 80)}
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className={styles.rightbannerblogs}>
-                                                <div className="mb-4">
-                                                    {/* <span className={styles.activesports}> SPORT</span> - January 25, 2022 */}
-                                                    {item?.title}
-                                                </div>
-                                                <div className={styles.categoryevents}>
-                                                    {item?.category}
-                                                </div>
-                                                <div className={styles.loramsevents}>
-                                                    {item?.shortDescription.slice(0, 80)}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )
-                                })}
-                            </Slider>
+                                        )
+                                    })}
+                                </Slider>
 
-</div>
+                            </div>
 
                         </>}
                         <div className={styles.bordertopeventsection}>
@@ -224,7 +223,7 @@ function Eventsupdate() {
 
                                                         <div className={styles.titleevents}>
                                                             {/* <span className={styles.activesports}> SPORT</span> - January 25, 2022 */}
-                                                            {item?.title.slice(0,30)}
+                                                            {item?.title.slice(0, 30)}
                                                         </div>
                                                         <div className={styles.categoryevents}>
                                                             {item.category}
@@ -289,7 +288,7 @@ function Eventsupdate() {
 
                                                         <div className={styles.titleevents}>
                                                             {/* <span className={styles.activesports}> SPORT</span> - January 25, 2022 */}
-                                                            {item?.title.slice(0,30)}
+                                                            {item?.title.slice(0, 30)}
                                                         </div>
                                                         <div className={styles.categoryevents}>
                                                             {item.keywords}
