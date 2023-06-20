@@ -10,14 +10,23 @@ export function ProductView(data) {
     //     return err?.response?.data?.message;
     // })
 
-
-    return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/product/${data}`).then(response => {
-            resolve(response)
-        }).catch(err => {
-            reject(err)
+    if(data)
+    {
+        return new Promise((resolve, reject) => {
+            instanceBaseurl.get(`/common/product/${data}`).then(response => {
+                resolve(response)
+            }).catch(err => {
+                reject(err)
+            })
         })
-    })
+    }
+    else
+    {
+        return null;
+    }
+
+
+   
 }
 
 export function ProductLikeWishlist(data) {

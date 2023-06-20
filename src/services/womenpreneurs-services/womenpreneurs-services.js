@@ -8,7 +8,7 @@ export function Getwomenpreneursbanner(data) {
     // });
 
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/get-placement/${data}/20`).then(response => {
+        instanceBaseurl.get(`/common/get-placement/${data}`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)
@@ -107,13 +107,24 @@ export function WomenpreneursCategorylistStore(data) {
     //     return err;
     // });
 
-    return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/womenpreneurs/categories/${data}`).then(response => {
-            resolve(response)
-        }).catch(err => {
-            reject(err)
+
+    if(data)
+    {
+        return new Promise((resolve, reject) => {
+            instanceBaseurl.get(`/common/womenpreneurs/categories/${data}`).then(response => {
+                resolve(response)
+            }).catch(err => {
+                reject(err)
+            })
         })
-    })
+    }
+    else
+
+    {
+        return null;
+    }
+
+    
 }
 
 export function WomenpreneursCategoryproducts(sellerid, categoryid) {
@@ -123,11 +134,19 @@ export function WomenpreneursCategoryproducts(sellerid, categoryid) {
     //     return err;
     // });
 
-    return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/products/${sellerid}/${categoryid}`).then(response => {
-            resolve(response)
-        }).catch(err => {
-            reject(err)
+    if(sellerid || categoryid)
+    {
+        return new Promise((resolve, reject) => {
+            instanceBaseurl.get(`/common/products/${sellerid}/${categoryid}`).then(response => {
+                resolve(response)
+            }).catch(err => {
+                reject(err)
+            })
         })
-    })
+    }
+    else{
+        return null;
+    }
+
+    
 }

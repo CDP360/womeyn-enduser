@@ -46,15 +46,19 @@ function Womenpreneusdetails({ id }) {
     }, [indexs, id, sellers?.id, , current]);
     useEffect(() => {
         setLoading(true);
-        WomenpreneursCategoryproducts(sellers?.id, singlecategory).then((res) => {
-            setProductList(res?.data?.results);
-            setLimit(res?.data)
-            setTimeout(() => {
-                setLoading(false);
-            }, 300)
-        }).catch((err) => {
-            console.log(err);
-        })
+        if (sellers?.id || singlecategory) {
+            WomenpreneursCategoryproducts(sellers?.id, singlecategory).then((res) => {
+                setProductList(res?.data?.results);
+                setLimit(res?.data)
+                setTimeout(() => {
+                    setLoading(false);
+                }, 300)
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+
+
     }, [id, sellers?.id, singlecategory])
 
     const GetSellerDetails = () => {
@@ -71,34 +75,53 @@ function Womenpreneusdetails({ id }) {
 
     const CategoryListStore = () => {
         setLoading(true);
-        WomenpreneursCategorylistStore(sellers?.id).then((res) => {
-            setCategorys(res?.data?.results);
-            setCategoryId(res?.data?.results[0]?.id)
-            setTimeout(() => {
-                setLoading(false);
-            }, 300)
 
-        }).catch((err) => {
-            console.log(err);
-        })
+        if (sellers?.id) {
+            WomenpreneursCategorylistStore(sellers?.id).then((res) => {
+                setCategorys(res?.data?.results);
+                setCategoryId(res?.data?.results[0]?.id)
+                setTimeout(() => {
+                    setLoading(false);
+                }, 300)
+
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+        else {
+            return null;
+        }
+
     }
     const productListData = (categoryid) => {
         setLoading(true);
-        WomenpreneursCategoryproducts(sellers?.id, categoryid).then((res) => {
-            setProductList(res?.data?.results);
-            setTimeout(() => {
-                setLoading(false);
-            }, 300)
-        }).catch((err) => {
-            console.log(err);
-        })
+        if (sellers?.id || categoryid) {
+            WomenpreneursCategoryproducts(sellers?.id, categoryid).then((res) => {
+                setProductList(res?.data?.results);
+                setTimeout(() => {
+                    setLoading(false);
+                }, 300)
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+        else {
+            return null;
+        }
+
     }
     const handlechnagedata = (id) => {
         setIndexs(id);
     }
     const fetchCurrentData = async (id, current) => {
-        const resdata = await WomenpreneursCategoryproducts(id, current);
-        setProductList(resdata?.data?.results);
+        if (id || current) {
+            const resdata = await WomenpreneursCategoryproducts(id, current);
+            setProductList(resdata?.data?.results);
+        }
+        else {
+            return null;
+        }
+
     }
     const handleChangePagecount = async (e) => {
         setCurrent(e);

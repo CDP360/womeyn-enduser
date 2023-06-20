@@ -8,14 +8,14 @@ import paypal from '../../../../assests/cart-logos/PayPal-Logo1.png';
 import Spinner from 'react-bootstrap/Spinner';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
-function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippingamount,discountamount }) {
+function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippingamount, discountamount }) {
   const [loading, setLoading] = useState(false);
   const { state } = useContext(ContextStore);
   const [orders, setOrders] = useState([]);
   const [paymentType, setPaymentType] = useState("");
   const { cart } = state;
 
-  const userprofile=useSelector((state)=>state?.loginUser?.logindata?.firstName);
+  const userprofile = useSelector((state) => state?.loginUser?.logindata?.firstName);
   const paymentMethods = [
     {
       id: 1,
@@ -52,8 +52,7 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
     setOrders(storesfilter);
   }, [addressid]);
 
-//   couponCode
-// discountAmount
+
 
   const deliverOrderConfirm = () => {
     setLoading(true);
@@ -62,12 +61,10 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
       paymentMethod: paymentType,
       itemsOrdered: orders,
       totalOrderAmount: totalPrice,
-      customerName: userprofile,     
-       couponCode: couponname,
+      customerName: userprofile,
+      couponCode: couponname,
       couponName: couponname,
-      discountAmount:discountamount?.result
-
-
+      discountAmount: discountamount?.result
     }
 
     if (paymentType?.length === 0) {
@@ -84,9 +81,7 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
       setTimeout(() => {
         setLoading(false);
       }, 500)
-
     }
-
 
     if (paymentType) {
       CustomerOrders(overAllorders).then((res) => {
@@ -106,7 +101,6 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
     setPaymentType(e.target.value);
   }
 
-  console.log(discountamount?.result,"discountamount")
   return (
     <div className={styles.mainsectionpayment}>
       <div className={styles.paymentsections}>
@@ -133,7 +127,7 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
               />
               <span className="ms-3">Loading...</span>
             </> : <>
-              Continue Payment 
+              Continue Payment
 
             </>}
 

@@ -6,8 +6,13 @@
     // max-width:1200px;
     width:100%;
     height:350px;
-    border-radius:5px;
-    // object-fit:cover;
+    transform: translate3d(0, 0, 1px);
+    // height: 100% !important;
+    border-radius:10px;
+    // height: unset;
+    // object-fit:fill;
+    // object-fit: fill;
+    
     @include xsBreakPoint
     {
         width:100%;
@@ -51,4 +56,18 @@
     height:150px;
     object-fit:none;
     border-radius:5px;
+}
+
+.insidekalai
+{
+    border:1px solid red;
+    width:100%;
+    height:100%;
+  
+    .allbannerss
+    {
+        width:100%;
+        height:300px;
+        // object-fit:fill;
+    }
 }
