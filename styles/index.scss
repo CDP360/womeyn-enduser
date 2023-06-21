@@ -69,10 +69,12 @@
     color:#E95A5A;
     border:1px solid #E95A5A;
     cursor:pointer;
-    z-index:989898989898989898989898989898989 !important;
+    z-index:98989898989898989898989898989898989898989898989898989899 !important;
     border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    // box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    // box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
