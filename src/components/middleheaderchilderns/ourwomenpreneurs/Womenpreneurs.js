@@ -176,7 +176,7 @@ function Womenpreneurs() {
                             Our WomeynPreneurs
                         </div>
                         <div className={styles.loreamtextwomen}>
-                            Please select to know more about the Womeynpreneur's business, her journey her story and her success against all odds
+                        Please select to know more about the Womeynpreneur's business, her journey, her story, and her success against all odds.
                         </div>
                     </div>
                     <div className={styles.serachsectionwomen}>

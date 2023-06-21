@@ -222,7 +222,7 @@ function ProductCategorys() {
                             Products 
                         </div>
                         <div className={styles.loreamtextwomen}>
-                            Please select to know more about the WomeynPreneurs business, her journey her story and her success against all odds
+                        Please select to know more about the WomeynPreneurs business, and the Products her Business offers.
                         </div>
                     </div>
                     <div className={styles.serachsectionwomen}>
