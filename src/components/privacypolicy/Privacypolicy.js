@@ -15,6 +15,8 @@ function Privacypolicy() {
       })
   }, [])
   return (
+    <div className="mainsection">
+    <div className="insidesection">
     <div>
  <div className={styles.maintermsandconditions}>
                 <div className={styles.emptyrightsectionbox}>
@@ -90,6 +92,8 @@ function Privacypolicy() {
 
                 </div> */}
             </div>
+    </div>
+    </div>
     </div>
   )
 }

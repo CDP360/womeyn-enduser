@@ -64,7 +64,7 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
       customerName: userprofile,
       couponCode: couponname,
       couponName: couponname,
-      discountAmount: discountamount?.result
+      discountAmount: discountamount?.result?discountamount?.result:null
     }
 
     if (paymentType?.length === 0) {

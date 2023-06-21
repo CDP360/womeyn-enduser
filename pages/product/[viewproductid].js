@@ -14,21 +14,11 @@ function index() {
   const viewproductid = router?.query?.viewproductid;
 
 
+  console.log(viewproductid,"viewproductid")
+
   return (
-    <LayoutHeader>
-      <Head>
-        <title>{viewproductid}</title>
-        <meta name="description" content={`womeyn ${viewproductid}`} key="desc" />
-        <meta property="og:title" content="Women ProductView" />
-        <meta
-          property="og:description"
-          content="Product"
-        />
-        <meta
-          property="og:image"
-          content="https://www.womeyn.cdp360.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fwomeyn_logo.72a6530c.png&w=384&q=75"
-        />
-      </Head>
+    <LayoutHeader title={viewproductid}>
+     
       <Viewproducts id={viewproductid} />
     </LayoutHeader>
   )

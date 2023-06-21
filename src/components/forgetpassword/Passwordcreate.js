@@ -196,6 +196,8 @@ function Passwordcreate() {
     else {
         return (
             <Fragment>
+                  <div className="mainsection">
+            <div className="insidesection">
                 <div className="mt-3">
                     <div className={styles.Mainforgetpassword}>
                         <div className={styles.insidesectionforget}>
@@ -441,6 +443,9 @@ disabled
                         </div>
                     </div>
                 </div>
+
+            </div>
+            </div>
 
                 <div className={styles.leftsection1}>
 

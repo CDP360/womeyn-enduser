@@ -78,9 +78,9 @@ function Userprofile({ name, error }) {
     }
     return (
         <>
-
-          
-                    <div className={styles.insideprofilesection}>
+<div className="mainsection">
+<div className="insidesection">
+<div className={styles.insideprofilesection}>
                         <div className={styles.leftsidebarprofile}>
                             <div className='d-none d-lg-block'>
                                 <Sidebar user={user} error={errors} />
@@ -152,6 +152,10 @@ function Userprofile({ name, error }) {
                             }
                         </div>
                     </div>
+    </div>
+</div>
+          
+                   
          
 
 

@@ -226,146 +226,154 @@ function Womenpreneusdetails({ id }) {
 
     return (
         <Fragment >
+
+            <div className="mainsection">
+            <div className="insidesection">
             <div className={styles.maindetailpage}>
 
-                <div className={styles.insidedetailpage}>
+<div className={styles.insidedetailpage}>
 
-                    <div className='mb-5'>
+    <div className='mb-5'>
 
-                        {/* <Slider {...settings}>
-                            {ImageSellers?.map((item, index) => {
-                                return (
-                                    <div key={index}>
-                                        {item.image ? <img src={item?.image?.src} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
-                                            <Skeleton className={styles.homebanner} />
-                                        </>}
-                                    </div>
-                                )
-                            })}
-                        </Slider> */}
-
-                        {w3 ? <img src={w3?.src} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
+        {/* <Slider {...settings}>
+            {ImageSellers?.map((item, index) => {
+                return (
+                    <div key={index}>
+                        {item.image ? <img src={item?.image?.src} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
                             <Skeleton className={styles.homebanner} />
                         </>}
-
                     </div>
+                )
+            })}
+        </Slider> */}
 
-                    <div className={styles.splitsectiondetails}>
-                        <div className={styles.leftdetailpage}>
+        {w3 ? <img src={w3?.src} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
+            <Skeleton className={styles.homebanner} />
+        </>}
 
+    </div>
 
-
-                            {sellers?.profileImageName ? <>
-                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
-                            </> : <>
-                                <Image src={users} alt="no image" className={styles.womenlogo} />
-                            </>}
-
-
-
-                        </div>
-                        <div className={styles.rightdetailpage}>
-
-                            <div className="large-text">
-                                <div className="capital">
-                                    {sellers?.firstName}
-                                </div>
-                            </div>
-                            <div className={styles.idsellers}>
-                                {id}
-                            </div>
-                            <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
-
-                                {show ? <>
-                                    {sellers?.profileDescription}<span onClick={() => setShow(!show)} className={styles.lessmore}>Less More...</span>
-
-                                </> : <div >
-
-                                    {sellers?.profileDescription?.length <= 500 ? <>
-                                        {sellers?.profileDescription?.slice(0, 500)}
-                                    </> : <>
-                                        {sellers?.profileDescription?.slice(0, 500)}<span onClick={() => setShow(!show)} className={styles.readmore}>Read More...</span>
-
-                                    </>}
+    <div className={styles.splitsectiondetails}>
+        <div className={styles.leftdetailpage}>
 
 
-                                </div>}
-                            </div>
-                        </div>
-                    </div>
 
-                    <div>
-                        {categorys?.length == 0 ? <></> : <>
-                            <div className={styles.wehave}>
-                                We have loads of <br /> products to choose from
-                            </div>
-                        </>}
+            {sellers?.profileImageName ? <>
+                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
+            </> : <>
+                <Image src={users} alt="no image" className={styles.womenlogo} />
+            </>}
 
 
-                    </div>
-                    <div className={styles.middleheaderpage}>
-                        <div className={styles.insidemiddleheader}>
-                            {/* {categorys?.length == 0 && <div>
-                                <Nodatafoundimage
-                                    title="Not Available Categorys"
-                                />
-                            </div>} */}
-                            {categorys?.map((item, index) => {
-                                return (
-                                    <div className={`${indexs === index ? styles.actives : styles.detailpage}`} onClick={() => {
-                                        handlechnagedata(index)
-                                        productListData(item?.id);
-                                    }
-                                    }>
-                                        {item?.name}
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div>
 
-                    <div className={styles.contentsetiondetails}>
-                        <Beverage productlist={productlist} productlistshow={productlistshow} loading={loading} sellers={sellers?.businessSlugName} />
-                        {productlist?.length > 8 &&
-                            <div className='d-flex justify-content-center mt-4'>
-                                <Pagination
-                                    className="pagination-data"
-                                    total={limit?.totalPages * 10}
-                                    onChange={handleChangePagecount}
-                                    current={current}
-                                    itemRender={PrevNextArrow}
-                                    breakLabel="..."
-                                />
-                            </div>
-                        }
-                        {/* <div>
-                            {indexs === 0 && <div>
-                                <Beverage productlist={productlist} />
-                            </div>}
-                        </div>
-                        <div>
-                            {indexs === 1 && <div>
-                                <Superfoods productlist={productlist}/>
-                            </div>}
-                        </div>
-                        <div>
-                            {indexs === 2 && <div>
-                                <Healthbars />
-                            </div>}
-                        </div>
-                        <div>
-                            {indexs === 3 && <div>
-                                <Baking />
-                            </div>}
-                        </div>
-                        <div>
-                            {indexs === 4 && <div>
-                                <Sweets />
-                            </div>}
-                        </div> */}
-                    </div>
+        </div>
+        <div className={styles.rightdetailpage}>
+
+            <div className="large-text">
+                <div className="capital">
+                    {sellers?.firstName}
                 </div>
             </div>
+            <div className={styles.idsellers}>
+                {id}
+            </div>
+            <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
+
+                {show ? <>
+                    {sellers?.profileDescription}<span onClick={() => setShow(!show)} className={styles.lessmore}>Less More...</span>
+
+                </> : <div >
+
+                    {sellers?.profileDescription?.length <= 500 ? <>
+                        {sellers?.profileDescription?.slice(0, 500)}
+                    </> : <>
+                        {sellers?.profileDescription?.slice(0, 500)}<span onClick={() => setShow(!show)} className={styles.readmore}>Read More...</span>
+
+                    </>}
+
+
+                </div>}
+            </div>
+        </div>
+    </div>
+
+    <div>
+        {categorys?.length == 0 ? <></> : <>
+            <div className={styles.wehave}>
+                We have loads of <br /> products to choose from
+            </div>
+        </>}
+
+
+    </div>
+    <div className={styles.middleheaderpage}>
+        <div className={styles.insidemiddleheader}>
+            {/* {categorys?.length == 0 && <div>
+                <Nodatafoundimage
+                    title="Not Available Categorys"
+                />
+            </div>} */}
+            {categorys?.map((item, index) => {
+                return (
+                    <div className={`${indexs === index ? styles.actives : styles.detailpage}`} onClick={() => {
+                        handlechnagedata(index)
+                        productListData(item?.id);
+                    }
+                    }>
+                        {item?.name}
+                    </div>
+                )
+            })}
+        </div>
+    </div>
+
+    <div className={styles.contentsetiondetails}>
+        <Beverage productlist={productlist} productlistshow={productlistshow} loading={loading} sellers={sellers?.businessSlugName} />
+        {productlist?.length > 8 &&
+            <div className='d-flex justify-content-center mt-4'>
+                <Pagination
+                    className="pagination-data"
+                    total={limit?.totalPages * 10}
+                    onChange={handleChangePagecount}
+                    current={current}
+                    itemRender={PrevNextArrow}
+                    breakLabel="..."
+                />
+            </div>
+        }
+        {/* <div>
+            {indexs === 0 && <div>
+                <Beverage productlist={productlist} />
+            </div>}
+        </div>
+        <div>
+            {indexs === 1 && <div>
+                <Superfoods productlist={productlist}/>
+            </div>}
+        </div>
+        <div>
+            {indexs === 2 && <div>
+                <Healthbars />
+            </div>}
+        </div>
+        <div>
+            {indexs === 3 && <div>
+                <Baking />
+            </div>}
+        </div>
+        <div>
+            {indexs === 4 && <div>
+                <Sweets />
+            </div>}
+        </div> */}
+    </div>
+</div>
+</div>
+            </div>
+
+            </div>
+
+          
 
         </Fragment>
     )

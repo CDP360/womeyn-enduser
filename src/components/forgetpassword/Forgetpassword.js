@@ -57,6 +57,8 @@ setTimeout(()=>{
     }
     return (
         <Fragment>
+            <div className="mainsection">
+            <div className="insidesection">
             <div className="mt-3">
                 <div className={styles.Mainforgetpassword}>
                     <div className={styles.insidesectionforget}>
@@ -106,6 +108,10 @@ Request Reset Password link
                     </div>
                 </div>
             </div>
+            </div>
+
+            </div>
+          
             <>
                 <Modal
                     show={show}

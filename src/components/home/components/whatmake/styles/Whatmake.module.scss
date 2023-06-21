@@ -1,6 +1,6 @@
 @use "../../../../../../scss/abstract/" as *;
 .mainslidesection {
-    width: 96%;
+    width: 100%;
     margin: 0 auto !important;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -48,7 +48,7 @@
     }
 
     .insidemakesection {
-        width: 75%;
+        width: 80%;
         margin: 0 auto;
         padding-top: 3%;
         @include xsBreakPoint {

@@ -21,51 +21,14 @@
 }
 
 .womeynmainsectionpre {
-    width: 75%;
-    height: 100%;
-    padding-bottom:5%;
-    margin:0 auto;
+    width: 100%;
+    margin: 0 auto;  
     z-index: 9 !important;
-
-    @include xsBreakPoint {
-        width: 85%;
-        padding-top: 6%;
-    }
-    @include smBreakPoint {
-        width: 85%;
-        padding-top: 6%;
-    }
-    @include mdBreakPoint {
-        width: 85%;
-    }
-    @include lgBreakPoint {
-        width: 89%;
-    }
-    @include xlBreakPoint {
-        width: 85%;
-    }
     .bodysectionwomeynpre {
         width: 100%;
         margin: 0 auto;
         position: relative;
-        @include xsBreakPoint {
-            width: 100%;
-            padding-top: 6%;
-        }
-        @include smBreakPoint {
-            width: 100%;
-            // padding-top: 6%;
-        }
-        @include mdBreakPoint {
-            width: 100%;
-        }
-        @include lgBreakPoint {
-            width: 100%;
-            // border: 1px solid red;
-        }
-        @include xlBreakPoint {
-            width: 100%;
-        }
+     
 
         .emptyboxcolorright {
             position: absolute;
@@ -74,7 +37,6 @@
             background: #e95a5a;
             opacity: 0.34;
             right: 0;
-            // filter: blur(329px);
         }
         .emptyboxcolorleft {
             position: absolute;
@@ -134,7 +96,6 @@
                 gap: 20px;
             }
             @include smBreakPoint {
-                // flex-direction: column;
                 display: flex;
                 gap: 20px;
             }
@@ -175,7 +136,6 @@
     .sellerimagesize {
         height: 300px;
         width: 100%;
-        // object-fit:contain;
         border-radius: 10px !important;
         @include xsBreakPoint {
             height: 320px;
@@ -199,7 +159,6 @@
 }
 
 .emptynoimage {
-    // border: 1px solid red;
     height: 100%;
     width: 100%;
     border-radius: 10px;
@@ -239,7 +198,6 @@
 
 
 .emptyboxrightcolor {
-    // background-color: orange;
     position: absolute;
     width: 12%;
     height: 40% !important;

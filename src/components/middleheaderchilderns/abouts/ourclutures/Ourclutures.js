@@ -12,6 +12,7 @@ import SlideNextArrow from '../ourteam/slidenextarrow/SlideNextArrow';
 import SlidePreArrow from '../ourteam/slideprearrow/SlidePreArrow';
 import { Getwomenpreneursbanner } from '../../../../services/womenpreneurs-services/womenpreneurs-services';
 
+import Skeleton from 'react-loading-skeleton';
 
 function Ourclutures() {
 
@@ -79,7 +80,6 @@ function Ourclutures() {
 
         const data = "Partners and Collaboration Banners"
         Getwomenpreneursbanner(data).then((res) => {
-            console.log(res?.data, "ourteambannersimages");
             setPartnersBanners(res?.data);
         }).catch((err) => {
             console.log(err);
@@ -91,6 +91,8 @@ function Ourclutures() {
         window.open(data);
 
     }
+
+    const datas=[1,2,3];
     return (
         <div>
             {/* <div className='mt-5'>
@@ -108,17 +110,17 @@ function Ourclutures() {
 
             <div className="mt-5">
 
-                <div className='large-text text-center'>
+                {partnersbanners?.length===0?null:<div className='large-text text-center'>
                     Partners & Collaborations
-                </div>
+                </div>}
 
                
             </div>
 
-            <div className="mt-5 mb-5">
+            {/* <div className="mt-5 mb-5">
 
 
- {partnersbanners?.length>4?<>
+ {partnersbanners?.length>1?<>
 
 
  <Slider {...settings}>
@@ -157,12 +159,32 @@ function Ourclutures() {
 
 
 
-</div>
+</div> */}
+
+<div className={styles.imagesectionhomess}>
+                        {/* {partnersbanners?.length === 0 && <div>
+                            <Skeleton className={styles.skeltonbox} />
+                        </div>} */}
+                        <Slider {...settings}>
+                            {partnersbanners?.map((item, index) => {
+                                return (
+                                    <div key={index} className="col-lg-5 mx-auto">
+                                        {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className="allbanners" onClick={() => MovePageData(item.redirectUrl)} /> : <>
+                                            <Skeleton className={styles.homebanner} />
+                                        </>}
+                                        {/* <div className={styles.cardaboutusimage}>
+                                        {index+1}
+
+                                        </div> */}
+                                    </div>
+                                )
+                            })}
+                        </Slider>
+                    </div>
 
 
 
            
-                    </div>
                  
 
             <div className="mt-5 mb-4">

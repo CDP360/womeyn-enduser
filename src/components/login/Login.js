@@ -144,7 +144,8 @@ function Login() {
     else {
         return (
             <Fragment>
-
+                <div className="mainsection">
+                <div className="insidesection">
                 <div className={styles.mainloginsection}>
                     {/* <div className={styles.endcustomerbutton}>
                         <div className={styles.insidecustomerbutton}>
@@ -275,6 +276,12 @@ function Login() {
                         </div>
                     </div>
                 </div>
+                </div>
+
+                </div>
+                
+
+                
                 <div className={styles.leftsection1}>
 
                 </div>

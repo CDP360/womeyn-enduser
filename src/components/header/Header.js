@@ -149,22 +149,7 @@ function Header() {
             pathname: '/category',
             query: { search: serachcategory },
         })
-        // setLoaderserach(true);
-        // SearchProductUser(serachcategory).then((res) => {
-
-
-
-        //     // setSearchDataCategory(res?.data?.results)
-        //     setTimeout(() => {
-        //         setSearchDataCategory1(res?.data?.results);
-        //         setLoaderserach(false);
-        //     }, 500)
-
-
-        // }).catch((err) => {
-        //     console.log(err);
-        //     setLoaderserach(false);
-        // })
+        
     }
 
 
@@ -199,8 +184,10 @@ function Header() {
     }
     return (
         <Fragment>
+            
             <div className={styles.mainheadersection}>
-                <div className={styles.insidesectionheader}>
+                <div className={styles.insideheadersplitbox}>
+                   <div className={styles.insidesectionheader}>
                     <div className={styles.insidesplitheader}>
                         <div className={styles.leftlogo}>
                             <div onClick={() => router.push("/")}>
@@ -234,9 +221,9 @@ function Header() {
                         <div className={styles.rightlogo}>
                             <div className={styles.insiderightlogos}>
 
-                                {/* <div className={styles.falight} onClick={notificationsPush}>
+                                <div className={styles.falight} onClick={notificationsPush}>
                                     <Image src={notifications} alt="no image" className={styles.notifications} />
-                                </div> */}
+                                </div>
                                 <div className={styles.falight} >
 
                                     {router.asPath == "/profile/favorts"?<>
@@ -379,8 +366,10 @@ function Header() {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className={styles.middleheadersection}>
+                </div>
+           
+
+                <div className={styles.middleheadersection}>
                 <div className={styles.emptyboxleftcolor}>
                 </div>
                 <div className={styles.insidemiddlesections}>
@@ -526,57 +515,30 @@ function Header() {
                                     The Team
                                 </Link>
 
-
                                 <Link href="/abouts#PartnersCollaborations" scroll={false} >
                                     Partners & Collaborations
                                 </Link>
-
-
                                 <Link href="/abouts#JoinWomeyn" scroll={false} >
                                     Join Womeyn
                                 </Link>
-
-
-
-                                {/* <Link to="a" activeClass="active" spy={true} smooth={true} offset={50} duration={500}>What is Womeyn</Link>
-                                <Link to="c" activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Our Mission & Vision</Link>
-                                <Link to="d" activeClass="active" spy={true} smooth={true} offset={50} duration={500}>The Logo Significance</Link>
-                                <Link to="e" activeClass="active" spy={true} smooth={true} offset={50} duration={500}>The Team</Link>
-                                <Link to="g" activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Partners & Collaborations</Link>
-                                <Link to="h"  activeClass="active" spy={true} smooth={true} offset={50} duration={500}>Join Womeyn</Link> */}
-
-                                {/* <Link href="/about#the-team">
-      <a>The Team</a>
-    </Link> */}
                             </div>
                         </div>
-                        {/* <Link href="/abouts" className='nav-link'>
-                            <span className='ms-2 hovertexts'>About Us</span>
-                        </Link> */}
-                        {/* <Dropdown>
-                            <Dropdown.Toggle variant="success" id="dropdown-basic" className="kalais">
-                                About Us
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown> */}
+                       
 
 
                     </div>
                     <div className={router.pathname == "/getintouch" ? "active" : ""}>
-                        {/* <Link href="/getintouch" className='nav-link'>
-                            <span className='ms-2 hovertexts'>Get In Touch</span>
-                        </Link> */}
+                      
                         <div className='nav-link' onClick={() => router?.push("/getintouch")}>
                             <span className='ms-2 hovertexts'>Get In Touch</span>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
+                </div>
+              
+           
+           
         </Fragment>
     )
 }

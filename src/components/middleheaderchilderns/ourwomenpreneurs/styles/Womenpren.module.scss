@@ -7,28 +7,12 @@
 //     z-index: 9 !important;
 //     border:3px solid blue;
     .bodysectionwomeynpre {
-        width: 75%;
-        height:100%;
+        width: 100%;
         margin: 0 auto;
-        position: relative;
-        z-index:8 !important;
-        @include xsBreakPoint {
-            width: 85%;
-            padding-top: 6%;
-        }
-        @include smBreakPoint {
-            width: 85%;
-            padding-top: 6%;
-        }
-        @include mdBreakPoint {
-            width: 85%;
-        }
-        @include lgBreakPoint {
-            width: 89%;
-        }
-        @include xlBreakPoint {
-            width: 85%;
-        }
+        // position: relative;
+      
+        z-index: 9 !important;
+        
 
         .emptyboxcolorright {
             position: absolute;

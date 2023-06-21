@@ -18,6 +18,8 @@ import { Rate } from "antd";
 import dynamic from 'next/dynamic';
 import ShippingRate from './shippingrate/ShippingRate';
 import ImageViewModal from './imageviewmodel/ImageViewModal';
+import { NextSeo } from 'next-seo';
+
 function Viewproducts({ id }) {
     const [googleplaces, setGooglePlaces] = useState("");
     const history = useRouter();
@@ -955,7 +957,7 @@ function Viewproducts({ id }) {
     return (
         <Fragment>
             <>
-                {productdata ? <>
+                {/* {productdata ? <>
                     <Head >
                         {productdata?.productName && <title>{productdata?.productName > 10 ? <>{productdata?.productName}</> : <>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.</>}</title>}
                         {productdata?.productName && <meta name="title" content={`Womeyn ${productdata?.productName}`} />}
@@ -965,11 +967,52 @@ function Viewproducts({ id }) {
                         {productdata?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}
                     </Head>
                 </> : <>
-                </>}
+                </>} */}
+
+                
+<NextSeo
+      title="Womeyn Home"
+      description="This is a demo description"
+      canonical="https://www.example.com"
+      openGraph={{
+        url: 'https://www.example.com',
+
+      title:`${productdata?.productName}`,
+        
+        description:`${productdata?.productDescription}`,
+        images: [
+          {
+            url: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`,
+            width: "100%",
+            height: "100%",
+            alt: `${productdata?.productName}`,
+            type: 'image/jpeg',
+          },
+          {
+            url: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`,
+
+            width: "100%",
+            height: "100%",
+            alt:`${productdata?.productName}` ,
+            type: 'image/jpeg',
+          },
+          
+        ],
+        site_name: 'YourSiteName',
+      }}
+      twitter={{
+        handle: '@handle',
+        site: '@site',
+        cardType: 'summary_large_image',
+      }}
+    />
 
             </>
 
-            <div className={styles.mainproductviewscreen}>
+            <div className="mainsection">
+
+            <div className="insidesection">
+  <div className={styles.mainproductviewscreen}>
                 <div className={styles.insideproductview}>
                     <div className={styles.splitproductview}>
                         <div className={styles.leftproductview}>
@@ -1383,6 +1426,14 @@ function Viewproducts({ id }) {
                     </div>
                 </div>
             </div >
+
+            </div>
+
+
+            </div>
+
+
+          
             <div className={styles.leftbg}>
 
             </div>

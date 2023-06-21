@@ -36,7 +36,9 @@ function Categorys({ id }) {
 
   return (
     <Fragment>
-      <div className={styles.maincategorysection}>
+      <div className="mainsection">
+        <div className="insidesection">
+        <div className={styles.maincategorysection}>
         <div className={styles.emptyboxleft}>
         </div>
         <div className={styles.emptyboxright}>
@@ -83,6 +85,9 @@ function Categorys({ id }) {
           </div>  
         </div>
       </div>
+        </div>
+      </div>
+     
     </Fragment>
   )
 }

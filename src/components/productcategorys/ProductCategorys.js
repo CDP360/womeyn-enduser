@@ -47,6 +47,10 @@ function ProductCategorys() {
     const [loading, setLoading] = useState(false);
     const [pagecount, setPagecount] = useState("");
     const [pagecountnumbers, setPagecountNumbers] = useState(1);
+    const [pagecountcheck, setPagecountCheck] = useState("");
+
+    
+    const [showTopBtn, setShowTopBtn] = useState(false);
 
 
     useEffect(() => {
@@ -54,6 +58,7 @@ function ProductCategorys() {
         AllSearchProductUser().then((res) => {
             setServiceusers(res?.data?.results);
             setPagecount(res?.data?.totalResults)
+       
 
             setTimeout(() => {
                 setLoading(false);
@@ -93,7 +98,19 @@ function ProductCategorys() {
         // }
 
 
+       
+
     }, [categoryid, pagecountnumbers])
+
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 200) {
+                setShowTopBtn(true);
+            } else {
+                setShowTopBtn(false);
+            }
+        });
+    }, []);
 
     const WomenSellercategories = () => {
         setLoading(true);
@@ -161,6 +178,7 @@ function ProductCategorys() {
 
 
     const fetchComments1 = async (searchname, current) => {
+       
         const res = await SearchProductUser(searchname, current);
         return res?.data?.results;
     }
@@ -170,20 +188,25 @@ function ProductCategorys() {
         setPagecountNumbers(current);
         const commentForms = await fetchComments(current);
         const commentForms1 = await fetchComments1(searchname, current);
-
+        goToTop()
         setServiceusers(commentForms);
         setServiceusers(commentForms1);
 
     }
 
-
+    const goToTop = () => {
+        window.scrollTo({   
+            top: 230,
+            behavior: "smooth",
+        });
+    };
 
 
     return (
         <Fragment>
 
-
-
+            <div className="mainsection">
+            <div className="insidesection">
             <div className={styles.womeynmainsectionpre}>
                 <div className={styles.emptyboxcolorright}>
                 </div>
@@ -196,7 +219,7 @@ function ProductCategorys() {
                     </div>
                     <div className={styles.ourwomenpreneurs}>
                         <div className='large-text'>
-                            Products
+                            Products 
                         </div>
                         <div className={styles.loreamtextwomen}>
                             Please select to know more about the WomeynPreneurs business, her journey her story and her success against all odds
@@ -341,7 +364,7 @@ function ProductCategorys() {
                         <hr />
                     </div>
                     <div>
-                        Page {pagecountnumbers} / {pagecount}
+                        Page {pagecountnumbers} / {pagecount} {showTopBtn?"kalai":"false kalai"}
                     </div>
 
                     <div className="mt-3">
@@ -360,7 +383,7 @@ function ProductCategorys() {
                             pageClassName={'item pagination-page '}
                             pageRangeDisplayed={2}
                             previousClassName={"item previous"}
-                            previousLabel={"PREVIOUS"}
+                            previousLabel={pagecountnumbers>1?"PREVIOUS":null}
 
 
 
@@ -370,6 +393,14 @@ function ProductCategorys() {
 
 
             </div>
+            </div>
+
+            </div>
+
+
+
+
+            
 
             <div className={styles.emptyboxrightcolor}>
             </div>

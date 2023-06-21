@@ -59,9 +59,9 @@ function Aboutus({ id }) {
     return (
         <Fragment>
 
-
-
-            <div className={styles.mainboutus}>
+<div className='mainsection'>
+    <div className='insidesection'>
+    <div className={styles.mainboutus}>
                 <div className={styles.exptyboxleft}>
 
                 </div>
@@ -174,6 +174,10 @@ function Aboutus({ id }) {
                 </div> */}
 
             </div>
+    </div>
+</div>
+
+           
         </Fragment>
     )
 }

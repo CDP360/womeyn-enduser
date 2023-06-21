@@ -34,6 +34,8 @@ function Servicecards() {
     const [loadingset, setLoading] = useState(false);
     const [categoryid, setCategoryId] = useState(0);
     const [error, setError] = useState(false);
+    const [showTopBtn, setShowTopBtn] = useState(false);
+
     
   const [pagecount,setPagecount]=useState("");
     useEffect(() => {
@@ -138,18 +140,41 @@ function Servicecards() {
       }
     
       const handlePageClick = async (data) => {
-        console.log(data?.selected + 1, "one");
     
         let current = data?.selected + 1;
+
+        goToTop()
     
         const commentForms = await fetchComments(current);
         setServiceusers(commentForms);
       }
 
+      useEffect(() => {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 200) {
+                setShowTopBtn(true);
+            } else {
+                setShowTopBtn(false);
+            }
+        });
+    }, []);
+
+
+      const goToTop = () => {
+        window.scrollTo({   
+            top: 200,
+            behavior: "smooth",
+        });
+    };
+
 
 
     return (
         <Fragment>
+
+            <div className="mainsection">
+            <div className="insidesection">
+
             <div className={styles.womeynmainsectionpre}>
 
                 <div className={styles.bodysectionwomeynpre}>
@@ -213,9 +238,7 @@ function Servicecards() {
                                     <div className='womentitle mt-5'>
                                         {item?.serviceName}
                                     </div>
-                                    {/* <div className='womendescription'>
-                                        {item?.serviceDescription?.length <= 18 ? <>{item?.serviceDescription}</> : <>{item?.serviceDescription.slice(0, 18)}...</>}
-                                    </div> */}
+                                   
                                 </div>
                             )
                         })}
@@ -224,18 +247,7 @@ function Servicecards() {
                     </div>
                     <div>
 
-                        {/* {servicesusers?.length > 8 &&
-                                <div className='d-flex justify-content-center mt-4'>
-                                    <Pagination
-                                        className="pagination-data"
-                                        total={limit?.totalPages * 10}
-                                        onChange={handleChangePagecount}
-                                        current={current}
-                                        itemRender={PrevNextArrow}
-                                        breakLabel="..."
-                                    />
-                                </div>
-                            } */}
+                       
 {servicesusers?.length>9 &&<ReactPaginate
       activeClassName={'actives '}
         breakClassName={'item break-me '}
@@ -250,7 +262,9 @@ function Servicecards() {
         pageClassName={'item pagination-page '}
         pageRangeDisplayed={2}
         previousClassName={"item previous"}
-        previousLabel={"PREVIOUS"}
+        // previousLabel={"PREVIOUS"}
+        previousLabel={pagecountnumbers>1?"PREVIOUS":null}
+
 
       
    
@@ -261,6 +275,10 @@ function Servicecards() {
                 </div>
 
             </div>
+            </div>
+
+            </div>
+
 
 
             <div className={styles.emptyboxrightcolor}>

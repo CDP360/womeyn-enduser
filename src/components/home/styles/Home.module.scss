@@ -2,40 +2,44 @@
 
 .homesectionmain {
   width: 100%;
-  height:auto;
+  height: auto;
   position: relative;
   z-index: 9 !important;
   .insidesectionhome {
-    width: 75%;
+    width: 100%;
     margin: 0 auto;
     // position: relative;
+    // border: 1px solid red;
+    // padding-top: 7%;
     z-index: 9 !important;
-    @include xsBreakPoint {
-      width: 85%;
-      padding-top: 6%;
-    }
-    @include smBreakPoint {
-      width: 85%;
-      padding-top: 6%;
-    }
-    @include mdBreakPoint {
-      width: 85%;
-    }
-    @include lgBreakPoint {
-      width: 89%;
-    }
-    @include xlBreakPoint {
-      width: 85%;
-    }
+    // @include xsBreakPoint {
+    //   width: 85%;
+    //   padding-top: 20%;
+    // }
+    // @include smBreakPoint {
+    //   width: 85%;
+    //   padding-top: 6%;
+    // }
+    // @include mdBreakPoint {
+    //   width: 85%;
+    // }
+    // @include lgBreakPoint {
+    //   width: 89%;
+    //   padding-top: 8%;
+    // }
+    // @include xlBreakPoint {
+    //   width: 85%;
+    //   padding-top: 9%;
+    // }
     .imagesectionhome {
       width: 100%;
       // position: relative;
       .sliderimage {
         max-width: 100%;
         max-height: 300px;
-      // object-fit: contain;
-      height:100%;
-      margin:0 auto;
+        // object-fit: contain;
+        height: 100%;
+        margin: 0 auto;
         border-radius: 8px;
         cursor: pointer;
         @include xsBreakPoint {
@@ -223,35 +227,4 @@
   left: 0%;
   bottom: 0%;
   z-index: 0;
-}
-
-
-
-
-
-
-
-
-
-.mainscrollbutton {
-  // border: 2px solid blue;
-  position:absolute;
-  top:10%;
-  z-index: 98989978697599989898;
-
-  .iconsection {
-      position: fixed;
-      bottom: 20px;
-      right: 10px;
-      height:10px;
-      font-size: 100px;
-      // background: orange;
-      color: blue;
-      cursor: pointer;
-      border-radius: 100px;
-      border: none;
-      box-shadow: 0 5px 10px #ccc;
-      top:0;
-      z-index: 98989978697599989898989898989898;
-  }
 }

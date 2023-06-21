@@ -9,28 +9,11 @@
         object-fit: contain;
     }
     .insidedetailpage {
-        width: 75%;
+        width: 100%;
         margin: 0 auto;
-        padding-top: 0%;
+        
 
     
-        @include xsBreakPoint {
-            width: 85%;
-            padding-top: 7%;
-        }
-        @include smBreakPoint {
-            width: 85%;
-            padding-top: 6%;
-        }
-        @include mdBreakPoint {
-            width: 85%;
-        }
-        @include lgBreakPoint {
-            width: 89%;
-        }
-        @include xlBreakPoint {
-            width: 85%;
-        }
        
 
         .sliderimage

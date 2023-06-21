@@ -10,7 +10,7 @@ export function CategoryBanners() {
     // })
 
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/get-placement/CategoryPageBanner/3`).then(response => {
+        instanceBaseurl.get(`/common/get-placement/CategoryPageBanner/100`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)

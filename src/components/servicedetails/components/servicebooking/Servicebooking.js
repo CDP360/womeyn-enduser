@@ -68,9 +68,7 @@ function Servicebooking({ id }) {
                         <div className={styles.insidesection}>
                             <div>
 
-                                {/* serviceThumbImage */}
-
-                                {/* <Image src={servicebanner} alt="no image" className={styles.servicebanner} /> */}
+                               
 
                                 {serviceBooking?.serviceThumbImage ? <>
                                     <img
@@ -238,8 +236,7 @@ function Servicebooking({ id }) {
                                                 />
                                             </> : <></>}
 
-                                            {/* profileImageName */}
-                                            {/* <Image src={images} alt="no image" className={styles.personimages} /> */}
+                                            
 
                                         </div>
 

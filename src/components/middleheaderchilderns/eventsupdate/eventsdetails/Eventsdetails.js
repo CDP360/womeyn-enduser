@@ -17,6 +17,8 @@ function Eventsdetails({ id }) {
         })
     }, [id])
     return (
+        <div className="mainsection">
+        <div className="insidesection">
         <div className={styles.mainblogview}>
             <div className={styles.insideblogsection}>
                 <div>
@@ -44,6 +46,9 @@ function Eventsdetails({ id }) {
                 </div>
             </div>
         </div>
+        </div>
+        </div>
+        
     )
 }
 

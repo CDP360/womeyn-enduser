@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment,useState,useEffect } from 'react'
 import styles from './styles/Footer.module.scss';
 import womeynlogo from '../../assests/homepage-logos/womeyn_logo.png';
 import Image from 'next/image';
@@ -9,6 +9,7 @@ import linkdin from '../../assests/homepage-logos/linkedinfooter.png';
 import twitter from '../../assests/homepage-logos/twitterfooter.png';
 import headphone from '../../assests/homepage-logos/headphonefooter.png';
 import { useRouter } from 'next/router';
+import { ConatctAdminInfor } from '../../services/contact-service/contact-service';
 function Footer() {
     const router = useRouter();
 
@@ -31,8 +32,18 @@ function Footer() {
     const homePage = () => {
         router.push("/");
     }
+    const [information,setInformation]=useState([]);
+    useEffect(()=>{
+ConatctAdminInfor().then((res)=>{
+    setInformation(res?.data[0]);
+}).catch((err)=>{
+ console.log(err);   
+})
+    },[])
+
     return (
         <Fragment>
+            
             <div className={styles.mainfootersection}>
                 <div className={styles.insidefootersection}>
                     <div className={styles.splitinsidefootersection}>
@@ -118,7 +129,7 @@ function Footer() {
                                     Team Womeyn is open to ideas, suggestions and comments that will help us improve and grow as a community platform. We would love to hear from you
                                 </div>
                                 <div>
-                                    Email : contactus@womeyn.com
+                                    Email : { information?.email}
                                 </div>
                                 <div className={styles.headphonesectionfooter}>
                                     <div>
@@ -130,7 +141,7 @@ function Footer() {
                                             Have any question?
                                         </div>
                                         <div className='active mb-3'>
-                                            +61434557191
+                                            {`+61 ${information?.contactNo}`}
                                         </div>
                                     </div>
                                 </div>

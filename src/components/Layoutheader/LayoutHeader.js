@@ -94,7 +94,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
             title == "tracking" ||
             title == "detail" ||
             title == "Payment" ||
-            title == "service-booking" ||
+            // title == "service-booking" ||
             title == "passwordcreate" ? (
             <></>
           ) : (
@@ -104,7 +104,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
                   title == "Payment" ||
                   title == "tracking" ||
                   title == "Payment" ||
-                  title == "service-booking" ||
+                  // title == "service-booking" ||
                   title == "tracking" ||
                   title == "Aboutus"
                   ?

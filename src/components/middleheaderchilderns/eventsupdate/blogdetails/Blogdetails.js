@@ -20,6 +20,8 @@ function Blogdetails({ id }) {
         })
     }, [])
     return (
+        <div className="mainsection">
+        <div className="insidesection">
         <div className={styles.mainblogview}>
             <div className={styles.insideblogsection}>
                 <div>
@@ -193,6 +195,11 @@ function Blogdetails({ id }) {
                 </div>
             </div>
         </div>
+        </div>
+
+        </div>
+
+        
     )
 }
 

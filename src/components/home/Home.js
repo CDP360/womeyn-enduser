@@ -22,8 +22,10 @@ import { NavigatePage } from '../../config/PageNavigate';
 
 import jwt_decode from "jwt-decode";
 
+import Image from 'next/image'
 
-
+import { NextSeo } from 'next-seo';
+ 
 
 function Home() {
     const [bannerimages, setBannerImages] = useState([]);
@@ -171,9 +173,10 @@ function Home() {
         });
     };
 
+  
     return (
         <Fragment>
-            <Head>
+            {/* <Head>
                 <title>Womeyn Home</title>
                 <meta name="title" content="Womeyn Home" />
                 <meta name="description" content="Team Womeyn is open to ideas, suggestions and comments that will help us improve and grow as a community platform. We would love to hear from you" />
@@ -191,7 +194,46 @@ function Home() {
                 <meta property="twitter:title" content="Womeyn Home" />
                 <meta property="twitter:description" content="Team Womeyn is open to ideas, suggestions and comments that will help us improve and grow as a community platform. We would love to hear from you" />
                 <meta property="twitter:image" content="https://www.womeyn.cdp360.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fwomeyn_logo.72a6530c.png&w=384&q=75" />
-            </Head>
+            </Head> */}
+
+
+<NextSeo
+      title="Womeyn Home"
+      description="This is a demo description"
+      canonical="https://www.example.com"
+      openGraph={{
+        url: 'https://www.example.com',
+
+      title:"Womeyn Home",
+        
+        description: 'Open Graph Description',
+        images: [
+          {
+            url: 'https://theclippingpathservice.com/wp-content/uploads/2022/01/Best-Size-For-ecommerce-Product-Images.png',
+            width: 800,
+            height: 600,
+            alt: 'Og Image Alt',
+            type: 'image/jpeg',
+          },
+          {
+            url: 'https://www.example.com/og-image02.jpg',
+            width: 900,
+            height: 800,
+            alt: 'Og Image Alt Second',
+            type: 'image/jpeg',
+          },
+          { url: 'https://www.example.com/og-image03.jpg' },
+          { url: 'https://www.example.com/og-image04.jpg' },
+        ],
+        site_name: 'YourSiteName',
+      }}
+      twitter={{
+        handle: '@handle',
+        site: '@site',
+        cardType: 'summary_large_image',
+      }}
+    />
+            
             <div className={styles.homesectionmain}>
                 <div className={styles.emptyboxrightcolor}>
                 </div>
@@ -205,10 +247,11 @@ function Home() {
                 </div>
                 <div className={styles.emptyboxleftcolor4}>
                 </div>
+                <div className="mainsection">
+                    <div className="insidesection">
+                    <div className={styles.insidesectionhome}>
 
-                <div>
-                </div>
-                <div className={styles.insidesectionhome}>
+                       
                     <div className={styles.imagesectionhome}>
                         {bannerimages[0]?.HeroBanner?.length === 0 && <div>
                             <Skeleton className={styles.skeltonbox} />
@@ -217,7 +260,7 @@ function Home() {
                             {bannerimages[0]?.HeroBanner?.map((item, index) => {
                                 return (
                                     <div key={index}>
-                                        {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className="allbanners" onClick={() => MovePageData(item.redirectUrl)} /> : <>
+                                        {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className="allbanners" onClick={() => MovePageData(item.redirectUrl)} quality={80}/> : <>
                                             <Skeleton className={styles.homebanner} />
                                         </>}
                                     </div>
@@ -245,6 +288,10 @@ function Home() {
                         <Categorychoose HomeTexts={HomeTexts} bannerimages={bannerimages} />
                     </div>
                 </div>
+                    </div>
+                </div>
+               
+
                 <div>
                     <Summarybreaksalary bannerimages={bannerimages[4]} />
                 </div>
@@ -266,16 +313,7 @@ function Home() {
 
                 <div>
 
-                <div className={styles.mainscrollbutton}>
-                {showTopBtn && (
-                    <div
-                        className={styles.iconsection}
-                        onClick={goToTop}
-                    >
-                        top section
-                    </div>
-                )}
-            </div>
+                
                 </div>
             </div>
         </Fragment >

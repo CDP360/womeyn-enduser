@@ -29,6 +29,8 @@ function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterprod
 
     const [pagecount,setPagecount]=useState("");
     const [pagecountnumbers,setPagecountNumbers]=useState(1);
+    const [showTopBtn, setShowTopBtn] = useState(false);
+
 
     useEffect(() => {
         getproducts();
@@ -89,9 +91,29 @@ function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterprod
         setPagecountNumbers(current);
         const commentForms = await fetchComments(name,current);
         setFilterproducts(commentForms);
+        goToTop()
  
 
       }
+
+
+      useEffect(() => {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 200) {
+                setShowTopBtn(true);
+            } else {
+                setShowTopBtn(false);
+            }
+        });
+    }, []);
+
+
+      const goToTop = () => {
+        window.scrollTo({   
+            top: 200,
+            behavior: "smooth",
+        });
+    };
 
     return (
         <div>
@@ -160,7 +182,10 @@ function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterprod
         pageClassName={'item pagination-page '}
         pageRangeDisplayed={2}
         previousClassName={"item previous"}
-        previousLabel={"PREVIOUS"}
+        // previousLabel={"PREVIOUS"}
+
+        previousLabel={pagecountnumbers>1?"PREVIOUS":null}
+
 
       
    

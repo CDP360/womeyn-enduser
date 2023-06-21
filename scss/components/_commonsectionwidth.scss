@@ -3,27 +3,36 @@
 .mainsection
 {
     width:100%;
-
     .insidesection
 {
-    width:75%;
+    width:80%;
     margin:0 auto;
+    padding-top: 7%;
+
     @include xsBreakPoint {
         width: 85%;
-        padding-top: 6%;
+        padding-top: 20%;
+
     }
     @include smBreakPoint {
         width: 85%;
-        padding-top: 6%;
+        padding-top: 11%;
+
     }
     @include mdBreakPoint {
         width: 85%;
+        padding-top: 11%;
+
     }
     @include lgBreakPoint {
         width: 89%;
+        padding-top: 9%;
+
     }
     @include xlBreakPoint {
         width: 85%;
+        padding-top: 10%;
+
     }
 }
 }

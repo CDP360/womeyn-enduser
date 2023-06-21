@@ -104,6 +104,9 @@ function Eventsupdate() {
 
     return (
         <Fragment>
+
+            <div className="mainsection">
+            <div className="insidesection">
             <div className={styles.eventupdatemainsection}>
                 <div className={styles.insideeventupdatesection}>
                     <div className={styles.emptyboxeventsection}>
@@ -323,7 +326,13 @@ function Eventsupdate() {
 
 
                     </div>
-                    <div>
+                   
+
+                </div>
+            </div>
+</div>
+            </div>
+            <div>
                         <Signupnewsletter />
                     </div>
                     <div>
@@ -332,9 +341,7 @@ function Eventsupdate() {
                     <div>
                         <Childfooter />
                     </div>
-
-                </div>
-            </div>
+            
         </Fragment>
     )
 }

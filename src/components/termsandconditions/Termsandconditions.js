@@ -18,7 +18,9 @@ function Termsandconditions() {
 
     return (
         <Fragment>
-            <div className={styles.maintermsandconditions}>
+            <div className="mainsection">
+                <div className="insidesection">
+                <div className={styles.maintermsandconditions}>
                 <div className={styles.emptyrightsectionbox}>
                 </div>
                 <div className={styles.emptyleftsectionbox}>
@@ -92,6 +94,9 @@ function Termsandconditions() {
 
                 </div> */}
             </div>
+                </div>
+            </div>
+          
         </Fragment>
     )
 }

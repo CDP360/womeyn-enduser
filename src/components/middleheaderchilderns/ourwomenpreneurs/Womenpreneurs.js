@@ -34,6 +34,8 @@ function Womenpreneurs() {
     const [error, setError] = useState(false);
     const [pagecount,setPagecount]=useState("");
     const [pagecountnumbers,setPagecountNumbers]=useState(1);
+    const [showTopBtn, setShowTopBtn] = useState(false);
+
     useEffect(() => {
         WomenSellercategories();
         GetFilterandSearchData();
@@ -128,16 +130,38 @@ function Womenpreneurs() {
       const handlePageClick = async (data) => {
         let current = data?.selected + 1;
         setPagecountNumbers(current);
+        goToTop()
         const commentForms = await fetchComments(current);
         // const commentForms1 = await fetchComments1(searchname,current);
         setDataseller(commentForms);
         // setServiceusers(commentForms1);
 
       }
+
+      useEffect(() => {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 200) {
+                setShowTopBtn(true);
+            } else {
+                setShowTopBtn(false);
+            }
+        });
+    }, []);
+
  
+
+      const goToTop = () => {
+        window.scrollTo({   
+            top: 230,
+            behavior: "smooth",
+        });
+    };
 
     return (
         <Fragment>
+
+            <div className="mainsection">
+            <div className="insidesection">
             <div className={styles.womeynmainsectionpre}>
                 <div className={styles.emptyboxcolorright}>
                 </div>
@@ -281,7 +305,9 @@ function Womenpreneurs() {
         pageClassName={'item pagination-page '}
         pageRangeDisplayed={2}
         previousClassName={"item previous"}
-        previousLabel={"PREVIOUS"}
+        // previousLabel={"PREVIOUS"}
+        previousLabel={pagecountnumbers>1?"PREVIOUS":null}
+
 
       
    
@@ -293,6 +319,9 @@ function Womenpreneurs() {
             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+          
               
           
 

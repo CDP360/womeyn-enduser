@@ -6,11 +6,6 @@ import SlidePreArrow from './slideprearrow/SlidePreArrow';
 import anuwomen from '../../../../assests/homepage-logos/anuwomeyn.png';
 import Image from 'next/image';
 
-import h1 from '../../../../assests/abouts-logos/g1-removebg-preview.png';
-import h2 from '../../../../assests/abouts-logos/g2-removebg-preview.png';
-import h3 from '../../../../assests/abouts-logos/g3-removebg-preview.png';
-import h4 from '../../../../assests/abouts-logos/g4-removebg-preview.png';
-import h5 from '../../../../assests/abouts-logos/g5-removebg-preview.png';
 
 
 import anu from '../../../../assests/abouts-logos/anu.png';
@@ -69,51 +64,7 @@ function Ourteam() {
         ]
     };
 
-    const data = [
-        {
-            id: 1,
-            name: " Anu Kulkarni",
-            title: "crafted from top materials",
-            image: anuwomen,
-            colorbg: "#FFF8F1"
-        },
-        {
-            id: 2,
-            name: "Addison",
-            title: "crafted from top materials",
-            image: h1,
-            colorbg: "#ECF2FB"
-        },
-        {
-            id: 3,
-            name: "Adeline",
-            title: "crafted from top materials",
-            image: h2,
-            colorbg: " #F0F8F3"
-
-        },
-        {
-            id: 4,
-            name: "Alexis",
-            title: "crafted from top materials",
-            image: h3,
-            colorbg: "#FDF0F0"
-        },
-        {
-            id: 5,
-            name: "Alice",
-            title: "crafted from top materials",
-            image: h4,
-            colorbg: "#ECF2FB"
-        },
-        {
-            id: 6,
-            name: "Amelia",
-            title: "crafted from top materials",
-            image: h5,
-            colorbg: "#ECF2FB"
-        }
-    ]
+   
 
 
 

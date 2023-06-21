@@ -122,25 +122,14 @@ function Servicepayment({ id }) {
     const LoginNavigate = () => {
         const pathnames = `/service/payment/${id}`;
         localStorage.setItem("whish", JSON.stringify(pathnames));
-
-        // setTimeout(() => {
         history.push("/login");
-        //     localStorage.removeItem("userid");
-        //     localStorage.removeItem("userToken");
-        //     localStorage.removeItem("whish");
-        //     localStorage.removeItem("user");
-        //     localStorage.removeItem("auth");
-        // }, 300)
+        
     }
 
 
     const NavigatePathUser = () => {
         history?.push("/login");
     }
-
-
-
-
     return (
         <div className='mainsection'>
             <div className="insidesection">

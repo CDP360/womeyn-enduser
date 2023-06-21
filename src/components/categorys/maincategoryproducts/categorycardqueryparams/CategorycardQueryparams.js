@@ -118,6 +118,8 @@ function CategorycardQueryparams({ id }) {
 
   return (
     <Fragment>
+      <div className="mainsection">
+        <div className="insidesection">
       <div className={styles.maincategorysection}>
         <div className={styles.emptyboxleft}>
         </div>
@@ -164,6 +166,8 @@ function CategorycardQueryparams({ id }) {
             </div>
           </div>
         </div>
+      </div>
+      </div>
       </div>
     </Fragment>
   )

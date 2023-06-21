@@ -136,6 +136,8 @@ function Maincategorysearch({ name, searchnamevalue,filterproducts,setFilterprod
     const [current, setCurrent] = useState(1);
     const [pagecount,setPagecount]=useState("");
     const [pagecountnumbers,setPagecountNumbers]=useState(1);
+    const [showTopBtn, setShowTopBtn] = useState(false);
+
     useEffect(() => {
         getproducts();
     }, [name, searchnamevalue])
@@ -191,10 +193,31 @@ function Maincategorysearch({ name, searchnamevalue,filterproducts,setFilterprod
       const handlePageClick = async (data) => {
         let current = data?.selected + 1;
         setPagecountNumbers(current);
+        goToTop()
         const commentForms = await fetchComments(name,current);
         setServiceusers(commentForms);
     
       }
+
+
+      useEffect(() => {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 200) {
+                setShowTopBtn(true);
+            } else {
+                setShowTopBtn(false);
+            }
+        });
+    }, []);
+
+
+      const goToTop = () => {
+        window.scrollTo({   
+            top: 200,
+            behavior: "smooth",
+        });
+    };
+
     return (
         <div>
             <div>
@@ -259,7 +282,9 @@ function Maincategorysearch({ name, searchnamevalue,filterproducts,setFilterprod
         pageClassName={'item pagination-page '}
         pageRangeDisplayed={2}
         previousClassName={"item previous"}
-        previousLabel={"PREVIOUS"}
+        // previousLabel={"PREVIOUS"}
+        previousLabel={pagecountnumbers>1?"PREVIOUS":null}
+
 
       
    

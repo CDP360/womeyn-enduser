@@ -9,7 +9,7 @@
 }
 .womeyn-enduser {
     width: 100vw;
-    height: 100vh;
+    height: auto;
     overflow: hidden;
     background: white;
     overflow-y:auto;
@@ -56,3 +56,23 @@
 }
 
 
+.iconsections
+{
+    position:fixed;
+    bottom:30px;
+    right:24px;
+    // border:2px solid red;
+    font-size:23px;
+    width:40px;
+    height:40px;
+    background-color:white;
+    color:#E95A5A;
+    border:1px solid #E95A5A;
+    cursor:pointer;
+    z-index:989898989898989898989898989898989 !important;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
