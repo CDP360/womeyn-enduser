@@ -22,8 +22,8 @@ function Eventsdetails({ id }) {
         <div className={styles.mainblogview}>
             <div className={styles.insideblogsection}>
                 <div>
-                    {viewblog[0]?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${viewblog[0]?.postImageName}`} alt="no image" className="allbanners" /> : <>
-                        <img src={"https://visionhospitalgoa.com/wp-content/uploads/2020/09/blog-banner-1.jpg"} alt="no image" className={styles.imageeventcard} className="allbanners"/>
+                    {viewblog[0]?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${viewblog[0]?.postImageName}`} alt="no image" className="eventbanners" /> : <>
+                        <img src={"https://visionhospitalgoa.com/wp-content/uploads/2020/09/blog-banner-1.jpg"} alt="no image"  className="eventbanners"/>
                     </>}
                 </div>
                 <div className={styles.bannerviewblog}>

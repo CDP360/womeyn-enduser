@@ -32,20 +32,20 @@ function Womenpreneurs() {
     const [loadingset, setLoading] = useState(false);
     const [categoryid, setCategoryId] = useState(0);
     const [error, setError] = useState(false);
-    const [pagecount,setPagecount]=useState("");
-    const [pagecountnumbers,setPagecountNumbers]=useState(1);
+    const [pagecount, setPagecount] = useState("");
+    const [pagecountnumbers, setPagecountNumbers] = useState(1);
     const [showTopBtn, setShowTopBtn] = useState(false);
 
     useEffect(() => {
         WomenSellercategories();
         GetFilterandSearchData();
 
-        WomenpreneursSellers().then((res)=>{
-            
-        setDataseller(res?.data?.results);
-      setPagecount(res?.data?.totalResults)
+        WomenpreneursSellers().then((res) => {
 
-        }).catch((err)=>{
+            setDataseller(res?.data?.results);
+            setPagecount(res?.data?.totalResults)
+
+        }).catch((err) => {
             console.log(err);
         })
     }, [categoryid])
@@ -82,7 +82,7 @@ function Womenpreneurs() {
         setLoading(true);
         WomenpreneursFilter(categoryid).then((res) => {
             setDataseller(res?.data?.results);
-      setPagecount(res?.data?.totalResults)
+            setPagecount(res?.data?.totalResults)
             setLimit(res?.data);
             setTimeout(() => {
                 setLoading(false);
@@ -119,15 +119,15 @@ function Womenpreneurs() {
     const fetchComments = async (current) => {
         const res = await WomenpreneursSellers(current);
         return res?.data?.results;
-      }
+    }
 
 
     //   const fetchComments1 = async (searchname,current) => {
     //     const res = await SearchProductUser(searchname,current);
     //     return res?.data?.results;
     //   }
-    
-      const handlePageClick = async (data) => {
+
+    const handlePageClick = async (data) => {
         let current = data?.selected + 1;
         setPagecountNumbers(current);
         goToTop()
@@ -136,9 +136,9 @@ function Womenpreneurs() {
         setDataseller(commentForms);
         // setServiceusers(commentForms1);
 
-      }
+    }
 
-      useEffect(() => {
+    useEffect(() => {
         window.addEventListener("scroll", () => {
             if (window.scrollY > 200) {
                 setShowTopBtn(true);
@@ -148,10 +148,10 @@ function Womenpreneurs() {
         });
     }, []);
 
- 
 
-      const goToTop = () => {
-        window.scrollTo({   
+
+    const goToTop = () => {
+        window.scrollTo({
             top: 230,
             behavior: "smooth",
         });
@@ -161,75 +161,75 @@ function Womenpreneurs() {
         <Fragment>
 
             <div className="mainsection">
-            <div className="insidesection">
-            <div className={styles.womeynmainsectionpre}>
-                <div className={styles.emptyboxcolorright}>
-                </div>
-                <div className={styles.emptyboxcolorleft}>
-                </div>
-                <div className={styles.bodysectionwomeynpre}>
-                    <div className={styles.imagesectionwomeyn}>
-                        <Womencarouselbanner />
-                    </div>
-                    <div className={styles.ourwomenpreneurs}>
-                        <div className='large-text'>
-                            Our WomeynPreneurs
+                <div className="insidesection">
+                    <div className={styles.womeynmainsectionpre}>
+                        <div className={styles.emptyboxcolorright}>
                         </div>
-                        <div className={styles.loreamtextwomen}>
-                        Please select to know more about the Womeynpreneur's business, her journey, her story, and her success against all odds.
+                        <div className={styles.emptyboxcolorleft}>
                         </div>
-                    </div>
-                    <div className={styles.serachsectionwomen}>
-                        <div className={styles.serachwomenpresection}>
-                            <div>
-                                <input type='text' placeholder="Search by WomeynPreneurs Name" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
+                        <div className={styles.bodysectionwomeynpre}>
+                            <div className={styles.imagesectionwomeyn}>
+                                <Womencarouselbanner />
                             </div>
-                            <div>
-                                <Image src={serachicon} alt="no image" className={styles.serachiconwomen} onClick={GetSearchdata} />
-                            </div>
-                        </div>
-                        <div className='col-lg-4 col-xs-10  col-sm-12'>
-                            <Select
-                                placeholder={"Filter by Categorys..."}
-                                value={filterdata}
-                                onChange={(e) => handleFilterCategory(e)}
-                                options={datacategory}
-                            />
-                        </div>
-                    </div>
-
-{dataseller?.length===0 && null}
-                    <div>
-                        {searchname?.length > 0 ? <>
-                            <div className='cardsections row   w-100 mt-5 mb-5 ms-1'>
-                                <div>
-                                    {dataseller.length === 0 && <div>
-                                       
-                                    </div>}
+                            <div className={styles.ourwomenpreneurs}>
+                                <div className='large-text'>
+                                    Our WomeynPreneurs
                                 </div>
-                                {loadingset ? <>
+                                <div className={styles.loreamtextwomen}>
+                                    Please select to know more about the Womeynpreneur's business, her journey, her story, and her success against all odds.
+                                </div>
+                            </div>
+                            <div className={styles.serachsectionwomen}>
+                                <div className={styles.serachwomenpresection}>
                                     <div>
-                                        <LoaderLogo />
+                                        <input type='text' placeholder="Search by WomeynPreneurs Name" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
                                     </div>
-                                </> : dataseller?.map((item, index) => {
-                                    return (
-                                        <div className='cards mt-5 mb-5 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
-                                            <div className={styles.sellerimagebox}>
-                                                <div className={styles.insidebox}>
-                                                    {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                                        <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
-                                                    </>}
-                                                </div>
-                                            </div>
+                                    <div>
+                                        <Image src={serachicon} alt="no image" className={styles.serachiconwomen} onClick={GetSearchdata} />
+                                    </div>
+                                </div>
+                                <div className='col-lg-4 col-xs-10  col-sm-12'>
+                                    <Select
+                                        placeholder={"Filter by Categorys..."}
+                                        value={filterdata}
+                                        onChange={(e) => handleFilterCategory(e)}
+                                        options={datacategory}
+                                    />
+                                </div>
+                            </div>
 
-                                            <div className='womentitle'>
-                                                {item?.firstName}
-                                            </div>
-                                            <div className='womendescription'>
-                                                {item?.businessSlugName}
+                            {dataseller?.length === 0 && null}
+                            <div>
+                                {searchname?.length > 0 ? <>
+                                    <div className='cardsections row   w-100 mt-5 mb-5 ms-1'>
+                                        <div>
+                                            {dataseller.length === 0 && <div>
 
+                                            </div>}
+                                        </div>
+                                        {loadingset ? <>
+                                            <div>
+                                                <LoaderLogo />
                                             </div>
-                                            {/* <div >
+                                        </> : dataseller?.map((item, index) => {
+                                            return (
+                                                <div className='cards mt-5 mb-5 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
+                                                    <div className={styles.sellerimagebox}>
+                                                        <div className={styles.insidebox}>
+                                                            {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                                                <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
+                                                            </>}
+                                                        </div>
+                                                    </div>
+
+                                                    <div className='womentitle'>
+                                                        {item?.firstName}
+                                                    </div>
+                                                    <div className='womendescription'>
+                                                        {item?.businessSlugName}
+
+                                                    </div>
+                                                    {/* <div >
                                                 {item?.categoryTypeId==1 && <span>Product</span>}
                                                 {item?.categoryTypeId==2 && <span>Service</span>}
                                                 {item?.categoryTypeId==3 && <span>Product & Service</span>}
@@ -237,93 +237,93 @@ function Womenpreneurs() {
 
 
 
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        </> : <>
-                            <div className='cardsections row   w-100 mt-5 mb-3 ms-1'>
-                                <div>
-                                    {dataseller.length === 0 && <div>No Data Found!!!!</div>}
-                                </div>
-                                {loadingset ? <>
-                                    <div>
-                                        <LoaderLogo />
-                                    </div>
-                                </> : dataseller?.map((item, index) => {
-                                    return (
-                                        <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
-                                            <div className={styles.sellerimagebox}>
-                                                <div className={styles.insidebox}>
-                                                    {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                                        <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
-                                                    </>}
                                                 </div>
+                                            )
+                                        })}
+                                    </div>
+                                </> : <>
+                                    <div className='cardsections row   w-100 mt-5 mb-3 ms-1'>
+                                        <div>
+                                            {dataseller.length === 0 && <div>No Data Found!!!!</div>}
+                                        </div>
+                                        {loadingset ? <>
+                                            <div>
+                                                <LoaderLogo />
                                             </div>
-                                            <div className='womentitle'>
-                                                {item?.firstName}
-                                            </div>
-                                            <div className='womendescription'>
-                                                {item?.businessSlugName}
+                                        </> : dataseller?.map((item, index) => {
+                                            return (
+                                                <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
+                                                    <div className={styles.sellerimagebox}>
+                                                        <div className={styles.insidebox}>
+                                                            {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                                                <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
+                                                            </>}
+                                                        </div>
+                                                    </div>
+                                                    <div className='womentitle'>
+                                                        {item?.firstName}
+                                                    </div>
+                                                    <div className='womendescription'>
+                                                        {item?.businessSlugName}
 
-                                            </div>
-                                            {/* 
+                                                    </div>
+                                                    {/* 
                                             <div >
                                                 {item?.categoryTypeId==1 && <span>Product</span>}
                                                 {item?.categoryTypeId==2 && <span>Service</span>}
                                                 {item?.categoryTypeId==3 && <span>Product & Service</span>}
                                                 </div> */}
 
-                                        </div>
-                                    )
-                                })}
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                </>}
+
+                                <div>
+
+                                    <div className="mt-3">
+                                        <hr />
+                                    </div>
+                                    <div>
+                                        Page {pagecountnumbers} / {pagecount}
+                                    </div>
+
+                                    <div className="mt-3">
+
+                                        <ReactPaginate
+                                            activeClassName={'actives '}
+                                            breakClassName={'item break-me '}
+                                            breakLabel={'...'}
+                                            containerClassName={'pagination'}
+                                            disabledClassName={'disabled-page'}
+                                            marginPagesDisplayed={2}
+                                            nextClassName={"item next "}
+                                            nextLabel={"NEXT"}
+                                            onPageChange={handlePageClick}
+                                            pageCount={pagecount / 12}
+                                            pageClassName={'item pagination-page '}
+                                            pageRangeDisplayed={2}
+                                            previousClassName={"item previous"}
+                                            // previousLabel={"PREVIOUS"}
+                                            previousLabel={pagecountnumbers > 1 ? "PREVIOUS" : null}
+
+
+
+
+                                        />
+                                    </div>
+                                </div>
+
+
                             </div>
-                        </>}
-
-                        <div>
-
-                        <div className="mt-3">
-    <hr/>
-</div>
-<div>
-   Page {pagecountnumbers} / {pagecount}
-</div>
-
-                    <div className="mt-3">
-                               
-<ReactPaginate
-      activeClassName={'actives '}
-        breakClassName={'item break-me '}
-        breakLabel={'...'}
-        containerClassName={'pagination'}
-        disabledClassName={'disabled-page'}
-        marginPagesDisplayed={2}
-        nextClassName={"item next "}
-        nextLabel={"NEXT"}
-        onPageChange={handlePageClick}
-        pageCount={pagecount/12}
-        pageClassName={'item pagination-page '}
-        pageRangeDisplayed={2}
-        previousClassName={"item previous"}
-        // previousLabel={"PREVIOUS"}
-        previousLabel={pagecountnumbers>1?"PREVIOUS":null}
-
-
-      
-   
-      />
-                            </div>
-                </div>
-
-
-            </div>
                         </div>
                     </div>
                 </div>
             </div>
-          
-              
-          
+
+
+
 
 
 

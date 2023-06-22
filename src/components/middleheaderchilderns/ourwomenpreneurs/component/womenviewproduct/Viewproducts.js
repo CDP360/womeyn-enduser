@@ -953,6 +953,9 @@ function Viewproducts({ id }) {
     }
 
 
+    console.log(productdata,"productdata")
+
+
 
     return (
         <Fragment>
@@ -969,471 +972,472 @@ function Viewproducts({ id }) {
                 </> : <>
                 </>} */}
 
-                
-<NextSeo
-      title="Womeyn Home"
-      description="This is a demo description"
-      canonical="https://www.example.com"
-      openGraph={{
-        url: 'https://www.example.com',
 
-      title:`${productdata?.productName}`,
-        
-        description:`${productdata?.productDescription}`,
-        images: [
-          {
-            url: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`,
-            width: "100%",
-            height: "100%",
-            alt: `${productdata?.productName}`,
-            type: 'image/jpeg',
-          },
-          {
-            url: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`,
+                <NextSeo
+                    title="Womeyn Home"
+                    //   description="This is a demo description"
+                    description={productdata?.productDescription}
+                    canonical="https://www.example.com"
+                    openGraph={{
+                        url: 'https://www.example.com',
 
-            width: "100%",
-            height: "100%",
-            alt:`${productdata?.productName}` ,
-            type: 'image/jpeg',
-          },
-          
-        ],
-        site_name: 'YourSiteName',
-      }}
-      twitter={{
-        handle: '@handle',
-        site: '@site',
-        cardType: 'summary_large_image',
-      }}
-    />
+                        title: `${productdata?.productName}`,
+
+                        description: `${productdata?.productDescription}`,
+                        images: [
+                            {
+                                url: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`,
+                                width: "100%",
+                                height: "100%",
+                                alt: `${productdata?.productName}`,
+                                type: 'image/jpeg',
+                            },
+                            {
+                                url: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`,
+
+                                width: "100%",
+                                height: "100%",
+                                alt: `${productdata?.productName}`,
+                                type: 'image/jpeg',
+                            },
+
+                        ],
+                        site_name: 'YourSiteName',
+                    }}
+                    twitter={{
+                        handle: '@handle',
+                        site: '@site',
+                        cardType: 'summary_large_image',
+                    }}
+                />
 
             </>
 
             <div className="mainsection">
 
-            <div className="insidesection">
-  <div className={styles.mainproductviewscreen}>
-                <div className={styles.insideproductview}>
-                    <div className={styles.splitproductview}>
-                        <div className={styles.leftproductview}>
-                            <div className={styles.leftmainsectionslide}>
-                                <div className={styles.leftcardimages}>
+                <div className="insidesection">
+                    <div className={styles.mainproductviewscreen}>
+                        <div className={styles.insideproductview}>
+                            <div className={styles.splitproductview}>
+                                <div className={styles.leftproductview}>
+                                    <div className={styles.leftmainsectionslide}>
+                                        <div className={styles.leftcardimages}>
 
-                                    <ImageViewModal imagemodel={imagemodel} handleImageClose={handleImageClose} productimages={productimages} />
-                                    <div className={styles.imagerowsection}>
-                                        {productimages?.map((item, index) => {
-                                            return (
-                                                <div className={`${indexs === index ? styles.activewomen : styles.borderimages
-                                                    } `} onClick={() => {
-                                                        setIndex(index)
-                                                        handleImageshow()
-                                                    }} onMouseOver={() => setIndex(index)} key={index}>
-                                                    {item?.name ? <><img
-                                                        className={styles.imagecards}
-                                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
-                                                        alt="profile-pic"
-                                                    /></> : <>
-                                                        <Skeleton />
-                                                    </>}
-                                                </div >
-                                            )
-                                        })}
-                                    </div >
-                                </div >
-                                <div className={styles.rightcardimagesshow}>
-                                    <div className={styles.leftwomensearchsection}>
-                                        <div className={styles.serachlargeimage}>
+                                            <ImageViewModal imagemodel={imagemodel} handleImageClose={handleImageClose} productimages={productimages} />
+                                            <div className={styles.imagerowsection}>
+                                                {productimages?.map((item, index) => {
+                                                    return (
+                                                        <div className={`${indexs === index ? styles.activewomen : styles.borderimages
+                                                            } `} onClick={() => {
+                                                                setIndex(index)
+                                                                handleImageshow()
+                                                            }} onMouseOver={() => setIndex(index)} key={index}>
+                                                            {item?.name ? <><img
+                                                                className={styles.imagecards}
+                                                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
+                                                                alt="profile-pic"
+                                                            /></> : <>
+                                                                <Skeleton />
+                                                            </>}
+                                                        </div >
+                                                    )
+                                                })}
+                                            </div >
+                                        </div >
+                                        <div className={styles.rightcardimagesshow}>
+                                            <div className={styles.leftwomensearchsection}>
+                                                <div className={styles.serachlargeimage}>
 
-                                            <div className="d-block d-lg-none">
-                                                <img
-                                                    className={styles.serachlargeimages}
-                                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
-                                                    alt="profile-pic"
-                                                />
-                                            </div>
-                                            <div className="d-none d-lg-block">
+                                                    <div className="d-block d-lg-none">
+                                                        <img
+                                                            className={styles.serachlargeimages}
+                                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
+                                                            alt="profile-pic"
+                                                        />
+                                                    </div>
+                                                    <div className="d-none d-lg-block">
 
-                                                <ReactImageMagnify
-                                                    //  className={styles.serachlargeimages}
-                                                    {...{
-                                                        smallImage: {
+                                                        <ReactImageMagnify
+                                                            //  className={styles.serachlargeimages}
+                                                            {...{
+                                                                smallImage: {
 
-                                                            alt: 'Wristwatch by Ted Baker London',
-                                                            isFluidWidth: true,
-                                                            src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                            borderRadius: "10px"
-                                                        },
-                                                        largeImage: {
-                                                            src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
-                                                            width: 1200,
-                                                            height: 1200,
-                                                            backgroundColor: "white",
-                                                            // border:"3px solid blue"
-                                                            zIndex: "989898988989898989898989",
-                                                            borderRadius: "10px"
+                                                                    alt: 'Wristwatch by Ted Baker London',
+                                                                    isFluidWidth: true,
+                                                                    src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
+                                                                    borderRadius: "10px"
+                                                                },
+                                                                largeImage: {
+                                                                    src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
+                                                                    width: 1200,
+                                                                    height: 1200,
+                                                                    backgroundColor: "white",
+                                                                    // border:"3px solid blue"
+                                                                    zIndex: "989898988989898989898989",
+                                                                    borderRadius: "10px"
 
 
-                                                        },
-                                                        imageStyle: {
-                                                            // border:"2px solid red",
-                                                            width: "100%",
-                                                            height: "100%",
-                                                            maxHeight: "400px",
-                                                            objectFit: "contain",
-                                                            zIndex: "9898989898",
-                                                            backgroundColor: "white",
-                                                            borderRadius: "10px"
+                                                                },
+                                                                imageStyle: {
+                                                                    // border:"2px solid red",
+                                                                    width: "100%",
+                                                                    height: "100%",
+                                                                    maxHeight: "400px",
+                                                                    objectFit: "contain",
+                                                                    zIndex: "9898989898",
+                                                                    backgroundColor: "white",
+                                                                    borderRadius: "10px"
 
-                                                        },
-                                                        // smallImage: {
-                                                        //     src: String, (required)
-                                                        //     srcSet: String,
-                                                        //     sizes: String,
-                                                        //     width: Number, (required if isFluidWidth is not set)
-                                                        //     height: Number, (required if isFluidWidth is not set)
-                                                        //     isFluidWidth: Boolean, (default false)
-                                                        //     alt: String,
-                                                        //     onLoad: Function,
-                                                        //     onError: Function
-                                                        // },
-                                                    }}
-                                                />
+                                                                },
+                                                                // smallImage: {
+                                                                //     src: String, (required)
+                                                                //     srcSet: String,
+                                                                //     sizes: String,
+                                                                //     width: Number, (required if isFluidWidth is not set)
+                                                                //     height: Number, (required if isFluidWidth is not set)
+                                                                //     isFluidWidth: Boolean, (default false)
+                                                                //     alt: String,
+                                                                //     onLoad: Function,
+                                                                //     onError: Function
+                                                                // },
+                                                            }}
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                {tokencheck ? <div className={styles.heartimagesection}>
+                                                    <button className={styles.btn}
+                                                        onClick={() => {
+                                                            if (!like) {
+                                                                LikeWishlistlike(productdata?.id)
+                                                            }
+                                                            else {
+                                                                LikeWishlistunlike(productdata?.id)
+                                                            }
+                                                        }}
+                                                    >
+                                                        {like ? <>
+                                                            <Image src={heartlike} alt="no image" className={styles.heartlikes} />
+
+                                                        </> : <>
+                                                            <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+
+
+                                                        </>}
+
+                                                        {/* {like?"kalai true":"kalai false"} */}
+                                                    </button>
+                                                </div> :
+                                                    <div className={styles.heartimagesection}>
+                                                        <button className={styles.btn} onClick={() => {
+                                                            CheckLoginUsers(productdata?.productSlugName)
+                                                            // LikeWishlist(productdata?.id)
+                                                        }}>
+
+                                                            <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+                                                        </button>
+                                                    </div>
+                                                }
                                             </div>
                                         </div>
+                                    </div >
+                                </div >
+                                <div className={styles.rightproductview}>
+                                    <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
+                                    <div className={styles.starsection}>
+                                        <div className={styles.starsections}>
+                                            {averageRatings ? <>
+                                                {averageRatings === 1 && <Rate defaultValue={1} allowHalf style={{ color: "#54BE43" }}
+                                                    tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                    count={5}
+                                                    disabled
+                                                />}
+                                                {averageRatings === 1.5 && <Rate defaultValue={1.5} allowHalf style={{ color: "#54BE43" }}
+                                                    tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                    count={5}
+                                                    disabled
+                                                />}
+                                                {averageRatings === 2 && <Rate defaultValue={2} allowHalf style={{ color: "#54BE43" }}
+                                                    tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                    count={5}
+                                                    disabled
+                                                />}
+                                                {averageRatings === 2.5 && <Rate defaultValue={2.5} allowHalf style={{ color: "#54BE43" }}
+                                                    tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                    count={5}
+                                                    disabled
+                                                />}
+                                                {averageRatings === 3 && <Rate defaultValue={3} allowHalf style={{ color: "#54BE43" }}
+                                                    tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                    count={5}
+                                                    disabled
+                                                />}
+                                                {averageRatings === 3.5 && <Rate defaultValue={3.5} allowHalf style={{ color: "#54BE43" }}
+                                                    tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                    count={5}
+                                                    disabled
+                                                />}
+                                                {averageRatings === 4 && <Rate defaultValue={4} allowHalf style={{ color: "#54BE43" }}
+                                                    tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                    count={5}
+                                                    disabled
+                                                />}
+                                                {averageRatings === 4.5 && <Rate defaultValue={4.5} allowHalf style={{ color: "#54BE43" }}
+                                                    tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                    count={5}
+                                                    disabled
+                                                />}
+                                                {averageRatings === 5 && <Rate defaultValue={5} allowHalf style={{ color: "#54BE43" }}
+                                                    tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                    count={5}
+                                                    disabled
+                                                />}
 
-                                        {tokencheck ? <div className={styles.heartimagesection}>
-                                            <button className={styles.btn}
-                                                onClick={() => {
-                                                    if (!like) {
-                                                        LikeWishlistlike(productdata?.id)
-                                                    }
-                                                    else {
-                                                        LikeWishlistunlike(productdata?.id)
-                                                    }
-                                                }}
-                                            >
-                                                {like ? <>
-                                                    <Image src={heartlike} alt="no image" className={styles.heartlikes} />
+                                            </> : <>
 
-                                                </> : <>
-                                                    <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
+                                                {<Rate defaultValue={0} allowHalf style={{ color: "#54BE43" }}
+                                                    tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
+                                                    count={5}
+                                                    disabled
+                                                />}
 
 
-                                                </>}
 
-                                                {/* {like?"kalai true":"kalai false"} */}
-                                            </button>
-                                        </div> :
-                                            <div className={styles.heartimagesection}>
-                                                <button className={styles.btn} onClick={() => {
-                                                    CheckLoginUsers(productdata?.productSlugName)
-                                                    // LikeWishlist(productdata?.id)
-                                                }}>
 
-                                                    <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
-                                                </button>
+                                            </>}
+
+
+
+                                        </div>
+                                        <div>
+                                            {ratingcount} Review
+                                        </div>
+                                    </div>
+
+                                    <div className={styles.proceinproduct}>
+                                        <div className={styles.offertext}>
+                                            {productdata?.offerPercentag == 0 ? <>
+                                            </> : <>
+                                                {productdata?.offerPercentag}% off
+                                            </>}
+                                        </div>
+                                        <div className={styles.priceautual}>
+                                            <div className={styles.prices}>A${productdata?.salePrice}</div>
+                                        </div>
+                                        <div className='textpricedashed' >
+                                            {productdata?.offerPercentag == 0 ? <></> : <del className={styles.priceautuals}>A${productdata?.actualPrice}</del>}
+                                        </div>
+                                    </div>
+
+                                    <div className={styles.colorsectionlists}>
+                                        {productvariations[0]?.name ? <><div className={styles.sizesectionandcolor}>
+                                            <div className={styles.fontweightsizes}> {productvariations[0]?.name}</div>
+                                            <div className={styles.sizesection}>
+                                                <div className={styles.sizes}>
+                                                    {productvariations[0]?.variationValues?.map((item, index) => {
+                                                        return (
+                                                            <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                                setIndex1(index)
+                                                                handleSizeProduct1(item);
+                                                            }} key={index}>
+                                                                {item}
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
                                             </div>
-                                        }
+                                        </div>
+                                            {/* <div>
+                                           {error && productSize1?.length<=1 ? <span>Please select a {productvariations[0]?.name}</span>:<div></div>}
+                                            </div> */}
+                                        </> : <></>}
+                                        {productvariations[1]?.name ? <div className={styles.sizesectionandcolor}>
+                                            <div className={styles.fontweightsizes}> {productvariations[1]?.name ? <>{productvariations[1]?.name}</> : <></>} </div>
+                                            <div className={styles.sizesection}>
+                                                <div className={styles.sizes}>
+                                                    {productvariations[1]?.variationValues?.map((item, index) => {
+                                                        return (
+                                                            <div className={`${index2 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                                setIndex2(index)
+                                                                handleSizeProduct2(item);
+                                                            }} key={index}>
+                                                                {item}
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                            </div>
+                                        </div> : <></>}
+                                        {productvariations[2]?.name ? <div className={styles.sizesectionandcolor}>
+                                            <div className={styles.fontweightsizes}> {productvariations[2]?.name ? <>{productvariations[2]?.name}</> : <></>} </div>
+                                            <div className={styles.sizesection}>
+                                                <div className={styles.sizes}>
+                                                    {productvariations[2]?.variationValues?.map((item, index) => {
+                                                        return (
+                                                            <div className={`${index3 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                                setIndex3(index)
+                                                                handleSizeProduct3(item);
+                                                            }} key={index}>
+                                                                {item}
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                            </div>
+                                        </div> : <></>}
+                                        {productvariations[3]?.name ? <div className={styles.sizesectionandcolor}>
+                                            <div className={styles.fontweightsizes}> {productvariations[3]?.name ? <>{productvariations[3]?.name}</> : <></>} </div>
+                                            <div className={styles.sizesection}>
+                                                <div className={styles.sizes}>
+                                                    {productvariations[3]?.variationValues?.map((item, index) => {
+                                                        return (
+                                                            <div className={`${index4 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                                setIndex4(index)
+                                                                handleSizeProduct4(item);
+                                                            }} key={index}>
+                                                                {item}
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                            </div>
+                                        </div> : <></>}
+                                        {productvariations[4]?.name ? <div className={styles.sizesectionandcolor}>
+                                            <div className={styles.fontweightsizes}> {productvariations[4]?.name ? <>{productvariations[4]?.name}</> : <></>} </div>
+                                            <div className={styles.sizesection}>
+                                                <div className={styles.sizes}>
+                                                    {productvariations[4]?.variationValues?.map((item, index) => {
+                                                        return (
+                                                            <div className={`${index5 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
+                                                                setIndex5(index)
+                                                                handleSizeProduct5(item);
+                                                            }} key={index}>
+                                                                {item}
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                            </div>
+                                        </div> : <></>}
+                                    </div>
+                                    {productdata?.stateId == 1 && productdata?.quantityLeft > 0 ?
+                                        <>
+                                            <div className={styles.buttons}>
+                                                <div>
+                                                    {tokencheck ?
+                                                        <Button className={styles.bynowcartbutton} onClick={() => Checkout(productdata, productvariations)}>
+                                                            Buy Now
+                                                        </Button> :
+                                                        <Button className={styles.bynowcartbutton} onClick={() => buyNowPathNavigate(productdata, productvariations)}>
+                                                            Buy Now
+                                                        </Button>
+                                                    }
+                                                </div>
+                                                <div>
+                                                    <Button className={styles.addcartbutton} onClick={() => handleChange(productdata, productvariations)}>
+                                                        Add To Cart
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                        </> : <>
+                                            <div className={styles.buttonss}>
+                                                <div>
+                                                    {tokencheck ?
+                                                        <Button className={styles.bynowcartbuttons} >
+                                                            Buy Now
+                                                        </Button> :
+                                                        <Button className={styles.bynowcartbuttons} >
+                                                            Buy Now
+                                                        </Button>
+                                                    }
+                                                </div>
+                                                <div>
+                                                    <Button className={styles.addcartbuttons} >
+                                                        Add To Cart
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                        </>
+                                    }
+
+                                    <div>
+                                        <ShippingRate productdata={productdata} location={location} />
+                                    </div>
+                                    <div className={styles.sellernames}>
+                                        <div className={styles.sellername}>
+                                            Seller  :
+                                        </div>
+                                        <div className={styles.nameinseller} onClick={() => productSellerPageView(productseller?.businessSlugName)} >
+                                            {productseller?.firstName}
+                                        </div>
                                     </div>
                                 </div>
                             </div >
-                        </div >
-                        <div className={styles.rightproductview}>
-                            <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
-                            <div className={styles.starsection}>
-                                <div className={styles.starsections}>
-                                    {averageRatings ? <>
-                                        {averageRatings === 1 && <Rate defaultValue={1} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 1.5 && <Rate defaultValue={1.5} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 2 && <Rate defaultValue={2} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 2.5 && <Rate defaultValue={2.5} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 3 && <Rate defaultValue={3} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 3.5 && <Rate defaultValue={3.5} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 4 && <Rate defaultValue={4} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 4.5 && <Rate defaultValue={4.5} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-                                        {averageRatings === 5 && <Rate defaultValue={5} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
 
-                                    </> : <>
-
-                                        {<Rate defaultValue={0} allowHalf style={{ color: "#54BE43" }}
-                                            tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
-                                            count={5}
-                                            disabled
-                                        />}
-
-
-
-
-                                    </>}
-
-
-
+                            <div className={styles.descriptionsection}>
+                                <div className={styles.additionaldetails}>
+                                    Product Description
                                 </div>
                                 <div>
-                                    {ratingcount} Review
+                                    {productdata?.productDescription}
                                 </div>
                             </div>
+                            <div className={styles.productdetailslists}>
+                                <div className={styles.additionaldetails}>
+                                    Product Details
+                                </div>
+                                <div className={styles.leftproductdetails}>
+                                    <div className={styles.productdetailsleft}>
+                                        <div className={styles.listproductdata}>
+                                            <div className={styles.leftname}>Product Name</div>
+                                            <div className={styles.rightname}>{productdata?.productName}</div>
+                                        </div>
+                                        <div className={styles.listproductdata}>
+                                            <div className={styles.leftname}>Model Name</div>
+                                            <div className={styles.rightname}>{productdata?.modelName}</div>
+                                        </div>
 
-                            <div className={styles.proceinproduct}>
-                                <div className={styles.offertext}>
-                                    {productdata?.offerPercentag == 0 ? <>
-                                    </> : <>
-                                        {productdata?.offerPercentag}% off
-                                    </>}
-                                </div>
-                                <div className={styles.priceautual}>
-                                    <div className={styles.prices}>A${productdata?.salePrice}</div>
-                                </div>
-                                <div className='textpricedashed' >
-                                    {productdata?.offerPercentag == 0 ? <></> : <del className={styles.priceautuals}>A${productdata?.actualPrice}</del>}
+                                        <div className={styles.listproductdata}>
+                                            <div className={styles.leftname}>Manufacture Name</div>
+                                            <div className={styles.rightname}>{productdata?.manufacturerName}</div>
+                                        </div>
+                                    </div>
+                                    <div className={styles.productdetailsright}>
+                                        <div className={styles.listproductdata}>
+                                            <div className={styles.leftname}>Brand Name</div>
+                                            <div className={styles.rightname}>{productdata?.brandName}</div>
+                                        </div>
+                                        <div className={styles.listproductdata}>
+                                            <div className={styles.leftname}>Style Name</div>
+                                            <div className={styles.rightname}>{productdata?.styleName}</div>
+                                        </div>
+                                        <div className={styles.listproductdata}>
+                                            <div className={styles.leftname}>Manufacture Name</div>
+                                            <div className={styles.rightname}>{productdata?.manufacturerName}</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div className={styles.colorsectionlists}>
-                                {productvariations[0]?.name ? <><div className={styles.sizesectionandcolor}>
-                                    <div className={styles.fontweightsizes}> {productvariations[0]?.name}</div>
-                                    <div className={styles.sizesection}>
-                                        <div className={styles.sizes}>
-                                            {productvariations[0]?.variationValues?.map((item, index) => {
-                                                return (
-                                                    <div className={`${index1 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                        setIndex1(index)
-                                                        handleSizeProduct1(item);
-                                                    }} key={index}>
-                                                        {item}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                </div>
-                                    {/* <div>
-                                           {error && productSize1?.length<=1 ? <span>Please select a {productvariations[0]?.name}</span>:<div></div>}
-                                            </div> */}
-                                </> : <></>}
-                                {productvariations[1]?.name ? <div className={styles.sizesectionandcolor}>
-                                    <div className={styles.fontweightsizes}> {productvariations[1]?.name ? <>{productvariations[1]?.name}</> : <></>} </div>
-                                    <div className={styles.sizesection}>
-                                        <div className={styles.sizes}>
-                                            {productvariations[1]?.variationValues?.map((item, index) => {
-                                                return (
-                                                    <div className={`${index2 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                        setIndex2(index)
-                                                        handleSizeProduct2(item);
-                                                    }} key={index}>
-                                                        {item}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                </div> : <></>}
-                                {productvariations[2]?.name ? <div className={styles.sizesectionandcolor}>
-                                    <div className={styles.fontweightsizes}> {productvariations[2]?.name ? <>{productvariations[2]?.name}</> : <></>} </div>
-                                    <div className={styles.sizesection}>
-                                        <div className={styles.sizes}>
-                                            {productvariations[2]?.variationValues?.map((item, index) => {
-                                                return (
-                                                    <div className={`${index3 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                        setIndex3(index)
-                                                        handleSizeProduct3(item);
-                                                    }} key={index}>
-                                                        {item}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                </div> : <></>}
-                                {productvariations[3]?.name ? <div className={styles.sizesectionandcolor}>
-                                    <div className={styles.fontweightsizes}> {productvariations[3]?.name ? <>{productvariations[3]?.name}</> : <></>} </div>
-                                    <div className={styles.sizesection}>
-                                        <div className={styles.sizes}>
-                                            {productvariations[3]?.variationValues?.map((item, index) => {
-                                                return (
-                                                    <div className={`${index4 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                        setIndex4(index)
-                                                        handleSizeProduct4(item);
-                                                    }} key={index}>
-                                                        {item}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                </div> : <></>}
-                                {productvariations[4]?.name ? <div className={styles.sizesectionandcolor}>
-                                    <div className={styles.fontweightsizes}> {productvariations[4]?.name ? <>{productvariations[4]?.name}</> : <></>} </div>
-                                    <div className={styles.sizesection}>
-                                        <div className={styles.sizes}>
-                                            {productvariations[4]?.variationValues?.map((item, index) => {
-                                                return (
-                                                    <div className={`${index5 === index ? styles.activewomensizes : styles.mainsizecard}`} onClick={() => {
-                                                        setIndex5(index)
-                                                        handleSizeProduct5(item);
-                                                    }} key={index}>
-                                                        {item}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                </div> : <></>}
-                            </div>
-                            {productdata?.stateId == 1 && productdata?.quantityLeft > 0 ?
-                                <>
-                                    <div className={styles.buttons}>
-                                        <div>
-                                            {tokencheck ?
-                                                <Button className={styles.bynowcartbutton} onClick={() => Checkout(productdata, productvariations)}>
-                                                    Buy Now
-                                                </Button> :
-                                                <Button className={styles.bynowcartbutton} onClick={() => buyNowPathNavigate(productdata, productvariations)}>
-                                                    Buy Now
-                                                </Button>
-                                            }
-                                        </div>
-                                        <div>
-                                            <Button className={styles.addcartbutton} onClick={() => handleChange(productdata, productvariations)}>
-                                                Add To Cart
-                                            </Button>
-                                        </div>
-                                    </div>
-                                </> : <>
-                                    <div className={styles.buttonss}>
-                                        <div>
-                                            {tokencheck ?
-                                                <Button className={styles.bynowcartbuttons} >
-                                                    Buy Now
-                                                </Button> :
-                                                <Button className={styles.bynowcartbuttons} >
-                                                    Buy Now
-                                                </Button>
-                                            }
-                                        </div>
-                                        <div>
-                                            <Button className={styles.addcartbuttons} >
-                                                Add To Cart
-                                            </Button>
-                                        </div>
-                                    </div>
-                                </>
-                            }
-
+                        </div >
+                        {productreview?.length > 0 ? <div className={styles.reviewsection}>
                             <div>
-                                <ShippingRate productdata={productdata} location={location} />
+                                <Reviewsproduct productreview={productreview} ratingcount={ratingcount} averageRatings={averageRatings} />
                             </div>
-                            <div className={styles.sellernames}>
-                                <div className={styles.sellername}>
-                                    Seller  :
-                                </div>
-                                <div className={styles.nameinseller} onClick={() => productSellerPageView(productseller?.businessSlugName)} >
-                                    {productseller?.firstName}
-                                </div>
+                        </div> : <></>}
+                        <div>
+                            <div>
+                                <Caroselproducts productimages={productimages} />
                             </div>
                         </div>
                     </div >
 
-                    <div className={styles.descriptionsection}>
-                        <div className={styles.additionaldetails}>
-                            Product Description
-                        </div>
-                        <div>
-                            {productdata?.productDescription}
-                        </div>
-                    </div>
-                    <div className={styles.productdetailslists}>
-                        <div className={styles.additionaldetails}>
-                            Product Details
-                        </div>
-                        <div className={styles.leftproductdetails}>
-                            <div className={styles.productdetailsleft}>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Product Name</div>
-                                    <div className={styles.rightname}>{productdata?.productName}</div>
-                                </div>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Model Name</div>
-                                    <div className={styles.rightname}>{productdata?.modelName}</div>
-                                </div>
-
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Manufacture Name</div>
-                                    <div className={styles.rightname}>{productdata?.manufacturerName}</div>
-                                </div>
-                            </div>
-                            <div className={styles.productdetailsright}>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Brand Name</div>
-                                    <div className={styles.rightname}>{productdata?.brandName}</div>
-                                </div>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Style Name</div>
-                                    <div className={styles.rightname}>{productdata?.styleName}</div>
-                                </div>
-                                <div className={styles.listproductdata}>
-                                    <div className={styles.leftname}>Manufacture Name</div>
-                                    <div className={styles.rightname}>{productdata?.manufacturerName}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div >
-                {productreview?.length > 0 ? <div className={styles.reviewsection}>
-                    <div>
-                        <Reviewsproduct productreview={productreview} ratingcount={ratingcount} averageRatings={averageRatings} />
-                    </div>
-                </div> : <></>}
-                <div>
-                    <div>
-                        <Caroselproducts productimages={productimages} />
-                    </div>
                 </div>
-            </div >
-
-            </div>
 
 
             </div>
 
 
-          
+
             <div className={styles.leftbg}>
 
             </div>
