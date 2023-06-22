@@ -60,7 +60,7 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
       deliveryAddressId: addressid,
       paymentMethod: paymentType,
       itemsOrdered: orders,
-      totalOrderAmount: totalPrice,
+      totalOrderAmount: totalPrice.toFixed(2),
       customerName: userprofile,
       couponCode: couponname,
       couponName: couponname,
@@ -127,7 +127,7 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
               />
               <span className="ms-3">Loading...</span>
             </> : <>
-              Continue Payment
+              Continue Payment 
 
             </>}
 

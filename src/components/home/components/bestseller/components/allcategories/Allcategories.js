@@ -31,7 +31,7 @@ function Allcategories() {
     <Fragment>
       <>
         <div className={styles.allcategorymainsection}>
-          <div className='textseller'>
+          <div className='textseller mb-3'>
             Our bestselling products
           </div>
           <div className={styles.mainoursellercarousel}>
@@ -40,7 +40,7 @@ function Allcategories() {
 
         </div>
         <div className={styles.allcategorymainsection}>
-          <div className='textseller'>
+          <div className='textseller mb-3'>
             Our bestselling services
           </div>
 

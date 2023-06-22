@@ -222,7 +222,7 @@ function ProductCategorys() {
                             Products 
                         </div>
                         <div className={styles.loreamtextwomen}>
-                        Please select to know more about the WomeynPreneurs business, and the Products her Business offers.
+                        Please select to know more about the WomeynPreneur business, and the Products her Business offers.
                         </div>
                     </div>
                     <div className={styles.serachsectionwomen}>
@@ -261,7 +261,7 @@ function ProductCategorys() {
                                     <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 ' key={index} >
 
                                         <div onClick={() => router.push(`/product/${item?.productSlugName}`)} className={styles.imagebox}>
-                                            {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={styles.sellerimagesize} /> :
+                                            {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={"productimages"} /> :
                                                 <>
                                                     <Skeleton className={styles.loaderskelimage} />
                                                 </>
@@ -314,7 +314,7 @@ function ProductCategorys() {
                                     <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 ' key={index} >
 
                                         <div onClick={() => router.push(`/product/${item?.productSlugName}`)} className={styles.imagebox}>
-                                            {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={styles.sellerimagesize} /> :
+                                            {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={"productimages"} /> :
                                                 <>
                                                     <Skeleton className={styles.loaderskelimage} />
                                                 </>
@@ -358,13 +358,12 @@ function ProductCategorys() {
                             })}</>}
                         </div>
                     </>}
-
-
-                    <div className="mt-3">
+{pagecount===0?null:<>
+    <div className="mt-3">
                         <hr />
                     </div>
                     <div>
-                        Page {pagecountnumbers} / {pagecount} {showTopBtn?"kalai":"false kalai"}
+                        Page {pagecountnumbers} / {pagecount} 
                     </div>
 
                     <div className="mt-3">
@@ -389,6 +388,9 @@ function ProductCategorys() {
 
                         />
                     </div>
+</>}
+
+                  
                 </div>
 
 

@@ -79,10 +79,9 @@ function Allbestservices({ stars }) {
                         return (
                             <div className={styles.cardcategory} key={index}>
                                 <div className={styles.cardsections}>
-                                    <div className="cards col-lg-12 mb-5" onClick={() => categoryPush(item?.serviceSlugName)}>
-
+                                    <div className="cards col-lg-12 mb-1" onClick={() => categoryPush(item?.serviceSlugName)}>
                                         <div>
-                                            {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                            {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={"productimages"} /> : <>
                                                 <Skeleton className={styles.skeltons} />
                                             </>}
                                         </div>
@@ -114,7 +113,7 @@ function Allbestservices({ stars }) {
                             <div className={styles.cardcategorys} key={index}>
                                     <div  onClick={() => categoryPush(item?.productSlugName)}>
                                         <div>
-                                            {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                            {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={"productimages"} /> : <>
                                                 <Skeleton className={styles.skeltons} />
                                             </>}
                                         </div>

@@ -259,7 +259,8 @@ function Maincategorysearch({ name, searchnamevalue,filterproducts,setFilterprod
             </div>} */}
 
 
-<div className="mt-3">
+{pagecount===0 ?null:<>
+    <div className="mt-3">
     <hr/>
 </div>
 <div>
@@ -290,6 +291,8 @@ function Maincategorysearch({ name, searchnamevalue,filterproducts,setFilterprod
    
       />
                             </div>
+</>}
+
                 </div>
 
             

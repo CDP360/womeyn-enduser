@@ -157,9 +157,43 @@ function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterprod
             
             }
 
+
+{pagecount===0 ?null:<>
+    <div className="mt-3">
+    <hr/>
+</div>
+<div>
+   Page {pagecountnumbers} / {pagecount}
+</div>
+
+                    <div className="mt-3">
+                               
+<ReactPaginate
+      activeClassName={'actives '}
+        breakClassName={'item break-me '}
+        breakLabel={'...'}
+        containerClassName={'pagination'}
+        disabledClassName={'disabled-page'}
+        marginPagesDisplayed={2}
+        nextClassName={"item next "}
+        nextLabel={"NEXT"}
+        onPageChange={handlePageClick}
+        pageCount={pagecount/12}
+        pageClassName={'item pagination-page '}
+        pageRangeDisplayed={2}
+        previousClassName={"item previous"}
+        // previousLabel={"PREVIOUS"}
+        previousLabel={pagecountnumbers>1?"PREVIOUS":null}
+
+
+      
+   
+      />
+                            </div>
+</>}
           
 
-<div className="mt-3">
+{/* <div className="mt-3">
     <hr/>
 </div>
 <div>
@@ -190,7 +224,7 @@ function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterprod
       
    
       />
-                            </div>
+                            </div> */}
 
             
         </div>

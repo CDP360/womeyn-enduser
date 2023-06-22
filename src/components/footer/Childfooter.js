@@ -15,7 +15,7 @@ function Childfooter() {
                             WOMEYN  -  © {years?.getFullYear()} All Rights Reserved
                         </div>
                         <div className={styles.childfootertext}>
-                            <div className={styles.cursors}>
+                            <div className={styles.cursors} onClick={()=>router.push("/privacypolicy")}>
                                 Privacy and Policy
                             </div>
                             <div  className={styles.cursors} onClick={()=>router.push("/terms-and-conditions")}>

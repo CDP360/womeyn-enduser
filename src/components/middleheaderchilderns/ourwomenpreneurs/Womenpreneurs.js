@@ -152,7 +152,7 @@ function Womenpreneurs() {
 
     const goToTop = () => {
         window.scrollTo({
-            top: 230,
+            top: 280,
             behavior: "smooth",
         });
     };
@@ -176,7 +176,7 @@ function Womenpreneurs() {
                                     Our WomeynPreneurs
                                 </div>
                                 <div className={styles.loreamtextwomen}>
-                                    Please select to know more about the Womeynpreneur's business, her journey, her story, and her success against all odds.
+                                    Please select to know more about the Womeynpreneur business, her journey, her story, and her success against all odds.
                                 </div>
                             </div>
                             <div className={styles.serachsectionwomen}>
@@ -280,9 +280,11 @@ function Womenpreneurs() {
                                     </div>
                                 </>}
 
-                                <div>
 
-                                    <div className="mt-3">
+                                <div>
+                                    {pagecount===0?null:<>
+                                    
+                                        <div className="mt-3">
                                         <hr />
                                     </div>
                                     <div>
@@ -307,12 +309,10 @@ function Womenpreneurs() {
                                             previousClassName={"item previous"}
                                             // previousLabel={"PREVIOUS"}
                                             previousLabel={pagecountnumbers > 1 ? "PREVIOUS" : null}
-
-
-
-
                                         />
                                     </div>
+                                    </>}
+
                                 </div>
 
 

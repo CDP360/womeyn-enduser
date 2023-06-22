@@ -22,12 +22,27 @@
         margin: 0 auto;
         // border:1px solid red;
        
-        @include lgBreakPoint {
-            width: 89%;
-        }
-        @include xlBreakPoint {
-            width: 85%;
-        }
+      
+    @include xsBreakPoint {
+        width: 85%;
+
+    }
+    @include smBreakPoint {
+        width: 85%;
+
+    }
+    @include mdBreakPoint {
+        width: 85%;
+
+    }
+    @include lgBreakPoint {
+        width: 89%;
+
+    }
+    @include xlBreakPoint {
+        width: 85%;
+
+    }
 
         .insidesplitheader {
             width: 100%;

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { redirect } from 'next/navigation';
 import { NavigatePage } from './PageNavigate';
-import jwt_decode from "jwt-decode";
+import jwt_decode from "jwt-decode";  
 import { logout } from './../services/user-login-service/user-login-services';
 axios.interceptors.request.use(
     function (config) {
@@ -32,6 +32,15 @@ axios.interceptors.request.use(
         else {
             const token = localStorage.getItem("userToken");
             config.url = process.env.NEXT_PUBLIC_URL + config.url;
+
+            if (token) {
+
+                if (jwt_decode(token).exp < Date.now() / 1000) {
+                  localStorage.clear();
+                  window.location.assign("/");
+        
+                }
+              }
             config.headers = {
                 ...config.headers,
                 "Content-Type": "application/json",
@@ -53,15 +62,15 @@ axios.interceptors.response.use(
     },
     async function (error) {
         // if (error.response.status == 401) {
-        await logout();
-        localStorage.removeItem("userid");
-        localStorage.removeItem("userToken");
-        localStorage.removeItem("userTokens");
-        localStorage.removeItem("whish");
-        localStorage.removeItem("user");
-        localStorage.removeItem("auth");
-        localStorage.removeItem("productid");
-        localStorage.removeItem('signupuser');
+        // await logout();
+        // localStorage.removeItem("userid");
+        // localStorage.removeItem("userToken");
+        // localStorage.removeItem("userTokens");
+        // localStorage.removeItem("whish");
+        // localStorage.removeItem("user");
+        // localStorage.removeItem("auth");
+        // localStorage.removeItem("productid");
+        // localStorage.removeItem('signupuser');
         // } else {
         return Promise.reject(error);
         // }

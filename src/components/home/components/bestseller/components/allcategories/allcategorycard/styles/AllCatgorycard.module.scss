@@ -4,32 +4,18 @@
     // border: 2px solid red;
     width: 100%;
     margin: 0 auto;
-    padding: 20px 0px;
+    padding: 10px 0px;
     .cardcategory {
 
         overflow: hidden;
-        height: 340px;
+        height: auto;
         width: 98% !important;
         background: #ffffff;
         // box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
         box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
         border-radius: 8px;
         cursor: pointer;
-        @include mdBreakPoint {
-            // height:auto;
-            // border:2px solid red;
-            height: 290px;
-        }
-        @include lgBreakPoint {
-            // height:auto;
-            // border:2px solid red;
-            height: 265px;
-        }
-        @include xlBreakPoint {
-            // height:auto;
-            // border:2px solid red;
-            height: 265px;
-        }
+    
     }
     .sellerimagesize {
         width: 100%;
@@ -82,18 +68,19 @@
 .appcard {
     width: 100%;
     margin: 0 auto;
-    padding: 20px 0px;
+    padding: 10px 0px;
 
     .cardcategorys {
         // border: 2px solid blue;
         overflow: hidden;
-        height: 340px;
+        height: auto;
         width: 24% !important;
         background: #ffffff;
         // box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
         box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
         border-radius: 8px;
         cursor: pointer;
+        padding-bottom:2%;
         @include xsBreakPoint {
             width: 90% !important;
             display: flex;

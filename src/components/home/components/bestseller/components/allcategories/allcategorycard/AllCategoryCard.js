@@ -73,9 +73,9 @@ function AllCategoryCard({ products, stars }) {
                     return (
                         <div className={styles.cardcategory} key={index}>
                             <div className={styles.cardsections}>
-                                <div className="cards col-lg-12 mb-5" onClick={() => categoryPush(item?.productSlugName)}>
+                                <div className="cards col-lg-12 mb-1 " onClick={() => categoryPush(item?.productSlugName)}>
                                     <div>
-                                        {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                        {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={"productimages"} /> : <>
                                             <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
                                         </>}
                                     </div>
