@@ -17,7 +17,7 @@ import { UserProfileInformation } from '../../services/user-login-service/user-l
 import { HomeTexts } from '../../consttext/Homeconst';
 import Head from "next/head";
 
-import womenlog from '../../assests/homepage-logos/Mobileviewlogoshort.png';
+import womenlog from '../../assests/womeynlogos/womeyn small logo.png';
 import { NavigatePage } from '../../config/PageNavigate';
 
 import jwt_decode from "jwt-decode";
@@ -25,7 +25,7 @@ import jwt_decode from "jwt-decode";
 import Image from 'next/image'
 
 import { NextSeo } from 'next-seo';
- 
+
 
 function Home() {
     const [bannerimages, setBannerImages] = useState([]);
@@ -105,7 +105,7 @@ function Home() {
         }
         catch (err) {
 
-            console.log(err?.response?.data?.message,"err")
+            console.log(err?.response?.data?.message, "err")
             if (err?.response?.data?.message == "Please authenticate" || err?.response?.data?.message == "Forbidden" || err?.response?.data?.message == "Not found") {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
@@ -167,13 +167,13 @@ function Home() {
         });
     }, []);
     const goToTop = () => {
-        window.scrollTo({   
+        window.scrollTo({
             top: 20,
             behavior: "smooth",
         });
     };
 
-  
+
     return (
         <Fragment>
             {/* <Head>
@@ -197,43 +197,42 @@ function Home() {
             </Head> */}
 
 
-<NextSeo
-      title="Womeyn Home"
-      description="This is a demo description"
-      canonical="https://www.example.com"
-      openGraph={{
-        url: 'https://www.example.com',
+            <NextSeo
+                title="Womeyn Home"
+                description="This is a demo description"
+                canonical="https://www.womeyn.cdp360.in/"
+                openGraph={{
+                    url: 'https://www.womeyn.cdp360.in/',
 
-      title:"Womeyn Home",
-        
-        description: 'Open Graph Description',
-        images: [
-          {
-            url: 'https://theclippingpathservice.com/wp-content/uploads/2022/01/Best-Size-For-ecommerce-Product-Images.png',
-            width: 800,
-            height: 600,
-            alt: 'Og Image Alt',
-            type: 'image/jpeg',
-          },
-          {
-            url: 'https://www.example.com/og-image02.jpg',
-            width: 900,
-            height: 800,
-            alt: 'Og Image Alt Second',
-            type: 'image/jpeg',
-          },
-          { url: 'https://www.example.com/og-image03.jpg' },
-          { url: 'https://www.example.com/og-image04.jpg' },
-        ],
-        site_name: 'YourSiteName',
-      }}
-      twitter={{
-        handle: '@handle',
-        site: '@site',
-        cardType: 'summary_large_image',
-      }}
-    />
-            
+                    title: "Womeyn Home",
+
+                    description: 'Womeyn Home Page  https://www.womeyn.cdp360.in/',
+                    images: [
+                        {
+                            url: womenlog,
+                            width: 800,
+                            height: 600,
+                            alt: 'Og Image Alt',
+                            type: 'image/jpeg',
+                        },
+                        {
+                            url: womenlog,
+                            width: 900,
+                            height: 800,
+                            alt: 'Og Image Alt Second',
+                            type: 'image/jpeg',
+                        },
+
+                    ],
+                    site_name: 'YourSiteName',
+                }}
+                twitter={{
+                    handle: '@handle',
+                    site: '@site',
+                    cardType: 'summary_large_image',
+                }}
+            />
+
             <div className={styles.homesectionmain}>
                 <div className={styles.emptyboxrightcolor}>
                 </div>
@@ -249,48 +248,48 @@ function Home() {
                 </div>
                 <div className="mainsection">
                     <div className="insidesection">
-                    <div className={styles.insidesectionhome}>
+                        <div className={styles.insidesectionhome}>
 
-                       
-                    <div className={styles.imagesectionhome}>
-                        {bannerimages[0]?.HeroBanner?.length === 0 && <div>
-                            <Skeleton className={styles.skeltonbox} />
-                        </div>}
-                        <Slider {...settings}>
-                            {bannerimages[0]?.HeroBanner?.map((item, index) => {
-                                return (
-                                    <div key={index}>
-                                        {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className="allbanners" onClick={() => MovePageData(item.redirectUrl)} quality={80}/> : <>
-                                            <Skeleton className={styles.homebanner} />
-                                        </>}
-                                    </div>
-                                )
-                            })}
-                        </Slider>
-                    </div>
-                    <div className={styles.addimagetagss}>
-                        <div className={styles.addimagessectionleft}>
-                            {bannerimages[1]?.HeroBannerBottom1[0] ? <>
-                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${bannerimages[1]?.HeroBannerBottom1[0]?.imageName}`} alt="no image" className={styles.add1} onClick={() => MovePageData(bannerimages[1]?.HeroBannerBottom1[0]?.redirectUrl)} />
-                            </> : <>
-                                <Skeleton className={styles.addimageboxs} />
-                            </>}
+
+                            <div className={styles.imagesectionhome}>
+                                {bannerimages[0]?.HeroBanner?.length === 0 && <div>
+                                    <Skeleton className={styles.skeltonbox} />
+                                </div>}
+                                <Slider {...settings}>
+                                    {bannerimages[0]?.HeroBanner?.map((item, index) => {
+                                        return (
+                                            <div key={index}>
+                                                {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className="allbanners" onClick={() => MovePageData(item.redirectUrl)} quality={80} /> : <>
+                                                    <Skeleton className={styles.homebanner} />
+                                                </>}
+                                            </div>
+                                        )
+                                    })}
+                                </Slider>
+                            </div>
+                            <div className={styles.addimagetagss}>
+                                <div className={styles.addimagessectionleft}>
+                                    {bannerimages[1]?.HeroBannerBottom1[0] ? <>
+                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${bannerimages[1]?.HeroBannerBottom1[0]?.imageName}`} alt="no image" className={styles.add1} onClick={() => MovePageData(bannerimages[1]?.HeroBannerBottom1[0]?.redirectUrl)} />
+                                    </> : <>
+                                        <Skeleton className={styles.addimageboxs} />
+                                    </>}
+                                </div>
+                                <div className={styles.addimagessectionright}>
+                                    {bannerimages[2]?.HeroBannerBottom2[0] ? <>
+                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${bannerimages[2]?.HeroBannerBottom2[0]?.imageName}`} alt="no image" className={styles.add1} onClick={() => MovePageData(bannerimages[2]?.HeroBannerBottom2[0]?.redirectUrl)} />
+                                    </> : <>
+                                        <Skeleton className={styles.addimageboxs} />
+                                    </>}
+                                </div>
+                            </div>
+                            <div>
+                                <Categorychoose HomeTexts={HomeTexts} bannerimages={bannerimages} />
+                            </div>
                         </div>
-                        <div className={styles.addimagessectionright}>
-                            {bannerimages[2]?.HeroBannerBottom2[0] ? <>
-                                <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${bannerimages[2]?.HeroBannerBottom2[0]?.imageName}`} alt="no image" className={styles.add1} onClick={() => MovePageData(bannerimages[2]?.HeroBannerBottom2[0]?.redirectUrl)} />
-                            </> : <>
-                                <Skeleton className={styles.addimageboxs} />
-                            </>}
-                        </div>
-                    </div>
-                    <div>
-                        <Categorychoose HomeTexts={HomeTexts} bannerimages={bannerimages} />
                     </div>
                 </div>
-                    </div>
-                </div>
-               
+
 
                 <div>
                     <Summarybreaksalary bannerimages={bannerimages[4]} />
@@ -313,7 +312,7 @@ function Home() {
 
                 <div>
 
-                
+
                 </div>
             </div>
         </Fragment >
