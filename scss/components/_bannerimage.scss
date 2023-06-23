@@ -1,86 +1,58 @@
 @use "../abstract/" as *;
 
+// all banner size in width and height
 
-.allbanners
-{
-    // max-width:1200px;
-    width:100% !important;
-    max-width:1300px;
-    height:350px;
+.allbanners {
+    width: 100% !important;
+    max-width: 1300px;
+    height: 350px;
     transform: translate3d(0, 0, 1px);
-    // height: 100% !important;
-    border-radius:10px;
-    // height: unset;
-    // object-fit:fill;
-    // object-fit: fill;
-    cursor:pointer;
-    
-    @include xsBreakPoint
-    {
-        width:100%;
-        height:170px !important;
-        
-    }
-    @include smBreakPoint
-    {
-        width:100%;
-        height:200px !important;
+    border-radius: 10px;
+    cursor: pointer;
 
-        
+    @include xsBreakPoint {
+        width: 100%;
+        height: 170px !important;
     }
-    @include mdBreakPoint
-    {
-        width:100%;
-        height:250px !important;
-
-        
+    @include smBreakPoint {
+        width: 100%;
+        height: 200px !important;
     }
-    @include lgBreakPoint
-    {
-        width:100%;
-        height:300px !important ;
-
-        
+    @include mdBreakPoint {
+        width: 100%;
+        height: 250px !important;
     }
-    @include xlBreakPoint
-    {
-        width:100%;
-        height:320px !important;
-
-        
+    @include lgBreakPoint {
+        width: 100%;
+        height: 300px !important ;
+    }
+    @include xlBreakPoint {
+        width: 100%;
+        height: 320px !important;
     }
 }
 
+// sub banner size in width and height
 
-.subbannerimage{
-    // max-width:1200px;
-    width:100%;
-    height:200px;
-    // object-fit:none;
-    border-radius:5px;
-    // object-fit:contain;
-    
+.subbannerimage {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
 }
 
-// events banner sections
+// events banner section width and height
 
-.eventbanners
-{
-    width:100%;
-    height:100%;
-    border-radius:10px;
+.eventbanners {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
 }
 
+// all product image size in width and height
 
-// all product image size
-
-.productimages
-{
-    width:100%;
-    height:250px;
-    object-fit:contain;
-    // border:1px solid red;
-    cursor:pointer;
-
+.productimages {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    cursor: pointer;
 }
-

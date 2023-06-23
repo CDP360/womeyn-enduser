@@ -32,12 +32,16 @@ function Signup() {
 
     const handleChange = (e) => {
         setUserEmailOrPhone(e.target.value);
+      
+
     }
 
 
     const SubmitUserCheck = (e) => {
         e.preventDefault();
         let check = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})|([0-9]{10})+$/;
+        // if(number.match(/^(\+\d{1,3}[- ]?)?\d{10}$/) && ! (number.match(/0{5,}/)) )
+
         if (check.test(UserEmaiorphone)) {
             const response = {
                 emailOrPhoneNo: UserEmaiorphone

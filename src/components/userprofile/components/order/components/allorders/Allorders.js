@@ -9,6 +9,8 @@ import { toast } from 'react-toastify';
 import Reviewmodel from './reviewmodel/Reviewmodel';
 import LoaderLogo from '../../../../../loaderlogo/LoaderLogo';
 import { Invoicedownload } from '../../../../../../services/invoice-services/invoice_services';
+import Spinner from "react-bootstrap/Spinner";
+
 function Allorders({ Orders, traking, loading, setTrackId }) {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
@@ -16,6 +18,10 @@ function Allorders({ Orders, traking, loading, setTrackId }) {
   const [refreshloader, setRefreshloader] = useState(false);
   const [deleteid, setDeleteid] = useState("");
   const handleClose = () => setShow(false);
+  const [billdata, setBillData] = useState("");
+  const [invoiceloading, setInvoiceLoading] = useState(false);
+
+
 
   const [invoiceprint, setInvoicePrint] = useState("");
   const handleShow = (id) => {
@@ -72,18 +78,51 @@ function Allorders({ Orders, traking, loading, setTrackId }) {
 
 
 
-  const downloadinvoice = (data) => {
-    Invoicedownload(data).then((res) => {
-      setInvoicePrint(res?.data?.url)
+  // const downloadinvoice = (data) => {
+  //   Invoicedownload(data).then((res) => {
+  //     setInvoicePrint(res?.data?.url)
+  //   }).catch((err) => {
+  //     console.log(err);
+  //   })
+  // }
+
+
+  const downloadinvoice = (orderids) => {
+
+    setInvoiceLoading(true);
+
+    Invoicedownload(orderids).then((res) => {
+      var file = URL.createObjectURL(new Blob([res?.data?.url], { type: "application/pdf" }));
+
+      // setBillData(file);
+      // setBillData(res?.data?.url);
+
+
+      // var a = document.createElement("a");
+      // a.href = file;
+      // a.download = "invoicePDF";
+      // document.body.appendChild(a);
+      // a.click();
+
+
+      //     console.log("links", file)
+      window.open(res?.data?.url);
+      setTimeout(() => {
+        setInvoiceLoading(false);
+      }, 600);
     }).catch((err) => {
       console.log(err);
+      setInvoiceLoading(false);
     })
   }
+
 
   return (
     <div className={styles.allordermainsection}>
 
       {Orders?.length === 0 && <div>No Data Found!!</div>}
+
+      {billdata}
 
       {loading ? <>
         <LoaderLogo />
@@ -152,10 +191,24 @@ function Allorders({ Orders, traking, loading, setTrackId }) {
                               {item?.stateId === 6 && <div>
                                 <button className={styles.trackingbuttons} onClick={() => handleShow1(items)}>Review</button>
                                 <button className={styles.trackingbuttons} onClick={() => downloadinvoice(item?.orderId)}>
-      
-      <a href={invoiceprint} target="_blank"  download className={styles.linka} title="Invoice">Invoice</a>
-      </button>
 
+                                  {invoiceloading ? <>
+                                    <Spinner
+                                      as="span"
+                                      animation="border"
+                                      size="sm"
+                                      role="status"
+                                      aria-hidden="true"
+                                    />
+                                    <span className="ms-2">Loading...</span>
+                                  </> : <>
+
+
+                                    Invoice
+                                  </>}
+
+
+                                </button>
                               </div>}
                             </div>
 
@@ -215,7 +268,7 @@ function Allorders({ Orders, traking, loading, setTrackId }) {
                             <div className={styles.rightimagesections}>
 
 
-                            
+
                               {index === 0 ? <>
 
                                 {item?.stateId === 4 || item?.stateId === 5 || item?.stateId == 6 ? <></> : <div className={styles.thirdimagesection}>
@@ -229,6 +282,10 @@ function Allorders({ Orders, traking, loading, setTrackId }) {
                                   </div>
                                 </div>}
                               </> : <></>}
+
+
+
+
 
 
 

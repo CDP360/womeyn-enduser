@@ -45,6 +45,8 @@
         .splitpagenotfound {
             display: flex;
             gap: 30px;
+            padding-bottom:12%;
+
            @include xsBreakPoint
            {
             flex-direction:column;              

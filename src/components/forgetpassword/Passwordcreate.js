@@ -32,7 +32,7 @@ function Passwordcreate() {
             .required('Name is Required.'),
         email: Yup.string()
             .required('Email is Required.'),
-            phonenumber: Yup.string()
+        phonenumber: Yup.string()
             .required('Contact No is Required.'),
         gender: Yup.string().required("Gender is Required."),
         password: Yup.string()
@@ -41,7 +41,7 @@ function Passwordcreate() {
         confirmPwd: Yup.string()
             .required('Password is mandatory')
             .oneOf([Yup.ref('password')], 'Passwords does not match'),
-        dateofbirth:Yup.string().required("Date Of Birth is Required.")
+        dateofbirth: Yup.string().required("Date Of Birth is Required.")
     })
     const formOptions = { resolver: yupResolver(formSchema) }
     const {
@@ -60,7 +60,7 @@ function Passwordcreate() {
             gender: data?.gender,
             email: data?.email,
             contactNumber: data?.phonenumber,
-            dateOfBirth:data?.dateofbirth
+            dateOfBirth: data?.dateofbirth
         }
         var passwordRegex = /(?=^.{8,}$)(?=.{0,}[A-Z])(?=.{0,}[a-z])(?=.{0,}\W)(?=.{0,}\d)/;
         if (productWhishlist) {
@@ -154,17 +154,17 @@ function Passwordcreate() {
         const emailstypecheck = localStorage.getItem("signupuser");
 
 
-       
-        if (!typeof (JSON.parse(emailstypecheck ===1 || 2|| 3 || 4 || 5 || 6 || 7 || 8 ||9 || 0)) == "number") {
+
+        if (!typeof (JSON.parse(emailstypecheck === 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9 || 0)) == "number") {
             setValue("contactno", JSON.parse(emailstypecheck))
 
-        setEmailCheck("number")
+            setEmailCheck("number")
 
 
         }
         else {
             setValue("email", JSON.parse(emailstypecheck))
-        setEmailCheck("string")
+            setEmailCheck("string")
 
         }
     }, [matchcheck1, matchcheck2, matchcheck3, matchcheck4, emailcheckuser]);
@@ -175,7 +175,7 @@ function Passwordcreate() {
         setTokenUser(JSON.parse(TokenCheckUser));
 
 
-      
+
     }, [])
 
 
@@ -196,87 +196,87 @@ function Passwordcreate() {
     else {
         return (
             <Fragment>
-                  <div className="mainsection">
-            <div className="insidesection">
-                <div className="mt-3">
-                    <div className={styles.Mainforgetpassword}>
-                        <div className={styles.insidesectionforget}>
-                            <div className={styles.insideforgetsplit}>
-                                <div className={styles.logintext}>
-                                    Welcome to Womeyn
-                                </div>
-                                <div>
-                                </div>
-
-                                <div className='mb-4 mt-2'>
-                                    <Form onSubmit={handleSubmit(onSubmit)}>
-                                        <div className={styles.passwordformsection}>
-                                            <Form.Group className="mb-2" controlId="formBasicEmail">
-                                                <Form.Label>Name</Form.Label>
-                                                <div className={"formsectioncommonlogin"}>
-                                                    <Form.Control type="text" placeholder="Name" className={styles.forms}
-                                                        {...register('name', {
-                                                            required: "Please enter name",
-
-                                                        })}
-                                                    />
-                                                </div>
-                                                {errors.name && <span className="active">{errors.name.message}</span>}
-                                            </Form.Group>
-
+                <div className="mainsection">
+                    <div className="insidesection">
+                        <div className="mt-3">
+                            <div className={styles.Mainforgetpassword}>
+                                <div className={styles.insidesectionforget}>
+                                    <div className={styles.insideforgetsplit}>
+                                        <div className={styles.logintext}>
+                                            Welcome to Womeyn
                                         </div>
-                                        <div className='mt-4'>
-                                            {emailcheckuser=="string" ? <>
+                                        <div>
+                                        </div>
 
+                                        <div className='mb-4 mt-2'>
+                                            <Form onSubmit={handleSubmit(onSubmit)}>
                                                 <div className={styles.passwordformsection}>
                                                     <Form.Group className="mb-2" controlId="formBasicEmail">
-                                                        <Form.Label>Email </Form.Label>
+                                                        <Form.Label>Name</Form.Label>
                                                         <div className={"formsectioncommonlogin"}>
-                                                            <Form.Control type="email" placeholder="Email" className={styles.forms}
-                                                                {...register('email', {
-                                                                    required: "Please enter email",
-                                                                    pattern: /^\S+@\S+$/i
+                                                            <Form.Control type="text" placeholder="Name" className={styles.forms}
+                                                                {...register('name', {
+                                                                    required: "Please enter name",
+
                                                                 })}
-                                                                disabled
-
                                                             />
-
-
                                                         </div>
-                                                        {errors.email && <span className="active">{errors.email.message}</span>}
+                                                        {errors.name && <span className="active">{errors.name.message}</span>}
                                                     </Form.Group>
 
                                                 </div>
-                                            </> : <>
-                                                <div className={styles.passwordformsection}>
-                                                    <Form.Group className="mb-2" controlId="formBasicEmail">
-                                                        <Form.Label>Email</Form.Label>
-                                                        <div className={"formsectioncommonlogin"}>
-                                                            <Form.Control type="email" placeholder="Email" className={styles.forms}
-                                                                {...register('email', {
-                                                                    required: "Please enter email",
-                                                                    pattern: /^\S+@\S+$/i
-                                                                })}
-                                                            />
+                                                <div className='mt-4'>
+                                                    {emailcheckuser == "string" ? <>
 
+                                                        <div className={styles.passwordformsection}>
+                                                            <Form.Group className="mb-2" controlId="formBasicEmail">
+                                                                <Form.Label>Email </Form.Label>
+                                                                <div className={"formsectioncommonlogin"}>
+                                                                    <Form.Control type="email" placeholder="Email" className={styles.forms}
+                                                                        {...register('email', {
+                                                                            required: "Please enter email",
+                                                                            pattern: /^\S+@\S+$/i
+                                                                        })}
+                                                                        disabled
+
+                                                                    />
+
+
+                                                                </div>
+                                                                {errors.email && <span className="active">{errors.email.message}</span>}
+                                                            </Form.Group>
 
                                                         </div>
-                                                        {errors.email && <span className="active">{errors.email.message}</span>}
-                                                    </Form.Group>
+                                                    </> : <>
+                                                        <div className={styles.passwordformsection}>
+                                                            <Form.Group className="mb-2" controlId="formBasicEmail">
+                                                                <Form.Label>Email</Form.Label>
+                                                                <div className={"formsectioncommonlogin"}>
+                                                                    <Form.Control type="email" placeholder="Email" className={styles.forms}
+                                                                        {...register('email', {
+                                                                            required: "Please enter email",
+                                                                            pattern: /^\S+@\S+$/i
+                                                                        })}
+                                                                    />
+
+
+                                                                </div>
+                                                                {errors.email && <span className="active">{errors.email.message}</span>}
+                                                            </Form.Group>
+
+                                                        </div>
+                                                    </>}
 
                                                 </div>
-                                            </>}
+                                                <div className='mt-4'>
 
-                                        </div>
-                                        <div className='mt-4'>
+                                                    {emailcheckuser == "number" ? <>
 
-                                            {emailcheckuser=="number" ? <>
+                                                        <div className={styles.passwordformsection}>
+                                                            <Form.Group className="mb-2" controlId="formBasicEmail">
+                                                                <Form.Label>Contact Number</Form.Label>
 
-                                                <div className={styles.passwordformsection}>
-                                                    <Form.Group className="mb-2" controlId="formBasicEmail">
-                                                        <Form.Label>Contact Number</Form.Label>
-                                                       
-                                                        {/* <div className={"formsectioncommonlogin"}>
+                                                                {/* <div className={"formsectioncommonlogin"}>
                                                             <Form.Control type="text" placeholder="Mobile no" className={styles.forms}
                                                             maxLength={9}
                                                                 {...register('contactno', {
@@ -289,51 +289,51 @@ function Passwordcreate() {
                                                         </div> */}
 
 
-<div className={styles.formcontrolscontact}>
-<div className={styles.numbercontactsections}>
-    +61
-</div>
-<div className="col-lg-11">
-<input type="text" placeholder="Enter contactno" className={styles.contactformbox   }
-                                    {...register("phonenumber", {
-                                        required: "Please enter contactno",
-    
-                                    })}
-                                    maxLength={9}
-disabled
-                                />
-</div>
+                                                                <div className={styles.formcontrolscontact}>
+                                                                    <div className={styles.numbercontactsections}>
+                                                                        +61
+                                                                    </div>
+                                                                    <div className="col-lg-11">
+                                                                        <input type="text" placeholder="Enter contactno" className={styles.contactformbox}
+                                                                            {...register("phonenumber", {
+                                                                                required: "Please enter contactno",
 
-                                </div>
-                                                        {errors.contactno && <span className="active">{errors.contactno.message}</span>}
-                                                    </Form.Group>
+                                                                            })}
+                                                                            maxLength={9}
+                                                                            disabled
+                                                                        />
+                                                                    </div>
 
-                                                </div>
-                                            </> : <>
+                                                                </div>
+                                                                {errors.contactno && <span className="active">{errors.contactno.message}</span>}
+                                                            </Form.Group>
+
+                                                        </div>
+                                                    </> : <>
 
 
 
-                                                <div className={styles.passwordformsection}>
-                                                    <Form.Group className="mb-2" controlId="formBasicEmail">
-                                                        <Form.Label>Contact no</Form.Label>
+                                                        <div className={styles.passwordformsection}>
+                                                            <Form.Group className="mb-2" controlId="formBasicEmail">
+                                                                <Form.Label>Contact no</Form.Label>
 
-                                                        <div className={styles.formcontrolscontact}>
-<div className={styles.numbercontactsections}>
-    +61
-</div>
-<div className="col-lg-11">
-<input type="text" placeholder="Enter contactno" className={styles.contactformbox   }
-                                    {...register("phonenumber", {
-                                        required: "Please enter Contact No",
-    
-                                    })}
-                                    maxLength={9}
+                                                                <div className={styles.formcontrolscontact}>
+                                                                    <div className={styles.numbercontactsections}>
+                                                                        +61
+                                                                    </div>
+                                                                    <div className="col-lg-11">
+                                                                        <input type="text" placeholder="Enter Contact No" className={styles.contactformbox}
+                                                                            {...register("phonenumber", {
+                                                                                required: "Please enter Contact No",
 
-                                />
-</div>
+                                                                            })}
+                                                                            maxLength={9}
 
-                                </div>
-                                                        {/* <div className={"formsectioncommonlogin"}>
+                                                                        />
+                                                                    </div>
+
+                                                                </div>
+                                                                {/* <div className={"formsectioncommonlogin"}>
                                                             <Form.Control type="text" placeholder="Mobile no" className={styles.forms}
                                                                 {...register('contactno', {
                                                                     required: "Please enter mobile no",
@@ -343,109 +343,109 @@ disabled
 
 
                                                         </div> */}
-                                                        {errors.phonenumber && <span className="active">{errors.phonenumber.message}</span>}
-                                                    </Form.Group>
+                                                                {errors.phonenumber && <span className="active">{errors.phonenumber.message}</span>}
+                                                            </Form.Group>
+
+                                                        </div>
+                                                    </>}
 
                                                 </div>
-                                            </>}
+                                                <div className='mt-4'>
+                                                    <div className={styles.passwordformsection}>
+                                                        <Form.Group className="mb-2" controlId="formBasicEmail">
+                                                            <Form.Label>Password</Form.Label>
+                                                            <div className={"formsectioncommonlogin"}>
+                                                                <Form.Control type={show ? "text" : "password"} placeholder="Password" className={styles.forms}
+                                                                    {...register('password', {
+                                                                        pattern: {
+                                                                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                                            message: "invalid email address"
+                                                                        },
+                                                                    })}
+                                                                />
 
-                                        </div>
-                                        <div className='mt-4'>
-                                            <div className={styles.passwordformsection}>
-                                                <Form.Group className="mb-2" controlId="formBasicEmail">
-                                                    <Form.Label>Password</Form.Label>
-                                                    <div className={"formsectioncommonlogin"}>
-                                                        <Form.Control type={show ? "text" : "password"} placeholder="Password" className={styles.forms}
-                                                            {...register('password', {
-                                                                pattern: {
-                                                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                                    message: "invalid email address"
-                                                                },
-                                                            })}
-                                                        />
+                                                                <div className={styles.passwordicons}>
+                                                                    {show ? <div className='mt-2' onClick={() => setShow(!show)}><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow(!show)}><Image src={eyeoff} alt="no image" /></div>}
+                                                                </div>
+                                                            </div>
+                                                            {errors.password && <span className="active">{errors.password.message}</span>}
+                                                        </Form.Group>
 
-                                                        <div className={styles.passwordicons}>
-                                                            {show ? <div className='mt-2' onClick={() => setShow(!show)}><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow(!show)}><Image src={eyeoff} alt="no image" /></div>}
-                                                        </div>
                                                     </div>
-                                                    {errors.password && <span className="active">{errors.password.message}</span>}
-                                                </Form.Group>
-
-                                            </div>
-                                        </div>
-                                        <div className='mt-4'>
-                                            <div className={styles.passwordformsection}>
-                                                <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                    <Form.Label>Confirm Password</Form.Label>
-                                                    <div className={"formsectioncommonlogin"}>
-                                                        <Form.Control type={show1 ? "text" : "password"} placeholder="Confirm Password" className={styles.forms}
-                                                            {...register('confirmPwd')}
-                                                        />
-                                                        <div className={styles.passwordicons}>
-                                                            {show1 ? <div onClick={() => setShow1(!show1)} className="mt-2 ms-4"><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow1(!show1)}><Image src={eyeoff} alt="no image" /></div>}
-                                                        </div>
+                                                </div>
+                                                <div className='mt-4'>
+                                                    <div className={styles.passwordformsection}>
+                                                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                                                            <Form.Label>Confirm Password</Form.Label>
+                                                            <div className={"formsectioncommonlogin"}>
+                                                                <Form.Control type={show1 ? "text" : "password"} placeholder="Confirm Password" className={styles.forms}
+                                                                    {...register('confirmPwd')}
+                                                                />
+                                                                <div className={styles.passwordicons}>
+                                                                    {show1 ? <div onClick={() => setShow1(!show1)} className="mt-2 ms-4"><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow1(!show1)}><Image src={eyeoff} alt="no image" /></div>}
+                                                                </div>
+                                                            </div>
+                                                            {errors.confirmPwd && <span className="active">{errors.confirmPwd.message}</span>}
+                                                        </Form.Group>
                                                     </div>
-                                                    {errors.confirmPwd && <span className="active">{errors.confirmPwd.message}</span>}
-                                                </Form.Group>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            {matchcheck1 ? <div className='text-success'>
-                                                Password Matched!
-                                            </div> : <>
-                                            </>}
-                                            {matchcheck2 && <div className='text-danger shorttexts'>
-                                                At least one letter,
-                                                one capital letter,
-                                                one number,
-                                                one special character,
-                                            </div>}
-                                        </div>
-                                        <div className='mt-4'>
-                                            <div className="mb-2">   Gender:</div>
-                                            <div className='d-flex gap-2'>
-                                                <input {...register("gender", { required: true })} type="radio" value="female" /> <span>Female</span>
-                                                <input {...register("gender", { required: true })} type="radio" value="male" /><span>Male</span>
-                                            </div>
+                                                </div>
+                                                <div>
+                                                    {matchcheck1 ? <div className='text-success'>
+                                                        Password Matched!
+                                                    </div> : <>
+                                                    </>}
+                                                    {matchcheck2 && <div className='text-danger shorttexts'>
+                                                        At least one letter,
+                                                        one capital letter,
+                                                        one number,
+                                                        one special character,
+                                                    </div>}
+                                                </div>
+                                                <div className='mt-4'>
+                                                    <div className="mb-2">Gender:</div>
+                                                    <div className='d-flex gap-2'>
+                                                        <input {...register("gender", { required: true })} type="radio" value="female" /> <span>Female</span>
+                                                        <input {...register("gender", { required: true })} type="radio" value="male" /><span>Male</span>
+                                                    </div>
 
-                                            {errors.gender && <span className="active">{errors.gender.message}</span>}
-                                        </div>
-                                        <div className="mt-3 mb-3">
-                                        <Col xs="12" sm="12" md="6" lg="12">
-    
-    <Form.Group className="mb-3"  >
-        <Form.Label>Date Of Birth</Form.Label>
-        <Form.Control type="date" placeholder="Date Of Birth" className='form-control-profile'
-            {...register("dateofbirth", {
-                required: "Please enter dateofbirth",
+                                                    {errors.gender && <span className="active">{errors.gender.message}</span>}
+                                                </div>
+                                                <div className="mt-3 mb-3">
+                                                    <Col xs="12" sm="12" md="6" lg="12">
 
-            })}
-        />
-        {errors.dateofbirth && <span className="active">{errors.dateofbirth.message}</span>}
-    </Form.Group>
-</Col>
-                                        </div>
-                                        <button variant="primary" type="submit" className="loginbutton mt-4">
-                                            Submit
-                                        </button>
+                                                        <Form.Group className="mb-3"  >
+                                                            <Form.Label>Date Of Birth</Form.Label>
+                                                            <Form.Control type="date" placeholder="Date Of Birth" className='form-control-profile'
+                                                                {...register("dateofbirth", {
+                                                                    required: "Please enter dateofbirth",
 
-                                    </Form>
-                                    {/* 
+                                                                })}
+                                                            />
+                                                            {errors.dateofbirth && <span className="active">{errors.dateofbirth.message}</span>}
+                                                        </Form.Group>
+                                                    </Col>
+                                                </div>
+                                                <button variant="primary" type="submit" className="loginbutton mt-4">
+                                                    Submit
+                                                </button>
+
+                                            </Form>
+                                            {/* 
                                     <button variant="primary" type="submit" className="cancelbutton mt-4 mb-3">
                                         Cancel
                                     </button> */}
 
-                                    {/* <div className='text-center mb-5 mt-5'>
+                                            {/* <div className='text-center mb-5 mt-5'>
                                     Already have an account?  <span className='active' onClick={() => router.push("/login")}>Sign up</span>
                                 </div> */}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
-
-            </div>
-            </div>
 
                 <div className={styles.leftsection1}>
 

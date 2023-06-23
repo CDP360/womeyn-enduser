@@ -10,7 +10,9 @@ function ErrorPage() {
     const router = useRouter();
     return (
         <LayoutHeader title={"404 NotFound"}>
-            <div className={styles.mainpagenot}>
+            <div className="mainsection">
+                <div className="insidesection">
+                <div className={styles.mainpagenot}>
                 <div className={styles.emptyboxrightsectioncolor}></div>
                 <div className={styles.emptyboxleftsectioncolor}></div>
 
@@ -30,6 +32,9 @@ function ErrorPage() {
                     </div>
                 </div>
             </div>
+                </div>
+            </div>
+            
         </LayoutHeader>
     )
 }

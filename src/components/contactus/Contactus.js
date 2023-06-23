@@ -95,6 +95,8 @@ ConatctAdminInfor().then((res)=>{
                                                         <img src={item?.image?.src} alt="no image" className={styles.contactimage} />
                                                     </div>
                                                     <div className={styles.contacttextsizes}>
+
+                                                        {/* {item?.name==="www.womeyn.com"?<></>:<></>} */}
                                                         {item.name}
                                                     </div>
                                                 </div>
