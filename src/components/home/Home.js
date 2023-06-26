@@ -174,6 +174,7 @@ function Home() {
     };
 
 
+
     return (
         <Fragment>
             {/* <Head>
@@ -202,23 +203,23 @@ function Home() {
                 description="This is a demo description"
                 canonical="https://www.womeyn.cdp360.in/"
                 openGraph={{
-                    url: 'https://www.womeyn.cdp360.in/',
-
+                    // url: f,
                     title: "Womeyn Home",
-
                     description: 'Womeyn Home Page  https://www.womeyn.cdp360.in/',
                     images: [
                         {
-                            url: womenlog,
-                            width: 800,
-                            height: 600,
+                            url: 'https://imgtr.ee/images/2023/06/23/mXlXl.png',
+                            width: "20px",
+                            height: "20px",
                             alt: 'Og Image Alt',
                             type: 'image/jpeg',
                         },
                         {
-                            url: womenlog,
-                            width: 900,
-                            height: 800,
+                            url: 'https://imgtr.ee/images/2023/06/23/mXlXl.png',
+                        
+
+                            width: "20px",
+                            height: "20px",
                             alt: 'Og Image Alt Second',
                             type: 'image/jpeg',
                         },

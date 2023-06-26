@@ -145,7 +145,11 @@ function Allorders({ Orders, traking, loading, setTrackId }) {
                   <div>
                     {moment(item?.orderedDate).format("MMM Do YY",)}
                   </div>
+
+
                 </div>
+
+                
                 {item?.stateId === 6 ? <>
                   <div className={styles.ordermapsectionlists}>
                     <div className={styles.firstimagesections}>
@@ -202,7 +206,6 @@ function Allorders({ Orders, traking, loading, setTrackId }) {
                                     />
                                     <span className="ms-2">Loading...</span>
                                   </> : <>
-
 
                                     Invoice
                                   </>}

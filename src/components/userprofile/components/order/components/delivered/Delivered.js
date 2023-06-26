@@ -160,7 +160,7 @@ function Delivered({ Orders, traking, loading }) {
 
                         <button className={styles.trackingbuttons} onClick={() => downloadinvoice(item?.orderId)}>
 
-                          <a href={invoiceprint} target="_blank" download className={styles.linka} title="Invoice">Invoice</a>
+                          Invoice
                         </button>
 
 

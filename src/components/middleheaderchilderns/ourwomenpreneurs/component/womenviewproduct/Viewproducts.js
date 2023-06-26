@@ -951,12 +951,6 @@ function Viewproducts({ id }) {
     const handleImageClose = () => {
         setImageModel(false);
     }
-
-
-    console.log(productdata,"productdata")
-
-
-
     return (
         <Fragment>
             <>
@@ -1320,7 +1314,7 @@ function Viewproducts({ id }) {
                                             </div>
                                         </div> : <></>}
                                     </div>
-                                    {productdata?.stateId == 1 && productdata?.quantityLeft > 0 ?
+                                    {productdata?.stateId == 1 && productdata?.quantityLeft > 0 && productseller?.isActive==true ?
                                         <>
                                             <div className={styles.buttons}>
                                                 <div>

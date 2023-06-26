@@ -221,9 +221,9 @@ function Header() {
                         <div className={styles.rightlogo}>
                             <div className={styles.insiderightlogos}>
 
-                                <div className={styles.falight} onClick={notificationsPush}>
+                                {/* <div className={styles.falight} onClick={notificationsPush}>
                                     <Image src={notifications} alt="no image" className={styles.notifications} />
-                                </div>
+                                </div> */}
                                 <div className={styles.falight} >
 
                                     {router.asPath == "/profile/favorts"?<>
