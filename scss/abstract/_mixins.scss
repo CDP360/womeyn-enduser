@@ -56,7 +56,7 @@
 }
 
 @mixin xxxlBreakPoint {
-  @media (min-width: 1680.01px) {
+  @media (min-width: 1680.01px) and (max-width: 1920px) {
     @content;
   }
 }
