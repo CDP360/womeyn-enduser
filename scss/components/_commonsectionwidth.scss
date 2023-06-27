@@ -1,42 +1,34 @@
 @use "../abstract/" as *;
 
-.mainsection
-{
-    width:100%;
-    .insidesection
-{
-    width:80%;
-    margin:0 auto;
-    padding-top: 7%;
+.mainsection {
+    width: 100%;
+    .insidesection {
+        width: 80%;
+        margin: 0 auto;
+        padding-top: 7%;
 
-    @include xsBreakPoint {
-        width: 85%;
-        padding-top: 20%;
-
+        @include xsBreakPoint {
+            width: 85%;
+            padding-top: 20%;
+        }
+        @include smBreakPoint {
+            width: 85%;
+            padding-top: 11%;
+        }
+        @include mdBreakPoint {
+            width: 85%;
+            padding-top: 11%;
+        }
+        @include lgBreakPoint {
+            width: 89%;
+            padding-top: 9%;
+        }
+        @include xlBreakPoint {
+            width: 85%;
+            padding-top: 10%;
+        }
+        @include xxxlBreakPoint {
+            width: 80% !important;
+        }
     }
-    @include smBreakPoint {
-        width: 85%;
-        padding-top: 11%;
-
-    }
-    @include mdBreakPoint {
-        width: 85%;
-        padding-top: 11%;
-
-    }
-    @include lgBreakPoint {
-        width: 89%;
-        padding-top: 9%;
-
-    }
-    @include xlBreakPoint {
-        width: 85%;
-        padding-top: 10%;
-
-    }
-    @include xxxlBreakPoint{
-        width: 80% !important;
-        border: 1px solid red;
-    }
-}
 }

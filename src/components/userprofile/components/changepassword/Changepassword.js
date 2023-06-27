@@ -36,8 +36,8 @@ function Changepassword({ error }) {
             .required('NewPassword is required')
             .min(8, 'Password must be atleast 8 characters long'),
         confirmNewPassword: Yup.string()
-            .required('confirmNewPassword is required')
-            .oneOf([Yup.ref('newPassword')], 'Passwords does not match'),
+            .required('ConfirmNewPassword is required')
+            .oneOf([Yup.ref('newPassword')], 'Confirm Password does not matched'),
     })
     const formOptions = { resolver: yupResolver(formSchema) }
     const {
@@ -61,7 +61,7 @@ function Changepassword({ error }) {
             setMatchCheck1(true);
             setMatchCheck2(false);
             Changepassworduser(check).then((res) => {
-                toast.success("Change Password Successful",
+                toast.success("Change password Successfully",
                     {
                         position: "top-center",
                         autoClose: 3000,

@@ -92,6 +92,8 @@ function Changepassword() {
 
     return (
         <Fragment>
+             <div className="mainsection">
+            <div className="insidesection">
             <div className="mt-3">
                 <div className={styles.Mainforgetpassword}>
                     <div className={styles.insidesectionforget}>
@@ -119,7 +121,7 @@ function Changepassword() {
                                     <div className={styles.passwordformsection}>
                                         <Form.Group className="mb-2" controlId="formBasicEmail">
                                             <Form.Label>New Password</Form.Label>
-                                            <Form.Control type={show ? "text" : "password"} placeholder="" className={styles.forms}
+                                            <Form.Control type={show ? "text" : "password"} placeholder="Enter New Password" className={styles.forms}
                                                 {...register('password', {
                                                     pattern: {
                                                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -140,7 +142,7 @@ function Changepassword() {
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label>Repeat New Password</Form.Label>
 
-                                                <Form.Control type={show1 ? "text" : "password"} placeholder="" className={styles.forms}
+                                                <Form.Control type={show1 ? "text" : "password"} placeholder="Enter Repeat New Password" className={styles.forms}
                                                     {...register('confirmPwd')}
 
                                                 />
@@ -168,6 +170,8 @@ function Changepassword() {
                         </div>
                     </div>
                 </div>
+            </div>
+            </div>
             </div>
         </Fragment >
     )

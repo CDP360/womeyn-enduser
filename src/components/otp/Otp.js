@@ -124,6 +124,8 @@ function Otp() {
 
         return (
             <Fragment>
+                 <div className="mainsection">
+                <div className="insidesection">
                 <div className={styles.mainloginsection}>
                     <div className={styles.insidesectionlogin}>
                         <div className={styles.insideloginsplit}>
@@ -194,6 +196,8 @@ function Otp() {
                             </div>
                         </div>
                     </div>
+                </div>
+                </div>
                 </div>
                 <div className={styles.leftsection1}>
 

@@ -207,8 +207,12 @@ function Login() {
                                     </div>
 
 
-                                    <div className={styles.forgetpassword} onClick={handlePushForgetpassword}>{LoginText?.Forgotpassword}</div>
-                                    <Button className="loginbutton" type="submit">
+                                    <div className={styles.forgetpassword} >
+                                        <span onClick={handlePushForgetpassword}>
+                                        {LoginText?.Forgotpassword}
+                                        </span>
+                                        </div>
+                                    <Button className="loginbutton mt-3" type="submit">
 
                                         {error ? <>
                                             {/* {LoginText?.Login} */}
