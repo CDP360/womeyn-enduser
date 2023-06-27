@@ -394,3 +394,23 @@
         }
     }
 }
+
+
+.congratuss
+{
+    width:100%;
+    height:100%;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    .editmodelprofiles
+{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    border-radius:20px;
+    border:5px solid #E95A5A;
+}
+}
+

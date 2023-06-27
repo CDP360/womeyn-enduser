@@ -33,10 +33,16 @@ function Sidebar({ user, error }) {
     const [imageshowmodel, setImageShowModel] = useState(true);
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
+    const [show2, setShow2] = useState(false);
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const handleClose1 = () => setShow1(false);
+    const handleClose2 = () => setShow2(false);
+
     const handleShow1 = () => setShow1(true);
+    const handleShow2 = () => setShow2(true);
+
     const [indexs, setIndexs] = useState(0);
     const history = useRouter();
     const pathname = history?.query?.user;
@@ -129,13 +135,13 @@ function Sidebar({ user, error }) {
                 <div className={styles.mainsidebarsection}>
                     <div className={styles.insideprofilesection}>
                         <div className={styles.imagesectionprofile} >
-                            {user?.profileImageName ? <>
+                            {user?.profileImageName ? <div onClick={handleShow2}>
                                 <img
                                     className={styles.editprofilesection}
                                     src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
                                     alt="profile-pic"
                                 />
-                            </> : <Image src={userprofile} alt="no image" className={styles.profileimage} onClick={handleShow} />}
+                            </div> : <Image src={userprofile} alt="no image" className={styles.profileimage} onClick={handleShow} />}
                             <div>
                                 <Image src={camera} alt="no image" className={styles.profileimagecamera} onClick={handleShow} />
                             </div>
@@ -605,6 +611,38 @@ function Sidebar({ user, error }) {
                     </Modal>
                 </div>
 
+
+
+                <div>
+                    <Modal show={show2}
+                        onHide={handleClose2}
+                       
+                        centered>
+
+                        <Modal.Body>
+                            <div className={styles.cursors} onClick={handleClose2}>
+                                <ion-icon name="close-outline" size="large"></ion-icon>
+                            </div>
+                            <div className={styles.congratuss}>
+                                <div className={styles.insidesectioncongratuss}>
+                                {user?.profileImageName ? 
+                                        <img
+
+                                            className={styles.editmodelprofiles}
+                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
+                                            alt="profile-pic"
+                                        />
+                                   :
+                                       
+null
+
+                                    }
+                                </div>
+                            </div>
+                        </Modal.Body>
+
+                    </Modal>
+                </div>
 
             </>
 
