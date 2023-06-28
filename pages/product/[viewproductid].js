@@ -14,7 +14,6 @@ function index() {
   const viewproductid = router?.query?.viewproductid;
 
 
-  console.log(viewproductid,"viewproductid")
 
   return (
     <LayoutHeader title={viewproductid}>
