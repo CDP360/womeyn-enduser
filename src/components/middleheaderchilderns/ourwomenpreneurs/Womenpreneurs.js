@@ -301,7 +301,9 @@ function Womenpreneurs() {
                                             disabledClassName={'disabled-page'}
                                             marginPagesDisplayed={2}
                                             nextClassName={"item next "}
-                                            nextLabel={"NEXT"}
+                                           
+        nextLabel={Math.round(pagecount / 12)+1===pagecountnumbers?null:"NEXT"}
+
                                             onPageChange={handlePageClick}
                                             pageCount={pagecount / 12}
                                             pageClassName={'item pagination-page '}

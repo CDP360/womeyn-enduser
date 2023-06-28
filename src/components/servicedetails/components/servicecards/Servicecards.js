@@ -256,13 +256,12 @@ function Servicecards() {
         disabledClassName={'disabled-page'}
         marginPagesDisplayed={2}
         nextClassName={"item next "}
-        nextLabel={"NEXT"}
+        nextLabel={Math.round(pagecount / 12)+1===pagecountnumbers?null:"NEXT"}
         onPageChange={handlePageClick}
         pageCount={pagecount}
         pageClassName={'item pagination-page '}
         pageRangeDisplayed={2}
         previousClassName={"item previous"}
-        // previousLabel={"PREVIOUS"}
         previousLabel={pagecountnumbers>1?"PREVIOUS":null}
 
 

@@ -43,6 +43,10 @@ function ServiceViewDetails() {
     useEffect(() => {
         ServiceusersGetSingle(serviceid).then((res) => {
 
+
+            console.log(res,"res")
+
+
             setReviews(res?.data?.reviews)
             setServiceBooking(res?.data?.serviceDetails[0]);
             setSellerinfo(res?.data?.sellerInformation);
@@ -50,11 +54,11 @@ function ServiceViewDetails() {
             setServiceBookingSingle(res?.data?.serviceDetails[0]?.serviceVariations[0]);
 
         }).catch((err) => {
-            // console.log(err,"res");
+            console.log(err);
 
         })
 
-        // console.log(moment(new Date()).isAfter(moment(new Date('28-Feb-19'))),"kalai");
+       
 
     }, [ratingsdata, serviceid])
 
@@ -67,6 +71,10 @@ function ServiceViewDetails() {
         window.open(data);
     }
 
+
+ 
+       
+    
     return (
         <Fragment>
 
@@ -189,9 +197,7 @@ function ServiceViewDetails() {
                                         Offline:
                                     </div>
                                     <div className="ms-2">
-                                        {/* {serviceBookingSingle?.linkDescription} */}
-                                        null
-
+                                        {serviceBookingSingle?.address}
                                     </div>
                                 </div>
                             </>}
@@ -250,88 +256,7 @@ function ServiceViewDetails() {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="mt-5">
-                                <div className={styles.booknowrow}>
-                                    {serviceBooking?.serviceVariations?.map((item, index) => {
-                                        return (
-                                            <div className={styles.booknowbox}>
-                                                <div className={styles.monthsections}>
-                                                    <div className={styles.monthssectionsmonth}>
-                                                        {item?.title}
-                                                    </div>
-                                                    <div className={styles.countnumber}>
-                                                        A$ {item?.price}
-                                                    </div>
-                                                    <div>
-
-                                                    </div>
-
-                                                </div>
-                                                <div className={styles.reviewcontent}>
-
-                                                    <div className={styles.ticksections}>
-                                                        <div>
-                                                            <Image src={ticket} alt="no image" className={styles.ticket} />
-                                                        </div>
-                                                        <div>
-
-
-                                                            {item?.serviceTypeId === 1 ? <>Online</> : <>Offline</>}
-                                                        </div>
-
-                                                    </div>
-                                                    <div className={styles.ticksections}>
-                                                        <div>
-                                                            <Image src={ticket} alt="no image" className={styles.ticket} />
-                                                        </div>
-                                                        <div>
-                                                            {moment(item?.startDate).format("MMM Do YY",)} / {moment(item?.endDate).format("MMM Do YY",)}
-                                                        </div>
-
-                                                    </div>
-                                                    <div className={styles.ticksections}>
-                                                        <div>
-                                                            <Image src={ticket} alt="no image" className={styles.ticket} />
-                                                        </div>
-                                                        <div>
-
-                                                            {item?.isCancellationAvailable ? <>
-                                                                Cancellation Available
-                                                            </> : <>
-                                                                Cancellation UnAvailable
-                                                            </>}
-                                                        </div>
-
-                                                    </div>
-                                                    <div className={styles.ticksections}>
-                                                        <div>
-                                                            <Image src={ticket} alt="no image" className={styles.ticket} />
-                                                        </div>
-                                                        <div>
-                                                            Total Number of seats available: {item?.numberOfPeopleAllowed}
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                                <div className="mt-2 mb-4 text-center">
-
-                                                    <div className={styles.viewmorebutton} onClick={() => FilterModelPopup(item?._id)}>
-                                                        View More...
-                                                    </div>
-
-                                                </div>
-
-
-                                                <div className="mt-4 mb-4">
-                                                    <button className={styles.booknowbutton} onClick={() => history?.push(`/service/payment/${item?._id}`)}>Book Now</button>
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-
-                                </div>
-                            </div> */}
+                  
 
                     <div>
                         <Reviewmodel
@@ -364,12 +289,10 @@ function ServiceViewDetails() {
                                         <Skeleton
                                             className={styles.personimages}
                                         />
-                                        {/* <Image src={images} alt="no image" className={styles.personimages} /> */}
+                                      
 
                                     </>}
 
-                                    {/* profileImageName */}
-                                    {/* <Image src={images} alt="no image" className={styles.personimages} /> */}
 
                                 </div>
 
@@ -399,6 +322,14 @@ Review Service
                         </div>
                     <Nodatafoundimage title={"No Service Reviews"}/>
                     </div>
+
+
+
+                </div>
+
+                <div>
+               
+                 
                 </div>
             </div>
 
@@ -497,7 +428,7 @@ Review Service
                 </Modal>
             </>
 
-        </Fragment>
+        </Fragment> 
     )
 }
 

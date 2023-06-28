@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ServiceBookingUsers } from './../../../../services/servicewomeyn/service-womeyn';
+import { ServiceBookingUsers,InvoicedownloadService } from './../../../../services/servicewomeyn/service-womeyn';
 import styles from './styles/Servicedetails.module.scss';
 import { Rate } from "antd";
 import { useRouter } from 'next/router';
@@ -8,6 +8,7 @@ import Search from '../../../../assests/homepage-logos/serachicon.png';
 import Image from "next/image";
 import Reviewmodel from './reviewmodel/Reviewmodel';
 import moment from 'moment';
+import Spinner from "react-bootstrap/Spinner";
 
 
 function ServiceMaindetails({ error }) {
@@ -16,6 +17,11 @@ function ServiceMaindetails({ error }) {
     const [show, setShow] = useState(false);
 
     const [loading, setLoading] = useState(false);
+  const [invoiceloading, setInvoiceLoading] = useState(false);
+  const [invoiceNumber, setInvoiceNumber] = useState("");
+
+
+    
 
     const [servicedata, setServiceData] = useState({});
     const handleClose = () => setShow(false);
@@ -26,12 +32,11 @@ function ServiceMaindetails({ error }) {
     const g1=moment('2010-10-20').isAfter('2009-12-31', 'year');
     const g=moment('Jun 5th 23').isAfter(moment('Jun 10th 23',"year"));
 
-    console.log("g",g)
+
 
     useEffect(() => {
         setLoading(true);
         ServiceBookingUsers().then((res) => {
-
             setServiceusers(res?.data);
             setTimeout(() => {
                 setLoading(false);
@@ -78,7 +83,23 @@ function ServiceMaindetails({ error }) {
 
     };
 
+
+
+    const ServiceInvoiceDownload = (orderids) => {
+        setInvoiceLoading(true);
+        InvoicedownloadService(orderids).then((res) => {
+          window.open(res?.data?.url);
+          setTimeout(() => {
+            setInvoiceLoading(false);
+          }, 600);
+        }).catch((err) => {
+          console.log(err);
+          setInvoiceLoading(false);
+        })
+      }
    
+
+
 
   
         return (
@@ -90,7 +111,7 @@ function ServiceMaindetails({ error }) {
                         <Image src={Search} className={styles.searchImg} />
                     </div>
                     <div className={styles.favortsContainer}>
-                        <p className={styles.favortsText}>Services</p>
+                        <p className={styles.favortsText}>Services {invoiceNumber}</p>
 
 
 
@@ -144,6 +165,36 @@ function ServiceMaindetails({ error }) {
                                 <button className={styles.trackingbuttons} onClick={() => pushProductPage(data.serviceSlugName)}>Booked</button>
 
                                 </> }
+
+                               <div className="mt-2">
+                               <button className={styles.viewdetailsbuttons} onClick={() =>{
+                                 ServiceInvoiceDownload(data?.orderId)
+                                 setInvoiceNumber(index+1)
+                                 }}>
+                  
+                  {index+1===invoiceNumber?<>
+                  
+                    {invoiceloading ? <>
+                                  <Spinner
+                                    as="span"
+                                    animation="border"
+                                    size="sm"
+                                    role="status"
+                                    aria-hidden="true"
+                                  />
+                                  <span className="ms-2">Loading...</span>
+                                </> : <>
+
+                                Download Invoice
+
+                                </>}
+                  </>:<>
+                  Download Invoice
+                  </>}
+                 
+
+                  </button>
+                               </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -154,7 +205,7 @@ function ServiceMaindetails({ error }) {
                             </>}
 
 
-                            {serviceusers?.length === 0 && <div>No Favorites Data</div>}
+                            {serviceusers?.length === 0 && <div>No Services Data...</div>}
 
 
                         </div>

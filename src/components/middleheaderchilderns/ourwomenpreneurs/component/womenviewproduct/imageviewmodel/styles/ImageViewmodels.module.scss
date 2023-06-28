@@ -30,8 +30,9 @@
  
 }
 .imagecards {
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  height: 90px;
+  object-fit:contain;
   border-radius: 10px;
   // border: 1px solid #f1f0f0;
 }

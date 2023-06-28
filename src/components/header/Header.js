@@ -33,7 +33,8 @@ import profiles from '../../assests/profile-logo/Profile_w.png';
 import couponsactive from '../../assests/profile-logo/ticketactive.png';
 import favortsactive from '../../assests/profile-logo/favortsactive.png';
 import orderactive from '../../assests/profile-logo/orderactive.png';
-
+import * as Scroll from 'react-scroll';
+// import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 function Header() {
     const { state } = useContext(ContextStore);
     const dispatch = useDispatch();
@@ -46,12 +47,7 @@ function Header() {
     const [explorecategorys, setCatgorys] = useState([]);
     const [searchDatacategory, setSearchDataCategory] = useState([]);
     const [searchDatacategory1, setSearchDataCategory1] = useState([]);
-
-
     const [loadingserach, setLoaderserach] = useState(false);
-
-
-
     const logoutHandler = async () => {
         toast.success("Logout Successfull!!",
             {
@@ -503,6 +499,8 @@ function Header() {
                                 <Link href="/abouts#WhatisWomeyn" scroll={false} >
                                     What is Womeyn
                                 </Link>
+
+                                
                                 <Link href="/abouts#OurMission&Vision" scroll={false} >
                                     Our Mission & Vision
                                 </Link>

@@ -78,34 +78,14 @@ function Allorders({ Orders, traking, loading, setTrackId }) {
 
 
 
-  // const downloadinvoice = (data) => {
-  //   Invoicedownload(data).then((res) => {
-  //     setInvoicePrint(res?.data?.url)
-  //   }).catch((err) => {
-  //     console.log(err);
-  //   })
-  // }
-
+ 
 
   const downloadinvoice = (orderids) => {
 
     setInvoiceLoading(true);
 
     Invoicedownload(orderids).then((res) => {
-      var file = URL.createObjectURL(new Blob([res?.data?.url], { type: "application/pdf" }));
 
-      // setBillData(file);
-      // setBillData(res?.data?.url);
-
-
-      // var a = document.createElement("a");
-      // a.href = file;
-      // a.download = "invoicePDF";
-      // document.body.appendChild(a);
-      // a.click();
-
-
-      //     console.log("links", file)
       window.open(res?.data?.url);
       setTimeout(() => {
         setInvoiceLoading(false);
@@ -149,7 +129,7 @@ function Allorders({ Orders, traking, loading, setTrackId }) {
 
                 </div>
 
-                
+
                 {item?.stateId === 6 ? <>
                   <div className={styles.ordermapsectionlists}>
                     <div className={styles.firstimagesections}>
@@ -195,7 +175,6 @@ function Allorders({ Orders, traking, loading, setTrackId }) {
                               {item?.stateId === 6 && <div>
                                 <button className={styles.trackingbuttons} onClick={() => handleShow1(items)}>Review</button>
                                 <button className={styles.trackingbuttons} onClick={() => downloadinvoice(item?.orderId)}>
-
                                   {invoiceloading ? <>
                                     <Spinner
                                       as="span"
@@ -285,13 +264,6 @@ function Allorders({ Orders, traking, loading, setTrackId }) {
                                   </div>
                                 </div>}
                               </> : <></>}
-
-
-
-
-
-
-
                             </div>
 
                           </div>
@@ -300,8 +272,6 @@ function Allorders({ Orders, traking, loading, setTrackId }) {
                     </div>
 
                   </div>
-
-
 
                 </>}
 

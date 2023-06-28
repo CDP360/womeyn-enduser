@@ -1,29 +1,13 @@
 @use "../../../../../../../../scss/abstract/" as *;
 
 .carouselsectionrelatedproduct {
-    width: 75%;
+    width: 100%;
     margin: 0 auto;
     // padding-top:10%;
     // padding-bottom:2%;
     // border:4px solid blue;
 
-    @include xsBreakPoint {
-        width: 85%;
-        padding-top: 6%;
-    }
-    @include smBreakPoint {
-        width: 85%;
-        padding-top: 6%;
-    }
-    @include mdBreakPoint {
-        width: 85%;
-    }
-    @include lgBreakPoint {
-        width: 89%;
-    }
-    @include xlBreakPoint {
-        width: 85%;
-    }
+   
     .mainslidesection {
         width: 100%;
         margin: 0 auto !important;

@@ -161,6 +161,7 @@ function Ourclutures() {
 
 </div> */}
 
+
 <div className={styles.imagesectionhomess}>
                         {/* {partnersbanners?.length === 0 && <div>
                             <Skeleton className={styles.skeltonbox} />
@@ -180,14 +181,19 @@ function Ourclutures() {
                                 )
                             })}
                         </Slider>
+
+                    
                     </div>
 
 
+               <div id="JoinWomeyn" >
 
-           
+</div>
                  
 
             <div className="mt-5 mb-4">
+
+        
 
                 <div className='large-text text-center'>
 
@@ -243,7 +249,7 @@ function Ourclutures() {
 
             </div>
 
-            <div className={styles.ifyou} id="JoinWomeyn">
+            <div className={styles.ifyou} >
                 We help nurture and grow talented women who would like to learn and become entrepreneurs. Whatever your skill sets, feel free to connect and we will always try to find you the right pathway in empowering your journey in becoming a WomeynPreneur
             </div>
 

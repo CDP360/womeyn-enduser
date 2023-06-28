@@ -10,7 +10,7 @@ function ImageViewModal({imagemodel,handleImageClose,productimages}) {
 
     },[indexs])
 
-    console.log(productimages?.length-1,"kalai")
+
 
     return (
         <div>

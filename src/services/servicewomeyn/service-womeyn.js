@@ -91,5 +91,18 @@ export function ServiceBookingUsers() {
 
 
 
-
+export function InvoicedownloadService(orderid) {
+    // return instanceBaseurl.get(`/common/coupons`).then((res) => {
+    //     return res
+    // }).catch((err) => {
+    //     return err;
+    // })
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.get(`/customer/service/invoice/${orderid}`).then(response => {
+            resolve(response)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}
 

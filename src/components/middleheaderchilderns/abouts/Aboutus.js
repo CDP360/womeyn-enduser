@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useEffect } from 'react';
+import React, { Fragment, useRef, useEffect ,useState} from 'react';
 import styles from './styles/Abouts.module.scss';
 import qua1 from '../../../assests/womeynlogos/qutation1.png';
 import qua2 from '../../../assests/womeynlogos/quation2.png';
@@ -19,15 +19,17 @@ import wba from '../../../assests/abouts-logos/wb1.png';
 import wba1 from '../../../assests/abouts-logos/wb2.png';
 import womenlogo from '../../../assests/homepage-logos/womeyn_logo.png';
 import AboutusSubscribe from './Aboutussubscribe/AboutusSubscribe';
+import {useRouter} from 'next/router';
 
 
-import ScrollToTop from "react-scroll-to-top";
 
 function Aboutus({ id }) {
+
+
+    const router=useRouter();
+
+    console.log(router?.asPath,"router")
     const state = useSelector((state) => state?.aboutcountdata?.about);
-
-
-
 
     const data = [
         {
@@ -53,8 +55,28 @@ function Aboutus({ id }) {
         }
     ]
 
+    const [showTopBtn, setShowTopBtn] = useState(false);
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 30) {
+                setShowTopBtn(true);
+            } else {
+                setShowTopBtn(false);
+            }
+        });
 
+        if(router?.asPath=="/abouts#WhatisWomeyn")
+        {
+            window.scrollTo({   
+                top: 900,
+                behavior: "smooth",
+            });
+        }
 
+    }, []);
+   
+
+    
 
     return (
         <Fragment>
@@ -135,11 +157,12 @@ function Aboutus({ id }) {
                     <div>
                         <Ourvision />
 
-                        <div id="TheLogoSignificance">
-
-
-                        </div>
+                       
                     </div>
+                    <div id="TheLogoSignificance">
+
+
+</div>
 
                     <div className={styles.standsections} >
                         <div className="mt-5">
