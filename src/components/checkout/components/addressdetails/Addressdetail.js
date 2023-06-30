@@ -190,7 +190,9 @@ function Addressdetail({ state, step, setStep, setName, name }) {
 
   return (
     <Fragment>
-      <div className={styles.mainorderpage}>
+      {/* <div className="mainsection">
+        <div className="insidesection"> */}
+        <div className={styles.mainorderpage}>
         <div className={styles.addnewaddressbutton}>
           <div className={styles.addnewaddressbuttonsubmenu}>
             {/* <ModelAddress register={register} show={show} errors={errors} SubmitsAddress={SubmitsAddress} handleSubmit={handleSubmit} handleShow={handleShow} handleClose={handleClose} 
@@ -257,6 +259,9 @@ function Addressdetail({ state, step, setStep, setName, name }) {
           </button>}
         </div>
       </div>
+        {/* </div>
+      </div> */}
+     
     </Fragment>
   )
 }

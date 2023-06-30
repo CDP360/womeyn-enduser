@@ -81,7 +81,7 @@
             }
             .cardsectioncontacty {
                 display: flex;
-                gap: 50px;
+                gap: 30px;
                 position: relative;
                 @include xsBreakPoint {
                     flex-direction: column;
@@ -93,12 +93,12 @@
                     flex-direction: column;
                 }
                 .leftcontactsection {
-                    width: 35%;
+                    width: 40%;
                     height: 100%;
                     background: #e95a5a;
                     border-radius: 20px;
                     color: white;
-                    padding: 2% 3%;
+                    padding: 1.5% 2.6%;
                     height: auto;
                     position: relative;
                     @include xsBreakPoint {
@@ -127,7 +127,7 @@
                     .contactbox {
                         // border:2px solid red;
                         display: flex;
-                        gap: 20px;
+                        // gap: 10px;
                         align-items: center;
                         padding: 0px 2px;
                         .contactround {
@@ -140,15 +140,18 @@
                             border-radius: 50%;
 
                             .contactimage {
-                                width: 18px;
+                                width: 15px;
                                 object-fit: contain;
-                                height: 18px;
+                                height: 15px;
                                 cursor: pointer;
                             }
                         }
                         .contacttextsizes {
                             font-size: 1.1rem;
                             cursor: pointer;
+                            width:100%;
+                            word-break: break-all;
+                            padding-left:10px;
                         }
                     }
                     .boxbottomsection {
@@ -170,7 +173,7 @@
                     }
                 }
                 .rightcontactsection {
-                    width: 65%;
+                    width: 60%;
                     height: 100%;
                     border-radius: 8px;
                     position: relative;

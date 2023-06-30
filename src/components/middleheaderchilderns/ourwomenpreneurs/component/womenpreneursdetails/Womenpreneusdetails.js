@@ -6,11 +6,13 @@ import logowomen from '../../../../../assests/homepage-logos/Mobileviewlogoshort
 import Image from 'next/image';
 import girl1 from '../../../../../assests/womeynlogos/womenlogo.png';
 import Beverage from '../beverages/Beverage';
+
+import Servicescardslist from '../services_cards_list/Servicescardslist'
 import Superfoods from '../superfoods/Superfoods';
 import Healthbars from '../healthbars/Healthbars';
 import Baking from '../baking/Baking';
 import Sweets from '../sweets/Sweets';
-import { WomenpreneursCategoryproducts, WomenpreneursStores } from '../../../../../services/womenpreneurs-services/womenpreneurs-services';
+import { WomenpreneursCategoryproducts, WomenpreneursStores,WomeynpreServiceList } from '../../../../../services/womenpreneurs-services/womenpreneurs-services';
 import { WomenpreneursCategorylistStore } from './../../../../../services/womenpreneurs-services/womenpreneurs-services';
 import Pagination from 'rc-pagination';
 import rightarrow from '../../../../../assests/category-logos/leftcategoryarrow.png';
@@ -25,7 +27,6 @@ import w2 from '../../../../../assests/sellerbanners/w2.jpg';
 import w3 from '../../../../../assests/sellerbanners/w3.jpg';
 import w4 from '../../../../../assests/sellerbanners/w4.jpg';
 import { Nodatafoundimage } from '../../../../nodatafoundimage/Nodatafound';
-
 
 
 
@@ -220,7 +221,43 @@ function Womenpreneusdetails({ id }) {
     ]
 
 
+    const [serviceslist,setServiceslist]=useState([]);
+    const [serviceslistloading,setServiceslistloading]=useState(false);
 
+
+
+
+    useEffect(()=>{
+
+        setServiceslistloading(true)
+let isCancelled=true;
+
+
+if(sellers?.id)
+{
+    if(isCancelled)
+    {
+        WomeynpreServiceList(sellers?.id).then((res)=>{
+    setServiceslist(res?.data?.results);
+    
+    setTimeout(()=>{
+        setServiceslistloading(false);
+    },600)
+        }).catch((err)=>{
+            console.log(err);
+            setServiceslistloading(false);
+        })
+    }
+}
+
+
+return ()=>{
+    isCancelled=true;
+}
+    },[sellers?.id])
+
+
+   
 
 
 
@@ -369,9 +406,26 @@ function Womenpreneusdetails({ id }) {
     </div>
 </div>
 </div>
+
+<div className="mt-5">
+<div className={styles.wehaves}>
+Services
+</div>
+
+
+<div className="mt-4">
+    <Servicescardslist
+    
+    serviceslist={serviceslist} productlistshow={productlistshow} loading={serviceslistloading}
+    />
+</div>
+
+</div>
             </div>
 
             </div>
+
+           
 
           
 

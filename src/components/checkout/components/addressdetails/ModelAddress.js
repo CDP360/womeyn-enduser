@@ -523,6 +523,8 @@ function ModelAddress({ error }) {
 
 
   return (
+    <div className="mainsection">
+    <div className="insidesection">
     <div className={styles.mainaddresspage}>
       <>
         <div className={styles.mainmodelsection}>
@@ -882,6 +884,8 @@ function ModelAddress({ error }) {
 
         </div>
       </>
+    </div>
+    </div>
     </div>
   )
 }

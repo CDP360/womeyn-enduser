@@ -139,12 +139,12 @@ li a:hover {
   // box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   visibility: hidden;
   opacity: 0;
-  height: 60vh;
-  width: 76vw;
+  height: 70vh;
+  width: 80vw;
   position: absolute;
   transition: all 0.5s ease;
   // margin-top: 0.278rem;
-  left: -65%;
+  left: -120%;
   display: none;
   border-radius: 10px;
   border: 1px solid #d8e5f6;
@@ -259,7 +259,7 @@ li a {
 
 .maindropdown {
   // border:2px solid red;
-  height: 100%;
+ 
   border-radius: 10px;
   display: flex;
   padding-top: 0%;
@@ -271,6 +271,17 @@ li a {
     flex-direction: column;
     gap: 10px !important;
     padding-top: 2%;
+    height:490px;
+    overflow:hidden;
+    overflow-y:auto;
+    .insideservices
+    {
+      // border:2px solid blue;
+      display:flex;
+      flex-direction:column;
+      word-break: break-all;
+      width:100%;
+    }
     .flexdirections {
       display: flex;
       flex-direction: column;
@@ -287,7 +298,17 @@ li a {
     flex-direction: column;
     gap: 10px !important;
     padding-top: 2%;
-
+    overflow:hidden;
+    overflow-y:auto;
+    height:490px;
+    .insideservices
+    {
+      // border:2px solid blue;
+      display:flex;
+      flex-direction:column;
+      word-break: break-all;
+      width:100%;
+    }
     .flexdirections {
       display: flex;
       flex-direction: column;
@@ -303,7 +324,18 @@ li a {
     flex-direction: column;
     gap: 10px !important;
     padding-top: 2%;
+    overflow:hidden;
+    height:490px;
 
+    overflow-y:auto;
+    .insideservices
+    {
+      // border:2px solid blue;
+      display:flex;
+      flex-direction:column;
+      word-break: break-all;
+      width:100%;
+    }
     .flexdirections {
       display: flex;
       flex-direction: column;
@@ -320,7 +352,18 @@ li a {
     flex-direction: column;
     gap: 10px !important;
     padding-top: 2%;
+    height:490px;
 
+  overflow:hidden;
+    overflow-y:auto;
+    .insideservices
+    {
+      // border:2px solid blue;
+      display:flex;
+      flex-direction:column;
+      word-break: break-all;
+      width:100%;
+    }
     .flexdirections {
       display: flex;
       flex-direction: column;
@@ -336,7 +379,18 @@ li a {
     flex-direction: column;
     gap: 10px !important;
     padding-top: 2%;
+    height:490px;
 
+    overflow:hidden;
+    overflow-y:auto;
+    .insideservices
+    {
+      // border:2px solid blue;
+      display:flex;
+      flex-direction:column;
+      word-break: break-all;
+      width:100%;
+    }
     .flexdirections {
       display: flex;
       flex-direction: column;
@@ -350,8 +404,11 @@ li a {
   color: #e95a5a !important;
   font-weight: 600;
   font-size: 0.889rem;
-  padding-left: 5%;
+  // padding-left: 5%;
+  padding:2px 5px;
   margin-top: 5% !important;
+  width:100% !important;
+  // border:2px solid red;
 }
 .unactivetext {
   display: flex;

@@ -150,3 +150,26 @@ export function WomenpreneursCategoryproducts(sellerid, categoryid) {
 
     
 }
+
+
+
+
+
+export function WomeynpreServiceList(sellerid) {
+    // return instanceBaseurl.get(`/common/womenpreneurs/${data}`).then((res) => {
+    //     return res
+    // }).catch((err) => {
+    //     return err;
+    // });
+
+
+
+
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.get(`/common/services-list/${sellerid}`).then(response => {
+            resolve(response)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}
