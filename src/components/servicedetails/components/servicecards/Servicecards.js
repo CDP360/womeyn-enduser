@@ -256,7 +256,7 @@ function Servicecards() {
         disabledClassName={'disabled-page'}
         marginPagesDisplayed={2}
         nextClassName={"item next "}
-        nextLabel={Math.round(pagecount / 12)+1===pagecountnumbers?null:"NEXT"}
+        nextLabel={Math.ceil(pagecount / 12)===pagecountnumbers?null:"NEXT"}
         onPageChange={handlePageClick}
         pageCount={pagecount}
         pageClassName={'item pagination-page '}

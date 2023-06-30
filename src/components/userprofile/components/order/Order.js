@@ -16,7 +16,6 @@ function Order({ error }) {
   const [loading, setLoading] = useState(false);
   const [trackid, setTrackId] = useState("");
 
-  console.log(trackid, "trackid")
 
   const traking = () => {
 
@@ -47,12 +46,9 @@ function Order({ error }) {
       localStorage.removeItem("auth");
       localStorage.removeItem("productid");
       localStorage.removeItem('signupuser');
-
       history.push("/login");
     }
   }, [error, trackid]);
-
-
 
 
   return (

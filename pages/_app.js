@@ -30,35 +30,35 @@ function App({ Component, pageProps }) {
 
 
   const [showTopBtn, setShowTopBtn] = useState(false);
-    useEffect(() => {
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 30) {
-                setShowTopBtn(true);
-            } else {
-                setShowTopBtn(false);
-            }
-        });
-    }, []);
-    const goToTop = () => {
-        window.scrollTo({   
-            top: 0,
-            behavior: "smooth",
-        });
-    };
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 30) {
+        setShowTopBtn(true);
+      } else {
+        setShowTopBtn(false);
+      }
+    });
+  }, []);
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <div>
       <div className='womeyn-enduser'>
 
-      <div className={'mainscrollbutton'} onClick={goToTop}>
-                {showTopBtn && (
-                    <div
-                        className={"iconsections"}
-                        onClick={goToTop}
-                    >
-                   <ion-icon name="chevron-up-outline"></ion-icon>
-                    </div>
-                )}
+        <div className={'mainscrollbutton'} onClick={goToTop}>
+          {showTopBtn && (
+            <div
+              className={"iconsections"}
+              onClick={goToTop}
+            >
+              <ion-icon name="chevron-up-outline"></ion-icon>
             </div>
+          )}
+        </div>
         <StrictMode>
           <StoreProviderContext>
             <Errorboundary>

@@ -49,7 +49,7 @@ function ProductCategorys() {
     const [pagecountnumbers, setPagecountNumbers] = useState(1);
     const [pagecountcheck, setPagecountCheck] = useState("");
 
-    
+
     const [showTopBtn, setShowTopBtn] = useState(false);
 
 
@@ -58,7 +58,7 @@ function ProductCategorys() {
         AllSearchProductUser().then((res) => {
             setServiceusers(res?.data?.results);
             setPagecount(res?.data?.totalResults)
-       
+
 
             setTimeout(() => {
                 setLoading(false);
@@ -98,7 +98,7 @@ function ProductCategorys() {
         // }
 
 
-       
+
 
     }, [categoryid, pagecountnumbers])
 
@@ -178,7 +178,7 @@ function ProductCategorys() {
 
 
     const fetchComments1 = async (searchname, current) => {
-       
+
         const res = await SearchProductUser(searchname, current);
         return res?.data?.results;
     }
@@ -195,7 +195,7 @@ function ProductCategorys() {
     }
 
     const goToTop = () => {
-        window.scrollTo({   
+        window.scrollTo({
             top: 230,
             behavior: "smooth",
         });
@@ -206,206 +206,206 @@ function ProductCategorys() {
         <Fragment>
 
             <div className="mainsection">
-            <div className="insidesection">
-            <div className={styles.womeynmainsectionpre}>
-                <div className={styles.emptyboxcolorright}>
-                </div>
-                <div className={styles.emptyboxcolorleft}>
-                </div>
-                <div className={styles.bodysectionwomeynpre}>
+                <div className="insidesection">
+                    <div className={styles.womeynmainsectionpre}>
+                        <div className={styles.emptyboxcolorright}>
+                        </div>
+                        <div className={styles.emptyboxcolorleft}>
+                        </div>
+                        <div className={styles.bodysectionwomeynpre}>
 
-                    <div className={styles.imagesectionwomeyn}>
-                        <Womencarouselbanner />
-                    </div>
-                    <div className={styles.ourwomenpreneurs}>
-                        <div className='large-text'>
-                            Products 
-                        </div>
-                        <div className={styles.loreamtextwomen}>
-                        Please select to know more about the WomeynPreneur business, and the Products her Business offers.
-                        </div>
-                    </div>
-                    <div className={styles.serachsectionwomen}>
-                        <div className={styles.serachwomenpresection}>
-                            <div>
-                                <input type='text' placeholder="Search by Product Name" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
+                            <div className={styles.imagesectionwomeyn}>
+                                <Womencarouselbanner />
                             </div>
-                            <div>
-                                <Image src={serachicon} alt="no image" className={styles.serachiconwomen}
-                                    onClick={GetSearchdata}
-                                />
+                            <div className={styles.ourwomenpreneurs}>
+                                <div className='large-text'>
+                                    Products
+                                </div>
+                                <div className={styles.loreamtextwomen}>
+                                    Please select to know more about the WomeynPreneur business, and the Products her Business offers.
+                                </div>
                             </div>
-                        </div>
-                        <div className='col-lg-3 col-xs-6 col-sm-6 col-lg-5'>
-
-                            {filterdata}
-
-                            <Select
-                                placeholder={"Filter by Product Categorys..."}
-                                value={filterdata}
-                                onChange={(e) => handleFilterCategory(e)}
-                                options={datacategory}
-                            />
-
-                        </div>
-                    </div>
-
-
-
-                    {searchname?.length > 0 ? <>
-                        <div className='cardsection row mb-3 ms-1 mt-5'>
-                            {loading ? <>
-                                <LoaderLogo />
-                            </> : <>{servicesusers?.map((item, index) => {
-                                return (
-                                    <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 ' key={index} >
-
-                                        <div onClick={() => router.push(`/product/${item?.productSlugName}`)} className={styles.imagebox}>
-                                            {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={"productimages"} /> :
-                                                <>
-                                                    <Skeleton className={styles.loaderskelimage} />
-                                                </>
-                                            }
-                                        </div>
-                                        <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
-                                            <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
-                                                tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
-                                                disabled
-
-                                            />
-
-                                            <div className={styles.brandname}>
-                                                {item?.productName?.length <= 10 ? <>{item?.productName}</> : <>    {item?.productName.slice(0, 18)}...</>}
-                                            </div>
-
-                                            <div className='textgrey'>
-                                                {item?.brandName?.length <= 18 ? <>{item?.brandName}</> : <>{item?.brandName.slice(0, 18)}...</>}
-                                            </div>
-                                            <div className={styles.cardsellerborder}>
-                                                <div className={styles.cardsellerinsideborder}>
-                                                </div>
-                                            </div>
-                                            <div className={styles.cardpricesection}>
-                                                <div className='textprice'>
-                                                    <span>A${item?.salePrice}</span>
-                                                </div>
-                                                <div className={styles.splitoffers}>
-                                                    {item?.offerPercentag == 0 ? <></> : <span className='textpricedashedgreen'> <del>A${item?.actualPrice}</del></span>}
-                                                    <span className='textpricedashedgreen ms-2'>
-                                                        {item?.offerPercentag == 0 ? <></> : <>
-                                                            ({item?.offerPercentag} off)
-                                                        </>}
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </div>
+                            <div className={styles.serachsectionwomen}>
+                                <div className={styles.serachwomenpresection}>
+                                    <div>
+                                        <input type='text' placeholder="Search by Product Name" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
                                     </div>
-                                )
-                            })}</>}
-                        </div>
-                    </> : <>
-
-                        <div className='cardsection row mb-3 ms-1 mt-5'>
-                            {loading ? <>
-                                <LoaderLogo />
-                            </> : <>{servicesusers?.map((item, index) => {
-                                return (
-                                    <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 ' key={index} >
-
-                                        <div onClick={() => router.push(`/product/${item?.productSlugName}`)} className={styles.imagebox}>
-                                            {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={"productimages"} /> :
-                                                <>
-                                                    <Skeleton className={styles.loaderskelimage} />
-                                                </>
-                                            }
-                                        </div>
-                                        <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
-                                            <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
-                                                tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
-                                                disabled
-
-                                            />
-
-                                            <div className={styles.brandname}>
-                                                {item?.productName?.length <= 10 ? <>{item?.productName}</> : <>    {item?.productName.slice(0, 18)}...</>}
-                                            </div>
-
-                                            <div className='textgrey'>
-                                                {item?.brandName?.length <= 18 ? <>{item?.brandName}</> : <>{item?.brandName.slice(0, 18)}...</>}
-                                            </div>
-                                            <div className={styles.cardsellerborder}>
-                                                <div className={styles.cardsellerinsideborder}>
-                                                </div>
-                                            </div>
-                                            <div className={styles.cardpricesection}>
-                                                <div className='textprice'>
-                                                    <span>A${item?.salePrice}</span>
-                                                </div>
-                                                <div className={styles.splitoffers}>
-                                                    {item?.offerPercentag == 0 ? <></> : <span className='textpricedashedgreen'> <del>A${item?.actualPrice}</del></span>}
-                                                    <span className='textpricedashedgreen ms-2'>
-                                                        {item?.offerPercentag == 0 ? <></> : <>
-                                                            ({item?.offerPercentag} off)
-                                                        </>}
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </div>
+                                    <div>
+                                        <Image src={serachicon} alt="no image" className={styles.serachiconwomen}
+                                            onClick={GetSearchdata}
+                                        />
                                     </div>
-                                )
-                            })}</>}
+                                </div>
+                                <div className='col-lg-3 col-xs-6 col-sm-6 col-lg-5'>
+
+                                    {filterdata}
+
+                                    <Select
+                                        placeholder={"Filter by Product Categorys..."}
+                                        value={filterdata}
+                                        onChange={(e) => handleFilterCategory(e)}
+                                        options={datacategory}
+                                    />
+
+                                </div>
+                            </div>
+
+
+
+                            {searchname?.length > 0 ? <>
+                                <div className='cardsection row mb-3 ms-1 mt-5'>
+                                    {loading ? <>
+                                        <LoaderLogo />
+                                    </> : <>{servicesusers?.map((item, index) => {
+                                        return (
+                                            <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 ' key={index} >
+
+                                                <div onClick={() => router.push(`/product/${item?.productSlugName}`)} className={styles.imagebox}>
+                                                    {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={"productimages"} /> :
+                                                        <>
+                                                            <Skeleton className={styles.loaderskelimage} />
+                                                        </>
+                                                    }
+                                                </div>
+                                                <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
+                                                    <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
+                                                        tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
+                                                        disabled
+
+                                                    />
+
+                                                    <div className={styles.brandname}>
+                                                        {item?.productName?.length <= 10 ? <>{item?.productName}</> : <>    {item?.productName.slice(0, 18)}...</>}
+                                                    </div>
+
+                                                    <div className='textgrey'>
+                                                        {item?.brandName?.length <= 18 ? <>{item?.brandName}</> : <>{item?.brandName.slice(0, 18)}...</>}
+                                                    </div>
+                                                    <div className={styles.cardsellerborder}>
+                                                        <div className={styles.cardsellerinsideborder}>
+                                                        </div>
+                                                    </div>
+                                                    <div className={styles.cardpricesection}>
+                                                        <div className='textprice'>
+                                                            <span>A${item?.salePrice}</span>
+                                                        </div>
+                                                        <div className={styles.splitoffers}>
+                                                            {item?.offerPercentag == 0 ? <></> : <span className='textpricedashedgreen'> <del>A${item?.actualPrice}</del></span>}
+                                                            <span className='textpricedashedgreen ms-2'>
+                                                                {item?.offerPercentag == 0 ? <></> : <>
+                                                                    ({item?.offerPercentag} off)
+                                                                </>}
+                                                            </span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    })}</>}
+                                </div>
+                            </> : <>
+
+                                <div className='cardsection row mb-3 ms-1 mt-5'>
+                                    {loading ? <>
+                                        <LoaderLogo />
+                                    </> : <>{servicesusers?.map((item, index) => {
+                                        return (
+                                            <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 ' key={index} >
+
+                                                <div onClick={() => router.push(`/product/${item?.productSlugName}`)} className={styles.imagebox}>
+                                                    {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={"productimages"} /> :
+                                                        <>
+                                                            <Skeleton className={styles.loaderskelimage} />
+                                                        </>
+                                                    }
+                                                </div>
+                                                <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
+                                                    <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
+                                                        tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
+                                                        disabled
+
+                                                    />
+
+                                                    <div className={styles.brandname}>
+                                                        {item?.productName?.length <= 10 ? <>{item?.productName}</> : <>    {item?.productName.slice(0, 18)}...</>}
+                                                    </div>
+
+                                                    <div className='textgrey'>
+                                                        {item?.brandName?.length <= 18 ? <>{item?.brandName}</> : <>{item?.brandName.slice(0, 18)}...</>}
+                                                    </div>
+                                                    <div className={styles.cardsellerborder}>
+                                                        <div className={styles.cardsellerinsideborder}>
+                                                        </div>
+                                                    </div>
+                                                    <div className={styles.cardpricesection}>
+                                                        <div className='textprice'>
+                                                            <span>A${item?.salePrice}</span>
+                                                        </div>
+                                                        <div className={styles.splitoffers}>
+                                                            {item?.offerPercentag == 0 ? <></> : <span className='textpricedashedgreen'> <del>A${item?.actualPrice}</del></span>}
+                                                            <span className='textpricedashedgreen ms-2'>
+                                                                {item?.offerPercentag == 0 ? <></> : <>
+                                                                    ({item?.offerPercentag} off)
+                                                                </>}
+                                                            </span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    })}</>}
+                                </div>
+                            </>}
+                            {pagecount === 0 ? null : <>
+                                <div className="mt-3">
+                                    <hr />
+                                </div>
+                                <div>
+                                    Page {pagecountnumbers} / {pagecount}
+                                </div>
+
+                                <div className="mt-3">
+
+                                    <ReactPaginate
+                                        activeClassName={'actives '}
+                                        breakClassName={'item break-me '}
+                                        breakLabel={'...'}
+                                        containerClassName={'pagination'}
+                                        disabledClassName={'disabled-page'}
+                                        marginPagesDisplayed={2}
+                                        nextClassName={"item next "}
+                                        nextLabel={Math.ceil(pagecount / 12)=== pagecountnumbers ? null : "NEXT"}
+                                        onPageChange={handlePageClick}
+                                        pageCount={pagecount / 12}
+                                        pageClassName={'item pagination-page '}
+                                        pageRangeDisplayed={2}
+                                        previousClassName={"item previous"}
+                                        previousLabel={pagecountnumbers > 1 ? "PREVIOUS" : null}
+
+
+
+                                    />
+                                </div>
+                            </>}
+
+
+
+
+
                         </div>
-                    </>}
-{pagecount===0?null:<>
-    <div className="mt-3">
-                        <hr />
+
+
                     </div>
-                    <div>
-                        Page {pagecountnumbers} / {pagecount} 
-                    </div>
-
-                    <div className="mt-3">
-
-                        <ReactPaginate
-                            activeClassName={'actives '}
-                            breakClassName={'item break-me '}
-                            breakLabel={'...'}
-                            containerClassName={'pagination'}
-                            disabledClassName={'disabled-page'}
-                            marginPagesDisplayed={2}
-                            nextClassName={"item next "}
-                            nextLabel={Math.round(pagecount / 12)+1===pagecountnumbers?null:"NEXT"}
-                            onPageChange={handlePageClick}
-                            pageCount={pagecount / 12}
-                            pageClassName={'item pagination-page '}
-                            pageRangeDisplayed={2}
-                            previousClassName={"item previous"}
-                            previousLabel={pagecountnumbers>1?"PREVIOUS":null}
-
-
-
-                        />
-                    </div>
-</>}
-
-
-                 
-               
-                 
                 </div>
 
-
-            </div>
-            </div>
-
             </div>
 
 
 
 
-            
+
 
             <div className={styles.emptyboxrightcolor}>
             </div>

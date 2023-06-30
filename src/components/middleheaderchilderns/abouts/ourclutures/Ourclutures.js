@@ -29,7 +29,7 @@ function Ourclutures() {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 2,
+        slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
         
@@ -117,70 +117,39 @@ function Ourclutures() {
                
             </div>
 
-            {/* <div className="mt-5 mb-5">
-
-
- {partnersbanners?.length>1?<>
-
-
- <Slider {...settings}>
-                            {partnersbanners.map((item, index) => {
-                                return (
-                                    <div className={styles.insideslides}>
-                                        {item?.imageName ? <>
-                                            <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.aboutlogos} onClick={() => MovePageData(item.redirectUrl)} />
-                                        </> : <>
-                                            <Skeleton className={styles.homebanner} />
-
-                                        </>}
-                                    </div>
-
-                                )
-                            })}
-                        </Slider>
- </>:<div className="row ">
-
- {partnersbanners.map((item, index) => {
-                                return (
-                                    <div className="col-lg-3 col-sm-11 col-xs-11 col-md-6">
-                                        {item?.imageName ? <>
-                                            <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.aboutlogoss} onClick={() => MovePageData(item.redirectUrl)} />
-                                        </> : <>
-                                            <Skeleton className={styles.homebanner} />
-
-                                        </>}
-                                    </div>
-
-                                )
-                            })}
-
- </div>}         
-<div>
-
-
-
-</div> */}
-
+         
 
 <div className={styles.imagesectionhomess}>
-                        {/* {partnersbanners?.length === 0 && <div>
-                            <Skeleton className={styles.skeltonbox} />
-                        </div>} */}
-                        <Slider {...settings}>
+                        {partnersbanners?.length>3 ? <div>
+                            {/* <Skeleton className={styles.skeltonbox} /> */}
+                           
+
+<Slider {...settings}>
                             {partnersbanners?.map((item, index) => {
                                 return (
-                                    <div key={index} className="col-lg-5 mx-auto">
-                                        {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className="allbanners" onClick={() => MovePageData(item.redirectUrl)} /> : <>
+                                    <div key={index} className="col-lg-4 mx-auto">
+                                        {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.cardaboutusimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
                                             <Skeleton className={styles.homebanner} />
                                         </>}
-                                        {/* <div className={styles.cardaboutusimage}>
-                                        {index+1}
-
-                                        </div> */}
+                                      
                                     </div>
                                 )
                             })}
                         </Slider>
+                        </div>:
+                        <div className="row d-flex gap-2">
+                              {partnersbanners?.map((item, index) => {
+                                return (
+                                    <div key={index} className="col-lg-4 mx-auto">
+                                        {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.cardaboutusimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
+                                            <Skeleton className={styles.homebanner} />
+                                        </>}
+                                      
+                                    </div>
+                                )
+                            })}
+                        </div>
+                       }
 
                     
                     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ServiceBookingUsers,InvoicedownloadService } from './../../../../services/servicewomeyn/service-womeyn';
+import { ServiceBookingUsers, InvoicedownloadService } from './../../../../services/servicewomeyn/service-womeyn';
 import styles from './styles/Servicedetails.module.scss';
 import { Rate } from "antd";
 import { useRouter } from 'next/router';
@@ -17,20 +17,20 @@ function ServiceMaindetails({ error }) {
     const [show, setShow] = useState(false);
 
     const [loading, setLoading] = useState(false);
-  const [invoiceloading, setInvoiceLoading] = useState(false);
-  const [invoiceNumber, setInvoiceNumber] = useState("");
+    const [invoiceloading, setInvoiceLoading] = useState(false);
+    const [invoiceNumber, setInvoiceNumber] = useState("");
 
 
-    
+
 
     const [servicedata, setServiceData] = useState({});
     const handleClose = () => setShow(false);
-    
+
     const history = useRouter();
 
 
-    const g1=moment('2010-10-20').isAfter('2009-12-31', 'year');
-    const g=moment('Jun 5th 23').isAfter(moment('Jun 10th 23',"year"));
+    const g1 = moment('2010-10-20').isAfter('2009-12-31', 'year');
+    const g = moment('Jun 5th 23').isAfter(moment('Jun 10th 23', "year"));
 
 
 
@@ -49,29 +49,28 @@ function ServiceMaindetails({ error }) {
         })
 
 
-        if(error)
-        {
+        if (error) {
             localStorage.removeItem("userid");
             localStorage.removeItem("userToken");
             localStorage.removeItem("whish");
             localStorage.removeItem("user");
             localStorage.removeItem("auth");
             localStorage.removeItem("productid");
-        localStorage.removeItem('signupuser');
+            localStorage.removeItem('signupuser');
 
             history.push("/login");
         }
     }, [error])
-   
 
 
-    const pushProductPage=(data)=>{
+
+    const pushProductPage = (data) => {
         // history?.push(`/service/${data}`);
-         
+
         history.push({
-        pathname: '/profile/servicedetail',
-        query:{id:data},
-    })
+            pathname: '/profile/servicedetail',
+            query: { id: data },
+        })
 
     }
 
@@ -88,132 +87,132 @@ function ServiceMaindetails({ error }) {
     const ServiceInvoiceDownload = (orderids) => {
         setInvoiceLoading(true);
         InvoicedownloadService(orderids).then((res) => {
-          window.open(res?.data?.url);
-          setTimeout(() => {
-            setInvoiceLoading(false);
-          }, 600);
+            window.open(res?.data?.url);
+            setTimeout(() => {
+                setInvoiceLoading(false);
+            }, 600);
         }).catch((err) => {
-          console.log(err);
-          setInvoiceLoading(false);
+            console.log(err);
+            setInvoiceLoading(false);
         })
-      }
-   
+    }
 
 
 
-  
-        return (
-            <>
-                <div>
-                    <div className={styles.favortsInputContainer}>
-                        <input className={styles.favortsSearch}
-                            placeholder="Search your favorites" />
-                        <Image src={Search} className={styles.searchImg} />
-                    </div>
-                    <div className={styles.favortsContainer}>
-                        <p className={styles.favortsText}>Services {invoiceNumber}</p>
+
+
+    return (
+        <>
+            <div>
+                <div className={styles.favortsInputContainer}>
+                    <input className={styles.favortsSearch}
+                        placeholder="Search your favorites" />
+                    <Image src={Search} className={styles.searchImg} />
+                </div>
+                <div className={styles.favortsContainer}>
+                    <p className={styles.favortsText}>Services</p>
 
 
 
-                        <div>
-                            {loading ? <>
-                                loading...
-                            </> : <>
-                                {
-                                    serviceusers.map((data, index) =>
-                                        <div className={styles.favortsInnerContainer} key={index}>
-                                            <div className={styles.favortsLeftContainer} onClick={() => pushProductPage(data.serviceSlugName)}>
-                                                <div className={styles.boximage}>
-                                                    {data?.serviceThumbImage ? <>
-                                                        <img
-                                                            className={styles.favortsImg}
-                                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${data?.serviceThumbImage}`}
-                                                            alt="profile-pic"
-                                                        />
-                                                    </> : <>
-                                                        <Skeleton className={styles.favortsImg} />
-                                                    </>}
-                                                </div>
-                                                <div className={styles.favortsContentContainer}>
-                                                    <div className={styles.favortsProductName}>{data.serviceName}</div>
-                                                    <div className={styles.favortsProductprice}>Price : {data.price}</div>
-
-                                                    <div className="mt-2">
-                                                        <div className={styles.favortsProductprice}>GST : {data.gstAmount}</div>
-
-                                                    </div>
-
-
-                                                    <div className={styles.favortsRatingContainer}>
-
-                                                        {data?.salePrice}
-
-                                                    </div>
-                                                </div>
+                    <div>
+                        {loading ? <>
+                            loading...
+                        </> : <>
+                            {
+                                serviceusers.map((data, index) =>
+                                    <div className={styles.favortsInnerContainer} key={index}>
+                                        <div className={styles.favortsLeftContainer} onClick={() => pushProductPage(data.serviceSlugName)}>
+                                            <div className={styles.boximage}>
+                                                {data?.serviceThumbImage ? <>
+                                                    <img
+                                                        className={styles.favortsImg}
+                                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${data?.serviceThumbImage}`}
+                                                        alt="profile-pic"
+                                                    />
+                                                </> : <>
+                                                    <Skeleton className={styles.favortsImg} />
+                                                </>}
                                             </div>
-                                            <div className={styles.favortsRightContainer} >
-                                                {/* <Image src={Delete} className={styles.removeitems} />
-                                                <div className='d-none d-lg-block'>
-                                                    <p className={styles.favortsDeleteText}>Remove</p>
-                                                </div> */}
-                                                <div>
-                                                    {data?.startDate}
-                                {moment(data?.startDate).isAfter(moment(data?.endDate)) ?<>
+                                            <div className={styles.favortsContentContainer}>
+                                                <div className={styles.favortsProductName}>{data.serviceName}</div>
+                                                <div className={styles.favortsProductprice}>Price : {data.price}</div>
 
-                                    <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button>
-                                </>:<>
-                                <button className={styles.trackingbuttons} onClick={() => pushProductPage(data.serviceSlugName)}>Booked</button>
+                                                <div className="mt-2">
+                                                    <div className={styles.favortsProductprice}>GST : {data.gstAmount}</div>
 
-                                </> }
+                                                </div>
 
-                               <div className="mt-2">
-                               <button className={styles.viewdetailsbuttons} onClick={() =>{
-                                 ServiceInvoiceDownload(data?.orderId)
-                                 setInvoiceNumber(index+1)
-                                 }}>
-                  
-                  {index+1===invoiceNumber?<>
-                  
-                    {invoiceloading ? <>
-                                  <Spinner
-                                    as="span"
-                                    animation="border"
-                                    size="sm"
-                                    role="status"
-                                    aria-hidden="true"
-                                  />
-                                  <span className="ms-2">Loading...</span>
-                                </> : <>
 
-                                Download Invoice
+                                                <div className={styles.favortsRatingContainer}>
 
-                                </>}
-                  </>:<>
-                  Download Invoice
-                  </>}
-                 
+                                                    {data?.salePrice}
 
-                  </button>
-                               </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    )
-                                }
-                                
+                                        <div className={styles.favortsRightContainer} >
+                                            {/* <Image src={Delete} className={styles.removeitems} />
+                                                <div className='d-none d-lg-block'>
+                                                    <p className={styles.favortsDeleteText}>Remove</p>
+                                                </div> */}
+                                            <div>
+                                                {data?.startDate}
+                                                {moment(data?.startDate).isAfter(moment(data?.endDate)) ? <>
 
-                            </>}
+                                                    <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button>
+                                                </> : <>
+                                                    <button className={styles.trackingbuttons} onClick={() => pushProductPage(data.serviceSlugName)}>Booked</button>
+
+                                                </>}
+
+                                                <div className="mt-2">
+                                                    <button className={styles.viewdetailsbuttons} onClick={() => {
+                                                        ServiceInvoiceDownload(data?.orderId)
+                                                        setInvoiceNumber(index + 1)
+                                                    }}>
+
+                                                        {index + 1 === invoiceNumber ? <>
+
+                                                            {invoiceloading ? <>
+                                                                <Spinner
+                                                                    as="span"
+                                                                    animation="border"
+                                                                    size="sm"
+                                                                    role="status"
+                                                                    aria-hidden="true"
+                                                                />
+                                                                <span className="ms-2">Loading...</span>
+                                                            </> : <>
+
+                                                                Download Invoice
+
+                                                            </>}
+                                                        </> : <>
+                                                            Download Invoice
+                                                        </>}
 
 
-                            {serviceusers?.length === 0 && <div>No Services Data...</div>}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            }
 
 
-                        </div>
+                        </>}
+
+
+                        {serviceusers?.length === 0 && <div>No Services Data...</div>}
 
 
                     </div>
+
+
                 </div>
-                {/* <>
+            </div>
+            {/* <>
                     <Modal
                         show={show}
                         onHide={handleClose}
@@ -246,14 +245,14 @@ function ServiceMaindetails({ error }) {
                     </Modal>
                 </> */}
 
-                <>
-                    <Reviewmodel
-                        show1={show1}
-                        handleClose1={handleClose1} servicedata={servicedata}
-                    />
-                </>
+            <>
+                <Reviewmodel
+                    show1={show1}
+                    handleClose1={handleClose1} servicedata={servicedata}
+                />
             </>
-        )
+        </>
+    )
 
 
 }

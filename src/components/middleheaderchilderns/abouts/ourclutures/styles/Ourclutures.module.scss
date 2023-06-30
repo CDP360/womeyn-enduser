@@ -147,13 +147,15 @@
     {
         padding-top:1.3%;
         padding-bottom:1.2%;
+        // border:1px solid red;
     }
     .cardaboutusimage
     {
         width:95%;
-        // border:1px solid red;
         display:flex;
         align-items:center;
         justify-content:center;
         margin:0 auto;
+        object-fit:contain;
+        height:250px;
     }

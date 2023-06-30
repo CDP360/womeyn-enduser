@@ -72,6 +72,47 @@ function Aboutus({ id }) {
                 behavior: "smooth",
             });
         }
+        if(router?.asPath=="/abouts#OurMission&Vision")
+        {
+            window.scrollTo({   
+                top: 1500,
+                behavior: "smooth",
+            });
+        }
+
+        if(router?.asPath=="/abouts#TheLogoSignificance")
+        {
+            window.scrollTo({   
+                top: 2200,
+                behavior: "smooth",
+            });
+        }
+
+
+        if(router?.asPath=="/abouts#TheTeam")
+        {
+            window.scrollTo({   
+                top: 2500,
+                behavior: "smooth",
+            });
+        }
+
+        if(router?.asPath=="/abouts#PartnersCollaborations")
+        {
+            window.scrollTo({   
+                top: 5000,
+                behavior: "smooth",
+            });
+        }
+
+        if(router?.asPath=="/abouts#JoinWomeyn")
+        {
+            window.scrollTo({   
+                top: 5350,
+                behavior: "smooth",
+            });
+        }
+
 
     }, []);
    
