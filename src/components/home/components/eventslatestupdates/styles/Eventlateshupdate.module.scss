@@ -19,24 +19,30 @@
         z-index: 0;
     }
     .insideventupdatesection {
-        width: 75%;
+        width: 80%;
         margin: 0 auto;
         z-index: 90;
         
+      
+
+
         @include xsBreakPoint {
-            width: 82%;
+            width: 85%;
         }
         @include smBreakPoint {
-            width: 82%;
+            width: 85%;
         }
         @include mdBreakPoint {
-            width: 82%;
+            width: 85%;
         }
         @include lgBreakPoint {
             width: 89%;
         }
         @include xlBreakPoint {
             width: 85%;
+        }
+        @include xxxlBreakPoint {
+            width: 80% !important;
         }
         .bordertopsectionevents {
             padding-top: 5%;

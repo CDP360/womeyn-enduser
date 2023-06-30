@@ -145,7 +145,7 @@ function Header() {
             pathname: '/category',
             query: { search: serachcategory },
         })
-        
+
     }
 
 
@@ -180,363 +180,363 @@ function Header() {
     }
     return (
         <Fragment>
-            
+
             <div className={styles.mainheadersection}>
                 <div className={styles.insideheadersplitbox}>
-                   <div className={styles.insidesectionheader}>
-                    <div className={styles.insidesplitheader}>
-                        <div className={styles.leftlogo}>
-                            <div onClick={() => router.push("/")}>
-                                <Image src={womeynlogo} alt="no image" className={styles.womeynlogo} />
+                    <div className={styles.insidesectionheader}>
+                        <div className={styles.insidesplitheader}>
+                            <div className={styles.leftlogo}>
+                                <div onClick={() => router.push("/")}>
+                                    <Image src={womeynlogo} alt="no image" className={styles.womeynlogo} />
+                                </div>
                             </div>
-                        </div>
-                        <div className={styles.middlelogo}>
-                            <div className={styles.insidemiddlelogo}>
-                                <div className={styles.boxinside}>
-                                    <div className={styles.leftheaderbox}>
-                                        <div className={styles.inputsearchsection}>
-                                            <input type="text" placeholder='Search for products,brands and more....' className="inputserach" onChange={handleChange} value={serachcategory} />
-                                            <div>
-                                                <Image src={serachicon} alt="no image" className={styles.cursorserach} onClick={SearchUserSomething} />
+                            <div className={styles.middlelogo}>
+                                <div className={styles.insidemiddlelogo}>
+                                    <div className={styles.boxinside}>
+                                        <div className={styles.leftheaderbox}>
+                                            <div className={styles.inputsearchsection}>
+                                                <input type="text" placeholder='Search for products,brands and more....' className="inputserach" onChange={handleChange} value={serachcategory} />
+                                                <div>
+                                                    <Image src={serachicon} alt="no image" className={styles.cursorserach} onClick={SearchUserSomething} />
+                                                </div>
+                                            </div>
+                                            <div className={styles.barsectiontop}>
+                                                {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} searchDatacategory={searchDatacategory1} loadingserah={loadingserach} serachcategory={serachcategory} /> : <></>}
+
                                             </div>
                                         </div>
-                                        <div className={styles.barsectiontop}>
-                                            {serachcategory ? <Searchbar serachdata={serachdata} serachicon={serachicon} searchDatacategory={searchDatacategory1} loadingserah={loadingserach} serachcategory={serachcategory} /> : <></>}
 
-                                        </div>
-                                    </div>
-
-                                    <div className={styles.rightheaderbox}>
-                                        <div className={styles.Seller} onClick={SellerLogin}>
-                                            Become a WomeynPreneurs
+                                        <div className={styles.rightheaderbox}>
+                                            <div className={styles.Seller} onClick={SellerLogin}>
+                                                Become a WomeynPreneurs
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className={styles.rightlogo}>
-                            <div className={styles.insiderightlogos}>
+                            <div className={styles.rightlogo}>
+                                <div className={styles.insiderightlogos}>
 
-                                {/* <div className={styles.falight} onClick={notificationsPush}>
+                                    {/* <div className={styles.falight} onClick={notificationsPush}>
                                     <Image src={notifications} alt="no image" className={styles.notifications} />
                                 </div> */}
-                                <div className={styles.falight} >
+                                    <div className={styles.falight} >
 
-                                    {router.asPath == "/profile/favorts"?<>
-                                    <div className={styles.maincartcount} onClick={heartpushdata}>
-                                        <div>
-                                            <Image src={heart1} alt="no image" className={styles.notifications} />
-                                        </div>
-                                        {favortcountdataredux?.favorts?.favortsdata?.length > 0 ? <div className={styles.cartcountbox}>
-                                            {favortcountdataredux?.favorts?.favortsdata?.length}
-                                        </div>
-                                            : <></>}
+                                        {router.asPath == "/profile/favorts" ? <>
+                                            <div className={styles.maincartcount} onClick={heartpushdata}>
+                                                <div>
+                                                    <Image src={heart1} alt="no image" className={styles.notifications} />
+                                                </div>
+                                                {favortcountdataredux?.favorts?.favortsdata?.length > 0 ? <div className={styles.cartcountbox}>
+                                                    {favortcountdataredux?.favorts?.favortsdata?.length}
+                                                </div>
+                                                    : <></>}
+                                            </div>
+                                        </> : <>
+                                            <div className={styles.maincartcount} onClick={heartpushdata}>
+                                                <div>
+                                                    <Image src={heart2} alt="no image" className={styles.notifications} />
+                                                </div>
+                                                {favortcountdataredux?.favorts?.favortsdata?.length > 0 ? <div className={styles.cartcountbox}>
+                                                    {favortcountdataredux?.favorts?.favortsdata?.length}
+                                                </div>
+                                                    : <></>}
+
+                                            </div>
+                                        </>}
+
                                     </div>
-                                    </>:<>
-                                    <div className={styles.maincartcount} onClick={heartpushdata}>
-                                        <div>
-                                            <Image src={heart2} alt="no image" className={styles.notifications} />
-                                        </div>
-                                        {favortcountdataredux?.favorts?.favortsdata?.length > 0 ? <div className={styles.cartcountbox}>
-                                            {favortcountdataredux?.favorts?.favortsdata?.length}
-                                        </div>
-                                            : <></>}
 
+                                    <div className={styles.falight} onClick={carts}>
+                                        <div className={styles.maincartcount}>
+                                            <div>
+                                                <Image src={cartslogo} alt="no image" className={styles.notifications} />
+                                            </div>
+                                            {cart?.cartData?.length > 0 ? <div className={styles.cartcountbox}>
+                                                {cart.cartData?.length}
+                                            </div>
+                                                : <></>}
+                                        </div>
                                     </div>
-                                    </>}
-                                   
-                                </div>
+                                    <div className={styles.dropdownsectionkalai}>
+                                        <div onClick={() => setShowMega(!showmega)}>
+                                            {userauth ? <>
+                                                {favortcountdataredux?.loginUser?.logindata?.profileImageName ? <>
+                                                    <img
+                                                        className={styles.notificationsprofile}
+                                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${favortcountdataredux?.loginUser?.logindata?.profileImageName}`}
+                                                        alt="profile-pic"
+                                                    />
 
-                                <div className={styles.falight} onClick={carts}>
-                                    <div className={styles.maincartcount}>
-                                        <div>
-                                            <Image src={cartslogo} alt="no image" className={styles.notifications} />
+                                                </> : <>
+                                                    <Image src={profile} alt="no image" className={styles.notificationsprofile} />
+
+                                                </>}
+
+                                            </> : <div className={styles.logintexts}>Login</div>}
                                         </div>
-                                        {cart?.cartData?.length > 0 ? <div className={styles.cartcountbox}>
-                                            {cart.cartData?.length}
-                                        </div>
-                                            : <></>}
+                                        {showmega &&
+                                            <div className={styles.bordersections}>
+                                                {userauth ?
+                                                    <>
+                                                        <div className="dropdowncontents">
+                                                            <div className={styles.headerprofile} onClick={userProfile}>
+                                                                <div>
+                                                                    <Image src={myprofile} alt="no image" className={styles.profileimageover} />
+                                                                </div>
+                                                                <div className={styles.logouttexts}>
+                                                                    My Profile
+                                                                </div>
+                                                            </div>
+                                                            <div className={styles.headerprofile} onClick={Orders}>
+                                                                <div>
+                                                                    <Image src={orderactive} alt="no image" className={styles.profileimageover} />
+                                                                </div>
+                                                                <div className={styles.logouttexts}>
+                                                                    Product Orders
+                                                                </div>
+                                                            </div>
+                                                            <div className={styles.headerprofile} onClick={Services}>
+                                                                <div>
+                                                                    <Image src={serviceactive} alt="no image" className={styles.profileimageover} />
+                                                                </div>
+                                                                <div className={styles.logouttexts}>
+                                                                    Service Orders
+                                                                </div>
+                                                            </div>
+
+                                                            <div className={styles.headerprofile} onClick={Whishlists}>
+                                                                <div>
+                                                                    <Image src={favortsactive} alt="no image" className={styles.profileimageover} />
+                                                                </div>
+                                                                <div className={styles.logouttexts}>
+                                                                    Whishlist
+                                                                </div>
+                                                            </div>
+
+
+
+
+
+                                                            <div className={styles.headerprofile} onClick={Coupons}>
+                                                                <div>
+                                                                    <Image src={couponsactive} alt="no image" className={styles.profileimageover} />
+                                                                </div>
+                                                                <div className={styles.logouttexts}>
+                                                                    Coupons
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div className={styles.headerprofile} onClick={HelpPage}>
+                                                                <div>
+                                                                    <Image src={helpss} alt="no image" className={styles.profileimageover} />
+                                                                </div>
+                                                                <div className={styles.logouttexts}>
+                                                                    FAQ
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div className={styles.headerprofile} onClick={logoutHandler}>
+                                                                <div>
+                                                                    <Image src={logout} alt="no image" className={styles.profileimageover} />
+                                                                </div>
+                                                                <div className={styles.logouttexts}>
+                                                                    Logout
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </> : <div className="dropdowncontents">
+                                                        <div className='p-2'>
+                                                            Create account / LogIn
+                                                            <button className='active mt-3 loginbuttonhome' onClick={Login}>
+                                                                LogIn/SignUp
+                                                            </button>
+                                                        </div>
+                                                    </div>}
+                                            </div>
+                                        }
                                     </div>
-                                </div>
-                                <div className={styles.dropdownsectionkalai}>
-                                    <div onClick={() => setShowMega(!showmega)}>
-                                        {userauth ? <>
-                                            {favortcountdataredux?.loginUser?.logindata?.profileImageName ? <>
-                                                <img
-                                                    className={styles.notificationsprofile}
-                                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${favortcountdataredux?.loginUser?.logindata?.profileImageName}`}
-                                                    alt="profile-pic"
-                                                />
-
-                                            </> : <>
-                                                <Image src={profile} alt="no image" className={styles.notificationsprofile} />
-
-                                            </>}
-
-                                        </> : <div className={styles.logintexts}>Login</div>}
-                                    </div>
-                                    {showmega &&
-                                        <div className={styles.bordersections}>
-                                            {userauth ?
-                                                <>
-                                                    <div className="dropdowncontents">
-                                                        <div className={styles.headerprofile} onClick={userProfile}>
-                                                            <div>
-                                                                <Image src={myprofile} alt="no image" className={styles.profileimageover} />
-                                                            </div>
-                                                            <div className={styles.logouttexts}>
-                                                                My Profile
-                                                            </div>
-                                                        </div>
-                                                        <div className={styles.headerprofile} onClick={Orders}>
-                                                            <div>
-                                                                <Image src={orderactive} alt="no image" className={styles.profileimageover} />
-                                                            </div>
-                                                            <div className={styles.logouttexts}>
-                                                                Product Orders
-                                                            </div>
-                                                        </div>
-                                                        <div className={styles.headerprofile} onClick={Services}>
-                                                            <div>
-                                                                <Image src={serviceactive} alt="no image" className={styles.profileimageover} />
-                                                            </div>
-                                                            <div className={styles.logouttexts}>
-                                                                Service Orders
-                                                            </div>
-                                                        </div>
-
-                                                        <div className={styles.headerprofile} onClick={Whishlists}>
-                                                            <div>
-                                                                <Image src={favortsactive} alt="no image" className={styles.profileimageover} />
-                                                            </div>
-                                                            <div className={styles.logouttexts}>
-                                                                Whishlist
-                                                            </div>
-                                                        </div>
-
-
-
-
-
-                                                        <div className={styles.headerprofile} onClick={Coupons}>
-                                                            <div>
-                                                                <Image src={couponsactive} alt="no image" className={styles.profileimageover} />
-                                                            </div>
-                                                            <div className={styles.logouttexts}>
-                                                                Coupons
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div className={styles.headerprofile} onClick={HelpPage}>
-                                                            <div>
-                                                                <Image src={helpss} alt="no image" className={styles.profileimageover} />
-                                                            </div>
-                                                            <div className={styles.logouttexts}>
-                                                                FAQ
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div className={styles.headerprofile} onClick={logoutHandler}>
-                                                            <div>
-                                                                <Image src={logout} alt="no image" className={styles.profileimageover} />
-                                                            </div>
-                                                            <div className={styles.logouttexts}>
-                                                                Logout
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </> : <div className="dropdowncontents">
-                                                    <div className='p-2'>
-                                                        Create account / LogIn
-                                                        <button className='active mt-3 loginbuttonhome' onClick={Login}>
-                                                            LogIn/SignUp
-                                                        </button>
-                                                    </div>
-                                                </div>}
-                                        </div>
-                                    }
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
-           
+
 
                 <div className={styles.middleheadersection}>
-                <div className={styles.emptyboxleftcolor}>
-                </div>
-                <div className={styles.insidemiddlesections}>
-                    <div className={router.pathname == "/explore" ? "active" : "nav-link"}>
-                        <ul className="dropdownmegamain">
-                            <li>
-                                <a>
-                                    <span className='ms-2'>Explore</span>
-                                </a>
-                                <ul className="dropdownmega">
-                                    <div className="maindropdown">
-                                        <div className="firstsection">
-                                            <li><a className="commontitle">{explorecategorys[0]?.categoryName}</a></li>
-                                            <div>
-                                                {explorecategorys[0]?.subCategories?.map((item, index) => {
-                                                    return (
-                                                        <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
-                                                            <li><a className="unactivetext">{item?.name}</a></li>
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
-                                            <li><a className="commontitle">{explorecategorys[1]?.categoryName}</a></li>
-                                            <div>
-                                                {explorecategorys[1]?.subCategories?.map((item, index) => {
-                                                    return (
-                                                        <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
-                                                            <li><a className="unactivetext">{item?.name}</a></li>
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
-                                        </div>
-                                        <div className="secondsection">
-                                            <li><a className="commontitle">{explorecategorys[2]?.categoryName}</a></li>
-                                            <div>
-                                                {explorecategorys[2]?.subCategories?.map((item, index) => {
-                                                    return (
-                                                        <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
-                                                            <li><a className="unactivetext">{item?.name}</a></li>
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
-                                            <li><a className="commontitle">{explorecategorys[3]?.categoryName}</a></li>
-                                            <div>
-                                                {explorecategorys[3]?.subCategories?.map((item, index) => {
-                                                    return (
-                                                        <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
-                                                            <li><a className="unactivetext">{item?.name}</a></li>
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
-                                        </div>
-                                        <div className="thirdsection">
-                                            <li><a className="commontitle">{explorecategorys[4]?.categoryName}</a></li>
-                                            <div>
-                                                {explorecategorys[4]?.subCategories?.map((item, index) => {
-                                                    return (
-                                                        <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
-                                                            <li><a className="unactivetext">{item?.name}</a></li>
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
-                                        </div>
-                                        <div className="fourthsection">
-                                            <li><a className="commontitle">{explorecategorys[5]?.categoryName}</a></li>
-                                            <div>
-
-                                                {explorecategorys[5]?.subCategories?.map((item, index) => {
-                                                    return (
-                                                        <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
-                                                            <li><a className="unactivetext">{item?.name}</a></li>
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
-                                        </div>
-                                        <div className="fifthsection">
-                                            <li><a className="commontitle">{explorecategorys[6]?.categoryName}</a></li>
-                                            <div>
-
-                                                {explorecategorys[6]?.subCategories?.map((item, index) => {
-                                                    return (
-                                                        <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
-                                                            <li><a className="unactivetext">{item?.name}</a></li>
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </ul>
-
-                            </li>
-                        </ul>
+                    <div className={styles.emptyboxleftcolor}>
                     </div>
-                    <div className={router.pathname == "/products" ? "active" : ""}>
-                        <div className='nav-link' onClick={() => router?.push("/products")}>
-                            <span className='ms-2 hovertexts'>Products</span>
+                    <div className={styles.insidemiddlesections}>
+                        <div className={router.pathname == "/explore" ? "active" : "nav-link"}>
+                            <ul className="dropdownmegamain">
+                                <li>
+                                    <a>
+                                        <span className='ms-2'>Explore</span>
+                                    </a>
+                                    <ul className="dropdownmega">
+                                        <div className="maindropdown">
+                                            <div className="firstsection">
+                                                <li><a className="commontitle">{explorecategorys[0]?.categoryName}</a></li>
+                                                <div>
+                                                    {explorecategorys[0]?.subCategories?.map((item, index) => {
+                                                        return (
+                                                            <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
+                                                                <li><a className="unactivetext">{item?.name}</a></li>
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                                <li><a className="commontitle">{explorecategorys[1]?.categoryName}</a></li>
+                                                <div>
+                                                    {explorecategorys[1]?.subCategories?.map((item, index) => {
+                                                        return (
+                                                            <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
+                                                                <li><a className="unactivetext">{item?.name}</a></li>
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                            </div>
+                                            <div className="secondsection">
+                                                <li><a className="commontitle">{explorecategorys[2]?.categoryName}</a></li>
+                                                <div>
+                                                    {explorecategorys[2]?.subCategories?.map((item, index) => {
+                                                        return (
+                                                            <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
+                                                                <li><a className="unactivetext">{item?.name}</a></li>
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                                <li><a className="commontitle">{explorecategorys[3]?.categoryName}</a></li>
+                                                <div>
+                                                    {explorecategorys[3]?.subCategories?.map((item, index) => {
+                                                        return (
+                                                            <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
+                                                                <li><a className="unactivetext">{item?.name}</a></li>
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                            </div>
+                                            <div className="thirdsection">
+                                                <li><a className="commontitle">{explorecategorys[4]?.categoryName}</a></li>
+                                                <div>
+                                                    {explorecategorys[4]?.subCategories?.map((item, index) => {
+                                                        return (
+                                                            <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
+                                                                <li><a className="unactivetext">{item?.name}</a></li>
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                            </div>
+                                            <div className="fourthsection">
+                                                <li><a className="commontitle">{explorecategorys[5]?.categoryName}</a></li>
+                                                <div>
+
+                                                    {explorecategorys[5]?.subCategories?.map((item, index) => {
+                                                        return (
+                                                            <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
+                                                                <li><a className="unactivetext">{item?.name}</a></li>
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                            </div>
+                                            <div className="fifthsection">
+                                                <li><a className="commontitle">{explorecategorys[6]?.categoryName}</a></li>
+                                                <div>
+
+                                                    {explorecategorys[6]?.subCategories?.map((item, index) => {
+                                                        return (
+                                                            <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
+                                                                <li><a className="unactivetext">{item?.name}</a></li>
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </ul>
+
+                                </li>
+                            </ul>
                         </div>
-                    </div>
-                    <div className={router.pathname == "/service" ? "active" : ""}>
-                        <div className='nav-link' onClick={() => router?.push("/service")}>
-                            <span className='ms-2 hovertexts'>Services</span>
-                        </div>
-                    </div>
-
-                    <div className={router.pathname == "/womenpreneurs" ? "active" : ""}>
-                        <div className='nav-link' onClick={() => router?.push("/womenpreneurs")}>
-                            <span className='ms-2 hovertexts'>Our WomeynPreneurs</span>
-                        </div>
-                    </div>
-                    <div className={router.pathname == "/events" ? "active" : ""}>
-                        <div className='nav-link' onClick={() => router?.push("/events")}>
-                            <span className='ms-2 hovertexts'>Events & Blogs</span>
-                        </div>
-                    </div>
-                    <div className={router.pathname == "/abouts" ? "active" : ""}>
-                        <div class="dropdownabout" >
-                            <button class="dropbtnabout" ><span className={router?.pathname == "/abouts" ? "active" : ""}>About Us</span> <span><Image src={aroepath} alt="no image" className="patharrow" /></span></button>
-                            <div class="dropdown-contentabut">
-
-
-
-
-
-                                <Link href="/abouts#WhatisWomeyn" scroll={false} >
-                                    What is Womeyn
-                                </Link>
-
-                                
-                                <Link href="/abouts#OurMission&Vision" scroll={false} >
-                                    Our Mission & Vision
-                                </Link>
-                                <Link href="/abouts#TheLogoSignificance" scroll={false} >
-                                    The Logo Significance
-                                </Link>
-
-
-                                <Link href="/abouts#TheTeam" scroll={false} >
-                                    The Team
-                                </Link>
-
-                                <Link href="/abouts#PartnersCollaborations" scroll={false} >
-                                    Partners & Collaborations
-                                </Link>
-                                <Link href="/abouts#JoinWomeyn" scroll={false} >
-                                    Join Womeyn
-                                </Link>
+                        <div className={router.pathname == "/products" ? "active" : ""}>
+                            <div className='nav-link' onClick={() => router?.push("/products")}>
+                                <span className='ms-2 hovertexts'>Products</span>
                             </div>
                         </div>
-                       
+                        <div className={router.pathname == "/service" ? "active" : ""}>
+                            <div className='nav-link' onClick={() => router?.push("/service")}>
+                                <span className='ms-2 hovertexts'>Services</span>
+                            </div>
+                        </div>
+
+                        <div className={router.pathname == "/womenpreneurs" ? "active" : ""}>
+                            <div className='nav-link' onClick={() => router?.push("/womenpreneurs")}>
+                                <span className='ms-2 hovertexts'>Our WomeynPreneurs</span>
+                            </div>
+                        </div>
+                        <div className={router.pathname == "/events" ? "active" : ""}>
+                            <div className='nav-link' onClick={() => router?.push("/events")}>
+                                <span className='ms-2 hovertexts'>Events & Blogs</span>
+                            </div>
+                        </div>
+                        <div className={router.pathname == "/abouts" ? "active" : ""}>
+                            <div class="dropdownabout" >
+                                <button class="dropbtnabout" ><span className={router?.pathname == "/abouts" ? "active" : ""}>About Us</span> <span><Image src={aroepath} alt="no image" className="patharrow" /></span></button>
+                                <div class="dropdown-contentabut">
 
 
-                    </div>
-                    <div className={router.pathname == "/getintouch" ? "active" : ""}>
-                      
-                        <div className='nav-link' onClick={() => router?.push("/getintouch")}>
-                            <span className='ms-2 hovertexts'>Get In Touch</span>
+
+
+
+                                    <Link href="/abouts#WhatisWomeyn" scroll={false} >
+                                        What is Womeyn
+                                    </Link>
+
+
+                                    <Link href="/abouts#OurMission&Vision" scroll={false} >
+                                        Our Mission & Vision
+                                    </Link>
+                                    <Link href="/abouts#TheLogoSignificance" scroll={false} >
+                                        The Logo Significance
+                                    </Link>
+
+
+                                    <Link href="/abouts#TheTeam" scroll={false} >
+                                        The Team
+                                    </Link>
+
+                                    <Link href="/abouts#PartnersCollaborations" scroll={false} >
+                                        Partners & Collaborations
+                                    </Link>
+                                    <Link href="/abouts#JoinWomeyn" scroll={false} >
+                                        Join Womeyn
+                                    </Link>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div className={router.pathname == "/getintouch" ? "active" : ""}>
+
+                            <div className='nav-link' onClick={() => router?.push("/getintouch")}>
+                                <span className='ms-2 hovertexts'>Get In Touch</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div> 
-                </div>
-              
-           
-           
+            </div>
+
+
+
         </Fragment>
     )
 }

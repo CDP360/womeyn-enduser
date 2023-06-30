@@ -48,7 +48,7 @@ function Checkoutsuccess() {
                     setTimeout(() => {
                         history.push("/profile/orders");
                         handleClose();
-                    }, 2000);
+                    }, 800);
                 }
             }).catch((err) => {
                 console.log(err);
