@@ -22,6 +22,8 @@ function ServiceViewDetails() {
     const history = useRouter();
 
 
+
+
     const [show1, setShow1] = useState(false);
     const handleClose1 = () => setShow1(false);
     const handleShow1 = (data) => {
@@ -30,7 +32,6 @@ function ServiceViewDetails() {
 
 
 
-    const serviceid = history.query?.id;
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -41,10 +42,18 @@ function ServiceViewDetails() {
     const [reviews, setReviews] = useState([]);
     const [ratingsdata, setRatingData] = useState("");
     useEffect(() => {
+
+
+
+
+    const serviceid = history.query?.id;
+
+    
+
         ServiceusersGetSingle(serviceid).then((res) => {
 
 
-            console.log(res,"res")
+            
 
 
             setReviews(res?.data?.reviews)

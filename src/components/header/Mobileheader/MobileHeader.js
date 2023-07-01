@@ -132,7 +132,7 @@ function MobileHeader() {
 
                         </>} */}
 
-                        <Image src={mobilebar} alt="no image" className={styles.barsection}/>
+                        <Image src={mobilebar} alt="no image" className={styles.barsection} />
 
 
                     </div>
