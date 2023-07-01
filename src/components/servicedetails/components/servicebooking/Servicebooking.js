@@ -24,8 +24,12 @@ function Servicebooking({ id }) {
     const [reviews,setReviews]=useState([]);
     const [ratingsdata,setRatingData]=useState("");
 
+    const history = useRouter();
+
+    const sellerserviceid=history?.asPath.slice(9,1000);
+
     useEffect(() => {
-        ServiceusersGetSingle(id).then((res) => {
+        ServiceusersGetSingle(id || sellerserviceid).then((res) => {
             setReviews(res?.data?.reviews)
             setServiceBooking(res?.data?.serviceDetails[0]);
             setSellerinfo(res?.data?.sellerInformation);
@@ -39,9 +43,7 @@ function Servicebooking({ id }) {
 
 
 
-    const history = useRouter();
-
-    console.log(history,"history")
+  
 
 
 
