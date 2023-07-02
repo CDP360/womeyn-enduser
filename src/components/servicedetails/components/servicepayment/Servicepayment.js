@@ -15,7 +15,6 @@ function Servicepayment({ id }) {
     const history = useRouter();
 
     
-    console.log(history,"history")
     const [loading, setLoading] = useState(false);
     const [errors, setError] = useState(false);
     const [totalvalue, setTotalValue] = useState(0);

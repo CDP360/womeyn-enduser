@@ -66,6 +66,15 @@
   cursor: pointer;
   z-index: -10%;
   border-radius: 7px;
+  @include lgBreakPoint
+  {
+    height: 70vh !important;
+  }
+  @include xlBreakPoint
+  {
+    height: 70vh !important;
+  }
+
   // @include themed() {
   //     background: t($header);
   // }
@@ -139,7 +148,7 @@ li a:hover {
   // box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   visibility: hidden;
   opacity: 0;
-  height: 70vh;
+  height: 57vh;
   width: 80vw;
   position: absolute;
   transition: all 0.5s ease;
@@ -218,7 +227,7 @@ li a {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   visibility: hidden;
   opacity: 0;
-  height: 80vh;
+  height: 60vh;
   width: 65vw;
   position: absolute;
   transition: all 0.5s ease;
@@ -271,7 +280,7 @@ li a {
     flex-direction: column;
     gap: 10px !important;
     padding-top: 2%;
-    height:490px;
+    height:400px;
     overflow:hidden;
     overflow-y:auto;
     .insideservices
@@ -300,7 +309,8 @@ li a {
     padding-top: 2%;
     overflow:hidden;
     overflow-y:auto;
-    height:490px;
+    height:400px;
+
     .insideservices
     {
       // border:2px solid blue;
@@ -325,7 +335,8 @@ li a {
     gap: 10px !important;
     padding-top: 2%;
     overflow:hidden;
-    height:490px;
+    height:400px;
+
 
     overflow-y:auto;
     .insideservices
@@ -352,7 +363,8 @@ li a {
     flex-direction: column;
     gap: 10px !important;
     padding-top: 2%;
-    height:490px;
+    height:400px;
+
 
   overflow:hidden;
     overflow-y:auto;
@@ -379,7 +391,8 @@ li a {
     flex-direction: column;
     gap: 10px !important;
     padding-top: 2%;
-    height:490px;
+    height:400px;
+
 
     overflow:hidden;
     overflow-y:auto;

@@ -63,7 +63,6 @@ function Sidebarcateogrys({ setFilterproducts, setLoadingproduct, setProductgetl
         }, 500)
 
       }).catch((err) => {
-        console.log(err);
         setLoadingproduct(false);
       })
     }
