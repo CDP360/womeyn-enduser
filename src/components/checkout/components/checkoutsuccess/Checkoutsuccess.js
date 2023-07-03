@@ -23,14 +23,14 @@ function Checkoutsuccess() {
         if (Transaction_id) {
             handleShow();
             CheckoutSuccessUpdate(Transaction_id).then((res) => {
-                if (res?.data?.message == "Order completed successfully") {
+                // if (res?.data?.message == "Order completed successfully") {
                     Cookies.remove("CartDatas");
                     Cookies.clear();
                     setTimeout(() => {
                         history.push("/profile/orders");
                         handleClose();
                     }, 800);
-                }
+                // }
             }).catch((err) => {
                 console.log(err);
             })
@@ -42,14 +42,14 @@ function Checkoutsuccess() {
         if (paymentId_id, PayerID_id) {
             handleShow();
             CheckoutSuccessUpdatePaypal(paymentId_id, PayerID_id).then((res) => {
-                if (res?.data?.message == "Order completed successfully") {
+                // if (res?.data?.message == "Order completed successfully") {
                     Cookies.remove("CartDatas");
                     Cookies.clear();
                     setTimeout(() => {
                         history.push("/profile/orders");
                         handleClose();
                     }, 800);
-                }
+                // }
             }).catch((err) => {
                 console.log(err);
             })
