@@ -16,44 +16,50 @@ function Checkoutsuccess() {
     const [show, setShow] = useState(false);
     const handleClose = () => {
         setShow(false)
-        // history.push("/profile/orders");
+        history.push("/profile/orders");
     };
     const handleShow = () => setShow(true);
     useEffect(() => {
+        setShow(true); 
+
+        if(true)
+        {
+
+        }
         if (Transaction_id) {
             handleShow();
             CheckoutSuccessUpdate(Transaction_id).then((res) => {
                 // if (res?.data?.message == "Order completed successfully") {
-                    Cookies.remove("CartDatas");
-                    Cookies.clear();
-                    // setTimeout(() => {
-                        history.push("/profile/orders");
-                        handleClose();
-        setShow(false)
-
-                    // }, 800);
-                // }
+                Cookies.remove("CartDatas");
+                Cookies.clear();
+                setTimeout(()=>{
+                    setShow(false); 
+                    handleClose();
+                    history.push("/profile/orders");
+                
+                },800)
+              
             }).catch((err) => {
                 console.log(err);
             })
         }
-        else {
-        }
+      
     }, [Transaction_id]);
     useEffect(() => {
         if (paymentId_id, PayerID_id) {
             handleShow();
             CheckoutSuccessUpdatePaypal(paymentId_id, PayerID_id).then((res) => {
                 // if (res?.data?.message == "Order completed successfully") {
-                    Cookies.remove("CartDatas");
-                    Cookies.clear();
-                    // setTimeout(() => {
-                        history.push("/profile/orders");
-                        handleClose();
-        setShow(false)
+                Cookies.remove("CartDatas");
+                Cookies.clear();
+               
 
-                    // }, 800);
-                // }
+                setTimeout(()=>{
+                    setShow(false); 
+                    handleClose();
+                    history.push("/profile/orders");
+                
+                },800)
             }).catch((err) => {
                 console.log(err);
             })
