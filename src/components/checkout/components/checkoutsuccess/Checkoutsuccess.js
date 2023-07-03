@@ -20,16 +20,13 @@ function Checkoutsuccess() {
     };
     const handleShow = () => setShow(true);
     useEffect(() => {
-        setShow(true); 
-
-        if(true)
-        {
-
-        }
+    
         if (Transaction_id) {
             handleShow();
             CheckoutSuccessUpdate(Transaction_id).then((res) => {
                 // if (res?.data?.message == "Order completed successfully") {
+
+                console.log(res?.data,"res")
                 Cookies.remove("CartDatas");
                 Cookies.clear();
                 setTimeout(()=>{
