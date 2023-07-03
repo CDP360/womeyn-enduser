@@ -16,7 +16,7 @@ function Checkoutsuccess() {
     const [show, setShow] = useState(false);
     const handleClose = () => {
         setShow(false)
-        history.push("/profile/orders");
+        // history.push("/profile/orders");
     };
     const handleShow = () => setShow(true);
     useEffect(() => {
@@ -26,10 +26,12 @@ function Checkoutsuccess() {
                 // if (res?.data?.message == "Order completed successfully") {
                     Cookies.remove("CartDatas");
                     Cookies.clear();
-                    setTimeout(() => {
+                    // setTimeout(() => {
                         history.push("/profile/orders");
                         handleClose();
-                    }, 800);
+        setShow(false)
+
+                    // }, 800);
                 // }
             }).catch((err) => {
                 console.log(err);
@@ -45,10 +47,12 @@ function Checkoutsuccess() {
                 // if (res?.data?.message == "Order completed successfully") {
                     Cookies.remove("CartDatas");
                     Cookies.clear();
-                    setTimeout(() => {
+                    // setTimeout(() => {
                         history.push("/profile/orders");
                         handleClose();
-                    }, 800);
+        setShow(false)
+
+                    // }, 800);
                 // }
             }).catch((err) => {
                 console.log(err);
