@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation';
 import Cookies from 'js-cookie';
 import ordercomplete from '../../../../assests/cart-logos/Order complete.gif';
 import Image from 'next/image';
+import { toast } from 'react-toastify';
 function Checkoutsuccess() {
     const history = useRouter();
     const searchParams = useSearchParams();
@@ -20,43 +21,61 @@ function Checkoutsuccess() {
     };
     const handleShow = () => setShow(true);
     useEffect(() => {
-    
+
         if (Transaction_id) {
             handleShow();
             CheckoutSuccessUpdate(Transaction_id).then((res) => {
-                // if (res?.data?.message == "Order completed successfully") {
+                if (res?.data?.message == "Order completed successfully") {
 
-                console.log(res?.data,"res")
-                Cookies.remove("CartDatas");
-                Cookies.clear();
-                setTimeout(()=>{
-                    setShow(false); 
-                    handleClose();
-                    history.push("/profile/orders");
-                
-                },800)
-              
+                    toast.success(res?.data?.message, {
+                        position: "top-center",
+                        autoClose: 3300,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    })
+                    Cookies.remove("CartDatas");
+                    Cookies.clear();
+                    setTimeout(() => {
+
+                        history.push("/profile/orders");
+
+                    }, 800)
+                }
+
             }).catch((err) => {
                 console.log(err);
             })
         }
-      
+
     }, [Transaction_id]);
     useEffect(() => {
         if (paymentId_id, PayerID_id) {
             handleShow();
             CheckoutSuccessUpdatePaypal(paymentId_id, PayerID_id).then((res) => {
-                // if (res?.data?.message == "Order completed successfully") {
-                Cookies.remove("CartDatas");
-                Cookies.clear();
-               
+                if (res?.data?.message == "Order completed successfully") {
+                    Cookies.remove("CartDatas");
+                    Cookies.clear();
+                    toast.success(res?.data?.message, {
+                        position: "top-center",
+                        autoClose: 3300,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    })
 
-                setTimeout(()=>{
-                    setShow(false); 
-                    handleClose();
-                    history.push("/profile/orders");
-                
-                },800)
+                    setTimeout(() => {
+
+                        history.push("/profile/orders");
+
+                    }, 800)
+                }
             }).catch((err) => {
                 console.log(err);
             })
@@ -65,7 +84,22 @@ function Checkoutsuccess() {
     return (
         <>
             <div className={styles.success}>
-                <Modal show={show} onHide={handleClose} centered>
+                <div>
+                    <div className="mb-3">
+                    </div>
+                    <div>
+                        <Image src={ordercomplete} alt="no image" className={styles.ordercompleimages} />
+                    </div>
+                    <div>
+                        <h3 className={styles.compleordertexts}>Order completed successfully !</h3>
+                    </div>
+                    <div className={styles.youwill}>
+                        You will be receiving a confirmation email order details.
+                    </div>
+                    <div className="mt-3 mb-5">
+                    </div>
+                </div>
+                {/* <Modal show={show} onHide={handleClose} centered>
                     <Modal.Header closeButton className="modalheader">
                     </Modal.Header>
                     <Modal.Body>
@@ -85,7 +119,7 @@ function Checkoutsuccess() {
                             </div>
                         </div>
                     </Modal.Body>
-                </Modal>
+                </Modal> */}
             </div>
         </>
     )
