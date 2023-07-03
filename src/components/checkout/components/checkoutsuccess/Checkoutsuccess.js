@@ -98,10 +98,10 @@ function Checkoutsuccess() {
     return (
         <>
 
-            {show ? <>
+            {/* {show ? <>
 
                 <LoaderLogo />
-            </> : <></>}
+            </> : <></>} */}
             <div className={styles.success}>
                 <div>
                     <div className="mb-3">
