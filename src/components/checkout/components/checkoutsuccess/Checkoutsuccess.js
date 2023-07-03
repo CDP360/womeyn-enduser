@@ -29,6 +29,7 @@ function Checkoutsuccess() {
 
             setShow(true);
             CheckoutSuccessUpdate(Transaction_id).then((res) => {
+                history.push("/profile/orders");
 
 
                 if (res?.data?.message == "Order completed successfully") {
@@ -65,6 +66,8 @@ function Checkoutsuccess() {
 
             setShow(true)
             CheckoutSuccessUpdatePaypal(paymentId_id, PayerID_id).then((res) => {
+                history.push("/profile/orders");
+
                 if (res?.data?.message == "Order completed successfully") {
                     Cookies.remove("CartDatas");
                     Cookies.clear();
