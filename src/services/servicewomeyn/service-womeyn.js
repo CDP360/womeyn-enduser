@@ -10,7 +10,24 @@ export function Serviceusers(data,current) {
 
     
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/services?search=${data}&sortBy=updatedAt:desc&limit=12&page=${current}`).then(response => {
+        instanceBaseurl.get(`/common/services?limit=12`).then(response => {
+            resolve(response)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}
+
+export function ServiceusersSerach(data,current) {
+    // return instanceBaseurl.get(`/common/services`).then((res) => {
+    //     return res;
+    // }).catch((err) => {
+    //     return err;
+    // })
+
+    
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.get(`/common/services?search=${data}&limit=12&page=${current}`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)

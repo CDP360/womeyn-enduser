@@ -1,5 +1,5 @@
 import LoaderLogo from '../../../loaderlogo/LoaderLogo';
-import { Serviceusers } from '../../../../services/servicewomeyn/service-womeyn';
+import { Serviceusers ,ServiceusersSerach} from '../../../../services/servicewomeyn/service-womeyn';
 import React, { Fragment, useEffect, useState } from 'react'
 import styles from './styles/Servicecards.module.scss';
 import Womeynbanner from '../../../../assests/homepage-logos/woymenbanner.png';
@@ -40,6 +40,8 @@ function Servicecards() {
     const [pagecount, setPagecount] = useState("");
     const [pagecountnumbers, setPagecountNumbers] = useState(1);
 
+    const [counts,setCounts]=useState(1);
+
     useEffect(() => {
         Serviceusers().then((res) => {
             setServiceusers(res?.data?.results);
@@ -49,7 +51,7 @@ function Servicecards() {
             console.log(err);
         })
 
-    }, [categoryid,searchname])
+    }, [categoryid, searchname])
 
     const WomenSellercategories = () => {
         setLoading(true);
@@ -93,10 +95,9 @@ function Servicecards() {
     }
     const GetSearchdata = () => {
         setLoading(true);
-        Serviceusers(searchname).then((res) => {
+        ServiceusersSerach(searchname).then((res) => {
             setServiceusers(res?.data?.results);
-
-            console.log("datas",res)
+            setPagecount(res?.data?.totalResults)
             setFilter("");
             setTimeout(() => {
                 setLoading(false);
@@ -106,17 +107,17 @@ function Servicecards() {
             console.log(err);
         })
     }
-    const fetchCurrentData = async (searchname,current) => {
+    const fetchCurrentData = async (searchname, current) => {
 
 
-        const resdata = await Serviceusers(searchname,current);
+        const resdata = await Serviceusers(searchname, current);
         // setServiceusers(resdata?.data?.results);
     }
     const handleChangePagecount = async (e) => {
         setCurrent(e);
 
         const current = e;
-        await fetchCurrentData(searchname,current);
+        await fetchCurrentData(searchname, current);
     }
 
     const PrevNextArrow = (current, type, originalElement) => {
@@ -136,8 +137,8 @@ function Servicecards() {
 
 
 
-    const fetchComments = async (searchname,current) => {
-        const res = await Serviceusers(searchname,current)
+    const fetchComments = async (searchname, current) => {
+        const res = await ServiceusersSerach(searchname, current)
         console.log(res?.data, "res")
 
         return res?.data?.results;
@@ -149,7 +150,7 @@ function Servicecards() {
 
         goToTop()
 
-        const commentForms = await fetchComments(searchname,current);
+        const commentForms = await fetchComments(searchname, current);
         setServiceusers(commentForms);
     }
 
@@ -252,37 +253,37 @@ function Servicecards() {
                             <div>
 
 
-                            {pagecount === 0 ? null : <>
-                                <div className="mt-3">
-                                    <hr />
-                                </div>
-                                <div>
-                                    Page {pagecountnumbers} / {pagecount}
-                                </div>
+                                {pagecount === 0 ? null : <>
+                                    <div className="mt-3">
+                                        <hr />
+                                    </div>
+                                    <div>
+                                        Page {pagecountnumbers} / {pagecount}
+                                    </div>
 
-                                <div className="mt-3">
+                                    <div className="mt-3">
 
-                                    <ReactPaginate
-                                        activeClassName={'actives '}
-                                        breakClassName={'item break-me '}
-                                        breakLabel={'...'}
-                                        containerClassName={'pagination'}
-                                        disabledClassName={'disabled-page'}
-                                        marginPagesDisplayed={2}
-                                        nextClassName={"item next "}
-                                        nextLabel={Math.ceil(pagecount / 12)=== pagecountnumbers ? null : "NEXT"}
-                                        onPageChange={handlePageClick}
-                                        pageCount={pagecount / 12}
-                                        pageClassName={'item pagination-page '}
-                                        pageRangeDisplayed={2}
-                                        previousClassName={"item previous"}
-                                        previousLabel={pagecountnumbers > 1 ? "PREVIOUS" : null}
+                                        <ReactPaginate
+                                            activeClassName={'actives '}
+                                            breakClassName={'item break-me '}
+                                            breakLabel={'...'}
+                                            containerClassName={'pagination'}
+                                            disabledClassName={'disabled-page'}
+                                            marginPagesDisplayed={2}
+                                            nextClassName={"item next "}
+                                            nextLabel={Math.ceil(pagecount / 12) === pagecountnumbers ? null : "NEXT"}
+                                            onPageChange={handlePageClick}
+                                            pageCount={pagecount / 12}
+                                            pageClassName={'item pagination-page '}
+                                            pageRangeDisplayed={2}
+                                            previousClassName={"item previous"}
+                                            previousLabel={pagecountnumbers > 1 ? "PREVIOUS" : null}
 
 
 
-                                    />
-                                </div>
-                            </>}
+                                        />
+                                    </div>
+                                </>}
 
 
                                 {/* {servicesusers?.length > 3 && <ReactPaginate

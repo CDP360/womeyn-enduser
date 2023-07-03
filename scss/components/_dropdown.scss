@@ -65,6 +65,7 @@
 
   cursor: pointer;
   z-index: -10%;
+
   border-radius: 7px;
   @include lgBreakPoint {
     height: 70vh !important;
@@ -146,7 +147,7 @@ li a:hover {
   // box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   visibility: hidden;
   opacity: 0;
-  height: 57vh;
+  height: 57.2vh;
   width: 80vw;
   position: absolute;
   transition: all 0.5s ease;

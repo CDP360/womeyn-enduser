@@ -26,7 +26,7 @@ function Checkoutsuccess() {
     useEffect(() => {
 
         if (Transaction_id) {
-            handleShow();
+
             setShow(true);
             CheckoutSuccessUpdate(Transaction_id).then((res) => {
 
@@ -62,7 +62,7 @@ function Checkoutsuccess() {
     }, [Transaction_id]);
     useEffect(() => {
         if (paymentId_id, PayerID_id) {
-            handleShow();
+
             setShow(true)
             CheckoutSuccessUpdatePaypal(paymentId_id, PayerID_id).then((res) => {
                 if (res?.data?.message == "Order completed successfully") {
@@ -79,9 +79,7 @@ function Checkoutsuccess() {
                         theme: "dark",
                     })
 
-                    setShow(false);
-
-
+                    setShow(false)
 
                     history.push("/profile/orders");
 

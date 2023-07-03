@@ -98,7 +98,7 @@ export function AllProductCategorys(current) {
     // })
 
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/search/products?search=""&limit=12&page=${current}`).then(response => {
+        instanceBaseurl.get(`/common/search/products?search=""&limit=12&page=${current || 1}`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)
