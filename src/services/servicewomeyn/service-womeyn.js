@@ -1,14 +1,16 @@
 import instanceBaseurl from "../../config/Baseurl";
 
 
-export function Serviceusers(current) {
+export function Serviceusers(data,current) {
     // return instanceBaseurl.get(`/common/services`).then((res) => {
     //     return res;
     // }).catch((err) => {
     //     return err;
     // })
+
+    
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/services?pagrode=0&limit=${"20"}`).then(response => {
+        instanceBaseurl.get(`/common/services?search=${data}&sortBy=updatedAt:desc&limit=12&page=${current}`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)

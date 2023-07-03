@@ -66,12 +66,10 @@
   cursor: pointer;
   z-index: -10%;
   border-radius: 7px;
-  @include lgBreakPoint
-  {
+  @include lgBreakPoint {
     height: 70vh !important;
   }
-  @include xlBreakPoint
-  {
+  @include xlBreakPoint {
     height: 70vh !important;
   }
 
@@ -268,7 +266,7 @@ li a {
 
 .maindropdown {
   // border:2px solid red;
- 
+
   border-radius: 10px;
   display: flex;
   padding-top: 0%;
@@ -280,16 +278,15 @@ li a {
     flex-direction: column;
     gap: 10px !important;
     padding-top: 2%;
-    height:400px;
-    overflow:hidden;
-    overflow-y:auto;
-    .insideservices
-    {
+    height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
+    .insideservices {
       // border:2px solid blue;
-      display:flex;
-      flex-direction:column;
+      display: flex;
+      flex-direction: column;
       word-break: break-all;
-      width:100%;
+      width: 100%;
     }
     .flexdirections {
       display: flex;
@@ -307,17 +304,16 @@ li a {
     flex-direction: column;
     gap: 10px !important;
     padding-top: 2%;
-    overflow:hidden;
-    overflow-y:auto;
-    height:400px;
+    overflow: hidden;
+    overflow-y: auto;
+    height: 400px;
 
-    .insideservices
-    {
+    .insideservices {
       // border:2px solid blue;
-      display:flex;
-      flex-direction:column;
+      display: flex;
+      flex-direction: column;
       word-break: break-all;
-      width:100%;
+      width: 100%;
     }
     .flexdirections {
       display: flex;
@@ -334,18 +330,16 @@ li a {
     flex-direction: column;
     gap: 10px !important;
     padding-top: 2%;
-    overflow:hidden;
-    height:400px;
+    overflow: hidden;
+    height: 400px;
 
-
-    overflow-y:auto;
-    .insideservices
-    {
+    overflow-y: auto;
+    .insideservices {
       // border:2px solid blue;
-      display:flex;
-      flex-direction:column;
+      display: flex;
+      flex-direction: column;
       word-break: break-all;
-      width:100%;
+      width: 100%;
     }
     .flexdirections {
       display: flex;
@@ -363,18 +357,16 @@ li a {
     flex-direction: column;
     gap: 10px !important;
     padding-top: 2%;
-    height:400px;
+    height: 400px;
 
-
-  overflow:hidden;
-    overflow-y:auto;
-    .insideservices
-    {
+    overflow: hidden;
+    overflow-y: auto;
+    .insideservices {
       // border:2px solid blue;
-      display:flex;
-      flex-direction:column;
+      display: flex;
+      flex-direction: column;
       word-break: break-all;
-      width:100%;
+      width: 100%;
     }
     .flexdirections {
       display: flex;
@@ -391,18 +383,16 @@ li a {
     flex-direction: column;
     gap: 10px !important;
     padding-top: 2%;
-    height:400px;
+    height: 400px;
 
-
-    overflow:hidden;
-    overflow-y:auto;
-    .insideservices
-    {
+    overflow: hidden;
+    overflow-y: auto;
+    .insideservices {
       // border:2px solid blue;
-      display:flex;
-      flex-direction:column;
+      display: flex;
+      flex-direction: column;
       word-break: break-all;
-      width:100%;
+      width: 100%;
     }
     .flexdirections {
       display: flex;
@@ -418,9 +408,9 @@ li a {
   font-weight: 600;
   font-size: 0.889rem;
   // padding-left: 5%;
-  padding:2px 5px;
+  padding: 2px 5px;
   margin-top: 5% !important;
-  width:100% !important;
+  width: 100% !important;
   // border:2px solid red;
 }
 .unactivetext {
@@ -457,16 +447,13 @@ li a {
   border-radius: 10px;
   width: 15vw !important;
   // border:1px solid red;
-  @include lgBreakPoint
-  {
+  @include lgBreakPoint {
     width: 30vh !important;
   }
 
-  @include xlBreakPoint
-  {
+  @include xlBreakPoint {
     width: 30vh !important;
   }
-  
 }
 
 .dropdown-contentabut a {
@@ -481,14 +468,12 @@ li a {
   color: #e95a5a !important;
   border-radius: 10px;
   cursor: pointer;
-
 }
 
 .dropdownabout:hover .dropdown-contentabut {
   display: block;
   color: #e95a5a;
   cursor: pointer;
-
 }
 
 .dropdownabout:hover .dropbtnabout {

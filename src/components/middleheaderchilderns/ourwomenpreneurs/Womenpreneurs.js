@@ -77,10 +77,25 @@ function Womenpreneurs() {
         setCategoryId(data?.id);
         setFilter(data.name);
         setSearchName("");
+        WomenpreneursFilter(data?.id).then((res) => {
+            setDataseller(res?.data?.results);
+            setPagecount(res?.data?.totalResults)
+            setLimit(res?.data);
+            setTimeout(() => {
+                setLoading(false);
+            }, 300);
+        }).catch((err) => {
+            console.log(err);
+        })
     }
     const GetFilterandSearchData = () => {
         setLoading(true);
+
+       
         WomenpreneursFilter(categoryid).then((res) => {
+
+
+           
             setDataseller(res?.data?.results);
             setPagecount(res?.data?.totalResults)
             setLimit(res?.data);
@@ -93,15 +108,20 @@ function Womenpreneurs() {
     }
     const GetSearchdata = () => {
         setLoading(true);
-        WomenpreneursSearch(searchname).then((res) => {
-            setDataseller(res?.data?.results);
-            setFilter("");
-            setTimeout(() => {
-                setLoading(false);
-            }, 300);
-        }).catch((err) => {
-            console.log(err);
-        })
+        if(searchname)
+        {
+            WomenpreneursSearch(searchname).then((res) => {
+                setDataseller(res?.data?.results);
+                setPagecount(res?.data?.totalResults)
+                setFilter("");
+                setTimeout(() => {
+                    setLoading(false);
+                }, 300);
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+        
     }
     // const fetchCurrentData = async (current) => {
     //     const resdata = await WomenpreneursSellers(current);
@@ -157,6 +177,9 @@ function Womenpreneurs() {
         });
     };
 
+
+
+    console.log(dataseller,"dataseller")
     return (
         <Fragment>
 
@@ -200,8 +223,8 @@ function Womenpreneurs() {
 
                             {dataseller?.length === 0 && null}
                             <div>
-                                {searchname?.length > 0 ? <>
-                                    <div className='cardsections row   w-100 mt-5 mb-5 ms-1'>
+                                {/* {searchname?.length > 0 ? <> */}
+                                    {/* <div className='cardsections row   w-100 mt-5 mb-5 ms-1'>
                                         <div>
                                             {dataseller.length === 0 && <div>
 
@@ -229,19 +252,16 @@ function Womenpreneurs() {
                                                         {item?.businessSlugName}
 
                                                     </div>
-                                                    {/* <div >
-                                                {item?.categoryTypeId==1 && <span>Product</span>}
-                                                {item?.categoryTypeId==2 && <span>Service</span>}
-                                                {item?.categoryTypeId==3 && <span>Product & Service</span>}
-                                                </div> */}
+                                                   
 
 
 
                                                 </div>
                                             )
                                         })}
-                                    </div>
-                                </> : <>
+                                    </div> */}
+                                {/* </> : <> */}
+
                                     <div className='cardsections row   w-100 mt-5 mb-3 ms-1'>
                                         <div>
                                             {dataseller.length === 0 && <div>No Data Found!!!!</div>}
@@ -267,18 +287,13 @@ function Womenpreneurs() {
                                                         {item?.businessSlugName}
 
                                                     </div>
-                                                    {/* 
-                                            <div >
-                                                {item?.categoryTypeId==1 && <span>Product</span>}
-                                                {item?.categoryTypeId==2 && <span>Service</span>}
-                                                {item?.categoryTypeId==3 && <span>Product & Service</span>}
-                                                </div> */}
+                                                  
 
                                                 </div>
                                             )
                                         })}
                                     </div>
-                                </>}
+                                {/* </>} */}
 
 
                                 <div>

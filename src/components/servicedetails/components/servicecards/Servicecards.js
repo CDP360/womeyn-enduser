@@ -36,18 +36,20 @@ function Servicecards() {
     const [error, setError] = useState(false);
     const [showTopBtn, setShowTopBtn] = useState(false);
 
-    
-  const [pagecount,setPagecount]=useState("");
+
+    const [pagecount, setPagecount] = useState("");
+    const [pagecountnumbers, setPagecountNumbers] = useState(1);
+
     useEffect(() => {
         Serviceusers().then((res) => {
             setServiceusers(res?.data?.results);
-      setPagecount(res?.data?.totalResults)
+            setPagecount(res?.data?.totalResults)
 
         }).catch((err) => {
             console.log(err);
         })
 
-    }, [categoryid])
+    }, [categoryid,searchname])
 
     const WomenSellercategories = () => {
         setLoading(true);
@@ -91,8 +93,10 @@ function Servicecards() {
     }
     const GetSearchdata = () => {
         setLoading(true);
-        WomenpreneursSearch(searchname).then((res) => {
-            setDataseller(res?.data?.results);
+        Serviceusers(searchname).then((res) => {
+            setServiceusers(res?.data?.results);
+
+            console.log("datas",res)
             setFilter("");
             setTimeout(() => {
                 setLoading(false);
@@ -102,17 +106,17 @@ function Servicecards() {
             console.log(err);
         })
     }
-    const fetchCurrentData = async (current) => {
+    const fetchCurrentData = async (searchname,current) => {
 
 
-        const resdata = await Serviceusers(current);
+        const resdata = await Serviceusers(searchname,current);
         // setServiceusers(resdata?.data?.results);
     }
     const handleChangePagecount = async (e) => {
         setCurrent(e);
 
         const current = e;
-        await fetchCurrentData(current);
+        await fetchCurrentData(searchname,current);
     }
 
     const PrevNextArrow = (current, type, originalElement) => {
@@ -132,24 +136,24 @@ function Servicecards() {
 
 
 
-    const fetchComments = async (current) => {
-        const res = await Serviceusers(current)
+    const fetchComments = async (searchname,current) => {
+        const res = await Serviceusers(searchname,current)
         console.log(res?.data, "res")
-    
+
         return res?.data?.results;
-      }
-    
-      const handlePageClick = async (data) => {
-    
+    }
+
+    const handlePageClick = async (data) => {
+
         let current = data?.selected + 1;
 
         goToTop()
-    
-        const commentForms = await fetchComments(current);
-        setServiceusers(commentForms);
-      }
 
-      useEffect(() => {
+        const commentForms = await fetchComments(searchname,current);
+        setServiceusers(commentForms);
+    }
+
+    useEffect(() => {
         window.addEventListener("scroll", () => {
             if (window.scrollY > 200) {
                 setShowTopBtn(true);
@@ -160,8 +164,8 @@ function Servicecards() {
     }, []);
 
 
-      const goToTop = () => {
-        window.scrollTo({   
+    const goToTop = () => {
+        window.scrollTo({
             top: 200,
             behavior: "smooth",
         });
@@ -173,108 +177,141 @@ function Servicecards() {
         <Fragment>
 
             <div className="mainsection">
-            <div className="insidesection">
+                <div className="insidesection">
 
-            <div className={styles.womeynmainsectionpre}>
+                    <div className={styles.womeynmainsectionpre}>
 
-                <div className={styles.bodysectionwomeynpre}>
+                        <div className={styles.bodysectionwomeynpre}>
 
-                    <div className={styles.imagesectionwomeyn}>
-                        <Womencarouselbanner />
-                    </div>
-                    <div className={styles.ourwomenpreneurs}>
-                        <div className='large-text'>
-                            Services
-                        </div>
-                        <div className={styles.loreamtextwomen}>
-                        Please select to know more about the Womeynpreneur business, and the Services her Business offers.
-                        </div>
-                    </div>
-                    <div className={styles.serachsectionwomen}>
-                        <div className={styles.serachwomenpresection}>
-                            <div>
-                                <input type='text' placeholder="Search by Business Name" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
+                            <div className={styles.imagesectionwomeyn}>
+                                <Womencarouselbanner />
                             </div>
-                            <div>
-                                <Image src={serachicon} alt="no image" className={styles.serachiconwomen} onClick={GetSearchdata} />
-                            </div>
-                        </div>
-                        <div className='col-lg-3 col-xs-6 col-sm-6 col-lg-5'>
-
-                            <Select
-                                placeholder={"Filter by Service Categorys..."}
-                                value={filterdata}
-                                onChange={(e) => handleFilterCategory(e)}
-                                options={datacategory}
-                            />
-
-                        </div>
-                    </div>
-
-
-
-                    <div className='cardsections row  w-100 mt-5 mb-3 ms-1'>
-                        <div>
-                            {servicesusers.length === 0 && <div>
-                                <Nodatafoundimage
-                                    title="No Services Available"
-                                />
-                            </div>}
-                        </div>
-                        {loadingset ? <>
-                            <div>
-                                <LoaderLogo />
-                            </div>
-                        </> : servicesusers?.map((item, index) => {
-                            return (
-                                <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.serviceSlugName)}>
-                                    <div className={styles.sellerimagebox}>
-                                        <div className={styles.insidebox}>
-                                            {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                                <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
-                                            </>}
-                                        </div>
-                                    </div>
-                                    <div className='womentitle mt-5'>
-                                        {item?.serviceName}
-                                    </div>
-                                   
+                            <div className={styles.ourwomenpreneurs}>
+                                <div className='large-text'>
+                                    Services
                                 </div>
-                            )
-                        })}
+                                <div className={styles.loreamtextwomen}>
+                                    Please select to know more about the Womeynpreneur business, and the Services her Business offers.
+                                </div>
+                            </div>
+                            <div className={styles.serachsectionwomen}>
+                                <div className={styles.serachwomenpresection}>
+                                    <div>
+                                        <input type='text' placeholder="Search by Business Name" className={styles.inputtypesection} name="search" value={searchname} onChange={(e) => SearchNameBrand(e)} />
+                                    </div>
+                                    <div>
+                                        <Image src={serachicon} alt="no image" className={styles.serachiconwomen} onClick={GetSearchdata} />
+                                    </div>
+                                </div>
+                                {/* <div className='col-lg-3 col-xs-6 col-sm-6 col-lg-5'>
+
+                                    <Select
+                                        placeholder={"Filter by Service Categorys..."}
+                                        value={filterdata}
+                                        onChange={(e) => handleFilterCategory(e)}
+                                        options={datacategory}
+                                    />
+
+                                </div> */}
+                            </div>
 
 
-                    </div>
-                    <div>
 
-                       
-{servicesusers?.length>9 &&<ReactPaginate
-      activeClassName={'actives '}
-        breakClassName={'item break-me '}
-        breakLabel={'...'}
-        containerClassName={'pagination'}
-        disabledClassName={'disabled-page'}
-        marginPagesDisplayed={2}
-        nextClassName={"item next "}
-        nextLabel={Math.ceil(pagecount / 12)===pagecountnumbers?null:"NEXT"}
-        onPageChange={handlePageClick}
-        pageCount={pagecount}
-        pageClassName={'item pagination-page '}
-        pageRangeDisplayed={2}
-        previousClassName={"item previous"}
-        previousLabel={pagecountnumbers>1?"PREVIOUS":null}
+                            <div className='cardsections row  w-100 mt-5 mb-3 ms-1'>
+                                <div>
+                                    {servicesusers.length === 0 && <div>
+                                        <Nodatafoundimage
+                                            title="No Services Available"
+                                        />
+                                    </div>}
+                                </div>
+                                {loadingset ? <>
+                                    <div>
+                                        <LoaderLogo />
+                                    </div>
+                                </> : servicesusers?.map((item, index) => {
+                                    return (
+                                        <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.serviceSlugName)}>
+                                            <div className={styles.sellerimagebox}>
+                                                <div className={styles.insidebox}>
+                                                    {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                                        <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
+                                                    </>}
+                                                </div>
+                                            </div>
+                                            <div className='womentitle mt-5'>
+                                                {item?.serviceName}
+                                            </div>
+
+                                        </div>
+                                    )
+                                })}
 
 
-      
-   
-      />}
+                            </div>
+                            <div>
 
+
+                            {pagecount === 0 ? null : <>
+                                <div className="mt-3">
+                                    <hr />
+                                </div>
+                                <div>
+                                    Page {pagecountnumbers} / {pagecount}
+                                </div>
+
+                                <div className="mt-3">
+
+                                    <ReactPaginate
+                                        activeClassName={'actives '}
+                                        breakClassName={'item break-me '}
+                                        breakLabel={'...'}
+                                        containerClassName={'pagination'}
+                                        disabledClassName={'disabled-page'}
+                                        marginPagesDisplayed={2}
+                                        nextClassName={"item next "}
+                                        nextLabel={Math.ceil(pagecount / 12)=== pagecountnumbers ? null : "NEXT"}
+                                        onPageChange={handlePageClick}
+                                        pageCount={pagecount / 12}
+                                        pageClassName={'item pagination-page '}
+                                        pageRangeDisplayed={2}
+                                        previousClassName={"item previous"}
+                                        previousLabel={pagecountnumbers > 1 ? "PREVIOUS" : null}
+
+
+
+                                    />
+                                </div>
+                            </>}
+
+
+                                {/* {servicesusers?.length > 3 && <ReactPaginate
+                                    activeClassName={'actives '}
+                                    breakClassName={'item break-me '}
+                                    breakLabel={'...'}
+                                    containerClassName={'pagination'}
+                                    disabledClassName={'disabled-page'}
+                                    marginPagesDisplayed={2}
+                                    nextClassName={"item next "}
+                                    nextLabel={Math.ceil(pagecount / 12) === pagecountnumbers ? null : "NEXT"}
+                                    onPageChange={handlePageClick}
+                                    pageCount={pagecount}
+                                    pageClassName={'item pagination-page '}
+                                    pageRangeDisplayed={2}
+                                    previousClassName={"item previous"}
+                                    previousLabel={pagecountnumbers > 1 ? "PREVIOUS" : null}
+
+
+
+
+                                />} */}
+
+
+                            </div>
+                        </div>
 
                     </div>
                 </div>
-
-            </div>
-            </div>
 
             </div>
 
