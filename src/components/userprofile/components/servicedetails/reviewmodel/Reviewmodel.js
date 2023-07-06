@@ -8,19 +8,23 @@ import camera from '../../../../../assests/womeynlogos/cameraprofile.png';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import { ProductRatingView } from '../../../../../services/product-rating-service/product-rating-service';
+import { useSelector } from 'react-redux';
+
 function Reviewmodel({ show1, handleClose1, servicedata }) {
+    const userprofile = useSelector((state) => state?.loginUser?.logindata?.firstName);
+    
     const {
         register,
         handleSubmit,
         watch,
         setValue,
+        reset,
         formState: { errors },
     } = useForm();
     const [count, setStarCount] = useState(0);
     const [image, setImage] = useState([]);
     useEffect(() => {
-        const names = JSON.parse(localStorage.getItem("user"));
-        setValue("username", names)
+        setValue("username", userprofile)
     }, [count])
 
     const handleImagechange = (e) => {
@@ -31,7 +35,7 @@ function Reviewmodel({ show1, handleClose1, servicedata }) {
     // console.log("servicedata",servicedata?.variationDetails?.serviceId)
     const Ratingproduct = (data) => {
         const formData = new FormData();
-        formData.append("name", data?.username)
+        formData.append("username", userprofile)
         formData.append("ratingValue", count)
         formData.append("title", data?.title)
         formData.append("message", data?.description)
@@ -40,6 +44,14 @@ function Reviewmodel({ show1, handleClose1, servicedata }) {
         ProductRatingView(formData).then((res) => {
             setTimeout(() => {
                 handleClose1();
+                reset({
+                    username:"",
+                    ratingValue:"",
+                    title:"",
+                    message:"",
+                    serviceId:"",
+                    upl:""
+                })
             }, 300)
         }).catch((err) => {
             console.log(err);

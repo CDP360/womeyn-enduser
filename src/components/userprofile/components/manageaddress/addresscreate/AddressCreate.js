@@ -55,7 +55,6 @@ function AddressCreate({ error }) {
   const [errorpost, setErrorPostCode] = useState(false);
 
 
-  console.log(postalcodeset?.length, "postalcodeset")
 
 
   const DeleteAddressUser = () => {
@@ -116,7 +115,7 @@ function AddressCreate({ error }) {
 
 
     if (postalcodeset) {
-      console.log(address, "addresss")
+     
 
       Addaddress(address).then((res) => {
         toast.success("Address Added!!",
@@ -169,7 +168,7 @@ function AddressCreate({ error }) {
 
     if (addressids?.id) {
       SingleAddress(addressids?.id).then((res) => {
-        console.log("res", res?.data)
+        
 
         setValue("name", res?.data?.name);
         setValue("contactno", res?.data?.contactNumber);
@@ -274,13 +273,8 @@ function AddressCreate({ error }) {
       for (const component of place.address_components) {
         const componentType = component.types[0];
         if (componentType === "locality") {
-
-
           setValue("city", component.long_name ? component.long_name : null)
-
           setFirstCity(component.long_name)
-
-
         }
         if (componentType === "administrative_area_level_1") {
           setValue("state", component.long_name ? component.long_name : null)
@@ -299,11 +293,9 @@ function AddressCreate({ error }) {
         }
 
       }
-
-
     },
     options: {
-      types: ["(regions)"],
+      types: "(regions)",
       componentRestrictions: { country: "Aus" },
     },
   });

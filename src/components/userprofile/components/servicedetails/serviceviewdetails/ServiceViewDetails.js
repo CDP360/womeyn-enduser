@@ -7,7 +7,7 @@ import star from "../../../../../assests/service-logos/Star 4.svg";
 import ticket from '../../../../../assests/service-logos/tickmark.png';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { ServiceusersGetSingle } from '../../../../../services/servicewomeyn/service-womeyn';
+import { ServiceusersGetSingle,InvoicedownloadService } from '../../../../../services/servicewomeyn/service-womeyn';
 
 import moment from 'moment';
 import Modal from 'react-bootstrap/Modal';
@@ -15,6 +15,8 @@ import Skeleton from 'react-loading-skeleton';
 import Reviewsproduct from './Reviews/Reviewsproduct';
 import Reviewmodel from '../reviewmodel/Reviewmodel';
 import { Nodatafoundimage } from '../../../../nodatafoundimage/Nodatafound';
+import Spinner from "react-bootstrap/Spinner";
+
 
 
 function ServiceViewDetails() {
@@ -346,11 +348,11 @@ Review Service
 
                 </div>
 
-                <div>
+                <div className="d-flex gap-5 ">
                
                 <div className="mt-2">
                                                     <button className={styles.viewdetailsbuttons} onClick={() => {
-                                                        ServiceInvoiceDownload(data?.orderId)
+                                                        ServiceInvoiceDownload(serviceprderid)
                                                      
                                                     }}>
 
@@ -374,11 +376,12 @@ Review Service
 
                                                     </button>
                                                 </div>
-                </div>
-                <div>
+                                                <div>
                 <button className={styles.trackingbuttons} onClick={() => handleShow1(serviceprderid)}>Review</button>
 
                 </div>
+                </div>
+             
             </div>
 
 

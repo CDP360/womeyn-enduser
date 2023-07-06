@@ -9,9 +9,19 @@ import Image from "next/image";
 import Reviewmodel from './reviewmodel/Reviewmodel';
 import moment from 'moment';
 import Spinner from "react-bootstrap/Spinner";
+import { useForm } from "react-hook-form";
 
 
 function ServiceMaindetails({ error }) {
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        setValue,
+        reset,
+        formState: { errors },
+    } = useForm();
 
     const [serviceusers, setServiceusers] = useState([]);
     const [show, setShow] = useState(false);
@@ -89,7 +99,16 @@ function ServiceMaindetails({ error }) {
     }
 
     const [show1, setShow1] = useState(false);
-    const handleClose1 = () => setShow1(false);
+    const handleClose1 = () => {setShow1(false)
+        reset({
+            username:"",
+            ratingValue:"",
+            title:"",
+            message:"",
+            serviceId:"",
+            upl:""
+        })
+    };
     const handleShow1 = (data) => {
         setServiceData(data)
         setShow1(true)
@@ -169,6 +188,8 @@ function ServiceMaindetails({ error }) {
                                                 <div className='d-none d-lg-block'>
                                                     <p className={styles.favortsDeleteText}>Remove</p>
                                                 </div> */}
+
+{/* <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button> */}
                                             <div>
                                                 {data?.startDate}
                                                 {moment(data?.startDate).isAfter(moment(data?.endDate)) ? <>
@@ -178,7 +199,7 @@ function ServiceMaindetails({ error }) {
                                                     <button className={styles.trackingbuttons} onClick={() => pushProductPage(data)}>Booked</button>
 
                                                 </>}
-
+{/* 
                                                 <div className="mt-2">
                                                     <button className={styles.viewdetailsbuttons} onClick={() => {
                                                         ServiceInvoiceDownload(data?.orderId)
@@ -207,7 +228,7 @@ function ServiceMaindetails({ error }) {
 
 
                                                     </button>
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                     </div>
@@ -260,10 +281,10 @@ function ServiceMaindetails({ error }) {
                 </> */}
 
             <>
-                {/* <Reviewmodel
+                <Reviewmodel
                     show1={show1}
                     handleClose1={handleClose1} servicedata={servicedata}
-                /> */}
+                />
             </>
         </>
     )
