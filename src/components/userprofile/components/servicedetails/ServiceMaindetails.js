@@ -67,10 +67,24 @@ function ServiceMaindetails({ error }) {
     const pushProductPage = (data) => {
         // history?.push(`/service/${data}`);
 
+        const datas=data?.orderId;
+
+        const slugnames=data?.serviceSlugName;
+
+
+        const forms=`${slugnames}/search=${datas}`;
+
+
         history.push({
             pathname: '/profile/servicedetail',
-            query: { id: data },
+            query: { id: slugnames,searchorderid:datas},
         })
+
+
+      
+
+
+        // console.log(forms,"data")
 
     }
 
@@ -121,7 +135,7 @@ function ServiceMaindetails({ error }) {
                             {
                                 serviceusers.map((data, index) =>
                                     <div className={styles.favortsInnerContainer} key={index}>
-                                        <div className={styles.favortsLeftContainer} onClick={() => pushProductPage(data.serviceSlugName)}>
+                                        <div className={styles.favortsLeftContainer} onClick={() => pushProductPage(data)}>
                                             <div className={styles.boximage}>
                                                 {data?.serviceThumbImage ? <>
                                                     <img
@@ -161,7 +175,7 @@ function ServiceMaindetails({ error }) {
 
                                                     <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button>
                                                 </> : <>
-                                                    <button className={styles.trackingbuttons} onClick={() => pushProductPage(data.serviceSlugName)}>Booked</button>
+                                                    <button className={styles.trackingbuttons} onClick={() => pushProductPage(data)}>Booked</button>
 
                                                 </>}
 
@@ -246,10 +260,10 @@ function ServiceMaindetails({ error }) {
                 </> */}
 
             <>
-                <Reviewmodel
+                {/* <Reviewmodel
                     show1={show1}
                     handleClose1={handleClose1} servicedata={servicedata}
-                />
+                /> */}
             </>
         </>
     )

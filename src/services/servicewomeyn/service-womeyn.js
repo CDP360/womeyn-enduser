@@ -1,14 +1,14 @@
 import instanceBaseurl from "../../config/Baseurl";
 
 
-export function Serviceusers(data,current) {
+export function Serviceusers(data, current) {
     // return instanceBaseurl.get(`/common/services`).then((res) => {
     //     return res;
     // }).catch((err) => {
     //     return err;
     // })
 
-    
+
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/common/services?limit=12`).then(response => {
             resolve(response)
@@ -18,14 +18,14 @@ export function Serviceusers(data,current) {
     })
 }
 
-export function ServiceusersSerach(data,current) {
+export function ServiceusersSerach(data, current) {
     // return instanceBaseurl.get(`/common/services`).then((res) => {
     //     return res;
     // }).catch((err) => {
     //     return err;
     // })
 
-    
+
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/common/services?search=${data}&limit=12&page=${current}`).then(response => {
             resolve(response)
@@ -80,7 +80,7 @@ export function ServiceBooking(data) {
     // })
 
     return new Promise((resolve, reject) => {
-        instanceBaseurl.post(`/customer/service/booking`,data).then(response => {
+        instanceBaseurl.post(`/customer/service/booking`, data).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)

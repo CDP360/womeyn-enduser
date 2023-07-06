@@ -75,7 +75,7 @@ function Aboutus({ id }) {
         if(router?.asPath=="/abouts#OurMission&Vision")
         {
             window.scrollTo({   
-                top: 1500,
+                top: 1400,
                 behavior: "smooth",
             });
         }
@@ -83,7 +83,7 @@ function Aboutus({ id }) {
         if(router?.asPath=="/abouts#TheLogoSignificance")
         {
             window.scrollTo({   
-                top: 2200,
+                top: 2000,
                 behavior: "smooth",
             });
         }
@@ -92,7 +92,7 @@ function Aboutus({ id }) {
         if(router?.asPath=="/abouts#TheTeam")
         {
             window.scrollTo({   
-                top: 2500,
+                top: 2350,
                 behavior: "smooth",
             });
         }
@@ -100,7 +100,7 @@ function Aboutus({ id }) {
         if(router?.asPath=="/abouts#PartnersCollaborations")
         {
             window.scrollTo({   
-                top: 5000,
+                top: 4820,
                 behavior: "smooth",
             });
         }
@@ -108,7 +108,7 @@ function Aboutus({ id }) {
         if(router?.asPath=="/abouts#JoinWomeyn")
         {
             window.scrollTo({   
-                top: 5350,
+                top: 5000,
                 behavior: "smooth",
             });
         }
@@ -173,7 +173,7 @@ function Aboutus({ id }) {
                                 return (
                                     <div className={`cards-aboutus col-lg-4  col-sm-12 col-xs-12 col-md-12 col-xl-4 mt-3 mb-3`} style={{ backgroundColor: item.colorbg }}>
                                         <div className='ms-2 text-center'>
-                                            <Image src={item?.image} alt="no image" className={styles.whatmakeimage} />
+                                            {/* <Image src={item?.image} alt="no image" className={styles.whatmakeimage} /> */}
                                         </div>
                                         <div className='ms-4'>
                                             <div className='mt-2'>

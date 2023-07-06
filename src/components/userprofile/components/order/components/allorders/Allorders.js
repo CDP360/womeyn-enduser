@@ -11,7 +11,7 @@ import LoaderLogo from '../../../../../loaderlogo/LoaderLogo';
 import { Invoicedownload } from '../../../../../../services/invoice-services/invoice_services';
 import Spinner from "react-bootstrap/Spinner";
 
-function Allorders({ Orders, traking, loading, setTrackId }) {
+function Allorders({ Orders, traking, loading, setTrackId, serachordersname }) {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
   const [loadings, setLoadings] = useState(false);
@@ -72,13 +72,16 @@ function Allorders({ Orders, traking, loading, setTrackId }) {
 
   useEffect(() => {
 
+    Orders.map((item,index)=>{
+      
+    })
 
 
   }, [orderlist])
 
 
 
- 
+
 
   const downloadinvoice = (orderids) => {
 
@@ -109,7 +112,7 @@ function Allorders({ Orders, traking, loading, setTrackId }) {
 
       </> : <>
         <div className={styles.insidemainordersection}>
-          {Orders?.map((item, index) => {
+          {Orders.map((item, index) => {
             return (
               <div className={styles.insideordersectionlist}>
                 <div className={styles.orderstatussection}>

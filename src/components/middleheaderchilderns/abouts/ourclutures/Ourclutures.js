@@ -110,9 +110,9 @@ function Ourclutures() {
 
             <div className="mt-5">
 
-                {partnersbanners?.length===0?null:<div className='large-text text-center'>
+            <div className='large-text text-center'>
                     Partners & Collaborations
-                </div>}
+                </div>
 
                
             </div>

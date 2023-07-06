@@ -21,8 +21,7 @@ function ServiceViewDetails() {
 
     const history = useRouter();
 
-
-
+    const serviceprderid=history?.query?.searchorderid;
 
     const [show1, setShow1] = useState(false);
     const handleClose1 = () => setShow1(false);
@@ -41,21 +40,16 @@ function ServiceViewDetails() {
     const [sellerinformations, setSellerinfo] = useState({});
     const [reviews, setReviews] = useState([]);
     const [ratingsdata, setRatingData] = useState("");
+    const [invoiceloading, setInvoiceLoading] = useState(false);
+
     useEffect(() => {
 
 
 
 
-    const serviceid = history.query?.id;
-
+const serviceid=history?.query?.id;
     
-
         ServiceusersGetSingle(serviceid).then((res) => {
-
-
-            
-
-
             setReviews(res?.data?.reviews)
             setServiceBooking(res?.data?.serviceDetails[0]);
             setSellerinfo(res?.data?.sellerInformation);
@@ -69,7 +63,7 @@ function ServiceViewDetails() {
 
        
 
-    }, [ratingsdata, serviceid])
+    }, [ratingsdata])
 
     const NavigateUsers = (data) => {
         history.push(`/womenpreneurs/${data}`);
@@ -78,6 +72,22 @@ function ServiceViewDetails() {
 
     const NavigateGoogemeet=(data)=>{
         window.open(data);
+    }
+
+
+    
+
+    const ServiceInvoiceDownload = (orderids) => {
+        setInvoiceLoading(true);
+        InvoicedownloadService(orderids).then((res) => {
+            window.open(res?.data?.url);
+            setTimeout(() => {
+                setInvoiceLoading(false);
+            }, 600);
+        }).catch((err) => {
+            console.log(err);
+            setInvoiceLoading(false);
+        })
     }
 
 
@@ -112,7 +122,7 @@ function ServiceViewDetails() {
 
                         <div className={styles.zumbasection}>
                             <div className={styles.expre}>
-                                Experiences{serviceid}
+                                {/* Experiences{serviceid} */}
                             </div>
                             <div>
                                 <Image src={rightarrow} alt="no image" className={styles.arrwoimage} />
@@ -271,7 +281,7 @@ function ServiceViewDetails() {
                         <Reviewmodel
                             show1={show1}
                             handleClose1={handleClose1}
-                            servicedata={"kalai"}
+                            servicedata={serviceprderid}
                         />
                     </div>
                     <div className="mt-5 mb-5">
@@ -338,7 +348,36 @@ Review Service
 
                 <div>
                
-                 
+                <div className="mt-2">
+                                                    <button className={styles.viewdetailsbuttons} onClick={() => {
+                                                        ServiceInvoiceDownload(data?.orderId)
+                                                     
+                                                    }}>
+
+                                                        
+                                                            {invoiceloading ? <>
+                                                                <Spinner
+                                                                    as="span"
+                                                                    animation="border"
+                                                                    size="sm"
+                                                                    role="status"
+                                                                    aria-hidden="true"
+                                                                />
+                                                                <span className="ms-2">Loading...</span>
+                                                            </> : <>
+
+                                                                Download Invoice
+
+                                                            </>}
+                                                        
+
+
+                                                    </button>
+                                                </div>
+                </div>
+                <div>
+                <button className={styles.trackingbuttons} onClick={() => handleShow1(serviceprderid)}>Review</button>
+
                 </div>
             </div>
 

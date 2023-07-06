@@ -51,10 +51,16 @@ function Order({ error }) {
   }, [error, trackid]);
 
 
+  const [serachordersname,setSearchOrdersname]=useState("");
+
+
+  
+
+
   return (
     <div>
       <div className={styles.couponsInputContainer}>
-        <input className={styles.couponsSearch} placeholder="Search here..." />
+        <input className={styles.couponsSearch} placeholder="Search here..." onChange={(e)=>setSearchOrdersname(e?.target?.value)} value={serachordersname}/>
         <Image src={serachicon} className={styles.searchImg} />
       </div>
       <div className={styles.middlecontainer}>
@@ -117,10 +123,10 @@ function Order({ error }) {
             <hr className={styles.hrSub} />
           </div>
           {step === 0 && <div>
-            <Allorders Orders={Orders} traking={traking} loading={loading} setTrackId={setTrackId} />
+            <Allorders Orders={Orders} traking={traking} loading={loading} setTrackId={setTrackId} serachordersname={serachordersname}/>
           </div>}
           {step === 1 && <div>
-            <Inprogress Orders={Orders} traking={traking} loading={loading} />
+            <Inprogress Orders={Orders} traking={traking} loading={loading} serachordersname={serachordersname}/>
           </div>}
           {step === 2 && <div>
             <CancelledBySeller Orders={Orders} traking={traking} loading={loading} />

@@ -19,7 +19,6 @@ function Reviewmodel({ show1, handleClose1, servicedata }) {
     const [count, setStarCount] = useState(0);
     const [image, setImage] = useState([]);
     useEffect(() => {
-
         const names = JSON.parse(localStorage.getItem("user"));
         setValue("username", names)
     }, [count])
@@ -36,7 +35,7 @@ function Reviewmodel({ show1, handleClose1, servicedata }) {
         formData.append("ratingValue", count)
         formData.append("title", data?.title)
         formData.append("message", data?.description)
-        formData.append("serviceId", servicedata?.variationDetails?.serviceId)
+        formData.append("serviceId", servicedata)
         formData.append("upl", image)
         ProductRatingView(formData).then((res) => {
             setTimeout(() => {

@@ -193,7 +193,6 @@ function Header() {
 
 
 
-    console.log(explorecategorysservice, "explorecategorysservice")
 
     return (
         <Fragment>
@@ -660,7 +659,7 @@ function Header() {
 
 
                                     <Link href="/abouts#TheTeam" scroll={false} >
-                                        The Team
+                                        Our Team
                                     </Link>
 
                                     <Link href="/abouts#PartnersCollaborations" scroll={false} >
