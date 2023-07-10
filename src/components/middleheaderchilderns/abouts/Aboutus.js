@@ -108,11 +108,10 @@ function Aboutus({ id }) {
         if(router?.asPath=="/abouts#JoinWomeyn")
         {
             window.scrollTo({   
-                top: 5000,
+                top: 4950,
                 behavior: "smooth",
             });
         }
-
 
     }, []);
    

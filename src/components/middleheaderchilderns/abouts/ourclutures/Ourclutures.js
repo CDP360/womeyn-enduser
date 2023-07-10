@@ -24,6 +24,8 @@ function Ourclutures() {
 
 
     const [partnersbanners, setPartnersBanners] = useState([]);
+    const [partnersbannersloading, setPartnersBannersloading] = useState(false);
+
 
     const settings = {
         dots: false,
@@ -79,10 +81,17 @@ function Ourclutures() {
     useEffect(() => {
 
         const data = "Partners and Collaboration Banners"
+
+        setPartnersBannersloading(true);
         Getwomenpreneursbanner(data).then((res) => {
             setPartnersBanners(res?.data);
+            setTimeout(()=>{
+            setPartnersBannersloading(false)
+
+            },500)
         }).catch((err) => {
             console.log(err);
+            setPartnersBannersloading(false);
         })
     }, [])
 
@@ -110,24 +119,26 @@ function Ourclutures() {
 
             <div className="mt-5">
 
-            <div className='large-text text-center'>
+            <div className='large-text text-center' >
                     Partners & Collaborations
                 </div>
 
                
             </div>
 
+         {partnersbannersloading?<div className={styles.loadingbox}>
          
-
-<div className={styles.imagesectionhomess}>
-                        {partnersbanners?.length>3 ? <div>
+         Loading....
+         </div>:<>
+         <div className={styles.imagesectionhomess}>
+                        {partnersbanners?.length>3 ? <div className={styles.loadingbox}>
                             {/* <Skeleton className={styles.skeltonbox} /> */}
                            
 
 <Slider {...settings}>
                             {partnersbanners?.map((item, index) => {
                                 return (
-                                    <div key={index} className="col-lg-4 mx-auto">
+                                    <div key={index} className="col-lg-4 mx-auto"  id="JoinWomeyn">
                                         {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.cardaboutusimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
                                             <Skeleton className={styles.homebanner} />
                                         </>}
@@ -138,9 +149,10 @@ function Ourclutures() {
                         </Slider>
                         </div>:
                         <div className="row d-flex gap-2">
+                            <div className={styles.loadingbox}>
                               {partnersbanners?.map((item, index) => {
                                 return (
-                                    <div key={index} className="col-lg-4 mx-auto">
+                                    <div key={index} className="col-lg-4 mx-auto"  id="JoinWomeyn">
                                         {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.cardaboutusimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
                                             <Skeleton className={styles.homebanner} />
                                         </>}
@@ -148,23 +160,27 @@ function Ourclutures() {
                                     </div>
                                 )
                             })}
+                            </div>
                         </div>
                        }
 
                     
                     </div>
 
+             
+         </>}
 
-               <div id="JoinWomeyn" >
 
-</div>
+
                  
 
             <div className="mt-5 mb-4">
 
         
 
-                <div className='large-text text-center'>
+
+
+                <div className='large-text text-center' >
 
                     Join Womeyn 
                 </div>
@@ -175,7 +191,7 @@ function Ourclutures() {
 
             <div className="mt-5">
 
-                <div className='large-text text-center'>
+                <div className='large-text text-center' >
 
                     Careers
                 </div>

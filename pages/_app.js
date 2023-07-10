@@ -11,8 +11,52 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { StoreProviderContext } from '../src/Redux/store/Contextstore';
 import LoaderLogo from '../src/components/loaderlogo/LoaderLogo';
 import Errorboundary from '../src/components/errorboundary/Errorboundary';
+import {useRouter} from 'next/router';
 function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
+
+  const history = useRouter();
+  const [logins, setLogin] = useState(true);
+
+  const Checkforinactive = () => {
+    const expireTime = localStorage.getItem("expireTime");
+
+    if (expireTime < Date.now()) {
+      localStorage.clear();
+      history.push("/")
+      setLogin(false);
+    }
+  }
+
+  const UpdateExpireTime = () => {
+    const expireTime = Date.now() + 7 * 3600 * 1000;
+    localStorage.setItem("expireTime", expireTime);
+  }
+
+  useEffect(() => {
+
+    const intervals = setInterval(() => {
+      Checkforinactive();
+    }, 1000);
+    return () => clearInterval(intervals)
+  }, [])
+  useEffect(() => {
+    UpdateExpireTime();
+
+    window.addEventListener("click", UpdateExpireTime);
+    window.addEventListener("keypress", UpdateExpireTime);
+    window.addEventListener("scroll", UpdateExpireTime);
+    window.addEventListener("mousemove", UpdateExpireTime);
+
+
+    return () => {
+      window.removeEventListener("click", UpdateExpireTime);
+      window.removeEventListener("keypress", UpdateExpireTime);
+      window.removeEventListener("scroll", UpdateExpireTime);
+      window.removeEventListener("mousemove", UpdateExpireTime);
+    }
+
+  }, [])
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap");
     import("slick-carousel/slick/slick.css");
