@@ -251,12 +251,12 @@ function Sidebarcateogrys({ setFilterproducts, setLoadingproduct, setProductgetl
                   value={filterproductprice1}
                 >
                   <option value="" default={""} diabled>Min</option>
-                  <option value="500">A$500</option>
-                  <option value="1000">A$1000</option>
-                  <option value="1500">A$1500</option>
-                  <option value="2000">A$2000</option>
-                  <option value="2500">A$2500</option>
-                  <option value="3000">A$3000</option>
+                  <option value="10.00">A$10.00</option>
+                  <option value="30.00">A$30.00</option>
+                  <option value="90.00">A$90.00</option>
+                  <option value="100.00">A$100.00</option>
+                  <option value="150.00">A$150.00</option>
+                  <option value="200.00">A$200.00</option>
                 </Form.Select>
               </Col>
               <Col lg="12" sm="2">
@@ -271,13 +271,15 @@ function Sidebarcateogrys({ setFilterproducts, setLoadingproduct, setProductgetl
                   onChange={(e) => setProductfilterprice2(e?.target?.value)}
                   value={filterproductprice2}
                 >
-                  <option value="" default={""} diabled>A$3000+</option>
-                  <option value="3000">A$3000</option>
-                  <option value="2500">A$2500</option>
-                  <option value="2000">A$2000</option>
-                  <option value="1500">A$1500</option>
-                  <option value="1000">A$1000</option>
-                  <option value="500">A$500</option>
+                  <option value="" default={""} diabled>A$2000.00+</option>
+                  <option value="2000.00">A$2000.00</option>
+                  <option value="1000.00">A$1000.00</option>
+                  <option value="800.00">A$800.00</option>
+                  <option value="500.00">A$500.00</option>
+                  <option value="250.00">A$250.00</option>
+                  <option value="150.00">A$150.00</option>
+                  <option value="100.00">A$100.00</option>
+
                 </Form.Select>
               </Col>
             </Row>

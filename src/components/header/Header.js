@@ -641,14 +641,9 @@ function Header() {
                                 <button class="dropbtnabout" ><span className={router?.pathname == "/abouts" ? "active" : ""}>About Us</span> <span><Image src={aroepath} alt="no image" className="patharrow" /></span></button>
                                 <div class="dropdown-contentabut">
 
-
-
-
-
                                     <Link href="/abouts#WhatisWomeyn" scroll={false} >
                                         What is Womeyn
                                     </Link>
-
 
                                     <Link href="/abouts#OurMission&Vision" scroll={false} >
                                         Our Mission & Vision
@@ -670,12 +665,8 @@ function Header() {
                                     </Link>
                                 </div>
                             </div>
-
-
-
                         </div>
                         <div className={router.pathname == "/getintouch" ? "active" : ""}>
-
                             <div className='nav-link' onClick={() => router?.push("/getintouch")}>
                                 <span className='ms-2 hovertexts'>Get In Touch</span>
                             </div>

@@ -13,6 +13,7 @@ import SlidePreArrow from '../ourteam/slideprearrow/SlidePreArrow';
 import { Getwomenpreneursbanner } from '../../../../services/womenpreneurs-services/womenpreneurs-services';
 
 import Skeleton from 'react-loading-skeleton';
+import LoaderLogo from './../../../loaderlogo/LoaderLogo';
 
 function Ourclutures() {
 
@@ -34,7 +35,7 @@ function Ourclutures() {
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
-        
+
         autoplaySpeed: 3500,
         pauseOnHover: true,
         nextArrow: <SlideNextArrow />,
@@ -85,10 +86,10 @@ function Ourclutures() {
         setPartnersBannersloading(true);
         Getwomenpreneursbanner(data).then((res) => {
             setPartnersBanners(res?.data);
-            setTimeout(()=>{
-            setPartnersBannersloading(false)
+            setTimeout(() => {
+                setPartnersBannersloading(false)
 
-            },500)
+            }, 500)
         }).catch((err) => {
             console.log(err);
             setPartnersBannersloading(false);
@@ -96,93 +97,86 @@ function Ourclutures() {
     }, [])
 
 
-    const MovePageData=(data)=>{
+    const MovePageData = (data) => {
         window.open(data);
 
     }
 
-    const datas=[1,2,3];
+
     return (
         <div>
-            {/* <div className='mt-5'>
-                <div className={styles.blogsectiontexts}>
-                    <div className='large-text text-center'>
-                        Our culture
-                    </div>
-                    <div className='blogloream mt-2'>
-                        All the latest news, stories, events & workshops from our experts & influencers.
-                    </div>
-                </div>
-                <div></div>
 
-            </div> */}
 
             <div className="mt-5">
 
-            <div className='large-text text-center' >
+                <div className='large-text text-center' >
                     Partners & Collaborations
                 </div>
 
-               
+
             </div>
 
-         {partnersbannersloading?<div className={styles.loadingbox}>
-         
-         Loading....
-         </div>:<>
-         <div className={styles.imagesectionhomess}>
-                        {partnersbanners?.length>3 ? <div className={styles.loadingbox}>
-                            {/* <Skeleton className={styles.skeltonbox} /> */}
-                           
+            {partnersbannersloading ? <div className={styles.loadingbox}>
 
-<Slider {...settings}>
+
+                <LoaderLogo />
+            </div> : <>
+                <div className={styles.imagesectionhomess}>
+                    {partnersbanners?.length > 3 ? <div className={styles.loadingbox}>
+
+
+
+                        <Slider {...settings}>
                             {partnersbanners?.map((item, index) => {
                                 return (
-                                    <div key={index} className="col-lg-4 mx-auto"  id="JoinWomeyn">
+                                    <div key={index} className="col-lg-4 mx-auto">
                                         {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.cardaboutusimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
                                             <Skeleton className={styles.homebanner} />
                                         </>}
-                                      
+
                                     </div>
                                 )
                             })}
                         </Slider>
-                        </div>:
+                    </div> :
                         <div className="row d-flex gap-2">
                             <div className={styles.loadingbox}>
-                              {partnersbanners?.map((item, index) => {
-                                return (
-                                    <div key={index} className="col-lg-4 mx-auto"  id="JoinWomeyn">
-                                        {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.cardaboutusimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
-                                            <Skeleton className={styles.homebanner} />
-                                        </>}
-                                      
-                                    </div>
-                                )
-                            })}
+                                {partnersbanners?.map((item, index) => {
+                                    return (
+                                        <div key={index} className="col-lg-4 mx-auto"  >
+                                            {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.cardaboutusimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
+                                                <Skeleton className={styles.homebanner} />
+                                            </>}
+
+
+                                        </div>
+                                    )
+                                })}
                             </div>
+
                         </div>
-                       }
-
-                    
-                    </div>
-
-             
-         </>}
+                    }
 
 
+                </div>
 
-                 
 
-            <div className="mt-5 mb-4">
+            </>}
 
-        
+
+
+
+
+
+            <div className="mt-5 mb-4" id="JoinWomeyn">
+
+
 
 
 
                 <div className='large-text text-center' >
 
-                    Join Womeyn 
+                    Join Womeyn
                 </div>
 
 
