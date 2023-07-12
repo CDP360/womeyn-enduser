@@ -80,7 +80,8 @@ function LayoutHeader({ setdark, dark, title, children }) {
           <div className={styles.insidemainscrollsection}>
             <main>{children}</main>
           </div>
-          {title == "Profile" ||
+          {
+          // title == "Profile" ||
             title == "Women-login" ||
             title == "Women-signup" ||
             title == "Cart" ||

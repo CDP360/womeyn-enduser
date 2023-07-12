@@ -12,7 +12,6 @@ import { Getwomenpreneursbanner } from './../../../services/womenpreneurs-servic
 function Categorycarouse() {
 
     const [banners, setBanners] = useState([]);
-
     const settings = {
         dots: false,
         infinite: true,
@@ -107,7 +106,7 @@ function Categorycarouse() {
                         {banners?.map((item, index) => {
                             return (
                                 <div key={index}>
-                                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />
+                                    <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={"allbanners"} onClick={() => MovePageData(item.redirectUrl)} />
                                 </div>
                             )
                         })}
