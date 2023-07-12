@@ -29,13 +29,8 @@ import LoaderLogo from './../../loaderlogo/LoaderLogo';
 import Slider from "react-slick";
 
 function Aboutus({ id }) {
-
-
     const router = useRouter();
-
-    console.log(router?.asPath, "router")
     const state = useSelector((state) => state?.aboutcountdata?.about);
-
     const data = [
         {
             id: 1,
@@ -74,7 +69,7 @@ function Aboutus({ id }) {
 
         if (router?.asPath == "/abouts#WhatisWomeyn") {
             window.scrollTo({
-                top: 900,
+                top: 930,
                 behavior: "smooth",
             });
         }
@@ -247,6 +242,8 @@ function Aboutus({ id }) {
                                 <div className={styles.creationabout} id="WhatisWomeyn">§ The creation of “Womeyn” as a concept has a direct correlation to Anu, Founder and Director of Womeyn. It is her experiences and struggles in life as a woman and as a woman entrepreneur that gave birth to the concept. “Womeyn” is her way of creating a community of women and bring about a positive change by providing a platform that makes it easy for women of our communities to express themselves, be financially self-reliant and not be restricted due to lack of knowledge in technology, availability of equal opportunity or marginalized in any shape or form She has an Inspirational Story and is the heart and soul of the initiative “Womeyn”.
                                 </div>
                             </div>
+
+                            
 
                             <div>
                                 <div className='large-text text-center'>

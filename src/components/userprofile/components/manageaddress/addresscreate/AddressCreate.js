@@ -294,8 +294,12 @@ function AddressCreate({ error }) {
 
       }
     },
+    // options: {
+    //   types: ["(postal_code)"],
+    //   componentRestrictions: { country: "Aus" },
+    // },
     options: {
-      types: "(regions)",
+      types: ["postal_code"],
       componentRestrictions: { country: "Aus" },
     },
   });

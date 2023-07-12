@@ -6,6 +6,7 @@ import SlideNextArrow from './slidenextarrow/SlideNextArrow';
 import SlidePreArrow from './slideprearrow/SlidePreArrow';
 import { useRouter } from 'next/router';
 import { getBlogs } from './../../../../services/blog-service/blog-service';
+import { getEvents } from '../../../../services/event-services/event-services';
 
 function Whatmake() {
     const history = useRouter();
@@ -70,7 +71,7 @@ function Whatmake() {
 
 
     useEffect(() => {
-        getBlogs().then((res) => {
+        getEvents().then((res) => {
             setDatas(res?.data?.results.slice(0,15));
         }).catch((err) => {
             console.log(err);
@@ -104,7 +105,7 @@ function Whatmake() {
                                     <div className={styles.cardsslide} key={index} style={{ backgroundColor: item.colorbg }} onClick={() => NavigatePathes(item?.slugName)}>
                                         <div>
                                             {/* <Image src={item?.image} alt="no image" className={styles.whatmakeimage} /> */}
-                                            {item?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.postImageName}`} alt="no image" className={styles.whatmakeimage} /> : <>
+                                            {item?.eventImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.eventImageName}`} alt="no image" className={styles.whatmakeimage} /> : <>
                                                 <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
                                             </>}
                                         </div>
@@ -129,7 +130,7 @@ function Whatmake() {
                                             {/* <Image src={item?.image} alt="no image" className={styles.whatmakeimage} /> */}
 
 
-                                            {item?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.postImageName}`} alt="no image" className={styles.whatmakeimage} /> : <>
+                                            {item?.eventImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.eventImageName}`} alt="no image" className={styles.whatmakeimage} /> : <>
                                                 <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
                                             </>}
                                         </div>

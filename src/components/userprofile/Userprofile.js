@@ -52,7 +52,7 @@ function Userprofile({ name, error }) {
                 localStorage.removeItem('signupuser');
             }
 
-            if (state?.loginUser?.error?.code === 401 || state?.loginUser?.error?.code === 403 ) {
+            if (state?.loginUser?.error?.code === 401 || state?.loginUser?.error?.code === 403) {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
                 localStorage.removeItem("userTokens");
@@ -78,9 +78,9 @@ function Userprofile({ name, error }) {
     }
     return (
         <>
-<div className="mainsection">
-<div className="insidesection">
-<div className={styles.insideprofilesection}>
+            <div className="mainsection">
+                <div className="insidesection">
+                    <div className={styles.insideprofilesection}>
                         <div className={styles.leftsidebarprofile}>
                             <div className='d-none d-lg-block'>
                                 <Sidebar user={user} error={errors} />
@@ -108,23 +108,23 @@ function Userprofile({ name, error }) {
                             </div>}
 
                             {name == "address" && <div>
-                                <Manageaddress error={errors}  />
+                                <Manageaddress error={errors} />
                             </div>
-                            
+
                             }
 
-{name == "servicedetail" && <div>
-                                <ServiceViewDetails error={errors}  />
+                            {name == "servicedetail" && <div>
+                                <ServiceViewDetails error={errors} />
                             </div>
-                            
+
                             }
 
-{name == "addresscreate" && <div>
-                               <AddressCreate  error={errors} />
+                            {name == "addresscreate" && <div>
+                                <AddressCreate error={errors} />
                             </div>}
 
-                          
-                            
+
+
                             {name == "changepassword" && <div>
                                 <Changepassword error={errors} />
                             </div>
@@ -146,33 +146,33 @@ function Userprofile({ name, error }) {
                                 <Coupon error={errors} />
                             </div>
                             }
-                             {name == "faq" && <div>
-                             <Help/>
+                            {name == "faq" && <div>
+                                <Help />
                             </div>
                             }
                         </div>
                     </div>
-    </div>
-</div>
-          
-                   
-         
+                </div>
+            </div>
 
 
-                <div className={styles.emptyboxrightcolor}>
-                </div>
-                <div className={styles.emptyboxleftcolor}>
-                </div>
-                <div className={styles.emptyboxleftcolor1}>
-                </div>
-                <div className={styles.emptyboxleftcolor2}>
-                </div>
-                <div className={styles.emptyboxleftcolor3}>
-                </div>
-                <div className={styles.emptyboxleftcolor4}>
-                </div>
 
-          
+
+
+            <div className={styles.emptyboxrightcolor}>
+            </div>
+            <div className={styles.emptyboxleftcolor}>
+            </div>
+            <div className={styles.emptyboxleftcolor1}>
+            </div>
+            <div className={styles.emptyboxleftcolor2}>
+            </div>
+            <div className={styles.emptyboxleftcolor3}>
+            </div>
+            <div className={styles.emptyboxleftcolor4}>
+            </div>
+
+
 
 
 

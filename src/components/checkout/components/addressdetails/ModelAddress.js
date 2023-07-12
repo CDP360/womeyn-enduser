@@ -516,7 +516,7 @@ function ModelAddress({ error }) {
 
     },
     options: {
-      types: ["(regions)"],
+      types: ["postal_code"],
       componentRestrictions: { country: "Aus" },
     },
   });

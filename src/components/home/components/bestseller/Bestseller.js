@@ -16,10 +16,10 @@ function Bestseller({bannerimages,MovePageData,HomeTexts}) {
                     <div className={styles.insidesellerbreaksalary}>
                         <Carouselseller bannerimages={bannerimages} MovePageData={MovePageData}/>
                     </div>
-                    <div className='large-text mb-5 mt-3 text-center'>
+                    {/* <div className='large-text mb-5 mt-3 text-center'>
                         {HomeTexts?.Bestsellerstocheeryouup}
-                    </div>
-                    <div className={styles.buttonsellersection}>
+                    </div> */}
+                    {/* <div className={styles.buttonsellersection}>
                         <button className={index === 0 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(0)}>{HomeTexts?.AllCategories}</button>
                         <button className={index === 1 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(1)}>{HomeTexts?.Electronics}</button>     
                         <button className={index === 2 ? "selleractive" : "sellerinactive"} onClick={() => setIndex(2)}>{HomeTexts?.HealthCare}</button>     
@@ -29,7 +29,7 @@ function Bestseller({bannerimages,MovePageData,HomeTexts}) {
                         <div className={styles.insideborderseller}>
 
                         </div>
-                    </div>
+                    </div> */}
                     <div className='mt-5'>
                         <div hidden={index != 0}>
                             <Allcategories />
