@@ -310,10 +310,7 @@ function Home() {
                 <div>
                     <Whatmake />
                 </div>
-
                 <div>
-
-
                 </div>
             </div>
         </Fragment >

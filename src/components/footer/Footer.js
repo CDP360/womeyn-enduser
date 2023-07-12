@@ -1,12 +1,12 @@
-import React, { Fragment,useState,useEffect } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import styles from './styles/Footer.module.scss';
 import womeynlogo from '../../assests/homepage-logos/womeyn_logo.png';
 import Image from 'next/image';
-import facebook from '../../assests/homepage-logos/facebookfooter.png';
+import facebook from '../../assests/login-logos/facebook.png';
 import youtube from '../../assests/homepage-logos/youtubered.png';
-import instagram from '../../assests/homepage-logos/newinstagramfooter.png';
-import linkdin from '../../assests/homepage-logos/linkedinfooter.png';
-import twitter from '../../assests/homepage-logos/twitterfooter.png';
+import instagram from '../../assests/login-logos/instagram.png';
+import linkdin from '../../assests/login-logos/linkedin.png';
+import twitter from '../../assests/login-logos/twitter.png';
 import headphone from '../../assests/homepage-logos/headphonefooter.png';
 import { useRouter } from 'next/router';
 import { ConatctAdminInfor } from '../../services/contact-service/contact-service';
@@ -32,18 +32,18 @@ function Footer() {
     const homePage = () => {
         router.push("/");
     }
-    const [information,setInformation]=useState([]);
-    useEffect(()=>{
-ConatctAdminInfor().then((res)=>{
-    setInformation(res?.data[0]);
-}).catch((err)=>{
- console.log(err);   
-})
-    },[])
+    const [information, setInformation] = useState([]);
+    useEffect(() => {
+        ConatctAdminInfor().then((res) => {
+            setInformation(res?.data[0]);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, [])
 
     return (
         <Fragment>
-            
+
             <div className={styles.mainfootersection}>
                 <div className={styles.insidefootersection}>
                     <div className={styles.splitinsidefootersection}>
@@ -129,7 +129,7 @@ ConatctAdminInfor().then((res)=>{
                                     Team Womeyn is open to ideas, suggestions and comments that will help us improve and grow as a community platform. We would love to hear from you
                                 </div>
                                 <div>
-                                    Email : { information?.email}
+                                    Email : {information?.email}
                                 </div>
                                 <div className={styles.headphonesectionfooter}>
                                     <div>
@@ -153,13 +153,13 @@ ConatctAdminInfor().then((res)=>{
                     </div>
                 </div>
 
-               
+
             </div>
 
             <div className={styles.footerrightemptybox}>
             </div>
-            
-         
+
+
         </Fragment>
     )
 }
