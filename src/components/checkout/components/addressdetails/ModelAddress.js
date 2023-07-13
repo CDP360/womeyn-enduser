@@ -700,7 +700,7 @@ function ModelAddress({ error }) {
                     {...register("city", {
                       required: "Please enter city",
                     })}
-                    disabled
+                    // disabled
 
                   />
                   <Form.Text className="text-muted">

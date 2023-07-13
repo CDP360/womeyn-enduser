@@ -456,7 +456,6 @@ function AddressCreate({ error }) {
                   <Form.Control type="text" placeholder="Enter Pincode" className='form-control-profiles'
                     maxLength={4}
                     ref={ref}
-
                     value={postalcodeset}
                     onChange={(e) => setPostalCodes(e?.target?.value)}
 
@@ -481,7 +480,7 @@ function AddressCreate({ error }) {
                     {...register("city", {
                       required: "Please enter city",
                     })}
-                    disabled
+                    // disabled
 
                   />
                   <Form.Text className="text-muted">

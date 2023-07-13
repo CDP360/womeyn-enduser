@@ -200,7 +200,7 @@ function Addressdetail({ state, step, setStep, setName, name }) {
 
             editaddressid={editaddressid}
             /> */}
-            <button onClick={NavigateAddressPage} className={styles.addnewaddressbutton}>Address</button>
+            <button onClick={NavigateAddressPage} className={styles.addnewaddressbutton}>+ Add New Address</button>
           </div>
         </div>
         <div className="mt-1">  

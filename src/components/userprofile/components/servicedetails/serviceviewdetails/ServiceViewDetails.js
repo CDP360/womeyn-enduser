@@ -269,12 +269,12 @@ const serviceid=history?.query?.id;
                                     })}
                                 </div>
                             </div>
-                            <div className="mt-5">
+                            {/* <div className="mt-5">
                                 {moment(new Date()).isAfter(moment(serviceBookingSingle?.endDate)) ? <>
                                     <button className={styles.trackingbuttons} onClick={handleShow1}>Review</button>
                                 </> : null}
                       
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                   

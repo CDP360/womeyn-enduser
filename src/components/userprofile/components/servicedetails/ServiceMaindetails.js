@@ -194,7 +194,7 @@ function ServiceMaindetails({ error }) {
                                                 {data?.startDate}
                                                 {moment(data?.startDate).isAfter(moment(data?.endDate)) ? <>
 
-                                                    <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button>
+                                                    {/* <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button> */}
                                                 </> : <>
                                                     <button className={styles.trackingbuttons} onClick={() => pushProductPage(data)}>Booked</button>
 
