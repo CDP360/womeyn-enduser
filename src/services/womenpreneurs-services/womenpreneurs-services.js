@@ -17,7 +17,23 @@ export function Getwomenpreneursbanner(data) {
 }
 
 
-export function WomenpreneursSellers(current) {
+export function WomenpreneursSellers() {
+    // return instanceBaseurl.get(`/common/womenpreneurs&limit=10&page=${current}`).then((res) => {
+    //     return res
+    // }).catch((err) => {
+    //     return err;
+    // });
+
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.get(`/common/womenpreneurs?sortBy=updatedAt:desc&limit=12`).then(response => {
+            resolve(response)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}
+
+export function WomenpreneursSellerspagintaion(current) {
     // return instanceBaseurl.get(`/common/womenpreneurs&limit=10&page=${current}`).then((res) => {
     //     return res
     // }).catch((err) => {

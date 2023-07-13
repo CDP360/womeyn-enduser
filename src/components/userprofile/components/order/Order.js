@@ -34,7 +34,7 @@ function Order({ error }) {
         setLoading(false);
       }, 500)
     }).catch((err) => {
-      console.log(err);
+      
       setLoading(false);
     })
 
@@ -50,13 +50,7 @@ function Order({ error }) {
     }
   }, [error, trackid]);
 
-
   const [serachordersname,setSearchOrdersname]=useState("");
-
-
-  
-
-
   return (
     <div>
       <div className={styles.couponsInputContainer}>

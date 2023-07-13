@@ -7,7 +7,7 @@ import serachicon from '../../../assests/homepage-logos/serachicon.png';
 import { useRouter } from 'next/router';
 import girl from '../../../assests/womeynlogos/girl4.png';
 import Womencarouselbanner from './component/womenprebannerimages/Womencarouselbanner';
-import { WomenpreneursCommoncategories, WomenpreneursSellers } from '../../../services/womenpreneurs-services/womenpreneurs-services';
+import { WomenpreneursCommoncategories, WomenpreneursSellers,WomenpreneursSellerspagintaion } from '../../../services/womenpreneurs-services/womenpreneurs-services';
 import users from '../../../assests/homepage-logos/usersimageprofile.png';
 import Select from 'react-select';
 import { WomenpreneursFilter, WomenpreneursSearch } from './../../../services/womenpreneurs-services/womenpreneurs-services';
@@ -23,7 +23,6 @@ function Womenpreneurs() {
     const router = useRouter();
     const [current, setCurrent] = useState(1);
     const [limit, setLimit] = useState(current * 10);
-
     const [dataseller, setDataseller] = useState([]);
     const [datacategory, setDataCtagoryies] = useState([]);
     const [filters, setFilterData] = useState([]);
@@ -39,9 +38,7 @@ function Womenpreneurs() {
     useEffect(() => {
         WomenSellercategories();
         GetFilterandSearchData();
-
         WomenpreneursSellers().then((res) => {
-
             setDataseller(res?.data?.results);
             setPagecount(res?.data?.totalResults)
 
@@ -90,12 +87,7 @@ function Womenpreneurs() {
     }
     const GetFilterandSearchData = () => {
         setLoading(true);
-
-       
         WomenpreneursFilter(categoryid).then((res) => {
-
-
-           
             setDataseller(res?.data?.results);
             setPagecount(res?.data?.totalResults)
             setLimit(res?.data);
@@ -123,39 +115,19 @@ function Womenpreneurs() {
         }
         
     }
-    // const fetchCurrentData = async (current) => {
-    //     const resdata = await WomenpreneursSellers(current);
-    //   setPagecount(res?.data?.totalResults)
-
-    //     setDataseller(resdata?.data?.results);
-    // }
-    // const handleChangePagecount = async (e) => {
-    //     setCurrent(e);
-    //     const current = e;
-    //     await fetchCurrentData(current);
-    // }
-
+   
 
     const fetchComments = async (current) => {
-        const res = await WomenpreneursSellers(current);
+        const res = await WomenpreneursSellerspagintaion(current);
         return res?.data?.results;
     }
-
-
-    //   const fetchComments1 = async (searchname,current) => {
-    //     const res = await SearchProductUser(searchname,current);
-    //     return res?.data?.results;
-    //   }
 
     const handlePageClick = async (data) => {
         let current = data?.selected + 1;
         setPagecountNumbers(current);
         goToTop()
         const commentForms = await fetchComments(current);
-        // const commentForms1 = await fetchComments1(searchname,current);
         setDataseller(commentForms);
-        // setServiceusers(commentForms1);
-
     }
 
     useEffect(() => {
@@ -176,10 +148,6 @@ function Womenpreneurs() {
             behavior: "smooth",
         });
     };
-
-
-
-    console.log(dataseller,"dataseller")
     return (
         <Fragment>
 
@@ -223,44 +191,7 @@ function Womenpreneurs() {
 
                             {dataseller?.length === 0 && null}
                             <div>
-                                {/* {searchname?.length > 0 ? <> */}
-                                    {/* <div className='cardsections row   w-100 mt-5 mb-5 ms-1'>
-                                        <div>
-                                            {dataseller.length === 0 && <div>
-
-                                            </div>}
-                                        </div>
-                                        {loadingset ? <>
-                                            <div>
-                                                <LoaderLogo />
-                                            </div>
-                                        </> : dataseller?.map((item, index) => {
-                                            return (
-                                                <div className='cards mt-5 mb-5 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
-                                                    <div className={styles.sellerimagebox}>
-                                                        <div className={styles.insidebox}>
-                                                            {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                                                <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
-                                                            </>}
-                                                        </div>
-                                                    </div>
-
-                                                    <div className='womentitle'>
-                                                        {item?.firstName}
-                                                    </div>
-                                                    <div className='womendescription'>
-                                                        {item?.businessSlugName}
-
-                                                    </div>
-                                                   
-
-
-
-                                                </div>
-                                            )
-                                        })}
-                                    </div> */}
-                                {/* </> : <> */}
+                              
 
                                     <div className='cardsections row   w-100 mt-5 mb-3 ms-1'>
                                         <div>
@@ -293,7 +224,7 @@ function Womenpreneurs() {
                                             )
                                         })}
                                     </div>
-                                {/* </>} */}
+                              
 
 
                                 <div>
@@ -344,8 +275,8 @@ function Womenpreneurs() {
 
 
 
-            <div className={styles.emptyboxrightcolor}>
-            </div>
+            {/* <div className={styles.emptyboxrightcolor}>
+            </div> */}
             <div className={styles.emptyboxleftcolor}>
             </div>
             <div className={styles.emptyboxleftcolor1}>
