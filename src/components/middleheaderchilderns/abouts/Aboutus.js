@@ -303,8 +303,7 @@ function Aboutus({ id }) {
                         </div>
                     </section>
                 </div>
-                <div className="womeynaboutuspage">
-
+                <div className="womeynaboutuspage mt-5">
 
                     <section id="TheTeam" className={router?.asPath == "/abouts#TheTeam" ? "" : ""}>
 

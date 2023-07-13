@@ -250,7 +250,7 @@ function Manageaddress({ error }) {
                             </div> */}
 
                             <div>
-                            {item?.name} , <span className={styles.workspace}>{item?.addressType===1?"HOME":"WORK"}</span> <span> ContactNo : {item?.contactNumber}</span>
+                            {item?.name} , <span className={styles.workspace}>{item?.addressType===1?"HOME":"WORK"}</span> <span> ContactNo :+61 {item?.contactNumber}</span>
 
                               </div>
 
