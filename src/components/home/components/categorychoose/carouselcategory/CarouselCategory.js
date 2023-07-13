@@ -82,11 +82,13 @@ function CarouselCategory() {
               <div className={styles.cardsslide} onClick={() => pushCatgorys(item?.slugName)} key={index}>
                 <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesizes} />
                 <div className='mt-4' onClick={() => pushCatgorys(item?.slugName)} >
-                  <h6>{item?.name}</h6>
+                  {/* <h6>{item?.name}</h6> */}
+                  <span>{item?.name?.length >10 ? <>{item?.name.slice(0, 20)}...</> : <> {item?.name}</>}</span>
+
                 </div>
-                <div onClick={() => pushCatgorys(item?.slugName)} >
+                {/* <div onClick={() => pushCatgorys(item?.slugName)} >
                   {item?.description}
-                </div>
+                </div> */}
               </div>
             )
           })}
@@ -99,7 +101,7 @@ function CarouselCategory() {
                 <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`} alt="no image" className={styles.slideimagesize} />
                 <div className='mt-4' onClick={() => pushCatgorys(item?.slugName)} >
                   {/* <h6>{item?.name}</h6> */}
-                  <span>{item?.name?.length <= 10 ? <>{item?.name}</> : <>{item?.name.slice(0, 20)}...</>}</span>
+                  <span>{item?.name?.length >10 ? <>{item?.name}</> : <>{item?.name.slice(0, 20)}...</>}</span>
 
                 </div>
                 {/* <div onClick={() => pushCatgorys(item?.slugName)} >
