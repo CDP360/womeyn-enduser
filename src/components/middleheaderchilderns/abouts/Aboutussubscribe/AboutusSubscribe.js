@@ -3,7 +3,6 @@ import styles from './styles/Aboutusubscribe.module.scss';
 import sub from '../../../../assests/abouts-logos/subscribe.png';
 import Image from 'next/image';
 import { SubscribeUser } from './../../../../services/subscribe-service/subscribe-service';
-
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import Spinner from 'react-bootstrap/Spinner';
@@ -16,11 +15,8 @@ function AboutusSubscribe() {
         formState: { errors },
     } = useForm();
     const [loading, setLoading] = useState(false);
-
-
     const onSubmit = (data) => {
         setLoading(true);
-
         const forms = {
             email: data?.email
         }

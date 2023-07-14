@@ -167,7 +167,7 @@ function Servicecards() {
 
     const goToTop = () => {
         window.scrollTo({
-            top: 200,
+            top: 500,
             behavior: "smooth",
         });
     };

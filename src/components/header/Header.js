@@ -34,6 +34,7 @@ import couponsactive from '../../assests/profile-logo/ticketactive.png';
 import favortsactive from '../../assests/profile-logo/favortsactive.png';
 import orderactive from '../../assests/profile-logo/orderactive.png';
 import * as Scroll from 'react-scroll';
+import { Headertext } from '../../consttext/Headerconst';
 // import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 function Header() {
     const { state } = useContext(ContextStore);
@@ -224,7 +225,9 @@ function Header() {
 
                                         <div className={styles.rightheaderbox}>
                                             <div className={styles.Seller} onClick={SellerLogin}>
-                                                Become a WomeynPreneurs
+
+                                                {Headertext?.BecomeaWomeynPreneurs}
+
                                             </div>
                                         </div>
                                     </div>
@@ -289,7 +292,7 @@ function Header() {
 
                                                 </>}
 
-                                            </> : <div className={styles.logintexts}>Login</div>}
+                                            </> : <div className={styles.logintexts}>{Headertext?.Login}</div>}
                                         </div>
                                         {showmega &&
                                             <div className={styles.bordersections}>
@@ -301,7 +304,7 @@ function Header() {
                                                                     <Image src={myprofile} alt="no image" className={styles.profileimageover} />
                                                                 </div>
                                                                 <div className={styles.logouttexts}>
-                                                                    My Profile
+                                                                    {Headertext?.MyProfile}
                                                                 </div>
                                                             </div>
                                                             <div className={styles.headerprofile} onClick={Orders}>
@@ -309,7 +312,7 @@ function Header() {
                                                                     <Image src={orderactive} alt="no image" className={styles.profileimageover} />
                                                                 </div>
                                                                 <div className={styles.logouttexts}>
-                                                                    Product Orders
+                                                                    {Headertext?.ProductOrders}
                                                                 </div>
                                                             </div>
                                                             <div className={styles.headerprofile} onClick={Services}>
@@ -317,7 +320,7 @@ function Header() {
                                                                     <Image src={serviceactive} alt="no image" className={styles.profileimageover} />
                                                                 </div>
                                                                 <div className={styles.logouttexts}>
-                                                                    Service Orders
+                                                                    {Headertext?.ServiceOrders}
                                                                 </div>
                                                             </div>
 
@@ -326,7 +329,7 @@ function Header() {
                                                                     <Image src={favortsactive} alt="no image" className={styles.profileimageover} />
                                                                 </div>
                                                                 <div className={styles.logouttexts}>
-                                                                    Whishlist
+                                                                    {Headertext?.Whishlist}
                                                                 </div>
                                                             </div>
 
@@ -339,7 +342,7 @@ function Header() {
                                                                     <Image src={couponsactive} alt="no image" className={styles.profileimageover} />
                                                                 </div>
                                                                 <div className={styles.logouttexts}>
-                                                                    Coupons
+                                                                    {Headertext?.Coupons}
                                                                 </div>
                                                             </div>
 
@@ -349,7 +352,7 @@ function Header() {
                                                                     <Image src={helpss} alt="no image" className={styles.profileimageover} />
                                                                 </div>
                                                                 <div className={styles.logouttexts}>
-                                                                    FAQ
+                                                                    {Headertext?.FAQ}
                                                                 </div>
                                                             </div>
 
@@ -359,15 +362,15 @@ function Header() {
                                                                     <Image src={logout} alt="no image" className={styles.profileimageover} />
                                                                 </div>
                                                                 <div className={styles.logouttexts}>
-                                                                    Logout
+                                                                    {Headertext?.Logout}
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </> : <div className="dropdowncontents">
                                                         <div className='p-2'>
-                                                            Create account / LogIn
+                                                            {Headertext?.CreateaccountLogIn}
                                                             <button className='active mt-3 loginbuttonhome' onClick={Login}>
-                                                                LogIn/SignUp
+                                                                {Headertext?.LogInSignUp}
                                                             </button>
                                                         </div>
                                                     </div>}
@@ -389,7 +392,7 @@ function Header() {
                             <ul className="dropdownmegamain">
                                 <li>
                                     <a>
-                                        <span className='ms-2'>Explore</span>
+                                        <span className='ms-2'>{Headertext?.Explore}</span>
                                     </a>
                                     <ul className="dropdownmega">
 
@@ -398,7 +401,7 @@ function Header() {
                                             <div className="firstsection">
 
                                                 <div>
-                                                    <li><a className="commontitles ms-3 fs-5">Products</a></li>
+                                                    <li><a className="commontitles ms-3 fs-5">{Headertext?.Products}</a></li>
                                                 </div>
                                                 {explorecategorysProductmenu.slice(0, 200)?.map((item, index) => {
                                                     return (
@@ -435,7 +438,7 @@ function Header() {
 
 
 
-                                                    {/* <li><a className="commontitles ms-3 fs-5"></a></li> */}
+
 
 
 
@@ -521,18 +524,8 @@ function Header() {
                                             {explorecategorysservice.length > 0 ? <>
 
                                                 <div className="fourthsection">
-                                                    {/* <li><a className="commontitle">{explorecategorys[5]?.categoryName}</a></li>
-                                                <div>
 
-                                                    {explorecategorys[5]?.subCategories?.map((item, index) => {
-                                                        return (
-                                                            <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
-                                                                <li><a className="unactivetext">{item?.name}</a></li>
-                                                            </div>
-                                                        )
-                                                    })}
-                                                </div> */}
-                                                    <li><a className="commontitles ms-3 fs-5">Services</a></li>
+                                                    <li><a className="commontitles ms-3 fs-5">{Headertext?.Services}</a></li>
 
                                                     {explorecategorysservice.slice(0, 200)?.map((item, index) => {
                                                         return (
@@ -567,17 +560,6 @@ function Header() {
                                             {explorecategorysservice.length > 200 ? <>
 
                                                 <div className="fifthsection">
-                                                    {/* <li><a className="commontitle">{explorecategorys[6]?.categoryName}</a></li>
-                                                <div>
-
-                                                    {explorecategorys[6]?.subCategories?.map((item, index) => {
-                                                        return (
-                                                            <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
-                                                                <li><a className="unactivetext">{item?.name}</a></li>
-                                                            </div>
-                                                        )
-                                                    })}
-                                                </div> */}
 
                                                     {explorecategorysservice.slice(400, 800)?.map((item, index) => {
                                                         return (
@@ -617,58 +599,56 @@ function Header() {
                         </div>
                         <div className={router.pathname == "/products" ? "active" : ""}>
                             <div className='nav-link' onClick={() => router?.push("/products")}>
-                                <span className='ms-2 hovertexts'>Products</span>
+                                <span className='ms-2 hovertexts'>{Headertext?.Products}</span>
                             </div>
                         </div>
                         <div className={router.pathname == "/service" ? "active" : ""}>
                             <div className='nav-link' onClick={() => router?.push("/service")}>
-                                <span className='ms-2 hovertexts'>Services</span>
+                                <span className='ms-2 hovertexts'>{Headertext?.Services}</span>
                             </div>
                         </div>
 
                         <div className={router.pathname == "/womenpreneurs" ? "active" : ""}>
                             <div className='nav-link' onClick={() => router?.push("/womenpreneurs")}>
-                                <span className='ms-2 hovertexts'>Our WomeynPreneurs</span>
+                                <span className='ms-2 hovertexts'>{Headertext?.OurWomeynPreneurs}</span>
                             </div>
                         </div>
                         <div className={router.pathname == "/events" ? "active" : ""}>
                             <div className='nav-link' onClick={() => router?.push("/events")}>
-                                <span className='ms-2 hovertexts'>Events & Blogs</span>
+                                <span className='ms-2 hovertexts'>{Headertext?.EventsBlogs}</span>
                             </div>
                         </div>
                         <div className={router.pathname == "/abouts" ? "active" : ""}>
                             <div class="dropdownabout" >
-                                <button class="dropbtnabout" ><span className={router?.pathname == "/abouts" ? "active" : ""}>About Us</span> <span><Image src={aroepath} alt="no image" className="patharrow" /></span></button>
+                                <button class="dropbtnabout" ><span className={router?.pathname == "/abouts" ? "active" : ""}>{Headertext?.AboutUs}</span> <span><Image src={aroepath} alt="no image" className="patharrow" /></span></button>
                                 <div class="dropdown-contentabut">
 
                                     <Link href="/abouts#WhatisWomeyn" scroll={false} >
-                                        What is Womeyn
+                                        {Headertext?.WhatisWomeyn}
                                     </Link>
 
                                     <Link href="/abouts#OurMission&Vision" scroll={false} >
-                                        Our Mission & Vision
+                                        {Headertext?.OurMissionVision}
                                     </Link>
                                     <Link href="/abouts#TheLogoSignificance" scroll={false} >
-                                        The Logo Significance
+                                        {Headertext?.TheLogoSignificance}
                                     </Link>
-
-
                                     <Link href="/abouts#TheTeam" scroll={false} >
-                                        Our Team
+                                        {Headertext?.OurTeam}
                                     </Link>
 
                                     <Link href="/abouts#PartnersCollaborations" scroll={false} >
-                                        Partners & Collaborations
+                                        {Headertext?.PartnersCollaborations}
                                     </Link>
                                     <Link href="/abouts#JoinWomeyn" scroll={false} >
-                                        Join Womeyn
+                                        {Headertext?.JoinWomeyn}
                                     </Link>
                                 </div>
                             </div>
                         </div>
                         <div className={router.pathname == "/getintouch" ? "active" : ""}>
                             <div className='nav-link' onClick={() => router?.push("/getintouch")}>
-                                <span className='ms-2 hovertexts'>Get In Touch</span>
+                                <span className='ms-2 hovertexts'>{Headertext?.GetInTouch}</span>
                             </div>
                         </div>
                     </div>

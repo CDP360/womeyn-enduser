@@ -293,7 +293,7 @@ function Aboutus({ id }) {
                                 <div className="text-center mt-4">
                                     <Image src={womenlogo} alt="no image" className={styles.abss} />
                                 </div>
-                                <div className={styles.stands} id="TheTeam">
+                                <div className={styles.stands} >
                                     <span><Image src={wba} alt="no image" className={styles.abs} /></span>stands for “You” being the women out there.<br />
                                     Womeyn is a platform for “You” by “ You”. <span>
                                         <Image src={wba1} alt="no image" className={styles.abs} />
@@ -305,7 +305,7 @@ function Aboutus({ id }) {
                 </div>
                 <div className="womeynaboutuspage mt-5">
 
-                    <section id="TheTeam" className={router?.asPath == "/abouts#TheTeam" ? "" : ""}>
+                    <section id="TheTeam" className={router?.asPath == "/abouts#TheTeam" ? "mains" : "mainss"}>
 
                         <Ourteam />
 

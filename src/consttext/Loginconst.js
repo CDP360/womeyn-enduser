@@ -12,5 +12,5 @@ export const LoginText = {
     Alreadyhaveanaccount: "Already have an account?",
     Bysigningupyouagreetoour: "By signing up you agree to our",
     termsandconditions: "terms and conditions",
-    YouarealreadyregisteredPleaselogin:"You are already registered. Please log in."
+    YouarealreadyregisteredPleaselogin: "You are already registered. Please log in."
 }

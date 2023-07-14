@@ -196,7 +196,7 @@ function ProductCategorys() {
 
     const goToTop = () => {
         window.scrollTo({
-            top: 230,
+            top: 500,
             behavior: "smooth",
         });
     };
@@ -220,6 +220,7 @@ function ProductCategorys() {
                             <div className={styles.ourwomenpreneurs}>
                                 <div className='large-text'>
                                     Products
+
                                 </div>
                                 <div className={styles.loreamtextwomen}>
                                     Please select to know more about the WomeynPreneur business, and the Products her Business offers.
@@ -363,6 +364,7 @@ function ProductCategorys() {
                                     <hr />
                                 </div>
                                 <div>
+
                                     Page {pagecountnumbers} / {pagecount}
                                 </div>
 
@@ -376,7 +378,7 @@ function ProductCategorys() {
                                         disabledClassName={'disabled-page'}
                                         marginPagesDisplayed={2}
                                         nextClassName={"item next "}
-                                        nextLabel={Math.ceil(pagecount / 12)=== pagecountnumbers ? null : "NEXT"}
+                                        nextLabel={Math.ceil(pagecount / 12) === pagecountnumbers ? null : "NEXT"}
                                         onPageChange={handlePageClick}
                                         pageCount={pagecount / 12}
                                         pageClassName={'item pagination-page '}

@@ -134,8 +134,9 @@
     height: auto;
     position: relative;
     .sellerimagesize {
-        height: 300px;
+        height: 200px;
         width: 100%;
+        object-fit:cover;
         border-radius: 10px !important;
         @include xsBreakPoint {
             height: 320px;
@@ -148,11 +149,11 @@
             height: 250px;
         }
         @include lgBreakPoint {
-            height: 240px;
+            height: 200px;
             width: 100%;
         }
         @include xlBreakPoint {
-            height: 270px;
+            height: 200px;
             width: 100%;
         }
     }

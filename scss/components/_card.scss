@@ -7,10 +7,11 @@
     position: relative;
     // background-color: white !important;
     background-color: none !important;
-z-index:9!important;
+    z-index: 9 !important;
     @include xlBreakPoint {
         gap: 30px;
     }
+
     .card {
         width: 23.67% !important;
         display: flex !important;
@@ -19,13 +20,11 @@ z-index:9!important;
         border: none !important;
         box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
         border-radius: 8px;
-        z-index:989 !important;
-
+        z-index: 989 !important;
         padding: 0px 0px;
         cursor: pointer;
         // border:2px solid blue !important;
         background-color: none !important;
-
         @include themed() {
             background: t($card);
         }
@@ -40,11 +39,10 @@ z-index:9!important;
         }
         @include lgBreakPoint {
             width: 31.5% !important;
-            height: auto
+            height: auto;
         }
         @include xlBreakPoint {
             width: 22.7% !important;
-
             height: auto;
             // display: flex;
             // align-items: center;
@@ -59,7 +57,7 @@ z-index:9!important;
     align-items: center;
     // justify-content: center;
     width: 100%;
-z-index:0!important;
+    z-index: 0 !important;
 
     @include lgBreakPoint {
         // border:2px solid blue !important;
@@ -71,8 +69,7 @@ z-index:0!important;
         display: flex !important;
         // gap: 20px;
         height: auto;
-        z-index:0 !important;
-
+        z-index: 0 !important;
 
         // border:2px solid red !important;
         border-radius: 8px;
@@ -186,13 +183,11 @@ z-index:0!important;
         }
         @include lgBreakPoint {
             width: 29.5% !important;
-            
-           
-            height:auto;
+
+            height: auto;
         }
         @include xlBreakPoint {
             width: 29.5% !important;
-           
         }
         .womentitle {
             position: absolute;

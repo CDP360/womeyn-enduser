@@ -66,7 +66,7 @@ function Whatmake() {
 
 
     const NavigatePathes = (id) => {
-        history.push(`/blog/${id}`)
+        history.push(`/events/${id}`)
     }
 
 
