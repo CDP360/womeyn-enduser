@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../header/Header";
 import MobileHeader from "../header/Mobileheader/MobileHeader";
 import styles from "./styles/Layoutheader.module.scss";
@@ -8,37 +8,30 @@ import Signupnewsletter from "../home/components/signupfornewsletter/Signupnewsl
 import Childfooter from "./../footer/Childfooter";
 import Script from "next/script";
 import { ProductView } from "../../services/productview-service/productview-services";
-import SEO from "@bradgarropy/next-seo"
+
 function LayoutHeader({ setdark, dark, title, children }) {
 
-  const [datas,setDatas]=useState([]);
+  const [datas, setDatas] = useState([]);
   useEffect(() => {
 
-    if(title)
-    {
+    if (title) {
       ProductView(title).then((res) => {
         // console.log(res?.data?.productDetails)
         setDatas(res?.data?.productDetails)
-            }).catch((Err) => {
-              console.log(Err)
-            })
+      }).catch((Err) => {
+        console.log(Err)
+      })
     }
- 
+
   }, [title]);
 
-  console.log(datas?.productThumbImage,"productThumbImage")
+  console.log(datas?.productThumbImage, "productThumbImage")
   return (
     <>
       <Head>
-        {/* <title>{title}</title>
-        <meta name="google" content="nositelinkssearchbox" key="sitelinks" />
-        <meta name="google" content="notranslate" key="notranslate" />
-        {datas?.productDescription && <meta property="og:description" content={datas?.productDescription} />}
-           
-           {datas?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${datas?.productThumbImage}`} />} */}
-     
-        
-        
+
+
+
         <link
           rel="icon"
           type="image/png"
@@ -105,24 +98,15 @@ function LayoutHeader({ setdark, dark, title, children }) {
             </div>
           </div>
           <div className={styles.insidemainscrollsection}>
-          <SEO
-    title={title}
-    description={title}
-    keywords={["website", "blog", "portfolio"]}
-    icon="/favicon.ico"
-    themeColor="#000000"
-    colorScheme="light"
-    facebook={{
-        image: "/facebook.png",
-        url: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${datas?.productThumbImage}`,
-        type: "website",
-    }}
-    twitter={{
-        image: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${datas?.productThumbImage}`,
-        site: "@bradgarropy",
-        card: "summary",
-    }}
-/>
+            <Head>
+              <title>{title}</title>
+              <meta name="google" content="nositelinkssearchbox" key="sitelinks" />
+              <meta name="google" content="notranslate" key="notranslate" />
+              {datas?.productDescription && <meta property="og:description" content={datas?.productDescription} />}
+
+              {datas?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${datas?.productThumbImage}`} />}
+
+            </Head>
             <main>{children}</main>
           </div>
           {
