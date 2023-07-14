@@ -967,7 +967,7 @@ function Viewproducts({ id }) {
                 </>} */}
 
 
-                <NextSeo
+                {/* <NextSeo
                     title="Womeyn Home"
                     //   description="This is a demo description"
                     description={productdata?.productDescription}
@@ -1003,7 +1003,7 @@ function Viewproducts({ id }) {
                         site: '@site',
                         cardType: 'summary_large_image',
                     }}
-                />
+                /> */}
 
             </>
 

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import Header from "../header/Header";
 import MobileHeader from "../header/Mobileheader/MobileHeader";
 import styles from "./styles/Layoutheader.module.scss";
@@ -7,11 +7,31 @@ import Footer from "./../footer/Footer";
 import Signupnewsletter from "../home/components/signupfornewsletter/Signupnewsletter";
 import Childfooter from "./../footer/Childfooter";
 import Script from "next/script";
+import { ProductView } from "../../services/productview-service/productview-services";
 function LayoutHeader({ setdark, dark, title, children }) {
-  useEffect(() => { }, []);
+
+  const [datas,setDatas]=useState([]);
+  useEffect(() => {
+
+    if(title)
+    {
+      ProductView(title).then((res) => {
+        // console.log(res?.data?.productDetails)
+        setDatas(res?.data?.productDetails)
+            }).catch((Err) => {
+              console.log(Err)
+            })
+    }
+ 
+  }, [title]);
   return (
     <>
       <Head>
+        <title>{title}</title>
+        <meta name="google" content="nositelinkssearchbox" key="sitelinks" />
+        <meta name="google" content="notranslate" key="notranslate" />
+        {datas?.productDescription && <meta property="og:description" content={datas?.productDescription} />}
+                        {datas?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${datas?.productThumbImage}`} />}
         <link
           rel="icon"
           type="image/png"
@@ -81,57 +101,57 @@ function LayoutHeader({ setdark, dark, title, children }) {
             <main>{children}</main>
           </div>
           {
-          // title == "Profile" ||
+            // title == "Profile" ||
             title == "Women-login" ||
-            title == "Women-signup" ||
-            title == "Cart" ||
-            title == "Checkout" ||
-            title == "404 NotFound" ||
-            title == "Otp" ||
-            title == "Forgetpassword" ||
-            title == "Change-password" ||
-            title == "Explore" ||
-            title == "Events" ||
-            title == "tracking" ||
-            title == "detail" ||
-            title == "Payment" ||
-            // title == "service-booking" ||
-            title == "passwordcreate" ? (
-            <></>
-          ) : (
-            <>
-              <div className="mb-5">
-                {title == "product-view" ||
-                  title == "Payment" ||
-                  title == "tracking" ||
-                  title == "Payment" ||
-                  // title == "service-booking" ||
-                  title == "tracking" ||
-                  title == "Aboutus"
-                  ?
-                  (
-                    <>
+              title == "Women-signup" ||
+              title == "Cart" ||
+              title == "Checkout" ||
+              title == "404 NotFound" ||
+              title == "Otp" ||
+              title == "Forgetpassword" ||
+              title == "Change-password" ||
+              title == "Explore" ||
+              title == "Events" ||
+              title == "tracking" ||
+              title == "detail" ||
+              title == "Payment" ||
+              // title == "service-booking" ||
+              title == "passwordcreate" ? (
+              <></>
+            ) : (
+              <>
+                <div className="mb-5">
+                  {title == "product-view" ||
+                    title == "Payment" ||
+                    title == "tracking" ||
+                    title == "Payment" ||
+                    // title == "service-booking" ||
+                    title == "tracking" ||
+                    title == "Aboutus"
+                    ?
+                    (
+                      <>
 
 
 
 
-                    </>
-                  ) : (
-                    <Signupnewsletter />
-                  )}
-              </div>
-              <div>
-                <footer>
-                  <Footer />
-                  <Childfooter />
-                </footer>
-              </div>
-            </>
-          )}
+                      </>
+                    ) : (
+                      <Signupnewsletter />
+                    )}
+                </div>
+                <div>
+                  <footer>
+                    <Footer />
+                    <Childfooter />
+                  </footer>
+                </div>
+              </>
+            )}
         </div>
       </div>
 
-   
+
     </>
   );
 }
