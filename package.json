@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@bradgarropy/next-seo": "^1.2.0",
     "@hookform/resolvers": "^2.9.11",
     "@next/font": "13.0.7",
     "@popperjs/core": "^2.11.6",

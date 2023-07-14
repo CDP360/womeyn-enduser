@@ -8,6 +8,7 @@ import Signupnewsletter from "../home/components/signupfornewsletter/Signupnewsl
 import Childfooter from "./../footer/Childfooter";
 import Script from "next/script";
 import { ProductView } from "../../services/productview-service/productview-services";
+import SEO from "@bradgarropy/next-seo"
 function LayoutHeader({ setdark, dark, title, children }) {
 
   const [datas,setDatas]=useState([]);
@@ -24,14 +25,20 @@ function LayoutHeader({ setdark, dark, title, children }) {
     }
  
   }, [title]);
+
+  console.log(datas?.productThumbImage,"productThumbImage")
   return (
     <>
       <Head>
-        <title>{title}</title>
+        {/* <title>{title}</title>
         <meta name="google" content="nositelinkssearchbox" key="sitelinks" />
         <meta name="google" content="notranslate" key="notranslate" />
         {datas?.productDescription && <meta property="og:description" content={datas?.productDescription} />}
-                        {datas?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${datas?.productThumbImage}`} />}
+           
+           {datas?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${datas?.productThumbImage}`} />} */}
+     
+        
+        
         <link
           rel="icon"
           type="image/png"
@@ -98,6 +105,24 @@ function LayoutHeader({ setdark, dark, title, children }) {
             </div>
           </div>
           <div className={styles.insidemainscrollsection}>
+          <SEO
+    title={title}
+    description={title}
+    keywords={["website", "blog", "portfolio"]}
+    icon="/favicon.ico"
+    themeColor="#000000"
+    colorScheme="light"
+    facebook={{
+        image: "/facebook.png",
+        url: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${datas?.productThumbImage}`,
+        type: "website",
+    }}
+    twitter={{
+        image: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${datas?.productThumbImage}`,
+        site: "@bradgarropy",
+        card: "summary",
+    }}
+/>
             <main>{children}</main>
           </div>
           {
