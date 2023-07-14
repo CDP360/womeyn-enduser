@@ -1,4 +1,5 @@
 import Head from "next/head";
+import NextHead from "next/head";
 import React, { useEffect, useState } from "react";
 import Header from "../header/Header";
 import MobileHeader from "../header/Mobileheader/MobileHeader";
@@ -98,15 +99,45 @@ function LayoutHeader({ setdark, dark, title, children }) {
             </div>
           </div>
           <div className={styles.insidemainscrollsection}>
-            <Head>
+            {/* <Head>
               <title>{title}</title>
+              <meta name="robots" content="all" />
+
               <meta name="google" content="nositelinkssearchbox" key="sitelinks" />
               <meta name="google" content="notranslate" key="notranslate" />
               {datas?.productDescription && <meta property="og:description" content={datas?.productDescription} />}
 
               {datas?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${datas?.productThumbImage}`} />}
 
-            </Head>
+            </Head> */}
+            <NextHead>
+              <meta charSet='UTF-8' />
+              <meta name='viewport' content='width=device-width, initial-scale=1' />
+              <meta name='description' content='' />
+              <meta property='og:title' content={`${title}`} />
+              <meta property='og:description' content={datas?.productDescription} />
+              <meta property='og:image' 
+               content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${datas?.productThumbImage}`}
+              />
+              <meta property='og:image:alt' content='' />
+              <meta property='og:locale' content='en_GB' />
+              <meta property='og:type' content='website' />
+              <meta property='og:url' content='https://url.com' />
+              <meta name='twitter:card' content='og.png' />
+              <meta name='theme-color' content='#0099ff' />
+              <link rel='canonical' href='https://url.com' />
+              <link rel='icon' href='/icons/icon.svg' type='image/svg+xml' />
+              <link rel='apple-touch-icon' href='/icons/touch.svg' />
+              <link
+                rel='manifest'
+                crossOrigin='use-credentials'
+                href='/manifest.json'
+              />
+              <title>
+                {title}
+              </title>
+              <meta name='description' content={datas?.productDescription} />
+            </NextHead>
             <main>{children}</main>
           </div>
           {
