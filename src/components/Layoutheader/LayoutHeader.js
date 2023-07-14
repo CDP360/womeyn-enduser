@@ -24,7 +24,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
       })
     }
 
-  }, [title]);
+  }, [title,datas]);
 
   console.log(datas?.productThumbImage, "productThumbImage")
   return (
@@ -113,7 +113,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
             <NextHead>
               <meta charSet='UTF-8' />
               <meta name='viewport' content='width=device-width, initial-scale=1' />
-              <meta name='description' content='' />
+              <meta name='description' content={title} />
               <meta property='og:title' content={`${title}`} />
               <meta property='og:description' content={datas?.productDescription} />
               <meta property='og:image' 
