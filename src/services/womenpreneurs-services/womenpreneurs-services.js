@@ -124,8 +124,7 @@ export function WomenpreneursCategorylistStore(data) {
     // });
 
 
-    if(data)
-    {
+    if (data) {
         return new Promise((resolve, reject) => {
             instanceBaseurl.get(`/common/womenpreneurs/categories/${data}`).then(response => {
                 resolve(response)
@@ -134,37 +133,34 @@ export function WomenpreneursCategorylistStore(data) {
             })
         })
     }
-    else
-
-    {
+    else {
         return null;
     }
 
-    
+
 }
 
-export function WomenpreneursCategoryproducts(sellerid, categoryid) {
+export function WomenpreneursCategoryproducts(sellerid, categoryid, current) {
     // return instanceBaseurl.get(`/common/products/${sellerid}/${categoryid}`).then((res) => {
     //     return res
     // }).catch((err) => {
     //     return err;
     // });
 
-    if(sellerid || categoryid)
-    {
+    if (sellerid || categoryid) {
         return new Promise((resolve, reject) => {
-            instanceBaseurl.get(`/common/products/${sellerid}/${categoryid}`).then(response => {
+            instanceBaseurl.get(`/common/products/${sellerid}/${categoryid}?limit=10&page=${current}`).then(response => {
                 resolve(response)
             }).catch(err => {
                 reject(err)
             })
         })
     }
-    else{
+    else {
         return null;
     }
 
-    
+
 }
 
 

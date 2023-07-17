@@ -7,7 +7,7 @@ import serachicon from '../../../assests/homepage-logos/serachicon.png';
 import { useRouter } from 'next/router';
 import girl from '../../../assests/womeynlogos/girl4.png';
 import Womencarouselbanner from './component/womenprebannerimages/Womencarouselbanner';
-import { WomenpreneursCommoncategories, WomenpreneursSellers,WomenpreneursSellerspagintaion } from '../../../services/womenpreneurs-services/womenpreneurs-services';
+import { WomenpreneursCommoncategories, WomenpreneursSellers, WomenpreneursSellerspagintaion } from '../../../services/womenpreneurs-services/womenpreneurs-services';
 import users from '../../../assests/homepage-logos/usersimageprofile.png';
 import Select from 'react-select';
 import { WomenpreneursFilter, WomenpreneursSearch } from './../../../services/womenpreneurs-services/womenpreneurs-services';
@@ -100,8 +100,7 @@ function Womenpreneurs() {
     }
     const GetSearchdata = () => {
         setLoading(true);
-        if(searchname)
-        {
+        if (searchname) {
             WomenpreneursSearch(searchname).then((res) => {
                 setDataseller(res?.data?.results);
                 setPagecount(res?.data?.totalResults)
@@ -113,9 +112,9 @@ function Womenpreneurs() {
                 console.log(err);
             })
         }
-        
+
     }
-   
+
 
     const fetchComments = async (current) => {
         const res = await WomenpreneursSellerspagintaion(current);
@@ -191,74 +190,74 @@ function Womenpreneurs() {
 
                             {dataseller?.length === 0 && null}
                             <div>
-                              
 
-                                    <div className='cardsections row   w-100 mt-5 mb-3 ms-1'>
+
+                                <div className='cardsections row   w-100 mt-5 mb-3 ms-1'>
+                                    <div>
+                                        {dataseller.length === 0 && <div>No Data Found!!!!</div>}
+                                    </div>
+                                    {loadingset ? <>
                                         <div>
-                                            {dataseller.length === 0 && <div>No Data Found!!!!</div>}
+                                            <LoaderLogo />
                                         </div>
-                                        {loadingset ? <>
-                                            <div>
-                                                <LoaderLogo />
-                                            </div>
-                                        </> : dataseller?.map((item, index) => {
-                                            return (
-                                                <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
-                                                    <div className={styles.sellerimagebox}>
-                                                        <div className={styles.insidebox}>
-                                                            {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                                                <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
-                                                            </>}
-                                                        </div>
+                                    </> : dataseller?.map((item, index) => {
+                                        return (
+                                            <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
+                                                <div className={styles.sellerimagebox}>
+                                                    <div className={styles.insidebox}>
+                                                        {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                                            <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
+                                                        </>}
                                                     </div>
-                                                    <div className='womentitle'>
-                                                        {item?.firstName}
-                                                    </div>
-                                                    <div className='womendescription'>
-                                                        {item?.businessSlugName}
-
-                                                    </div>
-                                                  
+                                                </div>
+                                                <div className='womentitle'>
+                                                    {item?.firstName}
+                                                </div>
+                                                <div className='womendescription'>
+                                                    {item?.businessSlugName}
 
                                                 </div>
-                                            )
-                                        })}
-                                    </div>
-                              
+
+
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+
 
 
                                 <div>
-                                    {pagecount===0?null:<>
-                                    
+                                    {pagecount === 0 ? null : <>
+
                                         <div className="mt-3">
-                                        <hr />
-                                    </div>
-                                    <div>
-                                        Page {pagecountnumbers} / {pagecount}
-                                    </div>
+                                            <hr />
+                                        </div>
+                                        <div>
+                                            Page {pagecountnumbers} / {pagecount}
+                                        </div>
 
-                                    <div className="mt-3">
+                                        <div className="mt-3">
 
-                                        <ReactPaginate
-                                            activeClassName={'actives '}
-                                            breakClassName={'item break-me '}
-                                            breakLabel={'...'}
-                                            containerClassName={'pagination'}
-                                            disabledClassName={'disabled-page'}
-                                            marginPagesDisplayed={2}
-                                            nextClassName={"item next "}
-                                           
-        nextLabel={Math.ceil(pagecount / 12)===pagecountnumbers?null:"NEXT"}
+                                            <ReactPaginate
+                                                activeClassName={'actives '}
+                                                breakClassName={'item break-me '}
+                                                breakLabel={'...'}
+                                                containerClassName={'pagination'}
+                                                disabledClassName={'disabled-page'}
+                                                marginPagesDisplayed={2}
+                                                nextClassName={"item next "}
 
-                                            onPageChange={handlePageClick}
-                                            pageCount={pagecount / 12}
-                                            pageClassName={'item pagination-page '}
-                                            pageRangeDisplayed={2}
-                                            previousClassName={"item previous"}
-                                            // previousLabel={"PREVIOUS"}
-                                            previousLabel={pagecountnumbers > 1 ? "PREVIOUS" : null}
-                                        />
-                                    </div>
+                                                nextLabel={Math.ceil(pagecount / 12) === pagecountnumbers ? null : "NEXT"}
+
+                                                onPageChange={handlePageClick}
+                                                pageCount={pagecount / 12}
+                                                pageClassName={'item pagination-page '}
+                                                pageRangeDisplayed={2}
+                                                previousClassName={"item previous"}
+                                                // previousLabel={"PREVIOUS"}
+                                                previousLabel={pagecountnumbers > 1 ? "PREVIOUS" : null}
+                                            />
+                                        </div>
                                     </>}
 
                                 </div>

@@ -212,22 +212,27 @@ function ContactForm() {
           </div>
           <div>
             <div className={styles.checkboxs}>
-              <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <input
-                  type='checkbox'
+              <Form.Group className="mb-3" >
+              <div className="d-flex gap-1 align-items-center">
+              <input
+                  class="form-check-input mt-0" type="checkbox" 
 
-                  className={styles.checkboxtext}
+              
 
                   onChange={handleVlaues}
 
                   value="Products"
 
                 />    <span className="ms-2">Products</span>
+              </div>
+               
 
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <input
-                  type='checkbox'
+              <Form.Group className="mb-3" controlId="">
+              <div className="d-flex gap-1 align-items-center">
+
+              <input
+                 class="form-check-input mt-0" type="checkbox" 
 
                   className={styles.checkboxtext}
 
@@ -235,9 +240,16 @@ function ContactForm() {
                   value="Services"
 
                 />     <span className="ms-2">Services</span>
+              </div>
+             
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <input
+              <Form.Group className="mb-3" >
+              <div className="d-flex gap-1 align-items-center">
+              <input class="form-check-input mt-0" type="checkbox" 
+              onChange={handleVlaues}
+              value="Partnership / Collaboration"
+              aria-label="Checkbox for following text input"/>
+              {/* <input
                   type='checkbox'
 
                   className={styles.checkboxtext}
@@ -247,8 +259,10 @@ function ContactForm() {
 
                   value="Partnership / Collaboration"
 
-                />
+                /> */}
                 <span className="ms-2">Partnership / Collaboration</span>
+              </div>
+               
               </Form.Group>
 
 
@@ -256,43 +270,54 @@ function ContactForm() {
 
             <div className={styles.checkboxs}>
 
-
-              <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <input
+           
+              <Form.Group className="mb-3" controlId="">
+                <div className="d-flex gap-1 align-items-center">
+                <input class="form-check-input mt-0" type="checkbox" 
+                value="Volunteers"
+                onChange={handleVlaues}
+              aria-label="Checkbox for following text input"/>
+                {/* <input
                   type='checkbox'
 
                   className={styles.checkboxtext}
-
-                  value="Volunteers"
+  value="Volunteers"
                   onChange={handleVlaues}
+                
 
-                />
+                /> */}
                 <span className="ms-2">Volunteers</span>
+
+                </div>
+              
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <input
-                  type='checkbox'
+              <Form.Group className="mb-3">
+              <div className="d-flex gap-1 align-items-center">
 
-                  className={styles.checkboxtext}
-
+              <input
+                 class="form-check-input mt-0" type="checkbox"
                   value="Trainees"
                   onChange={handleVlaues}
 
                 />
                 <span className="ms-2">Trainees</span>
+              </div>
+               
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <input
-                  type='checkbox'
+              <Form.Group className="mb-3" controlId="">
+              <div className="d-flex gap-1 align-items-center">
 
-                  className={styles.checkboxtext}
+              <input
+                  class="form-check-input mt-0" type="checkbox"
 
                   value="Others"
                   onChange={handleVlaues}
 
                 />
                 <span className="ms-2">Others</span>
+              </div>
+                
               </Form.Group>
             </div>
           </div>

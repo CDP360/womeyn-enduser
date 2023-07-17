@@ -12,7 +12,7 @@ import { StoreProviderContext } from '../src/Redux/store/Contextstore';
 import LoaderLogo from '../src/components/loaderlogo/LoaderLogo';
 import Errorboundary from '../src/components/errorboundary/Errorboundary';
 import { useRouter } from 'next/router';
-import TagManager from 'react-gtm-module';
+// import TagManager from 'react-gtm-module';
 function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
 
@@ -35,7 +35,7 @@ function App({ Component, pageProps }) {
   }
 
   useEffect(() => {
-    TagManager.initialize({ gtmId: 'GTM-WTPC2H3' });
+    // TagManager.initialize({ gtmId: 'GTM-WTPC2H3' });
 
     const intervals = setInterval(() => {
       Checkforinactive();
