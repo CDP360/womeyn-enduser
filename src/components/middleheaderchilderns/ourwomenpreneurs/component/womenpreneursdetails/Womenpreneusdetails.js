@@ -6,6 +6,7 @@ import logowomen from '../../../../../assests/homepage-logos/Mobileviewlogoshort
 import Image from 'next/image';
 import girl1 from '../../../../../assests/womeynlogos/womenlogo.png';
 import Beverage from '../beverages/Beverage';
+import { toast } from 'react-toastify';
 
 import Servicescardslist from '../services_cards_list/Servicescardslist'
 import Superfoods from '../superfoods/Superfoods';
@@ -56,7 +57,12 @@ function Womenpreneusdetails({ id }) {
     }, [indexs, id, sellers?.id, , current]);
     useEffect(() => {
         setLoading(true);
-        if (sellers?.id || singlecategory) {
+        if(singlecategoryproduct)
+        {
+        }
+        else
+        {
+             if (sellers?.id || singlecategory) {
             WomenpreneursCategoryproducts(sellers?.id, singlecategory).then((res) => {
                 setProductList(res?.data?.results);
                 setLimit(res?.data)
@@ -68,8 +74,10 @@ function Womenpreneusdetails({ id }) {
             })
         }
 
+        }
+       
 
-    }, [id, sellers?.id, singlecategory,pagecountnumbers,singlecategoryproduct])
+    }, [id, sellers?.id, singlecategory,singlecategoryproduct])
 
 
     const GetSellerDetails = () => {
@@ -243,11 +251,8 @@ function Womenpreneusdetails({ id }) {
 
 
     useEffect(() => {
-
         setServiceslistloading(true)
         let isCancelled = true;
-
-
         if (sellers?.id) {
             if (isCancelled) {
                 WomeynpreServiceList(sellers?.id).then((res) => {
