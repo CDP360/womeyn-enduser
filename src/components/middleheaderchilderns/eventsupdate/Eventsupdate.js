@@ -13,6 +13,7 @@ import SlideNextArrow from './../../home/slidenextarrow/SlideNextArrow';
 import SlidePreArrow from './../../home/slideprearrow/SlidePreArrow';
 import moment from 'moment';
 import ReactPaginate from 'react-paginate';
+import LoaderLogo from './../../loaderlogo/LoaderLogo';
 
 function Eventsupdate() {
 
@@ -283,7 +284,9 @@ function Eventsupdate() {
                                 </div>
 
 
-                                {loadinds ? <>Loading...</> : <>
+                                {loadinds ? <>
+                                    <LoaderLogo />
+                                </> : <>
 
                                     {indexs === 1 && <>
 

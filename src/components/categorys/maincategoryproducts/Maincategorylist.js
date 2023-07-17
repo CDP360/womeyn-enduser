@@ -18,7 +18,11 @@ import { Nodatafoundimage } from './../../nodatafoundimage/Nodatafound';
 import ReactPaginate from 'react-paginate';
 
 
-function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterproducts, setLoadingproduct, loadingproduct, setProductgetloading }) {
+function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterproducts, setLoadingproduct,
+    loadingproduct, setProductgetloading,
+    setPagecount, pagecount,
+    pagecountnumbers, setPagecountNumbers
+}) {
     const [product, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [perPage, setPerPage] = useState(10);
@@ -27,8 +31,8 @@ function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterprod
     const [limit, seLimit] = useState([]);
     const [current, setCurrent] = useState(1);
 
-    const [pagecount,setPagecount]=useState("");
-    const [pagecountnumbers,setPagecountNumbers]=useState(1);
+    // const [pagecount, setPagecount] = useState("");
+    // const [pagecountnumbers, setPagecountNumbers] = useState(1);
     const [showTopBtn, setShowTopBtn] = useState(false);
 
 
@@ -41,7 +45,7 @@ function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterprod
         ProductCatgorylist(name).then((res) => {
             seLimit(res?.data);
             setFilterproducts(res?.data?.results);
-      setPagecount(res?.data?.totalResults)
+            setPagecount(res?.data?.totalResults)
             setTimeout(() => {
                 setLoadingproduct(false);
             }, 300)
@@ -78,26 +82,26 @@ function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterprod
     // }
 
 
-    const fetchComments = async (name,current) => {
-        const res = await ProductCatgorylist(name,current);
+    const fetchComments = async (name, current) => {
+        const res = await ProductCatgorylist(name, current);
         return res?.data?.results;
-      }
+    }
 
 
-   
-    
-      const handlePageClick = async (data) => {
+
+
+    const handlePageClick = async (data) => {
         let current = data?.selected + 1;
         setPagecountNumbers(current);
-        const commentForms = await fetchComments(name,current);
+        const commentForms = await fetchComments(name, current);
         setFilterproducts(commentForms);
         goToTop()
- 
-
-      }
 
 
-      useEffect(() => {
+    }
+
+
+    useEffect(() => {
         window.addEventListener("scroll", () => {
             if (window.scrollY > 200) {
                 setShowTopBtn(true);
@@ -108,8 +112,8 @@ function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterprod
     }, []);
 
 
-      const goToTop = () => {
-        window.scrollTo({   
+    const goToTop = () => {
+        window.scrollTo({
             top: 200,
             behavior: "smooth",
         });
@@ -154,48 +158,48 @@ function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterprod
                     breakLabel="..."
                 />
             </div>} */
-            
+
             }
 
 
-{pagecount===0 ?null:<>
-    <div className="mt-3">
-    <hr/>
-</div>
-<div>
-   Page {pagecountnumbers} / {pagecount}
-</div>
+            {pagecount === 0 ? null : <>
+                <div className="mt-3">
+                    <hr />
+                </div>
+                <div>
+                    Page {pagecountnumbers} / {pagecount}
+                </div>
 
-                    <div className="mt-3">
-                               
-<ReactPaginate
-      activeClassName={'actives '}
-        breakClassName={'item break-me '}
-        breakLabel={'...'}
-        containerClassName={'pagination'}
-        disabledClassName={'disabled-page'}
-        marginPagesDisplayed={2}
-        nextClassName={"item next "}
-       
-        nextLabel={Math.ceil(pagecount / 12)===pagecountnumbers?null:"NEXT"}
+                <div className="mt-3">
 
-        onPageChange={handlePageClick}
-        pageCount={pagecount/12}
-        pageClassName={'item pagination-page '}
-        pageRangeDisplayed={2}
-        previousClassName={"item previous"}
-        // previousLabel={"PREVIOUS"}
-        previousLabel={pagecountnumbers>1?"PREVIOUS":null}
+                    <ReactPaginate
+                        activeClassName={'actives '}
+                        breakClassName={'item break-me '}
+                        breakLabel={'...'}
+                        containerClassName={'pagination'}
+                        disabledClassName={'disabled-page'}
+                        marginPagesDisplayed={2}
+                        nextClassName={"item next "}
+
+                        nextLabel={Math.ceil(pagecount / 12) === pagecountnumbers ? null : "NEXT"}
+
+                        onPageChange={handlePageClick}
+                        pageCount={pagecount / 12}
+                        pageClassName={'item pagination-page '}
+                        pageRangeDisplayed={2}
+                        previousClassName={"item previous"}
+                        // previousLabel={"PREVIOUS"}
+                        previousLabel={pagecountnumbers > 1 ? "PREVIOUS" : null}
 
 
-      
-   
-      />
-                            </div>
-</>}
-          
 
-{/* <div className="mt-3">
+
+                    />
+                </div>
+            </>}
+
+
+            {/* <div className="mt-3">
     <hr/>
 </div>
 <div>
@@ -228,7 +232,7 @@ function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterprod
       />
                             </div> */}
 
-            
+
         </div>
     )
 }

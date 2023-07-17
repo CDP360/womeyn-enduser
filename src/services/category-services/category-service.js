@@ -100,7 +100,7 @@ export function SearchProductUser(data,current) {
    
 }
 
-export function CategoryproductFilter(data) {
+export function CategoryproductFilter(data,current) {
     // return instanceBaseurl.get(`/common/search/products?search=${data}`).then((res) => {
     //     return res;
     // }).catch((err) => {
@@ -109,7 +109,7 @@ export function CategoryproductFilter(data) {
     // })
 
     return new Promise((resolve, reject) => {
-        instanceBaseurl.post(`/common/filter/products`,data).then(response => {
+        instanceBaseurl.post(`/common/filter/products?limit=12&page=${current}`,data).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)

@@ -9,7 +9,7 @@ import { CategoryproductFilter } from './../../../services/category-services/cat
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-function Sidebarcateogrys({ setFilterproducts, setLoadingproduct, setProductgetloading }) {
+function Sidebarcateogrys({ setFilterproducts, setLoadingproduct, setProductgetloading,setPagecount ,pagecountnumbers}) {
   const [dropdown1, setDropdown1] = useState(true);
   const [dropdown2, setDropdown2] = useState(true);
   const [dropdown3, setDropdown3] = useState(true);
@@ -54,9 +54,10 @@ function Sidebarcateogrys({ setFilterproducts, setLoadingproduct, setProductgetl
         priceFrom: price1,
         priceTo: price2
       }
-      CategoryproductFilter(datas).then((res) => {
+      CategoryproductFilter(datas,pagecountnumbers).then((res) => {
         setFilterproducts(res?.data?.results);
         setProductgetloading(true); 
+        setPagecount(res?.data?.totalResults)
         setTimeout(() => {
           setLoadingproduct(false);
           setProductgetloading(false);
@@ -66,7 +67,7 @@ function Sidebarcateogrys({ setFilterproducts, setLoadingproduct, setProductgetl
         setLoadingproduct(false);
       })
     }
-  }, [categoryfilter, filterproductprice1, filterproductprice2]);
+  }, [categoryfilter, filterproductprice1, filterproductprice2,pagecountnumbers]);
 
   const ClearFiltersall = () => {
     setLoadingproduct(true);

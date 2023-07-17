@@ -8,10 +8,12 @@ function Categorys({ id }) {
   const [selectname, selectedOption] = useState(null);
   const [searchname, setSearchName] = useState('');
   const [searchnamevalue, setSearchNameValue] = useState('');
-  const [filterproducts,setFilterproducts]=useState([]);
-  const [loadingproduct,setLoadingproduct]=useState(false);
-  const [productgetloading,setProductgetloading]=useState(false);
+  const [filterproducts, setFilterproducts] = useState([]);
+  const [loadingproduct, setLoadingproduct] = useState(false);
+  const [productgetloading, setProductgetloading] = useState(false);
   const values = id;
+  const [pagecount, setPagecount] = useState("");
+  const [pagecountnumbers, setPagecountNumbers] = useState(1);
   useEffect(() => {
   }, [values])
   const options = [
@@ -32,26 +34,28 @@ function Categorys({ id }) {
   }
 
   useEffect(() => {
-  }, [searchname, searchnamevalue,filterproducts,productgetloading])
+  }, [searchname, searchnamevalue, filterproducts, productgetloading])
 
+
+  console.log(filterproducts,"setFilterproducts")
   return (
     <Fragment>
       <div className="mainsection">
         <div className="insidesection">
-        <div className={styles.maincategorysection}>
-        <div className={styles.emptyboxleft}>
-        </div>
-        <div className={styles.emptyboxright}>
-        </div>
-        <div className={styles.insidecategorysection}>
-          <div className='mb-3 mt-2'>
-            Categorys / health
-          </div>
-         
-          <div>
-            <Categorycarouse />
-          </div>
-          {/* <div className={styles.mainselectbox}>
+          <div className={styles.maincategorysection}>
+            <div className={styles.emptyboxleft}>
+            </div>
+            <div className={styles.emptyboxright}>
+            </div>
+            <div className={styles.insidecategorysection}>
+              <div className='mb-3 mt-2'>
+                Categorys / health
+              </div>
+
+              <div>
+                <Categorycarouse />
+              </div>
+              {/* <div className={styles.mainselectbox}>
             <div className={styles.selectboxfilter}>
               <div>
                 <div className={styles.serachwomenpresection}>
@@ -73,21 +77,31 @@ function Categorys({ id }) {
               </div>
             </div>
           </div> */}
-          <div className={styles.splitcategorysection}>
-            <div className={styles.leftcatgory}>
-              <Sidebarcateogrys setFilterproducts={setFilterproducts} setLoadingproduct={setLoadingproduct} setProductgetloading={setProductgetloading}/>
+              <div className={styles.splitcategorysection}>
+                <div className={styles.leftcatgory}>
+                  <Sidebarcateogrys setFilterproducts={setFilterproducts}
+                   setLoadingproduct={setLoadingproduct} setProductgetloading={setProductgetloading}
+                   setPagecount={setPagecount}
+                   pagecountnumbers={pagecountnumbers}
+                   />
+                </div>
+                <div className={styles.rightcategory}>
+                  <Maincategorylist name={values} searchnamevalue={searchnamevalue} filterproducts={filterproducts} setFilterproducts={setFilterproducts} setLoadingproduct={setLoadingproduct} loadingproduct={loadingproduct}
+                    setProductgetloading={setProductgetloading}
+                    setPagecount={setPagecount}
+                    pagecount={pagecount}
+                    setPagecountNumbers={setPagecountNumbers}
+                    pagecountnumbers={pagecountnumbers}
+                  />
+                </div>
+             
+              </div>
             </div>
-            <div className={styles.rightcategory}>
-              <Maincategorylist name={values} searchnamevalue={searchnamevalue} filterproducts={filterproducts} setFilterproducts={setFilterproducts} setLoadingproduct={setLoadingproduct} loadingproduct={loadingproduct}
-              setProductgetloading={setProductgetloading}
-              />
-            </div>
-          </div>  
+
+          </div>
         </div>
       </div>
-        </div>
-      </div>
-     
+
     </Fragment>
   )
 }
