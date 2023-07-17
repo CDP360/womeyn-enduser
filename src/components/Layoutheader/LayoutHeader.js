@@ -32,7 +32,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
       <Head>
 
 
-
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link
           rel="icon"
           type="image/png"
@@ -110,7 +110,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
               {datas?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${datas?.productThumbImage}`} />}
 
             </Head> */}
-            <NextHead>
+            {/* <NextHead>
               <meta charSet='UTF-8' />
               <meta name='viewport' content='width=device-width, initial-scale=1' />
               <meta name='description' content={title} />
@@ -137,7 +137,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
                 {title}
               </title>
               <meta name='description' content={datas?.productDescription} />
-            </NextHead>
+            </NextHead> */}
             <main>{children}</main>
           </div>
           {

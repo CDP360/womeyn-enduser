@@ -21,9 +21,12 @@ import ImageViewModal from './imageviewmodel/ImageViewModal';
 import { NextSeo } from 'next-seo';
 
 function Viewproducts({ id }) {
+
+
+
     const [googleplaces, setGooglePlaces] = useState("");
     const history = useRouter();
-    const [errors, setError] = useState(false);
+    const [errors, setError] = useState(false); 
     const [productnotfound, setProductNotfound] = useState(false);
     const [starcount, setStarCount] = useState(null);
     const [ratingcount, setRatingcount] = useState("");
@@ -967,16 +970,14 @@ function Viewproducts({ id }) {
                 </>} */}
 
 
-                {/* <NextSeo
-                    title="Womeyn Home"
+                <NextSeo
+                    title={productdata?.productName}
                     //   description="This is a demo description"
                     description={productdata?.productDescription}
                     canonical="https://www.example.com"
                     openGraph={{
                         url: 'https://www.example.com',
-
                         title: `${productdata?.productName}`,
-
                         description: `${productdata?.productDescription}`,
                         images: [
                             {
@@ -1003,7 +1004,7 @@ function Viewproducts({ id }) {
                         site: '@site',
                         cardType: 'summary_large_image',
                     }}
-                /> */}
+                />
 
             </>
 
@@ -1314,7 +1315,7 @@ function Viewproducts({ id }) {
                                             </div>
                                         </div> : <></>}
                                     </div>
-                                    {productdata?.stateId == 1 && productdata?.quantityLeft > 0 && productseller?.isActive==true ?
+                                    {productdata?.stateId == 1 && productdata?.quantityLeft > 0 && productseller?.isActive == true ?
                                         <>
                                             <div className={styles.buttons}>
                                                 <div>
@@ -1451,6 +1452,10 @@ function Viewproducts({ id }) {
 // }
 
 // export default Viewproducts;
+
+
+
+
 
 export default dynamic(() => Promise.resolve(Viewproducts), { ssr: false });
 

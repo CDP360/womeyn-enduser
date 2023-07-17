@@ -61,8 +61,10 @@ axios.interceptors.response.use(
         return response;
     },
     async function (error) {
-        // if (error.response.status == 401) {
+    
+        // if (error.response.status === 401) {
         // await logout();
+        // localStorage.clear()
         // localStorage.removeItem("userid");
         // localStorage.removeItem("userToken");
         // localStorage.removeItem("userTokens");
