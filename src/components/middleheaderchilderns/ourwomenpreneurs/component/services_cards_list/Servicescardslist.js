@@ -38,9 +38,10 @@ function Servicescardslist({ serviceslist, loading, sellers }) {
                         </div>}
                 </div>
                 <div className='cardsection row mb-3 ms-1'>
-                    {loading ? <>
+                    {/* {loading ? <>
                         <LoaderLogo />
-                    </> : <>{serviceslist?.map((item, index) => {
+                    </> : <> */}
+                    {serviceslist?.map((item, index) => {
                         return (
                             <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 ' key={index} >
                                 {/* <div className={styles.plussection}>
@@ -84,7 +85,8 @@ function Servicescardslist({ serviceslist, loading, sellers }) {
                                 </div>
                             </div>
                         )
-                    })}</>}
+                    })}
+                    {/* </>} */}
                 </div>
 
 

@@ -969,6 +969,8 @@ function Viewproducts({ id }) {
                 </> : <>
                 </>} */}
 
+                
+
 
                 <NextSeo
                     title={productdata?.productName}
@@ -1018,7 +1020,7 @@ function Viewproducts({ id }) {
                                     <div className={styles.leftmainsectionslide}>
                                         <div className={styles.leftcardimages}>
 
-                                            <ImageViewModal imagemodel={imagemodel} handleImageClose={handleImageClose} productimages={productimages} />
+                                            <ImageViewModal imagemodel={imagemodel} handleImageClose={handleImageClose} productimages={productimages} id={id}/>
                                             <div className={styles.imagerowsection}>
                                                 {productimages?.map((item, index) => {
                                                     return (
@@ -1190,11 +1192,11 @@ function Viewproducts({ id }) {
 
                                             </> : <>
 
-                                                {<Rate defaultValue={0} allowHalf style={{ color: "#54BE43" }}
+                                                {averageRatings?<Rate defaultValue={0} allowHalf style={{ color: "#54BE43" }}
                                                     tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
                                                     count={5}
                                                     disabled
-                                                />}
+                                                />:null}
 
 
 
@@ -1205,7 +1207,7 @@ function Viewproducts({ id }) {
 
                                         </div>
                                         <div>
-                                            {ratingcount} Review
+                                          {averageRatings?<>{ratingcount} Review</>:null}
                                         </div>
                                     </div>
 

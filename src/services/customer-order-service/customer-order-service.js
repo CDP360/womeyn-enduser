@@ -23,7 +23,7 @@ export function GetOrders() {
     // })
 
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/customer/order?sortBy=updatedAt:desc&limit=5`).then(response => {
+        instanceBaseurl.get(`/customer/order`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)

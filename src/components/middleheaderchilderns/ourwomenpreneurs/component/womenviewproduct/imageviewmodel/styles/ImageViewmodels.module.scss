@@ -118,6 +118,7 @@
   align-items: center;
   justify-content: center;
   position:relative;
+  padding-top:3%;
   .leftimageArrowSlide
   {
     position:absolute;
@@ -175,3 +176,12 @@
 }
 
 
+
+.textscolor
+{
+  color:#E95A5A;
+  font-size:1.3rem;
+  padding-left:3%;
+  width:80%;
+  word-break: break-all;
+}

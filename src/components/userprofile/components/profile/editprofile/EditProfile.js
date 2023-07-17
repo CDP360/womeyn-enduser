@@ -130,9 +130,10 @@ function EditProfile({ users, error }) {
     
                                 <select
                                     className='form-control-profiles'
-                                    id="selectmethod"
+                                    // id="selectmethod"
                                     defaultValue=""
                                     name="gender"
+                                    id="selectform"
                                     {...register("gender", { required: "Please enter gender", })}
                                 >
                                     <option value="female">Female</option>

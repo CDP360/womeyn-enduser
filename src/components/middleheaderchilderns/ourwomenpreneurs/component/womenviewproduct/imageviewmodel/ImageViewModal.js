@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Modal from 'react-bootstrap/Modal';
 import styles from './styles/ImageViewmodels.module.scss';
-function ImageViewModal({ imagemodel, handleImageClose, productimages }) {
+function ImageViewModal({ imagemodel, handleImageClose, productimages,id }) {
 
     const [indexs, setIndex] = useState(0);
 
@@ -19,15 +19,20 @@ function ImageViewModal({ imagemodel, handleImageClose, productimages }) {
                 onHide={handleImageClose}
                 backdrop="static"
                 keyboard={false}
-                size="lg"
+                size="xl"
                 centered
             >
 
                 <Modal.Body>
 
-                    <div className={"d-flex justify-content-end"} style={{ cursor: "pointer" }} onClick={handleImageClose}>
+                <div className={"d-flex justify-content-end"} style={{ cursor: "pointer" }} onClick={handleImageClose}>
                         <ion-icon name="close-outline" size="large"></ion-icon>
                     </div>
+                    <div className="mt-3 mb-5" className={styles.textscolor}>
+{id}
+                    </div>
+
+                  
 
                     <div className={styles.imageboxmodel}>
                         <div className={styles.leftimageArrowSlide}>

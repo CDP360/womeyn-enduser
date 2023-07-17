@@ -95,7 +95,7 @@ function Womencarouselbanner() {
                             {ImageSellers?.map((item, index) => {
                                 return (
                                     <div key={index}>
-                                        {item.image ? <img src={item?.image?.src} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
+                                        {item.image ? <img src={item?.image?.src} alt="no image" className={"allbanners"} onClick={() => MovePageData(item.redirectUrl)} /> : <>
                                             <Skeleton className={styles.homebanner} />
                                         </>}
                                     </div>
@@ -109,7 +109,7 @@ function Womencarouselbanner() {
                             return (
                                 <div>
                                     {item?.imageName?<>
-                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.sliderimage} onClick={() => MovePageData(item.redirectUrl)} />
+                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={"allbanners"} onClick={() => MovePageData(item.redirectUrl)} />
                                     
                                     </>:<>
                                     <Skeleton className={styles.homebanner} />

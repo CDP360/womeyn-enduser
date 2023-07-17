@@ -269,11 +269,11 @@ function ProductCategorys() {
                                                     }
                                                 </div>
                                                 <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
-                                                    <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
+                                                    {item?.quantityLeft?<Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
                                                         tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
                                                         disabled
 
-                                                    />
+                                                    />:null}
 
                                                     <div className={styles.brandname}>
                                                         {item?.productName?.length <= 10 ? <>{item?.productName}</> : <>    {item?.productName.slice(0, 18)}...</>}
@@ -322,11 +322,11 @@ function ProductCategorys() {
                                                     }
                                                 </div>
                                                 <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
-                                                    <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
+                                                    {item?.quantityLeft?<Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
                                                         tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
                                                         disabled
 
-                                                    />
+                                                    />:null}
 
                                                     <div className={styles.brandname}>
                                                         {item?.productName?.length <= 10 ? <>{item?.productName}</> : <>    {item?.productName.slice(0, 18)}...</>}
