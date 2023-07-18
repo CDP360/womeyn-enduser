@@ -2,9 +2,6 @@
 import instanceBaseurl from "../../config/Baseurl";
 
 export function Bannerimage() {
-
-
-
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/common/home-placements`).then(response => {
             resolve(response)
@@ -14,9 +11,6 @@ export function Bannerimage() {
     })
 }
 export function Topwomenprenuers() {
-    // return instanceBaseurl.get("/common/top-womenprenuers").then((res) => {
-    //     return res
-    // }).catch((err) => { return err });
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/common/top-womenprenuers`).then(response => {
@@ -28,9 +22,6 @@ export function Topwomenprenuers() {
 }
 
 export function TopProductCategories() {
-    // return instanceBaseurl.get("/common/top-product-categories").then((res) => {
-    //     return res
-    // }).catch((err) => { return err });
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/common/top-product-categories`).then(response => {
@@ -42,9 +33,7 @@ export function TopProductCategories() {
 }
 
 export function TopProducts() {
-    // return instanceBaseurl.get("/common/top-products").then((res) => {
-    //     return res
-    // }).catch((err) => { return err });
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/common/top-products`).then(response => {
@@ -56,9 +45,6 @@ export function TopProducts() {
 }
 
 export function TopServices() {
-    // return instanceBaseurl.get("/common/top-services").then((res) => {
-    //     return res
-    // }).catch((err) => { return err });
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/common/top-services`).then(response => {

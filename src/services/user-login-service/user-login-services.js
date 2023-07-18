@@ -3,12 +3,7 @@ import instanceBaseurl from './../../config/Baseurl';
 
 
 export function Userlogin(data) {
-    // return instanceBaseurl
-    //     .post(`/auth/customer/login`, data)
-    //     .then((res) => {
-    //         return res;
-    //     })
-    //     .catch((err) => console.log(err));
+
 
 
     return new Promise((resolve, reject) => {
@@ -20,12 +15,7 @@ export function Userlogin(data) {
     })
 }
 export function userSignup(data) {
-    // return instanceBaseurl.post(`/auth/customer/register`, data);
-    // .then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //    console.log(err)
-    // })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.post(`/auth/customer/register`, data).then(response => {
@@ -37,12 +27,7 @@ export function userSignup(data) {
 }
 
 export function OTPSend(data) {
-    // return instanceBaseurl.post(`/auth/customer/verify-otp`, data)
-    //     .then((res) => {
-    //         return res
-    //     }).catch((err) => {
-    //         console.log(err)
-    //     })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.post(`/auth/customer/verify-otp`, data).then(response => {
@@ -53,12 +38,7 @@ export function OTPSend(data) {
     })
 }
 export function OTPResend(data) {
-    // return instanceBaseurl.post(`/auth/customer/resend-otp`, data)
-    //     .then((res) => {
-    //         return res
-    //     }).catch((err) => {
-    //         return err;
-    //     })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.post(`/auth/customer/resend-otp`, data).then(response => {
@@ -69,12 +49,7 @@ export function OTPResend(data) {
     })
 }
 export function CreateProfileuser(data) {
-    // return instanceBaseurl.post(`/customer/update-profile`, data)
-    //     .then((res) => {
-    //         return res
-    //     }).catch((err) => {
-    //         return err;
-    //     })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.post(`/customer/update-profile`, data).then(response => {
@@ -94,11 +69,7 @@ export function GoogleOauth() {
     })
 }
 export function OauthSuccess() {
-    // return instanceBaseurl.get('/customer/oauth/success').then(res => {
-    //     return res;
-    // }).catch(err => {
-    //     return err;
-    // })
+
 
 
     return new Promise((resolve, reject) => {
@@ -110,11 +81,7 @@ export function OauthSuccess() {
     })
 }
 export function UserProfileImageupload(userid, data) {
-    // return instanceBaseurl.post(`/customer/update-photo/${userid}`, data).then((res) => {
-    //     return res;
-    // }).catch((err) => {
-    //     return err?.response?.data?.message
-    // })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.post(`/customer/update-photo/${userid}`, data).then(response => {
@@ -128,8 +95,7 @@ export function UserProfileInformation(userid) {
 
 
 
-    if(userid)
-    {
+    if (userid) {
         return new Promise((resolve, reject) => {
             instanceBaseurl.get(`/customer/basicinfo/${userid}`).then(response => {
                 resolve(response)
@@ -139,19 +105,14 @@ export function UserProfileInformation(userid) {
             })
         })
     }
-    else
-    {
+    else {
         return null
     }
 
-   
+
 }
 export function UserForgetPassword(data) {
-    // return instanceBaseurl.post(`/auth/customer/forgot-password`, data).then((res) => {
-    //     return res;
-    // }).catch((err) => {
-    //     return err;
-    // })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.post(`/auth/customer/forgot-password`, data).then(response => {
@@ -163,11 +124,7 @@ export function UserForgetPassword(data) {
 }
 
 export function UserResetPassword(token, data) {
-    // return instanceBaseurl.post(`/auth/customer/reset-password?token=${token}`, data).then((res) => {
-    //     return res;
-    // }).catch((err) => {
-    //     return err;
-    // })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.post(`/auth/customer/reset-password?token=${token}`, data).then(response => {
@@ -179,11 +136,7 @@ export function UserResetPassword(token, data) {
 }
 
 export function Changepassworduser(data) {
-    // return instanceBaseurl.post(`/customer/change-password`, data).then((res) => {
-    //     return res;
-    // }).catch((err) => {
-    //     return err;
-    // })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.post(`/customer/change-password`, data).then(response => {

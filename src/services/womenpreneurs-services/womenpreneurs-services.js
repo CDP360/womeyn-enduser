@@ -1,12 +1,6 @@
 import instanceBaseurl from "../../config/Baseurl";
 
 export function Getwomenpreneursbanner(data) {
-    // return instanceBaseurl.get("/common/get-placement/WomenpreneursBanner/3").then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // });
-
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/common/get-placement/${data}/100`).then(response => {
             resolve(response)
@@ -18,12 +12,6 @@ export function Getwomenpreneursbanner(data) {
 
 
 export function WomenpreneursSellers() {
-    // return instanceBaseurl.get(`/common/womenpreneurs&limit=10&page=${current}`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // });
-
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/common/womenpreneurs?sortBy=updatedAt:desc&limit=12`).then(response => {
             resolve(response)
@@ -34,11 +22,7 @@ export function WomenpreneursSellers() {
 }
 
 export function WomenpreneursSellerspagintaion(current) {
-    // return instanceBaseurl.get(`/common/womenpreneurs&limit=10&page=${current}`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // });
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/common/womenpreneurs?sortBy=updatedAt:desc&limit=12&page=${current}`).then(response => {
@@ -50,11 +34,7 @@ export function WomenpreneursSellerspagintaion(current) {
 }
 
 export function WomenpreneursFilter(filter) {
-    // return instanceBaseurl.get(`/common/womenpreneurs?search=&categoryId=${filter}`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // });
+
 
 
     return new Promise((resolve, reject) => {
@@ -67,11 +47,7 @@ export function WomenpreneursFilter(filter) {
 }
 
 export function WomenpreneursSearch(search) {
-    // return instanceBaseurl.get(`/common/womenpreneurs?search=${search}`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // });
+
 
 
     return new Promise((resolve, reject) => {
@@ -84,11 +60,7 @@ export function WomenpreneursSearch(search) {
 }
 
 export function WomenpreneursCommoncategories() {
-    // return instanceBaseurl.get(`/common/categories?typeId=1`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // });
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/common/categories?typeId=1`).then(response => {
@@ -101,11 +73,7 @@ export function WomenpreneursCommoncategories() {
 
 
 export function WomenpreneursStores(data) {
-    // return instanceBaseurl.get(`/common/womenpreneurs/${data}`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // });
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/common/womenpreneurs/${data}`).then(response => {
@@ -117,11 +85,7 @@ export function WomenpreneursStores(data) {
 }
 
 export function WomenpreneursCategorylistStore(data) {
-    // return instanceBaseurl.get(`/common/womenpreneurs/categories/${data}`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // });
+
 
 
     if (data) {
@@ -141,11 +105,7 @@ export function WomenpreneursCategorylistStore(data) {
 }
 
 export function WomenpreneursCategoryproducts(sellerid, categoryid, current) {
-    // return instanceBaseurl.get(`/common/products/${sellerid}/${categoryid}`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // });
+
 
     if (sellerid || categoryid) {
         return new Promise((resolve, reject) => {
@@ -168,11 +128,6 @@ export function WomenpreneursCategoryproducts(sellerid, categoryid, current) {
 
 
 export function WomeynpreServiceList(sellerid) {
-    // return instanceBaseurl.get(`/common/womenpreneurs/${data}`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // });
 
 
 

@@ -2,11 +2,7 @@
 import instanceBaseurl from './../../config/Baseurl';
 
 export function MyCouponList() {
-    // return instanceBaseurl.get(`/common/coupons`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // })
+
 
 
     return new Promise((resolve, reject) => {
@@ -20,11 +16,7 @@ export function MyCouponList() {
 
 
 export function couponApply(data) {
-    // return instanceBaseurl.get(`/common/coupons`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // })
+
 
 
     return new Promise((resolve, reject) => {

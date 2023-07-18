@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-export function LogoutUser({data}) {
+export function LogoutUser() {
     const router = useRouter();
     useEffect(() => {
         localStorage.removeItem("userid");
@@ -15,14 +15,4 @@ export function LogoutUser({data}) {
             router.push("/");
         }, 1000)
     }, []);
-
-
-    
-
-
-    return (
-        <>
-<div></div>
-        </>
-    )
 }

@@ -929,52 +929,19 @@ function Viewproducts({ id }) {
         setPathUrl(URL);
     }, [productdata?.productThumbImage])
 
-
-
-
-    // useEffect(() => {
-    //     getCarriersshipping().then((res) => {
-    //         console.log(res, "shipping")
-    //     }).catch((err) => {
-    //         console.log(err);
-    //     })
-    // }, [])
-
-
-
     const Apiurl = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places`
-
-
     const [imagemodel, setImageModel] = useState(false);
-
     const handleImageshow = () => {
         setImageModel(true);
     }
-
     const handleImageClose = () => {
         setImageModel(false);
     }
     return (
         <Fragment>
             <>
-                {/* {productdata ? <>
-                    <Head >
-                        {productdata?.productName && <title>{productdata?.productName > 10 ? <>{productdata?.productName}</> : <>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.</>}</title>}
-                        {productdata?.productName && <meta name="title" content={`Womeyn ${productdata?.productName}`} />}
-                        <meta property="og:url" content="https://www.womeyn.cdp360.in/" />
-                        {productdata?.productName && <meta property="og:title" content={productdata?.productName} />}
-                        {productdata?.productDescription && <meta property="og:description" content={productdata?.productDescription} />}
-                        {productdata?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`} />}
-                    </Head>
-                </> : <>
-                </>} */}
-
-                
-
-
                 <NextSeo
                     title={productdata?.productName}
-                    //   description="This is a demo description"
                     description={productdata?.productDescription}
                     canonical="https://www.example.com"
                     openGraph={{
@@ -1055,7 +1022,6 @@ function Viewproducts({ id }) {
                                                     <div className="d-none d-lg-block">
 
                                                         <ReactImageMagnify
-                                                            //  className={styles.serachlargeimages}
                                                             {...{
                                                                 smallImage: {
 
@@ -1069,14 +1035,13 @@ function Viewproducts({ id }) {
                                                                     width: 1200,
                                                                     height: 1200,
                                                                     backgroundColor: "white",
-                                                                    // border:"3px solid blue"
+                                                                   
                                                                     zIndex: "989898988989898989898989",
                                                                     borderRadius: "10px"
 
 
                                                                 },
                                                                 imageStyle: {
-                                                                    // border:"2px solid red",
                                                                     width: "100%",
                                                                     height: "100%",
                                                                     maxHeight: "400px",
@@ -1086,17 +1051,7 @@ function Viewproducts({ id }) {
                                                                     borderRadius: "10px"
 
                                                                 },
-                                                                // smallImage: {
-                                                                //     src: String, (required)
-                                                                //     srcSet: String,
-                                                                //     sizes: String,
-                                                                //     width: Number, (required if isFluidWidth is not set)
-                                                                //     height: Number, (required if isFluidWidth is not set)
-                                                                //     isFluidWidth: Boolean, (default false)
-                                                                //     alt: String,
-                                                                //     onLoad: Function,
-                                                                //     onError: Function
-                                                                // },
+                                                               
                                                             }}
                                                         />
                                                     </div>
@@ -1121,14 +1076,12 @@ function Viewproducts({ id }) {
 
 
                                                         </>}
-
-                                                        {/* {like?"kalai true":"kalai false"} */}
                                                     </button>
                                                 </div> :
                                                     <div className={styles.heartimagesection}>
                                                         <button className={styles.btn} onClick={() => {
                                                             CheckLoginUsers(productdata?.productSlugName)
-                                                            // LikeWishlist(productdata?.id)
+                                                
                                                         }}>
 
                                                             <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
@@ -1244,9 +1197,7 @@ function Viewproducts({ id }) {
                                                 </div>
                                             </div>
                                         </div>
-                                            {/* <div>
-                                           {error && productSize1?.length<=1 ? <span>Please select a {productvariations[0]?.name}</span>:<div></div>}
-                                            </div> */}
+                                          
                                         </> : <></>}
                                         {productvariations[1]?.name ? <div className={styles.sizesectionandcolor}>
                                             <div className={styles.fontweightsizes}> {productvariations[1]?.name ? <>{productvariations[1]?.name}</> : <></>} </div>
@@ -1429,35 +1380,14 @@ function Viewproducts({ id }) {
                     </div >
 
                 </div>
-
-
             </div>
-
-
-
             <div className={styles.leftbg}>
 
             </div>
             <div className={styles.righttopbg}></div>
-
-
         </Fragment >
     )
 }
-
-
-
-
-
-
-
-// }
-
-// export default Viewproducts;
-
-
-
-
 
 export default dynamic(() => Promise.resolve(Viewproducts), { ssr: false });
 

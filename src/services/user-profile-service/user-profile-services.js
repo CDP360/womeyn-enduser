@@ -2,11 +2,7 @@
 import instanceBaseurl from './../../config/Baseurl';
 
 export function Addaddress(data) {
-    // return instanceBaseurl.post(`/customer/addresses`, data).then((res) => {
-    //     return res;
-    // }).catch((err) => {
-    //     return err;
-    // })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.post(`/customer/addresses`, data).then(response => {
@@ -19,11 +15,7 @@ export function Addaddress(data) {
 
 
 export function GetAddressData() {
-    // return instanceBaseurl.get(`/customer/addresses`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/customer/addresses`).then(response => {
@@ -36,11 +28,7 @@ export function GetAddressData() {
 
 
 export function DeleteAddress(id) {
-    // return instanceBaseurl.delete(`/customer/delete-address/${id}`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.delete(`/customer/delete-address/${id}`).then(response => {
@@ -53,11 +41,7 @@ export function DeleteAddress(id) {
 
 
 export function SingleAddress(id) {
-    // return instanceBaseurl.delete(`/customer/delete-address/${id}`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/customer/addresses/${id}`).then(response => {
@@ -72,14 +56,10 @@ export function SingleAddress(id) {
 
 
 export function UpdateAddress(data) {
-    // return instanceBaseurl.delete(`/customer/delete-address/${id}`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // })
+
 
     return new Promise((resolve, reject) => {
-        instanceBaseurl.post(`/customer/addresses`,data).then(response => {
+        instanceBaseurl.post(`/customer/addresses`, data).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)

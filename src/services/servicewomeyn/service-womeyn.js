@@ -2,11 +2,6 @@ import instanceBaseurl from "../../config/Baseurl";
 
 
 export function Serviceusers(data, current) {
-    // return instanceBaseurl.get(`/common/services`).then((res) => {
-    //     return res;
-    // }).catch((err) => {
-    //     return err;
-    // })
 
 
     return new Promise((resolve, reject) => {
@@ -19,11 +14,7 @@ export function Serviceusers(data, current) {
 }
 
 export function ServiceusersSerach(data, current) {
-    // return instanceBaseurl.get(`/common/services`).then((res) => {
-    //     return res;
-    // }).catch((err) => {
-    //     return err;
-    // })
+
 
 
     return new Promise((resolve, reject) => {
@@ -38,11 +29,7 @@ export function ServiceusersSerach(data, current) {
 
 
 export function ServiceusersGetSingle(data) {
-    // return instanceBaseurl.get(`/common/services/${data}`).then((res) => {
-    //     return res;
-    // }).catch((err) => {
-    //     return err?.response?.data?.message;
-    // })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/common/services/${data}`).then(response => {
@@ -55,11 +42,7 @@ export function ServiceusersGetSingle(data) {
 
 
 export function ServiceusersGetSingleId(id) {
-    // return instanceBaseurl.get(`/customer/service/${id}`).then((res) => {
-    //     return res;
-    // }).catch((err) => {
-    //     return err;
-    // })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/customer/service/${id}`).then(response => {
@@ -73,11 +56,7 @@ export function ServiceusersGetSingleId(id) {
 
 
 export function ServiceBooking(data) {
-    // return instanceBaseurl.post(`/customer/service/booking`, data).then((res) => {
-    //     return res;
-    // }).catch((err) => {
-    //     return err;
-    // })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.post(`/customer/service/booking`, data).then(response => {
@@ -92,11 +71,7 @@ export function ServiceBooking(data) {
 
 
 export function ServiceBookingUsers() {
-    // return instanceBaseurl.get(`/customer/bookings`).then((res) => {
-    //     return res;
-    // }).catch((err) => {
-    //     return err;
-    // })
+
 
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/customer/bookings`).then(response => {
@@ -111,11 +86,7 @@ export function ServiceBookingUsers() {
 
 
 export function InvoicedownloadService(orderid) {
-    // return instanceBaseurl.get(`/common/coupons`).then((res) => {
-    //     return res
-    // }).catch((err) => {
-    //     return err;
-    // })
+
     return new Promise((resolve, reject) => {
         instanceBaseurl.get(`/customer/service/invoice/${orderid}`).then(response => {
             resolve(response)
