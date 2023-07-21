@@ -5,15 +5,18 @@ import HalfStar from '../../../../assests/category-logos/greenHalfStar.png'
 import Search from '../../../../assests/homepage-logos/serachicon.png'
 import Delete from '../../../../assests/category-logos/deleteIcon.png'
 import Image from "next/image";
-import { GetFavoritsList, ProductLikeWishlistRemove } from "../../../../services/user-favorits-service/User-favorits-service";
+import { GetFavoritsList, ProductLikeWishlistRemove,GetFavoritsListPagination } from "../../../../services/user-favorits-service/User-favorits-service";
 import Skeleton from 'react-loading-skeleton';
 import LoaderLogo from './../../../loaderlogo/LoaderLogo';
 import { Rate } from "antd";
 import { useRouter } from 'next/router';
 import Modal from 'react-bootstrap/Modal';
+import ReactPaginate from 'react-paginate';
 function Favorts({ error }) {
   const [show, setShow] = useState(false);
   const [deleteid, setDeleteid] = useState("");
+  const [showTopBtn, setShowTopBtn] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
     setShow(true)
@@ -23,6 +26,9 @@ function Favorts({ error }) {
   const [favorts, setFavorts] = useState([]);
   const [starcount, setStarCount] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [pagecount, setPagecount] = useState("");
+  const [pagecountnumbers, setPagecountNumbers] = useState(1);
+  const [pagecountcheck, setPagecountCheck] = useState("");
   useEffect(() => {
     setLoading(true);
     const userToken = localStorage.getItem("userToken");
@@ -31,6 +37,10 @@ function Favorts({ error }) {
         setTimeout(() => {
           setLoading(false);
           setFavorts(res?.data[0]?.results);
+          setPagecount(res?.data[0]?.totalCount[0]?.count)
+
+  
+
         }, 400)
       }).catch((err) => {
         console.log(err);
@@ -72,6 +82,41 @@ function Favorts({ error }) {
 
   }
 
+
+  const fetchComments = async (current) => {
+    const res = await GetFavoritsListPagination(current);
+    return res?.data[0]?.results;
+}
+
+
+
+
+const handlePageClick = async (data) => {
+    let current = data?.selected + 1;
+    setPagecountNumbers(current);
+    const commentForms = await fetchComments(current);
+    goToTop()
+    setFavorts(commentForms);
+  
+
+}
+
+useEffect(() => {
+  window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) {
+          setShowTopBtn(true);
+      } else {
+          setShowTopBtn(false);
+      }
+  });
+}, []);
+
+const goToTop = () => {
+    window.scrollTo({
+        top: 500,
+        behavior: "smooth",
+    });
+};
 
 
 
@@ -143,63 +188,44 @@ function Favorts({ error }) {
           </div>
 
 
-          {/* <div>
-              {loading ? <>
+          {/* {pagecount === 0 ? null : <>
+                                <div className="mt-3">
+                                    <hr />
+                                </div>
+                                <div>
+
+                                    Page {pagecountnumbers} / {pagecount}
+                                </div>
+
+                                <div className="mt-3">
+
+                                    <ReactPaginate
+                                        activeClassName={'actives '}
+                                        breakClassName={'item break-me '}
+                                        breakLabel={'...'}
+                                        containerClassName={'pagination'}
+                                        disabledClassName={'disabled-page'}
+                                        marginPagesDisplayed={2}
+                                        nextClassName={"item next "}
+                                        nextLabel={Math.ceil(pagecount / 12) === pagecountnumbers ? null : "NEXT"}
+                                        onPageChange={handlePageClick}
+                                        pageCount={pagecount / 12}
+                                        pageClassName={'item pagination-page '}
+                                        pageRangeDisplayed={2}
+                                        previousClassName={"item previous"}
+                                        previousLabel={pagecountnumbers > 1 ? "PREVIOUS" : null}
 
 
-                <LoaderLogo />
 
-              </> : <>
-
-
-                {
-                  favorts.map((data, index) =>
-                    <div className={styles.favortsInnerContainer} key={index}>
-                      <div className={styles.favortsLeftContainer} onClick={() => pushProductPage(data.productSlugName)}>
-                        <div className={styles.boximage}>
-
-                          {data?.productThumbImage ? <>
-                            <img
-                              className={styles.favortsImg}
-                              src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${data?.productThumbImage}`}
-                              alt="profile-pic"
-                            />
-                          </> : <>
-                            <Skeleton className={styles.favortsImg} />
-                          </>}
-                        </div>
-                        <div className={styles.favortsContentContainer}>
-                          <p className={styles.favortsProductName}>{data.productName}</p>
-            
-                          <div className={styles.favortsRatingContainer}>
-
-                           
-
-                            {data?.salePrice}
-
-                          </div>
-                        </div>
-                      </div>
-                      <div className={styles.favortsRightContainer} onClick={() => handleShow(data?._id)}>
-                        <Image src={Delete} className={styles.removeitems} />
-                        <div className='d-none d-lg-block'>
-                          <p className={styles.favortsDeleteText}>Remove</p>
-                        </div>
-                      </div>
-                    </div>
-                  )
-                }
-              </>}
-
-
-              {favorts?.length === 0 && <div>No Favorites Data</div>}
-
-
-            </div> */}
+                                    />
+                                </div>
+                            </>} */}
 
 
         </div>
       </div>
+
+      
       <>
         <Modal
           show={show}

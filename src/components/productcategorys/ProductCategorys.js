@@ -34,7 +34,7 @@ import { SearchProductUser, AllSearchProductUser } from '../../services/category
 function ProductCategorys() {
     const router = useRouter();
     const [current, setCurrent] = useState(1);
-    const [limit, setLimit] = useState([]);
+const [limit, setLimit] = useState([]);
     const [servicesusers, setServiceusers] = useState([]);
     const [dataseller, setDataseller] = useState([]);
     const [datacategory, setDataCtagoryies] = useState([]);

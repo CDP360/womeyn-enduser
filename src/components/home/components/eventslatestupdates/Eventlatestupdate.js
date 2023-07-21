@@ -55,7 +55,9 @@ function Eventlatestupdate() {
                             <div className={styles.workshopimage} onClick={()=>NavigateEvents(events[0]?.slugName)}>
                                 {/* <Image src={fruit2} al="no image" className={styles.shopingimage} /> */}
                                 {events[0]?.eventImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${events[0]?.eventImageName}`} alt="no image" className={styles.shopingimage} /> : <>
-                                    <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
+                                    <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image"
+                                    className={styles.shopingimagecontents}
+                                    />
                                 </>}
                             </div>
 
@@ -95,7 +97,9 @@ function Eventlatestupdate() {
                                     {/* <Image src={ban2} al="no image" className={styles.shopingimagecontent} /> */}
 
                                     {events[3]?.eventImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${events[3]?.eventImageName}`} alt="no image" className={styles.shopingimagecontent} /> : <>
-                                    <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
+                                    <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image"
+                                    className={styles.shopingimagecontent}
+                                    />
                                 </>}
 
                                 </div>
@@ -134,7 +138,9 @@ function Eventlatestupdate() {
                             <div className={styles.workshopimage} onClick={()=>NavigateEvents(events[1]?.slugName)}>
                                 {/* <Image src={ban} al="no image" className={styles.shopingimage} /> */}
                                 {events[1]?.eventImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${events[1]?.eventImageName}`} alt="no image" className={styles.shopingimage} /> : <>
-                                    <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
+                                    <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image"
+                                    className={styles.shopingimagecontent}
+                                    />
                                 </>}
                             </div>
 
@@ -142,7 +148,9 @@ function Eventlatestupdate() {
                                 <div className={styles.contentimage} onClick={()=>NavigateEvents(events[4]?.slugName)}>
                                     {/* <Image src={ban3} al="no image" className={styles.shopingimagecontent} /> */}
                                     {events[4]?.eventImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${events[4]?.eventImageName}`} alt="no image" className={styles.shopingimagecontent} /> : <>
-                                    <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
+                                    <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" 
+                                    className={styles.shopingimagecontent}
+                                    />
                                 </>}
                                 </div>
                                 <div className={styles.contentfruit}>
@@ -176,7 +184,9 @@ function Eventlatestupdate() {
                                     {/* <Image src={ban4} al="no image" className={styles.shopingimagecontent} /> */}
 
                                     {events[5]?.eventImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${events[5]?.eventImageName}`} alt="no image" className={styles.shopingimagecontent} /> : <>
-                                    <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
+                                    <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" 
+                                    className={styles.shopingimagecontent}
+                                    />
                                 </>}
                                 </div>
                                 <div className={styles.contentfruit}>

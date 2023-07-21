@@ -3,7 +3,7 @@ import instanceBaseurl from "../../config/Baseurl";
 export function GetFavoritsList() {
 
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/customer/wishlist`).then(response => {
+        instanceBaseurl.get(`/customer/wishlist?limit=12`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)
@@ -11,6 +11,16 @@ export function GetFavoritsList() {
     })
 }
 
+export function GetFavoritsListPagination(current) {
+
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.get(`/customer/wishlist?limit=12&page=${current}`).then(response => {
+            resolve(response)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}
 
 export function ProductLikeWishlistRemove(data) {
 

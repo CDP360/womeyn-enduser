@@ -37,21 +37,21 @@ function Aboutus({ id }) {
             name: "Purpose-driven",
             title: "Value is making a difference for our customers each and every day. That's what powers our business and energizes us.",
             image: bubble1,
-            colorbg: " #F0F8F3"
+            colorbg: "#FDF0F0"
         },
         {
             id: 2,
             name: "Social impact",
             title: "We are a team of experts who know how to work together to tackle real challenges and create success.",
             image: bubble2,
-            colorbg: " #ECF2FB"
+            colorbg: "#FDF0F0"
         },
         {
             id: 3,
             name: "Advocacy based",
             title: "When challenges arise, we rise to the occasion. We roll up our sleeves, get to work, and get the job done",
             image: bubble3,
-            colorbg: " #FDF0F0"
+            colorbg: "#FDF0F0"
         }
     ]
 
@@ -268,8 +268,12 @@ function Aboutus({ id }) {
                                     })}
                                 </div>
                                 <div className={styles.creationabouts}>
+                                    Womeyn is a purpose-driven social impact advocacy-based initiative that aims to empower
+                                    women by providing economic support by means of an eCommerce platform for Women by
+                                    Womeyn. Driven by the concept of creating communities transcending all barriers that are
+                                    commonly seen with women entrepreneurs.
 
-                                    Initiative that will empower women of our community by providing an eCommerce platform to achieve their dreams of self-reliance by establishing an online business in a most cost effective manner. Platform aggregates and brings communities together through social media, online platforms and collaborations with like minded organizations. We are driven by the concept of creating communities transcending all barriers that are commonly seen with women entrepreneurs.
+                                    {/* Initiative that will empower women of our community by providing an eCommerce platform to achieve their dreams of self-reliance by establishing an online business in a most cost effective manner. Platform aggregates and brings communities together through social media, online platforms and collaborations with like minded organizations. We are driven by the concept of creating communities transcending all barriers that are commonly seen with women entrepreneurs. */}
                                 </div>
                             </section>
                         </div>
