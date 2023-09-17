@@ -109,7 +109,7 @@ function Womencarouselbanner() {
                             return (
                                 <div>
                                     {item?.imageName?<>
-                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={"allbanners"} onClick={() => MovePageData(item.redirectUrl)} />
+                                        <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item.imageName}`} alt="no image" className={"allbanners"} onClick={() => MovePageData(item.redirectUrl)} />
                                     
                                     </>:<>
                                     <Skeleton className={styles.homebanner} />

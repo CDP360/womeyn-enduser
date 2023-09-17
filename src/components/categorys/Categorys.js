@@ -37,7 +37,6 @@ function Categorys({ id }) {
   }, [searchname, searchnamevalue, filterproducts, productgetloading])
 
 
-  console.log(filterproducts,"setFilterproducts")
   return (
     <Fragment>
       <div className="mainsection">
@@ -48,9 +47,9 @@ function Categorys({ id }) {
             <div className={styles.emptyboxright}>
             </div>
             <div className={styles.insidecategorysection}>
-              <div className='mb-3 mt-2'>
+              {/* <div className='mb-3 mt-2'>
                 Categorys / health
-              </div>
+              </div> */}
 
               <div>
                 <Categorycarouse />
@@ -80,10 +79,10 @@ function Categorys({ id }) {
               <div className={styles.splitcategorysection}>
                 <div className={styles.leftcatgory}>
                   <Sidebarcateogrys setFilterproducts={setFilterproducts}
-                   setLoadingproduct={setLoadingproduct} setProductgetloading={setProductgetloading}
-                   setPagecount={setPagecount}
-                   pagecountnumbers={pagecountnumbers}
-                   />
+                    setLoadingproduct={setLoadingproduct} setProductgetloading={setProductgetloading}
+                    setPagecount={setPagecount}
+                    pagecountnumbers={pagecountnumbers}
+                  />
                 </div>
                 <div className={styles.rightcategory}>
                   <Maincategorylist name={values} searchnamevalue={searchnamevalue} filterproducts={filterproducts} setFilterproducts={setFilterproducts} setLoadingproduct={setLoadingproduct} loadingproduct={loadingproduct}
@@ -94,7 +93,7 @@ function Categorys({ id }) {
                     pagecountnumbers={pagecountnumbers}
                   />
                 </div>
-             
+
               </div>
             </div>
 

@@ -16,17 +16,11 @@ import Skeleton from 'react-loading-skeleton';
 import { UserProfileInformation } from '../../services/user-login-service/user-login-services';
 import { HomeTexts } from '../../consttext/Homeconst';
 import Head from "next/head";
-
 import womenlog from '../../assests/womeynlogos/womeyn small logo.png';
 import { NavigatePage } from '../../config/PageNavigate';
-
 import jwt_decode from "jwt-decode";
-
 import Image from 'next/image'
-
 import { NextSeo } from 'next-seo';
-
-
 function Home() {
     const [bannerimages, setBannerImages] = useState([]);
     const settings = {
@@ -105,7 +99,6 @@ function Home() {
         }
         catch (err) {
 
-            console.log(err?.response?.data?.message, "err")
             if (err?.response?.data?.message == "Please authenticate" || err?.response?.data?.message == "Forbidden" || err?.response?.data?.message == "Not found") {
                 localStorage.removeItem("userid");
                 localStorage.removeItem("userToken");
@@ -172,32 +165,8 @@ function Home() {
             behavior: "smooth",
         });
     };
-
-
-
     return (
         <Fragment>
-            {/* <Head>
-                <title>Womeyn Home</title>
-                <meta name="title" content="Womeyn Home" />
-                <meta name="description" content="Team Womeyn is open to ideas, suggestions and comments that will help us improve and grow as a community platform. We would love to hear from you" />
-                <meta name="viewport" content="initial-scale=1, width=device-width" />
-                <meta name="author" content="Maxime Courtaigne" />
-                <meta property="og:type" content="Womeyn Home" />
-                <meta property="og:url" content="https://www.womeyn.cdp360.in/" />
-                <meta property="og:title" content="Womeyn Home" />
-                <meta property="og:description" content="Team Womeyn is open to ideas, suggestions and comments that will help us improve and grow as a community platform. We would love to hear from you" />
-                <meta property="og:image" content="https://www.womeyn.cdp360.in/Mobileviewlogoshort.png" />
-                <meta property="og:image:width" content="100" />
-                <meta property="og:image:height" content="100" />
-                <meta property="twitter:card" content="https://www.womeyn.cdp360.in/" />
-                <meta property="twitter:url" content="https://www.womeyn.cdp360.in/" />
-                <meta property="twitter:title" content="Womeyn Home" />
-                <meta property="twitter:description" content="Team Womeyn is open to ideas, suggestions and comments that will help us improve and grow as a community platform. We would love to hear from you" />
-                <meta property="twitter:image" content="https://www.womeyn.cdp360.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fwomeyn_logo.72a6530c.png&w=384&q=75" />
-            </Head> */}
-
-
             <NextSeo
                 title="Womeyn Home"
                 description="This is a demo description"
@@ -216,7 +185,7 @@ function Home() {
                         },
                         {
                             url: 'https://imgtr.ee/images/2023/06/23/mXlXl.png',
-                        
+
 
                             width: "20px",
                             height: "20px",
@@ -250,8 +219,6 @@ function Home() {
                 <div className="mainsection">
                     <div className="insidesection">
                         <div className={styles.insidesectionhome}>
-
-
                             <div className={styles.imagesectionhome}>
                                 {bannerimages[0]?.HeroBanner?.length === 0 && <div>
                                     <Skeleton className={styles.skeltonbox} />
@@ -260,7 +227,8 @@ function Home() {
                                     {bannerimages[0]?.HeroBanner?.map((item, index) => {
                                         return (
                                             <div key={index}>
-                                                {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className="allbanners" onClick={() => MovePageData(item.redirectUrl)} quality={80} /> : <>
+                                                {item.imageName ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item.imageName}`} alt="no image" className="allbanners" onClick={() => MovePageData(item.redirectUrl)} quality={80}
+                                                /> : <>
                                                     <Skeleton className={styles.homebanner} />
                                                 </>}
                                             </div>
@@ -271,14 +239,14 @@ function Home() {
                             <div className={styles.addimagetagss}>
                                 <div className={styles.addimagessectionleft}>
                                     {bannerimages[1]?.HeroBannerBottom1[0] ? <>
-                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${bannerimages[1]?.HeroBannerBottom1[0]?.imageName}`} alt="no image" className={styles.add1} onClick={() => MovePageData(bannerimages[1]?.HeroBannerBottom1[0]?.redirectUrl)} />
+                                        <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${bannerimages[1]?.HeroBannerBottom1[0]?.imageName}`} alt="no image" className={styles.add1} onClick={() => MovePageData(bannerimages[1]?.HeroBannerBottom1[0]?.redirectUrl)} />
                                     </> : <>
                                         <Skeleton className={styles.addimageboxs} />
                                     </>}
                                 </div>
                                 <div className={styles.addimagessectionright}>
                                     {bannerimages[2]?.HeroBannerBottom2[0] ? <>
-                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${bannerimages[2]?.HeroBannerBottom2[0]?.imageName}`} alt="no image" className={styles.add1} onClick={() => MovePageData(bannerimages[2]?.HeroBannerBottom2[0]?.redirectUrl)} />
+                                        <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${bannerimages[2]?.HeroBannerBottom2[0]?.imageName}`} alt="no image" className={styles.add1} onClick={() => MovePageData(bannerimages[2]?.HeroBannerBottom2[0]?.redirectUrl)} />
                                     </> : <>
                                         <Skeleton className={styles.addimageboxs} />
                                     </>}
@@ -291,7 +259,6 @@ function Home() {
                     </div>
                 </div>
 
-
                 <div>
                     <Summarybreaksalary bannerimages={bannerimages[4]} />
                 </div>
@@ -301,9 +268,9 @@ function Home() {
                 <div>
                     <Ourwomenpreneurs />
                 </div>
-                <div>
+                {/* <div>
                     <Eventlatestupdate />
-                </div>
+                </div> */}
                 <div>
                     <Blogs />
                 </div>

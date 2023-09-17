@@ -177,7 +177,7 @@ function Cart() {
                             <div onClick={()=>CartNavigateProductView(item?.productSlugName)}>
                               <img
                                 className={styles.editprofilesection}
-                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
+                                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.productThumbImage}`}
                                 alt="profile-pic"
                               />
                             </div>
@@ -286,7 +286,7 @@ function Cart() {
                             <div>
                               <img
                                 className={styles.editprofilesection}
-                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
+                                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.productThumbImage}`}
                                 alt="profile-pic"
                               />
                             </div>

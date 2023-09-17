@@ -12,21 +12,19 @@ import { ProductView } from "../../services/productview-service/productview-serv
 
 function LayoutHeader({ setdark, dark, title, children }) {
 
-  const [datas, setDatas] = useState([]);
   useEffect(() => {
 
-    if (title) {
-      ProductView(title).then((res) => {
-        // console.log(res?.data?.productDetails)
-        setDatas(res?.data?.productDetails)
-      }).catch((Err) => {
-        console.log(Err)
-      })
-    }
+    // if (title) {
+    //   ProductView(title).then((res) => {
+    //     // console.log(res?.data?.productDetails)
+    //     setDatas(res?.data?.productDetails)
+    //   }).catch((Err) => {
+    //     console.log(Err)
+    //   })
+    // }
 
-  }, [title,datas]);
+  }, [title]);
 
-  console.log(datas?.productThumbImage, "productThumbImage")
   return (
     <>
       <Head>
@@ -107,7 +105,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
               <meta name="google" content="notranslate" key="notranslate" />
               {datas?.productDescription && <meta property="og:description" content={datas?.productDescription} />}
 
-              {datas?.productThumbImage && <meta property="og:image" content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${datas?.productThumbImage}`} />}
+              {datas?.productThumbImage && <meta property="og:image" content={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${datas?.productThumbImage}`} />}
 
             </Head> */}
             {/* <NextHead>
@@ -117,7 +115,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
               <meta property='og:title' content={`${title}`} />
               <meta property='og:description' content={datas?.productDescription} />
               <meta property='og:image' 
-               content={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${datas?.productThumbImage}`}
+               content={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${datas?.productThumbImage}`}
               />
               <meta property='og:image:alt' content='' />
               <meta property='og:locale' content='en_GB' />
@@ -138,6 +136,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
               </title>
               <meta name='description' content={datas?.productDescription} />
             </NextHead> */}
+            <meta name="Referrer" content="http://example.com/comic/" />
 
 <meta name="application-name" content="Next.js" />
 <meta name="author" content="Seb" />
@@ -162,7 +161,7 @@ function LayoutHeader({ setdark, dark, title, children }) {
               title == "Otp" ||
               title == "Forgetpassword" ||
               title == "Change-password" ||
-              title == "Explore" ||
+              // title == "Explore" ||
               title == "Events" ||
               title == "tracking" ||
               title == "detail" ||
@@ -183,10 +182,6 @@ function LayoutHeader({ setdark, dark, title, children }) {
                     ?
                     (
                       <>
-
-
-
-
                       </>
                     ) : (
                       <Signupnewsletter />

@@ -108,7 +108,7 @@ function MobileHeader() {
                 <div className={styles.mobilemiddlesection}>
 
                     <div className={styles.inputsearchsectionss}>
-                        <input type="text" placeholder='Search for products,brands and more....' className="inputserach" onChange={handleChange} value={serachcategory} />
+                        <input type="text" placeholder='Search for products,services,brands and more....' className="inputserach" onChange={handleChange} value={serachcategory} />
                         <div>
                             <Image src={serachicon} alt="no image" className='serachicon' />
                         </div>
@@ -124,7 +124,7 @@ function MobileHeader() {
                         {/* {favortcountdataredux?.loginUser?.logindata?.profileImageName ? <>
                             <img
                                 className={styles.barsection}
-                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${favortcountdataredux?.loginUser?.logindata?.profileImageName}`}
+                                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${favortcountdataredux?.loginUser?.logindata?.profileImageName}`}
                                 alt="profile-pic"
                             />
                         </> : <>
@@ -160,7 +160,7 @@ function MobileHeader() {
                                     {/* {images ?
                                         <img
                                             className={styles.editprofilesection}
-                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${images}`}
+                                            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${images}`}
                                             alt="profile-pic"
                                         />
                                         :
@@ -171,7 +171,7 @@ function MobileHeader() {
                                     {favortcountdataredux?.loginUser?.logindata?.profileImageName ? <>
                                         <img
                                             className={styles.editprofilesection}
-                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${favortcountdataredux?.loginUser?.logindata?.profileImageName}`}
+                                            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${favortcountdataredux?.loginUser?.logindata?.profileImageName}`}
                                             alt="profile-pic"
                                         />
                                     </> : <>

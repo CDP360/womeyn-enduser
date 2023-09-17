@@ -28,7 +28,7 @@ function CancelledBySeller({ Orders, traking, loading }) {
 
         {data?.length===0 && <div>
           <Nodatafoundimage
-          title={"No Order Cancel By Seller"}
+          title={"No Orders CancelBySeller"}
           />
           </div>}
         <div className={styles.orderstatussection}>
@@ -54,7 +54,7 @@ function CancelledBySeller({ Orders, traking, loading }) {
                   {items?.productThumbImage ? <>
                     <img
                       className={styles.img}
-                      src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${items?.productThumbImage}`}
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${items?.productThumbImage}`}
                       alt="profile-pic"
                     />
                   </> : <>

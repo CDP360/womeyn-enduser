@@ -258,7 +258,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
                             <div>
                               <img
                                 className={styles.editprofilesection}
-                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`}
+                                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.imageName}`}
                                 alt="profile-pic"
                               />
                             </div>
@@ -416,7 +416,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
                           <div>
                             <img
                               className={styles.editprofilesection}
-                              src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
+                              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.productThumbImage}`}
                               alt="profile-pic"
                             />
                           </div>
@@ -544,7 +544,7 @@ function Confirmorders({ name, totalPrice, step, setStep, setCouponName, address
                           <div>
                             <img
                               className={styles.editprofilesection}
-                              src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
+                              src={`${process.env.NEXT_IMAGE_URL}/${item?.productThumbImage}`}
                               alt="profile-pic"
                             />
                           </div>

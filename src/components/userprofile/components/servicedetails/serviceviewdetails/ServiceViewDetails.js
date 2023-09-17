@@ -111,7 +111,7 @@ const serviceid=history?.query?.id;
                         {serviceBooking?.serviceThumbImage ? <>
                             <img
                                 className={styles.servicebanner}
-                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${serviceBooking?.serviceThumbImage}`}
+                                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${serviceBooking?.serviceThumbImage}`}
                                 alt="profile-pic"
                             />
                         </> : <>
@@ -302,7 +302,7 @@ const serviceid=history?.query?.id;
                                     {sellerinformations?.profileImageName ? <>
                                         <img
                                             className={styles.personimages}
-                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellerinformations?.profileImageName}`}
+                                            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${sellerinformations?.profileImageName}`}
                                             alt="profile-pic"
                                         />
                                     </> : <>

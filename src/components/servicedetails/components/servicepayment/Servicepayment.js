@@ -13,8 +13,6 @@ import Skeleton from 'react-loading-skeleton';
 
 function Servicepayment({ id }) {
     const history = useRouter();
-
-    
     const [loading, setLoading] = useState(false);
     const [errors, setError] = useState(false);
     const [totalvalue, setTotalValue] = useState(0);
@@ -22,6 +20,11 @@ function Servicepayment({ id }) {
     const [tokens, setTokens] = useState("");
     const [paymentType, setPaymentType] = useState("");
     const [serviceimages, setServiceimages] = useState("");
+
+    const [selectworkdays, setSelectworkdays] = useState("");
+    const [readmores, setReadMore] = useState(false);
+
+
     const paymentMethods = [
         {
             id: 1,
@@ -34,6 +37,7 @@ function Servicepayment({ id }) {
             image: strip
         }
     ]
+
 
     const onOptionChange = (e) => {
         setPaymentType(e.target.value);
@@ -74,10 +78,14 @@ function Servicepayment({ id }) {
         setTotalValue(Sample);
     }, [totalvalue, payements?.price])
 
+
     const ServicePaymentMethod = () => {
         setLoading(true);
-        if (paymentType?.length === 0) {
-            toast.error("Please Select Payment Type",
+
+
+
+        if (selectworkdays?.length === 0) {
+            toast.error("Please Select Slots",
                 {
                     position: "top-center",
                     autoClose: 3000,
@@ -89,61 +97,180 @@ function Servicepayment({ id }) {
                     theme: "dark",
                 }
             );
+            setLoading(false);
 
         }
 
 
-        if (paymentType) {
+        if (selectworkdays) {
+            if (paymentType?.length === 0) {
+                toast.error("Please Select Payment Type",
+                    {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    }
+                );
+                setLoading(false);
 
-
-
-            const userid = localStorage.getItem("userid");
-
-            const datas = {
-                serviceId: payements?.serviceId,
-                variationId: payements?.variationId,
-                sellerId: payements?.sellerId,
-                price: payements?.price,
-                gstAmount: totalvalue,
-                totalOrderAmount: (Number(totalvalue) + (Number(payements?.price))),
-                serviceName: payements?.serviceName,
-                variationName: payements?.title,
-                paymentMethod: paymentType
             }
-            ServiceBooking(datas).then((res) => {
-                window.location = res?.data?.url;
-
-            }).catch((err) => {
-                console.log(err);
-
-            })
         }
+
+        if (selectworkdays) {
+
+            if (paymentType) {
+
+                const userid = localStorage.getItem("userid");
+                const datas = {
+                    serviceId: payements?.serviceId,
+                    variationId: payements?.variationId,
+                    sellerId: payements?.sellerId,
+                    price: payements?.price,
+                    gstAmount: totalvalue,
+                    totalOrderAmount: (Number(totalvalue) + (Number(payements?.price))),
+                    serviceName: payements?.serviceName,
+                    variationName: payements?.title,
+                    paymentMethod: paymentType,
+                    slotDetails:
+                    {
+                        slotId: selectworkdays?._id,
+                        slotTiming: `${selectworkdays?.dayName} ${selectworkdays?.workingHours}`
+                    }
+                }
+
+                ServiceBooking(datas).then((res) => {
+                    window.location = res?.data?.url;
+                    setLoading(false);
+
+                }).catch((err) => {
+                    console.log(err);
+
+                })
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 
     const LoginNavigate = () => {
-        const pathnames = `/service/payment/${id}`;
+        const pathnames = `/services/payment/${id}`;
         localStorage.setItem("whish", JSON.stringify(pathnames));
         history.push("/login");
-        
+
     }
 
 
     const NavigatePathUser = () => {
         history?.push("/login");
     }
+
+    const datass = [
+        {
+            id: 1,
+            name: "womeyn"
+        },
+        {
+            id: 2,
+            name: "womeyn1"
+        },
+        {
+            id: 3,
+            name: "womeyn2"
+        },
+        {
+            id: 4,
+            name: "womeyn3"
+        }
+    ];
+
+
+    const handleChangeList = (data) => {
+        const filtersdata = payements?.workingDays?.map((item, index) => {
+            if (item?._id == data?._id) {
+                setSelectworkdays(item);
+            }
+        })
+
+    }
+
     return (
         <div className='mainsection'>
             <div className="insidesection">
                 <div className={styles.mainservicepayment}>
                     <div className={styles.insideservicepayment}>
                         <div className={styles.leftservicepayment}>
-                            <div className={styles.selectpayment}>
+                        <div className={styles.selectpayment}>
+                                Select a Slot
+                            </div>
+                        <div className={styles.paymentmethod}>
+                                Slots
+                            </div>
+                          
 
+                            <div className={styles.kalia}>
+                                {readmores?<>
+                                    <div className={"row gap-2 mt-4 mb-3  "}>
+                                {payements?.workingDays?.map((item, index) => {
+                                    return (
+                                        <div className={selectworkdays?._id === item?._id ? styles.activeworkingbox : styles.workingdaysbox} onClick={() => handleChangeList(item)}>
+                                            <div className="d-flex gap-3">
+                                           <div> {item?.dayName}</div>
+                                           <div>
+                                           {item?.workingHours}
+                                           </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                                </>:<>
+                                
+                                <div className={"row gap-2 mt-4 mb-3"}>
+                                {payements?.workingDays?.slice(0,4).map((item, index) => {
+                                    return (
+                                        <div className={selectworkdays?._id === item?._id ? styles.activeworkingbox : styles.workingdaysbox} onClick={() => handleChangeList(item)}>
+                                            <div className="d-flex gap-3">
+                                           <div> {item?.dayName}</div>
+                                           <div>
+                                           {item?.workingHours}
+                                           </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                                </>}
+                                
+                                <div className="mb-4">
+                                    {payements?.workingDays?.length>4?<>
+                                        <div className={styles.readmoretext} onClick={()=>setReadMore(!readmores)}>{readmores?"Less More Slots...":"Read More Slots..."}</div>
+                                    </>:null}
+                                </div>
+                            </div>
+                            <div className={styles.selectpayment}>
                                 Select a payment method
                             </div>
+                           
                             <div className={styles.paymentmethod}>
-
                                 Payments method
                             </div>
                             <div className="mt-3">
@@ -152,9 +279,26 @@ function Servicepayment({ id }) {
 
                                     {paymentMethods?.map((item, index) => {
                                         return (
-                                            <div key={index} className={styles.paymentsection}>
-                                                <input type="radio" name={item?.name} value={item?.name} checked={paymentType == item?.name} onChange={onOptionChange} id={item?.name} className={styles.radiobuttons} />
-                                                <label for={item?.name}><img src={item.image.src} alt="no image" className={styles.strips} /></label>
+                                            // <div key={index} className={styles.paymentsection}>
+                                            //     <input type="radio" name={item?.name} value={item?.name} checked={paymentType == item?.name} onChange={onOptionChange} id={item?.name} className={styles.radiobuttons} />
+                                            //     <label for={item?.name}><img src={item.image.src} alt="no image" className={styles.strips} /></label>
+                                            // </div>
+                                            <div className={styles.questions} key={index}>
+                                                <div className={styles.questions__question}>
+                                                    <input type="radio" name={item?.name} value={item?.name} id={item?.name} checked={paymentType == item?.name} onChange={onOptionChange} />
+                                                    <label for={item?.name} className={styles.paymentbox}>
+                                                        <div className={styles.paymentboxinside}>
+                                                            <div className={paymentType == item?.name ? styles.activebox : styles.inactive}>
+                                                            </div>
+                                                            <div>
+                                                                <img src={item.image.src} alt="no image" className={styles.strips} />
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                    <div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         )
                                     })}
@@ -173,7 +317,7 @@ function Servicepayment({ id }) {
                                         {serviceimages ? <>
                                             <img
                                                 className={styles.bannserpaymentservice}
-                                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${serviceimages}`}
+                                                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${serviceimages}`}
                                                 alt="profile-pic"
                                             />
                                         </> : <>

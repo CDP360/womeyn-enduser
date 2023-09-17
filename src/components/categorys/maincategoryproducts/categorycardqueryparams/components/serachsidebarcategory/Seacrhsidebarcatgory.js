@@ -189,7 +189,6 @@ function Seacrhsidebarcatgory({ setFilterproducts, setLoadingproduct, setProduct
       const price1=filterproductprice1;
       const price2=filterproductprice2;
 
-      console.log(price1,price2,"ko")
 
       const datas = {
         categoryIds: categoryfilter.toString(),
@@ -197,7 +196,7 @@ function Seacrhsidebarcatgory({ setFilterproducts, setLoadingproduct, setProduct
         priceTo: price2
       }
 
-      console.log(datas,"datas")
+     
       CategoryproductFilter(datas).then((res) => {
         setFilterproducts(res?.data?.results);
         setProductgetloading(true); s
@@ -228,7 +227,6 @@ function Seacrhsidebarcatgory({ setFilterproducts, setLoadingproduct, setProduct
 
   }
 
-  console.log(first[0], first[1], "first")
 
 
 
@@ -308,8 +306,8 @@ function Seacrhsidebarcatgory({ setFilterproducts, setLoadingproduct, setProduct
         {dropdown1 && <div className={styles.gapsectiondropdown}>
 
         <Form.Group controlId="formBasicEmail" className="col-lg-12 mb-3">
-            <Form.Label>Search Brands</Form.Label>
-            <Form.Control type="search" placeholder="Enter Search Brands..."
+            <Form.Label>Search Category</Form.Label>
+            <Form.Control type="search" placeholder="Enter Search Category..."
               name="categorysearch"
               value={filtercategorysearch1}
               onChange={(e) => setFiltercategorysearch1(e?.target?.value)} />
@@ -363,13 +361,9 @@ function Seacrhsidebarcatgory({ setFilterproducts, setLoadingproduct, setProduct
         </div>
       </div>
 
-      <div>
+      {/* <div>
         <div className={styles.dropdownsection}
-        //  onClick={() => {
-        //   setDropdown1(false)
-        //   setDropdown2(false)
-        //   setDropdown3(!dropdown3)
-        // }}
+    
         >
           <div className={styles.transactionsize}>
             Price
@@ -377,11 +371,11 @@ function Seacrhsidebarcatgory({ setFilterproducts, setLoadingproduct, setProduct
           {dropdown3 ? <ion-icon name="chevron-up-outline" className="ion-icon" onClick={() => setDropdown3(!dropdown3)}></ion-icon> : <ion-icon name="chevron-down-outline" className="ion-icon" onClick={() => setDropdown3(!dropdown3)}></ion-icon>}
         </div>
         {dropdown3 && <div className={styles.gapsectiondropdown}>
-          {/* <div><Form.Check type="checkbox" label="Under $100" /></div>
+          <div><Form.Check type="checkbox" label="Under $100" /></div>
           <div><Form.Check type="checkbox" label="$100 - $200" /></div>
           <div><Form.Check type="checkbox" label="$200 - $300" /></div>
           <div><Form.Check type="checkbox" label="$300 - $400" /></div>
-          <div><Form.Check type="checkbox" label="$400 above" /></div> */}
+          <div><Form.Check type="checkbox" label="$400 above" /></div>
 
           <Slider range defaultValue={[first, first1]}
             className={styles.filterprogress}
@@ -435,7 +429,7 @@ function Seacrhsidebarcatgory({ setFilterproducts, setLoadingproduct, setProduct
 
           </div>
         </div>}
-      </div>
+      </div> */}
 
     
 
@@ -447,8 +441,8 @@ function Seacrhsidebarcatgory({ setFilterproducts, setLoadingproduct, setProduct
 
 <div className="w-100">
   <Form.Group controlId="formBasicEmail" className="col-lg-12 mb-3">
-    <Form.Label>Search Brands</Form.Label>
-    <Form.Control type="search" placeholder="Enter Search Brands..."
+    <Form.Label>Search Category</Form.Label>
+    <Form.Control type="search" placeholder="Enter Search Category..."
       name="categorysearch"
       value={filtercategorysearch}
       onChange={(e) => setFiltercategorysearch(e?.target?.value)} />

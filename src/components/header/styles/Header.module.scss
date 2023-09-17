@@ -1,48 +1,42 @@
 @use "../../../../scss/abstract/" as *;
 
-
 .mainheadersection {
-   
     // padding-top:10px;
-    z-index: 989;
+    z-index: 98998989898 !important;
     // border:1px solid red;
-    position:fixed;
-    width:100%;
-    .insideheadersplitbox
-    {
+    position: fixed;
+    width: 100%;
+    .insideheadersplitbox {
         // border:2px solid blue;
-        width:100%;
-        background-color:blue;
+        width: 100%;
+        background-color: blue;
         background: rgba(255, 255, 255);
         box-shadow: 0px -27px 120px rgba(0, 0, 0, 0.08);
-        padding:10px;
+        padding: 10px;
     }
     .insidesectionheader {
-        width: 80%;
+        width: 81.5%;
         margin: 0 auto;
         // border:1px solid red;
-       
-      
-    @include xsBreakPoint {
-        width: 85%;
 
-    }
-    @include smBreakPoint {
-        width: 85%;
-
-    }
-    @include mdBreakPoint {
-        width: 85%;
-
-    }
-    @include lgBreakPoint {
-        width: 89%;
-
-    }
-    @include xlBreakPoint {
-        width: 85%;
-
-    }
+        @include xsBreakPoint {
+            width: 85%;
+        }
+        @include smBreakPoint {
+            width: 85%;
+        }
+        @include mdBreakPoint {
+            width: 85%;
+        }
+        @include lgBreakPoint {
+            width: 92%;
+        }
+        @include xlBreakPoint {
+            width: 88%;
+        }
+        @include xxxlBreakPoint {
+            width: 90% !important;
+        }
 
         .insidesplitheader {
             width: 100%;
@@ -137,7 +131,7 @@
             .rightlogo {
                 width: 20%;
                 display: flex;
-            
+
                 .insiderightlogos {
                     width: 100%;
                     display: flex;
@@ -147,8 +141,6 @@
                     @include lgBreakPoint {
                         gap: 19px;
                     }
-
-                   
                 }
                 .notifications {
                     width: 100%;
@@ -253,10 +245,7 @@
     }
 }
 
-
-
 .middleheadersection {
-
     background: #e5e5e5;
     background-color: white;
     backdrop-filter: blur(30px);
@@ -275,6 +264,9 @@
         }
         @include xlBreakPoint {
             width: 75%;
+        }
+        @include xxxlBreakPoint {
+            width: 80% !important;
         }
     }
     .menuicons {
@@ -371,10 +363,8 @@
     cursor: pointer !important;
 }
 
-
-.cursorserach
-{
-    cursor:pointer !important;
-    width:20px;
-    height:20px;
+.cursorserach {
+    cursor: pointer !important;
+    width: 20px;
+    height: 20px;
 }

@@ -4,7 +4,7 @@ import CategorycardQueryparams from '../../src/components/categorys/maincategory
 
 function index() {
     return (
-        <LayoutHeader title={"CategorySearch"}>
+        <LayoutHeader title={"ProductSearch"}>
             <CategorycardQueryparams />
         </LayoutHeader>
     )

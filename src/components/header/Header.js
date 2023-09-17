@@ -35,7 +35,6 @@ import favortsactive from '../../assests/profile-logo/favortsactive.png';
 import orderactive from '../../assests/profile-logo/orderactive.png';
 import * as Scroll from 'react-scroll';
 import { Headertext } from '../../consttext/Headerconst';
-// import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 function Header() {
     const { state } = useContext(ContextStore);
     const dispatch = useDispatch();
@@ -70,7 +69,6 @@ function Header() {
         localStorage.removeItem("productid");
         localStorage.removeItem('signupuser');
         localStorage.removeItem("userTokens");
-
         setShowMega(false);
         setTimeout(() => {
             router.push("/");
@@ -100,7 +98,7 @@ function Header() {
 
     }
     const pushServices = (data) => {
-        router.push(`/service/${data}`);
+        router.push(`/servicecategory/${data}`);
 
     }
 
@@ -116,13 +114,7 @@ function Header() {
     useEffect(() => {
         const auth = localStorage.getItem("auth");
         setUserAuth(auth);
-        ExploreCategorys().then((res) => {
-            setCatgorys(res?.data);
-            setCatgorysproductmenu(res?.data?.productMenus);
-            setCatgorysproductmenuservices(res?.data?.serviceMenus)
-        }).catch((err) => {
-            console.log(err);
-        })
+
         // FavortActions(dispatch);
         FilterData();
         SearchProductCategorys().then((res) => {
@@ -130,10 +122,25 @@ function Header() {
         }).catch((err) => {
             console.log(err);
         })
+        exploreDatas();
     }, [userauth, loadingserach]);
 
+
+    const exploreDatas = async () => {
+        try {
+            const response = await ExploreCategorys();
+            setCatgorys(response?.data);
+            setCatgorysproductmenu(response?.data?.productMenus);
+            setCatgorysproductmenuservices(response?.data?.serviceMenus)
+
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
     const SellerLogin = () => {
-        window.open('https://eseller.cdp360.in/sign-up')
+        window.open(process.env.NEXT_PUBLIC_SELLER_URL);
     }
     const [serachcategory, setSerachCategory] = useState("");
     const [serachdata, setSearchData] = useState([]);
@@ -152,8 +159,6 @@ function Header() {
 
 
     const SearchUserSomething = () => {
-
-
         router.push({
             pathname: '/category',
             query: { search: serachcategory },
@@ -168,30 +173,29 @@ function Header() {
     }
 
 
-    const Orders = (data) => {
+    const Orders = () => {
         router.push(`/profile/orders`);
 
     }
 
 
 
-    const Services = (data) => {
+    const Services = () => {
         router.push(`/profile/services`);
     }
 
-    const Whishlists = (data) => {
+    const Whishlists = () => {
         router.push(`/profile/favorts`);
     }
 
 
-    const Coupons = (data) => {
+    const Coupons = () => {
         router.push(`/profile/coupons`);
     }
 
     const HelpPage = () => {
         router.push(`/profile/faq`);
     }
-
 
 
 
@@ -212,7 +216,7 @@ function Header() {
                                     <div className={styles.boxinside}>
                                         <div className={styles.leftheaderbox}>
                                             <div className={styles.inputsearchsection}>
-                                                <input type="text" placeholder='Search for products,brands and more....' className="inputserach" onChange={handleChange} value={serachcategory} />
+                                                <input type="text" placeholder='Search for products,service,brands and more....' className="inputserach" onChange={handleChange} value={serachcategory} />
                                                 <div>
                                                     <Image src={serachicon} alt="no image" className={styles.cursorserach} onClick={SearchUserSomething} />
                                                 </div>
@@ -283,7 +287,7 @@ function Header() {
                                                 {favortcountdataredux?.loginUser?.logindata?.profileImageName ? <>
                                                     <img
                                                         className={styles.notificationsprofile}
-                                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${favortcountdataredux?.loginUser?.logindata?.profileImageName}`}
+                                                        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${favortcountdataredux?.loginUser?.logindata?.profileImageName}`}
                                                         alt="profile-pic"
                                                     />
 
@@ -401,24 +405,27 @@ function Header() {
                                             <div className="firstsection">
 
                                                 <div>
-                                                    <li><a className="commontitles ms-3 fs-5">{Headertext?.Products}</a></li>
+                                                    <li><a className="commontitles ms-2 fs-5">{Headertext?.Products}</a></li>
                                                 </div>
-                                                {explorecategorysProductmenu.slice(0, 200)?.map((item, index) => {
+                                                {explorecategorysProductmenu.slice(0, 5)?.map((item, index) => {
                                                     return (
-                                                        <div className="insideservices">
+                                                        <div className="insideservices" key={index}>
 
-                                                            <div>
+                                                            <div onClick={() => pushCategory(item?.slugName)}>
                                                                 {item?.categoryName === item?.categoryName && <>
-                                                                    <li><a className="commontitle">{item?.categoryName}</a></li>
+                                                                    <li><a className="commontitle ms-1">{item?.categoryName}</a></li>
                                                                 </>}
                                                             </div>
-
-                                                            <br />
+                                                            {/* <br /> */}
                                                             <div>
-                                                                {item?.subCategories?.map((items, index) => {
+                                                                {item?.subCategoriesList?.map((items, index) => {
                                                                     return (
-                                                                        <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
-                                                                            <li><a className="unactivetext">{items?.name}</a></li>
+                                                                        <div className="flexdirections" onClick={() => pushCategory(items?.slugName)} key={index}>
+                                                                            {items?.name ? <li><a className="unactivetext">{items?.name}</a></li> :
+                                                                                <>
+                                                                                    <li><a className="unactivetexts">welcome</a></li>
+                                                                                </>
+                                                                            }
                                                                         </div>
                                                                     )
                                                                 })}
@@ -432,32 +439,39 @@ function Header() {
                                             </div>
 
 
-                                            {explorecategorysProductmenu.length > 200 ? <>
+                                            {explorecategorysProductmenu.length > 5 ? <>
 
                                                 <div className="secondsection">
 
 
 
+                                                    <div>
+                                                        <li><a className="commontitles ms-2 fs-5"></a></li>
+                                                    </div>
 
 
 
 
-                                                    {explorecategorysProductmenu.slice(200, 400)?.map((item, index) => {
+                                                    {explorecategorysProductmenu.slice(5, 10)?.map((item, index) => {
                                                         return (
-                                                            <div className="insideservices">
+                                                            <div className="insideservices" key={index}>
 
-                                                                <div>
+                                                                <div onClick={() => pushCategory(item?.slugName)}>
                                                                     {item?.categoryName === item?.categoryName && <>
-                                                                        <li><a className="commontitle">{item?.categoryName}</a></li>
+                                                                        <li><a className="commontitle ms-1">{item?.categoryName}</a></li>
                                                                     </>}
                                                                 </div>
 
                                                                 <br />
                                                                 <div>
-                                                                    {item?.subCategories?.map((items, index) => {
+                                                                    {item?.subCategoriesList?.map((items, index) => {
                                                                         return (
-                                                                            <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
-                                                                                <li><a className="unactivetext">{items?.name}</a></li>
+                                                                            <div className="flexdirections" onClick={() => pushCategory(items?.slugName)} key={index}>
+                                                                                {items?.name ? <li><a className="unactivetext">{items?.name}</a></li> :
+                                                                                    <>
+                                                                                        <li><a className="unactivetexts">welcome</a></li>
+                                                                                    </>
+                                                                                }
                                                                             </div>
                                                                         )
                                                                     })}
@@ -471,7 +485,7 @@ function Header() {
                                             </>}
 
 
-                                            {explorecategorysProductmenu.length > 400 ? <>
+                                            {explorecategorysProductmenu.length > 10 ? <>
                                                 <div className="thirdsection">
                                                     {/* <li><a className="commontitle">{explorecategorys[4]?.categoryName}</a></li>
                                                 <div>
@@ -484,26 +498,31 @@ function Header() {
                                                     })}
                                                 </div> */}
 
-                                                    <li><a className="commontitles ms-3 fs-5"></a></li>
+                                                    <div>
+                                                        <li><a className="commontitles ms-2 fs-5"></a></li>
+                                                    </div>
 
 
-
-                                                    {explorecategorysProductmenu.slice(400, 1000)?.map((item, index) => {
+                                                    {explorecategorysProductmenu.slice(10, 20)?.map((item, index) => {
                                                         return (
-                                                            <div className="insideservices">
+                                                            <div className="insideservices" key={index}>
 
-                                                                <div>
+                                                                <div onClick={() => pushCategory(item?.slugName)}>
                                                                     {item?.categoryName === item?.categoryName && <>
-                                                                        <li><a className="commontitle">{item?.categoryName}</a></li>
+                                                                        <li><a className="commontitle ms-1">{item?.categoryName}</a></li>
                                                                     </>}
                                                                 </div>
 
                                                                 <br />
                                                                 <div>
-                                                                    {item?.subCategories?.map((items, index) => {
+                                                                    {item?.subCategoriesList?.map((items, index) => {
                                                                         return (
-                                                                            <div className="flexdirections" onClick={() => pushCategory(item?.slugName)} key={index}>
-                                                                                <li><a className="unactivetext">{items?.name}</a></li>
+                                                                            <div className="flexdirections" onClick={() => pushCategory(items?.slugName)} key={index}>
+                                                                                {items?.name ? <li><a className="unactivetext">{items?.name}</a></li> :
+                                                                                    <>
+                                                                                        <li><a className="unactivetexts">welcome</a></li>
+                                                                                    </>
+                                                                                }
                                                                             </div>
                                                                         )
                                                                     })}
@@ -513,36 +532,37 @@ function Header() {
 
                                                         )
                                                     })}
-
-
-
                                                 </div>
-
-
                                             </> : <></>}
-
                                             {explorecategorysservice.length > 0 ? <>
 
                                                 <div className="fourthsection">
 
-                                                    <li><a className="commontitles ms-3 fs-5">{Headertext?.Services}</a></li>
+                                                    <li><a className="commontitles ms-2 fs-5">{Headertext?.Services}</a></li>
 
-                                                    {explorecategorysservice.slice(0, 200)?.map((item, index) => {
+                                                    {explorecategorysservice.slice(0, 5)?.map((item, index) => {
                                                         return (
-                                                            <div className="insideservices">
+                                                            <div className="insideservices" key={index}>
 
-                                                                <div>
+                                                                <div onClick={() => pushServices(item?.slugName)}>
                                                                     {item?.categoryName === item?.categoryName && <>
-                                                                        <li><a className="commontitle">{item?.categoryName}</a></li>
+                                                                        <li><a className="commontitle ms-1">{item?.categoryName}</a></li>
                                                                     </>}
                                                                 </div>
 
                                                                 <br />
                                                                 <div>
-                                                                    {item?.subCategories?.map((items, index) => {
+                                                                    {item?.subCategoriesList?.map((items, index) => {
                                                                         return (
-                                                                            <div className="flexdirections" onClick={() => pushServices(item?.slugName)} key={index}>
-                                                                                <li><a className="unactivetext">{items?.name}</a></li>
+                                                                            // <div className="flexdirections" onClick={() => pushServices(items?.slugName)} key={index}>
+                                                                            //     <li><a className="unactivetext">{items?.name}</a></li>
+                                                                            // </div>
+                                                                            <div className="flexdirections" onClick={() => pushServices(items?.slugName)} key={index}>
+                                                                                {items?.name ? <li><a className="unactivetext">{items?.name}</a></li> :
+                                                                                    <>
+                                                                                        <li><a className="unactivetexts">welcome</a></li>
+                                                                                    </>
+                                                                                }
                                                                             </div>
                                                                         )
                                                                     })}
@@ -557,15 +577,18 @@ function Header() {
                                             </> : <></>}
 
 
-                                            {explorecategorysservice.length > 200 ? <>
+                                            {explorecategorysservice.length > 5 ? <>
 
                                                 <div className="fifthsection">
+                                                    <div>
+                                                        <li><a className="commontitles ms-2 fs-5"></a></li>
+                                                    </div>
 
-                                                    {explorecategorysservice.slice(400, 800)?.map((item, index) => {
+                                                    {explorecategorysservice.slice(5, 10)?.map((item, index) => {
                                                         return (
-                                                            <div className="insideservices">
+                                                            <div className="insideservices" key={index}>
 
-                                                                <div>
+                                                                <div onClick={() => pushServices(item?.slugName)}>
                                                                     {item?.categoryName === item?.categoryName && <>
                                                                         <li><a className="commontitle">{item?.categoryName}</a></li>
                                                                     </>}
@@ -573,10 +596,17 @@ function Header() {
 
                                                                 <br />
                                                                 <div>
-                                                                    {item?.subCategories?.map((items, index) => {
+                                                                    {item?.subCategoriesList?.map((items, index) => {
                                                                         return (
-                                                                            <div className="flexdirections" onClick={() => pushServices(item?.slugName)} key={index}>
-                                                                                <li><a className="unactivetext">{items?.name}</a></li>
+                                                                            // <div className="flexdirections" onClick={() => pushServices(items?.slugName)} key={index}>
+                                                                            //     <li><a className="unactivetext">{items?.name}</a></li>
+                                                                            // </div>
+                                                                            <div className="flexdirections" onClick={() => pushServices(items?.slugName)} key={index}>
+                                                                                {items?.name ? <li><a className="unactivetext">{items?.name}</a></li> :
+                                                                                    <>
+                                                                                        <li><a className="unactivetexts">welcome</a></li>
+                                                                                    </>
+                                                                                }
                                                                             </div>
                                                                         )
                                                                     })}
@@ -602,8 +632,11 @@ function Header() {
                                 <span className='ms-2 hovertexts'>{Headertext?.Products}</span>
                             </div>
                         </div>
-                        <div className={router.pathname == "/service" ? "active" : ""}>
-                            <div className='nav-link' onClick={() => router?.push("/service")}>
+                        {/* <Link href="/products" as="/products.html" >
+                           products
+                        </Link> */}
+                        <div className={router.pathname == "/services" ? "active" : ""}>
+                            <div className='nav-link' onClick={() => router?.push("/services")}>
                                 <span className='ms-2 hovertexts'>{Headertext?.Services}</span>
                             </div>
                         </div>
@@ -619,9 +652,9 @@ function Header() {
                             </div>
                         </div>
                         <div className={router.pathname == "/abouts" ? "active" : ""}>
-                            <div class="dropdownabout" >
-                                <button class="dropbtnabout" ><span className={router?.pathname == "/abouts" ? "active" : ""}>{Headertext?.AboutUs}</span> <span><Image src={aroepath} alt="no image" className="patharrow" /></span></button>
-                                <div class="dropdown-contentabut">
+                            <div className="dropdownabout" >
+                                <button className="dropbtnabout" ><span className={router?.pathname == "/abouts" ? "active" : ""}>{Headertext?.AboutUs}</span> <span><Image src={aroepath} alt="no image" className="patharrow" /></span></button>
+                                <div className="dropdown-contentabut">
 
                                     <Link href="/abouts#WhatisWomeyn" scroll={false} >
                                         {Headertext?.WhatisWomeyn}

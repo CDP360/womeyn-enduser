@@ -5,6 +5,15 @@
     .insideexploresection {
         width: 75%;
         margin: 0 auto;
+        padding: 11% 0px;
+        @include xsBreakPoint
+        {
+            padding:23% 0px !important;
+        }
+        @include smBreakPoint
+        {
+            padding:20% 0px !important;
+        }
         .splitboxexplore {
             width: 100%;
             display: flex;
@@ -19,6 +28,33 @@
                 width: 78%;
             }
         }
+        .explorebuttons {
+            width: 100%;
+            display: flex;
+            gap: 50px;
+            .activebutton {
+                width: 40%;
+                background-color: #e75b5e;
+                text-align: center;
+                cursor: pointer;
+                padding: 10px;
+                border-radius:10px;
+                color:white;
+                font-weight:600;
+                
+
+            }
+            .inactivebutton {
+                width: 40%;
+                background-color: #F1F1F1;
+                text-align: center;
+                cursor: pointer;
+                padding: 10px;
+                border-radius:10px;
+                font-weight:600;
+
+            }
+        }
         .socailfootersection {
             display: flex;
             padding-top: 4%;
@@ -30,8 +66,8 @@
                 border-radius: 7px;
                 cursor: pointer;
                 .footersocialicons {
-                    width: 100%;
-                    height: 20px;
+                    width: 40px;
+                    height: 40px;
                     object-fit: contain;
                     @include xsBreakPoint {
                         height: auto;
@@ -54,9 +90,19 @@
     }
 }
 
-
-
-.menuProps
-{
+.menuProps {
     border: 2px solid red !important;
+}
+.hovers
+{
+    cursor:pointer;
+
+}
+
+.hovers:hover
+{
+    color:red;
+    cursor:pointer;
+    border:1px solid blue;
+
 }

@@ -87,6 +87,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        top:33%;
     }
     @include smBreakPoint {
         width: 30px !important;

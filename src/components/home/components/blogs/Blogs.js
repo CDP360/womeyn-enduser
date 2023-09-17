@@ -113,7 +113,7 @@ function Blogs() {
             <div className={styles.blogmainsection}>
                 <div className={styles.insideblogsection}>
                     <div className={styles.blogsectiontexts}>
-                        <div className='large-text text-center'>
+                        <div className='textseller '>
                             Blogs
                         </div>
                         <div className='blogloream mt-2'>
@@ -122,84 +122,117 @@ function Blogs() {
                         </div>
                     </div>
 
-                    {/* <div className="blog-cards row d-flex justify-content-center gap-3  ">
-                        {datas?.map((item, index) => {
-                            return (
-                                <div className='cards-blog  col-sm-12 col-xs-12 col-md-12 col-xl-4 mt-3 mb-3' key={index} onClick={() => EventNavigte(item?.slugName)}>
-                                    <div>
-
-
-                                        {item?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.postImageName}`} alt="no image" className={styles.blogimages} /> : <>
-                                            <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
-                                        </>}
-
-                                    </div>
-
-                                    <div className="mt-2" onClick={() => EventNavigte(item?.slugName)}>
-                                        <div>
-
-                                            <h6>{item?.title?.length < 10 ? <>{item?.title}</> : <>      {item?.title.slice(0, 25)}...</>}</h6>
-
-
+                    <div className={styles.appcard}>
+                        {/* {datas?.length > 4 ? <>
+                <Slider {...settings}>
+                    {datas.map((item, index) => {
+                        return (
+                            <div className={styles.cardcategory} key={index}>
+                                <div className={styles.cardsections}>
+                                    <div className="cards col-lg-12 mb-1 " onClick={() => categoryPush(item?.productSlugName)}>
+                                        <div className={styles.imagebox}>
+                                            {item?.thumbImage ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.thumbImage}`} alt="no image" className={"productimagess"} /> : <>
+                                                <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
+                                            </>}
                                         </div>
-
+                                        <div className={styles.cardinsidesection}>
+                                                        <div className="mb-3 mt-2">
+                                                            <div className={styles.productNametext}>
+                                                                {item?.title}
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                     </div>
                                 </div>
-                            )
-                        })}
-                    </div> */}
 
-
-                    <div className={styles.insidemakesection}>
-
-
-                        {datas?.length <= 4 ? <>
-                            <div className={styles.insideslidess}>
-                                {datas.map((item, index) => {
-                                    return (
-                                        <div className={styles.cardsslide} key={index} style={{ backgroundColor: item.colorbg }} onClick={() => EventNavigte(item?.slugName)}>
-                                            <div>
-                                                {/* <Image src={item?.image} alt="no image" className={styles.whatmakeimage} /> */}
-                                                {item?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.postImageName}`} alt="no image" className={styles.whatmakeimage} /> : <>
-                                                    <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
-                                                </>}
-                                            </div>
-                                            <div className='mt-4 text-center' onClick={() => NavigatePathes(item?.slugName)} >
-
-                                                <h6>{item?.title?.length < 10 ? <>{item?.title}</> : <>      {item?.title.slice(0, 25)}...</>}</h6>
-
-                                            </div>
-                                            {/* <div onClick={() => pushCatgorys(item?.slugName)} >
-                                        {item?.description}
-                                    </div> */}
-                                        </div>
-                                    )
-                                })}
                             </div>
-                        </> :
-                            <Slider {...settings}>
-                                {datas.map((item, index) => {
-                                    return (
-                                        <div className={styles.insideslides} key={index} onClick={() => EventNavigte(item?.slugName)}>
-                                            <div>
-                                                {/* <Image src={item?.image} alt="no image" className={styles.whatmakeimage} /> */}
+                        )
+                    })}
+                </Slider>
+            </> : <> */}
+                        <div className='row d-flex gap-2 p-0 m-0'>
+                            {datas.slice(0, 4).map((item, index) => {
+                                return (
+                                    <div className={styles.cardcategorys} key={index}>
 
-
-                                                {item?.postImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.postImageName}`} alt="no image" className={styles.whatmakeimage} /> : <>
+                                        <div onClick={() => categoryPush(item?.productSlugName)}>
+                                            <div className={styles.imagebox}>
+                                                {item?.thumbImage ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.thumbImage}`} alt="no image" className={'productimagess'} /> : <>
                                                     <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
                                                 </>}
                                             </div>
-                                            <div className='mt-4' onClick={() => EventNavigte(item?.slugName)} >
-                                                {/* <h6>{item?.name}</h6> */}
-                                                <h6>{item?.title?.length < 10 ? <>{item?.title}</> : <>      {item?.title.slice(0, 25)}...</>}</h6>
+                                            <div className={styles.cardinsidesection}>
+                                                <div className="mb-3 mt-2">
+                                                    <div className={styles.productNametext}>
+                                                        {item?.title}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                        {/* </>} */}
 
+                    </div>
+
+
+
+                    {/* <div className={styles.insidemakesection}>
+
+                        <div className={styles.appcard}>
+                            {datas?.length > 4 ? <>
+                                <Slider {...settings}>
+                                    {datas.map((item, index) => {
+                                        return (
+
+                                            <div className="card col-lg-3 col-sm-6 col-xs-6 col-md-10 " onClick={() => EventNavigte(item?.slugName)}>
+                                                <div className={styles.imagebox}>
+                                                    {item?.thumbImage ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.thumbImage}`} alt="no image" className={"productimagess"} /> : <>
+                                                        <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
+                                                    </>}
+                                                </div>
+                                                <div className={styles.cardinsidesection}>
+                                                    <div className="mb-3 mt-2">
+                                                        <div className={styles.productNametext}>
+                                                            {item?.title}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
 
-                                        </div>
-                                    )
-                                })}
-                            </Slider>}
-                    </div>
+                                        )
+                                    })}
+                                </Slider>
+                            </> : <>
+                                <div className='cardsection row mb-3 ms-1'>
+                                    {datas.map((item, index) => {
+                                        return (
+                                            <div className={'card col-lg-3 col-sm-6 col-xs-6 col-md-10'} key={index}>
+
+                                                <div onClick={() => EventNavigte(item?.slugName)}>
+                                                    <div className={styles.imagebox}>
+                                                        {item?.thumbImage ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.thumbImage}`} alt="no image" className={'productimagess'} /> : <>
+                                                            <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3rp7MO_R9Zoskfh9fltePWEsxbRsnAzP63jQEOKf2ml2jngqCCGiq-QL3KinCJk9BX0o&usqp=CAU"} alt="no image" />
+                                                        </>}
+                                                    </div>
+                                                    <div className={styles.cardinsidesection}>
+                                                        <div className="mb-3 mt-2">
+                                                            <div className={styles.productNametext}>
+                                                                {item?.title}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            </>}
+
+                        </div>
+                    </div> */}
 
 
                 </div>

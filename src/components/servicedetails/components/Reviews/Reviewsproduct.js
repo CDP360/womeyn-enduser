@@ -129,8 +129,8 @@ function Reviewsproduct({ reviews, ratingcount, averageRatings }) {
 
             </> : <div>
 
-                <div>
-                    Review Service
+                <div className={styles.zumbaservicess}>
+                    Service Reviews
                 </div>
                 <Nodatafoundimage
                     title={"No Service Reviews"}

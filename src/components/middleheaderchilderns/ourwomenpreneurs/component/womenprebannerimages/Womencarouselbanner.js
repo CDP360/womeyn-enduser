@@ -12,7 +12,6 @@ import w4 from '../../../../../assests/sellerbanners/w4.jpg';
 import w5 from '../../../../../assests/sellerbanners/w5.jpg';
 import w6 from '../../../../../assests/sellerbanners/w6.jpg';
 import w7 from '../../../../../assests/sellerbanners/w7.jpg';
-
 function Womencarouselbanner() {
     const [banners, setBanners] = useState([]);
     const settings = {
@@ -66,8 +65,9 @@ function Womencarouselbanner() {
 
     useEffect(() => {
 
-        const data = "Our WomeynPreneurs Banners";
+        const data = "Our Womeynpreneurs Banner";
         Getwomenpreneursbanner(data).then((res) => {
+
             setBanners(res?.data);
         }).catch((err) => {
             console.log(err);
@@ -138,7 +138,7 @@ function Womencarouselbanner() {
                                 <div>
 
                                     {item?.imageName ? <>
-                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={"allbanners"} onClick={() => MovePageData(item.redirectUrl)} />
+                                        <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item.imageName}`} alt="no image" className={"allbanners"} onClick={() => MovePageData(item.redirectUrl)} />
 
                                     </> : <>
                                         <Skeleton className={styles.homebanner} />

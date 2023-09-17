@@ -24,6 +24,7 @@ function Help() {
         formState: { errors },
     } = useForm();
     const onSubmit = (e) => {
+
     }
 
     useEffect(() => {
@@ -178,7 +179,7 @@ Gettermsandconditions(ids).then((res)=>{
 
                 <div className={styles.loream}>
 
-                {terms?.content ? <>{ReactHtmlParser(terms?.content.replace(/&lt;/g, "<"))}</> : null}
+                {/* {terms?.content ? <>{ReactHtmlParser(terms?.content.replace(/&lt;/g, "<"))}</> : null} */}
 
                     {/* If you were unable to find specific information on <span><a href="https://www.womeyn.com">https://www.womeyn.com</a></span> then please feel free to reach out by filling in the details below and one of our support consultants will call or reply back within 24 to 48 hours. */}
                 </div>

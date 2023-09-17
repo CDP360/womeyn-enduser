@@ -1,4 +1,4 @@
-import React ,{useState,useEffect}from 'react'
+import React, { useState, useEffect } from 'react'
 import { Fragment } from 'react';
 import Image from 'next/image';
 import { ContactText } from '../../consttext/Contactconst';
@@ -15,16 +15,16 @@ import { ConatctAdminInfor } from '../../services/contact-service/contact-servic
 function Contactus() {
 
 
-    const [information,setInformation]=useState([]);
+    const [information, setInformation] = useState([]);
 
 
-    useEffect(()=>{
-ConatctAdminInfor().then((res)=>{
-    setInformation(res?.data[0]);
-}).catch((err)=>{
- console.log(err);   
-})
-    },[])
+    useEffect(() => {
+        ConatctAdminInfor().then((res) => {
+            setInformation(res?.data[0]);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, [])
     const Contactdetails = [
         {
             id: 1,
@@ -121,23 +121,23 @@ ConatctAdminInfor().then((res)=>{
                     </div>
                 </div>
             </div>
-           
 
 
 
-            
+
+
             <div className={styles.emptyboxrightcolor}>
-                </div>
-                <div className={styles.emptyboxleftcolor}>
-                </div>
-                <div className={styles.emptyboxleftcolor1}>
-                </div>
-                <div className={styles.emptyboxleftcolor2}>
-                </div>
-                <div className={styles.emptyboxleftcolor3}>
-                </div>
-                <div className={styles.emptyboxleftcolor4}>
-                </div>
+            </div>
+            <div className={styles.emptyboxleftcolor}>
+            </div>
+            <div className={styles.emptyboxleftcolor1}>
+            </div>
+            <div className={styles.emptyboxleftcolor2}>
+            </div>
+            <div className={styles.emptyboxleftcolor3}>
+            </div>
+            <div className={styles.emptyboxleftcolor4}>
+            </div>
 
         </Fragment>
     )

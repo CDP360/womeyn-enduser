@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import LayoutHeader from '../../src/components/Layoutheader/LayoutHeader';
 import Viewproducts from '../../src/components/middleheaderchilderns/ourwomenpreneurs/component/womenviewproduct/Viewproducts';
-import { ProductView } from './../../src/services/productview-service/productview-services';
 import Head from "next/head";
 
 function index() {
@@ -17,7 +16,7 @@ function index() {
 
   return (
     <LayoutHeader title={viewproductid}>
-     
+
       <Viewproducts id={viewproductid} />
     </LayoutHeader>
   )

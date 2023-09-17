@@ -5,6 +5,12 @@
   height: auto;
   position: relative;
   z-index: 9 !important;
+
+  // .imagesectionhomes {
+  //   border: 1px solid blue;
+  //   width: 1200px;
+  //   height: 350px;
+  // }
   .insidesectionhome {
     width: 100%;
     margin: 0 auto;
@@ -33,10 +39,11 @@
     // }
     .imagesectionhome {
       width: 100%;
-      // position: relative;
+      // height: 300px;
+      // border: 1px solid red;
       .sliderimage {
-        max-width: 100%;
-        max-height: 300px;
+        // max-width: 100%;
+        // max-height: 300px;
         // object-fit: contain;
         height: 100%;
         margin: 0 auto;
@@ -113,27 +120,37 @@
       }
       .add1 {
         width: 100% !important;
-        height: 300px;
+        height: 100%;
         // object-fit: contain;
         cursor: pointer;
         border-radius: 10px;
         @include xsBreakPoint {
           width: 100% !important;
+          height:auto;
         }
         @include xsBreakPoint {
           width: 100% !important;
+          height: 100% !important;
+
         }
         @include smBreakPoint {
           width: 100% !important;
+          height: 100% !important;
+
         }
         @include mdBreakPoint {
           width: 100% !important;
+          height: 100% !important;
         }
         @include lgBreakPoint {
           width: 100% !important;
+          height: 100% !important;
+
         }
         @include xlBreakPoint {
           width: 100% !important;
+          height: 100% !important;
+
         }
       }
     }
@@ -195,7 +212,7 @@
 
 .emptyboxleftcolor2 {
   position: absolute;
-  width: 15%;
+  width: 12%;
   height: 25% !important;
   background: #e95a5a;
   opacity: 0.2;
@@ -207,7 +224,7 @@
 
 .emptyboxleftcolor3 {
   position: absolute;
-  width: 25%;
+  width: 10%;
   height: 30% !important;
   background: #ffe7cd;
   opacity: 0.5;
@@ -219,7 +236,7 @@
 
 .emptyboxleftcolor4 {
   position: absolute;
-  width: 15%;
+  width: 10%;
   height: 10% !important;
   background: #ffe7cd;
   opacity: 0.5;
@@ -228,3 +245,4 @@
   bottom: 0%;
   z-index: 0;
 }
+

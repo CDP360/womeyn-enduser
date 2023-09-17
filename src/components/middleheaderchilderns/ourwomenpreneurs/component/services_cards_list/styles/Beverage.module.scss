@@ -7,11 +7,7 @@
         height: auto;
     }
    
-    .imagebox
-    {
-  
-        height:100%;
-    }
+   
     ion-icon {
         font-size: 22px;
         font-weight:700 !important;
@@ -94,6 +90,7 @@
         width: 90%;
         margin: 0 auto;
         padding-top:6%;
+        
         @include xsBreakPoint
         {
             padding-top:4%;
@@ -137,7 +134,27 @@
         display:flex;
     }
 }
-.brandname:hover
+
+.imagebox
 {
-    color:#E95A5A !important;
+    border:1px solid #F1F1F1;
+    background-color:#F1F1F1;
+    // border-bottom-left-radius:20px;
+    // border-bottom-right-radius:20px;
+
+}
+
+.productNametext
+{
+    // fontweight:"bold";
+    // color:red;
+    // border:1px solid red;
+    font-weight:600;
+}
+.productNametext:hover {
+    color: #e95a5a !important;
+}
+.brandname{
+    color:#676161;
+    padding-top:5px;
 }

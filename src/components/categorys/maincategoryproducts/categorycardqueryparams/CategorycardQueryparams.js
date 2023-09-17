@@ -126,9 +126,9 @@ function CategorycardQueryparams({ id }) {
         <div className={styles.emptyboxright}>
         </div>
         <div className={styles.insidecategorysection}>
-          <div className='mb-3 mt-2'>
+          {/* <div className='mb-3 mt-2'>
             Categorys / health {id}
-          </div>
+          </div> */}
          
           <div>
             <Categorycarouse />

@@ -131,10 +131,9 @@ function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterprod
 
                         <div>
                             <Nodatafoundimage
-                                title="Category Not Available"
+                                title="No Products Available"
                             />
                         </div>
-
 
                     </div > : <div className="row gap-2">
                         {filterproducts?.map((item, index) => {
@@ -162,12 +161,13 @@ function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterprod
             }
 
 
-            {pagecount === 0 ? null : <>
+            {pagecount>12 ? <>
                 <div className="mt-3">
                     <hr />
                 </div>
                 <div>
-                    Page {pagecountnumbers} / {pagecount}
+                    Page {pagecountnumbers} 
+                    {/* / {pagecount} */}
                 </div>
 
                 <div className="mt-3">
@@ -196,7 +196,7 @@ function Maincategorylist({ name, searchnamevalue, filterproducts, setFilterprod
 
                     />
                 </div>
-            </>}
+            </> : null}
 
 
             {/* <div className="mt-3">

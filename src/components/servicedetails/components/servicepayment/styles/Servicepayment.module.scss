@@ -4,54 +4,47 @@
     // border: 2px solid blue;
     height: 100%;
     padding-bottom: 5%;
-
     .insideservicepayment {
         width: 100%;
         display: flex;
-        @include xsBreakPoint
-        {
-            flex-direction:column;
-            padding-bottom:10%;
+        // border: 2px solid blue;
+
+        @include xsBreakPoint {
+            flex-direction: column;
+            padding-bottom: 10%;
         }
-        @include smBreakPoint
-        {
-            flex-direction:column;
-            padding-bottom:10%;
+        @include smBreakPoint {
+            flex-direction: column;
+            padding-bottom: 10%;
         }
-        @include mdBreakPoint
-        {
-            padding-top:10%;
+        @include mdBreakPoint {
+            padding-top: 10%;
         }
         .leftservicepayment {
-            width: 50%;
+            width: 60%;
             // border: 3px solid orange;
             height: 100%;
-            @include xsBreakPoint
-            {
-                width:100%;
+            @include xsBreakPoint {
+                width: 100%;
             }
-            @include smBreakPoint
-            {
-                width:100%;
+            @include smBreakPoint {
+                width: 100%;
             }
-            @include mdBreakPoint
-            {
-                width:100%;
+            @include mdBreakPoint {
+                width: 100%;
             }
-            @include lgBreakPoint
-            {
-                width:100%;
+            @include lgBreakPoint {
+                // width:100%;
+                // border: 2px solid blue;
             }
             .selectpayment {
                 font-size: 2rem;
                 font-weight: 600;
-                @include xsBreakPoint
-                {
-                    font-size:1.4rem;
+                @include xsBreakPoint {
+                    font-size: 1.4rem;
                 }
-                @include mdBreakPoint
-                {
-                    font-size:1.7rem;
+                @include mdBreakPoint {
+                    font-size: 1.7rem;
                 }
             }
             .paymentmethod {
@@ -65,26 +58,19 @@
             // border: 3px solid red;
             float: right;
             height: 100%;
-            @include xsBreakPoint
-            {
-                width:100%;
-                padding-top:10%;
+            @include xsBreakPoint {
+                width: 100%;
+                padding-top: 10%;
             }
-            @include smBreakPoint
-            {
-                width:100%;
-                padding-top:10%;
-
+            @include smBreakPoint {
+                width: 100%;
+                padding-top: 10%;
             }
-            @include mdBreakPoint
-            {
-                width:100%;
-              
-
+            @include mdBreakPoint {
+                width: 100%;
             }
-            @include lgBreakPoint
-            {
-                width:100%;
+            @include lgBreakPoint {
+                // width:100%;
             }
             .confirmpay {
                 width: 80%;
@@ -100,7 +86,6 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                
             }
             .confirmpay:hover {
                 color: #fecf9d;
@@ -121,30 +106,25 @@
                     border-radius: 10px;
                     float: right;
                     padding-bottom: 8%;
-                    @include xsBreakPoint
-                    {
-                        width:100%;
+                    @include xsBreakPoint {
+                        width: 100%;
                     }
-                    @include smBreakPoint
-                    {
-                        width:70%;
-                        margin:0 auto;
-                      
-                        float:none;
+                    @include smBreakPoint {
+                        width: 70%;
+                        margin: 0 auto;
+
+                        float: none;
                     }
-                    @include mdBreakPoint
-                    {
-                        width:95%;
+                    @include mdBreakPoint {
+                        width: 95%;
                         // margin:0 auto;
                         // float:none;
                     }
-                    @include lgBreakPoint
-                    {
-                        width:79%;
+                    @include lgBreakPoint {
+                        width: 79%;
                     }
-                    @include xlBreakPoint
-                    {
-                        width:72%;
+                    @include xlBreakPoint {
+                        width: 72%;
                     }
                 }
                 .servicepayment {
@@ -221,8 +201,8 @@
 }
 
 .strips {
-    width: 100%;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     object-fit: contain;
     cursor: pointer;
 }
@@ -238,4 +218,172 @@
 
 .radiobuttons:checked:before {
     background: green !important;
+}
+
+.questions {
+    // border-bottom:1px dashed orange;
+    // padding: 10px 0px;
+    // border:1px solid red !important;
+    margin: 20px 0px;
+    // display:flex;
+    // justify-content:flex-start;
+    border-bottom: 1px dashed #9f9f9f;
+    cursor: pointer;
+    // width:100% !important;
+}
+
+.questions input[type="radio"] {
+    display: none;
+    width: 100% !important;
+}
+
+.questions input[type="radio"]:checked ~ label {
+    background-color: #fdf0f0;
+    // border-bottom: 1px dashed #9f9f9f;
+
+    width: 100% !important;
+    // padding: 10px 10px;
+    // color: white;
+}
+
+.questions input[type="radio"]:checked ~ label:before {
+    color: white;
+}
+
+.questions label {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 10px;
+    // background-color: white;
+    border-radius: 6px;
+    width: 100% !important;
+}
+
+.paymentbox {
+    // border:1px solid blue;
+    // width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    .paymentboxinside {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+    .activebox {
+        width: 30px;
+        height: 30px;
+        background-color: #e75b5e;
+        border-radius: 50%;
+    }
+    .inactive {
+        width: 30px;
+        height: 30px;
+        background-color: #f1f1f1;
+        border-radius: 50%;
+    }
+}
+
+//   new sections
+
+.workingdaysbox {
+    width: 43% !important;
+    border: 1px solid #f2f2f2 !important;
+    padding: 10px 10px !important;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow:
+        rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+        rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:0px 20px;
+    font-weight:600;
+
+    @include xsBreakPoint {
+        width: 90% !important;
+    margin:0px 5px !important;
+
+    }
+    @include smBreakPoint {
+        width: 90% !important;
+    margin:0px 5px !important;
+
+    }
+    @include mdBreakPoint {
+        width: 90% !important;
+    margin:0px 5px !important;
+
+    }
+    @include lgBreakPoint {
+        width: 42% !important;
+    margin:0px 15px !important;
+
+    }
+    @include xlBreakPoint {
+        width: 42% !important;
+    margin:0px 15px !important;
+    }
+}
+.activeworkingbox {
+    // width: 4% !important;
+    // border: 1px solid #e75b5e !important;
+    // padding: 10px 10px !important;
+    // border-radius: 10px;
+    // cursor: pointer;
+    // background-color: #e75b5e;
+    // color: white;
+
+
+
+    width: 43% !important;
+      border: 1px solid #e75b5e !important;
+    padding: 10px 10px !important;
+        background-color: #e75b5e;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow:
+        rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+        rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:0px 20px;
+    color:white;
+    font-weight:600;
+    @include xsBreakPoint {
+        width: 90% !important;
+    margin:0px 5px !important;
+
+    }
+    @include smBreakPoint {
+        width: 90% !important;
+    margin:0px 5px !important;
+
+    }
+    @include mdBreakPoint {
+        width: 90% !important;
+    margin:0px 5px !important;
+
+    }
+    @include lgBreakPoint {
+        width: 42% !important;
+    margin:0px 15px !important;
+
+    }
+    @include xlBreakPoint {
+        width: 42% !important;
+    margin:0px 15px !important;
+    }
+}
+
+.readmoretext {
+    font-size: 1.2rem;
+    color: #e95a5a;
+    cursor: pointer;
+    font-weight:600;
 }

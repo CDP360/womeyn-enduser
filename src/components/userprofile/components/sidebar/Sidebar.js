@@ -128,7 +128,6 @@ function Sidebar({ user, error }) {
         }, 300)
     }
 
-
     return (
         <>
             <div className="d-none d-lg-block">
@@ -138,7 +137,7 @@ function Sidebar({ user, error }) {
                             {user?.profileImageName ? <div onClick={handleShow2}>
                                 <img
                                     className={styles.editprofilesection}
-                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
+                                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${user?.profileImageName}`}
                                     alt="profile-pic"
                                 />
                             </div> : <Image src={userprofile} alt="no image" className={styles.profileimage} onClick={handleShow} />}
@@ -271,7 +270,7 @@ function Sidebar({ user, error }) {
                             {user?.profileImageName ? <>
                                 <img
                                     className={styles.editprofilesection}
-                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
+                                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${user?.profileImageName}`}
                                     alt="profile-pic"
                                 />
                             </> :
@@ -401,7 +400,7 @@ function Sidebar({ user, error }) {
                             {user?.profileImageName ? <>
                                 <img
                                     className={styles.editprofilesection}
-                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
+                                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${user?.profileImageName}`}
                                     alt="profile-pic"
                                 />
                             </> : <Image src={userprofile} alt="no image" className={styles.profileimage} onClick={handleShow} />}
@@ -547,7 +546,7 @@ function Sidebar({ user, error }) {
                                         <img
 
                                             className={styles.editmodelprofile}
-                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
+                                            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${user?.profileImageName}`}
                                             alt="profile-pic"
                                         />
                                     </label> :
@@ -629,7 +628,7 @@ function Sidebar({ user, error }) {
                                         <img
 
                                             className={styles.editmodelprofiles}
-                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${user?.profileImageName}`}
+                                            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${user?.profileImageName}`}
                                             alt="profile-pic"
                                         />
                                    :

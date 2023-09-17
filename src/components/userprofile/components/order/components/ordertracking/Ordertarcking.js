@@ -12,7 +12,7 @@ import Modal from 'react-bootstrap/Modal';
 function Ordertarcking({ Orders }) {
   // const [step, setIndex] = useState(2);
 
-  
+
 
   const router = useRouter();
   const [deleteid, setDeleteid] = useState("");
@@ -50,7 +50,7 @@ function Ordertarcking({ Orders }) {
         setLoading(false);
       }, 500)
 
-      console.log(res,"res")
+      console.log(res, "res")
       setTracksOrders(res);
       res?.trackingDetails?.events?.map((item, index) => {
         const f = {
@@ -67,23 +67,7 @@ function Ordertarcking({ Orders }) {
 
     })
 
-    // data.map((item, index) => {
-    //   if (item?.stateId === 1) {
-    //     setIndex(item?.stateId);
-    //   }
-    //   else if (item?.stateId === 2) {
-    //     setIndex(item?.stateId);
-    //   }
-    //   else if (item?.stateId === 3) {
-    //     setIndex(item?.stateId);
-    //   }
-    //   else if (item?.stateId === 4) {
-    //     setIndex(item?.stateId);
-    //   }
-    //   else {
-    //     setIndex(item?.stateId);
-    //   }
-    // })
+
 
   }, [router?.query?.id])
 
@@ -109,7 +93,7 @@ function Ordertarcking({ Orders }) {
   }
 
 
-  
+
   const ShopMore = () => {
     router.push("/");
 
@@ -139,44 +123,7 @@ function Ordertarcking({ Orders }) {
                     current={tracks?.length}
                     direction="vertical"
                     size="large"
-
                     items={tracks}
-                  // items={[
-                  //   {
-                  //     title: `Order Confirmed  ${dataes}`,
-                  //     description,
-                  //     subTitle:"",
-
-                  //   },
-                  //   {
-                  //     title: 'Shipped',
-                  //     description: 'Parcel menuju ke Staging SS Kab. Sleman - Sardonoharjo.',
-                  //     subTitle:"",
-
-                  //     // status:"process"
-
-                  //   },
-                  //   {
-                  //     title: 'In Progress',
-                  //     description: 'Parcel menuju ke Hub Karanganyar (proses transit).',
-                  //     subTitle:"",
-
-                  //     // status:"error"
-                  //   },
-                  //   {
-                  //     title: 'Out For Delivery',
-                  //     description: 'Parcel sudah tiba di SS Kota Surabaya - Sawahan untuk menuju ke hub.',
-                  //     // icon:"no image",
-                  //     // status:"process"
-                  //   },
-                  //   {
-                  //     title: 'Delivered',
-                  //     description: 'Parcel menuju ke Staging SS Kab. Sleman - Sardonoharjo.',
-                  //     subTitle:"",
-                  //     // icon:"no image",
-                  //     // status:"process"
-                  //   },
-                  // ]}
                   />
                 </div>
                 <div>
@@ -185,26 +132,16 @@ function Ordertarcking({ Orders }) {
               <div className={style.rightinsidesection}>
                 <div className={style.rightContainer1}>
                   <div className={style.rightContainersection1}>
-                    {/* <div className={style.innerstyle}>
-                  <p className={style.innercorrier}>Courier</p>
-                  <p>Flaship</p>
-                </div>
-                <div className={style.inner}>
-                  <p className={style.innercorrier}>Service</p>
-                  <p>Regular (ETA 3-4 days)</p>
-                </div> */}
-
                     <div className={style.rightContainersection2}>
                       <div className={style.rightinsidecontainer}>
                         <div>
                           <div >
-                            {/* productThumbImage */}
 
                             {tracksorders?.orderDetails?.itemsOrdered[0]?.productThumbImage ? <>
 
                               <img
                                 className={style.img1}
-                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${tracksorders?.orderDetails?.itemsOrdered[0]?.productThumbImage}`}
+                                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${tracksorders?.orderDetails?.itemsOrdered[0]?.productThumbImage}`}
                                 alt="profile-pic"
                               />
                             </> : <></>}
@@ -279,22 +216,14 @@ function Ordertarcking({ Orders }) {
                         {tracksorders?.orderDetails?.customerName}
                       </div>
                       <p>
-
-
                         <span>
 
                           {tracksorders?.orderDetails?.deliveryAddress[0]?.cityName}
-
                         </span>,
-
                         <span>
-
                           {tracksorders?.orderDetails?.deliveryAddress[0]?.stateName}
-
                         </span>,
-
                         <span>
-
                           {tracksorders?.orderDetails?.deliveryAddress[0]?.landMark}
 
                         </span>,
@@ -304,29 +233,12 @@ function Ordertarcking({ Orders }) {
                           {tracksorders?.orderDetails?.deliveryAddress[0]?.pinCode}
 
                         </span>
-                        {/* 177A Bleecker Street, New York City, NY 10012-1406, on the
-                    corner of Bleecker Street and Fenno Place in the heart of
-                    Greenwich Village. */}
+
                       </p>
                     </div>
                     <hr className={style.hrcontain} />
                   </div>
-                  {/* <div className={style.rightContainersection2}>
-                <div className={style.rightinsidecontainer}>
-                  <div>
-                    <div className={style.img1}></div>
 
-                  </div>
-                  <div className={style.rightinsidecontainer1}>
-                    <p className={style.paracontent}>Nikki Waffel one</p>
-                    <p className={style.paracontent2}>Color: Blue</p>
-                    <h5 className={style.dollar}>$24</h5>
-                    <h6 className={style.cancel}>Cancel order</h6>
-                  </div>
-
-                </div>
-
-              </div> */}
                 </div>
               </div>
             </div>
@@ -334,17 +246,17 @@ function Ordertarcking({ Orders }) {
         </div>
 
         <div className={style.emptyboxrightcolor}>
-                </div>
-                <div className={style.emptyboxleftcolor}>
-                </div>
-                <div className={style.emptyboxleftcolor1}>
-                </div>
-                <div className={style.emptyboxleftcolor2}>
-                </div>
-                <div className={style.emptyboxleftcolor3}>
-                </div>
-                <div className={style.emptyboxleftcolor4}>
-                </div>
+        </div>
+        <div className={style.emptyboxleftcolor}>
+        </div>
+        <div className={style.emptyboxleftcolor1}>
+        </div>
+        <div className={style.emptyboxleftcolor2}>
+        </div>
+        <div className={style.emptyboxleftcolor3}>
+        </div>
+        <div className={style.emptyboxleftcolor4}>
+        </div>
       </>}
 
 

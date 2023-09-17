@@ -1,0 +1,38 @@
+@use "../../../../../scss/abstract/" as *;
+
+.sliderimage {
+    width: 100%;
+    height: 300px;
+    // object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+
+    @include xsBreakPoint {
+        height: 150px;
+        width: 100%;
+    }
+    @include smBreakPoint {
+        height: 150px;
+        width: 100%;
+    }
+    @include mdBreakPoint {
+        height: 150px;
+        width: 100%;
+    }
+    @include lgBreakPoint {
+        height: 250px;
+        width: 100%;
+    }
+    @include xlBreakPoint {
+        height: 200px;
+        width: 100%;
+    }
+   
+}
+
+.loadingskelton
+{
+    width:100%;
+    height:250px;
+    border-radius:10px;
+}

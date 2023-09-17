@@ -10,10 +10,10 @@ function index() {
   const router = useRouter();
   const categoryId = router?.query?.categoryId;
   return (
-    <LayoutHeader title="Category">
+    <LayoutHeader title="Womeyn Product Category">
       <Head>
 
-        <title>Womeyn Category</title>
+        <title>Womeyn Product Category</title>
         <meta name="description" content="Category" key="desc" />
         <meta property="og:title" content="Womeyn Category" />
         <meta

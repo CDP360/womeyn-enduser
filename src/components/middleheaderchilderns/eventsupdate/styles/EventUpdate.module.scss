@@ -6,68 +6,59 @@
         width: 100%;
         height: 100%;
         position: relative;
-        z-index:9 !important;
+        z-index: 9 !important;
 
-      
-        .titleevents
-        {
-            font-size:1.3rem;
-            font-weight:600;
-            color: #E95A5A;
-            @include lgBreakPoint
-            {
-                font-size:1rem;
+        .titleevents {
+            font-size: 1rem;
+            font-weight: 600;
+            // color: #e95a5a;
+            @include lgBreakPoint {
+                font-size: 1rem;
             }
-            @include xlBreakPoint
-            {
-                font-size:1.1rem;
+            @include xlBreakPoint {
+                font-size: 1.1rem;
             }
-
+        }
+        .titleevents:hover {
+            color: #e95a5a;
         }
 
-        .eventlengthtext
-        {
-            padding-top:2%; padding-bottom:2%;
+        .eventlengthtext {
+            padding-top: 2%;
+            padding-bottom: 2%;
         }
-        .eventlength
-        {
+        .eventlength {
             color: rgba(0, 0, 0, 0.5);
-            font-weight:600;
+            font-weight: 600;
         }
- 
-       
+
         .insidecontentsectionevent {
             width: 100%;
-    margin: 0 auto;
-    // position: relative;
-    z-index: 9 !important;
-  
-            
-            .maineventssection
-            {
+            margin: 0 auto;
+            // position: relative;
+            z-index: 9 !important;
+
+            .maineventssection {
                 // border:2px solid red;
-                display:flex !important;
-                gap:20px;
-                cursor:pointer;
-                .leftbannerblogs
-                {
-                    width:50%;
+                display: flex !important;
+                gap: 20px;
+                cursor: pointer;
+                .leftbannerblogs {
+                    width: 50%;
                     // border:4px solid blue;
-                    .imageeventcards
-                    {
-                        width:100%;
-                        height:250px;
-                        border-radius:10px;
+                    .imageeventcards {
+                        width: 100%;
+                        height: 250px;
+                        border-radius: 10px;
                         // object-fit:contain;
                     }
                 }
-                .rightbannerblogs
-                {
-                    width:50%;
+                .rightbannerblogs {
+                    width: 50%;
                     // border:4px solid blue;
                 }
             }
-    
+
             .eventbannerimage {
                 width: 100%;
                 height: auto;
@@ -93,43 +84,38 @@
                 }
             }
 
-            .blogbuttons
-            {
-                width:100%;
-                display:flex;
-                gap:30px;
-                cursor:pointer;
+            .blogbuttons {
+                width: 100%;
+                display: flex;
+                gap: 30px;
+                cursor: pointer;
 
-        z-index:9 !important;
+                z-index: 9 !important;
 
-
-                .activebutton
-                {
-                    width:auto;
-                    border:none;
-                    padding:7px 30px;
-                    cursor:pointer;
-                    border-radius:7px;
-                    font-size:1.1rem;
-                    font-weight:600;
-                    color: #E95A5A;
-                    background: #FBDEDE;
-                  cursor:pointer;
-
+                .activebutton {
+                    width: auto;
+                    border: none;
+                    padding: 7px 30px;
+                    cursor: pointer;
+                    border-radius: 7px;
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    color: #e95a5a;
+                    background: #fbdede;
+                    cursor: pointer;
                 }
-                .inactivebutton
-                {
-                    width:auto;
-                    border:none;
-                    padding:7px 30px;
-                    cursor:pointer;
-                    border-radius:7px;
-                    font-size:1.1rem;
-                    font-weight:600;
-                  border:1px solid #FBDEDE;
-                  background-color:white;
-                  cursor:pointer;
-                  color:black;
+                .inactivebutton {
+                    width: auto;
+                    border: none;
+                    padding: 7px 30px;
+                    cursor: pointer;
+                    border-radius: 7px;
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    border: 1px solid #fbdede;
+                    background-color: white;
+                    cursor: pointer;
+                    color: black;
                 }
             }
             .splitboxeventsection {
@@ -143,7 +129,6 @@
                     flex-direction: column;
                 }
 
-                
                 .lefteventsection {
                     width: 100%;
                     // border-right: 1px solid #e0e0e0;
@@ -159,38 +144,39 @@
                         width: 100%;
                         padding-bottom: 2%;
                     }
+
                     .imageeventcard {
-                        width: 100%;
+                        max-width: 100%;
                         // object-fit: contain;
-                        height: 300px;
-                        border-radius: 10px;
-                        cursor:pointer;
-                        @include lgBreakPoint
-                        {
-                            width:100%;
-                            height:200px;
+                        max-height: 100%;
+
+                        // border-radius: 10px;
+                        cursor: pointer;
+                        // object-fit:contain;
+                        @include lgBreakPoint {
+                            width: 100%;
+                            height: 200px;
                         }
-                        @include xlBreakPoint
-                        {
-                            width:100%;
-                            height:200px;
+                        @include xlBreakPoint {
+                            width: 100%;
+                            height: 200px;
                         }
                     }
-
-                  
 
                     .sportslistsection {
                         display: flex;
                         flex-direction: column;
                         gap: 5px;
-                        padding-top: 5%;
+                        padding-top: 2%;
+                        padding: 10px 10px;
+                        // border:3px solid blue;
                         .activesports {
                             color: #e75b5e;
                             font-weight: 600;
                         }
                         .categoryevents {
                             color: #34312d;
-                            font-weight: 700;
+                            // font-weight: 700;
                         }
                         .loramsevents {
                             font-size: 0.879rem;
@@ -212,21 +198,20 @@
                         width: 90%;
                         // object-fit: contain;
                         height: 200px;
-                        border:2px solid red;
+                        // border: 2px solid red;
                         margin: 0 auto;
                         display: flex;
                         align-items: center;
                         justify-content: center;
                         border-radius: 10px;
-                        cursor:pointer;
-                        @include lgBreakPoint
-                        {
-                            height:150px !important;
+                        cursor: pointer;
+                        @include lgBreakPoint {
+                            height: 150px !important;
                         }
                     }
                     .categoryevents {
                         color: #34312d;
-                        font-weight: 700;
+                        // font-weight: 700;
                         padding-left: 5%;
                         padding-top: 2%;
                     }
@@ -248,7 +233,6 @@
     font-weight: 550;
 }
 
-
 .emptyboxeventsection {
     position: absolute;
     width: 10%;
@@ -257,8 +241,7 @@
     opacity: 0.145;
     right: 0;
     filter: blur(329px);
-    z-index:0 !important;
-
+    z-index: 0 !important;
 }
 .emptyboxeventsectionleft {
     position: absolute;
@@ -269,8 +252,7 @@
     left: 0;
     top: 30%;
     filter: blur(329px);
-    z-index:-1px !important;
-
+    z-index: -1px !important;
 }
 .emptyboxeventsectionbottom {
     position: absolute;
@@ -281,5 +263,10 @@
     right: 0;
     bottom: 10%;
     filter: blur(329px);
-    z-index:0 !important;
+    z-index: 0 !important;
+}
+
+.blogcardimage {
+    border: 1px solid #f1f1f1;
+    background-color: #f1f1f1;
 }

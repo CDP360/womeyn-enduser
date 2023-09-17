@@ -7,9 +7,21 @@
     position: relative;
     // background-color: white !important;
     background-color: none !important;
-    z-index: 9 !important;
+    z-index: 8 !important;
     @include xlBreakPoint {
         gap: 30px;
+    }
+    @include lgBreakPoint
+    {
+        width:100% !important;
+        margin:0 auto !important;
+        gap:5px;
+    }
+    @include xlBreakPoint
+    {
+        width:100% !important;
+        margin:0 auto !important;
+        gap:5px;
     }
 
     .card {
@@ -38,11 +50,11 @@
             width: 48.5% !important;
         }
         @include lgBreakPoint {
-            width: 31.5% !important;
+            width: 24.5% !important;
             height: auto;
         }
         @include xlBreakPoint {
-            width: 22.7% !important;
+            width: 24.5% !important;
             height: auto;
             // display: flex;
             // align-items: center;
@@ -77,6 +89,8 @@
         flex-direction: column;
         position: relative;
         cursor: pointer;
+
+        
         @include xsBreakPoint {
             width: 100% !important;
             margin: 0 auto;
@@ -144,17 +158,19 @@
 .cardsections-events {
     display: flex;
     gap: 50px;
+    padding: 0 !important;
     .cardevents {
         width: 30.2% !important;
         display: flex !important;
         // gap: 20px;
         height: auto;
+        box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
 
         // border:2px solid red;
         border-radius: 8px;
         // align-items: center;
         // justify-content: center;
-        padding: 20px 0px;
+        // padding: 20px 0px;
 
         border-radius: 4px;
         flex-direction: column;
@@ -203,15 +219,52 @@
             font-size: 0.786rem;
         }
     }
+
+    .cardeventss {
+        width: 20%;
+        height: auto;
+        padding: 20px 0px;
+        cursor: pointer;
+        @include xsBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include smBreakPoint {
+            width: 100% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include mdBreakPoint {
+            width: 40% !important;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include lgBreakPoint {
+            width: 29.5% !important;
+
+            height: auto;
+        }
+        @include xlBreakPoint {
+            width: 29.5% !important;
+        }
+    }
 }
 
 // card section events end
 
 // blog section  card start
 .blogloream {
-    text-align: center;
-    width: 30%;
-    margin: 0 auto;
+    // text-align: center;
+    // margin: 0 auto;
+    // border:1px solid blue;
+
     @include xsBreakPoint {
         width: 100%;
     }
@@ -222,7 +275,7 @@
         width: 60%;
     }
     @include lgBreakPoint {
-        width: 40% !important;
+        width: 50% !important;
     }
     @include xlBreakPoint {
         width: 40% !important;
@@ -288,9 +341,12 @@
 // what make card section start
 
 .blogloream {
-    text-align: center;
-    width: 30%;
-    margin: 0 auto;
+    // text-align: center;
+    width: 40%;
+    // margin: 0 auto;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    padding-bottom: 10px;
     @include xsBreakPoint {
         width: 100%;
     }

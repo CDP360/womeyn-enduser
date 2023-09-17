@@ -3,7 +3,7 @@
 .summarymainsection {
     width: 100%;
     backdrop-filter: blur(66px);
-    padding-top: 3%;
+    padding-top: 2%;
     padding-bottom: 3%;
     height: auto;
     .loadingsection
@@ -36,7 +36,7 @@
             padding-left: 25%;
             gap: 10px !important ;
             align-items: center !important;
-            padding-top: 5%;
+            padding-top: 2%;
             @include smBreakPoint {
                 padding-left: 18%;
             }
@@ -64,18 +64,15 @@
     {
         width: 100%;
         height:90px;
-        // object-fit:contain;
     }
     @include smBreakPoint
     {
         width: 100%;
         height:120px;
-        // object-fit:contain;
     }
     @include mdBreakPoint
     {
         width: 100%;
         height:120px;
-        // object-fit:contain;
     }
 }

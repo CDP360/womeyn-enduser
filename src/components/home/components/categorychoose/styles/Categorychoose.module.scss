@@ -2,15 +2,15 @@
 
 .categoryhomesection {
   width: 100%;
-  padding-top: 6%;
+  padding-top: 3%;
   .insidecategorysection {
     width: 100%;
     .supportcategorysection {
       border-top: 2px dashed grey;
       border-bottom: 2px dashed grey;
       padding-left: 2%;
-      padding-top: 3%;
-      padding-bottom: 3%;
+      padding-top: 2.5%;
+      padding-bottom: 2.5%;
       @include smBreakPoint {
         padding-top: 5%;
         padding-bottom: 5%;

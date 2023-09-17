@@ -86,7 +86,7 @@ function Returnreviewmodel({ show2, handleClose2, orderlist }) {
                                 {orderlist?.productThumbImage ? <>
                                     <img
                                         className={styles.img}
-                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${orderlist?.productThumbImage}`}
+                                        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${orderlist?.productThumbImage}`}
                                         alt="profile-pic"
                                     />
                                 </> : <>

@@ -1,64 +1,19 @@
 @use "../../../../../../scss/abstract/" as *;
-.mainslidesection {
+
+.blogmainsection {
     width: 100%;
-    margin: 0 auto !important;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    // border: 2px solid red;
-    @include xsBreakPoint {
-        width: 100%;
-    }
-    @include smBreakPoint {
-        width: 100%;
-        padding-top: 5%;
-    }
-    @include mdBreakPoint {
-        width: 100%;
-        padding-top: 15%;
-    }
-
-    .allthebest {
-        font-size: 1.2rem;
-        width: 40%;
-        padding-top:1.2%;
-        padding-bottom:2%;
-        margin: 0 auto;
-        text-align: center;
-        line-height: 1.8;
-        @include xsBreakPoint
-        {
-            width: 100%;
-        }
-        @include smBreakPoint
-        {
-            width: 100%;
-        }
-        @include mdBreakPoint
-        {
-            width: 70%;
-        }
-        @include lgBreakPoint
-        {
-            width: 60%;
-        }
-        @include xlBreakPoint
-        {
-            width: 50%;
-        }
-    }
-
-    .insidemakesection {
+    padding-top: 5%;
+    .insideblogsection {
         width: 80%;
+        height: 100%;
         margin: 0 auto;
-        padding-top: 3%;
+        // border:2px solid red;
         @include xsBreakPoint {
             width: 85%;
             // padding-top: 6%;
         }
         @include smBreakPoint {
             width: 85%;
-            padding-left: 1%;
-
             padding-top: 6%;
         }
         @include mdBreakPoint {
@@ -70,77 +25,311 @@
         @include xlBreakPoint {
             width: 85%;
         }
-        .whatmakeimage {
-            width: 93%;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-    }
-
-    .blogsectiontexts
-    {
-        // border: 2px solid red;
-        width: 80%;
-        margin: 0 auto;
-    }
-    .insideslidess {
-        width: 100%;
-        display: flex;
-        .slideimagesizes {
-            width: 200px;
-            height: 200px;
-            text-align: center;
-            cursor: pointer;
-            border-radius: 6px;
-            @include smBreakPoint {
-                width: 170px;
-                height: 170px;
-            }
+        .blogimages {
+            width: 100%;
+            height: 300px;
+            // object-fit: cover;
+            border-radius: 20px;
             @include mdBreakPoint {
-                width: 170px;
-                height: 170px;
+                width: 100%;
+                height: 200px;
             }
         }
-        .cardsslide {
-            width: 25%;
-            // background-color:red;
-            // border:3px solid blue;
-        }
     }
-    .insideslides {
-        width: 100% !important;
-        // border: 3px solid blue;
-        margin: 0 auto;
-        // padding-left: 13%;
-        // overflow: hidden;
-        // background-color: red;
+}
+
+.insidemakesection {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 2%;
+    @include xsBreakPoint {
+        width: 85%;
+        // padding-top: 6%;
+    }
+    @include smBreakPoint {
+        width: 85%;
+        padding-left: 1%;
+
+        padding-top: 6%;
+    }
+    @include mdBreakPoint {
+        width: 85%;
+    }
+    @include lgBreakPoint {
+        width: 89%;
+    }
+    @include xlBreakPoint {
+        width: 85%;
+    }
+    .whatmakeimage {
+        width: 93%;
+        height: 200px;
         display: flex;
         align-items: center;
         justify-content: center;
+        margin: 0 auto;
+        border-radius: 6px;
+        cursor: pointer;
+        object-fit: contain;
+    }
+}
+
+.blogsectiontexts {
+    width: 100%;
+    // margin: 0 auto;
+}
+.insideslidess {
+    width: 100%;
+    display: flex;
+    .slideimagesizes {
+        width: 200px;
+        height: 200px;
         text-align: center;
-        .slideimagesize {
-            width: 200px;
-            height: 200px;
-            text-align: center;
-            cursor: pointer;
-            border-radius: 6px;
-            margin: 0 auto;
-            @include smBreakPoint {
-                width: 170px;
-                height: 170px;
-            }
-            @include mdBreakPoint {
-                width: 170px;
-                height: 170px;
-            }
+        cursor: pointer;
+        border-radius: 6px;
+        @include smBreakPoint {
+            width: 170px;
+            height: 170px;
         }
-        .slideimagesize:hover {
-            transform: scale(1.1);
+        @include mdBreakPoint {
+            width: 170px;
+            height: 170px;
         }
     }
+    .cardsslide {
+        width: 25%;
+        object-fit: contain;
+    }
+}
+.insideslides {
+    width: 100% !important;
+    // border: 3px solid blue;
+    margin: 0 auto;
+    // padding-left: 13%;
+    // overflow: hidden;
+    // background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    .slideimagesize {
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 6px;
+        margin: 0 auto;
+        @include smBreakPoint {
+            width: 170px;
+            height: 170px;
+        }
+        @include mdBreakPoint {
+            width: 170px;
+            height: 170px;
+        }
+    }
+    .slideimagesize:hover {
+        transform: scale(1.1);
+    }
+}
+
+.appcard {
+    // border: 2px solid red;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0px;
+    .cardcategory {
+        overflow: hidden;
+        height: auto;
+        width: 98% !important;
+        background: #ffffff;
+        // box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
+        box-shadow:
+            rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+            rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .sellerimagesize {
+        width: 100%;
+        height: 250px;
+        object-fit: contain;
+        // border:1px solid blue;
+        @include mdBreakPoint {
+            height: 140px;
+        }
+        @include lgBreakPoint {
+            height: 140px;
+        }
+        @include xlBreakPoint {
+            height: 140px;
+        }
+    }
+    .stars {
+        width: 30%;
+        height: 30px;
+        object-fit: contain;
+        cursor: pointer;
+        @include mdBreakPoint {
+            width: 40%;
+        }
+        @include lgBreakPoint {
+            width: 46%;
+        }
+        @include xlBreakPoint {
+            width: 46%;
+        }
+    }
+    .cardinsidesection {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .cardsellerborder {
+        padding-top: 7%;
+        .cardsellerinsideborder {
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+        }
+    }
+    .cardpricesection {
+        display: flex;
+        gap: 10%;
+        padding-top: 5%;
+        padding-bottom: 10%;
+    }
+}
+
+.appcard {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0px;
+
+    .cardcategorys {
+        // border: 2px solid blue;
+        overflow: hidden;
+        height: auto;
+        width: 24% !important;
+        background: #ffffff;
+        // box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
+        box-shadow:
+            rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+            rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+        border-radius: 8px;
+        cursor: pointer;
+        padding-bottom: 2%;
+        padding: 0 !important;
+        margin:0 auto !important;
+
+        @include xsBreakPoint {
+            width: 100% !important;
+            display: flex;
+            flex-direction: column;
+        }
+        @include smBreakPoint {
+            width: 47% !important;
+            display: flex;
+            flex-direction: column;
+        }
+        @include mdBreakPoint {
+            width: 24% !important;
+            height: auto;
+            padding: 2% 0px;
+        }
+        @include lgBreakPoint {
+            height: auto;
+            padding-bottom: 2%;
+        }
+        @include xlBreakPoint {
+            height: auto;
+            padding-bottom: 2.4%;
+        }
+    }
+    .sellerimagesize {
+        width: 100%;
+        height: 200px;
+        @include mdBreakPoint {
+            height: 140px;
+            border-radius: 10px;
+        }
+        @include lgBreakPoint {
+            height: 140px;
+        }
+        @include xlBreakPoint {
+            height: 140px;
+        }
+    }
+    .stars {
+        width: 30%;
+        height: 30px;
+        object-fit: contain;
+        cursor: pointer;
+        @include mdBreakPoint {
+            width: 40%;
+        }
+        @include lgBreakPoint {
+            width: 46%;
+        }
+        @include xlBreakPoint {
+            width: 46%;
+        }
+    }
+    .cardinsidesection {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .cardsellerborder {
+        padding-top: 7%;
+        .cardsellerinsideborder {
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+        }
+    }
+    .cardpricesection {
+        display: flex;
+        gap: 10%;
+        padding-top: 5%;
+        padding-bottom: 10%;
+    }
+}
+
+.slick-slide,
+.cardcategory {
+    margin: 2px 6px !important;
+}
+.slick-slide {
+    margin: 0 -10px !important;
+}
+
+.productname {
+    font-weight: 550;
+}
+.productname:hover {
+    color: #e95a5a;
+}
+
+.skeltons {
+    width: 100%;
+    height: 220px;
+    padding-bottom: 3%;
+}
+
+.imagebox {
+    border: 1px solid #f1f1f1;
+    background-color: #f1f1f1;
+    // border-bottom-left-radius:20px;
+    // border-bottom-right-radius:20px;
+}
+
+.row > * {
+    padding-left: 0 !important;
+}
+.productNametext {
+    // fontweight:"bold";
+    // color:red;
+    font-weight: 600;
+    padding-top: 6px;
+    // text-align: center;
+    // border:1px solid red;
+}
+.productNametext:hover {
+    color: #e95a5a !important;
+
 }

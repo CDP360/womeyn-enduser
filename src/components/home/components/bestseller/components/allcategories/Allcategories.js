@@ -11,13 +11,14 @@ import SlidePreArrow from '../../../../slideprearrow/SlidePreArrow';
 import { useRouter } from 'next/router'
 import AllCategoryCard from './allcategorycard/AllCategoryCard';
 import Allbestservices from './allbestservices/Allbestservices';
+import CarouselCategoryService from '../../../categorychoose/carouselcategory/CarouselCategoryService';
 function Allcategories() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     MainTopSections();
   }, []);
 
-  const MainTopSections=()=>{
+  const MainTopSections = () => {
     TopProducts().then((res) => {
       setProducts(res?.data);
     }).catch((err) => {
@@ -32,21 +33,33 @@ function Allcategories() {
       <>
         <div className={styles.allcategorymainsection}>
           <div className='textseller mb-3'>
-            Our bestselling products
+            Our best selling products
           </div>
           <div className={styles.mainoursellercarousel}>
             <AllCategoryCard products={products} stars={stars} />
           </div>
 
         </div>
+
+        <div className={styles.categorybodysection}>
+          <div className='textseller mt-5 text-center'>
+            A lot of services to choose from
+          </div>
+          <div>
+            <CarouselCategoryService />
+          </div>
+        </div>
+
         <div className={styles.allcategorymainsection}>
           <div className='textseller mb-3'>
-            Our bestselling services
+            Our best selling services
           </div>
 
-          <div>
+          <div className={styles.mainoursellercarousel}>
+            {/* <AllCategoryCard products={products} stars={stars} /> */}
             <Allbestservices stars={stars} />
           </div>
+          
         </div>
       </>
     </Fragment>

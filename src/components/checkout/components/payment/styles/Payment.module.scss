@@ -40,9 +40,84 @@
   -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
   transform: scale(1.5);
   outline:none;
+  background:transparent !important;
 
 }
 
-.radiobuttons:checked:before {
-  background:green !important;
+// .radiobuttons:checked:before {
+//   background:green !important;
+// }
+
+
+
+.questions {
+  // border-bottom:1px dashed orange;
+  // padding: 10px 0px;
+  // border:1px solid red !important;
+  margin:20px 0px;
+  // display:flex;
+  // justify-content:flex-start;
+  border-bottom: 1px dashed #9f9f9f;
+  cursor:pointer;
+  // width:100% !important;
+}
+
+.questions input[type="radio"] {
+  display: none;
+  width:100% !important;
+}
+
+.questions input[type="radio"]:checked ~ label {
+  background-color: #FDF0F0;
+  // border-bottom: 1px dashed #9f9f9f;
+
+  width:100% !important;
+  // padding: 10px 10px;
+  // color: white;
+}
+
+.questions input[type="radio"]:checked ~ label:before {
+  color: white;
+}
+
+.questions label {
+  display: block;
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 10px;
+  // background-color: white;
+  border-radius: 6px;
+  width:100% !important;
+}
+
+.paymentbox
+{
+  // border:1px solid blue;
+  // width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:row;
+  .paymentboxinside
+  {
+      width:100%;
+      display:flex;
+      align-items:center;
+      gap:30px;
+  }
+  .activebox
+  {
+      width:30px;
+      height:30px;
+      background-color:#E75B5E;
+      border-radius:50%;
+  }
+  .inactive
+  {
+      width:30px;
+      height:30px;
+      background-color:#F1F1F1;
+      border-radius:50%;
+      border:1px solid #676161;  
+  }
 }

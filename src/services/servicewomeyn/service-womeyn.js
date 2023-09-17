@@ -96,3 +96,17 @@ export function InvoicedownloadService(orderid) {
     })
 }
 
+
+
+export function ServiceCategoriesData() {
+
+    return new Promise((resolve, reject) => {
+        instanceBaseurl.get(`/common/top-service-categories`).then(response => {
+            resolve(response)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}
+
+

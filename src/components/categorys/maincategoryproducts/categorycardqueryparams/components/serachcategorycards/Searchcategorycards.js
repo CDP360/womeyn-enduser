@@ -23,7 +23,7 @@ function Searchcategorycards({ item }) {
             {item?.productThumbImage ? <>
                 <img
                     className={"productimages"}
-                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.productThumbImage}`}
                     alt="profile-pic"
                     onClick={() => ProductView(item?.productSlugName)}
                 />

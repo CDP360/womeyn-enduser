@@ -29,7 +29,7 @@ function Inprogress({ Orders, traking, loading }) {
 
       {data?.length===0 && <div>
         <Nodatafoundimage
-        title="No Order Inprogress"
+        title="No Orders Inprogress"
         />
         
         </div>}
@@ -54,7 +54,7 @@ function Inprogress({ Orders, traking, loading }) {
                     {items?.productThumbImage ? <>
                       <img
                         className={styles.img}
-                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${items?.productThumbImage}`}
+                        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${items?.productThumbImage}`}
                         alt="profile-pic"
                       />
                     </> : <>

@@ -140,3 +140,27 @@
 .skeltonbrands {
     width: 50%;
 }
+
+
+.imagebox
+{
+    border:1px solid #F1F1F1;
+    background-color:#F1F1F1;
+    // border-bottom-left-radius:20px;
+    // border-bottom-right-radius:20px;
+
+}
+
+.brandname{
+    color:#676161;
+}
+
+.productNametext
+{
+    // fontweight:"bold";
+    // color:red;
+    font-weight:600;
+}
+.productNametext:hover {
+    color: #e95a5a !important;
+}

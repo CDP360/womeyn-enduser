@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
-import styles from '../allcategorycard/styles/AllCatgorycard.module.scss';
+import styles from './styles/Allbest.module.scss';
 import Image from 'next/image';
 import { useRouter } from 'next/router'
 import SlideNextArrowcategory from '../allcategorycard/slidenextarrow/SlideNextArrow';
@@ -61,7 +61,7 @@ function Allbestservices({ stars }) {
         ]
     };
     const categoryPush = (data) => {
-        history.push(`/service/${data}`);
+        history.push(`/services/${data}`);
     }
 
     useEffect(() => {
@@ -71,32 +71,40 @@ function Allbestservices({ stars }) {
     }, [])
 
 
+
     return (
         <div className={styles.appcard}>
             {services?.length > 4 ? <>
                 <Slider {...settings}>
                     {services.map((item, index) => {
                         return (
-                            <div className={styles.cardcategory} key={index}>
+                            <div className={styles.cardcategorys} key={index}>
                                 <div className={styles.cardsections}>
                                     <div className="cards col-lg-12 mb-1" onClick={() => categoryPush(item?.serviceSlugName)}>
-                                        <div>
-                                            {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={"productimages"} /> : <>
+                                        <div className={styles.imagebox}>
+                                            {item?.thumbImage ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.thumbImage}`} alt="no image" className={"productimagess"} /> : <>
                                                 <Skeleton className={styles.skeltons} />
                                             </>}
                                         </div>
-                                        <div className="mt-3">
+
+                                        <div className={styles.cardinsidesection}>
+
+                                            <div className="mb-4 mt-2">
+                                                <div className={styles.productNametext}>
+                                                    {item?.serviceName?.length > 60 ? <>{item?.serviceName.slice(0, 60)}...</> : <>{item?.serviceName}</>}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* <div className="mt-3">
 
                                             <div className={styles.cardinsidesection}>
                                                 <Image src={stars} alt="no image" className={styles.stars} />
-                                                <div>
+                                                <div>   
                                                     <span>{item?.serviceName}</span>
                                                 </div>
-                                                {/* <div className='mb-4'>
-                                        <span className='textgrey'>{item?.serviceDescription}</span>
-                                    </div> */}
+                                               
                                             </div>
-                                        </div>
+                                        </div> */}
 
                                     </div>
                                 </div>
@@ -110,33 +118,42 @@ function Allbestservices({ stars }) {
 
                     {services.map((item, index) => {
                         return (
-                            <div className={styles.cardcategorys} key={index}>
-                                    <div  onClick={() => categoryPush(item?.productSlugName)}>
-                                        <div>
-                                            {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={"productimages"} /> : <>
-                                                <Skeleton className={styles.skeltons} />
-                                            </>}
-                                        </div>
-                                        <div className="mt-3">
-                                            <div className={styles.cardinsidesection}>
-                                                <Image src={stars} alt="no image" className={styles.stars} />
-                                                <div>
-                                                    <span>{item?.serviceName}</span>
-                                                </div>
+                            <div className={styles.cardcategory} key={index}>
+                                <div onClick={() => categoryPush(item?.serviceSlugName)}>
+                                    <div className={styles.imagebox}>
+                                        {item?.thumbImage ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.thumbImage}`} alt="no image" className={"productimagess"} /> : <>
+                                            <Skeleton className={styles.skeltons} />
+                                        </>}
+                                    </div>
+                                    {/* <div className="mt-3">
+                                        <div className={styles.cardinsidesection}>
+                                            <Image src={stars} alt="no image" className={styles.stars} />
+                                            <div>
+                                                <span>{item?.serviceName}</span>
                                             </div>
                                         </div>
+                                    </div> */}
 
+                                    <div className={styles.cardinsidesection}>
+
+                                        <div className="mb-4 mt-2">
+                                            <div className={styles.productNametext}>
+                                                {item?.serviceName?.length > 60 ? <>{item?.serviceName.slice(0, 60)}...</> : <>{item?.serviceName}</>}
+                                            </div>
+                                        </div>
                                     </div>
-                               
+
+                                </div>
+
 
                             </div>
                         )
                     })}
                 </div>}
 
-                {services?.length===0 && <div className="textcommingsoon">
-                    Comming Soon...
-                    </div>}
+            {services?.length === 0 && <div className="textcommingsoon">
+                Comming Soon...
+            </div>}
 
         </div>
     )

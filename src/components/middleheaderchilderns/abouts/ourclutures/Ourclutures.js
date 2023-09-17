@@ -130,7 +130,7 @@ function Ourclutures() {
                             {partnersbanners?.map((item, index) => {
                                 return (
                                     <div key={index} className="col-lg-4 mx-auto">
-                                        {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.cardaboutusimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
+                                        {item.imageName ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item.imageName}`} alt="no image" className={styles.cardaboutusimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
                                             <Skeleton className={styles.homebanner} />
                                         </>}
 
@@ -144,7 +144,7 @@ function Ourclutures() {
                                 {partnersbanners?.map((item, index) => {
                                     return (
                                         <div key={index} className="col-lg-4 mx-auto"  >
-                                            {item.imageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={styles.cardaboutusimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
+                                            {item.imageName ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item.imageName}`} alt="no image" className={styles.cardaboutusimage} onClick={() => MovePageData(item.redirectUrl)} /> : <>
                                                 <Skeleton className={styles.homebanner} />
                                             </>}
 

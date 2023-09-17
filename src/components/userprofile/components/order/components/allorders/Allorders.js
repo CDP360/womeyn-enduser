@@ -10,6 +10,8 @@ import Reviewmodel from './reviewmodel/Reviewmodel';
 import LoaderLogo from '../../../../../loaderlogo/LoaderLogo';
 import { Invoicedownload } from '../../../../../../services/invoice-services/invoice_services';
 import Spinner from "react-bootstrap/Spinner";
+import { Nodatafoundimage } from '../../../../../nodatafoundimage/Nodatafound';
+
 
 function Allorders({ Orders, traking, loading, setTrackId, serachordersname }) {
   const [show, setShow] = useState(false);
@@ -103,7 +105,11 @@ function Allorders({ Orders, traking, loading, setTrackId, serachordersname }) {
   return (
     <div className={styles.allordermainsection}>
 
-      {Orders?.length === 0 && <div>No Data Found!!</div>}
+      {Orders?.length === 0 && <div>
+        <Nodatafoundimage
+            title={"No Orders"}
+          />
+        </div>}
 
       {billdata}
 
@@ -144,7 +150,7 @@ function Allorders({ Orders, traking, loading, setTrackId, serachordersname }) {
                                 {items?.productThumbImage ? <>
                                   <img
                                     className={styles.img}
-                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${items?.productThumbImage}`}
+                                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${items?.productThumbImage}`}
                                     alt="profile-pic"
                                   />
                                 </> : <>
@@ -218,7 +224,7 @@ function Allorders({ Orders, traking, loading, setTrackId, serachordersname }) {
                                 {items?.productThumbImage ? <>
                                   <img
                                     className={styles.img}
-                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${items?.productThumbImage}`}
+                                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${items?.productThumbImage}`}
                                     alt="profile-pic"
                                   />
                                 </> : <>

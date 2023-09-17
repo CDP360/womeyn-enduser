@@ -1,2 +1,252 @@
 @use '../../../../../../../../../scss/abstract/' as *;
 
+
+
+.appcard {
+    // border: 2px solid red;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0px;
+    .cardcategorys {
+
+        overflow: hidden;
+        height:350px;
+        width: 95% !important;
+        background: #ffffff;
+        // box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+        border-radius: 8px;
+        cursor: pointer;
+        @include xsBreakPoint
+        {
+            width:100% !important;
+        }
+        @include lgBreakPoint
+        {
+            width:96% !important;
+        }
+        @include xlBreakPoint
+        {
+            width:96% !important;
+            height:420px;
+        }
+    
+    }
+    .cardcategory {
+
+        overflow: hidden;
+        height:350px;
+        width: 23.5% !important;
+        background: #ffffff;
+        // box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+        border-radius: 8px;
+        cursor: pointer;
+        // border:1px solid blue;
+        padding:0 !important;
+        @include lgBreakPoint
+        {
+            width:23% !important;
+            height:350px;
+
+        }
+        @include xlBreakPoint
+        {
+            width:23% !important;
+            height:350px;
+        }
+    
+    }
+    .sellerimagesize {
+        width: 100%;
+        height: 250px;
+        object-fit: contain;
+        // border:1px solid blue;
+        @include mdBreakPoint {
+            height: 140px;
+        }
+        @include lgBreakPoint {
+            height: 140px;
+        }
+        @include xlBreakPoint {
+            height: 140px;
+        }
+    }
+    .stars {
+        width: 30%;
+        height: 30px;
+        object-fit: contain;
+        cursor: pointer;
+        @include mdBreakPoint {
+            width: 40%;
+        }
+        @include lgBreakPoint {
+            width: 46%;
+        }
+        @include xlBreakPoint {
+            width: 46%;
+        }
+    }
+    .cardinsidesection {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .cardsellerborder {
+        padding-top: 7%;
+        .cardsellerinsideborder {
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+        }
+    }
+    .cardpricesection {
+        display: flex;
+        gap: 10%;
+        padding-top: 5%;
+        padding-bottom: 10%;
+    }
+}
+
+// .appcard {
+//     width: 100%;
+//     margin: 0 auto;
+//     padding: 10px 0px;
+//     height:100%;
+
+//     .cardcategorys {
+//         // border: 2px solid blue;
+//         // overflow: hidden;
+//         height: auto;
+//         width: 24% !important;
+//         background: #ffffff;
+//         // box-shadow: 8px 13px 112px rgba(0, 0, 0, 0.06);
+//         box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+//         border-radius: 8px;
+//         cursor: pointer;
+//         padding-bottom:2%;
+//         padding:0 !important;
+//         @include xsBreakPoint {
+//             width: 100% !important;
+//             display: flex;
+//             flex-direction: column;
+//         }
+//         @include smBreakPoint {
+//             width: 47% !important;
+//             display: flex;
+//             flex-direction: column;
+//         }
+//         @include mdBreakPoint {
+//             width: 24% !important;
+//             height: auto;
+//             padding: 2% 0px;
+//         }
+//         @include lgBreakPoint {
+//             height: auto;
+//             padding-bottom: 2%;
+//         }
+//         @include xlBreakPoint {
+//             height: auto;
+//             padding-bottom: 2.4%;
+//         }
+//     }
+//     .sellerimagesize {
+//         width: 100%;
+//         height: 200px;
+//         @include mdBreakPoint {
+//             height: 140px;
+//             border-radius: 10px;
+//         }
+//         @include lgBreakPoint {
+//             height: 140px;
+//         }
+//         @include xlBreakPoint {
+//             height: 140px;
+//         }
+//     }
+//     .stars {
+//         width: 30%;
+//         height: 30px;
+//         object-fit: contain;
+//         cursor: pointer;
+//         @include mdBreakPoint {
+//             width: 40%;
+//         }
+//         @include lgBreakPoint {
+//             width: 46%;
+//         }
+//         @include xlBreakPoint {
+//             width: 46%;
+//         }
+//     }
+//     .cardinsidesection {
+//         width: 90%;
+//         margin: 0 auto;
+//     }
+//     .cardsellerborder {
+//         padding-top: 7%;
+//         .cardsellerinsideborder {
+//             border-top: 1px solid rgba(0, 0, 0, 0.2);
+//         }
+//     }
+//     .cardpricesection {
+//         display: flex;
+//         gap: 10%;
+//         padding-top: 5%;
+//         padding-bottom: 10%;
+//     }
+// }
+
+.slick-slide,
+.cardcategory {
+    margin: 2px 6px !important;
+}
+.slick-slide {
+    margin: 0 -10px !important;
+}
+
+.productname {
+    font-weight: 550;
+}
+.productname:hover {
+    color: #e95a5a;
+}
+
+.skeltons {
+    width: 100%;
+    height: 220px;
+    padding-bottom: 3%;
+}
+
+.imagebox
+{
+    border:1px solid #F1F1F1;
+    background-color:#F1F1F1;
+    // border-bottom-left-radius:20px;
+    // border-bottom-right-radius:20px;
+
+}
+
+.row > *
+{
+    padding-left:0 !important;
+}
+.productNametext
+{
+    // fontweight:"bold";
+    // color:red;
+    font-weight:600;
+    padding-top:6px;
+}
+.productNametext:hover {
+    color: #e95a5a !important;
+}
+
+.pricecontentcategory {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: rgba(89, 175, 89, 1);
+    font-weight: 600;
+    @include xlBreakPoint
+    {
+        flex-direction:column;
+    }
+}

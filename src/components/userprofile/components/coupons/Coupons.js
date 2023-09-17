@@ -3,6 +3,8 @@ import styles from "./styles/Coupons.module.scss";
 import { MyCouponList } from '../../../../services/mycoupon-service/mycoupon-service';
 import moment from 'moment';
 import { useRouter } from "next/router";
+import LoaderLogo from './../../../loaderlogo/LoaderLogo';
+import { Nodatafoundimage } from './../../../nodatafoundimage/Nodatafound';
 function Coupons({ error }) {
   const history = useRouter();
   const [coupons, setCoupons] = useState([]);
@@ -37,9 +39,16 @@ function Coupons({ error }) {
         <div className={styles.couponsHeading}>Coupons</div>
       </div>
 
-      {coupons?.length === 0 && <div>No Data Found!!!</div>}
+      {coupons?.length === 0 && <div>
+        
+        <Nodatafoundimage
+        title={"No Coupons"}
+        />
+        
+        </div>}
       {loading ? <>
-Loading...
+
+        <LoaderLogo />
 
       </> : <>
 
@@ -57,7 +66,7 @@ Loading...
                     Valid {moment(data?.endDate).format("MMM Do YY")}
 
                     {/* {moment(data?.endDate).format("YYYY-MM-DD")?<>Valid Date</>:<>Not Valid</>}' */}
-                    
+
                     {/* {moment().min(moment(data?.endDate).format("YYYY-MM-DD"))?<>Valid Date</>:<>Not Valid</>}; */}
 
                     {/* YYYY-MM-DD */}

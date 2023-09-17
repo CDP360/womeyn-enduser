@@ -128,7 +128,7 @@ function EditProfile({ users, error }) {
                             <Form.Label>Gender</Form.Label>
 
                             <select
-                                className='form-control-profiles'
+                                className='form-control-profiless'
                                 // id="selectmethod"
                                 defaultValue=""
                                 name="gender"

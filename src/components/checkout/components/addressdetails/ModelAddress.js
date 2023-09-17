@@ -777,7 +777,7 @@ function ModelAddress({ error }) {
 
 
               <select
-                className='form-control-profiles'
+                className='form-control-profiless'
                 id="selectmethod"
                 defaultValue=""
                 name="addressType"
@@ -787,7 +787,6 @@ function ModelAddress({ error }) {
                 <option value="" disabled>---Please Select Address Type---</option>
                 <option value="1">Home (All Day Delivery)</option>
                 <option value="2">Work (Delivery between 10 AM to 5.30 PM)</option>
-
               </select>
 
               {/* <Form.Select aria-label="Default select example"   {...register("gender", { required: "Please enter gender", })}>

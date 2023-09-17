@@ -6,6 +6,8 @@ export const HomeTexts={
     AllCategories:"All Categories",
     Electronics:"Electronics",
     HealthCare:"Health & Care",
-    Healthfitness:"Health & fitness"
+    Healthfitness:"Health & fitness",
+    Alotofcategoriestochoosefromservices:"A lot of services to choose from",
+
     
 }

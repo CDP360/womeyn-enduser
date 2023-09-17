@@ -13,7 +13,7 @@ export function Getwomenpreneursbanner(data) {
 
 export function WomenpreneursSellers() {
     return new Promise((resolve, reject) => {
-        instanceBaseurl.get(`/common/womenpreneurs?sortBy=updatedAt:desc&limit=12`).then(response => {
+        instanceBaseurl.get(`/common/womenpreneurs?sortBy=updatedAt:desc&limit=12&page=1`).then(response => {
             resolve(response)
         }).catch(err => {
             reject(err)

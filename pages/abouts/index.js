@@ -7,9 +7,7 @@ import Head from "next/head";
 function index() {
     return (
         <LayoutHeader title="Aboutus" >
-
             <Head>
-
                 <title>Womeyn Aboutus</title>
                 <meta name="description" content="Aboutus" key="desc" />
                 <meta property="og:title" content="Womeyn Aboutus" />

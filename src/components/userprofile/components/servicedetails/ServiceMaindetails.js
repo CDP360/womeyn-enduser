@@ -11,6 +11,10 @@ import moment from 'moment';
 import Spinner from "react-bootstrap/Spinner";
 import { useForm } from "react-hook-form";
 
+import { Nodatafoundimage } from '../../../../components/nodatafoundimage/Nodatafound';
+
+import LoaderLogo from './../../../loaderlogo/LoaderLogo';
+
 
 function ServiceMaindetails({ error }) {
 
@@ -77,21 +81,21 @@ function ServiceMaindetails({ error }) {
     const pushProductPage = (data) => {
         // history?.push(`/service/${data}`);
 
-        const datas=data?.orderId;
+        const datas = data?.orderId;
 
-        const slugnames=data?.serviceSlugName;
+        const slugnames = data?.serviceSlugName;
 
 
-        const forms=`${slugnames}/search=${datas}`;
+        const forms = `${slugnames}/search=${datas}`;
 
 
         history.push({
             pathname: '/profile/servicedetail',
-            query: { id: slugnames,searchorderid:datas},
+            query: { id: slugnames, searchorderid: datas },
         })
 
 
-      
+
 
 
         // console.log(forms,"data")
@@ -99,14 +103,15 @@ function ServiceMaindetails({ error }) {
     }
 
     const [show1, setShow1] = useState(false);
-    const handleClose1 = () => {setShow1(false)
+    const handleClose1 = () => {
+        setShow1(false)
         reset({
-            username:"",
-            ratingValue:"",
-            title:"",
-            message:"",
-            serviceId:"",
-            upl:""
+            username: "",
+            ratingValue: "",
+            title: "",
+            message: "",
+            serviceId: "",
+            upl: ""
         })
     };
     const handleShow1 = (data) => {
@@ -149,7 +154,7 @@ function ServiceMaindetails({ error }) {
 
                     <div>
                         {loading ? <>
-                            loading...
+                           <LoaderLogo/>
                         </> : <>
                             {
                                 serviceusers.map((data, index) =>
@@ -159,7 +164,7 @@ function ServiceMaindetails({ error }) {
                                                 {data?.serviceThumbImage ? <>
                                                     <img
                                                         className={styles.favortsImg}
-                                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${data?.serviceThumbImage}`}
+                                                        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${data?.serviceThumbImage}`}
                                                         alt="profile-pic"
                                                     />
                                                 </> : <>
@@ -189,7 +194,7 @@ function ServiceMaindetails({ error }) {
                                                     <p className={styles.favortsDeleteText}>Remove</p>
                                                 </div> */}
 
-{/* <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button> */}
+                                            {/* <button className={styles.trackingbuttons} onClick={() => handleShow1(data)}>Review</button> */}
                                             <div>
                                                 {data?.startDate}
                                                 {moment(data?.startDate).isAfter(moment(data?.endDate)) ? <>
@@ -199,7 +204,7 @@ function ServiceMaindetails({ error }) {
                                                     <button className={styles.trackingbuttons} onClick={() => pushProductPage(data)}>Booked</button>
 
                                                 </>}
-{/* 
+                                                {/* 
                                                 <div className="mt-2">
                                                     <button className={styles.viewdetailsbuttons} onClick={() => {
                                                         ServiceInvoiceDownload(data?.orderId)
@@ -239,7 +244,11 @@ function ServiceMaindetails({ error }) {
                         </>}
 
 
-                        {serviceusers?.length === 0 && <div>No Services Data...</div>}
+                        {serviceusers?.length === 0 && <div>
+                            <Nodatafoundimage
+                                title={"No Services"}
+                            />
+                        </div>}
 
 
                     </div>

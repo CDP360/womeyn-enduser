@@ -107,10 +107,27 @@ function Payment({ totalPrice, addressid, couponname, totalvalue, checkshippinga
 
         {paymentMethods?.map((item, index) => {
           return (
-            <div key={index} className={styles.paymentsection}>
-              <input type="radio" name={item?.name} value={item?.name} checked={paymentType == item?.name} onChange={onOptionChange} id={item?.name} className={styles.radiobuttons} />
-              <label for={item?.name}><img src={item.image.src} alt="no image" className={styles.strips} /></label>
+            // <div key={index} className={styles.paymentsection}>
+            //   <input type="radio" name={item?.name} value={item?.name} checked={paymentType == item?.name} onChange={onOptionChange} id={item?.name} className={styles.radiobuttons} />
+            //   <label for={item?.name}><img src={item.image.src} alt="no image" className={styles.strips} /></label>
+            // </div>
+            <div className={styles.questions} key={index}>
+            <div className={styles.questions__question}>
+              <input type="radio" name={item?.name} value={item?.name} id={item?.name} checked={paymentType == item?.name} onChange={onOptionChange} />
+              <label for={item?.name} className={styles.paymentbox}>
+             <div className={styles.paymentboxinside}>
+             <div className={paymentType==item?.name?styles.activebox:styles.inactive}>
+             </div>
+             <div>
+              <img src={item.image.src} alt="no image" className={styles.strips} />
+             </div>
+             </div>
+              </label>
+              <div>
+              </div>
             </div>
+           
+          </div>
           )
         })}
         <div className="mt-5">

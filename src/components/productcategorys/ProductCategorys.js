@@ -34,22 +34,19 @@ import { SearchProductUser, AllSearchProductUser } from '../../services/category
 function ProductCategorys() {
     const router = useRouter();
     const [current, setCurrent] = useState(1);
-const [limit, setLimit] = useState([]);
+    const [limit, setLimit] = useState([]);
     const [servicesusers, setServiceusers] = useState([]);
     const [dataseller, setDataseller] = useState([]);
     const [datacategory, setDataCtagoryies] = useState([]);
     const [filters, setFilterData] = useState([]);
     const [filterdata, setFilter] = useState("");
     const [searchname, setSearchName] = useState('');
-
     const [categoryid, setCategoryId] = useState("");
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
     const [pagecount, setPagecount] = useState("");
     const [pagecountnumbers, setPagecountNumbers] = useState(1);
     const [pagecountcheck, setPagecountCheck] = useState("");
-
-
     const [showTopBtn, setShowTopBtn] = useState(false);
 
 
@@ -58,8 +55,6 @@ const [limit, setLimit] = useState([]);
         AllSearchProductUser().then((res) => {
             setServiceusers(res?.data?.results);
             setPagecount(res?.data?.totalResults)
-
-
             setTimeout(() => {
                 setLoading(false);
             }, 500)
@@ -140,16 +135,14 @@ const [limit, setLimit] = useState([]);
         setFilter(data.name);
         setSearchName("");
         setPagecountNumbers(1);
-        ProductCatgorylist(data.value.toLowerCase()).then((res) => {
+        ProductCatgorylist(data.value.toLowerCase(), current).then((res) => {
             setServiceusers(res?.data?.results);
             setPagecount(res?.data?.totalResults)
-
             setLimit(res?.data);
             setTimeout(() => {
                 setLoading(false);
             }, 300);
         }).catch((err) => {
-            console.log(err);
         })
 
 
@@ -220,7 +213,6 @@ const [limit, setLimit] = useState([]);
                             <div className={styles.ourwomenpreneurs}>
                                 <div className='large-text'>
                                     Products
-
                                 </div>
                                 <div className={styles.loreamtextwomen}>
                                     Please select to know more about the WomeynPreneur business, and the Products her Business offers.
@@ -237,12 +229,9 @@ const [limit, setLimit] = useState([]);
                                         />
                                     </div>
                                 </div>
-                                <div className='col-lg-3 col-xs-6 col-sm-6 col-lg-5'>
-
-                                    {filterdata}
-
+                                <div className='col-lg-3 col-xs-6 col-sm-6 col-lg-5' style={{ zIndex: 9 }}>
                                     <Select
-                                        placeholder={"Filter by Product Categorys..."}
+                                        placeholder={"Filter by Product Categories..."}
                                         value={filterdata}
                                         onChange={(e) => handleFilterCategory(e)}
                                         options={datacategory}
@@ -250,44 +239,40 @@ const [limit, setLimit] = useState([]);
 
                                 </div>
                             </div>
-
-
-
                             {searchname?.length > 0 ? <>
                                 <div className='cardsection row mb-3 ms-1 mt-5'>
                                     {loading ? <>
                                         <LoaderLogo />
                                     </> : <>{servicesusers?.map((item, index) => {
                                         return (
-                                            <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 ' key={index} >
-
+                                            <div className='card col-lg-4 col-sm-6 col-xs-6 col-md-10 ' key={index} >
                                                 <div onClick={() => router.push(`/product/${item?.productSlugName}`)} className={styles.imagebox}>
-                                                    {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={"productimages"} /> :
+                                                    {item?.productThumbImage ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.productThumbImage}`} alt="no image" className={"productimages"} /> :
                                                         <>
                                                             <Skeleton className={styles.loaderskelimage} />
                                                         </>
                                                     }
                                                 </div>
                                                 <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
-                                                    {item?.quantityLeft?<Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
+                                                    {item?.quantityLeft ? <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
                                                         tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
                                                         disabled
 
-                                                    />:null}
+                                                    /> : null}
 
-                                                    <div className={styles.brandname}>
-                                                        {item?.productName?.length <= 10 ? <>{item?.productName}</> : <>    {item?.productName.slice(0, 18)}...</>}
+                                                    <div className={styles.productNametext}>
+                                                        {item?.productName?.length > 60 ? <>{item?.productName.slice(0, 60)}...</> : <>{item?.productName}</>}
                                                     </div>
 
-                                                    <div className='textgrey'>
-                                                        {item?.brandName?.length <= 18 ? <>{item?.brandName}</> : <>{item?.brandName.slice(0, 18)}...</>}
+                                                    <div className={styles.brandname}>
+                                                        {item?.brandName?.length > 60 ? <>{item?.brandName.slice(0, 60)}...</> : <>{item?.brandName}</>}
                                                     </div>
                                                     <div className={styles.cardsellerborder}>
                                                         <div className={styles.cardsellerinsideborder}>
                                                         </div>
                                                     </div>
                                                     <div className={styles.cardpricesection}>
-                                                        <div className='textprice'>
+                                                        <div className='textpricebold'>
                                                             <span>A${item?.salePrice}</span>
                                                         </div>
                                                         <div className={styles.splitoffers}>
@@ -315,32 +300,32 @@ const [limit, setLimit] = useState([]);
                                             <div className='card col-lg-3 col-sm-6 col-xs-6 col-md-10 ' key={index} >
 
                                                 <div onClick={() => router.push(`/product/${item?.productSlugName}`)} className={styles.imagebox}>
-                                                    {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={"productimages"} /> :
+                                                    {item?.productThumbImage ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.productThumbImage}`} alt="no image" className={"productimages"} /> :
                                                         <>
                                                             <Skeleton className={styles.loaderskelimage} />
                                                         </>
                                                     }
                                                 </div>
                                                 <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
-                                                    {item?.quantityLeft?<Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
+                                                    {item?.quantityLeft ? <Rate defaultValue={item?.quantityLeft} allowHalf style={{ color: "#54BE43", fontSize: "1.3rem", cursor: "pointer" }}
                                                         tooltips={["Very Bad", "Bad", "Good", "Very Good", "Excellent"]}
                                                         disabled
 
-                                                    />:null}
+                                                    /> : null}
 
-                                                    <div className={styles.brandname}>
-                                                        {item?.productName?.length <= 10 ? <>{item?.productName}</> : <>    {item?.productName.slice(0, 18)}...</>}
+                                                    <div className={styles.productNametext}>
+                                                        {item?.productName?.length > 60 ? <>{item?.productName.slice(0, 60)}...</> : <>{item?.productName}</>}
                                                     </div>
 
-                                                    <div className='textgrey'>
-                                                        {item?.brandName?.length <= 18 ? <>{item?.brandName}</> : <>{item?.brandName.slice(0, 18)}...</>}
+                                                    <div className={styles.brandname}>
+                                                        {item?.brandName?.length > 60 ? <>{item?.brandName.slice(0, 60)}...</> : <>{item?.brandName}</>}
                                                     </div>
                                                     <div className={styles.cardsellerborder}>
                                                         <div className={styles.cardsellerinsideborder}>
                                                         </div>
                                                     </div>
                                                     <div className={styles.cardpricesection}>
-                                                        <div className='textprice'>
+                                                        <div className='textpricebold'>
                                                             <span>A${item?.salePrice}</span>
                                                         </div>
                                                         <div className={styles.splitoffers}>
@@ -359,13 +344,16 @@ const [limit, setLimit] = useState([]);
                                     })}</>}
                                 </div>
                             </>}
-                            {pagecount === 0 ? null : <>
+
+                            {pagecount > 12 ? <>
+
                                 <div className="mt-3">
                                     <hr />
                                 </div>
                                 <div>
 
-                                    Page {pagecountnumbers} / {pagecount}
+                                    Page {pagecountnumbers}
+                                    {/* / {pagecount} */}
                                 </div>
 
                                 <div className="mt-3">
@@ -385,12 +373,9 @@ const [limit, setLimit] = useState([]);
                                         pageRangeDisplayed={2}
                                         previousClassName={"item previous"}
                                         previousLabel={pagecountnumbers > 1 ? "PREVIOUS" : null}
-
-
-
                                     />
                                 </div>
-                            </>}
+                            </> : null}
 
 
 

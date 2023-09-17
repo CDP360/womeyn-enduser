@@ -45,8 +45,7 @@ function Womenpreneusdetails({ id }) {
     const [categorys, setCategorys] = useState([]);
     const [indexs, setIndexs] = useState(0);
 
-
-    const [pagecount, setPagecount] = useState("");
+    const [pagecount, setPagecount] = useState(1);
     const [pagecountnumbers, setPagecountNumbers] = useState(1);
     const [pagecountcheck, setPagecountCheck] = useState("");
 
@@ -298,8 +297,7 @@ function Womenpreneusdetails({ id }) {
         });
     };
 
-
-
+  
 
 
     return (
@@ -337,7 +335,7 @@ function Womenpreneusdetails({ id }) {
 
 
                                     {sellers?.profileImageName ? <>
-                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
+                                        <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${sellers?.profileImageName}`} alt="no image" className={styles.womenlogo} />
                                     </> : <>
                                         <Image src={users} alt="no image" className={styles.womenlogo} />
                                     </>}
@@ -353,7 +351,7 @@ function Womenpreneusdetails({ id }) {
                                         </div>
                                     </div>
                                     <div className={styles.idsellers}>
-                                        {id}
+                                        {sellers?.businessName}
                                     </div>
                                     <div className={`small-light-text-grey mt-4 ${styles.earthtext}`}>
 
@@ -384,13 +382,11 @@ function Womenpreneusdetails({ id }) {
 
 
                             </div>
-                            <div className={styles.middleheaderpage}>
+
+                            {categorys?.length>0?<>
+                                <div className={styles.middleheaderpage}>
                                 <div className={styles.insidemiddleheader}>
-                                    {/* {categorys?.length == 0 && <div>
-                <Nodatafoundimage
-                    title="Not Available Categorys"
-                />
-            </div>} */}
+                                 
                                     {categorys?.map((item, index) => {
                                         return (
                                             <div className={`${indexs === index ? styles.actives : styles.detailpage}`} onClick={() => {
@@ -404,31 +400,21 @@ function Womenpreneusdetails({ id }) {
                                     })}
                                 </div>
                             </div>
+                            </>:null}
+                            
 
                             <div className={styles.contentsetiondetails}>
                                 <Beverage productlist={productlist} productlistshow={productlistshow} loading={loading} sellers={sellers?.businessSlugName} />
-                                {/* {productlist?.length > 8 &&
-                                    <div className='d-flex justify-content-center mt-4'>
-                                        <Pagination
-                                            className="pagination-data"
-                                            total={limit?.totalPages * 10}
-                                            onChange={handleChangePagecount}
-                                            current={current}
-                                            itemRender={PrevNextArrow}
-                                            breakLabel="..."
-                                        />
-                                    </div>
-                                } */}
-
-
-
-{pagecount === 0 ? null : <>
-                                <div className="mt-3">
+                                
+{pagecount?.length>0 ? <>
+    <div className="mt-3">
                                     <hr />
                                 </div>
                                 <div>
 
-                                    Page {pagecountnumbers} / {pagecount?pagecount:productlist?.length}
+                                    Page {pagecountnumbers} 
+                                    
+                                    {/* / {pagecount?pagecount:productlist?.length} */}
                                 </div>
 
                                 <div className="mt-3">
@@ -442,6 +428,7 @@ function Womenpreneusdetails({ id }) {
                                         marginPagesDisplayed={2}
                                         nextClassName={"item next "}
                                         nextLabel={Math.ceil(pagecount / 12) === pagecountnumbers ? null : "NEXT"}
+                                        // nextLabel={Math.ceil(pagecount / 12) === pagecountnumbers ? null : "NEXT"}
                                         onPageChange={handlePageClick}
                                         pageCount={pagecount / 12}
                                         pageClassName={'item pagination-page '}
@@ -450,7 +437,8 @@ function Womenpreneusdetails({ id }) {
                                         previousLabel={pagecountnumbers > 1 ? "PREVIOUS" : null}
                                     />
                                 </div>
-                            </>}
+
+</> : null}
                             </div>
                         </div>
                     </div>

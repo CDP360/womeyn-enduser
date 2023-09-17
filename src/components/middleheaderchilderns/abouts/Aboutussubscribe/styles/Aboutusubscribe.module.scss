@@ -112,6 +112,7 @@
                 background-color: white;
                 padding: 10px;
                 width: 300px;
+                color:black !important;
                 @include xsBreakPoint {
                     width: 100%;
                 }

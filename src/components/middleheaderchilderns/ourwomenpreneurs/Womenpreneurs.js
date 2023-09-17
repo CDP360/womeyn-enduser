@@ -18,7 +18,6 @@ import leftarrow from '../../../assests/category-logos/rightcategoryarrow.png';
 import noimage from '../../../assests/womeynlogos/noimage.png';
 import { Nodatafoundimage } from './../../nodatafoundimage/Nodatafound';
 import ReactPaginate from 'react-paginate';
-
 function Womenpreneurs() {
     const router = useRouter();
     const [current, setCurrent] = useState(1);
@@ -34,6 +33,8 @@ function Womenpreneurs() {
     const [pagecount, setPagecount] = useState("");
     const [pagecountnumbers, setPagecountNumbers] = useState(1);
     const [showTopBtn, setShowTopBtn] = useState(false);
+
+    const [paginationdata, setPaginationData] = useState([]);
 
     useEffect(() => {
         WomenSellercategories();
@@ -126,7 +127,9 @@ function Womenpreneurs() {
         setPagecountNumbers(current);
         goToTop()
         const commentForms = await fetchComments(current);
-        setDataseller(commentForms);
+
+        // setDataseller(commentForms);
+        setPaginationData(commentForms)
     }
 
     useEffect(() => {
@@ -147,6 +150,10 @@ function Womenpreneurs() {
             behavior: "smooth",
         });
     };
+
+
+    
+
     return (
         <Fragment>
 
@@ -188,56 +195,71 @@ function Womenpreneurs() {
                                 </div>
                             </div>
 
-                            {dataseller?.length === 0 && null}
                             <div>
-
-
                                 <div className='cardsections row   w-100 mt-5 mb-3 ms-1'>
                                     <div>
                                         {dataseller.length === 0 && <div>No Data Found!!!!</div>}
                                     </div>
-                                    {loadingset ? <>
-                                        <div>
-                                            <LoaderLogo />
-                                        </div>
-                                    </> : dataseller?.map((item, index) => {
-                                        return (
-                                            <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
-                                                <div className={styles.sellerimagebox}>
-                                                    <div className={styles.insidebox}>
-                                                        {item?.profileImageName ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
-                                                            <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
-                                                        </>}
+
+                                    {paginationdata?.length>0 ? <>
+                                        {paginationdata?.map((item, index) => {
+                                            return (
+                                                <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
+                                                    <div className={styles.sellerimagebox}>
+                                                        <div className={styles.insidebox}>
+                                                            {item?.profileImageName ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                                                <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
+                                                            </>}
+                                                        </div>
+                                                    </div>
+                                                    <div className='womentitle'>
+                                                        {item?.firstName}
+                                                    </div>
+                                                    <div className='womendescription'>
+                                                        {item?.businessName}
                                                     </div>
                                                 </div>
-                                                <div className='womentitle'>
-                                                    {item?.firstName}
-                                                </div>
-                                                <div className='womendescription'>
-                                                    {item?.businessSlugName}
-
-                                                </div>
+                                            )
+                                        })}
 
 
+                                    </> : <>
+
+                                        {loadingset ? <>
+                                            <div>
+                                                <LoaderLogo />
                                             </div>
-                                        )
-                                    })}
+                                        </> : dataseller?.map((item, index) => {
+                                            return (
+                                                <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.businessSlugName)}>
+                                                    <div className={styles.sellerimagebox}>
+                                                        <div className={styles.insidebox}>
+                                                            {item?.profileImageName ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.profileImageName}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                                                <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
+                                                            </>}
+                                                        </div>
+                                                    </div>
+                                                    <div className='womentitle'>
+                                                        {item?.firstName}
+                                                    </div>
+                                                    <div className='womendescription'>
+                                                        {item?.businessName}
+                                                    </div>
+                                                </div>
+                                            )
+                                        })}
+                                    </>}
+
                                 </div>
-
-
-
                                 <div>
-                                    {pagecount === 0 ? null : <>
-
+                                    {pagecount > 12 ? <>
                                         <div className="mt-3">
                                             <hr />
                                         </div>
                                         <div>
-                                            Page {pagecountnumbers} / {pagecount}
+                                            Page {pagecountnumbers}
                                         </div>
-
                                         <div className="mt-3">
-
                                             <ReactPaginate
                                                 activeClassName={'actives '}
                                                 breakClassName={'item break-me '}
@@ -246,39 +268,23 @@ function Womenpreneurs() {
                                                 disabledClassName={'disabled-page'}
                                                 marginPagesDisplayed={2}
                                                 nextClassName={"item next "}
-
                                                 nextLabel={Math.ceil(pagecount / 12) === pagecountnumbers ? null : "NEXT"}
-
                                                 onPageChange={handlePageClick}
                                                 pageCount={pagecount / 12}
                                                 pageClassName={'item pagination-page '}
                                                 pageRangeDisplayed={2}
                                                 previousClassName={"item previous"}
-                                                // previousLabel={"PREVIOUS"}
                                                 previousLabel={pagecountnumbers > 1 ? "PREVIOUS" : null}
                                             />
                                         </div>
-                                    </>}
-
+                                    </> : null}
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-            {/* <div className={styles.emptyboxrightcolor}>
-            </div> */}
             <div className={styles.emptyboxleftcolor}>
-            </div>
-            <div className={styles.emptyboxleftcolor1}>
             </div>
             <div className={styles.emptyboxleftcolor2}>
             </div>
@@ -286,11 +292,6 @@ function Womenpreneurs() {
             </div>
             <div className={styles.emptyboxleftcolor4}>
             </div>
-
-
-
-
-
         </Fragment>
     )
 }

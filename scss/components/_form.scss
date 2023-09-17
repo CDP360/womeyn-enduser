@@ -85,6 +85,8 @@
     border-radius: 10px;
     outline: none;
     text-align: center;
+    background-color: white !important;
+    color:black !important;
 }
 .inputgap {
     margin: 20px;
@@ -108,7 +110,19 @@
     border-radius: 10px !important;
     color:grey;
 }
+.form-control-profiless
+{
+    // background-color:white !important;
+    background: rgba(151, 151, 151, 0.13) !important;
 
+    color:black;
+    width: 100%;
+    padding: 10px 15px !important;
+    border: none !important;
+    outline: none !important;
+    border-radius: 10px !important;
+    color:grey;
+}
 .formsectioncommon {
     // border: 2px solid blue;
     position: relative;
@@ -138,7 +152,7 @@
 .formsectioncommonlogin {
     // border: 2px solid blue;
     position: relative;
-    width: 100%;
+    width: 100% !important;
     @include xsBreakPoint {
         width: 100% !important;
     }
@@ -165,3 +179,20 @@
 }
 
 
+
+
+.radiobutton
+{
+    background-color:white !important;
+}
+
+
+// selet
+
+
+.form-control-profiless {
+    background: white !important;
+
+    border:1px solid #8D8D8D !important;
+    font-size: large;
+  }

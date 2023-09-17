@@ -12,7 +12,7 @@ function Caroselproducts({ productimages }) {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: 5,
         slidesToScroll: 2,
         autoplay: true,
         autoplaySpeed: 3500,
@@ -91,7 +91,7 @@ function Caroselproducts({ productimages }) {
                                         <div className={styles.insideslides}>
                                             {item?.name ? <><img
                                                 className={styles.slideimagesize}
-                                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
+                                                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.name}`}
                                                 alt="profile-pic"
                                             /></> : <>
                                                 <Skeleton />
@@ -112,7 +112,7 @@ function Caroselproducts({ productimages }) {
                                     <div className={styles.insideslidess}>
                                         {item?.name ? <><img
                                             className={styles.slideimagesizes}
-                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
+                                            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.name}`}
                                             alt="profile-pic"
                                         /></> : <>
                                             <Skeleton />

@@ -26,6 +26,7 @@ function Servicescardslist({ serviceslist, loading, sellers }) {
 
 
 
+
     return (
         <Fragment>
             <div className={styles.mainbeveragesection}>
@@ -48,40 +49,35 @@ function Servicescardslist({ serviceslist, loading, sellers }) {
                                     <ion-icon name="add-outline" className={styles.ionicicons} onClick={() => Carthandleproduct(item)}></ion-icon>
                                     <Image src={plus} alt="no image" className={styles.plus} onClick={() => Carthandleproduct(item)} />
                                 </div> */}
+
+
+
+
+
+                                
                                 <div onClick={() => router.push(`/service/${item?.serviceSlugName}`)} className={styles.imagebox}>
-                                    {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={"productimages"} /> :
+                                    {item?.serviceThumbImage ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.serviceThumbImage}`} alt="no image" className={"productimages"} /> :
                                         <>
                                             <Skeleton className={styles.loaderskelimage} />
                                         </>
                                     }
                                 </div>
                                 <div className={styles.cardinsidesection} onClick={() => router.push(`/service/${item?.serviceSlugName}`)}>
-                                    {/* <Image src={star} alt="no image" className={styles.stars} /> */}
-                                    <div className={styles.brandname}>
-                                        {item?.serviceName?.length <= 10 ? <>{item?.serviceName}</> : <>    {item?.serviceName.slice(0, 18)}...</>}
-                                    </div>
+                                   
 
-                                    <div className='textgrey mb-4'>
-                                        {item?.serviceDescription?.length <= 18 ? <>{item?.serviceDescription}</> : <>{item?.serviceDescription.slice(0, 18)}...</>}
-                                    </div>
-                                    {/* <div className={styles.cardsellerborder}>
-                                        <div className={styles.cardsellerinsideborder}>
-                                        </div>
-                                    </div> */}
-                                    {/* <div className={styles.cardpricesection}>
-                                        <div className='textprice'>
-                                            <span>A${item?.salePrice}</span>
-                                        </div>
-                                        <div className={styles.splitoffers}>
-                                            {item?.offerPercentag == 0 ? <></> : <span className='textpricedashedgreen'> <del>A${item?.actualPrice}</del></span>}
-                                            <span className='textpricedashedgreen ms-2'>
-                                                {item?.offerPercentag == 0 ? <></> : <>
-                                                    ({item?.offerPercentag} off)
-                                                </>}
-                                            </span>
-                                        </div>
+<div className="mb-4">
+<div className={styles.productNametext}>
+                                                        {item?.serviceName?.length>60?<>{item?.serviceName.slice(0,60)}...</>:<>{item?.serviceName}</>}
+                                                    </div>
 
-                                    </div> */}
+                                                    <div className={styles.brandname}>
+                                                        {item?.serviceDescription?.length>60?<>{item?.serviceDescription.slice(0,60)}...</>:<>{item?.serviceDescription}</>}
+                                                    </div>
+</div>
+
+                                    
+
+                                    
                                 </div>
                             </div>
                         )

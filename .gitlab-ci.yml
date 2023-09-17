@@ -1,0 +1,36 @@
+image: node:latest
+
+stages:
+  - build
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - npm install --legacy-peer-deps
+
+build:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - build/
+  tags:
+     - CICD
+
+
+deploy:
+  stage: deploy
+  script:
+    - apt-get update -y
+    - apt-get install -y awscli
+    - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+    - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+
+    - aws s3 sync build/ s3://womeyn-end-usernew
+  tags:
+     - CICD
+

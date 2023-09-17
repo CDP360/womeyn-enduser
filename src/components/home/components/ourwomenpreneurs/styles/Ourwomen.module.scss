@@ -170,7 +170,7 @@
                     animation: roundss 3s ease-in-out infinite;
                 }
                 .slideimagesize {
-                    width: 180px !important;
+                    width: 100% !important;
                     margin: 0 auto;
                     height: 210px !important;
                     cursor: pointer;
@@ -255,7 +255,7 @@
                         padding-left: 2%;
                     }
                     .descriptioninwomeyn {
-                        width: 70%;
+                        width: 100%;
                         @include xsBreakPoint {
                             width: 100%;
                             line-height: 1.5;

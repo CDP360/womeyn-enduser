@@ -408,11 +408,9 @@ li a {
   color: #e95a5a !important;
   font-weight: 600;
   font-size: 0.889rem;
-  // padding-left: 5%;
   padding: 2px 5px;
   margin-top: 5% !important;
   width: 100% !important;
-  // border:2px solid red;
 }
 .unactivetext {
   display: flex;
@@ -490,4 +488,10 @@ li a {
 
 .hovertexts {
   cursor: pointer;
+}
+
+
+.commontitles
+{
+font-weight:600;
 }

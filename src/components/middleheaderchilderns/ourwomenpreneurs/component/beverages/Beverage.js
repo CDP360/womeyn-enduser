@@ -35,7 +35,7 @@ function Beverage({ productlist, loading, sellers }) {
                     {productlist?.length == 0 && <div>
                         {/* <Nodatafoundimage/> */}
                      <Nodatafoundimage
-                       title="No Available Categorys"
+                       title="No Available Products"
                      />
                         </div>}
                 </div>
@@ -50,7 +50,7 @@ function Beverage({ productlist, loading, sellers }) {
                                     <Image src={plus} alt="no image" className={styles.plus} onClick={() => Carthandleproduct(item)} />
                                 </div> */}
                                 <div onClick={() => router.push(`/product/${item?.productSlugName}`)} className={styles.imagebox}>
-                                    {item?.productThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`} alt="no image" className={"productimages"} /> :
+                                    {item?.productThumbImage ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.productThumbImage}`} alt="no image" className={"productimages"} /> :
                                         <>
                                             <Skeleton className={styles.loaderskelimage} />
                                         </>
@@ -58,19 +58,19 @@ function Beverage({ productlist, loading, sellers }) {
                                 </div>
                                 <div className={styles.cardinsidesection} onClick={() => router.push(`/product/${item?.productSlugName}`)}>
                                     {/* <Image src={star} alt="no image" className={styles.stars} /> */}
-                                    <div className={styles.brandname}>
-                                        {item?.productName?.length <= 10 ? <>{item?.productName}</> : <>    {item?.productName.slice(0, 18)}...</>}
-                                    </div>
+                                    <div className={styles.productNametext}>
+                                                        {item?.productName?.length>60?<>{item?.productName.slice(0,60)}...</>:<>{item?.productName}</>}
+                                                    </div>
 
-                                    <div className='textgrey'>
-                                        {item?.brandName?.length <= 18 ? <>{item?.brandName}</> : <>{item?.brandName.slice(0, 18)}...</>}
-                                    </div>
+                                                    <div className={styles.brandname}>
+                                                        {item?.brandName?.length>60?<>{item?.brandName.slice(0,60)}...</>:<>{item?.brandName}</>}
+                                                    </div>
                                     <div className={styles.cardsellerborder}>
                                         <div className={styles.cardsellerinsideborder}>
                                         </div>
                                     </div>
                                     <div className={styles.cardpricesection}>
-                                        <div className='textprice'>
+                                        <div className='textpricebold'>
                                             <span>A${item?.salePrice}</span>
                                         </div>
                                         <div className={styles.splitoffers}>

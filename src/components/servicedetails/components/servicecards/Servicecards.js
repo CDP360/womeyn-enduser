@@ -1,5 +1,5 @@
 import LoaderLogo from '../../../loaderlogo/LoaderLogo';
-import { Serviceusers ,ServiceusersSerach} from '../../../../services/servicewomeyn/service-womeyn';
+import { Serviceusers, ServiceusersSerach } from '../../../../services/servicewomeyn/service-womeyn';
 import React, { Fragment, useEffect, useState } from 'react'
 import styles from './styles/Servicecards.module.scss';
 import Womeynbanner from '../../../../assests/homepage-logos/woymenbanner.png';
@@ -21,6 +21,9 @@ import leftarrow from '../../../../assests/category-logos/rightcategoryarrow.png
 import noimage from '../../../../assests/womeynlogos/noimage.png';
 
 import { Nodatafoundimage } from '../../../nodatafoundimage/Nodatafound';
+
+import Skeleton from 'react-loading-skeleton'
+
 function Servicecards() {
     const router = useRouter();
     const [current, setCurrent] = useState(1);
@@ -40,7 +43,7 @@ function Servicecards() {
     const [pagecount, setPagecount] = useState("");
     const [pagecountnumbers, setPagecountNumbers] = useState(1);
 
-    const [counts,setCounts]=useState(1);
+    const [counts, setCounts] = useState(1);
 
     useEffect(() => {
         Serviceusers().then((res) => {
@@ -71,7 +74,7 @@ function Servicecards() {
         })
     }
     const handlepush = (id) => {
-        router.push(`service/${id}`);
+        router.push(`services/${id}`);
     }
     const SearchNameBrand = (e) => {
         setSearchName(e.target.value);
@@ -139,8 +142,6 @@ function Servicecards() {
 
     const fetchComments = async (searchname, current) => {
         const res = await ServiceusersSerach(searchname, current)
-        console.log(res?.data, "res")
-
         return res?.data?.results;
     }
 
@@ -173,15 +174,12 @@ function Servicecards() {
     };
 
 
-
     return (
         <Fragment>
 
             <div className="mainsection">
                 <div className="insidesection">
-
                     <div className={styles.womeynmainsectionpre}>
-
                         <div className={styles.bodysectionwomeynpre}>
 
                             <div className={styles.imagesectionwomeyn}>
@@ -218,7 +216,7 @@ function Servicecards() {
 
 
 
-                            <div className='cardsections row  w-100 mt-5 mb-3 ms-1'>
+                            <div className='cardsection row  w-100 mt-2 mb-3 ms-1'>
                                 <div>
                                     {servicesusers.length === 0 && <div>
                                         <Nodatafoundimage
@@ -232,16 +230,35 @@ function Servicecards() {
                                     </div>
                                 </> : servicesusers?.map((item, index) => {
                                     return (
-                                        <div className='cards mt-1 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.serviceSlugName)}>
-                                            <div className={styles.sellerimagebox}>
+                                        <div className='card mt-2 mb-2 col-lg-3 col-sm-10 col-xs-10 col-md-10' key={index} onClick={() => handlepush(item?.serviceSlugName)}>
+                                            {/* <div className={styles.sellerimagebox}>
                                                 <div className={styles.insidebox}>
-                                                    {item?.serviceThumbImage ? <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.serviceThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
+                                                    {item?.serviceThumbImage ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.serviceThumbImage}`} alt="no image" className={styles.sellerimagesize} /> : <>
                                                         <Image src={noimage} alt="no image" className={styles.sellerimagesize} />
                                                     </>}
                                                 </div>
                                             </div>
                                             <div className='womentitle mt-5'>
                                                 {item?.serviceName}
+                                            </div> */}
+
+                                            <div onClick={() => handlepush(item?.serviceSlugName)} className={styles.imagebox}>
+                                                {item?.thumbImage ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.thumbImage}`} alt="no image" className={"productimagess"} /> :
+                                                    <>
+                                                        <Skeleton className={styles.loaderskelimage} />
+                                                    </>
+                                                }
+                                            </div>
+
+                                            <div className={styles.cardinsidesection}>
+
+                                                <div className="mb-4">
+                                                    <div className={styles.productNametext}>
+                                                        {item?.serviceName}
+                                                    </div>
+
+                                                </div>
+
                                             </div>
 
                                         </div>
@@ -253,12 +270,15 @@ function Servicecards() {
                             <div>
 
 
-                                {pagecount === 0 ? null : <>
+                                {pagecount > 12 ? <>
+
+
                                     <div className="mt-3">
                                         <hr />
                                     </div>
                                     <div>
-                                        Page {pagecountnumbers} / {pagecount}
+                                        Page {pagecountnumbers}
+                                        {/* / {pagecount} */}
                                     </div>
 
                                     <div className="mt-3">
@@ -283,7 +303,7 @@ function Servicecards() {
 
                                         />
                                     </div>
-                                </>}
+                                </> : null}
 
 
                                 {/* {servicesusers?.length > 3 && <ReactPaginate

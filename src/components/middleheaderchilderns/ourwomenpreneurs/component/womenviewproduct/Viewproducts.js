@@ -26,7 +26,7 @@ function Viewproducts({ id }) {
 
     const [googleplaces, setGooglePlaces] = useState("");
     const history = useRouter();
-    const [errors, setError] = useState(false); 
+    const [errors, setError] = useState(false);
     const [productnotfound, setProductNotfound] = useState(false);
     const [starcount, setStarCount] = useState(null);
     const [ratingcount, setRatingcount] = useState("");
@@ -950,14 +950,14 @@ function Viewproducts({ id }) {
                         description: `${productdata?.productDescription}`,
                         images: [
                             {
-                                url: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`,
+                                url: `${process.env.NEXT_PUBLIC_IMAGE_URL}/${productdata?.productThumbImage}`,
                                 width: "100%",
                                 height: "100%",
                                 alt: `${productdata?.productName}`,
                                 type: 'image/jpeg',
                             },
                             {
-                                url: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productdata?.productThumbImage}`,
+                                url: `${process.env.NEXT_PUBLIC_IMAGE_URL}/${productdata?.productThumbImage}`,
 
                                 width: "100%",
                                 height: "100%",
@@ -986,8 +986,7 @@ function Viewproducts({ id }) {
                                 <div className={styles.leftproductview}>
                                     <div className={styles.leftmainsectionslide}>
                                         <div className={styles.leftcardimages}>
-
-                                            <ImageViewModal imagemodel={imagemodel} handleImageClose={handleImageClose} productimages={productimages} id={id}/>
+                                            <ImageViewModal imagemodel={imagemodel} handleImageClose={handleImageClose} productimages={productimages} id={id} />
                                             <div className={styles.imagerowsection}>
                                                 {productimages?.map((item, index) => {
                                                     return (
@@ -998,7 +997,7 @@ function Viewproducts({ id }) {
                                                             }} onMouseOver={() => setIndex(index)} key={index}>
                                                             {item?.name ? <><img
                                                                 className={styles.imagecards}
-                                                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
+                                                                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.name}`}
                                                                 alt="profile-pic"
                                                             /></> : <>
                                                                 <Skeleton />
@@ -1006,8 +1005,9 @@ function Viewproducts({ id }) {
                                                         </div >
                                                     )
                                                 })}
+                                              
                                             </div >
-                                        </div >
+                                        </div>
                                         <div className={styles.rightcardimagesshow}>
                                             <div className={styles.leftwomensearchsection}>
                                                 <div className={styles.serachlargeimage}>
@@ -1015,7 +1015,7 @@ function Viewproducts({ id }) {
                                                     <div className="d-block d-lg-none">
                                                         <img
                                                             className={styles.serachlargeimages}
-                                                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
+                                                            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${productimages[indexs]?.name}`}
                                                             alt="profile-pic"
                                                         />
                                                     </div>
@@ -1027,15 +1027,15 @@ function Viewproducts({ id }) {
 
                                                                     alt: 'Wristwatch by Ted Baker London',
                                                                     isFluidWidth: true,
-                                                                    src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
+                                                                    src: `${process.env.NEXT_PUBLIC_IMAGE_URL}/${productimages[indexs]?.name}`,
                                                                     borderRadius: "10px"
                                                                 },
                                                                 largeImage: {
-                                                                    src: `https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`,
+                                                                    src: `${process.env.NEXT_PUBLIC_IMAGE_URL}/${productimages[indexs]?.name}`,
                                                                     width: 1200,
                                                                     height: 1200,
                                                                     backgroundColor: "white",
-                                                                   
+
                                                                     zIndex: "989898988989898989898989",
                                                                     borderRadius: "10px"
 
@@ -1051,7 +1051,7 @@ function Viewproducts({ id }) {
                                                                     borderRadius: "10px"
 
                                                                 },
-                                                               
+
                                                             }}
                                                         />
                                                     </div>
@@ -1081,7 +1081,7 @@ function Viewproducts({ id }) {
                                                     <div className={styles.heartimagesection}>
                                                         <button className={styles.btn} onClick={() => {
                                                             CheckLoginUsers(productdata?.productSlugName)
-                                                
+
                                                         }}>
 
                                                             <Image src={heartunlike} alt="no image" className={styles.heartlikes} />
@@ -1094,6 +1094,8 @@ function Viewproducts({ id }) {
                                 </div >
                                 <div className={styles.rightproductview}>
                                     <div className={styles.rigthcontenttexts}>{productdata?.productName}</div>
+                                    <div className={styles.rigthcontenttextss}>{productdata?.categoryName}</div>
+
                                     <div className={styles.starsection}>
                                         <div className={styles.starsections}>
                                             {averageRatings ? <>
@@ -1145,11 +1147,11 @@ function Viewproducts({ id }) {
 
                                             </> : <>
 
-                                                {averageRatings?<Rate defaultValue={0} allowHalf style={{ color: "#54BE43" }}
+                                                {averageRatings ? <Rate defaultValue={0} allowHalf style={{ color: "#54BE43" }}
                                                     tooltips={["Bad", "Normal", "Average", "Good", "Very Good"]}
                                                     count={5}
                                                     disabled
-                                                />:null}
+                                                /> : null}
 
 
 
@@ -1160,7 +1162,7 @@ function Viewproducts({ id }) {
 
                                         </div>
                                         <div>
-                                          {averageRatings?<>{ratingcount} Review</>:null}
+                                            {averageRatings ? <>{ratingcount} Review</> : null}
                                         </div>
                                     </div>
 
@@ -1197,7 +1199,7 @@ function Viewproducts({ id }) {
                                                 </div>
                                             </div>
                                         </div>
-                                          
+
                                         </> : <></>}
                                         {productvariations[1]?.name ? <div className={styles.sizesectionandcolor}>
                                             <div className={styles.fontweightsizes}> {productvariations[1]?.name ? <>{productvariations[1]?.name}</> : <></>} </div>
@@ -1359,10 +1361,10 @@ function Viewproducts({ id }) {
                                             <div className={styles.leftname}>Style Name</div>
                                             <div className={styles.rightname}>{productdata?.styleName}</div>
                                         </div>
-                                        <div className={styles.listproductdata}>
+                                        {/* <div className={styles.listproductdata}>
                                             <div className={styles.leftname}>Manufacture Name</div>
                                             <div className={styles.rightname}>{productdata?.manufacturerName}</div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                             </div>

@@ -20,21 +20,28 @@ function Categorycard({ item }) {
     return (
 
         <div className={styles.cards} onClick={() => ProductView(item?.productSlugName)}  >
-
-            {item?.productThumbImage ? <>
+            {/* {item?.productThumbImage ? <>
                 <img
                     className={"productimages"}
-                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.productThumbImage}`}
                     alt="profile-pic"
                     onClick={() => ProductView(item?.productSlugName)}
                 />
             </> : <>
                 <Skeleton className={styles.categoryimages} />
-            </>}
+            </>} */}
+
+            <div onClick={() => ProductView(item?.productSlugName)} className={styles.imagebox}>
+                {item?.productThumbImage ? <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.productThumbImage}`} alt="no image" className={"productimages"} /> :
+                    <>
+                        <Skeleton className={styles.categoryimages} />
+                    </>
+                }
+            </div>
 
             <div className={styles.cardinsidesection}>
-                <Image src={stars} alt="no image" className={styles.stars} />
-                <div className={styles.productname}>
+                {/* <Image src={stars} alt="no image" className={styles.stars} /> */}
+                {/* <div className={styles.productname}>
                     {item?.productName?.length <= 10 ? <> {item?.productName}</> : <> {item?.productName.slice(0, 18)}...</>}
 
                 </div>
@@ -45,6 +52,13 @@ function Categorycard({ item }) {
                     </>}</> : <>{item?.brandName.slice(0, 28)}...</>}
 
 
+                </div> */}
+
+                <div className={styles.productNametext}>
+                    {item?.productName?.length > 60 ? <>{item?.productName.slice(0, 60)}...</> : <>{item?.productName}</>}
+                </div>
+                <div className={styles.brandname}>
+                    {item?.brandName?.length > 60 ? <>{item?.brandName.slice(0, 60)}...</> : <>{item?.brandName}</>}
                 </div>
                 <div className={styles.cardsellerborder}>
                     <div className={styles.cardsellerinsideborder}>
@@ -53,7 +67,7 @@ function Categorycard({ item }) {
                 </div>
                 <div className={styles.cardpricesection}>
                     <div className='textpricebold'>
-                        <span>${item?.salePrice}</span>
+                        <span>A${item?.salePrice}</span>
                     </div>
                     <div className={styles.pricecontentcategory}>
                         <div className='textpricedashedgreen'>

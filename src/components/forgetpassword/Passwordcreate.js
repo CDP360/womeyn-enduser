@@ -207,7 +207,6 @@ function Passwordcreate() {
                                         </div>
                                         <div>
                                         </div>
-
                                         <div className='mb-4 mt-2'>
                                             <Form onSubmit={handleSubmit(onSubmit)}>
                                                 <div className={styles.passwordformsection}>
@@ -363,14 +362,12 @@ function Passwordcreate() {
                                                                         },
                                                                     })}
                                                                 />
-
                                                                 <div className={styles.passwordicons}>
                                                                     {show ? <div className='mt-2' onClick={() => setShow(!show)}><Image src={eye} alt="no image" /></div> : <div className="mt-2" onClick={() => setShow(!show)}><Image src={eyeoff} alt="no image" /></div>}
                                                                 </div>
                                                             </div>
                                                             {errors.password && <span className="active">{errors.password.message}</span>}
                                                         </Form.Group>
-
                                                     </div>
                                                 </div>
                                                 <div className='mt-4'>
@@ -404,8 +401,9 @@ function Passwordcreate() {
                                                 <div className='mt-4'>
                                                     <div className="mb-2">Gender:</div>
                                                     <div className='d-flex gap-2'>
-                                                        <input {...register("gender", { required: true })} type="radio" value="female" /> <span>Female</span>
-                                                        <input {...register("gender", { required: true })} type="radio" value="male" /><span>Male</span>
+                                                        <input {...register("gender", { required: true })} type="radio" value="female" className="radiobutton"/> <span>Female</span>
+                                                        <input {...register("gender", { required: true })} type="radio" value="male" 
+                                                        /><span>Male</span>
                                                     </div>
 
                                                     {errors.gender && <span className="active">{errors.gender.message}</span>}

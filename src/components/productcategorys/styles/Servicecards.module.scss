@@ -42,9 +42,12 @@
         @include lgBreakPoint {
             width: 100%;
             // border: 1px solid red;
+            margin:0 auto !important;
         }
         @include xlBreakPoint {
             width: 100%;
+            margin:0 auto !important;
+
         }
 
         .emptyboxcolorright {
@@ -342,12 +345,36 @@
 }
 .splitoffers {
     display: flex;
+    @include lgBreakPoint
+    {
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+    }
+    @include xlBreakPoint
+    {
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+    }
 }
 
-.brandname:hover {
+// .brandname:hover {
+//     color: #e95a5a !important;
+// }
+.brandname{
+    color:#676161;
+}
+
+.productNametext
+{
+    // fontweight:"bold";
+    // color:red;
+    font-weight:600;
+}
+.productNametext:hover {
     color: #e95a5a !important;
 }
-
 .emptyboxrightcolor {
     // background-color: orange;
     position: absolute;
@@ -418,4 +445,14 @@
     left: 0%;
     bottom: 0%;
     z-index: 0;
+}
+
+
+.imagebox
+{
+    border:1px solid #F1F1F1;
+    background-color:#F1F1F1;
+    // border-bottom-left-radius:20px;
+    // border-bottom-right-radius:20px;
+
 }

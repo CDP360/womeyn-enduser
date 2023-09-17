@@ -32,3 +32,14 @@
         }
     }
 }
+
+.eventbannerimages
+{
+  width:100%;
+  heihgt:auto;
+//   border:1px solid red;
+  object-fit:contain;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}

@@ -26,7 +26,7 @@ function Searchbar({ serachdata, serachicon,searchDatacategory,loadingserah,sera
                                         {item?.imageName ? <>
                                             <img
                                                 className={styles.serachshoeimages}
-                                                src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.imageName}`}
+                                                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.imageName}`}
                                                 alt="profile-pic"
                                             />
                                         </> : < div className={styles.cursorserach}>
@@ -90,7 +90,7 @@ function Searchbar({ serachdata, serachicon,searchDatacategory,loadingserah,sera
 //                                     {item?.productThumbImage ? <>
 //                                         <img
 //                                             className={styles.serachshoeimages}
-//                                             src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.productThumbImage}`}
+//                                             src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.productThumbImage}`}
 //                                             alt="profile-pic"
 //                                         />
 //                                     </> : <>

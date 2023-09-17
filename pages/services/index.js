@@ -5,9 +5,9 @@ import Head from "next/head";
 
 function index() {
   return (
-    <LayoutHeader title={"Service"}>
+    <LayoutHeader title={"Woemyn Services"}>
         <Head>
-                <title>Womeyn Service</title>
+                <title>Womeyn Services</title>
                 <meta name="description" content="Womeyn Service" key="desc" />
                 <meta property="og:title" content="Womeyn Service" />
                 <meta

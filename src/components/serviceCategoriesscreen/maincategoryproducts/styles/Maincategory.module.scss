@@ -1,0 +1,34 @@
+@use "../../../../../scss/abstract/" as *;
+
+
+.rowcategorycard
+{
+  display:flex;
+
+    .skeltons
+{
+    width:30% !important;
+    cursor:pointer;
+    height:200px;
+    display:flex;
+    border:2px solid blue;
+
+    @include mdBreakPoint
+    {   
+        width: 100%;
+    }
+    @include lgBreakPoint
+    {
+        width: 100%;
+    }
+}
+
+}
+
+
+.arrowsizefix
+{
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+}

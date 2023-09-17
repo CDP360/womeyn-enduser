@@ -10,16 +10,18 @@
        
         .eventlengthtext
         {
-            padding-top:1.5%; padding-bottom:1.5%;
+            padding-top:1.5%;
+             padding-bottom:1.5%;
             display:flex;
         }
         .eventlength
         {
-            color: rgba(0, 0, 0, 0.5);
+            // color: rgba(0, 0, 0, 0.5);
             font-weight:600;
             display:flex;
             align-items:center;
             justify-content:center;
+            font-size:1.3rem;
         }
  
         .imageeventcard
@@ -126,4 +128,16 @@
           }
         }
     }
+}
+
+
+.eventbannerimages
+{
+  width:100%;
+  heihgt:200px;
+  // border:1px solid red;
+  object-fit:contain;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }

@@ -7,9 +7,9 @@ import Head from "next/head";
 
 function index() {
     return (
-        <LayoutHeader title="Events">
+        <LayoutHeader title="Events and Blogs">
             <Head>
-                <title>Womeyn Events </title>
+                <title>Womeyn Events and Blogs </title>
                 <meta name="description" content=" Events" key="desc" />
                 <meta property="og:title" content="Womeyn  Events " />
                 <meta

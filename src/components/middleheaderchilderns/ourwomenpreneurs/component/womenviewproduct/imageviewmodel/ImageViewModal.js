@@ -2,16 +2,10 @@ import React, { useState, useEffect } from 'react'
 import Modal from 'react-bootstrap/Modal';
 import styles from './styles/ImageViewmodels.module.scss';
 function ImageViewModal({ imagemodel, handleImageClose, productimages,id }) {
-
     const [indexs, setIndex] = useState(0);
-
-
     useEffect(() => {
-
-    }, [indexs])
-
-
-
+    }, [indexs]);
+    
     return (
         <div>
             <Modal
@@ -47,7 +41,7 @@ function ImageViewModal({ imagemodel, handleImageClose, productimages,id }) {
                         </div>
                         <img
                             className={styles.serachlargeimages}
-                            src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${productimages[indexs]?.name}`}
+                            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${productimages[indexs]?.name}`}
                             alt="profile-pic"
                         />
 
@@ -76,7 +70,7 @@ function ImageViewModal({ imagemodel, handleImageClose, productimages,id }) {
                                     }} onMouseOver={() => setIndex(index)} key={index}>
                                     {item?.name ? <><img
                                         className={styles.imagecards}
-                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item?.name}`}
+                                        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item?.name}`}
                                         alt="profile-pic"
                                     /></> : <>
                                         <Skeleton />

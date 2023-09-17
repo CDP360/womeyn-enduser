@@ -1,16 +1,17 @@
 @use "../../../../../../scss/abstract/" as *;
 .summarymainsection {
     width: 100%;
-    // border: 2px solid red;
     background-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0px 12px 116px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(66px);
-    padding-top: 3%;
-    padding-bottom: 3%;
+    padding: 20px;
     height: auto;
+
     .insidesummarysection {
-        width: 78%;
+        width: 82%;
         margin: 0 auto;
+    // border:1px solid red;
+
         @include xsBreakPoint {
             width: 73%;
         }
@@ -21,22 +22,22 @@
             width: 78.78%;
         }
         @include lgBreakPoint {
-            width: 86%;
+            width: 93%;
         }
         @include xlBreakPoint {
-            width: 82%;
+            width: 88%;
         }
         .insideslidess {
             display: flex !important;
             // border: 2px solid blue;
             flex-direction: row !important;
-            padding-left: 5%;
+            padding:5%;
             gap: 10px !important ;
             align-items: center !important;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding-top: 5%;
+            // padding-top: 5%;
             @include xsBreakPoint {
                 padding-left: 2%;
                 // border: 2px solid blue;
@@ -53,16 +54,91 @@
             @include xlBreakPoint {
                 padding-left: 0%;
             }
-            .slidesummaryimages1,
+            .slidesummaryimages1 {
+                width: 100%;
+                height: 130px;
+                object-fit: contain;
+                cursor: pointer;
+            }
             .slidesummaryimages2 {
                 width: 100%;
-                height: 50px;
+                height: 130px;
                 object-fit: contain;
                 cursor: pointer;
             }
             .slidesummaryimages2 {
                 width: 100px;
-                height: 50px;
+                height: 130px;
+                object-fit: contain;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+
+    .insidesummarysections {
+        width: 78%;
+        margin: 0 auto;
+        display: flex;
+        gap: 60px;
+        @include xsBreakPoint {
+            width: 73%;
+        }
+        @include smBreakPoint {
+            width: 77%;
+        }
+        @include mdBreakPoint {
+            width: 78.78%;
+        }
+        @include lgBreakPoint {
+            width: 86%;
+        }
+        @include xlBreakPoint {
+            width: 82%;
+        }
+        .insideslidesss {
+            display: flex !important;
+            // border: 2px solid blue;
+            flex-direction: row !important;
+            padding-left: 5%;
+            gap: 10px !important ;
+            align-items: center !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // padding-top: 5%;
+            @include xsBreakPoint {
+                padding-left: 2%;
+                // border: 2px solid blue;
+            }
+            @include smBreakPoint {
+                padding-left: 4%;
+            }
+            @include mdBreakPoint {
+                padding-left: 4%;
+            }
+            @include lgBreakPoint {
+                padding-left: 4%;
+            }
+            @include xlBreakPoint {
+                padding-left: 0%;
+            }
+            .slidesummaryimages1 {
+                width: 100%;
+                height: 130px;
+                object-fit: contain;
+                cursor: pointer;
+            }
+            .slidesummaryimages2 {
+                width: 100%;
+                height: 130px;
+                object-fit: contain;
+                cursor: pointer;
+            }
+            .slidesummaryimages2 {
+                width: 100px;
+                height: 130px;
                 object-fit: contain;
                 display: flex;
                 align-items: center;
@@ -72,64 +148,51 @@
     }
 }
 
-.sketonbannes
-{
-    display:flex;
-    // border:2px solid red; 
-    gap:47px;
-
+.sketonbannes {
+    display: flex;
+    // border:2px solid red;
+    gap: 47px;
 }
-.summaryBreakPoints
-{
-    width:100%;
-    height:200px;
-    border-radius:10px;
-    cursor:pointer;
+.summaryBreakPoints {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    cursor: pointer;
     // display:flex;
     // align-items:center;
     // justify-content:center;
-    
 }
 
-.client
-{
-    width:100%;
-    display:flex;
-    gap:20px;
-    margin:0 auto;
-    @include xsBreakPoint
-    {
-        width:100%;
-        gap:40px;
+.client {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    margin: 0 auto;
+    @include xsBreakPoint {
+        width: 100%;
+        gap: 40px;
     }
-    .insideslidesss
-    {
-        width:100%;
-    margin:0 auto;
-        .slidesummaryimages12
-        {
-            width:80%;
-            height:100px;
-            object-fit:contain;
-            @include xsBreakPoint
-            {
-                width:100%;
+    .insideslidesss {
+        width: 100%;
+        margin: 0 auto;
+        .slidesummaryimages12 {
+            width: 80%;
+            height: 100px;
+            object-fit: contain;
+            @include xsBreakPoint {
+                width: 100%;
             }
-            @include smBreakPoint
-            {
-                width:100%;
+            @include smBreakPoint {
+                width: 100%;
             }
-            @include mdBreakPoint
-            {
-                width:100%;
+            @include mdBreakPoint {
+                width: 100%;
             }
-            @include lgBreakPoint
-            {
-                width:100%;
+            @include lgBreakPoint {
+                width: 100%;
             }
-            @include xlBreakPoint
-            {
-                width:80%;
+            @include xlBreakPoint {
+                width: 80%;
             }
         }
     }

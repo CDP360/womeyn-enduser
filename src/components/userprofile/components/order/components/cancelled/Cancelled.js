@@ -27,7 +27,7 @@ function Cancelled({ Orders, traking, loading }) {
         {Orders?.length === 0 && <div>
 
           <Nodatafoundimage
-            title={"No Order InProgress"}
+            title={"No Orders Cancelled"}
           />
         </div>}
 
@@ -67,7 +67,7 @@ function Cancelled({ Orders, traking, loading }) {
                                 {items?.productThumbImage ? <>
                                   <img
                                     className={styles.img}
-                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${items?.productThumbImage}`}
+                                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${items?.productThumbImage}`}
                                     alt="profile-pic"
                                   />
                                 </> : <>

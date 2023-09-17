@@ -12,6 +12,7 @@ import w4 from '../../../assests/sellerbanners/w4.jpg';
 import w5 from '../../../assests/sellerbanners/w5.jpg';
 import w6 from '../../../assests/sellerbanners/w6.jpg';
 import w7 from '../../../assests/sellerbanners/w7.jpg';
+import { toast } from 'react-toastify';
 
 function Womencarouselbanner() {
     const [banners, setBanners] = useState([]);
@@ -102,9 +103,11 @@ function Womencarouselbanner() {
         const data = "Product Banner";
         if (data) {
             Getwomenpreneursbanner(data).then((res) => {
+                console.log(res?.data,'res?.data')
                 setBanners(res?.data);
             }).catch((err) => {
                 console.log(err);
+               
             })
         }
 
@@ -154,7 +157,7 @@ function Womencarouselbanner() {
                             return (
                                 <div key={index}>
                                     {item?.imageName ? <>
-                                        <img src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${item.imageName}`} alt="no image" className={'allbanners'} onClick={() => MovePageData(item.redirectUrl)} />
+                                        <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${item.imageName}`} alt="no image" className={'allbanners'} onClick={() => MovePageData(item.redirectUrl)} />
 
                                     </> : <>
                                         <Skeleton className={styles.homebanner} />

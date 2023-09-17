@@ -66,6 +66,8 @@ function Servicebooking({ id }) {
 
     }
 
+    console.log(serviceBooking,'serviceBooking')
+
     return (
         <Fragment>
             <div className='mainsection'>
@@ -74,12 +76,11 @@ function Servicebooking({ id }) {
                         <div className={styles.insidesection}>
                             <div>
 
-                               
-
+                            
                                 {serviceBooking?.serviceThumbImage ? <>
                                     <img
                                         className={styles.servicebanner}
-                                        src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${serviceBooking?.serviceThumbImage}`}
+                                        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${serviceBooking?.serviceThumbImage}`}
                                         alt="profile-pic"
                                     />
                                 </> : <>
@@ -90,7 +91,7 @@ function Servicebooking({ id }) {
                             </div>
                             <div className={styles.classesszumba}>
 
-                                <div className={styles.zumbasection}>
+                                {/* <div className={styles.zumbasection}>
                                     <div className={styles.expre}>
                                         Experiences
                                     </div>
@@ -101,7 +102,7 @@ function Servicebooking({ id }) {
                                     <div className={styles.expre}>
                                         Zumba
 
-                                    </div>                    </div>
+                                    </div>                    </div> */}
                             </div>
                             <div className={styles.zumbaservices}>
 
@@ -131,7 +132,7 @@ function Servicebooking({ id }) {
                             </div>
                             <div className={styles.aboustservice}>
                                 <div>
-                                    <div className={styles.aboutservice}>
+                                    <div className={styles.zumbaservicess}>
                                         About the experience
                                     </div>
                                     <div className={styles.servicelearn}>
@@ -215,7 +216,7 @@ function Servicebooking({ id }) {
 
 
                                                 <div className="mt-4 mb-4">
-                                                    <button className={styles.booknowbutton} onClick={() => history?.push(`/service/payment/${item?._id}`)}>Book Now</button>
+                                                    <button className={styles.booknowbutton} onClick={() => history?.push(`/services/payment/${item?._id}`)}>Book Now</button>
                                                 </div>
                                             </div>
                                         )
@@ -225,7 +226,7 @@ function Servicebooking({ id }) {
                             </div>
                          
                             <div className={styles.instractions}>
-                                <div>
+                                <div className={styles.zumbaservicess}>
                                     Instructors
                                 </div>
                                 <div className='mt-3'>
@@ -237,10 +238,14 @@ function Servicebooking({ id }) {
                                             {sellerinformations?.profileImageName ? <>
                                                 <img
                                                     className={styles.personimages}
-                                                    src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${sellerinformations?.profileImageName}`}
+                                                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${sellerinformations?.profileImageName}`}
                                                     alt="profile-pic"
                                                 />
-                                            </> : <></>}
+                                            </> : <>
+                                            <Skeleton
+                                             className={styles.personimages}
+                                            />
+                                            </>}
 
                                             
 

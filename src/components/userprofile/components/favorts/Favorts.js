@@ -12,6 +12,7 @@ import { Rate } from "antd";
 import { useRouter } from 'next/router';
 import Modal from 'react-bootstrap/Modal';
 import ReactPaginate from 'react-paginate';
+import { Nodatafoundimage } from './../../../nodatafoundimage/Nodatafound';
 function Favorts({ error }) {
   const [show, setShow] = useState(false);
   const [deleteid, setDeleteid] = useState("");
@@ -136,6 +137,12 @@ const goToTop = () => {
 
 
 
+{favorts?.length==0 && <div>
+  <Nodatafoundimage
+  title={"No Favorites"}
+  />
+  </div>}
+
           <div className="row d-flex gap-3">
 
             {favorts?.map((data, index) => {
@@ -148,7 +155,7 @@ const goToTop = () => {
                       {data?.productThumbImage ? <div onClick={() => pushProductPage(data.productSlugName)}>
                         <img
                           className={styles.favortsImg}
-                          src={`https://my-demo-11-bucket.s3.ap-south-1.amazonaws.com/${data?.productThumbImage}`}
+                          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${data?.productThumbImage}`}
                           alt="profile-pic"
                         />
                       </div> : <>
